@@ -23,7 +23,7 @@ Minh's checking and merging approved PRs for you, then he's deleting your branch
 
 -----Development-----
 
-This is Integration branch: feature/ngxBootstrap
+This is Integration branch: develop
 
 - When you pick a component for development, you should branch off Integration branch with branch name as: 
 feature/(componentName)

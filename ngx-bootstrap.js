@@ -16,4 +16,18 @@
     };
   })();
 
+  ngxBootstrap.ngxClass = {};
+  ngxBootstrap.ngxComponents = {};
+
+  /*Utils*/
+  ngxBootstrap.shallowCopy = function (target, source, overrideTarget) {
+    for (var prop in source) {
+      if (!target[prop] || (target[prop] && overrideTarget)) {
+        target[prop] = source[prop];
+      }
+    }
+
+    return target;
+  };
+
 })(window.ngxBootstrap || (window.ngxBootstrap = {}))

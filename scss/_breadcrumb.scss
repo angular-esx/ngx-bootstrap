@@ -1,8 +1,8 @@
 ngx-breadcrumb {
   padding: $breadcrumb-padding-vertical $breadcrumb-padding-horizontal;
   margin-bottom: $spacer-y;
-  list-style: none;
   background-color: $breadcrumb-bg;
+  display: block;
   @include border-radius($border-radius);
   @include clearfix;
 

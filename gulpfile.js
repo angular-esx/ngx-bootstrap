@@ -18,7 +18,9 @@
     this.FILES = (function (paths) {
       return {
         INDEX_HTML: paths.ROOT + 'index.html',
-        NGX_BOOTSTRAP_JS: paths.ROOT + 'ngx-bootstrap.js'
+        NGX_BOOTSTRAP_JS: paths.COMPONENTS + 'ngx-bootstrap.js',
+        NGX_BOOTSTRAP_UTILS_JS: paths.COMPONENTS + 'ngx-bootstrap.utils.js',
+        NGX_BOOTSTRAP_CSS: paths.ROOT + 'dist/css/ngx-bootstrap.css'
       };
     })(this.PATHS);
 
@@ -53,6 +55,8 @@
   })();
 
   var taskService = new (function () {
+    this.SERVE = 'serve';
+    this.SASS = 'sass';
     this.TEST_UI = 'test-ui';
   })();
 
@@ -63,6 +67,10 @@
     replaceString: /\bgulp[\-.]/
   });
 
+  gulp.task('serve', ['sass'], getTask(taskService.SERVE))
+
+  gulp.task('sass', getTask(taskService.SASS));
+  
   gulp.task('test-ui', getTask(taskService.TEST_UI));
 
   function getTask(task) {

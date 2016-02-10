@@ -36,11 +36,11 @@
   };
 
   ngxBootstrap.hasClass = function (element, className) {
-    return element.className && element.className.indexOf('active') > -1;
+    return element.className && element.className.indexOf(className) > -1;
   };
 
   ngxBootstrap.addClass = function (element, className) {
-    element.className = ngxBootstrap.hasClass(element, 'active') ? element.className : 'active';
+    element.className = ngxBootstrap.hasClass(element, className) ? element.className : className;
   };
 
 })(window.ngxBootstrap || (window.ngxBootstrap = {}))

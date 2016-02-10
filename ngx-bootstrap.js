@@ -14,6 +14,11 @@
 
       return this.COMPONENTS + componentName + '/tests/ui/' + testcase + '/test-case.html';
     };
+    this.getComponentStyle = function (componentName, styleName) {
+      if (!styleName) { styleName = componentName; }
+
+      return this.COMPONENTS + componentName + '/css/' +  styleName + '.css';
+    };
   })();
 
   ngxBootstrap.ngxClass = {};
@@ -28,6 +33,14 @@
     }
 
     return target;
+  };
+
+  ngxBootstrap.hasClass = function (element, className) {
+    return element.className && element.className.indexOf('active') > -1;
+  };
+
+  ngxBootstrap.addClass = function (element, className) {
+    element.className = ngxBootstrap.hasClass(element, 'active') ? element.className : 'active';
   };
 
 })(window.ngxBootstrap || (window.ngxBootstrap = {}))

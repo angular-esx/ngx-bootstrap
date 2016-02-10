@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -11,15 +11,26 @@
     <title>ngxBootstrap - Development</title>
     
     <!-- core:css -->
+    <link rel="stylesheet" href="dist/css/ngx-bootstrap.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <!-- endinject -->
   </head>
   <body>
     <ngx-test-case></ngx-test-case>
 
     <!-- core:js -->
+    <script src="node_modules/es6-shim/es6-shim.js"></script>
+    <script src="node_modules/rxjs/bundles/Rx.umd.js"></script>
+    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+    <script src="node_modules/angular2/bundles/angular2-all.umd.js"></script>
+    <script src="ngx-bootstrap.js"></script>
     <!-- endinject -->
 
     <!-- component:js -->
+    <script src="components/breadcrumb/breadcrumbItem.component.js"></script>
+    <script src="components/breadcrumb/breadcrumb.component.js"></script>
+    <script src="components/breadcrumb/tests/ui/isolated-components/test-case.js"></script>
+    <script src="components/breadcrumb/tests/ui/isolated-components/boot.js"></script>
     <!-- endinject -->
   </body>
 </html>

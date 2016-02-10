@@ -18,7 +18,8 @@
     this.FILES = (function (paths) {
       return {
         INDEX_HTML: paths.ROOT + 'index.html',
-        NGX_BOOTSTRAP_JS: paths.ROOT + 'ngx-bootstrap.js'
+        NGX_BOOTSTRAP_JS: paths.ROOT + 'ngx-bootstrap.js',
+        NGX_BOOTSTRAP_CSS: paths.ROOT + 'dist/css/ngx-bootstrap.css'
       };
     })(this.PATHS);
 

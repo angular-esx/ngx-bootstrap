@@ -38,62 +38,81 @@
 
 
   function ngxLabelPill() {
-    this.constructor = [ng.core.ElementRef, function (elementRef) {
-      this.nativeElement = elementRef.nativeElement;
-    }];
-
-    this.ngAfterViewInit = function () {
-      if (this.nativeElement.className) {
-        this.nativeElement.className = this.getClassName() + ' ' + this.nativeElement.className;
-      }
-      else {
-        this.nativeElement.className = this.getClassName();
-      }
-    };
-
-    this.getClassName = function () {
+    var _ngxLabel = new ngxBootstrap.ngxClass.ngxLabelClass();
+    _ngxLabel.getClassName = function () {
       return 'label label-pill label-default';
     };
+
+    this.getBaseInstance = function () {
+      return _ngxLabel;
+    };
+
+    ngxBootstrap.inherit(this, _ngxLabel, true);
   };
 
   function ngxLabelPillPrimary() {
-    ngxBootstrap.shallowCopy(this, new ngxLabelPill(), true);
-
-    this.getClassName = function () {
+    var _ngxLabelPill = new ngxLabelPill();
+    ngxBootstrap.getRootInstance(_ngxLabelPill).getClassName = function () {
       return 'label label-pill label-primary';
     };
+
+    this.getBaseInstance = function () {
+      return _ngxLabelPill;
+    };
+
+    ngxBootstrap.inherit(this, _ngxLabelPill, true);
   };
 
   function ngxLabelPillInfo() {
-    ngxBootstrap.shallowCopy(this, new ngxLabelPill(), true);
-
-    this.getClassName = function () {
+    var _ngxLabelPill = new ngxLabelPill();
+    ngxBootstrap.getRootInstance(_ngxLabelPill).getClassName = function () {
       return 'label label-pill label-info';
     };
+
+    this.getBaseInstance = function () {
+      return _ngxLabelPill;
+    };
+
+    ngxBootstrap.inherit(this, _ngxLabelPill, true);
   };
 
   function ngxLabelPillSuccess() {
-    ngxBootstrap.shallowCopy(this, new ngxLabelPill(), true);
-
-    this.getClassName = function () {
+    var _ngxLabelPill = new ngxLabelPill();
+    ngxBootstrap.getRootInstance(_ngxLabelPill).getClassName = function () {
       return 'label label-pill label-success';
     };
+
+    this.getBaseInstance = function () {
+      return _ngxLabelPill;
+    };
+
+    ngxBootstrap.inherit(this, _ngxLabelPill, true);
   };
 
   function ngxLabelPillWarning() {
-    ngxBootstrap.shallowCopy(this, new ngxLabelPill(), true);
-
-    this.getClassName = function () {
+    var _ngxLabelPill = new ngxLabelPill();
+    ngxBootstrap.getRootInstance(_ngxLabelPill).getClassName = function () {
       return 'label label-pill label-warning';
     };
+
+    this.getBaseInstance = function () {
+      return _ngxLabelPill;
+    };
+
+    ngxBootstrap.inherit(this, _ngxLabelPill, true);
   };
 
   function ngxLabelPillDanger() {
-    ngxBootstrap.shallowCopy(this, new ngxLabelPill(), true);
-
-    this.getClassName = function () {
+    var _ngxLabelPill = new ngxLabelPill();
+    ngxBootstrap.getRootInstance(_ngxLabelPill).getClassName = function () {
       return 'label label-pill label-danger';
     };
+
+    this.getBaseInstance = function () {
+      return _ngxLabelPill;
+    };
+
+    ngxBootstrap.inherit(this, _ngxLabelPill, true);
   };
 
 })(window.ngxBootstrap);

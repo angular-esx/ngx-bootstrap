@@ -38,17 +38,27 @@
 
 
   function ngxLabel() {
+    var _nativeElement;
+
     this.constructor = [ng.core.ElementRef, function (elementRef) {
-      this.nativeElement = elementRef.nativeElement;
+      this.onConstructing(elementRef);
     }];
 
+    this.onConstructing = function (elementRef) {
+      _nativeElement = elementRef.nativeElement;
+    };
+
     this.ngAfterViewInit = function () {
-      if (this.nativeElement.className) {
-        this.nativeElement.className = this.getClassName() + ' ' + this.nativeElement.className;
+      if (_nativeElement.className) {
+        _nativeElement.className = this.getClassName() + ' ' + _nativeElement.className;
       }
       else {
-        this.nativeElement.className = this.getClassName();
+      _nativeElement.className = this.getClassName();
       }
+    };
+
+    this.getNativeElement = function () {
+      return _nativeElement;
     };
 
     this.getClassName = function () {
@@ -57,43 +67,68 @@
   };
 
   function ngxLabelPrimary() {
-    ngxBootstrap.shallowCopy(this, new ngxLabel(), true);
-
-    this.getClassName = function () {
+    var _ngxLabel = new ngxLabel();
+    _ngxLabel.getClassName = function () {
       return 'label label-primary';
     };
+
+    this.getBaseInstance = function () {
+      return _ngxLabel;
+    };
+
+    ngxBootstrap.inherit(this, _ngxLabel, true);
   };
 
   function ngxLabelInfo() {
-    ngxBootstrap.shallowCopy(this, new ngxLabel(), true);
-
-    this.getClassName = function () {
+    var _ngxLabel = new ngxLabel();
+    _ngxLabel.getClassName = function () {
       return 'label label-info';
     };
+
+    this.getBaseInstance = function () {
+      return _ngxLabel;
+    };
+
+    ngxBootstrap.inherit(this, _ngxLabel, true);
   };
 
   function ngxLabelSuccess() {
-    ngxBootstrap.shallowCopy(this, new ngxLabel(), true);
-
-    this.getClassName = function () {
+    var _ngxLabel = new ngxLabel();
+    _ngxLabel.getClassName = function () {
       return 'label label-success';
     };
+
+    this.getBaseInstance = function () {
+      return _ngxLabel;
+    };
+
+    ngxBootstrap.inherit(this, _ngxLabel, true);
   };
 
   function ngxLabelWarning() {
-    ngxBootstrap.shallowCopy(this, new ngxLabel(), true);
-
-    this.getClassName = function () {
+    var _ngxLabel = new ngxLabel();
+    _ngxLabel.getClassName = function () {
       return 'label label-warning';
     };
+
+    this.getBaseInstance = function () {
+      return _ngxLabel;
+    };
+
+    ngxBootstrap.inherit(this, _ngxLabel, true);
   };
 
   function ngxLabelDanger() {
-    ngxBootstrap.shallowCopy(this, new ngxLabel(), true);
-
-    this.getClassName = function () {
+    var _ngxLabel = new ngxLabel();
+    _ngxLabel.getClassName = function () {
       return 'label label-danger';
     };
+
+    this.getBaseInstance = function () {
+      return _ngxLabel;
+    };
+
+    ngxBootstrap.inherit(this, _ngxLabel, true);
   };
 
 })(window.ngxBootstrap);

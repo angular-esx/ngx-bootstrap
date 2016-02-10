@@ -1,0 +1,1 @@
+ngx-breadcrumb{padding:0.75rem 1rem;margin-bottom:1rem;list-style:none;background-color:#eceeef;border-radius:0.25rem}ngx-breadcrumb::after{content:"";display:table;clear:both}ngx-breadcrumb>ngx-item{float:left}ngx-breadcrumb>ngx-item+ngx-item::before{padding-right:.5rem;padding-left:.5rem;color:#818a91;content:"/"}ngx-breadcrumb>.active{color:#818a91}

@@ -54,6 +54,8 @@
   })();
 
   var taskService = new (function () {
+    this.SERVE = 'serve';
+    this.SASS = 'sass';
     this.TEST_UI = 'test-ui';
   })();
 
@@ -64,6 +66,10 @@
     replaceString: /\bgulp[\-.]/
   });
 
+  gulp.task('serve', ['sass'], getTask(taskService.SERVE))
+
+  gulp.task('sass', getTask(taskService.SASS));
+  
   gulp.task('test-ui', getTask(taskService.TEST_UI));
 
   function getTask(task) {

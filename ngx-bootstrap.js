@@ -71,17 +71,18 @@
   };
 
   ngxBootstrap.getRootInstance = function (instance, targetClass) {
-    var _root;
-
     if (instance && typeof instance.getBaseInstance == 'function') {
-      _root = instance.getBaseInstance();
+      var _root = instance.getBaseInstance();
+
       while (_root.getBaseInstance != undefined) {
         if (!targetClass && _root instanceof targetClass) { break; }
         _root = _root.getBaseInstance();
       }
+
+      return _root;
     }
 
-    return _root;
+    return instance;
   };
 
 })(window.ngxBootstrap || (window.ngxBootstrap = {}))

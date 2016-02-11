@@ -66,15 +66,59 @@ EX: function A(){
 	var _MY_CONSTANT = 'my-constant';
 }
 
-- For declarating component's class, you should use below syntax to encapsulate private constants & functions
+- For inheritable class in angular 2, you should code like this:
+EX:
 ...
-.Class((function () {
-	var _COMPONENT_CONSTANT = 'component-constant'; 
+ ngxBootstrap.ngxClass.ngxExampleClass = ngxExample;
 
-    return {
-      constructor: function () {
-      }
+ ngxBootstrap.ngxComponents.ngExampleComponent = ng.core.Directive({
+    selector: 'ngx-my-component',
+  })
+  .Class(new ngxExample());
+
+  function ngxExample(){ ... }
+
+In angular 2, in order to inherit a component, actually, you'll inherit the class used to create a component, not component.
+In my code above, if you want to inherit ngExampleComponent, actually, you need to inherit ngxExampleClass, not ngExampleComponent.
+Because of that, we must declare our class and assign it to ngxBootstrap.ngxClass before use it to create our component.
+
+ngxBootstrap.ngxClass namespace is created to hold & share classes which are used for inheritance & unit test.
+
+- There're rules we should follow to code inheritable class in angular 2:
+
+1. Must follow OOP principles. Ecapsulate things which you don't want to publish them. Don't assign everything to `this` !!!
+EX: 
+We don't need to publish ng.core.ElementRef.nativeElement, so we assign it to private property _nativeElement
+
+function ngxLabel() {
+    var _nativeElement;
+
+    this.constructor = [ng.core.ElementRef, function (elementRef) {
+      this.onConstructing(elementRef);
+    }];
+
+	this.onConstructing = function (elementRef) {
+      _nativeElement = elementRef.nativeElement;
     };
+}
 
-	function _component_func(){}
-})());
+2. You need to implement onConstructing in your class(See above example). ngxBootstrap.inherit only work correctly if onConstructing is implemented
+
+3. When you inherit a class, you must implement getBaseInstance to return base class. If not, when other classes inherit your class, they can't override your class
+EX: 
+function ngxLabelPillPrimary() {
+	var _ngxLabelPill = new ngxLabelPill();
+	ngxBootstrap.getRootInstance(_ngxLabelPill).getClassName = function () {
+		return 'label label-pill label-primary';
+	};
+
+	this.getBaseInstance = function () {
+		return _ngxLabelPill;
+	};
+
+	ngxBootstrap.inherit(this, _ngxLabelPill, true);
+};
+
+4. If you want to override base class, make sure that you use ngxBootstrap.getRootInstance to get base class(See above example)
+
+5. Use ngxBootstrap.inherit for inheritance. Don't try to code inheritance yourself lol

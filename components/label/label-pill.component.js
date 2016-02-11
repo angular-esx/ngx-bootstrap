@@ -39,7 +39,7 @@
 
   function ngxLabelPill() {
     var _ngxLabel = new ngxBootstrap.ngxClass.ngxLabelClass();
-    _ngxLabel.getClassName = function () {
+    ngxBootstrap.getRootInstance(_ngxLabel).getClassName = function () {
       return 'label label-pill label-default';
     };
 

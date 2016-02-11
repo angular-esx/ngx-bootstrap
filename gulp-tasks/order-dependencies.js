@@ -68,8 +68,7 @@
           for (var i = 0; i < componentInfo.dependencies.length; i++) {
             _componentKey = componentInfo.dependencies[i];
 
-            if (_orderedDependencies.contain(_componentKey)) { continue; }
-            else {
+            if (!_orderedDependencies.contain(_componentKey)) {
               _addComponentInfoAndDependencies(_componentKey, _getComponentInfo(_componentKey));
             }
           }

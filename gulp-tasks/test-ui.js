@@ -3,6 +3,7 @@
     var _gulp = params.gulp,
         _streamSeries = params.plugins.streamSeries,
         _inject = params.plugins.inject,
+        _rename = params.plugins.rename,
         _fileService = params.fileService,
         _libs = _fileService.LIBRARIES,
         _componentName = params.args.component,
@@ -21,10 +22,11 @@
         _testCaseJs = _gulp.src(_fileService.getTestCaseJS(_componentName, _testCase), _notReadOption),
         _testCaseBootJs = _gulp.src(_fileService.getTestCaseBoot(_componentName, _testCase), _notReadOption);
 
-    return _gulp.src(_fileService.FILES.INDEX_HTML)
-            .pipe(_inject(_streamSeries(_orderedDependencies, _testCaseJs, _testCaseBootJs), { relative: true, name: 'component' }))
-            .pipe(_inject(_streamSeries(_es6ShimJs, _rxJs, _angularPolyfillJs, _angularJs, _ngxBootstrapJs, _bootstrapCss), { relative: true, name: 'core' }))
-            .pipe(_gulp.dest(_fileService.PATHS.ROOT));
+    return _gulp.src(_fileService.FILES.INDEX_TEMPLATE_HTML)
+                .pipe(_inject(_streamSeries(_orderedDependencies, _testCaseJs, _testCaseBootJs), { relative: true, name: 'component' }))
+                .pipe(_inject(_streamSeries(_es6ShimJs, _rxJs, _angularPolyfillJs, _angularJs, _ngxBootstrapJs, _bootstrapCss), { relative: true, name: 'core' }))
+                .pipe(_rename(_fileService.FILES.INDEX_HTML.replace(_fileService.PATHS.ROOT, '')))
+                .pipe(_gulp.dest(_fileService.PATHS.ROOT));
   };
 
   function _getOrderedDependencies(fileService) {

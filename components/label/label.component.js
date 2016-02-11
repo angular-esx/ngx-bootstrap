@@ -57,10 +57,6 @@
       }
     };
 
-    this.getNativeElement = function () {
-      return _nativeElement;
-    };
-
     this.getClassName = function () {
       return 'label label-default';
     };

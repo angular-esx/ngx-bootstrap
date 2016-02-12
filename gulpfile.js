@@ -18,7 +18,11 @@
     this.FILES = (function (paths) {
       return {
         INDEX_HTML: paths.ROOT + 'index.html',
-        NGX_BOOTSTRAP_JS: paths.ROOT + 'ngx-bootstrap.js'
+        INDEX_TEMPLATE_HTML: paths.ROOT + 'index.template.html',
+        NGX_BOOTSTRAP_JS: paths.ROOT + 'ngx-bootstrap.js',
+        COMPONENTS_INFO_JSON: paths.COMPONENTS + 'components.info.json',
+        NGX_BOOTSTRAP_UTILS_JS: paths.ROOT + 'ngx-bootstrap.utils.js',
+        NGX_BOOTSTRAP_CSS: paths.ROOT + 'dist/css/ngx-bootstrap.css'
       };
     })(this.PATHS);
 
@@ -33,6 +37,11 @@
       };
     })(this.PATHS);
 
+    this.getComponentInfos = function (componentName) {
+      if (!componentName) { componentName = '*'; }
+
+      return this.PATHS.COMPONENTS + componentName + '/*.info.json';
+    };
     this.getComponentJS = function (componentName) {
       return this.PATHS.COMPONENTS + componentName + '/*.component.js';
     };
@@ -53,17 +62,26 @@
   })();
 
   var taskService = new (function () {
+    this.ORDER_DEPENDENCIES = 'order-dependencies';
+    this.SERVE = 'serve';
+    this.SASS = 'sass';
     this.TEST_UI = 'test-ui';
   })();
 
   var gulp = require('gulp');
   var yargs = require('yargs');
   var plugins = require("gulp-load-plugins")({
-    pattern: ['gulp-*', 'gulp.*', 'stream-series'],
+    pattern: ['gulp-*', 'gulp.*', 'stream-series', 'jsoncombine'],
     replaceString: /\bgulp[\-.]/
   });
 
-  gulp.task('test-ui', getTask(taskService.TEST_UI));
+  gulp.task('order-dependencies', getTask(taskService.ORDER_DEPENDENCIES));
+
+  gulp.task('test-ui', [taskService.ORDER_DEPENDENCIES], getTask(taskService.TEST_UI));
+  
+  gulp.task('serve', ['sass'], getTask(taskService.SERVE))
+
+  gulp.task('sass', getTask(taskService.SASS));
 
   function getTask(task) {
     return require(fileService.PATHS.GULP_TASKS + task)({

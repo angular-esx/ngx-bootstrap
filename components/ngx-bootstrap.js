@@ -23,5 +23,5 @@
 
   ngxBootstrap.ngxClass = {};
   ngxBootstrap.ngxComponents = {};
-  
+
 })(window.ngxBootstrap || (window.ngxBootstrap = {}))

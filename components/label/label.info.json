@@ -1,0 +1,8 @@
+﻿{
+  "label/label.component": { },
+  "label/label-pill.component": {
+    "dependencies": [
+      "label/label.component"
+    ]
+  }
+}

@@ -43,10 +43,6 @@
       return 'label label-pill label-default';
     };
 
-    this.getBaseInstance = function () {
-      return _ngxLabel;
-    };
-
     ngxBootstrap.inherit(this, _ngxLabel, true);
   };
 

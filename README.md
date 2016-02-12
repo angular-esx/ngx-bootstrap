@@ -108,21 +108,15 @@ function ngxLabel() {
 
 2. You need to implement onConstructing in your class(See above example). ngxBootstrap.inherit only work correctly if onConstructing is implemented
 
-3. When you inherit a class, you must implement getBaseInstance to return base class. If not, when other classes inherit your class, they can't override your class
-EX: 
+3. If you want to override something, make sure that you use ngxBootstrap.getRootInstance to get root instance or use ngxBootstrap.getBaseInstance to get specific base instance
+Ex:
 function ngxLabelPillPrimary() {
 	var _ngxLabelPill = new ngxLabelPill();
 	ngxBootstrap.getRootInstance(_ngxLabelPill).getClassName = function () {
 		return 'label label-pill label-primary';
 	};
 
-	this.getBaseInstance = function () {
-		return _ngxLabelPill;
-	};
-
 	ngxBootstrap.inherit(this, _ngxLabelPill, true);
 };
 
-4. If you want to override base class, make sure that you use ngxBootstrap.getRootInstance to get base class(See above example)
-
-5. Use ngxBootstrap.inherit for inheritance. Don't try to code inheritance yourself lol
+4. Use ngxBootstrap.inherit for inheritance. Don't try to code inheritance yourself lol

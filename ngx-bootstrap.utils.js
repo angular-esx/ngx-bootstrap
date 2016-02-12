@@ -1,5 +1,4 @@
 (function (ngxBootstrap) {
-  /*Utils*/
   ngxBootstrap.shallowCopy = function (target, source, overrideTarget) {
     for (var prop in source) {
       if (!target[prop] || (target[prop] && overrideTarget)) {
@@ -18,6 +17,8 @@
       'ngAfterViewInit', 'ngAfterViewChecked',
       'ngOnDestroy'
     ]; 
+
+    target.__proto__.base = source;
 
     for (var prop in source) {
       if (prop == _ngComponentLifeCycleFuncs[0] || !target[prop] || (target[prop] && overrideTarget)) {
@@ -51,16 +52,30 @@
     return target;
   };
 
-  ngxBootstrap.getRootInstance = function (instance, targetClass) {
-    if (instance && typeof instance.getBaseInstance == 'function') {
-      var _root = instance.getBaseInstance();
+  ngxBootstrap.getRootInstance = function (instance) {
+    if (instance && instance.__proto__.base) {
+      var _root = instance.__proto__.base;
 
-      while (_root.getBaseInstance != undefined) {
-        if (!targetClass && _root instanceof targetClass) { break; }
-        _root = _root.getBaseInstance();
+      while (_root.__proto__.base != undefined) {
+        _root = _root.__proto__.base;
       }
 
       return _root;
+    }
+
+    return instance;
+  };
+
+  ngxBootstrap.getBaseInstance = function (instance, targetClass) {
+    if (instance && instance.__proto__.base) {
+      var _root = instance.__proto__.base;
+
+      while (_root.__proto__.base != undefined) {
+        if (!targetClass && _root instanceof targetClass) { return _root; }
+        _root = _root.__proto__.base;
+      }
+
+      return null;
     }
 
     return instance;

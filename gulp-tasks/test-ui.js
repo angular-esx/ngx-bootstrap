@@ -14,7 +14,9 @@
         _rxJs = _gulp.src(_libs.RX_JS, _notReadOption),
         _angularPolyfillJs = _gulp.src(_libs.ANGULAR_02_POLYFILLS_JS, _notReadOption),
         _angularJs = _gulp.src(_libs.ANGULAR_02_JS, _notReadOption),
+        _ngxBootstrapCss = _gulp.src(_fileService.FILES.NGX_BOOTSTRAP_CSS, _notReadOption);
         _ngxBootstrapJs = _gulp.src(_fileService.FILES.NGX_BOOTSTRAP_JS, _notReadOption);
+        _ngxBootstrapUtilsJs = _gulp.src(_fileService.FILES.NGX_BOOTSTRAP_UTILS_JS, _notReadOption);
 
     var _bootstrapCss = _gulp.src(_libs.BOOTSTRAP_04_CSS, _notReadOption);
 
@@ -24,7 +26,7 @@
 
     return _gulp.src(_fileService.FILES.INDEX_TEMPLATE_HTML)
                 .pipe(_inject(_streamSeries(_orderedDependencies, _testCaseJs, _testCaseBootJs), { relative: true, name: 'component' }))
-                .pipe(_inject(_streamSeries(_es6ShimJs, _rxJs, _angularPolyfillJs, _angularJs, _ngxBootstrapJs, _bootstrapCss), { relative: true, name: 'core' }))
+                .pipe(_inject(_streamSeries(_es6ShimJs, _rxJs, _angularPolyfillJs, _angularJs, _ngxBootstrapJs, _ngxBootstrapUtilsJs, _bootstrapCss), { relative: true, name: 'core' }))
                 .pipe(_rename(_fileService.FILES.INDEX_HTML.replace(_fileService.PATHS.ROOT, '')))
                 .pipe(_gulp.dest(_fileService.PATHS.ROOT));
   };

@@ -21,6 +21,8 @@
         INDEX_TEMPLATE_HTML: paths.ROOT + 'index.template.html',
         NGX_BOOTSTRAP_JS: paths.ROOT + 'ngx-bootstrap.js',
         COMPONENTS_INFO_JSON: paths.COMPONENTS + 'components.info.json'
+        NGX_BOOTSTRAP_UTILS_JS: paths.COMPONENTS + 'ngx-bootstrap.utils.js',
+        NGX_BOOTSTRAP_CSS: paths.ROOT + 'dist/css/ngx-bootstrap.css'
       };
     })(this.PATHS);
 
@@ -61,6 +63,8 @@
 
   var taskService = new (function () {
     this.ORDER_DEPENDENCIES = 'order-dependencies';
+    this.SERVE = 'serve';
+    this.SASS = 'sass';
     this.TEST_UI = 'test-ui';
   })();
 
@@ -74,6 +78,10 @@
   gulp.task('order-dependencies', getTask(taskService.ORDER_DEPENDENCIES));
 
   gulp.task('test-ui', [taskService.ORDER_DEPENDENCIES], getTask(taskService.TEST_UI));
+  
+  gulp.task('serve', ['sass'], getTask(taskService.SERVE))
+
+  gulp.task('sass', getTask(taskService.SASS));
 
   function getTask(task) {
     return require(fileService.PATHS.GULP_TASKS + task)({

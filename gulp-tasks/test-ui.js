@@ -26,7 +26,7 @@
 
     return _gulp.src(_fileService.FILES.INDEX_TEMPLATE_HTML)
                 .pipe(_inject(_streamSeries(_orderedDependencies, _testCaseJs, _testCaseBootJs), { relative: true, name: 'component' }))
-                .pipe(_inject(_streamSeries(_es6ShimJs, _rxJs, _angularPolyfillJs, _angularJs, _ngxBootstrapJs, _ngxBootstrapUtilsJs, _bootstrapCss), { relative: true, name: 'core' }))
+                .pipe(_inject(_streamSeries(_es6ShimJs, _rxJs, _angularPolyfillJs, _angularJs, _ngxBootstrapJs, _ngxBootstrapUtilsJs, _bootstrapCss, _ngxBootstrapCss), { relative: true, name: 'core' }))
                 .pipe(_rename(_fileService.FILES.INDEX_HTML.replace(_fileService.PATHS.ROOT, '')))
                 .pipe(_gulp.dest(_fileService.PATHS.ROOT));
   };

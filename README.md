@@ -1,8 +1,4 @@
-﻿-----Dev-----
-- Copy and rename index.local.html to index.html
-
-
------Workflow-----
+﻿-----Workflow-----
 
 This is a spreadsheet file used to track ngxBootstrap development
 https://docs.google.com/spreadsheets/d/1WoEvfDijiWrZ_un6Up3IKj9-7PDWHXFYhRDvgd7wkj0/edit#gid=0

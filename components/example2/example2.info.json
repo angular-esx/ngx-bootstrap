@@ -1,5 +1,0 @@
-﻿{
-  "example2/example-c.component": {
-    "dependencies": [ "example1/example-a.component", "example1/example-b.component" ]
-  }
-}

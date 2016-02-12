@@ -68,10 +68,6 @@
       return 'label label-primary';
     };
 
-    this.getBaseInstance = function () {
-      return _ngxLabel;
-    };
-
     ngxBootstrap.inherit(this, _ngxLabel, true);
   };
 
@@ -79,10 +75,6 @@
     var _ngxLabel = new ngxLabel();
     ngxBootstrap.getRootInstance(_ngxLabel).getClassName = function () {
       return 'label label-info';
-    };
-
-    this.getBaseInstance = function () {
-      return _ngxLabel;
     };
 
     ngxBootstrap.inherit(this, _ngxLabel, true);
@@ -94,10 +86,6 @@
       return 'label label-success';
     };
 
-    this.getBaseInstance = function () {
-      return _ngxLabel;
-    };
-
     ngxBootstrap.inherit(this, _ngxLabel, true);
   };
 
@@ -107,10 +95,6 @@
       return 'label label-warning';
     };
 
-    this.getBaseInstance = function () {
-      return _ngxLabel;
-    };
-
     ngxBootstrap.inherit(this, _ngxLabel, true);
   };
 
@@ -118,10 +102,6 @@
     var _ngxLabel = new ngxLabel();
     ngxBootstrap.getRootInstance(_ngxLabel).getClassName = function () {
       return 'label label-danger';
-    };
-
-    this.getBaseInstance = function () {
-      return _ngxLabel;
     };
 
     ngxBootstrap.inherit(this, _ngxLabel, true);

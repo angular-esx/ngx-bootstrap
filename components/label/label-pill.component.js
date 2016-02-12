@@ -56,10 +56,6 @@
       return 'label label-pill label-primary';
     };
 
-    this.getBaseInstance = function () {
-      return _ngxLabelPill;
-    };
-
     ngxBootstrap.inherit(this, _ngxLabelPill, true);
   };
 
@@ -67,10 +63,6 @@
     var _ngxLabelPill = new ngxLabelPill();
     ngxBootstrap.getRootInstance(_ngxLabelPill).getClassName = function () {
       return 'label label-pill label-info';
-    };
-
-    this.getBaseInstance = function () {
-      return _ngxLabelPill;
     };
 
     ngxBootstrap.inherit(this, _ngxLabelPill, true);
@@ -82,10 +74,6 @@
       return 'label label-pill label-success';
     };
 
-    this.getBaseInstance = function () {
-      return _ngxLabelPill;
-    };
-
     ngxBootstrap.inherit(this, _ngxLabelPill, true);
   };
 
@@ -95,10 +83,6 @@
       return 'label label-pill label-warning';
     };
 
-    this.getBaseInstance = function () {
-      return _ngxLabelPill;
-    };
-
     ngxBootstrap.inherit(this, _ngxLabelPill, true);
   };
 
@@ -106,10 +90,6 @@
     var _ngxLabelPill = new ngxLabelPill();
     ngxBootstrap.getRootInstance(_ngxLabelPill).getClassName = function () {
       return 'label label-pill label-danger';
-    };
-
-    this.getBaseInstance = function () {
-      return _ngxLabelPill;
     };
 
     ngxBootstrap.inherit(this, _ngxLabelPill, true);

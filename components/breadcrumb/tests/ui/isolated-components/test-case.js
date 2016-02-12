@@ -3,7 +3,8 @@
     selector: 'ngx-test-case',
     templateUrl: fileService.getTestCaseTemplate('breadcrumb'),
     directives: [
-      components.ngxBreadcrumbComponent
+      components.ngxBreadcrumbComponent,
+      components.ngxBreadcrumbItemComponent
     ]
   })
   .Class((function () {

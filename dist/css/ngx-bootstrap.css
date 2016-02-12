@@ -23,6 +23,6 @@ ngx-breadcrumb > ngx-item + ngx-item::before {
   content: "/";
 }
 
-ngx-breadcrumb > .active {
+ngx-breadcrumb > ngx-item.active > a {
   color: #818a91;
 }

@@ -87,32 +87,24 @@ ngxBootstrap.ngxClass namespace is created to hold & share classes which are use
 - There're rules we should follow to code inheritable class in angular 2:
 
 1. Must follow OOP principles. Ecapsulate things which you don't want to publish them. Don't assign everything to `this` !!!
+
+2. Assign all of parameters from constructor to `this` !!!
 EX: 
-We don't need to publish ng.core.ElementRef.nativeElement, so we assign it to private property _nativeElement
-
 function ngxLabel() {
-    var _nativeElement;
-
-    this.constructor = [ng.core.ElementRef, function (elementRef) {
-      this.onConstructing(elementRef);
+    this.constructor = [ng.core.ElementRef, ngxBootstrap.ngxComponents.ngxLabelService, function (elementRef, ngxLabelService) {
+      this.ngxLabelService = ngxLabelService;
+	  this.nativeElement = elementRef.nativeElement;
     }];
-
-	this.onConstructing = function (elementRef) {
-      _nativeElement = elementRef.nativeElement;
-    };
 }
 
-2. You need to implement onConstructing in your class(See above example). ngxBootstrap.inherit only work correctly if onConstructing is implemented
-
-3. If you want to override something, make sure that you use ngxBootstrap.getRootInstance to get root instance or use ngxBootstrap.getBaseInstance to get specific base instance
+3. Use ngxBootstrap.shallowCopy for inheritance, remember that set overrideTarget to true while use ngxBootstrap.shallowCopy.
 Ex:
 function ngxLabelPillPrimary() {
-	var _ngxLabelPill = new ngxLabelPill();
-	ngxBootstrap.getRootInstance(_ngxLabelPill).getClassName = function () {
-		return 'label label-pill label-primary';
-	};
+	ngxBootstrap.shallowCopy(this, new ngxBootstrap.ngxClass.ngxLabelClass(), true);
 
-	ngxBootstrap.inherit(this, _ngxLabelPill, true);
+    this.getClassName = function () {
+      return 'label label-pill';
+    };
 };
 
-4. Use ngxBootstrap.inherit for inheritance. Don't try to code inheritance yourself lol
+4. Override necessary methods for you. Such as getClassName() in the example above is overried

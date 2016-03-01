@@ -4,24 +4,15 @@
     templateUrl: fileService.getTestCaseTemplate('label'),
     directives: [
       components.ngxLabelComponent,
-      components.ngxLabelPrimaryComponent,
-      components.ngxLabelInfoComponent,
-      components.ngxLabelSuccessComponent,
-      components.ngxLabelWarningComponent,
-      components.ngxLabelDangerComponent,
-
-      components.ngxLabelPillComponent,
-      components.ngxLabelPillPrimaryComponent,
-      components.ngxLabelPillInfoComponent,
-      components.ngxLabelPillSuccessComponent,
-      components.ngxLabelPillWarningComponent,
-      components.ngxLabelPillDangerComponent
-    ]
+      components.ngxLabelPillComponent
+    ],
+    providers: [components.ngxLabelService]
   })
-  .Class((function () {
-    return {
-      constructor: function () {
-      }
-    };
-  })());
+  .Class(new testCase());
+
+  function testCase() {
+    this.constructor = [components.ngxLabelService, function (ngxLabelService) {
+      this.COLORS = ngxLabelService.getColors();
+    }];
+  };
 })(window.testCases || (window.testCases = {}), window.ngxBootstrap.ngxComponents, ngxBootstrap.configs.fileService);

@@ -1,5 +1,10 @@
 ﻿{
-  "label/label.component": { },
+  "label/services/label.service": { },
+  "label/label.component": {
+    "dependencies": [
+      "label/services/label.service"
+    ]
+  },
   "label/label-pill.component": {
     "dependencies": [
       "label/label.component"

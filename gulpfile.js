@@ -3,6 +3,7 @@
     this.PATHS = (function () {
       var _paths = {};
       _paths.ROOT = './';
+      _paths.CORES = _paths.ROOT + 'cores/';
       _paths.COMPONENTS = _paths.ROOT + 'components/';
       _paths.NODE_MODULES = _paths.ROOT + 'node_modules/';
       _paths.GULP_TASKS = _paths.ROOT + 'gulp-tasks/';
@@ -20,6 +21,7 @@
         INDEX_HTML: paths.ROOT + 'index.html',
         INDEX_TEMPLATE_HTML: paths.ROOT + 'index.template.html',
         NGX_BOOTSTRAP_JS: paths.ROOT + 'ngx-bootstrap.js',
+        CORES_INFO_JSON: paths.CORES + 'cores.info.json',
         COMPONENTS_INFO_JSON: paths.COMPONENTS + 'components.info.json',
         NGX_BOOTSTRAP_UTILS_JS: paths.ROOT + 'ngx-bootstrap.utils.js',
         NGX_BOOTSTRAP_CSS: paths.ROOT + 'dist/css/ngx-bootstrap.css'
@@ -37,6 +39,9 @@
       };
     })(this.PATHS);
 
+    this.getCoreInfos = function () {
+      return this.PATHS.CORES + '*/*.info.json';
+    };
     this.getComponentInfos = function (componentName) {
       if (!componentName) { componentName = '*'; }
 

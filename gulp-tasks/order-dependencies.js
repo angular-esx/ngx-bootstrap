@@ -7,27 +7,44 @@
         _rimraf = params.plugins.rimraf,
         _componentName = params.args.component;
 
-    var _removeExsitingComponentInfoJSON = _gulp.src(_fileService.FILES.COMPONENTS_INFO_JSON, { read: false })
-                                              .pipe(_rimraf({ force: true }));
+    var _removeExsitingCoreInfoJSON = _getStreamForRemoveInfoJSON(_fileService.FILES.CORES_INFO_JSON);
+
+    var _createCoreInfoJSON = _getStreamForCreateInfoJSON(_fileService.PATHS.CORES, _fileService.getCoreInfos(), _fileService.FILES.CORES_INFO_JSON);
+
+    var _removeExsitingComponentInfoJSON = _getStreamForRemoveInfoJSON(_fileService.FILES.COMPONENTS_INFO_JSON);
     
-    var _createComponentInfoJSON = _gulp.src(_fileService.getComponentInfos(_componentName))
-	                                    .pipe(_jsoncombine(_fileService.FILES.COMPONENTS_INFO_JSON.replace(_fileService.PATHS.COMPONENTS, ''), function (data) {
-	                                      var _componentInfos = {}, _componentInfo;
+    var _createComponentInfoJSON = _getStreamForCreateInfoJSON(_fileService.PATHS.COMPONENTS, _fileService.getComponentInfos(_componentName), _fileService.FILES.COMPONENTS_INFO_JSON);
 
-	                                      for (var prop in data) {
-	                                        _componentInfo = data[prop];
-	                                        for (var key in _componentInfo) {
-	                                          _componentInfos[key] = _componentInfo[key];
-	                                        }
-	                                      }
-	                                      
-	                                      return new Buffer(JSON.stringify(_orderDependencies(_fileService, _componentInfos)));
-	                                    }))
-	                                    .pipe(_gulp.dest(_fileService.PATHS.COMPONENTS));
 
-    return _streamSeries(_removeExsitingComponentInfoJSON, _createComponentInfoJSON);
+    return _streamSeries
+    (
+      _removeExsitingCoreInfoJSON, _createCoreInfoJSON,
+      _removeExsitingComponentInfoJSON, _createComponentInfoJSON
+    );
 
-    function _orderDependencies(fileService, componentInfos) {
+
+    function _getStreamForRemoveInfoJSON(outputInfo) {
+      return _gulp.src(outputInfo, { read: false }).pipe(_rimraf({ force: true }));
+    };
+
+    function _getStreamForCreateInfoJSON(rootFolder, inputInfos, outputInfo) {
+      return _gulp.src(inputInfos)
+	                .pipe(_jsoncombine(outputInfo.replace(rootFolder, ''), function (data) {
+	                  var _infos = {}, _info;
+
+	                  for (var prop in data) {
+	                    _info = data[prop];
+	                    for (var key in _info) {
+	                      _infos[key] = _info[key];
+	                    }
+	                  }
+
+	                  return new Buffer(JSON.stringify(_orderDependencies(rootFolder, _infos)));
+	                }))
+	                .pipe(_gulp.dest(rootFolder));
+    };
+
+    function _orderDependencies(rootFolder, infos) {
       var _fileStream = require('fs'),
           _jsonReader = new (function () {
             var _jsonFiles = {};
@@ -41,46 +58,46 @@
             };
           })();
           _orderedDependencies = new (function () {
-            var _componentInfos = {};
+            var _infos = {};
 
-            this.add = function (key, componentInfo) {
-              _componentInfos[key] = componentInfo;
+            this.add = function (key, info) {
+              _infos[key] = info;
             };
             this.contain = function (key) {
-              return _componentInfos[key] != undefined;
+              return _infos[key] != undefined;
             };
-            this.getOrderedComponentInfos = function () {
-              return _componentInfos;
+            this.getOrderedInfos = function () {
+              return _infos;
             };
           })();
 
-      for (var prop in componentInfos) {
-        _addComponentInfoAndDependencies(prop, componentInfos[prop]);
+      for (var prop in infos) {
+        _addInfoAndDependencies(rootFolder, prop, infos[prop]);
       }
 
-      return _orderedDependencies.getOrderedComponentInfos();
+      return _orderedDependencies.getOrderedInfos();
 
-      function _addComponentInfoAndDependencies(key, componentInfo) {
-        if (!componentInfo) { return; }
+      function _addInfoAndDependencies(rootFolder, key, info) {
+        if (!info) { return; }
 
-        if (componentInfo.dependencies) {
-          var _componentKey;
-          for (var i = 0; i < componentInfo.dependencies.length; i++) {
-            _componentKey = componentInfo.dependencies[i];
+        if (info.dependencies) {
+          var _Key;
+          for (var i = 0; i < info.dependencies.length; i++) {
+            _Key = info.dependencies[i];
 
-            if (!_orderedDependencies.contain(_componentKey)) {
-              _addComponentInfoAndDependencies(_componentKey, _getComponentInfo(_componentKey));
+            if (!_orderedDependencies.contain(_Key)) {
+              _addInfoAndDependencies(rootFolder, _Key, _getInfo(rootFolder, _Key));
             }
           }
         }
 
-        _orderedDependencies.add(key, componentInfo);
+        _orderedDependencies.add(key, info);
       };
 
-      function _getComponentInfo(key) {
+      function _getInfo(rootFolder, key) {
         if (key.indexOf('.component') > -1 || key.indexOf('.service') > -1) {
-          var _componentName = key.split('/')[0];
-          return _jsonReader.readJsonFile(fileService.PATHS.COMPONENTS + _componentName + '/' + _componentName + '.info.json')[key];
+          var _subFolder = key.split('/')[0];
+          return _jsonReader.readJsonFile(rootFolder + _subFolder + '/' + _subFolder + '.info.json')[key];
         }
 
         return null;

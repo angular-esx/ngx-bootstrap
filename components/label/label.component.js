@@ -3,30 +3,38 @@
 
   ngxBootstrap.ngxComponents.ngxLabelComponent = ng.core.Directive({
     selector: 'ngx-label',
-    inputs: ['color']
+    providers: [ngxBootstrap.ngxCores.ngxRendererService]
   })
   .Class(new ngxLabel());
 
   function ngxLabel() {
-    this.constructor = [ng.core.ElementRef, ngxBootstrap.ngxComponents.ngxLabelService, function (elementRef, ngxLabelService) {
-      this.ngxLabelService = ngxLabelService;
-      this.nativeElement = elementRef.nativeElement;
-    }];
+    var _ATTRIBUTES = {
+      COLOR: 'color',
+      TYPE: 'type'
+    };
+
+    this.constructor = [
+      ng.core.ElementRef,
+      ngxBootstrap.ngxCores.ngxRendererService,
+      ngxBootstrap.ngxComponents.ngxLabelService,
+
+      function (elementRef, ngxRendererService, ngxLabelService) {
+        this.cssClass = 'label';
+
+        this.elementRef = elementRef;
+        this.ngxRendererService = ngxRendererService.for(elementRef);
+        this.ngxLabelService = ngxLabelService;
+      }
+    ];
 
     this.ngAfterViewInit = function () {
-      var _className = this.getClassName() + ' ' + this.ngxLabelService.getColorClass(this.color);
+      this.color = this.ngxRendererService.getElementAttribute(_ATTRIBUTES.COLOR);
+      this.type = this.ngxRendererService.getElementAttribute(_ATTRIBUTES.TYPE);
 
-      if (this.nativeElement.className) {
-        this.nativeElement.className = _className + ' ' + this.nativeElement.className;
-      }
-      else {
-        this.nativeElement.className = _className;
-      }
+      var _className = this.cssClass + ' ' + this.ngxLabelService.combineColorWithType(this.color, this.type);
+      this.ngxRendererService.addElementAttribute('class', _className, true);
     };
 
-    this.getClassName = function () {
-      return 'label';
-    };
   };
 
 })(window.ngxBootstrap);

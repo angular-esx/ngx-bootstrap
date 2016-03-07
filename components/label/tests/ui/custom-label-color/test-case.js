@@ -6,6 +6,8 @@
       ngxBootstrap.ngxComponents.ngxLabelComponent
     ],
     providers: [
+      ngxBootstrap.ngxCores.ngxColorService,
+      ngxBootstrap.ngxCores.ngxTypeService,
       ng.core.provide(ngxBootstrap.ngxComponents.ngxLabelService, { useClass: ng.core.Class(new customLabelService()) })
     ]
   })
@@ -21,10 +23,10 @@
     ngxBootstrap.shallowCopy(this, new ngxBootstrap.ngxClass.ngxLabelServiceClass(), true);
 
     this.getDefaultColorClass = function () {
-      return 'custom-label-default';
+      return this.prefix + 'custom-default';
     };
     this.getOrangeColorClass = function () {
-      return 'custom-label-orange';
+      return this.prefix + 'custom-orange';
     };
   }
 })(window.testCases || (window.testCases = {}), window.ngxBootstrap, ngxBootstrap.configs.fileService);

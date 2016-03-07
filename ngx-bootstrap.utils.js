@@ -9,33 +9,13 @@
     return target;
   };
 
-  ngxBootstrap.getRootInstance = function (instance) {
-    if (instance && instance.__proto__.base) {
-      var _root = instance.__proto__.base;
 
-      while (_root.__proto__.base != undefined) {
-        _root = _root.__proto__.base;
-      }
-
-      return _root;
     }
 
-    return instance;
-  };
 
-  ngxBootstrap.getBaseInstance = function (instance, targetClass) {
-    if (instance && instance.__proto__.base) {
-      var _root = instance.__proto__.base;
-
-      while (_root.__proto__.base != undefined) {
-        if (!targetClass && _root instanceof targetClass) { return _root; }
-        _root = _root.__proto__.base;
       }
 
-      return null;
     }
-
-    return instance;
   };
 
   ngxBootstrap.hasClass = function (element, className) {

@@ -1,62 +1,35 @@
 ﻿(function (ngxBootstrap) {
   ngxBootstrap.ngxClass.ngxLabelServiceClass = ngxLabelService;
-
   ngxBootstrap.ngxComponents.ngxLabelService = ng.core.Class(new ngxLabelService());
 
   function ngxLabelService() {
-    var _colors;
+    this.constructor = [
+      ngxBootstrap.ngxCores.ngxColorService,
+      ngxBootstrap.ngxCores.ngxTypeService,
 
-    this.constructor = function () {
-    };
+      function (ngxColorService, ngxTypeService) {
+        ngxBootstrap.shallowCopy(this, ngxColorService);
+        ngxBootstrap.shallowCopy(this, ngxTypeService);
 
-    this.getColorClass = function (color) {
-      if (!color) {
-        return this.getDefaultColorClass();
+        this.setPrefix('label');
       }
+    ];
 
-      var _funcName = 'get' + color + 'ColorClass';
-
-      return this[_funcName] ? this[_funcName]() : this.getDefaultColorClass();
+    this.getPillTypeClass = function () {
+      return 'pill';
     };
 
-    this.getColors = function () {
-      if (!_colors) {
-        _colors = {};
-        var _color;
+    this.combineColorWithType = function (color, type) {
+      var typeClass = this.getTypeClass(type);
+      var colorClass = this.getColorClass(color);
 
-        for (var prop in this) {
-          if (typeof this[prop] == 'function' && /get.+ColorClass/.test(prop)) {
-            _color = prop.replace('get', '').replace('ColorClass', '')
-                             .replace(/([A-Z])/g, function (x, y) { return '_' + y; })
-                             .replace(/^_/, '');
-
-            _colors[_color.toUpperCase()] = _color;
-          }
-        }
+      if (typeClass == this.getPillTypeClass()) {
+        return this.prefix + type + ' ' + colorClass;
       }
-
-      return ngxBootstrap.shallowCopy({}, _colors);
+      else {
+        return typeClass ? colorClass + '-' + typeClass : colorClass;
+      }
     };
-
-    this.getDefaultColorClass = function () {
-      return 'label-default';
-    };
-    this.getPrimaryColorClass = function () {
-      return 'label-primary';
-    };
-    this.getInfoColorClass = function () {
-      return 'label-info';
-    };
-    this.getSuccessColorClass = function () {
-      return 'label-success';
-    };
-    this.getWarningColorClass = function () {
-      return 'label-warning';
-    };
-    this.getDangerColorClass = function () {
-      return 'label-danger';
-    };
-
   };
 
 })(window.ngxBootstrap);

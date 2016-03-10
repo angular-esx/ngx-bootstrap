@@ -22,6 +22,7 @@
   })();
 
   ngxBootstrap.ngxClass = {};
+  ngxBootstrap.ngxCores = {};
   ngxBootstrap.ngxComponents = {};
 
 })(window.ngxBootstrap || (window.ngxBootstrap = {}))

@@ -1,0 +1,8 @@
+﻿{
+  "label/services/label.service": { },
+  "label/label.component": {
+    "dependencies": [
+      "label/services/label.service"
+    ]
+  }
+}

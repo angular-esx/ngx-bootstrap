@@ -14,6 +14,15 @@
 
       return this.COMPONENTS + componentName + '/tests/ui/' + testcase + '/test-case.html';
     };
+    this.getComponentStyle = function (componentName, styleName) {
+      if (!styleName) { styleName = componentName; }
+
+      return this.COMPONENTS + componentName + '/css/' +  styleName + '.css';
+    };
   })();
+
+  ngxBootstrap.ngxClass = {};
+  ngxBootstrap.ngxCores = {};
+  ngxBootstrap.ngxComponents = {};
 
 })(window.ngxBootstrap || (window.ngxBootstrap = {}))

@@ -1,0 +1,28 @@
+﻿<h3>ngxAlert</h3>
+
+<ngx-alert id="myInfoAlert" 
+           state="{{STATES.HIDDEN}}" 
+           color="{{COLORS.INFO}}" 
+           type="{{TYPES.DISMISSIBLE_FLOAT}}" 
+           position="{{POSITIONS.BOTTOM}}" 
+           (onDismissed)="dismissed($event)">
+  <strong>Heads up!</strong>
+  <ngx-alert-link>Alert needs your attention</ngx-alert-link>
+  , but it's not super important.
+</ngx-alert>
+
+<ngx-alert id="mySuccessAlert"  color="success" type="dismissible">
+  <strong>Well done!</strong> You successfully read 
+  <ngx-alert-link href="https://translate.google.com.vn">this important alert message</ngx-alert-link>
+</ngx-alert>
+
+<ngx-alert color="warning">
+  <strong>Warning!</strong> 
+  Better check yourself, you're not looking too good
+</ngx-alert>
+
+<ngx-alert color="{{COLORS.DANGER}}" type="{{TYPES.DISMISSIBLE}}" (onDismissed)="dismissed($event)">
+  <strong>Oh snap!</strong> 
+  <ngx-alert-link href="{{href}}">Change a few things up</ngx-alert-link>
+  and try submitting again.
+</ngx-alert>

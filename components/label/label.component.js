@@ -32,7 +32,7 @@
       this.type = this.ngxRendererService.getElementAttribute(_ATTRIBUTES.TYPE);
 
       var _className = this.cssClass + ' ' + this.ngxLabelService.combineColorWithType(this.color, this.type);
-      this.ngxRendererService.addElementAttribute('class', _className, true);
+      this.ngxRendererService.addToElementAttribute('class', _className, true);
     };
 
   };

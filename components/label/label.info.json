@@ -1,8 +1,8 @@
 ﻿{
-  "label/label.component": { },
-  "label/label-pill.component": {
+  "label/services/label.service": { },
+  "label/label.component": {
     "dependencies": [
-      "label/label.component"
+      "label/services/label.service"
     ]
   }
 }

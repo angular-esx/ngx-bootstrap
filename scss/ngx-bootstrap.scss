@@ -2,4 +2,5 @@
 @import "../node_modules/bootstrap/scss/variables";
 @import "../node_modules/bootstrap/scss/mixins";
 
-@import "breadcrumb"
+@import "_ngx-breadcrumb.scss";
+@import "_ngx-alert.scss";

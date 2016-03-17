@@ -20,14 +20,14 @@
     };
 
     this.combineColorWithType = function (color, type) {
-      var typeClass = this.getTypeClass(type);
-      var colorClass = this.getColorClass(color);
+      var _typeClass = this.getTypeClass(type);
+      var _colorClass = this.getColorClass(color);
 
-      if (typeClass == this.getPillTypeClass()) {
-        return this.prefix + type + ' ' + colorClass;
+      if (_typeClass == this.getPillTypeClass()) {
+        return this.prefix + type + ' ' + _colorClass;
       }
       else {
-        return typeClass ? colorClass + '-' + typeClass : colorClass;
+        return _typeClass ? _colorClass + '-' + _typeClass : _colorClass;
       }
     };
   };

@@ -26,3 +26,20 @@ ngx-breadcrumb > ngx-item + ngx-item::before {
 ngx-breadcrumb > ngx-item.active > a {
   color: #818a91;
 }
+
+ngx-alert.alert {
+  display: block;
+}
+
+ngx-alert.alert.alert-float {
+  position: absolute;
+  width: 100%;
+}
+
+ngx-alert.alert.alert-float.alert-position-top {
+  top: 0;
+}
+
+ngx-alert.alert.alert-float.alert-position-bottom {
+  bottom: 0;
+}

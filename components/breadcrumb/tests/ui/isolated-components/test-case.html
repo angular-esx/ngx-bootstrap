@@ -1,11 +1,6 @@
-﻿<ol class="breadcrumb">
-  <li><a href="#">Home</a></li>
-  <li><a href="#">Category</a></li>
-  <li class="active">Product</li>
-</ol>
-
-<ngx-breadcrumb>
-  <ngx-item href="google.com" name="Home"></ngx-item>
-  <ngx-item href="category.com" name="Category"></ngx-item>
-  <ngx-item class="active" name="Product"></ngx-item>
+﻿<ngx-breadcrumb>
+  <ngx-link href="http://my-website.com/Home">Home</ngx-link>
+  <ngx-link href="{{categoryPage}}">Categories</ngx-link>
+  <ngx-link [href]="productPage">Products</ngx-link>
+  <ngx-item>Detail</ngx-item>
 </ngx-breadcrumb>

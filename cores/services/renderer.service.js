@@ -32,17 +32,14 @@
 
     this.setElementAttribute = function (attribute, value) {
       if (attribute && value && typeof (value) === 'string') {
-        var _attribute = _correctElementAttribute(attribute);
-
-        this.elementRef.nativeElement[_attribute] = ngxBootstrap.distinct(value.split(' ')).join(' ');
+        _assignValueToElementAttribute(this.elementRef.nativeElement, _correctElementAttribute(attribute), ngxBootstrap.distinct(value.split(' ')).join(' '));
       }
 
       return this;
     };
 
-    this.addElementAttribute = function (attribute, value, addToFirstPosition) {
+    this.addToElementAttribute = function (attribute, value, addToFirstPosition) {
       if (attribute && value && typeof (value) === 'string') {
-        var _attribute = _correctElementAttribute(attribute);
         var _value = this.getElementAttribute(attribute);
 
         if(_value){ 
@@ -57,7 +54,58 @@
           _value = value;
         }
 
-        this.elementRef.nativeElement[_attribute] = _value;
+        _assignValueToElementAttribute(this.elementRef.nativeElement, _correctElementAttribute(attribute), _value);
+      }
+
+      return this;
+    };
+
+    this.removeElementAttribute = function (attribute) {
+      var _nativeElement = this.elementRef.nativeElement;
+
+      if (_nativeElement && attribute) {
+        var _attribute = _correctElementAttribute(attribute);
+
+        if (_nativeElement.attributes) {
+          ngxBootstrap.forEach(_nativeElement.attributes, function (node) {
+            if (node.name == _attribute) {
+              _nativeElement.attributes.removeNamedItem(_attribute);
+              return true;
+            }
+          });
+        }
+        else if (_nativeElement[_attribute] !== undefined) {
+          delete _nativeElement[_attribute];
+        }
+      }
+
+      return this;
+    };
+
+    this.removeElementClass = function (className) {
+      var _classes = this.elementRef.nativeElement.className.split(' ');
+      var _index = _classes.indexOf(className);
+
+      if (_index > -1) {
+        _classes.splice(_index, 1);
+      }
+
+      this.elementRef.nativeElement.className = _classes.join(' ');
+
+      return this;
+    };
+
+    this.addToElementClass = function (className, addToFirstPosition) {
+      if (className) {
+        var _classes = this.elementRef.nativeElement.className;
+        if (addToFirstPosition) {
+          _classes += ' ' + className;
+        }
+        else {
+          _classes = className + ' ' + _classes;
+        }
+
+        this.elementRef.nativeElement.className = ngxBootstrap.distinct(_classes.split(' ')).join(' ');
       }
 
       return this;
@@ -74,6 +122,29 @@
       }
 
       return _correctedAttribute;
+    }
+
+    function _assignValueToElementAttribute(nativeElement, attribute, value) {
+      if (nativeElement.attributes && nativeElement.attributes[attribute]) {
+        ngxBootstrap.forEach(nativeElement.attributes, function (node) {
+          if (node.name == attribute) {
+            var _node = document.createAttribute(attribute);
+            _node.value = value;
+
+            nativeElement.attributes.setNamedItem(_node);
+            return true;
+          }
+        });
+      }
+      else if(nativeElement[attribute] !== undefined) {
+        nativeElement[attribute] = value;
+      }
+      else {
+        var _node = document.createAttribute(attribute);
+        _node.value = value;
+
+        nativeElement.attributes.setNamedItem(_node);
+      }
     }
   }
 

@@ -1,0 +1,17 @@
+﻿ngx-alert {
+  &.alert {
+    display: block;
+    
+    &.alert-float{
+      position: absolute;
+      width: 100%;
+      
+      &.alert-position-top{
+        top: 0;
+      }
+      &.alert-position-bottom{
+        bottom: 0;
+      }
+    }
+  }
+}

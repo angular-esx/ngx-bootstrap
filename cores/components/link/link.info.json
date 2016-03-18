@@ -1,0 +1,7 @@
+﻿{
+  "components/link/link.component": {
+    "dependencies": [
+      "services/render/renderer.service"
+    ]
+  }
+}

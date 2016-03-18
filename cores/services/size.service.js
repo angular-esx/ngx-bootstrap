@@ -51,5 +51,5 @@
     this.getBlockSizeClass = function () {
       return this.prefix + 'block';
     };
-  };
+  }
 })(window.ngxBootstrap);

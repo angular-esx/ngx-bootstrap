@@ -45,5 +45,5 @@
     this.getOutlineTypeClass = function () {
       return 'outline';
     };
-  };
+  }
 })(window.ngxBootstrap);

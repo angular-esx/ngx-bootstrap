@@ -48,5 +48,5 @@
     this.getDisabledStateClass = function () {
       return 'disabled';
     };
-  };
+  }
 })(window.ngxBootstrap);

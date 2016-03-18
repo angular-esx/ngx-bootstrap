@@ -75,6 +75,6 @@
 
       return _correctedAttribute;
     }
-  };
+  }
 
 })(window.ngxBootstrap);

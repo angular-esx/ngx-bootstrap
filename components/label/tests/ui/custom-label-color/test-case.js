@@ -17,7 +17,7 @@
     this.constructor = [ngxBootstrap.ngxComponents.ngxLabelService, function (ngxLabelService) {
       this.COLORS = ngxLabelService.getColors();
     }];
-  };
+  }
 
   function customLabelService() {
     ngxBootstrap.shallowCopy(this, new ngxBootstrap.ngxClass.ngxLabelServiceClass(), true);

@@ -65,6 +65,6 @@
     this.getDangerColorClass = function () {
       return this.prefix + 'danger';
     };
-  };
+  }
 
 })(window.ngxBootstrap);

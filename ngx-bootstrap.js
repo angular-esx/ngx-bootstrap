@@ -14,20 +14,15 @@
 
       return this.COMPONENTS + componentName + '/tests/ui/' + testcase + '/test-case.html';
     };
+    this.getComponentStyle = function (componentName, styleName) {
+      if (!styleName) { styleName = componentName; }
+
+      return this.COMPONENTS + componentName + '/css/' +  styleName + '.css';
+    };
   })();
 
   ngxBootstrap.ngxClass = {};
+  ngxBootstrap.ngxCores = {};
   ngxBootstrap.ngxComponents = {};
-
-  /*Utils*/
-  ngxBootstrap.shallowCopy = function (target, source, overrideTarget) {
-    for (var prop in source) {
-      if (!target[prop] || (target[prop] && overrideTarget)) {
-        target[prop] = source[prop];
-      }
-    }
-
-    return target;
-  };
 
 })(window.ngxBootstrap || (window.ngxBootstrap = {}))

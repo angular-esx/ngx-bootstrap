@@ -12,18 +12,26 @@ ngx-breadcrumb::after {
   clear: both;
 }
 
-ngx-breadcrumb > ngx-item {
+ngx-breadcrumb > ngx-link {
   float: left;
 }
 
-ngx-breadcrumb > ngx-item + ngx-item::before {
+ngx-breadcrumb > ngx-link + ngx-link::before {
   padding-right: .5rem;
   padding-left: .5rem;
   color: #818a91;
   content: "/";
 }
 
-ngx-breadcrumb > ngx-item.active > a {
+ngx-breadcrumb > ngx-link:nth-last-child(-n+2)::after {
+  padding-right: .5rem;
+  padding-left: .5rem;
+  color: #818a91;
+  content: "/";
+}
+
+ngx-breadcrumb > ngx-item {
+  float: left;
   color: #818a91;
 }
 

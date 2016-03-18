@@ -6,18 +6,27 @@ ngx-breadcrumb {
   @include border-radius($border-radius);
   @include clearfix;
 
-  > ngx-item {
+  @mixin breadcrumb-divider(){
+    padding-right: .5rem;
+    padding-left: .5rem;
+    color: $breadcrumb-divider-color;
+    content: "#{$breadcrumb-divider}";
+  }
+
+  > ngx-link {
     float: left;
 
-    + ngx-item::before {
-      padding-right: .5rem;
-      padding-left: .5rem;
-      color: $breadcrumb-divider-color;
-      content: "#{$breadcrumb-divider}";
+    + ngx-link::before {
+      @include breadcrumb-divider()
+    }
+
+    &:nth-last-child(-n+2)::after {
+       @include breadcrumb-divider()
     }
   }
 
-  > .active {
+  > ngx-item {
+    float: left;
     color: $breadcrumb-active-color;
   }
 }

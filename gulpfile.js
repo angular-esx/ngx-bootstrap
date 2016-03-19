@@ -39,8 +39,16 @@
       };
     })(this.PATHS);
 
+    this.getCoreDependencyInfo = function (dependencyPath) {
+      var _dependencyNames = dependencyPath.split('/');
+      return _dependencyNames[0] + '/' + _dependencyNames[1] + '/' + _dependencyNames[1] + '.info.json';
+    };
     this.getCoreInfos = function() {
-      return this.PATHS.CORES + '*/*.info.json';
+      return this.PATHS.CORES + '*/*/*.info.json';
+    };
+    this.getComponentDependencyInfo = function (dependencyPath) {
+      var _dependencyName = dependencyPath.split('/')[0];
+      return _dependencyName + '/' + _dependencyName + '.info.json';
     };
     this.getComponentInfos = function(componentName) {
       if (!componentName) { componentName = '*'; }

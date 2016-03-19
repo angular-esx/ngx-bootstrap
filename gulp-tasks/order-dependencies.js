@@ -9,11 +9,11 @@
 
     var _removeExsitingCoreInfoJSON = _getStreamForRemoveInfoJSON(_fileService.FILES.CORES_INFO_JSON);
 
-    var _createCoreInfoJSON = _getStreamForCreateInfoJSON(_fileService.PATHS.CORES, _fileService.getCoreInfos(), _fileService.FILES.CORES_INFO_JSON);
+    var _createCoreInfoJSON = _getStreamForCreateInfoJSON(_fileService.PATHS.CORES, _fileService.getCoreInfos(), _fileService.FILES.CORES_INFO_JSON, _fileService.getCoreDependencyInfo);
 
     var _removeExsitingComponentInfoJSON = _getStreamForRemoveInfoJSON(_fileService.FILES.COMPONENTS_INFO_JSON);
     
-    var _createComponentInfoJSON = _getStreamForCreateInfoJSON(_fileService.PATHS.COMPONENTS, _fileService.getComponentInfos(_componentName), _fileService.FILES.COMPONENTS_INFO_JSON);
+    var _createComponentInfoJSON = _getStreamForCreateInfoJSON(_fileService.PATHS.COMPONENTS, _fileService.getComponentInfos(_componentName), _fileService.FILES.COMPONENTS_INFO_JSON, _fileService.getComponentDependencyInfo);
 
 
     return _streamSeries
@@ -27,7 +27,7 @@
       return _gulp.src(outputInfo, { read: false }).pipe(_rimraf({ force: true }));
     };
 
-    function _getStreamForCreateInfoJSON(rootFolder, inputInfos, outputInfo) {
+    function _getStreamForCreateInfoJSON(rootFolder, inputInfos, outputInfo, onGetInfo) {
       return _gulp.src(inputInfos)
 	                .pipe(_jsoncombine(outputInfo.replace(rootFolder, ''), function (data) {
 	                  var _infos = {}, _info;
@@ -39,12 +39,12 @@
 	                    }
 	                  }
 
-	                  return new Buffer(JSON.stringify(_orderDependencies(rootFolder, _infos)));
+	                  return new Buffer(JSON.stringify(_orderDependencies(rootFolder, _infos, onGetInfo)));
 	                }))
 	                .pipe(_gulp.dest(rootFolder));
     };
 
-    function _orderDependencies(rootFolder, infos) {
+    function _orderDependencies(rootFolder, infos, onGetInfo) {
       var _fileStream = require('fs'),
           _jsonReader = new (function () {
             var _jsonFiles = {};
@@ -70,6 +70,7 @@
               return _infos;
             };
           })();
+          _onGetInfo = onGetInfo;
 
       for (var prop in infos) {
         _addInfoAndDependencies(rootFolder, prop, infos[prop]);
@@ -96,8 +97,7 @@
 
       function _getInfo(rootFolder, key) {
         if (key.indexOf('.component') > -1 || key.indexOf('.service') > -1) {
-          var _subFolder = key.split('/')[0];
-          return _jsonReader.readJsonFile(rootFolder + _subFolder + '/' + _subFolder + '.info.json')[key];
+          return _jsonReader.readJsonFile(rootFolder + _onGetInfo(key))[key];
         }
 
         return null;

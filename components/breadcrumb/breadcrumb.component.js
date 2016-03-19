@@ -1,29 +1,14 @@
 (function (ngxBootstrap, fileService) {
-  ngxBootstrap.ngxComponents.ngxBreadcrumbComponent = ng.core.Directive({
-    selector: 'ngx-breadcrumb'
+  ngxBootstrap.ngxClass.ngxBreadcrumbClass = breadcrumb;
+
+  ngxBootstrap.ngxComponents.ngxBreadcrumbComponent = ng.core.Component({
+    selector: 'ngx-breadcrumb',
+    template: '<ng-content></ng-content>'
   })
-  .Class(breadcrumb());
+  .Class(new breadcrumb());
 
   function breadcrumb() {
-    return {
-      constructor: [ng.core.ElementRef, function (elementRef) {
-        this.nativeElement = elementRef.nativeElement;
-      }],
-      ngAfterViewInit: function() {
-        var items, item, i;
-
-        items = this.nativeElement.getElementsByTagName('ngx-item');
-
-        for(i = 0; item = items[i]; i++){
-          if(item.hasAttribute('href')){
-            item.innerHTML = '<a href="'+ item.getAttribute('href') +'">'+ item.innerHTML +'</a>';
-          }
-          if(item.hasAttribute('active')){
-            ngxBootstrap.addClass(item, 'active');
-          }
-        }
-      }
-    };
+    this.constructor = function () { };
   }
 
 })(window.ngxBootstrap, ngxBootstrap.configs.fileService);

@@ -1,13 +1,15 @@
 Default:
-<ol ngx-breadcrumb>
-  <li><a href="#">Home</a></li>
-  <li><a href="#">Category</a></li>
-  <li class="active">Product</li>
-</ol>
+<jumbotron type="fluid">
+  <div class="container">
+    <h1 class="display-3">Fluid jumbotron</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  </div>
+</jumbotron>
 
 Compile:
-<ol class="breadcrumb">
-  <li><a href="#">Home</a></li>
-  <li><a href="#">Category</a></li>
-  <li class="active">Product</li>
-</ol>
+<jumbotron class="jumbotron-fluid" type="fluid">
+  <div class="container">
+    <h1 class="display-3">Fluid jumbotron</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  </div>
+</jumbotron>

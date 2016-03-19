@@ -1,15 +1,46 @@
-(function (ngxBootstrap, fileService) {
-  ngxBootstrap.ngxComponents.ngxJumbotronComponent = ng.core.Component({
+(function (ngxBootstrap) {
+  ngxBootstrap.ngxClass.ngxLabelClass = ngxJumbotron;
+
+  ngxBootstrap.ngxComponents.ngxJumbotronComponent = ng.core.Directive({
     selector: 'ngx-jumbotron',
-    templateUrl: fileService.getComponentTemplate('jumbotron')
+    providers: [ngxBootstrap.ngxCores.ngxRendererService],
+    injectable: []
   })
-  .Class(jumbotron());
+  .Class(new ngxJumbotron());
 
-  function jumbotron() {
-    return {
-      constructor: function(){
-      }
+  function ngxJumbotron() {
+    var _ATTRIBUTES = {
+      TYPE: 'type'
     };
-  }
 
-})(window.ngxBootstrap, ngxBootstrap.configs.fileService);
+    this.constructor = [
+      ng.core.ElementRef,
+      ngxBootstrap.ngxCores.ngxRendererService,
+      ngxBootstrap.ngxComponents.ngxJumbotronService,
+
+      function (elementRef, ngxRendererService, ngxJumbotronService) {
+        this.cssClass = 'jumbotron';
+
+        this.elementRef = elementRef;
+        this.ngxRendererService = ngxRendererService.for(elementRef);
+        this.ngxJumbotronService = ngxJumbotronService;
+      }
+    ];
+
+    this.ngAfterViewInit = function () {
+      var _className, type;
+      
+      _className = this.cssClass;
+
+      _type = this.ngxRendererService.getElementAttribute(_ATTRIBUTES.TYPE);
+
+      if(_type) {
+        _className += ' ' + this.ngxJumbotronService.combineType(_type);
+      }
+
+      this.ngxRendererService.addToElementAttribute('class', _className, true);
+    };
+
+  };
+
+})(window.ngxBootstrap);

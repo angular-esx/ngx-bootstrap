@@ -1,0 +1,8 @@
+{
+  "jumbotron/services/jumbotron.service": { },
+  "jumbotron/jumbotron.component": {
+    "dependencies": [
+      "jumbotron/services/jumbotron.service"
+    ]
+  }
+}

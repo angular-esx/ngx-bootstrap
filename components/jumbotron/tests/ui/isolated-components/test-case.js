@@ -1,10 +1,13 @@
-﻿(function (testCases, components, fileService) {
+﻿(function (testCases, cores, components, fileService) {
   testCases.isolatedComponents = ng.core.Component({
     selector: 'ngx-test-case',
     templateUrl: fileService.getTestCaseTemplate('jumbotron'),
     directives: [
-      components.ngxJumbotronComponent,
-      components.ngxJumbotronFluidComponent
+      components.ngxJumbotronComponent
+    ],
+    providers: [
+      cores.ngxTypeService,
+      components.ngxJumbotronService
     ]
   })
   .Class((function () {
@@ -14,4 +17,4 @@
       }
     };
   })());
-})(window.testCases || (window.testCases = {}), window.ngxBootstrap.ngxComponents, ngxBootstrap.configs.fileService);
+})(window.testCases || (window.testCases = {}), window.ngxBootstrap.ngxCores, window.ngxBootstrap.ngxComponents, ngxBootstrap.configs.fileService);

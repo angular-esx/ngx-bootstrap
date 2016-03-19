@@ -1,6 +1,6 @@
 ﻿(function (ngxBootstrap) {
   var _configs = ngxBootstrap.configs = {};
-  _configs.fileService = new (function () {
+  _configs.fileService = (function () {
     this.ROOT = '/';
     this.COMPONENTS = this.ROOT + 'components/';
 
@@ -25,4 +25,4 @@
   ngxBootstrap.ngxCores = {};
   ngxBootstrap.ngxComponents = {};
 
-})(window.ngxBootstrap || (window.ngxBootstrap = {}))
+})(window.ngxBootstrap || (window.ngxBootstrap = {}));

@@ -116,6 +116,6 @@
 
       return _typeClass ? _typeClass + ' ' + _colorClass : _colorClass;
     };
-  };
+  }
 
 })(window.ngxBootstrap);

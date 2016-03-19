@@ -75,7 +75,7 @@
 
     this.show = function () {
       if (!this.isFloatable) {
-        this.ngxRendererService.removeElementClass(this.ngxAlertService.getFloatTypeClass())
+        this.ngxRendererService.removeElementClass(this.ngxAlertService.getFloatTypeClass());
       }
 
       this.ngxRendererService.addToElementClass('in');
@@ -85,22 +85,22 @@
       this.ngxRendererService.removeElementClass('in');
 
       if (!this.isFloatable) {
-        this.ngxRendererService.addToElementClass(this.ngxAlertService.getFloatTypeClass())
+        this.ngxRendererService.addToElementClass(this.ngxAlertService.getFloatTypeClass());
       }
 
       this.onDismissed.next({
         target: { id: this.id }
       });
     };
-  };
+  }
 
   function _getNgxAlertTemplate() {
     return `
-       <button type="button" class ="close" aria-label="Close" *ngIf="isDismissible" (click) ="dismiss()">
+        <button type="button" class ="close" aria-label="Close" *ngIf="isDismissible" (click) ="dismiss()">
             <span aria-hidden="true">&times; </span>
         </button>
         <ng-content></ng-content>
     `;
-  };
+  }
 
 })(window.ngxBootstrap);

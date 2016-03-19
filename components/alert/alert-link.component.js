@@ -32,7 +32,7 @@
     this.ngAfterViewInit = function () {
       this.ngxRendererService.removeElementAttribute(_ATTRIBUTES.HREF);
     };
-  };
+  }
 
   function _getNgxAlertLinkTemplate() {
     return `
@@ -40,6 +40,6 @@
         <ng-content></ng-content>
       </a>
     `;
-  };
+  }
 
 })(window.ngxBootstrap);

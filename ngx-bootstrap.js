@@ -1,6 +1,12 @@
 ﻿(function (ngxBootstrap) {
   var _configs = ngxBootstrap.configs = {};
-  _configs.fileService = new (function () {
+  _configs.fileService = new fileService();
+
+  ngxBootstrap.ngxClass = {};
+  ngxBootstrap.ngxCores = {};
+  ngxBootstrap.ngxComponents = {};
+
+  function fileService() {
     this.ROOT = '/';
     this.COMPONENTS = this.ROOT + 'components/';
 
@@ -19,12 +25,6 @@
 
       return this.COMPONENTS + componentName + '/css/' +  styleName + '.css';
     };
-  })();
-
-  ngxBootstrap.ngxClass = {};
-  ngxBootstrap.ngxCores = {};
-  ngxBootstrap.ngxComponents = {};
-
-  console.log(ngxBootstrap);
-
+  }
+  
 })(window.ngxBootstrap || (window.ngxBootstrap = {}));

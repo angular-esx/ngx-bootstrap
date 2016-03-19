@@ -21,6 +21,6 @@
 
       return _typeClass;
     };
-  };
+  }
 
 })(window.ngxBootstrap);

@@ -93,7 +93,7 @@
 
   gulp.task('order-dependencies', getTask(taskService.ORDER_DEPENDENCIES));
 
-  gulp.task('test-ui', [taskService.ORDER_DEPENDENCIES], getTask(taskService.TEST_UI));
+  gulp.task('test-ui', [taskService.ORDER_DEPENDENCIES, 'serve'], getTask(taskService.TEST_UI));
 
   gulp.task('default', ['serve']);
 

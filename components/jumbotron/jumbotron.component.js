@@ -41,6 +41,6 @@
       this.ngxRendererService.addToElementAttribute('class', _className, true);
     };
 
-  };
+  }
 
 })(window.ngxBootstrap);

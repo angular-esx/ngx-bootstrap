@@ -18,5 +18,5 @@
       this.COLORS = ngxLabelService.getColors();
       this.TYPES = ngxLabelService.getTypes();
     }];
-  };
+  }
 })(window.testCases || (window.testCases = {}), window.ngxBootstrap.ngxCores, window.ngxBootstrap.ngxComponents, ngxBootstrap.configs.fileService);

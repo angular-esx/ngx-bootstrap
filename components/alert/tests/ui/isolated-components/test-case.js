@@ -38,5 +38,5 @@
     this.dismissed = function (event) {
       console.log(event);
     };
-  };
+  }
 })(window.testCases || (window.testCases = {}), window.ngxBootstrap.ngxCores, window.ngxBootstrap.ngxComponents, ngxBootstrap.configs.fileService);

@@ -30,6 +30,6 @@
         return _typeClass ? _colorClass + '-' + _typeClass : _colorClass;
       }
     };
-  };
+  }
 
 })(window.ngxBootstrap);

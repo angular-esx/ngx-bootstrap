@@ -74,14 +74,13 @@
             }
           });
         }
-        else if (_nativeElement[_attribute] != undefined) {
+        else if (_nativeElement[_attribute] !== undefined) {
           delete _nativeElement[_attribute];
         }
       }
 
       return this;
     };
-
 
     this.removeElementClass = function (className) {
       var _classes = this.elementRef.nativeElement.className.split(' ');
@@ -112,7 +111,6 @@
       return this;
     };
 
-
     function _correctElementAttribute(attribute) {
       var _correctedAttribute;
 
@@ -138,7 +136,7 @@
           }
         });
       }
-      else if(nativeElement[attribute] != undefined) {
+      else if(nativeElement[attribute] !== undefined) {
         nativeElement[attribute] = value;
       }
       else {
@@ -147,7 +145,7 @@
 
         nativeElement.attributes.setNamedItem(_node);
       }
-    };
-  };
+    }
+  }
 
 })(window.ngxBootstrap);

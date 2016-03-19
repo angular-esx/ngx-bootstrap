@@ -34,7 +34,6 @@
       var _className = this.cssClass + ' ' + this.ngxLabelService.combineColorWithType(this.color, this.type);
       this.ngxRendererService.addToElementAttribute('class', _className, true);
     };
-
-  };
+  }
 
 })(window.ngxBootstrap);

@@ -28,7 +28,7 @@
     ngxBootstrap.forEach(target, function (item) {
       _value = compareTo ? compareTo(item) : item;
 
-      if (_result.indexOf(_value) == -1) {
+      if (_result.indexOf(_value) === -1) {
         _result.push(_value);
       }
     });
@@ -63,4 +63,4 @@
   };
 
 
-})(window.ngxBootstrap || (window.ngxBootstrap = {}))
+})(window.ngxBootstrap || (window.ngxBootstrap = {}));

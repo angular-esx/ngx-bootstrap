@@ -21,7 +21,7 @@
         this.cssClass = 'alert-link';
 
         this.elementRef = elementRef;
-        this.ngxRendererService = ngxRendererService.for(elementRef);
+        this.ngxRendererService = ngxRendererService.for(elementRef.nativeElement);
       }
     ];
 

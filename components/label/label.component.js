@@ -22,7 +22,7 @@
         this.cssClass = 'label';
 
         this.elementRef = elementRef;
-        this.ngxRendererService = ngxRendererService.for(elementRef);
+        this.ngxRendererService = ngxRendererService.for(elementRef.nativeElement);
         this.ngxLabelService = ngxLabelService;
       }
     ];

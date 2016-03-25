@@ -1,0 +1,8 @@
+﻿{
+  "button/services/button.service": { },
+  "button/button.component": {
+    "dependencies": [
+      "button/services/button.service"
+    ]
+  }
+}

@@ -7,23 +7,21 @@
 
     };
 
-    this.for = function (elementRef) {
-      this.elementRef = elementRef;
+    this.for = function (nativeElement) {
+      this.nativeElement = nativeElement;
 
       return this;
     };
 
     this.getElementAttribute = function (attribute) {
-      var nativeElement = this.elementRef.nativeElement;
-
-      if (nativeElement && attribute) {
+      if (this.nativeElement && attribute) {
         var _attribute = _correctElementAttribute(attribute);
 
-        if (nativeElement.attributes && nativeElement.attributes[_attribute]) {
-          return nativeElement.attributes[_attribute].value;
+        if (this.nativeElement.attributes && this.nativeElement.attributes[_attribute]) {
+          return this.nativeElement.attributes[_attribute].value;
         }
-        else if (nativeElement[_attribute]) {
-          return nativeElement[_attribute];
+        else if (this.nativeElement[_attribute]) {
+          return this.nativeElement[_attribute];
         }
       }
 
@@ -32,7 +30,7 @@
 
     this.setElementAttribute = function (attribute, value) {
       if (attribute && value && typeof (value) === 'string') {
-        _assignValueToElementAttribute(this.elementRef.nativeElement, _correctElementAttribute(attribute), ngxBootstrap.distinct(value.split(' ')).join(' '));
+        _assignValueToElementAttribute(this.nativeElement, _correctElementAttribute(attribute), ngxBootstrap.distinct(value.split(' ')).join(' '));
       }
 
       return this;
@@ -54,28 +52,27 @@
           _value = value;
         }
 
-        _assignValueToElementAttribute(this.elementRef.nativeElement, _correctElementAttribute(attribute), _value);
+        _assignValueToElementAttribute(this.nativeElement, _correctElementAttribute(attribute), _value);
       }
 
       return this;
     };
 
     this.removeElementAttribute = function (attribute) {
-      var _nativeElement = this.elementRef.nativeElement;
-
-      if (_nativeElement && attribute) {
+      if (this.nativeElement && attribute) {
         var _attribute = _correctElementAttribute(attribute);
 
-        if (_nativeElement.attributes) {
-          ngxBootstrap.forEach(_nativeElement.attributes, function (node) {
+        if (this.nativeElement.attributes) {
+          var _self = this;
+          ngxBootstrap.forEach(this.nativeElement.attributes, function (node) {
             if (node.name == _attribute) {
-              _nativeElement.attributes.removeNamedItem(_attribute);
+              _self.nativeElement.attributes.removeNamedItem(_attribute);
               return true;
             }
           });
         }
-        else if (_nativeElement[_attribute] !== undefined) {
-          delete _nativeElement[_attribute];
+        else if (this.nativeElement[_attribute] !== undefined) {
+          delete this.nativeElement[_attribute];
         }
       }
 
@@ -83,21 +80,21 @@
     };
 
     this.removeElementClass = function (className) {
-      var _classes = this.elementRef.nativeElement.className.split(' ');
+      var _classes = this.nativeElement.className.split(' ');
       var _index = _classes.indexOf(className);
 
       if (_index > -1) {
         _classes.splice(_index, 1);
       }
 
-      this.elementRef.nativeElement.className = _classes.join(' ');
+      this.nativeElement.className = _classes.join(' ');
 
       return this;
     };
 
     this.addToElementClass = function (className, addToFirstPosition) {
       if (className) {
-        var _classes = this.elementRef.nativeElement.className;
+        var _classes = this.nativeElement.className;
         if (addToFirstPosition) {
           _classes += ' ' + className;
         }
@@ -105,7 +102,7 @@
           _classes = className + ' ' + _classes;
         }
 
-        this.elementRef.nativeElement.className = ngxBootstrap.distinct(_classes.split(' ')).join(' ');
+        this.nativeElement.className = ngxBootstrap.distinct(_classes.split(' ')).join(' ');
       }
 
       return this;

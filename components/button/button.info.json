@@ -4,5 +4,10 @@
     "dependencies": [
       "button/services/button.service"
     ]
+  },
+  "button/link-button.component": {
+    "dependencies": [
+      "button/button.component"
+    ]
   }
 }

@@ -1,8 +1,7 @@
 ﻿(function (ngxBootstrap) {
-  ngxBootstrap.ngxClass.ngxButtonServiceClass = ngxButtonService;
-  ngxBootstrap.ngxComponents.ngxButtonService = ng.core.Class(new ngxButtonService());
-
-  function ngxButtonService() {
+  ngxBootstrap.ngxComponents.ngxButtonService = ng.core.Class(new _ngxButtonService());
+  
+  function _ngxButtonService() {
     this.constructor = [
       ngxBootstrap.ngxCores.ngxColorService,
       ngxBootstrap.ngxCores.ngxTypeService,

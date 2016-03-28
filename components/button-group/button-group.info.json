@@ -1,0 +1,8 @@
+﻿{
+  "button-group/services/button-group.service": { },
+  "button-group/button-group.component": {
+    "dependencies": [
+      "button-group/services/button-group.service"
+    ]
+  }
+}

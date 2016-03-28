@@ -9,5 +9,10 @@
     "dependencies": [
       "button/button.component"
     ]
+  },
+  "button/toggle-button.component": {
+    "dependencies": [
+      "button/button.component"
+    ]
   }
 }

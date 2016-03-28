@@ -28,6 +28,9 @@
     this.isDisabledState = function (state) {
       return state && state === this.getStates().DISABLED;
     };
+    this.isActiveState = function (state) {
+      return state && state === this.getStates().ACTIVE;
+    };
 
     this.combineColorWithType = function (color, type) {
       var _typeClass = this.getTypeClass(type);

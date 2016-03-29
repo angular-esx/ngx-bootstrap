@@ -12,12 +12,21 @@
     };
     this.extends = ngxBootstrap.ngxComponents.ngxButtonComponent;
 
-    this.constructor = ngxBootstrap.ngxComponents.ngxButtonComponent;
+    this.constructor = [
+      ng.core.ElementRef,
+      ngxBootstrap.ngxCores.ngxRendererService,
+      ngxBootstrap.ngxComponents.ngxButtonService,
+
+      function (elementRef, ngxRendererService, ngxButtonService) {
+        ngxBootstrap.ngxComponents.ngxButtonComponent.apply(this, arguments);
+
+        this.base = Object.getPrototypeOf(Object.getPrototypeOf(this));
+      }
+    ];
 
     this.ngAfterContentInit = function () {
-      this.base = Object.getPrototypeOf(Object.getPrototypeOf(this));
-      
       this.href = this.ngxRendererService.getElementAttribute(_ATTRIBUTES.HREF);
+
       this.base.ngAfterContentInit.apply(this, arguments);
     };
   }

@@ -131,3 +131,59 @@ ngx-checkbox-group > .btn-group > ngx-checkbox:last-child:not(:first-child) > .b
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
 }
+
+ngx-radio-group > .btn-group-vertical > ngx-radio:not(:first-child):not(:last-child) > .btn, ngx-radio-group > .btn-group > ngx-radio:not(:first-child):not(:last-child) > .btn {
+  border-radius: 0;
+}
+
+ngx-radio-group > .btn-group-vertical > ngx-radio > .btn:hover, ngx-radio-group > .btn-group > ngx-radio > .btn:hover {
+  z-index: 2;
+}
+
+ngx-radio-group > .btn-group-vertical > ngx-radio > .btn.active,
+ngx-radio-group > .btn-group-vertical > ngx-radio > .btn:active,
+ngx-radio-group > .btn-group-vertical > ngx-radio > .btn:focus, ngx-radio-group > .btn-group > ngx-radio > .btn.active,
+ngx-radio-group > .btn-group > ngx-radio > .btn:active,
+ngx-radio-group > .btn-group > ngx-radio > .btn:focus {
+  z-index: 2;
+}
+
+ngx-radio-group > .btn-group-vertical > ngx-radio > .btn, ngx-radio-group > .btn-group > ngx-radio > .btn {
+  position: relative;
+  float: left;
+}
+
+ngx-radio-group > .btn-group-vertical > ngx-radio:first-child:not(:last-child) > .btn {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+ngx-radio-group > .btn-group-vertical > ngx-radio:last-child:not(:first-child) > .btn {
+  border-bottom-left-radius: 0.25rem;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+ngx-radio-group > .btn-group-vertical > ngx-radio > .btn,
+ngx-radio-group > .btn-group-vertical > ngx-radio > .btn-group,
+ngx-radio-group > .btn-group-vertical > ngx-radio > .btn-group > .btn {
+  display: block;
+  float: none;
+  width: 100%;
+  max-width: 100%;
+}
+
+ngx-radio-group > .btn-group > ngx-radio:first-child:not(:last-child) > .btn {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
+ngx-radio-group > .btn-group > ngx-radio:first-child > .btn {
+  margin-left: 0;
+}
+
+ngx-radio-group > .btn-group > ngx-radio:last-child:not(:first-child) > .btn {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}

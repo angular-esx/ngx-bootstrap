@@ -98,15 +98,15 @@ ngx-checkbox-group > .btn-group-vertical > ngx-checkbox > .btn, ngx-checkbox-gro
 }
 
 ngx-checkbox-group > .btn-group-vertical > ngx-checkbox:first-child:not(:last-child) > .btn {
-  border-top-right-radius: .25rem;
+  border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 
 ngx-checkbox-group > .btn-group-vertical > ngx-checkbox:last-child:not(:first-child) > .btn {
-  border-top-left-radius: 0;
+  border-bottom-left-radius: 0.25rem;
   border-top-right-radius: 0;
-  border-bottom-left-radius: .25rem;
+  border-top-left-radius: 0;
 }
 
 ngx-checkbox-group > .btn-group-vertical > ngx-checkbox > .btn,
@@ -119,8 +119,8 @@ ngx-checkbox-group > .btn-group-vertical > ngx-checkbox > .btn-group > .btn {
 }
 
 ngx-checkbox-group > .btn-group > ngx-checkbox:first-child:not(:last-child) > .btn {
-  border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
 }
 
 ngx-checkbox-group > .btn-group > ngx-checkbox:first-child > .btn {
@@ -128,6 +128,6 @@ ngx-checkbox-group > .btn-group > ngx-checkbox:first-child > .btn {
 }
 
 ngx-checkbox-group > .btn-group > ngx-checkbox:last-child:not(:first-child) > .btn {
-  border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
 }

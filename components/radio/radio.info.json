@@ -1,0 +1,13 @@
+﻿{
+  "radio/radio-group.component": {
+    "dependencies": [
+      "button-group/button-group.component"
+    ]
+  },
+  "radio/radio.component": {
+    "dependencies": [
+      "button/button.component",
+      "radio/radio-group.component"
+    ]
+  }
+}

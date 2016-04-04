@@ -1,3 +1,13 @@
 ﻿{
-  "components/item/item.component": { }
+  "components/item/services/item.service": {
+    "dependencies": [
+      "services/render/state.service"
+    ]
+  },
+  "components/item/item.component": {
+    "dependencies": [
+      "services/render/renderer.service",
+      "components/item/services/item.service"
+    ]
+  }
 }

@@ -187,3 +187,95 @@ ngx-radio-group > .btn-group > ngx-radio:last-child:not(:first-child) > .btn {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
 }
+
+ngx-header {
+  display: block;
+  padding: 3px 20px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #818a91;
+  white-space: nowrap;
+}
+
+ngx-divider {
+  display: block;
+  height: 1px;
+  margin: 0.5rem 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+
+ngx-dropdown.open {
+  display: block;
+}
+
+ngx-dropdown.dropup {
+  top: auto;
+  bottom: 100%;
+  margin-bottom: 2px;
+}
+
+ngx-dropdown > ngx-item,
+ngx-dropdown > ngx-link {
+  display: block;
+  width: 100%;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #373a3c;
+  text-align: inherit;
+  white-space: nowrap;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+ngx-dropdown > ngx-item:focus, ngx-dropdown > ngx-item:hover,
+ngx-dropdown > ngx-link:focus,
+ngx-dropdown > ngx-link:hover {
+  color: #2b2d2f;
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
+
+ngx-dropdown > ngx-item.active, ngx-dropdown > ngx-item.active:focus, ngx-dropdown > ngx-item.active:hover,
+ngx-dropdown > ngx-link.active,
+ngx-dropdown > ngx-link.active:focus,
+ngx-dropdown > ngx-link.active:hover {
+  color: #fff;
+  text-decoration: none;
+  background-color: #0275d8;
+  outline: 0;
+}
+
+ngx-dropdown > ngx-item.disabled, ngx-dropdown > ngx-item.disabled:focus, ngx-dropdown > ngx-item.disabled:hover,
+ngx-dropdown > ngx-link.disabled,
+ngx-dropdown > ngx-link.disabled:focus,
+ngx-dropdown > ngx-link.disabled:hover {
+  color: #818a91;
+}
+
+ngx-dropdown > ngx-item.disabled:focus, ngx-dropdown > ngx-item.disabled:hover,
+ngx-dropdown > ngx-link.disabled:focus,
+ngx-dropdown > ngx-link.disabled:hover {
+  text-decoration: none;
+  cursor: not-allowed;
+  background-color: transparent;
+  background-image: none;
+  filter: "progid:DXImageTransform.Microsoft.gradient(enabled = false)";
+}
+
+ngx-dropdown > ngx-link > a {
+  color: #373a3c;
+}
+
+ngx-dropdown > ngx-link > a:focus, ngx-dropdown > ngx-link > a:hover {
+  color: #2b2d2f;
+  text-decoration: none;
+}
+
+.dropdown-toggle.dropup::after {
+  border-top: 0;
+  border-bottom: 0.3em solid;
+}

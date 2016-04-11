@@ -1,9 +1,9 @@
 ﻿(function (ngxBootstrap) {
   ngxBootstrap.ngxComponents.ngxProgressComponent = ng.core.Component({
     selector: 'ngx-progress',
-    template: '<progress [value]="value" max="100">{{value}}%</progress>',
+    template: '<progress [value]="value" [max]="max">{{value}}/{{max}}</progress>',
     providers: [ngxBootstrap.ngxCores.ngxRendererService],
-    properties: ['value']
+    properties: ['value', 'max']
   })
   .Class(new _ngxProgress());
 
@@ -33,6 +33,10 @@
       
       if (this.value === undefined || this.value === null || isNaN(this.value) || this.value < 0) {
         this.value = 0;
+      }
+
+      if (this.max === undefined || this.max === null || isNaN(this.max) || this.max < 0) {
+        this.max = 100;
       }
     };
 

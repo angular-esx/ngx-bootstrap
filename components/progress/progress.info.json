@@ -1,0 +1,8 @@
+﻿{
+  "progress/services/progress.service": { },
+  "progress/progress.component": {
+    "dependencies": [
+      "progress/services/progress.service"
+    ]
+  }
+}

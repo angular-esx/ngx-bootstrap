@@ -279,3 +279,83 @@ ngx-dropdown > ngx-link > a:focus, ngx-dropdown > ngx-link > a:hover {
   border-top: 0;
   border-bottom: 0.3em solid;
 }
+
+ngx-pagination > ngx-link {
+  display: inline-block;
+}
+
+ngx-pagination > ngx-link > a {
+  position: relative;
+  float: left;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.5;
+  color: #0275d8;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+ngx-pagination > ngx-link > a:focus, ngx-pagination > ngx-link > a:hover {
+  color: #014c8c;
+  background-color: #eceeef;
+  border-color: #ddd;
+}
+
+ngx-pagination > ngx-link:first-child > a {
+  margin-left: 0;
+  border-bottom-left-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+}
+
+ngx-pagination > ngx-link:last-child > a {
+  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+ngx-pagination > ngx-link > a.active, ngx-pagination > ngx-link > a.active:focus, ngx-pagination > ngx-link > a.active:hover {
+  z-index: 2;
+  color: #fff;
+  cursor: default;
+  background-color: #0275d8;
+  border-color: #0275d8;
+}
+
+ngx-pagination > ngx-link > a.disabled, ngx-pagination > ngx-link > a.disabled:focus, ngx-pagination > ngx-link > a.disabled:hover {
+  color: #818a91;
+  cursor: not-allowed;
+  background-color: #fff;
+  border-color: #ddd;
+}
+
+ngx-pagination.pagination-sm > ngx-link > a {
+  padding: 0.275rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+ngx-pagination.pagination-sm > ngx-link:first-child > a {
+  border-bottom-left-radius: 0.2rem;
+  border-top-left-radius: 0.2rem;
+}
+
+ngx-pagination.pagination-sm > ngx-link:last-child > a {
+  border-bottom-right-radius: 0.2rem;
+  border-top-right-radius: 0.2rem;
+}
+
+ngx-pagination.pagination-lg > ngx-link > a {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.25rem;
+  line-height: 1.33333;
+}
+
+ngx-pagination.pagination-lg > ngx-link:first-child > a {
+  border-bottom-left-radius: 0.3rem;
+  border-top-left-radius: 0.3rem;
+}
+
+ngx-pagination.pagination-lg > ngx-link:last-child > a {
+  border-bottom-right-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
+}

@@ -1,7 +1,13 @@
 ﻿{
+  "components/link/services/link.service": {
+    "dependencies": [
+      "services/render/state.service"
+    ]
+  },
   "components/link/link.component": {
     "dependencies": [
-      "services/render/renderer.service"
+      "services/render/renderer.service",
+      "components/link/services/link.service"
     ]
   }
 }

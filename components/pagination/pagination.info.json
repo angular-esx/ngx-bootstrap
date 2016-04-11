@@ -1,0 +1,8 @@
+﻿{
+  "pagination/services/pagination.service": { },
+  "pagination/pagination.component": {
+    "dependencies": [
+      "pagination/services/pagination.service"
+    ]
+  }
+}

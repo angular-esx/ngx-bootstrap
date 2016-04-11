@@ -4,7 +4,7 @@
   ngxBootstrap.ngxCores.ngxLinkComponent = ng.core.Component({
     selector: 'ngx-link',
     template: _getNgxLinkTemplate(),
-    properties: ['itemLink: href'],
+    properties: ['itemLink: href', 'state'],
     providers: [ngxBootstrap.ngxCores.ngxRendererService]
   })
   .Class(new ngxLink());
@@ -12,15 +12,18 @@
   function ngxLink() {
     var _ATTRIBUTES = {
       HREF: 'href',
+      STATE: 'state',
     };
 
     this.constructor = [
       ng.core.ElementRef,
       ngxBootstrap.ngxCores.ngxRendererService,
+      ngxBootstrap.ngxCores.ngxLinkService,
 
-      function (elementRef, ngxRendererService) {
+      function (elementRef, ngxRendererService, ngxLinkService) {
         this.elementRef = elementRef;
         this.ngxRendererService = ngxRendererService.for(elementRef.nativeElement);
+        this.ngxLinkService = ngxLinkService;
       }
     ];
 
@@ -35,14 +38,28 @@
       });
     };
 
+    this.isDisabled = function () {
+      return this.ngxLinkService.isDisabledState(this.state);
+    };
+
+    this.isActive = function () {
+      return this.ngxLinkService.isActiveState(this.state);
+    };
+
+    this.click = function ($event) {
+      if (this.isDisabled()) {
+        $event.preventDefault();
+      }
+    };
+  
   }
 
   function _getNgxLinkTemplate() {
-    return `
-      <a href="{{itemLink}}">
-        <ng-content></ng-content>
-      </a>
-    `;
+    return [
+      '<a [href]="itemLink" [class.active]="isActive()" [class.disabled]="isDisabled()" (click) ="click($event)">',
+        '<ng-content></ng-content>',
+      '</a>'
+    ].join('');
   }
 
 })(window.ngxBootstrap);

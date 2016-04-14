@@ -1,0 +1,40 @@
+ngx-list-group, ngx-list-group-item, ngx-list-group-link, ngx-list-group-button {
+  display: block;
+}
+
+ngx-list-group-link, ngx-list-group-button{
+  // Round the first and last items
+  &:first-child {
+    @include border-top-radius($list-group-border-radius);
+  }
+  &:last-child {
+    margin-bottom: 0;
+    @include border-bottom-radius($list-group-border-radius);
+  }
+}
+ngx-list-group-link a,
+ngx-list-group-button button{
+  position: relative;
+  display: block;
+  padding: .75rem 1.25rem;
+  // Place the border on the list items and negative margin up for better styling
+  margin-bottom: -$list-group-border-width;
+  background-color: $list-group-bg;
+  width: 100%;
+  color: $list-group-link-color;
+  text-align: inherit;
+
+  .list-group-item-heading {
+    color: $list-group-link-heading-color;
+  }
+
+  // Hover state
+  @include hover-focus {
+    color: $list-group-link-hover-color;
+    text-decoration: none;
+    background-color: $list-group-hover-bg;
+    outline: none;
+  }
+
+  border: $list-group-border-width solid $list-group-border-color;
+}

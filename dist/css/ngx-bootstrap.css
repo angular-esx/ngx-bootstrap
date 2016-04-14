@@ -404,3 +404,45 @@ ngx-pager > ngx-link.pager-next > a {
 ngx-pager > ngx-link.pager-prev > a {
   float: left;
 }
+
+ngx-list-group, ngx-list-group-item, ngx-list-group-link, ngx-list-group-button {
+  display: block;
+}
+
+ngx-list-group-link:first-child, ngx-list-group-button:first-child {
+  border-top-right-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+}
+
+ngx-list-group-link:last-child, ngx-list-group-button:last-child {
+  margin-bottom: 0;
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+ngx-list-group-link a,
+ngx-list-group-button button {
+  position: relative;
+  display: block;
+  padding: .75rem 1.25rem;
+  margin-bottom: -1px;
+  background-color: #fff;
+  width: 100%;
+  color: #555;
+  text-align: inherit;
+  border: 1px solid #ddd;
+}
+
+ngx-list-group-link a .list-group-item-heading,
+ngx-list-group-button button .list-group-item-heading {
+  color: #333;
+}
+
+ngx-list-group-link a:focus, ngx-list-group-link a:hover,
+ngx-list-group-button button:focus,
+ngx-list-group-button button:hover {
+  color: #555;
+  text-decoration: none;
+  background-color: #f5f5f5;
+  outline: none;
+}

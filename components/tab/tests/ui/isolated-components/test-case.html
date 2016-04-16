@@ -1,0 +1,15 @@
+<h4>NgxTab</h4>
+<ngx-tab>
+  <ngx-tab-view (onShow)="show($event)" (onHide)="hide($event)" title="Overview">
+    You have details.
+  </ngx-tab-view>
+  <ngx-tab-view *ngFor="#detail of details" [title]="detail.title">
+    {{detail.text}} <br><br>
+    <button class="btn" (click)="removeDetail(detail)">Remove</button>
+  </ngx-tab-view>
+  <ngx-tab-view title="Summary" active="true">
+    Next last ID is {{id}}.
+  </ngx-tab-view>
+</ngx-tab>
+<hr>
+<button class="btn" (click)="addDetail()">Add Detail</button>

@@ -1,0 +1,19 @@
+﻿{
+  "list-group/services/list-group.service": { },
+  "list-group/list-group-item.component": {
+    "dependencies": [
+      "list-group/services/list-group.service"
+    ]
+  },
+  "list-group/list-group-link.component": {
+    "dependencies": [
+      "list-group/services/list-group.service"
+    ]
+  },
+  "list-group/list-group-button.component": {
+    "dependencies": [
+      "list-group/services/list-group.service"
+    ]
+  },
+  "list-group/list-group.component": { }
+}

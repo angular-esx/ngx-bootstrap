@@ -20,6 +20,7 @@
       state = state.charAt(0).toUpperCase() + state.slice(1);
 
       var _funcName = 'get' + state + 'StateClass';
+
       return this[_funcName] ? this[_funcName]() : this.prefix + state;
     };
 

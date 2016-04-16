@@ -404,3 +404,104 @@ ngx-pager > ngx-link.pager-next > a {
 ngx-pager > ngx-link.pager-prev > a {
   float: left;
 }
+
+ngx-list-group, ngx-list-group-item, ngx-list-group-link, ngx-list-group-button {
+  display: block;
+}
+
+ngx-list-group-link:first-child, ngx-list-group-button:first-child {
+  border-top-right-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+}
+
+ngx-list-group-link:last-child, ngx-list-group-button:last-child {
+  margin-bottom: 0;
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+ngx-list-group-link a,
+ngx-list-group-button button {
+  position: relative;
+  display: block;
+  padding: .75rem 1.25rem;
+  margin-bottom: -1px;
+  background-color: #fff;
+  width: 100%;
+  color: #555;
+  text-align: inherit;
+  border: 1px solid #ddd;
+}
+
+ngx-list-group-link a .list-group-item-heading,
+ngx-list-group-button button .list-group-item-heading {
+  color: #333;
+}
+
+ngx-list-group-link a:focus, ngx-list-group-link a:hover,
+ngx-list-group-button button:focus,
+ngx-list-group-button button:hover {
+  color: #555;
+  text-decoration: none;
+  background-color: #f5f5f5;
+  outline: none;
+}
+
+ngx-list-group-link a.disabled, ngx-list-group-link a.disabled:focus, ngx-list-group-link a.disabled:hover,
+ngx-list-group-button button.disabled,
+ngx-list-group-button button.disabled:focus,
+ngx-list-group-button button.disabled:hover {
+  color: #818a91;
+  cursor: not-allowed;
+  background-color: #eceeef;
+}
+
+ngx-list-group-link a.disabled .list-group-item-heading, ngx-list-group-link a.disabled:focus .list-group-item-heading, ngx-list-group-link a.disabled:hover .list-group-item-heading,
+ngx-list-group-button button.disabled .list-group-item-heading,
+ngx-list-group-button button.disabled:focus .list-group-item-heading,
+ngx-list-group-button button.disabled:hover .list-group-item-heading {
+  color: inherit;
+}
+
+ngx-list-group-link a.disabled .list-group-item-text, ngx-list-group-link a.disabled:focus .list-group-item-text, ngx-list-group-link a.disabled:hover .list-group-item-text,
+ngx-list-group-button button.disabled .list-group-item-text,
+ngx-list-group-button button.disabled:focus .list-group-item-text,
+ngx-list-group-button button.disabled:hover .list-group-item-text {
+  color: #818a91;
+}
+
+ngx-list-group-link a.active, ngx-list-group-link a.active:focus, ngx-list-group-link a.active:hover,
+ngx-list-group-button button.active,
+ngx-list-group-button button.active:focus,
+ngx-list-group-button button.active:hover {
+  z-index: 2;
+  color: #fff;
+  background-color: #0275d8;
+  border-color: #0275d8;
+}
+
+ngx-list-group-link a.active .list-group-item-heading,
+ngx-list-group-link a.active .list-group-item-heading > small,
+ngx-list-group-link a.active .list-group-item-heading > .small, ngx-list-group-link a.active:focus .list-group-item-heading,
+ngx-list-group-link a.active:focus .list-group-item-heading > small,
+ngx-list-group-link a.active:focus .list-group-item-heading > .small, ngx-list-group-link a.active:hover .list-group-item-heading,
+ngx-list-group-link a.active:hover .list-group-item-heading > small,
+ngx-list-group-link a.active:hover .list-group-item-heading > .small,
+ngx-list-group-button button.active .list-group-item-heading,
+ngx-list-group-button button.active .list-group-item-heading > small,
+ngx-list-group-button button.active .list-group-item-heading > .small,
+ngx-list-group-button button.active:focus .list-group-item-heading,
+ngx-list-group-button button.active:focus .list-group-item-heading > small,
+ngx-list-group-button button.active:focus .list-group-item-heading > .small,
+ngx-list-group-button button.active:hover .list-group-item-heading,
+ngx-list-group-button button.active:hover .list-group-item-heading > small,
+ngx-list-group-button button.active:hover .list-group-item-heading > .small {
+  color: inherit;
+}
+
+ngx-list-group-link a.active .list-group-item-text, ngx-list-group-link a.active:focus .list-group-item-text, ngx-list-group-link a.active:hover .list-group-item-text,
+ngx-list-group-button button.active .list-group-item-text,
+ngx-list-group-button button.active:focus .list-group-item-text,
+ngx-list-group-button button.active:hover .list-group-item-text {
+  color: #a8d6fe;
+}

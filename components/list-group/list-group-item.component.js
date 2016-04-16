@@ -12,7 +12,8 @@
 
   function _ngxListGroupItem() {
     var _ATTRIBUTES = {
-      COLOR: 'color'
+      COLOR: 'color',
+      STATE: 'state'
     };
 
     this.constructor = [
@@ -22,8 +23,15 @@
 
       function (elementRef, ngxRendererService, ngxListGroupService) {
         this.cssClass = 'list-group-item';
+        this.ngxRendererService = ngxRendererService;
+        this.color = ngxRendererService
+          .for(elementRef.nativeElement)
+          .getElementAttribute(_ATTRIBUTES.COLOR)
 
-        this.ngxRendererService = ngxRendererService.for(elementRef.nativeElement);
+        this.state = ngxRendererService
+          .for(elementRef.nativeElement)
+          .getElementAttribute(_ATTRIBUTES.STATE)
+
         this.ngxListGroupService = ngxListGroupService;
       }
     ];
@@ -33,10 +41,12 @@
       
       _className = this.cssClass;
 
-      color = this.ngxRendererService.getElementAttribute(_ATTRIBUTES.COLOR);
-
-      if(color) {
+      if(this.color) {
         _className += ' ' + this.ngxListGroupService.combineColor(color);
+      }
+
+      if(this.state) {
+        _className += ' ' + this.ngxListGroupService.getStateClass(this.state);
       }
 
       this.ngxRendererService.addToElementAttribute('class', _className, true);

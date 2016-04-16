@@ -10,6 +10,7 @@
     ],
     providers: [
       cores.ngxColorService,
+      cores.ngxStateService,
       components.ngxListGroupService
     ]
   })
@@ -17,7 +18,7 @@
 
   function testCase() {
     this.constructor = function () {
-
+      this.googleUrl = 'http://google.com';
     };
   }
 })(window.testCases || (window.testCases = {}), window.ngxBootstrap.ngxCores, window.ngxBootstrap.ngxComponents, ngxBootstrap.configs.fileService);

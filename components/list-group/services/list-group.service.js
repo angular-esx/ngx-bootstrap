@@ -5,21 +5,27 @@
   function ngxListGroupService() {
     this.constructor = [
       ngxBootstrap.ngxCores.ngxColorService,
-      function (ngxColorService) {
+      ngxBootstrap.ngxCores.ngxStateService,
+      function (ngxColorService, ngxStateService) {
         ngxBootstrap.shallowCopy(this, ngxColorService);
+        ngxBootstrap.shallowCopy(this, ngxStateService);
 
         this.setPrefix('list-group-item');
       }
     ];
 
-    this.getFluidTypeClass = function () {
-      return this.prefix + 'fluid';
-    };
-
     this.combineColor = function (type) {
       var _typeClass = this.getColorClass(type);
 
       return _typeClass;
+    };
+
+    this.isDisabledState = function (state) {
+      return state && state === this.getStates().DISABLED;
+    };
+
+    this.isActiveState = function (state) {
+      return state && state === this.getStates().ACTIVE;
     };
   }
 

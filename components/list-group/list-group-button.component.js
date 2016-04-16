@@ -2,15 +2,14 @@
   ngxBootstrap.ngxComponents.ngxListGroupButtonComponent = ng.core.Component({
     selector: 'ngx-list-group-button',
     template: '<button><ng-content></ng-content></button>',
-    directives: [
-    ],
     providers: [ngxBootstrap.ngxCores.ngxRendererService]
   })
   .Class(new _ngxListGroupButton());
 
   function _ngxListGroupButton() {
     var _ATTRIBUTES = {
-      COLOR: 'color'
+      COLOR: 'color',
+      STATE: 'state'
     };
     
     this.constructor = [
@@ -26,13 +25,22 @@
         this.color = ngxRendererService
           .for(this.elementRef.nativeElement)
           .getElementAttribute(_ATTRIBUTES.COLOR);
+        this.state = ngxRendererService
+          .for(this.elementRef.nativeElement)
+          .getElementAttribute(_ATTRIBUTES.STATE);
       }
     ];
 
     this.ngAfterViewInit = function () {
-      var _className;
+      var _className = '';
       
-      _className = this.ngxListGroupService.combineColor(this.color);
+      if(this.color){
+        _className = this.ngxListGroupService.combineColor(this.color);        
+      }
+
+      if (this.state) {
+        _className += (_className ? ' ' : '') + this.ngxListGroupService.getStateClass(this.state);
+      }
 
       if(_className) {
         this.ngxRendererService

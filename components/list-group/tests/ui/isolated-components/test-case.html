@@ -1,10 +1,10 @@
 ﻿<h3>List Group</h3>
 
 <ngx-list-group style="max-width: 400px; margin-left: 20px;">
-  <ngx-list-group-item>
+  <ngx-list-group-item state="active">
     Cras justo odio
   </ngx-list-group-item>
-  <ngx-list-group-item>
+  <ngx-list-group-item state="disabled">
     Dapibus ac facilisis in
   </ngx-list-group-item>
   <ngx-list-group-item>
@@ -16,39 +16,25 @@
 <h3>List Group Link</h3>
 
 <ngx-list-group style="max-width: 400px; margin-left: 20px;">
-  <ngx-list-group-link href="#">
+  <ngx-list-group-link href="{{googleUrl}}" state="active">
     Cras justo odio
   </ngx-list-group-link>
-  <ngx-list-group-link href="#">
+  <ngx-list-group-link href="#" state="disabled">
     Dapibus ac facilisis in
   </ngx-list-group-link>
   <ngx-list-group-link href="#">
     Morbi leo risus
   </ngx-list-group-link>
-</ngx-list-group>
-
-<br><br>
-
-<ngx-list-group style="max-width: 400px; margin-left: 20px;">
-  <a href="#" class="list-group-item active">
-    Cras justo odio
-  </a>
-  <a href="#" class="list-group-item">
-    Dapibus ac facilisis in
-  </a>
-  <a href="#" class="list-group-item">
-    Morbi leo risus
-  </a>
 </ngx-list-group>
 
 <br><br>
 <h3>List Group Button</h3>
 
 <ngx-list-group style="max-width: 400px; margin-left: 20px;">
-  <ngx-list-group-button>
+  <ngx-list-group-button state="active">
     Cras justo odio
   </ngx-list-group-button>
-  <ngx-list-group-button>
+  <ngx-list-group-button state="disabled">
     Dapibus ac facilisis in
   </ngx-list-group-button>
   <ngx-list-group-button>

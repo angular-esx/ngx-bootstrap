@@ -1,0 +1,8 @@
+{
+  "tab/tab-view.component": { },
+  "tab/tab.component": {
+    "dependencies": [
+      "tab/tab-view.component"
+    ]
+  }
+}

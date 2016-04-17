@@ -1,8 +1,8 @@
 {
-  "tab/tab-view.directive": { },
+  "tab/tab-view.component": { },
   "tab/tab.component": {
     "dependencies": [
-      "tab/tab-view.directive"
+      "tab/tab-view.component"
     ]
   }
 }

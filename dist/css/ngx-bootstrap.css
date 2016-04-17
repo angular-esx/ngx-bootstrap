@@ -404,3 +404,7 @@ ngx-pager > ngx-link.pager-next > a {
 ngx-pager > ngx-link.pager-prev > a {
   float: left;
 }
+
+ngx-collapse {
+  display: block;
+}

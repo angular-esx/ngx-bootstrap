@@ -1,8 +1,7 @@
 ﻿(function (ngxBootstrap) {
-  ngxBootstrap.ngxClass.ngxLabelServiceClass = ngxLabelService;
-  ngxBootstrap.ngxComponents.ngxLabelService = ng.core.Class(new ngxLabelService());
+  ngxBootstrap.ngxComponents.ngxLabelService = ng.core.Class(new _ngxLabelService());
 
-  function ngxLabelService() {
+  function _ngxLabelService() {
     this.constructor = [
       ngxBootstrap.ngxCores.ngxColorService,
       ngxBootstrap.ngxCores.ngxTypeService,
@@ -11,24 +10,12 @@
         ngxBootstrap.shallowCopy(this, ngxColorService);
         ngxBootstrap.shallowCopy(this, ngxTypeService);
 
-        this.setPrefix('label');
+        this.prefixClass = 'ngxLabel';
       }
     ];
 
     this.getPillTypeClass = function () {
-      return 'pill';
-    };
-
-    this.combineColorWithType = function (color, type) {
-      var _typeClass = this.getTypeClass(type);
-      var _colorClass = this.getColorClass(color);
-
-      if (_typeClass == this.getPillTypeClass()) {
-        return this.prefix + type + ' ' + _colorClass;
-      }
-      else {
-        return _typeClass ? _colorClass + '-' + _typeClass : _colorClass;
-      }
+      return  this.prefixClass + '-pill';
     };
   }
 

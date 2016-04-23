@@ -2,6 +2,7 @@
   "label/services/label.service": { },
   "label/label.component": {
     "dependencies": [
+      "base/base.component",
       "label/services/label.service"
     ]
   }

@@ -9,6 +9,9 @@
     return target;
   };
 
+  ngxBootstrap.isString = function (target) {
+    return target && typeof (target) === 'string';
+  };
   ngxBootstrap.isObject = function (target) {
     return target && typeof (target) === 'object';
   };

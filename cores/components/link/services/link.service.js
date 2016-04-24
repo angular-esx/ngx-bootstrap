@@ -1,24 +1,26 @@
-﻿(function (ngxBootstrap) {
-  ngxBootstrap.ngxCores.ngxLinkService = ng.core.Class(new _ngxLinkService());
+﻿var ngxBootstrapUtils = require('./../../../ngx-bootstrap.utils.js');
+var ngxStateService = require('./../../services/render/state.service.js');
 
-  function _ngxLinkService() {
-    this.constructor = [
-      ngxBootstrap.ngxCores.ngxStateService,
+var ngxLinkService = ng.core.Class(new _ngxLinkService());
 
-      function (ngxStateService) {
-        ngxBootstrap.shallowCopy(this, ngxStateService);
+function _ngxLinkService() {
+  this.constructor = [
+    ngxStateService,
 
-        this.setPrefix('');
-      }
-    ];
+    function (ngxStateService) {
+      ngxBootstrapUtils.shallowCopy(this, ngxStateService);
 
-    this.isDisabledState = function (state) {
-      return this.getStateClass(state) === this.getStates().DISABLED;
-    };
+      this.setPrefix('');
+    }
+  ];
 
-    this.isActiveState = function (state) {
-      return this.getStateClass(state) === this.getStates().ACTIVE;
-    };
-  }
+  this.isDisabledState = function (state) {
+    return this.getStateClass(state) === this.getStates().DISABLED;
+  };
 
-})(window.ngxBootstrap);
+  this.isActiveState = function (state) {
+    return this.getStateClass(state) === this.getStates().ACTIVE;
+  };
+}
+
+module.exports = ngxLinkService;

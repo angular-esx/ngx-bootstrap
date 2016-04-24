@@ -1,65 +1,68 @@
-﻿(function (ngxBootstrap) {
-  ngxBootstrap.ngxClass.ngxLinkClass = ngxLink;
+﻿// ngxBootstrap.ngxClass.ngxLinkClass = _ngxLink;
 
-  ngxBootstrap.ngxCores.ngxLinkComponent = ng.core.Component({
-    selector: 'ngx-link',
-    template: _getNgxLinkTemplate(),
-    properties: ['itemLink: href', 'state'],
-    providers: [ngxBootstrap.ngxCores.ngxRendererService]
-  })
-  .Class(new ngxLink());
+var ngxBootstrapUtils = require('./../../ngx-bootstrap-utils.js');
+var ngxRenderService = require('./../../services/render/render.service.js');
+var ngxLinkService = require('./services/link.service.js');
 
-  function ngxLink() {
-    var _ATTRIBUTES = {
-      HREF: 'href',
-      STATE: 'state',
-    };
+var ngxLinkComponent = ng.core.Component({
+  selector: 'ngx-link',
+  template: _getNgxLinkTemplate(),
+  properties: ['itemLink: href', 'state'],
+  providers: [ngxRenderService]
+})
+.Class(new _ngxLink());
 
-    this.constructor = [
-      ng.core.ElementRef,
-      ngxBootstrap.ngxCores.ngxRendererService,
-      ngxBootstrap.ngxCores.ngxLinkService,
+function _ngxLink() {
+  var _ATTRIBUTES = {
+    HREF: 'href',
+    STATE: 'state',
+  };
 
-      function (elementRef, ngxRendererService, ngxLinkService) {
-        this.elementRef = elementRef;
-        this.ngxRendererService = ngxRendererService.for(elementRef.nativeElement);
-        this.ngxLinkService = ngxLinkService;
-      }
-    ];
+  this.constructor = [
+    ng.core.ElementRef,
+    ngxRenderService,
+    ngxLinkService,
 
-    this.ngAfterContentInit = function () {
-      if (!this.href) { this.href = '#'; }
-    };
+    function (elementRef, ngxRenderService, ngxLinkService) {
+      this.elementRef = elementRef;
+      this.ngxRenderService = ngxRenderService.for(elementRef.nativeElement);
+      this.ngxLinkService = ngxLinkService;
+    }
+  ];
 
-    this.ngAfterViewInit = function () {
-      var _self = this;
-      ngxBootstrap.forEach(_ATTRIBUTES, function (attribute) {
-        _self.ngxRendererService.removeElementAttribute(attribute);
-      });
-    };
+  this.ngAfterContentInit = function () {
+    if (!this.href) { this.href = '#'; }
+  };
 
-    this.isDisabled = function () {
-      return this.ngxLinkService.isDisabledState(this.state);
-    };
+  this.ngAfterViewInit = function () {
+    var _self = this;
+    ngxBootstrapUtils.forEach(_ATTRIBUTES, function (attribute) {
+      _self.ngxRenderService.removeElementAttribute(attribute);
+    });
+  };
 
-    this.isActive = function () {
-      return this.ngxLinkService.isActiveState(this.state);
-    };
+  this.isDisabled = function () {
+    return this.ngxLinkService.isDisabledState(this.state);
+  };
 
-    this.click = function ($event) {
-      if (this.isDisabled()) {
-        $event.preventDefault();
-      }
-    };
-  
-  }
+  this.isActive = function () {
+    return this.ngxLinkService.isActiveState(this.state);
+  };
 
-  function _getNgxLinkTemplate() {
-    return [
-      '<a [href]="itemLink" [class.active]="isActive()" [class.disabled]="isDisabled()" (click) ="click($event)">',
-        '<ng-content></ng-content>',
-      '</a>'
-    ].join('');
-  }
+  this.click = function ($event) {
+    if (this.isDisabled()) {
+      $event.preventDefault();
+    }
+  };
 
-})(window.ngxBootstrap);
+}
+
+function _getNgxLinkTemplate() {
+  return [
+    '<a [href]="itemLink" [class.active]="isActive()" [class.disabled]="isDisabled()" (click) ="click($event)">',
+      '<ng-content></ng-content>',
+    '</a>'
+  ].join('');
+}
+
+module.exports = ngxLinkComponent;

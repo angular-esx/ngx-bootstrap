@@ -1,41 +1,43 @@
-﻿(function (ngxBootstrap) {
-  ngxBootstrap.ngxCores.ngxTypeService = ng.core.Class(new _ngxTypeService());
+﻿var ngxBootstrapUtils = require('./../../../cores/ngx-bootstrap.utils.js');
 
-  function _ngxTypeService() {
-    var _TYPES;
+var ngxTypeService = ng.core.Class(new _ngxTypeService());
 
-    this.constructor = function () {
-      this.prefixClass = '';
-    };
+function _ngxTypeService() {
+  var _TYPES;
 
-    this.getTypeClass = function (type) {
-      if (!type) { return ''; }
+  this.constructor = function () {
+    this.prefixClass = '';
+  };
 
-      var _type = type.toLowerCase().replace(/-([a-z])/g, function (x, y) { return y.toUpperCase(); });
-      _type = _type.charAt(0).toUpperCase() + _type.slice(1);
+  this.getTypeClass = function (type) {
+    if (!type) { return ''; }
 
-      var _funcName = 'get' + _type + 'TypeClass';
-      return this[_funcName] ? this[_funcName]() : this.prefixClass + '-' +_type;
-    };
+    var _type = type.toLowerCase().replace(/-([a-z])/g, function (x, y) { return y.toUpperCase(); });
+    _type = _type.charAt(0).toUpperCase() + _type.slice(1);
 
-    this.getTypes = function () {
-      if (!_TYPES) {
-        _TYPES = {};
-        var _type;
+    var _funcName = 'get' + _type + 'TypeClass';
+    return this[_funcName] ? this[_funcName]() : this.prefixClass + '-' +_type;
+  };
 
-        for (var prop in this) {
-          if (typeof this[prop] == 'function' && /get.+TypeClass/.test(prop)) {
-            _type = prop.replace('get', '').replace('TypeClass', '')
-                        .replace(/([A-Z])/g, function (x, y) { return '_' + y; })
-                        .replace(/^_/, '');
+  this.getTypes = function () {
+    if (!_TYPES) {
+      _TYPES = {};
+      var _type;
 
-            _TYPES[_type.toUpperCase()] = _type.toLocaleLowerCase().replace(/_/g, '-');
-          }
+      for (var prop in this) {
+        if (typeof this[prop] == 'function' && /get.+TypeClass/.test(prop)) {
+          _type = prop.replace('get', '').replace('TypeClass', '')
+                      .replace(/([A-Z])/g, function (x, y) { return '_' + y; })
+                      .replace(/^_/, '');
+
+          _TYPES[_type.toUpperCase()] = _type.toLocaleLowerCase().replace(/_/g, '-');
         }
       }
+    }
 
-      return ngxBootstrap.shallowCopy({}, _TYPES);
-    };
+    return ngxBootstrapUtils.shallowCopy({}, _TYPES);
+  };
 
-  }
-})(window.ngxBootstrap);
+}
+
+module.exports = ngxTypeService;

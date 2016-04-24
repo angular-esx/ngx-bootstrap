@@ -3,3 +3,4 @@ bower_components
 index.html
 components/components.info.json
 cores/cores.info.json
+ngx-bootstrap-test-ui.js

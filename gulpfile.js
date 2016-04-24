@@ -75,7 +75,6 @@
   })();
 
   var taskService = new(function() {
-    this.ORDER_DEPENDENCIES = 'order-dependencies';
     this.WATCH = 'watch';
     this.BROWSER_SYNC = 'browser-sync';
     this.SASS = 'sass';
@@ -87,20 +86,18 @@
   var yargs = require('yargs');
   var runSequence = require('run-sequence');
   var plugins = require("gulp-load-plugins")({
-    pattern: ['gulp-*', 'gulp.*', 'stream-series', 'jsoncombine', 'browser-sync', 'jshint-stylish'],
+    pattern: ['gulp-*', 'gulp.*', 'stream-series', 'jsoncombine', 'browser-sync', 'jshint-stylish', 'webpack-stream'],
     replaceString: /\bgulp[\-.]/
   });
 
-  gulp.task('order-dependencies', getTask(taskService.ORDER_DEPENDENCIES));
-
-  gulp.task('test-ui', [taskService.ORDER_DEPENDENCIES, 'serve'], getTask(taskService.TEST_UI));
+  gulp.task('test-ui', ['serve'], getTask(taskService.TEST_UI));
 
   gulp.task('default', ['serve']);
 
   gulp.task('serve', function() {
     runSequence('sass', 'lint', ['browserSync', 'watch']);
   });
-
+  
   gulp.task('sass', getTask(taskService.SASS));
 
   gulp.task('lint', getTask(taskService.LINT));

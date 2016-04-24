@@ -1,5 +1,10 @@
-﻿(function (testCases, ngxBootstrap, fileService) {
-  testCases.customLabelColor = ng.core.Component({
+﻿var ngxLabelComponent = require('./../../../label.component.js');
+var ngxLabelService = require('./../../../services/label.service.js');
+var ngxColorService = require('./../../../../../cores/services/render/color.service.js');
+var ngxTypeService = require('./../../../../../cores/services/render/type.service.js');
+var ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.js');
+
+var customLabelColor = ng.core.Component({
     selector: 'ngx-test-case',
     templateUrl: fileService.getTestCaseTemplate('label', 'custom-label-color'),
     directives: [
@@ -29,4 +34,5 @@
       return this.prefix + 'custom-orange';
     };
   }
-})(window.testCases || (window.testCases = {}), window.ngxBootstrap, ngxBootstrap.configs.fileService);
+
+module.exports = customLabelColor;

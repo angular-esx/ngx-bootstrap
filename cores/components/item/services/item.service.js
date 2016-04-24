@@ -1,16 +1,18 @@
-﻿(function (ngxBootstrap) {
-  ngxBootstrap.ngxCores.ngxItemService = ng.core.Class(new _ngxItemService());
+﻿var ngxBootstrapUtils = require('./../../../ngx-bootstrap.utils.js');
+var ngxStateService = require('./../../services/render/state.service.js');
 
-  function _ngxItemService() {
-    this.constructor = [
-      ngxBootstrap.ngxCores.ngxStateService,
+var ngxItemService = ng.core.Class(new _ngxItemService());
 
-      function (ngxStateService) {
-        ngxBootstrap.shallowCopy(this, ngxStateService);
+function _ngxItemService() {
+  this.constructor = [
+    ngxBootstrap.ngxCores.ngxStateService,
 
-        this.setPrefix('');
-      }
-    ];
-  }
+    function (ngxStateService) {
+      ngxBootstrapUtils.shallowCopy(this, ngxStateService);
 
-})(window.ngxBootstrap);
+      this.setPrefix('');
+    }
+  ];
+}
+
+module.exports = ngxItemService;

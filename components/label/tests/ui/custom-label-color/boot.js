@@ -1,5 +1,7 @@
+var customLabelColor = require('./test-case.js');
+
 (function (testCases) {
     document.addEventListener('DOMContentLoaded', function () {
-      ng.platform.browser.bootstrap(testCases.customLabelColor, []);
+      ng.platform.browser.bootstrap(customLabelColor, []);
   });
 })(window.testCases);

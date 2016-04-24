@@ -1,55 +1,57 @@
-﻿(function (ngxBootstrap) {
-  ngxBootstrap.ngxClass.ngxSizeServiceClass = ngxSizeService;
-  ngxBootstrap.ngxCores.ngxSizeService = ng.core.Class(new ngxSizeService());
+﻿var ngxBootstrapUtils = require('./../../../cores/ngx-bootstrap.utils.js');
 
-  function ngxSizeService() {
-    var _sizes;
+// ngxBootstrap.ngxClass.ngxSizeServiceClass = ngxSizeService;
+var ngxSizeService = ng.core.Class(new _ngxSizeService());
 
-    this.constructor = function () {
-    };
+function _ngxSizeService() {
+  var _sizes;
 
-    this.setPrefix = function (prefix) {
-      this.prefix = prefix ? prefix + '-' : '';
-      return this;
-    };
+  this.constructor = function () {
+  };
 
-    this.getSizeClass = function (size) {
-      if (!size) { return ''; }
+  this.setPrefix = function (prefix) {
+    this.prefix = prefix ? prefix + '-' : '';
+    return this;
+  };
 
-      size = size.toLowerCase().replace(/-([a-z])/g, function (x, y) { return y.toUpperCase(); });
-      size = size.charAt(0).toUpperCase() + size.slice(1);
+  this.getSizeClass = function (size) {
+    if (!size) { return ''; }
 
-      var _funcName = 'get' + size + 'SizeClass';
-      return this[_funcName] ? this[_funcName]() : this.prefix + size;
-    };
+    size = size.toLowerCase().replace(/-([a-z])/g, function (x, y) { return y.toUpperCase(); });
+    size = size.charAt(0).toUpperCase() + size.slice(1);
 
-    this.getSizes = function () {
-      if (!_sizes) {
-        _sizes = {};
-        var _size;
+    var _funcName = 'get' + size + 'SizeClass';
+    return this[_funcName] ? this[_funcName]() : this.prefix + size;
+  };
 
-        for (var prop in this) {
-          if (typeof this[prop] == 'function' && /get.+SizeClass/.test(prop)) {
-            _size = prop.replace('get', '').replace('SizeClass', '')
-                        .replace(/([A-Z])/g, function (x, y) { return '_' + y; })
-                        .replace(/^_/, '');
+  this.getSizes = function () {
+    if (!_sizes) {
+      _sizes = {};
+      var _size;
 
-            _sizes[_size.toUpperCase()] = _size.toLocaleLowerCase().replace(/_/g, '-');
-          }
+      for (var prop in this) {
+        if (typeof this[prop] == 'function' && /get.+SizeClass/.test(prop)) {
+          _size = prop.replace('get', '').replace('SizeClass', '')
+                      .replace(/([A-Z])/g, function (x, y) { return '_' + y; })
+                      .replace(/^_/, '');
+
+          _sizes[_size.toUpperCase()] = _size.toLocaleLowerCase().replace(/_/g, '-');
         }
       }
+    }
 
-      return ngxBootstrap.shallowCopy({}, _sizes);
-    };
+    return ngxBootstrapUtils.shallowCopy({}, _sizes);
+  };
 
-    this.getLargeSizeClass = function () {
-      return this.prefix + 'lg';
-    };
-    this.getSmallSizeClass = function () {
-      return this.prefix + 'sm';
-    };
-    this.getBlockSizeClass = function () {
-      return this.prefix + 'block';
-    };
-  }
-})(window.ngxBootstrap);
+  this.getLargeSizeClass = function () {
+    return this.prefix + 'lg';
+  };
+  this.getSmallSizeClass = function () {
+    return this.prefix + 'sm';
+  };
+  this.getBlockSizeClass = function () {
+    return this.prefix + 'block';
+  };
+}
+
+module.exports = ngxSizeService;

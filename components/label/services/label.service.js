@@ -1,22 +1,25 @@
-﻿(function (ngxBootstrap) {
-  ngxBootstrap.ngxComponents.ngxLabelService = ng.core.Class(new _ngxLabelService());
+﻿var ngxColorService = require('./../../../cores/services/render/color.service.js');
+var ngxTypeService = require('./../../../cores/services/render/type.service.js');
+var ngxBootstrapUtils = require('./../../../cores/ngx-bootstrap.utils.js');
 
-  function _ngxLabelService() {
-    this.constructor = [
-      ngxBootstrap.ngxCores.ngxColorService,
-      ngxBootstrap.ngxCores.ngxTypeService,
+var ngxLabelService = ng.core.Class(new _ngxLabelService());
 
-      function (ngxColorService, ngxTypeService) {
-        ngxBootstrap.shallowCopy(this, ngxColorService);
-        ngxBootstrap.shallowCopy(this, ngxTypeService);
+function _ngxLabelService() {
+  this.constructor = [
+    ngxColorService,
+    ngxTypeService,
 
-        this.prefixClass = 'ngxLabel';
-      }
-    ];
+    function (ngxColorService, ngxTypeService) {
+      ngxBootstrapUtils.shallowCopy(this, ngxColorService);
+      ngxBootstrapUtils.shallowCopy(this, ngxTypeService);
 
-    this.getPillTypeClass = function () {
-      return  this.prefixClass + '-pill';
-    };
-  }
+      this.prefixClass = 'ngxLabel';
+    }
+  ];
 
-})(window.ngxBootstrap);
+  this.getPillTypeClass = function () {
+    return  this.prefixClass + '-pill';
+  };
+}
+
+module.exports = ngxLabelService;

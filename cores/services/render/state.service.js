@@ -1,52 +1,54 @@
-﻿(function (ngxBootstrap) {
-  ngxBootstrap.ngxClass.ngxStateServiceClass = ngxStateService;
-  ngxBootstrap.ngxCores.ngxStateService = ng.core.Class(new ngxStateService());
+﻿var ngxBootstrapUtils = require('./../../../cores/ngx-bootstrap.utils.js');
 
-  function ngxStateService() {
-    var _states;
+// ngxBootstrap.ngxClass.ngxStateServiceClass = ngxStateService;
+var ngxStateService = ng.core.Class(new _ngxStateService());
 
-    this.constructor = function () {
-    };
+function _ngxStateService() {
+  var _states;
 
-    this.setPrefix = function (prefix) {
-      this.prefix = prefix ? prefix + '-' : '';
-      return this;
-    };
+  this.constructor = function () {
+  };
 
-    this.getStateClass = function (state) {
-      if (!state) { return ''; }
+  this.setPrefix = function (prefix) {
+    this.prefix = prefix ? prefix + '-' : '';
+    return this;
+  };
 
-      state = state.toLowerCase().replace(/-([a-z])/g, function (x, y) { return y.toUpperCase(); });
-      state = state.charAt(0).toUpperCase() + state.slice(1);
+  this.getStateClass = function (state) {
+    if (!state) { return ''; }
 
-      var _funcName = 'get' + state + 'StateClass';
-      return this[_funcName] ? this[_funcName]() : this.prefix + state;
-    };
+    state = state.toLowerCase().replace(/-([a-z])/g, function (x, y) { return y.toUpperCase(); });
+    state = state.charAt(0).toUpperCase() + state.slice(1);
 
-    this.getStates = function () {
-      if (!_states) {
-        _states = {};
-        var _state;
+    var _funcName = 'get' + state + 'StateClass';
+    return this[_funcName] ? this[_funcName]() : this.prefix + state;
+  };
 
-        for (var prop in this) {
-          if (typeof this[prop] == 'function' && /get.+StateClass/.test(prop)) {
-            _state = prop.replace('get', '').replace('StateClass', '')
-                        .replace(/([A-Z])/g, function (x, y) { return '_' + y; })
-                        .replace(/^_/, '');
+  this.getStates = function () {
+    if (!_states) {
+      _states = {};
+      var _state;
 
-            _states[_state.toUpperCase()] = _state.toLocaleLowerCase().replace(/_/g, '-');
-          }
+      for (var prop in this) {
+        if (typeof this[prop] == 'function' && /get.+StateClass/.test(prop)) {
+          _state = prop.replace('get', '').replace('StateClass', '')
+                      .replace(/([A-Z])/g, function (x, y) { return '_' + y; })
+                      .replace(/^_/, '');
+
+          _states[_state.toUpperCase()] = _state.toLocaleLowerCase().replace(/_/g, '-');
         }
       }
+    }
 
-      return ngxBootstrap.shallowCopy({}, _states);
-    };
+    return ngxBootstrapUtils.shallowCopy({}, _states);
+  };
 
-    this.getActiveStateClass = function () {
-      return 'active';
-    };
-    this.getDisabledStateClass = function () {
-      return 'disabled';
-    };
-  }
-})(window.ngxBootstrap);
+  this.getActiveStateClass = function () {
+    return 'active';
+  };
+  this.getDisabledStateClass = function () {
+    return 'disabled';
+  };
+}
+
+module.exports = ngxStateService;

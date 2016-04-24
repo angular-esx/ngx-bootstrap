@@ -1,7 +1,0 @@
-﻿{
-  "services/render/color.service": { },
-  "services/render/size.service": { },
-  "services/render/state.service": { },
-  "services/render/type.service": { },
-  "services/render/render.service": { }
-}

@@ -1,10 +1,8 @@
-﻿var ngxDividerComponent = ng.core.Directive({
-  selector: 'ngx-divider',
-})
-.Class(new _ngxDivider());
-
-function _ngxDivider() {
+﻿function _ngxDividerComponent() {
   this.constructor = function () { };
 }
 
-module.exports = ngxDividerComponent;
+module.exports = ng.core.Directive({
+  selector: 'ngx-divider',
+})
+.Class(new _ngxDividerComponent());

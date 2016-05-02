@@ -1,68 +1,84 @@
-﻿// ngxBootstrap.ngxClass.ngxLinkClass = _ngxLink;
-
-var ngxBootstrapUtils = require('./../../ngx-bootstrap-utils.js');
-var ngxRenderService = require('./../../services/render/render.service.js');
+﻿var ngxBaseComponent = require('./../base/base.component.js');
 var ngxLinkService = require('./services/link.service.js');
 
-var ngxLinkComponent = ng.core.Component({
-  selector: 'ngx-link',
-  template: _getNgxLinkTemplate(),
-  properties: ['itemLink: href', 'state'],
-  providers: [ngxRenderService]
-})
-.Class(new _ngxLink());
-
-function _ngxLink() {
+function _ngxLinkComponent() {
   var _ATTRIBUTES = {
     HREF: 'href',
-    STATE: 'state',
+    COLOR: 'color',
+    SIZE: 'size',
+    STATE: 'state'
   };
 
   this.constructor = [
     ng.core.ElementRef,
-    ngxRenderService,
     ngxLinkService,
 
-    function (elementRef, ngxRenderService, ngxLinkService) {
-      this.elementRef = elementRef;
-      this.ngxRenderService = ngxRenderService.for(elementRef.nativeElement);
+    function (elementRef, ngxLinkService) {
+      ngxBaseComponent.call(this, elementRef);
+      
+      this.base = Object.getPrototypeOf(Object.getPrototypeOf(this));
       this.ngxLinkService = ngxLinkService;
+      this.cssClass = this.ngxLinkService.prefixClass;
+      
+      this.clickEmitter = new ng.core.EventEmitter();
     }
   ];
-
-  this.ngAfterContentInit = function () {
-    if (!this.href) { this.href = '#'; }
-  };
-
+  
   this.ngAfterViewInit = function () {
-    var _self = this;
-    ngxBootstrapUtils.forEach(_ATTRIBUTES, function (attribute) {
-      _self.ngxRenderService.removeElementAttribute(attribute);
+    this.removeOneTimeBindingAttributes(_ATTRIBUTES.HREF);
+  };
+  
+  this.onBuildCssClass = function (changeRecord) {
+    var _prefixClass = this.ngxItemService.prefixClass,
+        _prevColor = this.ngxItemService.getColorClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.COLOR)),
+        _currentColor = this.ngxItemService.getColorClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.COLOR)),
+        _prevSize = this.ngxItemService.getSizeClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.SIZE)),
+        _currentSize = this.ngxItemService.getSizeClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.SIZE)),
+        _prevState = this.ngxItemService.getStateClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.STATE)),
+        _currentState = this.ngxItemService.getStateClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.STATE));
+
+    var _classes = [_prefixClass];
+    
+    if (_currentColor) { _classes.push(_currentColor); }
+    if (_currentSize) { _classes.push(_currentSize); }
+    if (_currentState) { _classes.push(_currentState); }
+      
+    ngxBootstrapUtils.forEach(this.cssClass.split(' '), function (className) {
+      if (
+          className && className != _prefixClass &&
+          className != _prevColor &&
+          className != _prevSize &&
+          className != _prevState
+        )
+      {
+        _classes.push(className);
+      }
     });
-  };
 
-  this.isDisabled = function () {
-    return this.ngxLinkService.isDisabledState(this.state);
-  };
-
-  this.isActive = function () {
-    return this.ngxLinkService.isActiveState(this.state);
+    return _classes.join(' ');
   };
 
   this.click = function ($event) {
-    if (this.isDisabled()) {
+    if (this.ngxLinkService.isDisabledStateClass(this.state)) {
       $event.preventDefault();
+      return;
     }
+    
+    if(this.clickEmitter){
+      this.clickEmitter.emit({
+        href: this.href,
+        preventDefault: function () { $event.preventDefault(); }
+      });
+    }   
   };
 
 }
 
-function _getNgxLinkTemplate() {
-  return [
-    '<a [href]="itemLink" [class.active]="isActive()" [class.disabled]="isDisabled()" (click) ="click($event)">',
-      '<ng-content></ng-content>',
-    '</a>'
-  ].join('');
-}
-
-module.exports = ngxLinkComponent;
+module.exports = ng.core.Component({
+  selector: 'ngx-link',
+  template: '<a [class]="cssClass" [href]="href" (click)="click($event)"><ng-content></ng-content></a>',
+  providers: [ngxRenderService],
+  properties: ['href', 'color', 'size', 'state'],
+  events: ['clickEmitter: click']
+})
+.Class(new _ngxLinkComponent());

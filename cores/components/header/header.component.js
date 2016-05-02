@@ -1,11 +1,9 @@
-﻿var ngxHeaderComponent = ng.core.Component({
-  selector: 'ngx-header',
-  template: '<ng-content></ng-content>'
-})
-.Class(new _ngxHeader());
-
-function _ngxHeader() {
+﻿function _ngxHeaderComponent() {
   this.constructor = function () { };
 }
 
-module.exports = ngxHeaderComponent;
+module.exports = ng.core.Component({
+  selector: 'ngx-header',
+  template: '<div><ng-content></ng-content></div>'
+})
+.Class(new _ngxHeaderComponent());

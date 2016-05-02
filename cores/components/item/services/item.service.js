@@ -1,18 +1,20 @@
-﻿var ngxBootstrapUtils = require('./../../../ngx-bootstrap.utils.js');
+﻿var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
+var ngxColorService = require('./../../../cores/services/render/color.service.js');
+var ngxSizeService = require('./../../../cores/services/render/size.service.js');
 var ngxStateService = require('./../../services/render/state.service.js');
-
-var ngxItemService = ng.core.Class(new _ngxItemService());
 
 function _ngxItemService() {
   this.constructor = [
-    ngxBootstrap.ngxCores.ngxStateService,
+    ngxColorService,
+    ngxSizeService,
+    ngxStateService,
 
-    function (ngxStateService) {
-      ngxBootstrapUtils.shallowCopy(this, ngxStateService);
-
-      this.setPrefix('');
+    function (ngxColorService, ngxSizeService, ngxStateService) {
+      ngxBootstrap.shallowCopy(this, ngxColorService);
+      ngxBootstrap.shallowCopy(this, ngxSizeService);
+      ngxBootstrap.shallowCopy(this, ngxStateService);
     }
   ];
 }
 
-module.exports = ngxItemService;
+module.exports = ng.core.Class(new _ngxItemService());

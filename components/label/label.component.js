@@ -50,16 +50,11 @@ function _ngxLabelComponent() {
     return _classes.join(' ');
   };
 }
-  
-function _getStyleUrl() {
-  var _url = 'components/label/css/';
-  return _url + (window.location.href.indexOf('theme=material') > -1 ? 'label.material.css' : 'label.bootstrap4.css');
-}
 
 module.exports = ng.core.Component({
   selector: 'ngx-label',
-  template: '<span [class]="cssClass"><ng-content></ng-content></span>',
-  styleUrls: [_getStyleUrl()],
+  /*Inject template at here*/
+  /*Inject style at here*/
   properties: ['color', 'type'],
 })
 .Class(new _ngxLabelComponent());

@@ -1,6 +1,4 @@
-﻿var ngxBootstrapUtils = require('./../../../cores/ngx-bootstrap.utils.js');
-
-var ngxColorService = ng.core.Class(new _ngxColorService());
+﻿var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
 
 function _ngxColorService() {
   var _COLORS;
@@ -9,15 +7,21 @@ function _ngxColorService() {
     this.prefixClass = '';
   };
 
-  this.getColorClass = function (color) {
-    if (!color) { return ''; }
+  this.getColorClass = function (colors) {
+    if (!colors) { return ''; }
 
-    var _color = color.toLowerCase().replace(/-([a-z])/g, function (x, y) { return y.toUpperCase(); });
-    _color = _color.charAt(0).toUpperCase() + _color.slice(1);
+    var _colors = colors.split(' ');
+    var _color, _funcName, _self = this, _colorClasses = [];
+    
+    ngxBootstrap.forEach(_colors, function(color){
+      _color = color.toLowerCase().replace(/-([a-z])/g, function (x, y) { return y.toUpperCase(); });
+      _color = _color.charAt(0).toUpperCase() + _color.slice(1);
 
-    var _funcName = 'get' + _color + 'ColorClass';
-
-    return this[_funcName] ? this[_funcName]() : this.prefixClass + '-' +_color;
+      _funcName = 'get' + _color + 'ColorClass';
+      _colorClasses.push(_self[_funcName] ? _self[_funcName]() : _self.prefixClass + '-color-' +_color);
+    });
+    
+    return _colorClasses.length === 0 ? '' : _colorClasses.join(' ');
   };
 
   this.getColors = function () {
@@ -36,107 +40,65 @@ function _ngxColorService() {
       }
     }
 
-    return ngxBootstrapUtils.shallowCopy({}, _COLORS);
+    return ngxBootstrap.shallowCopy({}, _COLORS);
   };
+
+  this.isOutlineColorClass = function (color) {
+    return this.getColorClass(color).indexOf(this.getOutlineColorClass()) > -1;
+  };
+  this.getOutlineColorClass = function(){
+    return this.prefixClass + '-color-outline';
+  }; 
 
   this.isDefaultColorClass = function (color) {
-    return this.getColorClass(color) === this.getDefaultColorClass();
+    return this.getColorClass(color).indexOf(this.getDefaultColorClass()) > -1;
   };
   this.getDefaultColorClass = function () {
-    return this.prefixClass + '-default';
-  };
-
-  this.isDefaultOutlineColorClass = function (color) {
-    return this.getColorClass(color) === this.getDefaultOutlineColorClass();
-  };
-  this.getDefaultOutlineColorClass = function () {
-    return this.prefixClass + '-default-outline';
+    return this.prefixClass + '-color-default';
   };
 
   this.isPrimaryColorClass = function (color) {
-    return this.getColorClass(color) === this.getPrimaryColorClass();
+    return this.getColorClass(color).indexOf(this.getPrimaryColorClass()) > -1;
   };
   this.getPrimaryColorClass = function () {
-    return this.prefixClass + '-primary';
-  };
-
-  this.isPrimaryOutlineColorClass = function (color) {
-    return this.getColorClass(color) === this.getPrimaryOutlineColorClass();
-  };
-  this.getPrimaryOutlineColorClass = function () {
-    return this.prefixClass + '-primary-outline';
+    return this.prefixClass + '-color-primary';
   };
 
   this.isSecondaryColorClass = function (color) {
-    return this.getColorClass(color) === this.getSecondaryColorClass();
+    return this.getColorClass(color).indexOf(this.getSecondaryColorClass()) > -1;
   };
   this.getSecondaryColorClass = function () {
-    return this.prefixClass + '-secondary';
-  };
-
-  this.isSecondaryOutlineColorClass = function (color) {
-    return this.getColorClass(color) === this.getSecondaryOutlineColorClass();
-  };
-  this.getSecondaryOutlineColorClass = function () {
-    return this.prefixClass + '-secondary-outline';
+    return this.prefixClass + '-color-secondary';
   };
 
   this.isInfoColorClass = function (color) {
-    return this.getColorClass(color) === this.getInfoColorClass();
+    return this.getColorClass(color).indexOf(this.getInfoColorClass()) > -1;
   };
   this.getInfoColorClass = function () {
-    return this.prefixClass + '-info';
-  };
-
-  this.isInfoOutlineColorClass = function (color) {
-    return this.getColorClass(color) === this.getInfoOutlineColorClass();
-  };
-  this.getInfoOutlineColorClass = function () {
-    return this.prefixClass + '-info-outline';
+    return this.prefixClass + '-color-info';
   };
 
   this.isSuccessColorClass = function (color) {
-    return this.getColorClass(color) === this.getSuccessColorClass();
+    return this.getColorClass(color).indexOf(this.getSuccessColorClass()) > -1;
   };
   this.getSuccessColorClass = function () {
-    return this.prefixClass + '-success';
-  };
-
-  this.isSuccessOutlineColorClass = function (color) {
-    return this.getColorClass(color) === this.getSuccessOutlineColorClass();
-  };
-  this.getSuccessOutlineColorClass = function () {
-    return this.prefixClass + '-success-outline';
+    return this.prefixClass + '-color-success';
   };
 
   this.isWarningColorClass = function (color) {
-    return this.getColorClass(color) === this.getWarningColorClass();
+    return this.getColorClass(color).indexOf(this.getWarningColorClass()) > -1;
   };
   this.getWarningColorClass = function () {
-    return this.prefixClass + '-warning';
-  };
-
-  this.isWarningOutlineColorClass = function (color) {
-    return this.getColorClass(color) === this.getWarningOutlineColorClass();
-  };
-  this.getWarningOutlineColorClass = function () {
-    return this.prefixClass + '-warning-outline';
+    return this.prefixClass + '-color-warning';
   };
 
   this.isDangerColorClass = function (color) {
-    return this.getColorClass(color) === this.getDangerColorClass();
+    return this.getColorClass(color).indexOf(this.getDangerColorClass()) > -1;
   };
   this.getDangerColorClass = function () {
-    return this.prefixClass + '-danger';
-  };
-
-  this.isDangerOutlineColorClass = function (color) {
-    return this.getColorClass(color) === this.getDangerOutlineColorClass();
-  };
-  this.getDangerOutlineColorClass = function () {
-    return this.prefixClass + '-danger-outline';
+    return this.prefixClass + '-color-danger';
   };
 
 }
 
-module.exports = ngxColorService;
+module.exports = ng.core.Class(new _ngxColorService());

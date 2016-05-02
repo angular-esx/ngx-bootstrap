@@ -1,32 +1,32 @@
-﻿var ngxBootstrapUtils = require('./../../../cores/ngx-bootstrap.utils.js');
-
-// ngxBootstrap.ngxClass.ngxSizeServiceClass = ngxSizeService;
-var ngxSizeService = ng.core.Class(new _ngxSizeService());
+﻿var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
 
 function _ngxSizeService() {
-  var _sizes;
+  var _SIZES;
 
   this.constructor = function () {
+    this.prefixClass = '';
   };
 
-  this.setPrefix = function (prefix) {
-    this.prefix = prefix ? prefix + '-' : '';
-    return this;
-  };
+  this.getSizeClass = function (sizes) {
+    if (!sizes) { return ''; }
+    
+    var _sizes = sizes.split(' ');
+    var _size, _funcName, _self = this, _sizeClasses = [];
 
-  this.getSizeClass = function (size) {
-    if (!size) { return ''; }
+    ngxBootstrap.forEach(_sizes, function (size) {
+      _size = size.toLowerCase().replace(/-([a-z])/g, function (x, y) { return y.toUpperCase(); });
+      _size = _size.charAt(0).toUpperCase() + _size.slice(1);
 
-    size = size.toLowerCase().replace(/-([a-z])/g, function (x, y) { return y.toUpperCase(); });
-    size = size.charAt(0).toUpperCase() + size.slice(1);
+      _funcName = 'get' + _size + 'SizeClass';
+      _sizeClasses.push(_self[_funcName] ? _self[_funcName]() : _self.prefixClass + '-size-' + _size);
+    });
 
-    var _funcName = 'get' + size + 'SizeClass';
-    return this[_funcName] ? this[_funcName]() : this.prefix + size;
+    return _sizeClasses.length === 0 ? '' : _sizeClasses.join(' ');
   };
 
   this.getSizes = function () {
-    if (!_sizes) {
-      _sizes = {};
+    if (!_SIZES) {
+      _SIZES = {};
       var _size;
 
       for (var prop in this) {
@@ -35,23 +35,34 @@ function _ngxSizeService() {
                       .replace(/([A-Z])/g, function (x, y) { return '_' + y; })
                       .replace(/^_/, '');
 
-          _sizes[_size.toUpperCase()] = _size.toLocaleLowerCase().replace(/_/g, '-');
+          _SIZES[_size.toUpperCase()] = _size.toLocaleLowerCase().replace(/_/g, '-');
         }
       }
     }
 
-    return ngxBootstrapUtils.shallowCopy({}, _sizes);
+    return ngxBootstrap.shallowCopy({}, _SIZES);
   };
 
+  this.isLargeSizeClass = function (size) {
+    return this.getSizeClass(size).indexOf(this.getLargeSizeClass()) > -1;
+  };
   this.getLargeSizeClass = function () {
-    return this.prefix + 'lg';
+    return this.prefix + '-size-large';
+  };
+  
+  this.isSmallSizeClass = function (size) {
+    return this.getSizeClass(size).indexOf(this.getSmallSizeClass()) > -1;
   };
   this.getSmallSizeClass = function () {
-    return this.prefix + 'sm';
+    return this.prefix + '-size-small';
+  };
+  
+  this.isBlockSizeClass = function (size) {
+    return this.getSizeClass(size).indexOf(this.getBlockSizeClass()) > -1;
   };
   this.getBlockSizeClass = function () {
-    return this.prefix + 'block';
+    return this.prefix + '-size-block';
   };
 }
 
-module.exports = ngxSizeService;
+module.exports = ng.core.Class(new _ngxSizeService());

@@ -1,6 +1,4 @@
-﻿var ngxBootstrapUtils = require('./../../ngx-bootstrap-utils.js');
-
-var ngxRenderService = ng.core.Class(new _ngxRenderService());
+﻿var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
 
 function _ngxRenderService() {
   this.constructor = function () {
@@ -26,7 +24,7 @@ function _ngxRenderService() {
     var _currentClass = this.getAttribute('class');
     if (_currentClass) {
       var _classes = [];
-      ngxBootstrapUtils.forEach(_currentClass.split(' '), function (item) {
+      ngxBootstrap.forEach(_currentClass.split(' '), function (item) {
         if (item) { _classes.push(item); }
       });
 
@@ -60,4 +58,4 @@ function _ngxRenderService() {
 
 }
 
-module.exports = ngxRenderService;
+module.exports = ng.core.Class(new _ngxRenderService());

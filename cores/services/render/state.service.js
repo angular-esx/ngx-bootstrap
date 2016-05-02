@@ -1,32 +1,32 @@
-﻿var ngxBootstrapUtils = require('./../../../cores/ngx-bootstrap.utils.js');
-
-// ngxBootstrap.ngxClass.ngxStateServiceClass = ngxStateService;
-var ngxStateService = ng.core.Class(new _ngxStateService());
+﻿var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
 
 function _ngxStateService() {
-  var _states;
+  var _STATES;
 
   this.constructor = function () {
+    this.prefixClass = '';
   };
 
-  this.setPrefix = function (prefix) {
-    this.prefix = prefix ? prefix + '-' : '';
-    return this;
-  };
+  this.getStateClass = function (states) {
+    if (!states) { return ''; }
 
-  this.getStateClass = function (state) {
-    if (!state) { return ''; }
+    var _states = states.split(' ');
+    var _state, _funcName, _self = this, _stateClasses = [];
 
-    state = state.toLowerCase().replace(/-([a-z])/g, function (x, y) { return y.toUpperCase(); });
-    state = state.charAt(0).toUpperCase() + state.slice(1);
+    ngxBootstrap.forEach(_states, function (state) {
+      _state = state.toLowerCase().replace(/-([a-z])/g, function (x, y) { return y.toUpperCase(); });
+      _state = _state.charAt(0).toUpperCase() + _state.slice(1);
 
-    var _funcName = 'get' + state + 'StateClass';
-    return this[_funcName] ? this[_funcName]() : this.prefix + state;
+      _funcName = 'get' + _state + 'StateClass';
+      _stateClasses.push(_self[_funcName] ? _self[_funcName]() : _self.prefixClass + '-state-' + _state);
+    });
+
+    return _stateClasses.length === 0 ? '' : _stateClasses.join(' ');
   };
 
   this.getStates = function () {
-    if (!_states) {
-      _states = {};
+    if (!_STATES) {
+      _STATES = {};
       var _state;
 
       for (var prop in this) {
@@ -35,20 +35,27 @@ function _ngxStateService() {
                       .replace(/([A-Z])/g, function (x, y) { return '_' + y; })
                       .replace(/^_/, '');
 
-          _states[_state.toUpperCase()] = _state.toLocaleLowerCase().replace(/_/g, '-');
+          _STATES[_state.toUpperCase()] = _state.toLocaleLowerCase().replace(/_/g, '-');
         }
       }
     }
 
-    return ngxBootstrapUtils.shallowCopy({}, _states);
+    return ngxBootstrap.shallowCopy({}, _STATES);
   };
 
+  this.isActiveStateClass = function (state) {
+    return this.getStateClass(state).indexOf(this.getActiveStateClass()) > -1;
+  };
   this.getActiveStateClass = function () {
-    return 'active';
+    return this.prefixClass + '-state-active';
+  };
+  
+  this.isDisabledStateClass = function (state) {
+    return this.getStateClass(state).indexOf(this.getDisabledStateClass()) > -1;
   };
   this.getDisabledStateClass = function () {
-    return 'disabled';
+    return this.prefixClass + '-state-disabled';
   };
 }
 
-module.exports = ngxStateService;
+module.exports = ng.core.Class(new _ngxStateService());

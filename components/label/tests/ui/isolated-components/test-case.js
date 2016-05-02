@@ -3,8 +3,16 @@ var ngxLabelService = require('./../../../services/label.service.js');
 var ngxColorService = require('./../../../../../cores/services/render/color.service.js');
 var ngxTypeService = require('./../../../../../cores/services/render/type.service.js');
 var ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.js');
+ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.utils.js');
 
-var isolatedComponents = ng.core.Component({
+function _testCase() {
+  this.constructor = [ngxLabelService, function (ngxLabelService) {
+    this.COLORS = ngxLabelService.getColors();
+    this.TYPES = ngxLabelService.getTypes();
+  }];
+}
+
+module.exports = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: ngxBootstrap.configs.fileService.getTestCaseTemplate('label'),
   directives: [
@@ -16,13 +24,4 @@ var isolatedComponents = ng.core.Component({
     ngxLabelService
   ]
 })
-.Class(new testCase());
-
-function testCase() {
-  this.constructor = [ngxLabelService, function (ngxLabelService) {
-    this.COLORS = ngxLabelService.getColors();
-    this.TYPES = ngxLabelService.getTypes();
-  }];
-}
-
-module.exports = isolatedComponents;
+.Class(new _testCase());

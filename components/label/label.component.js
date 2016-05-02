@@ -1,14 +1,6 @@
 ﻿var ngxLabelService = require('./services/label.service.js');
-var ngxBaseComponent = require('./../base/base.component.js');
-var ngxBootstrapUtils = require('./../../cores/ngx-bootstrap.utils.js');
-
-var ngxLabelComponent = ng.core.Component({
-  selector: 'ngx-label',
-  template: '<span [class]="cssClass"><ng-content></ng-content></span>',
-  styleUrls: [_getStyleUrl()],
-  properties: ['color', 'type'],
-})
-.Class(new _ngxLabelComponent());
+var ngxBaseComponent = require('./../../cores/components/base/base.component.js');
+var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
 
 function _ngxLabelComponent() {
   var _ATTRIBUTES = {
@@ -31,10 +23,6 @@ function _ngxLabelComponent() {
     }
   ];
 
-  this.ngOnChanges = function (changeRecord) {
-    this.cssClass = this.onBuildCssClass(changeRecord);
-  };
-
   this.onBuildCssClass = function (changeRecord) {
     var _prefixClass = this.ngxLabelService.prefixClass,
         _prevColor = this.ngxLabelService.getColorClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.COLOR)),
@@ -48,7 +36,7 @@ function _ngxLabelComponent() {
     ];
     if (_currentType) { _classes.push(_currentType); }
       
-    ngxBootstrapUtils.forEach(this.cssClass.split(' '), function (className) {
+    ngxBootstrap.forEach(this.cssClass.split(' '), function (className) {
       if (
           className && className != _prefixClass &&
           className != _prevColor &&
@@ -68,4 +56,10 @@ function _getStyleUrl() {
   return _url + (window.location.href.indexOf('theme=material') > -1 ? 'label.material.css' : 'label.bootstrap4.css');
 }
 
-module.exports = ngxLabelComponent;
+module.exports = ng.core.Component({
+  selector: 'ngx-label',
+  template: '<span [class]="cssClass"><ng-content></ng-content></span>',
+  styleUrls: [_getStyleUrl()],
+  properties: ['color', 'type'],
+})
+.Class(new _ngxLabelComponent());

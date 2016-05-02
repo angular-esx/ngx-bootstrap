@@ -1,4 +1,4 @@
-﻿.ngxLabel {
+﻿.ngx-label {
   display: inline-block;
   padding: .25em .4em;
   font-size: 75%;
@@ -11,36 +11,36 @@
   border-radius: .25rem;
 }
 
-.ngxLabel:empty {
+.ngx-label:empty {
   display: none;
 }
 
-.ngxLabel-pill {
+.ngx-label-type-pill {
   padding-right: .6em;
   padding-left: .6em;
   border-radius: 10rem;
 }
 
-.ngxLabel-default {
+.ngx-label-color-default {
   background-color: #818a91;
 }
 
-.ngxLabel-primary {
+.ngx-label-color-primary {
   background-color: #0275d8;
 }
 
-.ngxLabel-success {
+.ngx-label-color-success {
   background-color: #5cb85c;
 }
 
-.ngxLabel-info {
+.ngx-label-color-info {
   background-color: #5bc0de;
 }
 
-.ngxLabel-warning {
+.ngx-label-color-warning {
   background-color: #f0ad4e;
 }
 
-.ngxLabel-danger {
+.ngx-label-color-danger {
   background-color: #d9534f;
 }

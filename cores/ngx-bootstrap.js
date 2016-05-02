@@ -3,7 +3,6 @@ var ngxBootstrap = {};
 var _configs = ngxBootstrap.configs = {};
 _configs.fileService = new fileService();
 
-ngxBootstrap.ngxClass = {};
 ngxBootstrap.ngxCores = {};
 ngxBootstrap.ngxComponents = {};
 

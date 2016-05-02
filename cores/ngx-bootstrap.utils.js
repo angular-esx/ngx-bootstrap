@@ -1,6 +1,6 @@
-var ngxBootstrapUtils = {};
+var ngxBootstrap = require('./ngx-bootstrap.js');
 
-ngxBootstrapUtils.shallowCopy = function (target, source, overrideTarget) {
+ngxBootstrap.shallowCopy = function (target, source, overrideTarget) {
   for (var prop in source) {
     if (!target[prop] || (target[prop] && overrideTarget)) {
       target[prop] = source[prop];
@@ -10,26 +10,26 @@ ngxBootstrapUtils.shallowCopy = function (target, source, overrideTarget) {
   return target;
 };
 
-ngxBootstrapUtils.isString = function (target) {
+ngxBootstrap.isString = function (target) {
   return target && typeof (target) === 'string';
 };
-ngxBootstrapUtils.isObject = function (target) {
+ngxBootstrap.isObject = function (target) {
   return target && typeof (target) === 'object';
 };
-ngxBootstrapUtils.isArray = function (target) {
+ngxBootstrap.isArray = function (target) {
   return target && Object.prototype.toString.call(target) === '[object Array]';
 };
-ngxBootstrapUtils.isFunction = function (target) {
-  return target && typeof (target) === "function";
+ngxBootstrap.isFunction = function (target) {
+  return target && typeof (target) === 'function';
 };
 
-ngxBootstrapUtils.distinct = function (target, compareTo) {
-  if (!ngxBootstrapUtils.isArray(target)) {
+ngxBootstrap.distinct = function (target, compareTo) {
+  if (!ngxBootstrap.isArray(target)) {
     return target;
   }
 
   var _value, _result = [];
-  ngxBootstrapUtils.forEach(target, function (item) {
+  ngxBootstrap.forEach(target, function (item) {
     _value = compareTo ? compareTo(item) : item;
 
     if (_result.indexOf(_value) === -1) {
@@ -39,16 +39,16 @@ ngxBootstrapUtils.distinct = function (target, compareTo) {
 
   return _result;
 };
-ngxBootstrapUtils.forEach = function (target, callback) {
+ngxBootstrap.forEach = function (target, callback) {
   if (target && callback) {
-    if(ngxBootstrapUtils.isObject(target)){
+    if(ngxBootstrap.isObject(target)){
       for (var prop in target) {
         if (callback(target[prop], prop)) {
           break;
         }
       }
     }
-    else if(ngxBootstrapUtils.isFunction(target)){
+    else if(ngxBootstrap.isFunction(target)){
       for (var i = 0, length = target.length; i < length; i++) {
         if (callback(target[i], i)) {
           break;
@@ -58,12 +58,12 @@ ngxBootstrapUtils.forEach = function (target, callback) {
   }
 };
 
-ngxBootstrapUtils.hasClass = function (element, className) {
+ngxBootstrap.hasClass = function (element, className) {
   return element.className && element.className.indexOf(className) > -1;
 };
 
-ngxBootstrapUtils.addClass = function (element, className) {
-  element.className = ngxBootstrapUtils.hasClass(element, className) ? element.className : className;
+ngxBootstrap.addClass = function (element, className) {
+  element.className = ngxBootstrap.hasClass(element, className) ? element.className : className;
 };
 
-module.exports = ngxBootstrapUtils;
+module.exports = ngxBootstrap;

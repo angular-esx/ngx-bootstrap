@@ -1,5 +1,8 @@
-﻿var ngxBaseComponent = require('./../base/base.component.js');
-var ngxLinkService = require('./services/link.service.js');
+﻿var ngxLinkService = require('./services/link.service.js');
+var ngxRenderService = require('./../../services/render/render.service.js');
+var ngxBaseComponent = require('./../base/base.component.js');
+var ngxBootstrap = require('./../../ngx-bootstrap.js');
+ngxBootstrap = require('./../../ngx-bootstrap.utils.js');
 
 function _ngxLinkComponent() {
   var _ATTRIBUTES = {
@@ -9,16 +12,21 @@ function _ngxLinkComponent() {
     STATE: 'state'
   };
 
+  this.extends = ngxBaseComponent;
+
   this.constructor = [
     ng.core.ElementRef,
+    ngxRenderService,
     ngxLinkService,
 
-    function (elementRef, ngxLinkService) {
-      ngxBaseComponent.call(this, elementRef);
+    function (elementRef, ngxRenderService, ngxLinkService) {
+      ngxBaseComponent.call(this, elementRef, ngxRenderService);
       
       this.base = Object.getPrototypeOf(Object.getPrototypeOf(this));
       this.ngxLinkService = ngxLinkService;
       this.cssClass = this.ngxLinkService.prefixClass;
+      
+      if(!this.href){ this.href = '#'; }
       
       this.clickEmitter = new ng.core.EventEmitter();
     }
@@ -29,13 +37,25 @@ function _ngxLinkComponent() {
   };
   
   this.onBuildCssClass = function (changeRecord) {
-    var _prefixClass = this.ngxItemService.prefixClass,
-        _prevColor = this.ngxItemService.getColorClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.COLOR)),
-        _currentColor = this.ngxItemService.getColorClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.COLOR)),
-        _prevSize = this.ngxItemService.getSizeClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.SIZE)),
-        _currentSize = this.ngxItemService.getSizeClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.SIZE)),
-        _prevState = this.ngxItemService.getStateClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.STATE)),
-        _currentState = this.ngxItemService.getStateClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.STATE));
+    var _prefixClass = this.ngxLinkService.prefixClass;
+    
+    var _prevColor, _currentColor;
+    if(this.ngxLinkService.getColorClass){
+      _prevColor = this.ngxLinkService.getColorClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.COLOR));
+      _currentColor = this.ngxLinkService.getColorClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.COLOR));
+    }
+    
+    var _prevSize, _currentSize;
+    if(this.ngxLinkService.getSizeClass){
+      _prevSize = this.ngxLinkService.getSizeClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.SIZE));
+      _currentSize = this.ngxLinkService.getSizeClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.SIZE));
+    }
+    
+    var _prevState, _currentState;
+    if(this.ngxLinkService.getStateClass){
+      _prevState = this.ngxLinkService.getStateClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.STATE));
+      _currentState = this.ngxLinkService.getStateClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.STATE));
+    }
 
     var _classes = [_prefixClass];
     
@@ -43,12 +63,12 @@ function _ngxLinkComponent() {
     if (_currentSize) { _classes.push(_currentSize); }
     if (_currentState) { _classes.push(_currentState); }
       
-    ngxBootstrapUtils.forEach(this.cssClass.split(' '), function (className) {
+    ngxBootstrap.forEach(this.cssClass.split(' '), function (className) {
       if (
           className && className != _prefixClass &&
-          className != _prevColor &&
-          className != _prevSize &&
-          className != _prevState
+          (!_prevColor || _prevColor.indexOf(className) === -1) &&
+          (!_prevSize || _prevSize.indexOf(className) === -1) &&
+          (!_prevState || _prevState.indexOf(className) === -1)
         )
       {
         _classes.push(className);
@@ -77,7 +97,6 @@ function _ngxLinkComponent() {
 module.exports = ng.core.Component({
   selector: 'ngx-link',
   template: '<a [class]="cssClass" [href]="href" (click)="click($event)"><ng-content></ng-content></a>',
-  providers: [ngxRenderService],
   properties: ['href', 'color', 'size', 'state'],
   events: ['clickEmitter: click']
 })

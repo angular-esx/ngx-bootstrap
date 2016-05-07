@@ -1,5 +1,7 @@
-﻿var ngxBaseComponent = require('./../base/base.component.js');
-var ngxItemService = require('./services/item.service.js');
+﻿var ngxItemService = require('./services/item.service.js');
+var ngxBaseComponent = require('./../base/base.component.js');
+var ngxBootstrap = require('./../../ngx-bootstrap.js');
+ngxBootstrap = require('./../../ngx-bootstrap.utils.js');
 
 function _ngxItemComponent() {
   var _ATTRIBUTES = {
@@ -24,13 +26,25 @@ function _ngxItemComponent() {
   ];
 
   this.onBuildCssClass = function (changeRecord) {
-    var _prefixClass = this.ngxItemService.prefixClass,
-        _prevColor = this.ngxItemService.getColorClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.COLOR)),
-        _currentColor = this.ngxItemService.getColorClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.COLOR)),
-        _prevSize = this.ngxItemService.getSizeClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.SIZE)),
-        _currentSize = this.ngxItemService.getSizeClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.SIZE)),
-        _prevState = this.ngxItemService.getStateClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.STATE)),
-        _currentState = this.ngxItemService.getStateClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.STATE));
+    var _prefixClass = this.ngxItemService.prefixClass;
+    
+    var _prevColor, _currentColor;
+    if(this.ngxItemService.getColorClass){
+      _prevColor = this.ngxItemService.getColorClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.COLOR));
+      _currentColor = this.ngxItemService.getColorClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.COLOR));
+    }
+    
+    var _prevSize, _currentSize;
+    if(this.ngxItemService.getSizeClass){
+      _prevSize = this.ngxItemService.getSizeClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.SIZE));
+      _currentSize = this.ngxItemService.getSizeClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.SIZE));
+    }
+    
+    var _prevState, _currentState;
+    if(this.ngxItemService.getStateClass){
+      _prevState = this.ngxItemService.getStateClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.STATE));
+      _currentState = this.ngxItemService.getStateClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.STATE));
+    }   
 
     var _classes = [_prefixClass];
     
@@ -38,12 +52,12 @@ function _ngxItemComponent() {
     if (_currentSize) { _classes.push(_currentSize); }
     if (_currentState) { _classes.push(_currentState); }
       
-    ngxBootstrapUtils.forEach(this.cssClass.split(' '), function (className) {
+    ngxBootstrap.forEach(this.cssClass.split(' '), function (className) {
       if (
           className && className != _prefixClass &&
-          className != _prevColor &&
-          className != _prevSize &&
-          className != _prevState
+          (!_prevColor || _prevColor.indexOf(className) === -1) &&
+          (!_prevSize || _prevSize.indexOf(className) === -1) &&
+          (!_prevState || _prevState.indexOf(className) === -1)
         )
       {
         _classes.push(className);
@@ -58,7 +72,6 @@ function _ngxItemComponent() {
 module.exports = ng.core.Component({
   selector: 'ngx-item',
   template: '<div [class]="cssClass"><ng-content></ng-content></div>',
-  providers: [ngxRenderService],
   properties: ['color', 'size', 'state']
 })
 .Class(new _ngxItemComponent());

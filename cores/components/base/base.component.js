@@ -1,5 +1,6 @@
 ﻿var ngxRenderService = require('./../../services/render/render.service.js');
 var ngxBootstrap = require('./../../ngx-bootstrap.js');
+ngxBootstrap = require('./../../ngx-bootstrap.utils.js');
 
 function _ngxBaseComponent() {
   this.constructor = [

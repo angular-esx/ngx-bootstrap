@@ -1,7 +1,7 @@
 ﻿var ngxAlertComponent = require('./../../../alert.component.js');
 var ngxAlertService = require('./../../../services/alert.service.js');
-var ngxAlertLinkService = require('./../../../services/alert-link.service.js');
 var ngxLinkComponent = require('./../../../../../cores/components/link/link.component.js');
+var ngxLinkService = require('./../../../../../cores/components/link/services/link.service.js');
 var ngxColorService = require('./../../../../../cores/services/render/color.service.js');
 var ngxTypeService = require('./../../../../../cores/services/render/type.service.js');
 var ngxSizeService = require('./../../../../../cores/services/render/size.service.js');
@@ -53,7 +53,7 @@ module.exports = ng.core.Component({
     ngxAnimationService,
     ngxRenderService,
     ngxAlertService,
-    ngxAlertLinkService
+    ngxLinkService
   ]
 })
 .Class(new _testCase());

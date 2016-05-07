@@ -74,7 +74,7 @@
   opacity: .5;
 }
 
-.ngx-alert-link {
+.ngx-alert /deep/ .ngx-link {
   font-weight: bold;
 }
 
@@ -88,7 +88,7 @@
   border-top-color: #c1e2b3;
 }
 
-.ngx-alert-color-success .ngx-alert-link {
+.ngx-alert-color-success /deep/ .ngx-link {
   color: #2b542c;
 }
 
@@ -102,7 +102,7 @@
   border-top-color: #a6d5ec;
 }
 
-.ngx-alert-color-info .ngx-alert-link {
+.ngx-alert-color-info /deep/ .ngx-link {
   color: #245269;
 }
 
@@ -116,7 +116,7 @@
   border-top-color: #f7ecb5;
 }
 
-.ngx-alert-color-warning .ngx-alert-link {
+.ngx-alert-color-warning /deep/ .ngx-link {
   color: #66512c;
 }
 
@@ -130,6 +130,6 @@
   border-top-color: #e4b9b9;
 }
 
-.ngx-alert-color-danger .ngx-alert-link {
+.ngx-alert-color-danger /deep/ .ngx-link {
   color: #843534;
 }

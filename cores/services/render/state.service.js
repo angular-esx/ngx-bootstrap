@@ -56,6 +56,14 @@ function _ngxStateService() {
   this.getDisabledStateClass = function () {
     return this.prefixClass + '-state-disabled';
   };
+  
+  this.isHiddenStateClass = function (state) {
+    return this.getStateClass(state).indexOf(this.getHiddenStateClass()) > -1;
+  };
+  this.getHiddenStateClass = function () {
+    return this.prefixClass + '-state-hidden';
+  };
+  
 }
 
 module.exports = ng.core.Class(new _ngxStateService());

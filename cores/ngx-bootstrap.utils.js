@@ -23,17 +23,15 @@ ngxBootstrap.isFunction = function (target) {
   return target && typeof (target) === 'function';
 };
 
-ngxBootstrap.distinct = function (target, compareTo) {
+ngxBootstrap.distinct = function (target) {
   if (!ngxBootstrap.isArray(target)) {
     return target;
   }
 
-  var _value, _result = [];
+  var _result = [];
   ngxBootstrap.forEach(target, function (item) {
-    _value = compareTo ? compareTo(item) : item;
-
-    if (_result.indexOf(_value) === -1) {
-      _result.push(_value);
+    if (_result.indexOf(item) === -1) {
+      _result.push(item);
     }
   });
 
@@ -58,12 +56,20 @@ ngxBootstrap.forEach = function (target, callback) {
   }
 };
 
-ngxBootstrap.hasClass = function (element, className) {
-  return element.className && element.className.indexOf(className) > -1;
-};
+ngxBootstrap.splice = function(target, item, compareTo){
+  if (!ngxBootstrap.isArray(target)) {
+    return target;
+  }
+  
+  var _comparedResult;
+  ngxBootstrap.forEach(target, function (_item, index) {
+    _comparedResult = compareTo ? compareTo(item, _item) : item === _item;
 
-ngxBootstrap.addClass = function (element, className) {
-  element.className = ngxBootstrap.hasClass(element, className) ? element.className : className;
-};
+    if(_comparedResult){
+      target.splice(index, 1);
+      return true;
+    }
+  });
+}; 
 
 module.exports = ngxBootstrap;

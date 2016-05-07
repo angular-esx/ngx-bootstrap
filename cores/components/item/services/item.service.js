@@ -15,7 +15,7 @@ function _ngxItemService() {
       ngxBootstrap.shallowCopy(this, ngxSizeService);
       ngxBootstrap.shallowCopy(this, ngxStateService);
       
-      this.prefixClass = '';
+      this.prefixClass = 'ngx-item';
     }
   ];
 }

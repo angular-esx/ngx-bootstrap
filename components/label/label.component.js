@@ -1,6 +1,7 @@
 ﻿var ngxLabelService = require('./services/label.service.js');
 var ngxBaseComponent = require('./../../cores/components/base/base.component.js');
 var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
+ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 
 function _ngxLabelComponent() {
   var _ATTRIBUTES = {
@@ -24,11 +25,19 @@ function _ngxLabelComponent() {
   ];
 
   this.onBuildCssClass = function (changeRecord) {
-    var _prefixClass = this.ngxLabelService.prefixClass,
-        _prevColor = this.ngxLabelService.getColorClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.COLOR)),
-        _currentColor = this.ngxLabelService.getColorClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.COLOR)),
-        _prevType = this.ngxLabelService.getTypeClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.TYPE)),
-        _currentType = this.ngxLabelService.getTypeClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.TYPE));
+    var _prefixClass = this.ngxLabelService.prefixClass;
+    
+    var _prevColor, _currentColor;
+    if(this.ngxLabelService.getColorClass){
+      _prevColor = this.ngxLabelService.getColorClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.COLOR));
+      _currentColor = this.ngxLabelService.getColorClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.COLOR));
+    }
+    
+    var _prevType, _currentType;
+    if(this.ngxLabelService.getTypeClass){
+      _prevType = this.ngxLabelService.getTypeClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.TYPE));
+      _currentType = this.ngxLabelService.getTypeClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.TYPE));
+    }
 
     var _classes = [
       _prefixClass,
@@ -39,14 +48,14 @@ function _ngxLabelComponent() {
     ngxBootstrap.forEach(this.cssClass.split(' '), function (className) {
       if (
           className && className != _prefixClass &&
-          className != _prevColor &&
-          className != _prevType
+          (!_prevColor || _prevColor.indexOf(className) === -1) &&
+          (!_prevType || _prevType.indexOf(className) === -1)
         )
       {
         _classes.push(className);
       }
     });
-
+    
     return _classes.join(' ');
   };
 }
@@ -55,6 +64,7 @@ module.exports = ng.core.Component({
   selector: 'ngx-label',
   /*Inject template at here*/
   /*Inject style at here*/
-  properties: ['color', 'type'],
+  templateUrl: 'components/label/templates/label.bootstrap4.html',
+  properties:['color', 'type']
 })
 .Class(new _ngxLabelComponent());

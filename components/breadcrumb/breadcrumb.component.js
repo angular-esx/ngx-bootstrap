@@ -1,14 +1,42 @@
-(function (ngxBootstrap, fileService) {
-  ngxBootstrap.ngxClass.ngxBreadcrumbClass = breadcrumb;
+var ngxBreadcrumbService = require('./services/breadcrumb.service.js');
+var ngxBreadcrumbItemService = require('./services/breadcrumb-item.service.js');
+var ngxBaseComponent = require('./../../cores/components/base/base.component.js');
+var ngxLinkService = require('./../../cores/components/link/services/link.service.js');
+var ngxItemService = require('./../../cores/components/item/services/item.service.js');
+var ngxRenderService = require('./../../cores/services/render/render.service.js');
+var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
+ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 
-  ngxBootstrap.ngxComponents.ngxBreadcrumbComponent = ng.core.Component({
-    selector: 'ngx-breadcrumb',
-    template: '<ng-content></ng-content>'
-  })
-  .Class(new breadcrumb());
+function _breadcrumbComponent() {
+  var _ATTRIBUTES = {
+    COLOR: 'color'
+  };
+  
+  this.extends = ngxBaseComponent;
+  
+  this.constructor = [
+    ng.core.ElementRef,
+    ngxRenderService,
+    ngxBreadcrumbService,
 
-  function breadcrumb() {
-    this.constructor = function () { };
-  }
+    function (elementRef, ngxRenderService, ngxBreadcrumbService) {
+      ngxBaseComponent.apply(this, arguments);
+      
+      this.base = Object.getPrototypeOf(Object.getPrototypeOf(this));
+      this.ngxBreadcrumbService = ngxBreadcrumbService;
+    }
+  ];
+}
 
-})(window.ngxBootstrap, ngxBootstrap.configs.fileService);
+module.exports = ng.core.Component({
+  selector: 'ngx-breadcrumb',
+  templateUrl: 'components/breadcrumb/templates/breadcrumb.bootstrap4.html',
+  styleUrls: ['components/breadcrumb/css/breadcrumb.bootstrap4.css'],
+  providers:[
+    ngxRenderService,
+    ng.core.provide(ngxLinkService, { useClass: ngxBreadcrumbItemService }),
+    ng.core.provide(ngxItemService, { useClass: ngxBreadcrumbItemService })
+  ],
+  properties: ['color']
+})
+.Class(new _breadcrumbComponent());

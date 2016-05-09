@@ -33,8 +33,10 @@ function _ngxBaseComponent() {
   };
 
   this.ngAfterViewInit = function(){
-    if((this.cssClass === null || this.cssClass === undefined) && (this.ngxBaseService && this.ngxBaseService.prefixClass)){
-      this.cssClass = this.ngxBaseService.prefixClass;
+    var _prefixClass = this.getPrefixClass();
+    
+    if(_prefixClass && (this.cssClass === null || this.cssClass === undefined)){
+      this.cssClass = _prefixClass;
       
       this.ngxRenderService.insertClass(this.cssClass, 0);
     }
@@ -77,9 +79,10 @@ function _ngxBaseComponent() {
   };
 
   this.onBuildOwnCssClass = function(aggregate){
-    if(!this.ngxBaseService){ return []; }
-    
-    var _classes = [this.ngxBaseService.prefixClass];
+    var _classes = [],
+        _prefixClass = this.getPrefixClass();
+        
+    if(_prefixClass){ _classes.push(_prefixClass); }
     
     ngxBootstrap.forEach(aggregate, function(attribute){
       if(attribute.current){ _classes.push(attribute.current); }
@@ -93,7 +96,7 @@ function _ngxBaseComponent() {
     
     if(!_currentClass){ return []; }
     
-    var _prefixClass = this.ngxBaseService ? this.ngxBaseService.prefixClass : '',
+    var _prefixClass = this.getPrefixClass(),
         _classes = [],
         _isExistingCssClass = false;
     
@@ -117,6 +120,10 @@ function _ngxBaseComponent() {
 
   this.onSetCssClass = function(){
     this.ngxRenderService.setClass(this.cssClass);
+  };
+
+  this.getPrefixClass = function(){
+    return this.ngxBaseService ? this.ngxBaseService.prefixClass : '';
   };
 
   this.getPrevPropertyValue = function (changeRecord, propertyName) {

@@ -1,20 +1,16 @@
-﻿(function (testCases, cores, components, fileService) {
-  testCases.isolatedComponents = ng.core.Component({
-    selector: 'ngx-test-case',
-    templateUrl: fileService.getTestCaseTemplate('jumbotron'),
-    directives: [
-      components.ngxJumbotronComponent
-    ],
-    providers: [
-      cores.ngxTypeService,
-      components.ngxJumbotronService
-    ]
-  })
-  .Class((function () {
-    return {
-      constructor: function () {
+﻿var ngxJumbotronComponent = require('./../../../jumbotron.component.js');
+var ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.js');
+ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.utils.js');
 
-      }
-    };
-  })());
-})(window.testCases || (window.testCases = {}), window.ngxBootstrap.ngxCores, window.ngxBootstrap.ngxComponents, ngxBootstrap.configs.fileService);
+function _testCase() {
+  this.constructor = function() {};
+}
+
+module.exports = ng.core.Component({
+  selector: 'ngx-test-case',
+  templateUrl: ngxBootstrap.configs.fileService.getTestCaseTemplate('jumbotron'),
+  directives: [
+    ngxJumbotronComponent
+  ]
+})
+.Class(new _testCase());

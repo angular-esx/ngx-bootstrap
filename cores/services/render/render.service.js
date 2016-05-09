@@ -14,6 +14,12 @@ function _ngxRenderService() {
   this.hasClass = function (className) {
     return this.domAdapter.hasClass(this.nativeElement, className);
   };
+  this.getClass = function(){
+    return this.getAttribute('class');
+  };
+  this.setClass = function(className){
+    return this.setAttribute('class', className);
+  };
   this.addClass = function (className) {
     this.domAdapter.addClass(this.nativeElement, className);
     return this;
@@ -21,7 +27,7 @@ function _ngxRenderService() {
   this.insertClass = function (className, index) {
     if (!className || (index !== 0 && !index) || isNaN(index)) { return this; }
 
-    var _currentClass = this.getAttribute('class');
+    var _currentClass = this.getClass();
     if (_currentClass) {
       var _classes = [];
       ngxBootstrap.forEach(_currentClass.split(' '), function (item) {
@@ -30,7 +36,10 @@ function _ngxRenderService() {
 
       _classes.splice(index, 0, className);
 
-      this.setAttribute('class', _classes.join(' '));
+      this.setClass(_classes.join(' '));
+    }
+    else{
+      this.addClass(className);
     }
 
     return this;

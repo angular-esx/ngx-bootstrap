@@ -50,13 +50,6 @@ function _ngxColorService() {
     return this.prefixClass + '-color-outline';
   }; 
 
-  this.isDefaultColorClass = function (color) {
-    return this.getColorClass(color).indexOf(this.getDefaultColorClass()) > -1;
-  };
-  this.getDefaultColorClass = function () {
-    return this.prefixClass + '-color-default';
-  };
-
   this.isPrimaryColorClass = function (color) {
     return this.getColorClass(color).indexOf(this.getPrimaryColorClass()) > -1;
   };

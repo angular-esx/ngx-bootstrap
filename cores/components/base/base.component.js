@@ -68,8 +68,8 @@ function _ngxBaseComponent() {
 
     if(this.ngxBaseService.getSizeClass){
       _aggregate[_ATTRIBUTES.SIZE] = {
-        prev: this.ngxBaseService.getPositionClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.SIZE)),
-        current: this.ngxBaseService.getPositionClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.SIZE))
+        prev: this.ngxBaseService.getSizeClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.SIZE)),
+        current: this.ngxBaseService.getSizeClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.SIZE))
       };
     }
 

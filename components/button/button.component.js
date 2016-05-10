@@ -5,6 +5,7 @@ var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 
 function _ngxButtonComponent() {
+  var _base;
   var _ATTRIBUTES = {
     COLOR: 'color',
     SIZE: 'size',
@@ -18,13 +19,17 @@ function _ngxButtonComponent() {
     ngxRenderService,
     ngxButtonService,
 
-    function (elementRef, ngxRenderService, ngxButtonService) {
+    function ngxButtonComponent(elementRef, ngxRenderService, ngxButtonService) {
       ngxBaseComponent.apply(this, arguments);
       
-      this.base = Object.getPrototypeOf(Object.getPrototypeOf(this));
       this.ngxButtonService = ngxButtonService;
     }
   ];
+  
+   function _getBaseInstance(context){ 
+    if(!_base){ _base = context.getBaseInstance(ngxBaseComponent); }
+    return _base;
+  }
 }
 
 module.exports = ng.core.Component({

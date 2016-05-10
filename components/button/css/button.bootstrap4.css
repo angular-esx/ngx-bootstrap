@@ -43,18 +43,6 @@
   opacity: .65;
 }
 
-:host(.ngx-button-color-primary),
-:host(.ngx-button-color-primary):disabled:hover,
-:host(.ngx-button-color-primary):disabled:focus,
-:host(.ngx-button-color-primary.ngx-button-state-focus):disabled,
-:host(.ngx-button-color-primary.ngx-button-state-disabled):hover,
-:host(.ngx-button-color-primary.ngx-button-state-disabled):focus, 
-:host(.ngx-button-color-primary.ngx-button-state-disabled.ngx-button-state-focus) {
-  color: #fff;
-  background-color: #0275d8;
-  border-color: #0275d8;
-}
-
 :host(.ngx-button-color-primary):hover,
 :host(.ngx-button-color-primary):focus,
 :host(.ngx-button-color-primary):active,
@@ -79,16 +67,16 @@
   border-color: #01315a;
 }
 
-:host(.ngx-button-color-secondary),
-:host(.ngx-button-color-secondary):disabled:hover,
-:host(.ngx-button-color-secondary):disabled:focus,
-:host(.ngx-button-color-secondary.ngx-button-state-focus):disabled,
-:host(.ngx-button-color-secondary.ngx-button-state-disabled):hover,
-:host(.ngx-button-color-secondary.ngx-button-state-disabled):focus, 
-:host(.ngx-button-color-secondary.ngx-button-state-disabled.ngx-button-state-focus) {
-  color: #373a3c;
-  background-color: #fff;
-  border-color: #ccc;
+:host(.ngx-button-color-primary),
+:host(.ngx-button-color-primary):disabled:hover,
+:host(.ngx-button-color-primary):disabled:focus,
+:host(.ngx-button-color-primary.ngx-button-state-focus):disabled,
+:host(.ngx-button-color-primary.ngx-button-state-disabled):hover,
+:host(.ngx-button-color-primary.ngx-button-state-disabled):focus, 
+:host(.ngx-button-color-primary.ngx-button-state-disabled.ngx-button-state-focus) {
+  color: #fff;
+  background-color: #0275d8;
+  border-color: #0275d8;
 }
 
 :host(.ngx-button-color-secondary):hover,
@@ -113,6 +101,18 @@
 :host(.ngx-button-color-secondary.ngx-button-state-active.ngx-button-state-focus) {
   background-color: #d4d4d4;
   border-color: #8c8c8c;
+}
+
+:host(.ngx-button-color-secondary),
+:host(.ngx-button-color-secondary):disabled:hover,
+:host(.ngx-button-color-secondary):disabled:focus,
+:host(.ngx-button-color-secondary.ngx-button-state-focus):disabled,
+:host(.ngx-button-color-secondary.ngx-button-state-disabled):hover,
+:host(.ngx-button-color-secondary.ngx-button-state-disabled):focus, 
+:host(.ngx-button-color-secondary.ngx-button-state-disabled.ngx-button-state-focus) {
+  color: #373a3c;
+  background-color: #fff;
+  border-color: #ccc;
 }
 
 :host(.ngx-button-color-info):hover,

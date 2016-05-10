@@ -5,6 +5,7 @@ var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 
 function _ngxLabelComponent() {
+  var _base;
   var _ATTRIBUTES = {
     COLOR: 'color',
     TYPE: 'type'
@@ -17,13 +18,17 @@ function _ngxLabelComponent() {
     ngxRenderService,
     ngxLabelService,
 
-    function (elementRef, ngxRenderService, ngxLabelService) {
+    function ngxLabelComponent(elementRef, ngxRenderService, ngxLabelService) {
       ngxBaseComponent.apply(this, arguments);
 
-      this.base = Object.getPrototypeOf(Object.getPrototypeOf(this));
       this.ngxLabelService = ngxLabelService;
     }
   ];
+  
+  function _getBaseInstance(context){ 
+    if(!_base){ _base = context.getBaseInstance(ngxBaseComponent); }
+    return _base;
+  }
 }
 
 module.exports = ng.core.Component({

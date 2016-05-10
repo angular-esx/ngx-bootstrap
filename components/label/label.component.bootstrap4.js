@@ -63,7 +63,7 @@ function _ngxLabelComponent() {
 module.exports = ng.core.Component({
   selector: 'ngx-label',
   properties: ['color', 'type'],
-  template: '<span [class]=\"cssClass\"><ng-content></ng-content></span>',
+  template: "<span [class]=\"cssClass\"><ng-content></ng-content></span>",
   styles: `.ngx-label {
   display: inline-block;
   padding: .25em .4em;

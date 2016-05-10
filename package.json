@@ -8,8 +8,12 @@
   "license": "ISC",
   "dependencies": {
     "angular2": "^2.0.0-beta.15",
+    "clean-css": "^3.4.12",
     "es6-promise": "^3.1.2",
     "es6-shim": "^0.35.0",
+    "gulp-inject-string": "^1.1.0",
+    "gulp-insert": "^0.5.0",
+    "js-string-escape": "^1.0.1",
     "reflect-metadata": "^0.1.2",
     "rxjs": "^5.0.0-beta.2",
     "webpack": "^1.13.0",

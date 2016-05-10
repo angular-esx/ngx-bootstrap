@@ -63,18 +63,18 @@ function _ngxLabelComponent() {
 module.exports = ng.core.Component({
   selector: 'ngx-label',
   properties: ['color', 'type'],
-  template: '<span [class]=\"cssClass\"><ng-content></ng-content></span>',
+  template: "<span [class]=\"cssClass\"><ng-content></ng-content></span>",
   styles: `.ngx-label {
-  display: inline-block;
-  padding: .25em .4em;
+  display: inline;
+  padding: .2em .6em .3em;
   font-size: 75%;
-  font-weight: bold;
+  font-weight: 700;
   line-height: 1;
   color: #fff;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  border-radius: .25rem;
+  border-radius: 0;
 }
 
 .ngx-label:empty {
@@ -82,17 +82,15 @@ module.exports = ng.core.Component({
 }
 
 .ngx-label-type-pill {
-  padding-right: .6em;
-  padding-left: .6em;
-  border-radius: 10rem;
+  
 }
 
 .ngx-label-color-default {
-  background-color: #818a91;
+  background-color: #777;
 }
 
 .ngx-label-color-primary {
-  background-color: #0275d8;
+  background-color: #337ab7;
 }
 
 .ngx-label-color-success {

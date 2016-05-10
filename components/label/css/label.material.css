@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-.ngx-label {
-=======
-﻿:host(.ngx-label) {
->>>>>>> 541563fe7978aaf858b4ddeb857e24d361c2de10
+:host(.ngx-label) {
   display: inline;
   padding: .2em .6em .3em;
   font-size: 75%;

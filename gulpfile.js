@@ -82,6 +82,7 @@
     this.TEST_UI = 'test-ui';
     this.BUILD = 'build';
     this.BUNDLE = 'bundle';
+    this.WEBPACK = 'webpack';
   })();
 
   var gulp = require('gulp');
@@ -103,6 +104,8 @@
   gulp.task('sass', getTask(taskService.SASS));
 
   gulp.task('lint', getTask(taskService.LINT));
+  
+  gulp.task('webpack', getTask(taskService.WEBPACK));
 
   gulp.task('browserSync', getTask(taskService.BROWSER_SYNC));
 

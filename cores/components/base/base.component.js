@@ -15,7 +15,7 @@ function _ngxBaseComponent() {
     ngxRenderService,
     [new ng.core.Optional(), null],
 
-    function (elementRef, ngxRenderService, ngxBaseService) {
+    function ngxBaseComponent(elementRef, ngxRenderService, ngxBaseService) {
       if(!ngxRenderService){ throw 'ngxRenderService is required'; }
       
       this.elementRef = elementRef;
@@ -143,6 +143,23 @@ function _ngxBaseComponent() {
     });
   };
   
+  this.getBaseInstance = function(baseClass) {
+    if(!baseClass || !baseClass.name){ return null; }
+    
+    var _baseInstance = this;
+    while(_baseInstance){
+      if(_baseInstance.constructor.name != baseClass.name){
+        _baseInstance = Object.getPrototypeOf(_baseInstance);
+        continue;
+      }
+      else{
+        break;
+      }
+    }
+    
+    if(!_baseInstance){ baseClass.apply(_baseInstance); }
+    return _baseInstance; 
+  };
 }
 
 module.exports = ng.core.Class(new _ngxBaseComponent());

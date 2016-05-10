@@ -57,6 +57,13 @@ function _ngxStateService() {
     return this.prefixClass + '-state-disabled';
   };
   
+  this.isFocusStateClass = function (state) {
+    return this.getStateClass(state).indexOf(this.getFocusStateClass()) > -1;
+  };
+  this.getFocusStateClass = function () {
+    return this.prefixClass + '-state-focus';
+  };
+  
   this.isHiddenStateClass = function (state) {
     return this.getStateClass(state).indexOf(this.getHiddenStateClass()) > -1;
   };

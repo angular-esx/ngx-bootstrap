@@ -29,6 +29,10 @@ function _ngxLinkComponent() {
       ngxBaseComponent.apply(this, arguments);
       
       this.ngxLinkService = ngxLinkService;
+      
+      if(!this.href){ this.href = '#'; }
+      
+      if(!this.clickEmitter){ this.clickEmitter = new ng.core.EventEmitter(); }
     }
   ];
   
@@ -63,12 +67,6 @@ function _ngxLinkComponent() {
       this.ngxRenderService.for(this.elementRef.nativeElement);
     }
     
-  };
-  
-  this.ngOnInit = function(){
-    if(!this.href){ this.href = '#'; }
-      
-    if(!this.clickEmitter){ this.clickEmitter = new ng.core.EventEmitter(); }
   };
   
   this.ngAfterViewInit = function () {

@@ -29,7 +29,7 @@ function _ngxLinkButtonComponent() {
   function _getBaseInstance(context){ 
     if(!_base){ _base = context.getBaseInstance(ngxLinkComponent); }
     return _base;
-  };
+  }
 }
 
 module.exports = ng.core.Component({

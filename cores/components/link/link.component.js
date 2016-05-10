@@ -116,7 +116,7 @@ function _ngxLinkComponent() {
   function _getBaseInstance(context){ 
     if(!_base){ _base = context.getBaseInstance(ngxBaseComponent); }
     return _base;
-  };
+  }
 }
 
 module.exports = ng.core.Component({

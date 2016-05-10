@@ -4,22 +4,27 @@ var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 
 function _ngxJumbotronComponent() {
+  var _base;
+  
   this.extends = ngxBaseComponent;
   
   this.constructor = [
     ng.core.ElementRef,
     ngxRenderService,
 
-    function (elementRef, ngxRenderService) {
+    function ngxJumbotronComponent(elementRef, ngxRenderService) {
       ngxBaseComponent.apply(this, arguments);
-      
-      this.base = Object.getPrototypeOf(Object.getPrototypeOf(this));
     }
   ];
   
   this.getPrefixClass = function() {
     return 'ngx-jumbotron';
   };
+  
+  function _getBaseInstance(context){ 
+    if(!_base){ _base = context.getBaseInstance(ngxBaseComponent); }
+    return _base;
+  }
 }
 
 module.exports = ng.core.Component({

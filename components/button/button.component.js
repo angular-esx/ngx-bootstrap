@@ -26,7 +26,7 @@ function _ngxButtonComponent() {
     }
   ];
   
-   function _getBaseInstance(context){ 
+  function _getBaseInstance(context){ 
     if(!_base){ _base = context.getBaseInstance(ngxBaseComponent); }
     return _base;
   }

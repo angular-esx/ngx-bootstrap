@@ -47,21 +47,21 @@ function _ngxSizeService() {
     return this.getSizeClass(size).indexOf(this.getLargeSizeClass()) > -1;
   };
   this.getLargeSizeClass = function () {
-    return this.prefix + '-size-large';
+    return this.prefixClass + '-size-large';
   };
   
   this.isSmallSizeClass = function (size) {
     return this.getSizeClass(size).indexOf(this.getSmallSizeClass()) > -1;
   };
   this.getSmallSizeClass = function () {
-    return this.prefix + '-size-small';
+    return this.prefixClass + '-size-small';
   };
   
   this.isBlockSizeClass = function (size) {
     return this.getSizeClass(size).indexOf(this.getBlockSizeClass()) > -1;
   };
   this.getBlockSizeClass = function () {
-    return this.prefix + '-size-block';
+    return this.prefixClass + '-size-block';
   };
 }
 

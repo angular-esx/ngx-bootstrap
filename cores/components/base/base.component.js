@@ -15,7 +15,7 @@ function _ngxBaseComponent() {
     ngxRenderService,
     [new ng.core.Optional(), null],
 
-    function (elementRef, ngxRenderService, ngxBaseService) {
+    function ngxBaseComponent(elementRef, ngxRenderService, ngxBaseService) {
       if(!ngxRenderService){ throw 'ngxRenderService is required'; }
       
       this.elementRef = elementRef;
@@ -33,8 +33,10 @@ function _ngxBaseComponent() {
   };
 
   this.ngAfterViewInit = function(){
-    if((this.cssClass === null || this.cssClass === undefined) && (this.ngxBaseService && this.ngxBaseService.prefixClass)){
-      this.cssClass = this.ngxBaseService.prefixClass;
+    var _prefixClass = this.getPrefixClass();
+    
+    if(_prefixClass && (this.cssClass === null || this.cssClass === undefined)){
+      this.cssClass = _prefixClass;
       
       this.ngxRenderService.insertClass(this.cssClass, 0);
     }
@@ -77,9 +79,10 @@ function _ngxBaseComponent() {
   };
 
   this.onBuildOwnCssClass = function(aggregate){
-    if(!this.ngxBaseService){ return []; }
-    
-    var _classes = [this.ngxBaseService.prefixClass];
+    var _classes = [],
+        _prefixClass = this.getPrefixClass();
+        
+    if(_prefixClass){ _classes.push(_prefixClass); }
     
     ngxBootstrap.forEach(aggregate, function(attribute){
       if(attribute.current){ _classes.push(attribute.current); }
@@ -93,7 +96,7 @@ function _ngxBaseComponent() {
     
     if(!_currentClass){ return []; }
     
-    var _prefixClass = this.ngxBaseService ? this.ngxBaseService.prefixClass : '',
+    var _prefixClass = this.getPrefixClass(),
         _classes = [],
         _isExistingCssClass = false;
     
@@ -119,6 +122,10 @@ function _ngxBaseComponent() {
     this.ngxRenderService.setClass(this.cssClass);
   };
 
+  this.getPrefixClass = function(){
+    return this.ngxBaseService ? this.ngxBaseService.prefixClass : '';
+  };
+
   this.getPrevPropertyValue = function (changeRecord, propertyName) {
     return !changeRecord[propertyName] || changeRecord[propertyName].isFirstChange() ? this[propertyName] : changeRecord[propertyName].previousValue;
   };
@@ -136,6 +143,23 @@ function _ngxBaseComponent() {
     });
   };
   
+  this.getBaseInstance = function(baseClass) {
+    if(!baseClass || !baseClass.name){ return null; }
+    
+    var _baseInstance = this;
+    while(_baseInstance){
+      if(_baseInstance.constructor.name != baseClass.name){
+        _baseInstance = Object.getPrototypeOf(_baseInstance);
+        continue;
+      }
+      else{
+        break;
+      }
+    }
+    
+    if(!_baseInstance){ baseClass.apply(_baseInstance); }
+    return _baseInstance; 
+  };
 }
 
 module.exports = ng.core.Class(new _ngxBaseComponent());

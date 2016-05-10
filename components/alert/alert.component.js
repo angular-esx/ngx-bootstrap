@@ -5,6 +5,7 @@ var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 
 function _ngxAlertComponent() {
+  var _base;
   var _ATTRIBUTES = {
     ID: 'id',
     COLOR: 'color',
@@ -20,35 +21,37 @@ function _ngxAlertComponent() {
     ngxRenderService,
     ngxAlertService,
 
-    function (elementRef, ngxRenderService, ngxAlertService) {
+    function ngxAlertComponent(elementRef, ngxRenderService, ngxAlertService) {
       ngxBaseComponent.apply(this, arguments);
-      
-      this.base = Object.getPrototypeOf(Object.getPrototypeOf(this));
-      this.ngxAlertService = ngxAlertService;
-      this.dismissEmitter = new ng.core.EventEmitter();
-      
-      var _self = this;
-      this.ngxAlertService.subscribe(
-        function (event) {
-          if (!event || !event.id || _self.id === event.id) {
-            var _actions = _self.ngxAlertService.getActions();
 
-            if (event.type === _actions.SHOW_ALERT) {
-              _self.show();
+      this.ngxAlertService = ngxAlertService;
+      
+      if(!this.dismissEmitter){
+        this.dismissEmitter = new ng.core.EventEmitter();
+        
+        var _self = this;
+        this.ngxAlertService.subscribe(
+          function (event) {
+            if (!event || !event.id || _self.id === event.id) {
+              var _actions = _self.ngxAlertService.getActions();
+
+              if (event.type === _actions.SHOW_ALERT) {
+                _self.show();
+              }
+              else if (event.type === _actions.DISMISS_ALERT) {
+                _self.dismiss();
+              }
             }
-            else if (event.type === _actions.DISMISS_ALERT) {
-              _self.dismiss();
-            }
-          }
-        },
-        function (error) {
-          console.error('ngxAlertService', error);
-        });
+          },
+          function (error) {
+            console.error('ngxAlertService', error);
+          });
+      }
     }
   ];
 
   this.onAggregatePropertyValueState = function(changeRecord){
-    var _aggregate = this.base.onAggregatePropertyValueState.apply(this, arguments);
+    var _aggregate = _getBaseInstance(this).onAggregatePropertyValueState.apply(this, arguments);
     
     if(this.ngxAlertService.getPositionClass){
       _aggregate[_ATTRIBUTES.POSITION] = {
@@ -128,6 +131,11 @@ function _ngxAlertComponent() {
       target: { id: this.id }
     });
   };
+  
+  function _getBaseInstance(context){ 
+    if(!_base){ _base = context.getBaseInstance(ngxBaseComponent); }
+    return _base;
+  }
 }
 
 module.exports = ng.core.Component({

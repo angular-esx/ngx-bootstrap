@@ -1,6 +1,32 @@
-﻿<ngx-breadcrumb>
+﻿<ngx-breadcrumb color="primary">
   <ngx-link href="http://my-website.com/Home">Home</ngx-link>
   <ngx-link href="{{categoryPage}}">Categories</ngx-link>
   <ngx-link [href]="productPage">Products</ngx-link>
+  <ngx-item color="danger">Detail</ngx-item>
+</ngx-breadcrumb>
+
+
+<ngx-breadcrumb>
+  <ngx-link href="http://my-website.com/Home">Home</ngx-link>
+</ngx-breadcrumb>
+
+<ngx-breadcrumb color="{{COLORS.WARNING}}">
+  <ngx-link href="http://my-website.com/Home">Home</ngx-link>
+  <ngx-link href="{{categoryPage}}">Categories</ngx-link>
+</ngx-breadcrumb>
+
+
+<ngx-breadcrumb>
   <ngx-item>Detail</ngx-item>
+</ngx-breadcrumb>
+
+<ngx-breadcrumb [color]="COLORS.DANGER">
+  <ngx-item>Detail 01</ngx-item>
+  <ngx-item>Detail 02</ngx-item>
+</ngx-breadcrumb>
+
+<ngx-breadcrumb>
+  <ngx-item>Detail 01</ngx-item>
+  <ngx-link href="{{categoryPage}}">Categories</ngx-link>
+  <ngx-item>Detail 02</ngx-item>
 </ngx-breadcrumb>

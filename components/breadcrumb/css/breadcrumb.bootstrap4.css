@@ -1,0 +1,87 @@
+:host(.ngx-breadcrumb) {
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  background-color: #e6e6e6;
+  display: block;
+}
+
+:host(.ngx-breadcrumb)::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+:host(.ngx-breadcrumb) /deep/ .ngx-breadcrumb-item {
+  float: left;
+  color: #818a91;
+}
+
+:host(.ngx-breadcrumb) /deep/ .ngx-breadcrumb-item > a {
+  color: #0275d8;
+}
+
+:host(.ngx-breadcrumb) /deep/ .ngx-breadcrumb-item:not(:last-child)::after {
+  padding-right: .5rem;
+  padding-left: .5rem;
+  content: "/";
+}
+
+:host(.ngx-breadcrumb-color-primary) {
+  background-color: #0275d8;
+}
+
+:host(.ngx-breadcrumb-color-primary) /deep/ .ngx-breadcrumb-item {
+  color: #000;
+}
+
+:host(.ngx-breadcrumb-color-primary) /deep/ .ngx-breadcrumb-item > a {
+  color: #fff;
+}
+
+:host(.ngx-breadcrumb-color-success) {
+  background-color: #5cb85c;
+}
+
+:host(.ngx-breadcrumb-color-success) /deep/ .ngx-breadcrumb-item {
+  color: #000;
+}
+
+:host(.ngx-breadcrumb-color-success) /deep/ .ngx-breadcrumb-item > a {
+  color: #fff;
+}
+
+:host(.ngx-breadcrumb-color-info) {
+  background-color: #5bc0de;
+}
+
+:host(.ngx-breadcrumb-color-info) /deep/ .ngx-breadcrumb-item {
+  color: #000;
+}
+
+:host(.ngx-breadcrumb-color-info) /deep/ .ngx-breadcrumb-item > a {
+  color: #fff;
+}
+
+:host(.ngx-breadcrumb-color-warning) {
+  background-color: #f0ad4e;
+}
+
+:host(.ngx-breadcrumb-color-warning) /deep/ .ngx-breadcrumb-item {
+  color: #000;
+}
+
+:host(.ngx-breadcrumb-color-warning) /deep/ .ngx-breadcrumb-item > a {
+  color: #fff;
+}
+
+:host(.ngx-breadcrumb-color-danger) {
+  background-color: #d9534f;
+}
+
+:host(.ngx-breadcrumb-color-danger) /deep/ .ngx-breadcrumb-item {
+  color: #000;
+}
+
+:host(.ngx-breadcrumb-color-danger) /deep/ .ngx-breadcrumb-item > a {
+  color: #fff;
+}

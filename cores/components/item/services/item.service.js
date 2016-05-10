@@ -1,6 +1,6 @@
-﻿var ngxColorService = require('./../../../cores/services/render/color.service.js');
-var ngxSizeService = require('./../../../cores/services/render/size.service.js');
-var ngxStateService = require('./../../services/render/state.service.js');
+﻿var ngxColorService = require('./../../../services/render/color.service.js');
+var ngxSizeService = require('./../../../services/render/size.service.js');
+var ngxStateService = require('./../../../services/render/state.service.js');
 var ngxBootstrap = require('./../../../ngx-bootstrap.js');
 ngxBootstrap = require('./../../../ngx-bootstrap.utils.js');
 

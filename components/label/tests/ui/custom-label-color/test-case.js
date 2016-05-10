@@ -19,15 +19,15 @@ function _customLabelService() {
     ngxBootstrap.shallowCopy(this, ngxColorService);
     ngxBootstrap.shallowCopy(this, ngxTypeService);   
     
-    this.prefixClass = 'label';
+    this.prefixClass = 'ngx-label';
    }
   ];
 
-  this.getDefaultColorClass = function () {
-    return this.prefixClass + '-custom-default';
+  this.getSecondaryColorClass = function () {
+    return this.prefixClass + '-color-custom-secondary';
   };
   this.getOrangeColorClass = function () {
-    return this.prefixClass + '-custom-orange';
+    return this.prefixClass + '-color-custom-orange';
   };
 }
 

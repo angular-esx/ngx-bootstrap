@@ -1,6 +1,4 @@
-<div [class]="cssClass" role="alert">
-  <button type="button" class="ngx-alert-close" aria-label="Close" *ngIf="isDismissible" (click)="dismiss()">
-    <span aria-hidden="true">&times; </span>
-  </button>
-  <ng-content></ng-content>
-</div>
+<button type="button" class="ngx-alert-close" *ngIf="isDismissible" (click)="dismiss()">
+  <span aria-hidden="true">&times;</span>
+</button>
+<ng-content></ng-content>

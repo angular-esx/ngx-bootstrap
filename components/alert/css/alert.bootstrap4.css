@@ -1,4 +1,4 @@
-.ngx-alert {
+:host(.ngx-alert) {
   display: block;
   padding: 15px;
   margin-bottom: 1rem;
@@ -6,49 +6,49 @@
   border-radius: .25rem;
 }
 
-.ngx-alert > p,
-.ngx-alert > ul {
+:host(.ngx-alert) > p,
+:host(.ngx-alert) > ul {
   margin-bottom: 0;
 }
 
-.ngx-alert > p + p {
+:host(.ngx-alert) > p + p {
   margin-top: 5px;
 }
 
-.ngx-alert-type-dismissible {
+:host(.ngx-alert-type-dismissible) {
   padding-right: 35px;
 }
 
-.ngx-alert-type-dismissible .ngx-alert-dismiss {
+:host(.ngx-alert-type-dismissible) /deep/ .ngx-alert-dismiss {
   position: relative;
   top: -2px;
   right: -21px;
   color: inherit;
 }
 
-.ngx-alert-type-float {
+:host(.ngx-alert-type-float) {
   position: fixed;
   width: 100%;
 }
 
-.ngx-alert-position-top {
+:host(.ngx-alert-position-top) {
   top: 0;
 }
 
-.ngx-alert-position-bottom {
+:host(.ngx-alert-position-bottom) {
   bottom: 0;
 }
 
-.ngx-alert-animation-fade {
+:host(.ngx-alert-animation-fade) {
   opacity: 0;
   transition: opacity .15s linear; 
 }
 
-.ngx-alert-animation-fade-in {
+:host(.ngx-alert-animation-fade-in) {
   opacity: 1;
 }
 
-.ngx-alert-close {
+:host(.ngx-alert) /deep/ .ngx-alert-close {
   position: relative;
   top: -2px;
   right: -21px;
@@ -66,70 +66,70 @@
   -webkit-appearance: none;
 }
 
-.ngx-alert-close:focus, 
-.ngx-alert-close:hover {
+:host(.ngx-alert) /deep/ .ngx-alert-close:focus, 
+:host(.ngx-alert) /deep/ .ngx-alert-close:hover {
   color: #000;
   text-decoration: none;
   cursor: pointer;
   opacity: .5;
 }
 
-.ngx-alert /deep/ .ngx-link {
+:host(.ngx-alert) /deep/ .ngx-link > a {
   font-weight: bold;
 }
 
-.ngx-alert-color-success {
+:host(.ngx-alert-color-success) {
   color: #3c763d;
   background-color: #dff0d8;
   border-color: #d0e9c6;
 }
 
-.ngx-alert-color-success hr {
+:host(.ngx-alert-color-success) /deep/ hr {
   border-top-color: #c1e2b3;
 }
 
-.ngx-alert-color-success /deep/ .ngx-link {
+:host(.ngx-alert-color-success) /deep/ .ngx-link > a {
   color: #2b542c;
 }
 
-.ngx-alert-color-info {
+:host(.ngx-alert-color-info) {
   color: #31708f;
   background-color: #d9edf7;
   border-color: #bcdff1;
 }
 
-.ngx-alert-color-info hr {
+:host(.ngx-alert-color-info) /deep/ hr {
   border-top-color: #a6d5ec;
 }
 
-.ngx-alert-color-info /deep/ .ngx-link {
+:host(.ngx-alert-color-info) /deep/ .ngx-link > a {
   color: #245269;
 }
 
-.ngx-alert-color-warning {
+:host(.ngx-alert-color-warning) {
   color: #8a6d3b;
   background-color: #fcf8e3;
   border-color: #faf2cc;
 }
 
-.ngx-alert-color-warning hr {
+:host(.ngx-alert-color-warning) /deep/ hr {
   border-top-color: #f7ecb5;
 }
 
-.ngx-alert-color-warning /deep/ .ngx-link {
+.ngx-alert-color-warning) /deep/ .ngx-link > a {
   color: #66512c;
 }
 
-.ngx-alert-color-danger {
+:host(.ngx-alert-color-danger) {
   color: #a94442;
   background-color: #f2dede;
   border-color: #ebcccc;
 }
 
-.ngx-alert-color-danger hr {
+:host(.ngx-alert-color-danger) /deep/ hr {
   border-top-color: #e4b9b9;
 }
 
-.ngx-alert-color-danger /deep/ .ngx-link {
+:host(.ngx-alert-color-danger) /deep/ .ngx-link > a {
   color: #843534;
 }

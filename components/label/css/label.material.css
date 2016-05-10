@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 .ngx-label {
+=======
+﻿:host(.ngx-label) {
+>>>>>>> 541563fe7978aaf858b4ddeb857e24d361c2de10
   display: inline;
   padding: .2em .6em .3em;
   font-size: 75%;
@@ -11,34 +15,34 @@
   border-radius: 0;
 }
 
-.ngx-label:empty {
+:host(.ngx-label:empty) {
   display: none;
 }
 
-.ngx-label-type-pill {
+:host(.ngx-label-type-pill) {
   
 }
 
-.ngx-label-color-default {
-  background-color: #777;
-}
-
-.ngx-label-color-primary {
+:host(.ngx-label-color-primary) {
   background-color: #337ab7;
 }
 
-.ngx-label-color-success {
+:host(.ngx-label-color-secondary) {
+  background-color: #777;
+}
+
+:host(.ngx-label-color-success) {
   background-color: #5cb85c;
 }
 
-.ngx-label-color-info {
+:host(.ngx-label-color-info) {
   background-color: #5bc0de;
 }
 
-.ngx-label-color-warning {
+:host(.ngx-label-color-warning) {
   background-color: #f0ad4e;
 }
 
-.ngx-label-color-danger {
+:host(.ngx-label-color-danger) {
   background-color: #d9534f;
 }

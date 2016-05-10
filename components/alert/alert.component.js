@@ -21,11 +21,10 @@ function _ngxAlertComponent() {
     ngxAlertService,
 
     function (elementRef, ngxRenderService, ngxAlertService) {
-      ngxBaseComponent.call(this, elementRef, ngxRenderService);
+      ngxBaseComponent.apply(this, arguments);
       
       this.base = Object.getPrototypeOf(Object.getPrototypeOf(this));
       this.ngxAlertService = ngxAlertService;
-      this.cssClass = this.ngxAlertService.prefixClass;
       this.dismissEmitter = new ng.core.EventEmitter();
       
       var _self = this;
@@ -48,52 +47,29 @@ function _ngxAlertComponent() {
     }
   ];
 
-  this.onBuildCssClass = function (changeRecord) {
+  this.onAggregatePropertyValueState = function(changeRecord){
+    var _aggregate = this.base.onAggregatePropertyValueState.apply(this, arguments);
+    
+    if(this.ngxAlertService.getPositionClass){
+      _aggregate[_ATTRIBUTES.POSITION] = {
+        prev: this.ngxAlertService.getPositionClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.POSITION)),
+        current: this.ngxAlertService.getPositionClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.POSITION))
+      };
+    }
+    
+    return _aggregate;
+  };
+  
+  this.onBuildOwnCssClass = function(aggregate){
     this.isDismissible = this.ngxAlertService.isDismissibleTypeClass(this.type);
     
-    var _prefixClass = this.ngxAlertService.prefixClass;
+    var _self = this;
+        _classes = [this.ngxAlertService.prefixClass];
     
-    var _prevColor, _currentColor;
-    if(this.ngxAlertService.getColorClass){
-      _prevColor = this.ngxAlertService.getColorClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.COLOR));
-      _currentColor = this.ngxAlertService.getColorClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.COLOR));
-    }
-    
-    var _prevType, _currentType;
-    if(this.ngxAlertService.getTypeClass){
-      _prevType = this.ngxAlertService.getTypeClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.TYPE));
-      _currentType = this.ngxAlertService.getTypeClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.TYPE));
-    }
-    
-    var _prevState, _currentState;
-    if(this.ngxAlertService.getStateClass){
-      _prevState = this.ngxAlertService.getStateClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.STATE));
-      _currentState = this.ngxAlertService.getStateClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.STATE));
-    }
-
-    var _prevPosition, _currentPosition;
-    if(this.ngxAlertService.getPositionClass){
-      _prevPosition = this.ngxAlertService.getPositionClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.POSITION));
-      _currentPosition = this.ngxAlertService.getPositionClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.POSITION));
-    }
-
-    var _classes = [_prefixClass];
-    
-    if (_currentColor) { _classes.push(_currentColor); }
-    if (_currentType) { _classes.push(_currentType); }
-    if (_currentState) { _classes.push(_currentState); }
-    if (_currentPosition && this.ngxAlertService.isFloatTypeClass(this.type)) { _classes.push(_currentPosition); }
-      
-    ngxBootstrap.forEach(this.cssClass.split(' '), function (className) {
-      if (
-          className && className != _prefixClass &&
-          (!_prevColor || _prevColor.indexOf(className) === -1) &&
-          (!_prevType || _prevType.indexOf(className) === -1) &&
-          (!_prevState || _prevState.indexOf(className) === -1) &&
-          (!_prevPosition || _prevPosition.indexOf(className) === -1)
-        )
-      {
-        _classes.push(className);
+    ngxBootstrap.forEach(aggregate, function(attributeValues, attributeName){
+      if(attributeValues.current && 
+        (attributeName != _ATTRIBUTES.POSITION || _self.ngxAlertService.isFloatTypeClass(_self.type))){ 
+        _classes.push(attributeValues.current); 
       }
     });
     
@@ -101,10 +77,10 @@ function _ngxAlertComponent() {
     if(!this.ngxAlertService.isHiddenStateClass(this.state)){
       _classes.push(this.ngxAlertService.getFadeInAnimationClass());
     }
-
-    return _classes.join(' ');
+    
+    return _classes;
   };
-
+  
   this.show = function () {
     var _self = this;
         _floatTypeClass = this.ngxAlertService.getFloatTypeClass();
@@ -126,6 +102,7 @@ function _ngxAlertComponent() {
     }
     
     this.cssClass = _cssClasses.join(' ');
+    this.ngxRenderService.setClass(this.cssClass);
   };
 
   this.dismiss = function () {
@@ -145,6 +122,7 @@ function _ngxAlertComponent() {
     });
     
     this.cssClass = _cssClasses.join(' ');
+    this.ngxRenderService.setClass(this.cssClass);
 
     this.dismissEmitter.next({
       target: { id: this.id }
@@ -158,6 +136,7 @@ module.exports = ng.core.Component({
   /*Inject style at here*/
   templateUrl: 'components/alert/templates/alert.bootstrap4.html',
   styleUrls: ['components/alert/css/alert.bootstrap4.css'],
+  providers:[ngxRenderService],
   properties: ['id', 'color', 'type', 'position', 'state'],
   events: ['dismissEmitter: dismiss'],
 })

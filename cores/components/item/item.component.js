@@ -5,6 +5,7 @@ var ngxBootstrap = require('./../../ngx-bootstrap.js');
 ngxBootstrap = require('./../../ngx-bootstrap.utils.js');
 
 function _ngxItemComponent() {
+  var _base;
   var _ATTRIBUTES = {
     COLOR: 'color',
     SIZE: 'size',
@@ -18,13 +19,17 @@ function _ngxItemComponent() {
     ngxRenderService,
     ngxItemService,
 
-    function (elementRef, ngxRenderService, ngxItemService) {
+    function ngxItemComponent(elementRef, ngxRenderService, ngxItemService) {
       ngxBaseComponent.apply(this, arguments);
       
-      this.base = Object.getPrototypeOf(Object.getPrototypeOf(this));
       this.ngxItemService = ngxItemService;
     }
   ];
+  
+  function _getBaseInstance(context){ 
+    if(!_base){ _base = context.getBaseInstance(ngxBaseComponent); }
+    return _base;
+  }
 }
 
 module.exports = ng.core.Component({

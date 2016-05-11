@@ -127,7 +127,7 @@ function _ngxBaseComponent() {
   };
 
   this.getPrevPropertyValue = function (changeRecord, propertyName) {
-    return !changeRecord[propertyName] || changeRecord[propertyName].isFirstChange() ? this[propertyName] : changeRecord[propertyName].previousValue;
+    return !changeRecord[propertyName] || (changeRecord[propertyName].isFirstChange && changeRecord[propertyName].isFirstChange()) ? this[propertyName] : changeRecord[propertyName].previousValue;
   };
   
   this.getCurrentPropertyValue = function (changeRecord, propertyName) {

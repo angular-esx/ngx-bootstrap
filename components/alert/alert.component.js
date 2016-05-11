@@ -26,7 +26,7 @@ function _ngxAlertComponent() {
 
       this.ngxAlertService = ngxAlertService;
       
-      if(!this.dismissEmitter){
+      if(elementRef){
         this.dismissEmitter = new ng.core.EventEmitter();
         
         var _self = this;

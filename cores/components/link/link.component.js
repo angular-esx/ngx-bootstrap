@@ -30,9 +30,11 @@ function _ngxLinkComponent() {
       
       this.ngxLinkService = ngxLinkService;
       
-      if(!this.href){ this.href = '#'; }
+      if(elementRef){
+        if(!this.href){ this.href = '#'; }
       
-      if(!this.clickEmitter){ this.clickEmitter = new ng.core.EventEmitter(); }
+        this.clickEmitter = new ng.core.EventEmitter(); 
+      }
     }
   ];
   

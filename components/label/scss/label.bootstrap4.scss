@@ -1,0 +1,45 @@
+﻿@import "./../../../../node_modules/bootstrap/scss/variables";
+@import "./../../../../node_modules/bootstrap/scss/mixins";
+
+:host(.ngx-label) {
+  display: inline-block;
+  padding: .25em .4em;
+  font-size: 75%;
+  font-weight: $label-font-weight;
+  line-height: 1;
+  color: $label-color;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  @include border-radius();
+
+  &:empty {
+    display: none;
+  }
+}
+
+:host(.ngx-label-type-pill) {
+  padding-right: .6em;
+  padding-left: .6em;
+  @include border-radius(10rem);
+}
+
+:host(.ngx-label-color-primary) {
+  @include label-variant($label-primary-bg);
+}
+
+:host(.ngx-label-color-success) {
+  @include label-variant($label-success-bg);
+}
+
+:host(.ngx-label-color-info) {
+  @include label-variant($label-info-bg);
+}
+
+:host(.ngx-label-color-warning) {
+  @include label-variant($label-warning-bg);
+}
+
+:host(.ngx-label-color-danger) {
+  @include label-variant($label-danger-bg);
+}

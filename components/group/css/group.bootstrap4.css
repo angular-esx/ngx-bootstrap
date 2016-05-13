@@ -1,0 +1,31 @@
+﻿:host(.ngx-group){
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+:host(.ngx-group) /deep/ .ngx-group{
+  float: left;
+}
+
+:host(.ngx-group) /deep/ .ngx-group + .ngx-group {
+  margin-left: -1px;
+}
+
+:host(.ngx-group.ngx-group-type-vertical) /deep/ > .ngx-group {
+  display: block;
+  float: none;
+  width: 100%;
+  max-width: 100%;
+}
+
+:host(.ngx-group.ngx-group-type-vertical) /deep/ > .ngx-group::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+:host(.ngx-group.ngx-group-type-vertical) /deep/ > .ngx-group + .ngx-group {
+  margin-top: -1px;
+  margin-left: 0;
+}

@@ -1,0 +1,70 @@
+﻿<h3>ngxDropMenu and ngxToggleDropdown with single button</h3>
+
+<center>
+  <ngx-group>
+    <ngx-button color="danger" ngx-toggle-dropdown="dropdown01">Action</ngx-button>
+
+    <ngx-drop-menu id="dropdown01">
+      <h6>Dropdown Header</h6>
+      <ngx-item>Acion 01</ngx-item>
+      <ngx-link href="{{href}}">Acion 02</ngx-link>
+      <hr />
+      <ngx-item state="disabled">Acion 03</ngx-item>
+    </ngx-drop-menu>
+  </ngx-group>
+</center>
+
+<hr />
+
+<h3>ngxDropMenu and ngxToggleDropup with single button</h3>
+<center>
+  <ngx-group>
+    <ngx-button color="danger" ngx-toggle-dropup="dropup01">Action</ngx-button>
+
+    <ngx-drop-menu id="dropup01">
+      <h6>Dropup Header</h6>
+      <ngx-item>Acion 01</ngx-item>
+      <ngx-link href="{{href}}">Acion 02</ngx-link>
+      <hr />
+      <ngx-item state="disabled">Acion 03</ngx-item>
+    </ngx-drop-menu>
+  </ngx-group>
+</center>
+
+<hr/>
+
+<h3>ngxDropMenu and ngxToggleDropdown with splited buttons</h3>
+
+<center>
+  <ngx-group>
+    <ngx-button color="danger" (click)="alert('splitdropdown01')">Action</ngx-button>
+    <ngx-button color="danger" ngx-toggle-dropdown="splitdropdown01"></ngx-button>
+
+    <ngx-drop-menu id="splitdropdown01">
+      <h6>Dropdown Header</h6>
+      <ngx-item>Acion 01</ngx-item>
+      <ngx-link href="{{href}}">Acion 02</ngx-link>
+      <hr />
+      <ngx-item state="disabled">Acion 03</ngx-item>
+    </ngx-drop-menu>
+  </ngx-group>
+</center>
+
+<hr />
+
+<h3>ngxDropMenu and ngxToggleDropup with splited buttons</h3>
+
+<center>
+  <ngx-group>
+    <ngx-button color="danger" (click)="alert('splitdropup01')">Action</ngx-button>
+    <ngx-button color="danger" ngx-toggle-dropup="splitdropup01"></ngx-button>
+
+    <ngx-drop-menu id="splitdropup01">
+      <h6>Dropup Header</h6>
+      <ngx-item>Acion 01</ngx-item>
+      <ngx-link href="{{href}}">Acion 02</ngx-link>
+      <hr />
+      <ngx-item state="disabled">Acion 03</ngx-item>
+    </ngx-drop-menu>
+  </ngx-group>
+</center>

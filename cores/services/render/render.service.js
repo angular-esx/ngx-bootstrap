@@ -1,7 +1,7 @@
 ﻿var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
 
 function _ngxRenderService() {
-  this.constructor = function () {
+  this.constructor = function ngxRenderService() {
     this.domAdapter = new ng.platform.browser.BrowserDomAdapter();
   };
 

@@ -1,5 +1,5 @@
 function _ngxBreadcumbItemService() {
-  this.constructor = function (ngxStateService) {
+  this.constructor = function ngxBreadcumbItemService(ngxStateService) {
     this.prefixClass = 'ngx-breadcrumb-item';
   };
 }

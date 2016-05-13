@@ -3,7 +3,7 @@
 function _ngxSizeService() {
   var _SIZES;
 
-  this.constructor = function () {
+  this.constructor = function ngxSizeService() {
     this.prefixClass = '';
   };
 

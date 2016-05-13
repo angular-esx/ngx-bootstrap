@@ -3,7 +3,7 @@ var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
 function _ngxAnimationService() {
   var _ANIMATIONS;
 
-  this.constructor = function () {
+  this.constructor = function ngxAnimationService() {
     this.prefixClass = '';
   };
 

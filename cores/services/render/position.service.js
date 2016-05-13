@@ -3,7 +3,7 @@ var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
 function _ngxPositionService() {
   var _POSITIONS;
 
-  this.constructor = function () {
+  this.constructor = function ngxPositionService() {
     this.prefixClass = '';
   };
 

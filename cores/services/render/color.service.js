@@ -3,7 +3,7 @@
 function _ngxColorService() {
   var _COLORS;
 
-  this.constructor = function () {
+  this.constructor = function ngxColorService() {
     this.prefixClass = '';
   };
 

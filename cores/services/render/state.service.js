@@ -3,7 +3,7 @@
 function _ngxStateService() {
   var _STATES;
 
-  this.constructor = function () {
+  this.constructor = function ngxStateService() {
     this.prefixClass = '';
   };
 

@@ -20,7 +20,7 @@ function _ngxDropMenuComponent() {
     ngxRenderService,
     ngxDropMenuService,
 
-    function _ngxDropMenuComponent(elementRef, ngxRenderService, ngxDropMenuService) {
+    function ngxDropMenuComponent(elementRef, ngxRenderService, ngxDropMenuService) {
       ngxBaseComponent.apply(this, arguments);
 
       this.ngxDropMenuService = ngxDropMenuService;

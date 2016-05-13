@@ -20,7 +20,7 @@ function _ngxAlertService() {
     ngxPositionService,
     ngxAnimationService,
 
-    function (ngxColorService, ngxTypeService, ngxStateService, ngxPositionService, ngxAnimationService) {
+    function ngxAlertService(ngxColorService, ngxTypeService, ngxStateService, ngxPositionService, ngxAnimationService) {
       ngxBootstrap.shallowCopy(this, ngxColorService);
       ngxBootstrap.shallowCopy(this, ngxTypeService);
       ngxBootstrap.shallowCopy(this, ngxStateService);

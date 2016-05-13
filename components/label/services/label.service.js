@@ -8,7 +8,7 @@ function _ngxLabelService() {
     ngxColorService,
     ngxTypeService,
 
-    function (ngxColorService, ngxTypeService) {
+    function ngxLabelService(ngxColorService, ngxTypeService) {
       ngxBootstrap.shallowCopy(this, ngxColorService);
       ngxBootstrap.shallowCopy(this, ngxTypeService);
 

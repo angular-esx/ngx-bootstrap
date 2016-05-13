@@ -10,7 +10,7 @@ function _ngxButtonService() {
     ngxSizeService,
     ngxStateService,
 
-    function (ngxColorService, ngxSizeService, ngxStateService) {
+    function ngxButtonService(ngxColorService, ngxSizeService, ngxStateService) {
       ngxBootstrap.shallowCopy(this, ngxColorService);
       ngxBootstrap.shallowCopy(this, ngxSizeService);
       ngxBootstrap.shallowCopy(this, ngxStateService);

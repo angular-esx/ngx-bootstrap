@@ -3,7 +3,7 @@
 function _ngxTypeService() {
   var _TYPES;
 
-  this.constructor = function () {
+  this.constructor = function ngxTypeService() {
     this.prefixClass = '';
   };
 

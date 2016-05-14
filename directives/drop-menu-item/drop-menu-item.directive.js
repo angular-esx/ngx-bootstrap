@@ -1,38 +1,27 @@
-﻿var ngxDropMenuService = require('./../../components/drop-menu/services/drop-menu.service.js');
+﻿var ngxDropMenuItemService = require('./services/drop-menu-item.service.js');
 var ngxBaseDirective = require('./../../cores/directives/base/base.directive.js');
 var ngxRenderService = require('./../../cores/services/render/render.service.js');
 var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 
-function _ngxToggleDropdownDirective() {
+function _ngxDropMenuItemDirective() {
   var _base;
-  var _ATTRIBUTES = {
-    ID: 'id',
-  };
 
   this.extends = ngxBaseDirective;
 
   this.constructor = [
     ng.core.ElementRef,
     ngxRenderService,
-    ngxDropMenuService,
+    ngxDropMenuItemService,
 
-    function ngxToggleDropdownDirective(elementRef, ngxRenderService, ngxDropMenuService) {
+    function ngxDropMenuItemDirective(elementRef, ngxRenderService, ngxDropMenuItemService) {
       ngxBaseDirective.apply(this, arguments);
 
       if (elementRef) {
-        this.ngxDropMenuService = ngxDropMenuService;
+        this.ngxDropMenuItemService = ngxDropMenuItemService;
       }
     }
   ];
-
-  this.getPrefixClass = function () {
-    return 'ngx-toggle-dropdown';
-  };
-
-  this.toggle = function () {
-    this.ngxDropMenuService.toggle(this.id, this.ngxDropMenuService.getActions().TOGGLE_DROPDOWN);
-  };
 
   function _getBaseInstance(context) {
     if (!_base) { _base = context.getBaseInstance(ngxBaseDirective); }
@@ -41,11 +30,11 @@ function _ngxToggleDropdownDirective() {
 }
 
 module.exports = ng.core.Directive({
-  selector: '[ngx-toggle-dropdown]',
+  selector: '[ngx-drop-menu-item]',
   providers: [ngxRenderService],
-  properties: ['id: ngx-toggle-dropdown'],
   host: {
-    '(click)': 'toggle()'
-  }
+    '[class.ngx-drop-menu-item]': 'true'
+  },
+  properties: ['state', 'prefixClass:prefix-class']
 })
-.Class(new _ngxToggleDropdownDirective());
+.Class(new _ngxDropMenuItemDirective());

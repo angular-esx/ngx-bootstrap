@@ -7,10 +7,8 @@ function _ngxDropMenuItemService() {
     ngxStateService,
 
     function ngxDropMenuItemService(ngxStateService) {
-    ngxBootstrap.shallowCopy(this, ngxStateService);
-
-    this.prefixClass = 'ngx-drop-menu-item';
-  }];
+      ngxBootstrap.shallowCopy(this, ngxStateService);
+    }];
 }
 
 module.exports = ng.core.Class(new _ngxDropMenuItemService());

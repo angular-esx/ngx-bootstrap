@@ -29,7 +29,10 @@
   margin-bottom: 2px;
 }
 
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item {
+:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item,
+:host(.ngx-drop-menu) /deep/ .ngx-item,
+:host(.ngx-drop-menu) /deep/ .ngx-link,
+:host(.ngx-drop-menu) /deep/ a.ngx-drop-menu-item {
   display: block;
   width: 100%;
   padding: 3px 20px;
@@ -44,45 +47,100 @@
   cursor: pointer;
 }
 
-:host(.ngx-drop-menu-state-active) /deep/ .ngx-drop-menu-item > a{
+:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item > a,
+:host(.ngx-drop-menu) /deep/ .ngx-link > a{
+  color: #373a3c;
+}
+
+:host(.ngx-drop-menu-state-active) /deep/ .ngx-drop-menu-item > a,
+:host(.ngx-drop-menu-state-active) /deep/ .ngx-link > a
+:host(.ngx-drop-menu-state-active) /deep/ a.ngx-drop-menu-item {
   color: #373a3c;
   outline: 0;
 }
 
 :host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item:focus, 
 :host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item:hover,
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item:focus > a, 
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item:hover > a {
+:host(.ngx-drop-menu) /deep/ .ngx-item:focus, 
+:host(.ngx-drop-menu) /deep/ .ngx-item:hover,
+:host(.ngx-drop-menu) /deep/ .ngx-link:focus, 
+:host(.ngx-drop-menu) /deep/ .ngx-link:hover,
+:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item:focus, 
+:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item:hover,
+:host(.ngx-drop-menu) /deep/ a.ngx-drop-menu-item:focus, 
+:host(.ngx-drop-menu) /deep/ a.ngx-drop-menu-item:hover {
   color: #2b2d2f;
   text-decoration: none;
   background-color: #f5f5f5;
 }
 
+:host(.ngx-drop-menu) /deep/ .ngx-link:focus > a, 
+:host(.ngx-drop-menu) /deep/ .ngx-link:hover > a,
+:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item:focus > a, 
+:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item:hover > a{
+  color: #2b2d2f;
+  text-decoration: none;
+}
+
+
 :host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-active, 
 :host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-active:focus, 
 :host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-active:hover,
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-active > a, 
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-active:focus > a, 
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-active:hove > a {
+:host(.ngx-drop-menu) /deep/ .ngx-item.ngx-item-state-active, 
+:host(.ngx-drop-menu) /deep/ .ngx-item.ngx-item-state-active:focus, 
+:host(.ngx-drop-menu) /deep/ .ngx-item.ngx-item-state-active:hover,
+:host(.ngx-drop-menu) /deep/ .ngx-link.ngx-link-state-active, 
+:host(.ngx-drop-menu) /deep/ .ngx-link.ngx-link-state-active:focus, 
+:host(.ngx-drop-menu) /deep/ .ngx-link.ngx-link-state-active:hover,
+:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-active, 
+:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-active:focus, 
+:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-active:hover,
+:host(.ngx-drop-menu) /deep/ a.ngx-drop-menu-item.ngx-drop-menu-item-state-active:focus, 
+:host(.ngx-drop-menu) /deep/ a.ngx-drop-menu-item.ngx-drop-menu-item-state-active:hover {
   color: #fff;
   text-decoration: none;
   background-color: #0275d8;
   outline: 0;
 }
 
+:host(.ngx-drop-menu) /deep/ .ngx-link.ngx-link-state-active > a, 
+:host(.ngx-drop-menu) /deep/ .ngx-link.ngx-link-state-active:focus > a, 
+:host(.ngx-drop-menu) /deep/ .ngx-link.ngx-link-state-active:hover > a,
+:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-active > a, 
+:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-active:focus > a, 
+:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-active:hover > a{
+  color: #fff;
+  text-decoration: none;
+}
+
 :host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-disabled, 
 :host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-disabled:focus, 
 :host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-disabled:hover,
+:host(.ngx-drop-menu) /deep/ .ngx-item.ngx-item-state-disabled, 
+:host(.ngx-drop-menu) /deep/ .ngx-item.ngx-item-state-disabled:focus, 
+:host(.ngx-drop-menu) /deep/ .ngx-item.ngx-item-state-disabled:hover,
+:host(.ngx-drop-menu) /deep/ .ngx-link.ngx-link-state-disabled > a, 
+:host(.ngx-drop-menu) /deep/ .ngx-link.ngx-link-state-disabled:focus > a, 
+:host(.ngx-drop-menu) /deep/ .ngx-link.ngx-link-state-disabled:hover > a,
 :host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-disabled > a, 
 :host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-disabled:focus > a, 
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-disabled:hover > a {
+:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-disabled:hover > a,
+:host(.ngx-drop-menu) /deep/ a.ngx-drop-menu-item.ngx-drop-menu-item-state-disabled, 
+:host(.ngx-drop-menu) /deep/ a.ngx-drop-menu-item.ngx-drop-menu-item-state-disabled:focus, 
+:host(.ngx-drop-menu) /deep/ a.ngx-drop-menu-item.ngx-drop-menu-item-state-disabled:hover {
   color: #818a91;
 }
 
 :host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-disabled:focus, 
 :host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-disabled:hover,
+:host(.ngx-drop-menu) /deep/ .ngx-item.ngx-item-state-disabled:focus, 
+:host(.ngx-drop-menu) /deep/ .ngx-item.ngx-item-state-disabled:hover,
+:host(.ngx-drop-menu) /deep/ .ngx-link.ngx-link-state-disabled:focus > a, 
+:host(.ngx-drop-menu) /deep/ .ngx-link.ngx-link-state-disabled:hover > a,
 :host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-disabled:focus > a, 
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-disabled:hover > a {
+:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-disabled:hover > a,
+:host(.ngx-drop-menu) /deep/ a.ngx-drop-menu-item.ngx-drop-menu-item-state-disabled:focus, 
+:host(.ngx-drop-menu) /deep/ a.ngx-drop-menu-item.ngx-drop-menu-item-state-disabled:hover {
   text-decoration: none;
   cursor: not-allowed;
   background-color: transparent;

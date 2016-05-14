@@ -23,10 +23,10 @@ function _ngxAlertComponent() {
 
     function ngxAlertComponent(elementRef, ngxRenderService, ngxAlertService) {
       ngxBaseComponent.apply(this, arguments);
-
-      this.ngxAlertService = ngxAlertService;
       
-      if(elementRef){
+      if (elementRef) {
+        this.ngxAlertService = ngxAlertService;
+
         this.dismissEmitter = new ng.core.EventEmitter();
         
         var _self = this;
@@ -55,8 +55,8 @@ function _ngxAlertComponent() {
     
     if(this.ngxAlertService.getPositionClass){
       _aggregate[_ATTRIBUTES.POSITION] = {
-        prev: this.ngxAlertService.getPositionClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.POSITION)),
-        current: this.ngxAlertService.getPositionClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.POSITION))
+        prev: this.ngxAlertService.getPositionClass(this.prefixClass, this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.POSITION)),
+        current: this.ngxAlertService.getPositionClass(this.prefixClass, this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.POSITION))
       };
     }
     
@@ -64,35 +64,35 @@ function _ngxAlertComponent() {
   };
   
   this.onBuildOwnCssClass = function(aggregate){
-    this.isDismissible = this.ngxAlertService.isDismissibleTypeClass(this.type);
+    this.isDismissible = this.ngxAlertService.isDismissibleTypeClass(this.prefixClass, this.type);
     
     var _self = this;
-        _classes = [this.ngxAlertService.prefixClass];
+        _classes = [this.prefixClass];
     
     ngxBootstrap.forEach(aggregate, function(attributeValues, attributeName){
       if(attributeValues.current && 
-        (attributeName != _ATTRIBUTES.POSITION || _self.ngxAlertService.isFloatTypeClass(_self.type))){ 
+        (attributeName != _ATTRIBUTES.POSITION || _self.ngxAlertService.isFloatTypeClass(_self.prefixClass, _self.type))) {
         _classes.push(attributeValues.current); 
       }
     });
     
-    _classes.push(this.ngxAlertService.getFadeAnimationClass());
-    if(!this.ngxAlertService.isHiddenStateClass(this.state)){
-      _classes.push(this.ngxAlertService.getFadeInAnimationClass());
+    _classes.push(this.ngxAlertService.getFadeAnimationClass(this.prefixClass));
+    if(!this.ngxAlertService.isHiddenStateClass(this.prefixClass, this.state)){
+      _classes.push(this.ngxAlertService.getFadeInAnimationClass(this.prefixClass));
     }
     
     return _classes;
   };
   
   this.show = function () {
-    var _self = this;
-        _floatTypeClass = this.ngxAlertService.getFloatTypeClass();
-        _fadeInAnimationClass = this.ngxAlertService.getFadeInAnimationClass();
+    var _self = this,
+        _floatTypeClass = this.ngxAlertService.getFloatTypeClass(this.prefixClass),
+        _fadeInAnimationClass = this.ngxAlertService.getFadeInAnimationClass(this.prefixClass),
         _cssClasses = [];
     
     ngxBootstrap.forEach(this.cssClass.split(' '), function(cssClass){
       if (cssClass ===  _floatTypeClass && 
-          _self.ngxAlertService.isFloatTypeClass(_self.type)) {
+          _self.ngxAlertService.isFloatTypeClass(_self.prefixClass, _self.type)) {
         _cssClasses.push(cssClass);
       }
       else{
@@ -109,14 +109,14 @@ function _ngxAlertComponent() {
   };
 
   this.dismiss = function () {
-    var _self = this;
-        _floatTypeClass = this.ngxAlertService.getFloatTypeClass();
-        _fadeInAnimationClass = this.ngxAlertService.getFadeInAnimationClass();
+    var _self = this,
+        _floatTypeClass = this.ngxAlertService.getFloatTypeClass(this.prefixClass),
+        _fadeInAnimationClass = this.ngxAlertService.getFadeInAnimationClass(this.prefixClass),
         _cssClasses = [];
     
     ngxBootstrap.forEach(this.cssClass.split(' '), function(cssClass){
       if (cssClass ===  _floatTypeClass && 
-          !_self.ngxAlertService.isFloatTypeClass(_self.type)) {
+          !_self.ngxAlertService.isFloatTypeClass(_self.prefixClass, _self.type)) {
         _cssClasses.push(cssClass);
       }
       else if(cssClass != _fadeInAnimationClass){
@@ -145,7 +145,7 @@ module.exports = ng.core.Component({
   templateUrl: 'components/alert/templates/alert.bootstrap4.html',
   styleUrls: ['components/alert/css/alert.bootstrap4.css'],
   providers:[ngxRenderService],
-  properties: ['id', 'color', 'type', 'position', 'state'],
+  properties: ['id', 'color', 'type', 'position', 'state', 'prefixClass:prefix-class'],
   events: ['dismissEmitter: dismiss'],
 })
 .Class(new _ngxAlertComponent());

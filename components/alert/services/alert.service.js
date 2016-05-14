@@ -27,7 +27,6 @@ function _ngxAlertService() {
       ngxBootstrap.shallowCopy(this, ngxPositionService);
       ngxBootstrap.shallowCopy(this, ngxAnimationService);
 
-      this.prefixClass = 'ngx-alert';
       this.alertEmitter = new ng.core.EventEmitter();
     }
   ];
@@ -51,18 +50,18 @@ function _ngxAlertService() {
     return ngxBootstrap.shallowCopy({}, _ACTIONS);
   };
 
-  this.isDismissibleTypeClass = function (type) {
-    return this.getTypeClass(type).indexOf(this.getDismissibleTypeClass()) > -1;
+  this.isDismissibleTypeClass = function (prefixClass, type) {
+    return this.getTypeClass(prefixClass, type).indexOf(this.getDismissibleTypeClass(prefixClass)) > -1;
   };
-  this.getDismissibleTypeClass = function () {
-    return this.prefixClass + '-type-dismissible';
+  this.getDismissibleTypeClass = function (prefixClass) {
+    return prefixClass + '-type-dismissible';
   };
   
-  this.isFloatTypeClass = function (type) {
-    return this.getTypeClass(type).indexOf(this.getFloatTypeClass()) > -1;
+  this.isFloatTypeClass = function (prefixClass, type) {
+    return this.getTypeClass(prefixClass, type).indexOf(this.getFloatTypeClass(prefixClass)) > -1;
   };
-  this.getFloatTypeClass = function () {
-    return this.prefixClass + '-type-float';
+  this.getFloatTypeClass = function (prefixClass) {
+    return prefixClass + '-type-float';
   };
 }
 

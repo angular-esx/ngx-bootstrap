@@ -74,7 +74,9 @@
   opacity: .5;
 }
 
-:host(.ngx-alert) /deep/ .ngx-link > a {
+:host(.ngx-alert) /deep/ .ngx-alert-link > a,
+:host(.ngx-alert) /deep/ .ngx-link > a,
+:host(.ngx-alert) /deep/ > a {
   font-weight: bold;
 }
 
@@ -88,7 +90,9 @@
   border-top-color: #c1e2b3;
 }
 
-:host(.ngx-alert-color-success) /deep/ .ngx-link > a {
+:host(.ngx-alert-color-success) /deep/ .ngx-alert-link > a,
+:host(.ngx-alert-color-success) /deep/ .ngx-link > a,
+:host(.ngx-alert-color-success) /deep/ > a {
   color: #2b542c;
 }
 
@@ -102,7 +106,9 @@
   border-top-color: #a6d5ec;
 }
 
-:host(.ngx-alert-color-info) /deep/ .ngx-link > a {
+:host(.ngx-alert-color-info) /deep/ .ngx-alert-link > a,
+:host(.ngx-alert-color-info) /deep/ .ngx-link > a,
+:host(.ngx-alert-color-info) /deep/ > a {
   color: #245269;
 }
 
@@ -116,7 +122,9 @@
   border-top-color: #f7ecb5;
 }
 
-.ngx-alert-color-warning) /deep/ .ngx-link > a {
+.ngx-alert-color-warning) /deep/ .ngx-alert-link > a,
+.ngx-alert-color-warning) /deep/ .ngx-link > a,
+.ngx-alert-color-warning) /deep/ > a {
   color: #66512c;
 }
 
@@ -130,6 +138,8 @@
   border-top-color: #e4b9b9;
 }
 
-:host(.ngx-alert-color-danger) /deep/ .ngx-link > a {
+:host(.ngx-alert-color-danger) /deep/ .ngx-alert-link > a,
+:host(.ngx-alert-color-danger) /deep/ .ngx-link > a,
+:host(.ngx-alert-color-danger) /deep/ > a {
   color: #843534;
 }

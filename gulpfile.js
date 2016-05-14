@@ -71,7 +71,7 @@
     replaceString: /\bgulp[\-.]/
   });
 
-  gulp.task('test-ui', ['serve'], getTask(taskService.TEST_UI));
+  gulp.task('test-ui', ['serve'], getTask(taskService.TEST_UI), 'webpack');
 
   gulp.task('default', ['serve']);
 

@@ -5,7 +5,7 @@ var rename = require('gulp-rename');
 module.exports = function (params) {
   return function () {
     var _componentName = params.args.component,
-        _themeName = params.args.theme,
+        _themeName = params.args.theme;
     
     if (_componentName) {
       _themeName = _themeName || 'bootstrap4';

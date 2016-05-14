@@ -1,7 +1,10 @@
 ﻿var ngxAlertComponent = require('./../../../alert.component.js');
 var ngxAlertService = require('./../../../services/alert.service.js');
+var ngxAlertLinkDirective = require('./../../../../../directives/alert-link/alert-link.directive.js');
 var ngxLinkComponent = require('./../../../../../cores/components/link/link.component.js');
 var ngxLinkService = require('./../../../../../cores/components/link/services/link.service.js');
+var ngxItemComponent = require('./../../../../../cores/components/item/item.component.js');
+var ngxItemService = require('./../../../../../cores/components/item/services/item.service.js');
 var ngxColorService = require('./../../../../../cores/services/render/color.service.js');
 var ngxTypeService = require('./../../../../../cores/services/render/type.service.js');
 var ngxSizeService = require('./../../../../../cores/services/render/size.service.js');
@@ -39,9 +42,11 @@ function _testCase() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-test-case',
-  templateUrl: ngxBootstrap.configs.fileService.getTestCaseTemplate('alert'),
+  templateUrl: 'components/alert/tests/ui/isolated-components/test-case.html',
   directives: [
+    ngxAlertLinkDirective,
     ngxLinkComponent,
+    ngxItemComponent,
     ngxAlertComponent
   ],
   providers: [
@@ -53,7 +58,8 @@ module.exports = ng.core.Component({
     ngxAnimationService,
     ngxRenderService,
     ngxAlertService,
-    ngxLinkService
+    ngxLinkService,
+    ngxItemService
   ]
 })
 .Class(new _testCase());

@@ -11,16 +11,14 @@ function _ngxGroupService() {
     function ngxGroupService(ngxTypeService, ngxSizeService) {
       ngxBootstrap.shallowCopy(this, ngxTypeService);
       ngxBootstrap.shallowCopy(this, ngxSizeService);
-
-      this.prefixClass = 'ngx-group';
     }
   ];
 
-  this.isVerticalTypeClass = function (type) {
-    return this.getTypeClass(type).indexOf(this.getVerticalTypeClass()) > -1;
+  this.isVerticalTypeClass = function (prefixClass, type) {
+    return this.getTypeClass(prefixClass, type).indexOf(this.getVerticalTypeClass(prefixClass)) > -1;
   };
-  this.getVerticalTypeClass = function () {
-    return this.prefixClass + '-type-vertical';
+  this.getVerticalTypeClass = function (prefixClass) {
+    return prefixClass + '-type-vertical';
   };
 }
 

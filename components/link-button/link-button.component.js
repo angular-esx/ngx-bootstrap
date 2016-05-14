@@ -18,13 +18,11 @@ function _ngxLinkButtonComponent() {
     function ngxLinkButtonComponent (elementRef, ngxRenderService, ngxLinkButtonService) {
       ngxLinkComponent.apply(this, arguments);
       
-      this.ngxLinkButtonService = ngxLinkButtonService;
+      if (elementRef) {
+        this.ngxLinkButtonService = ngxLinkButtonService;
+      }
     }
   ];
-  
-  this.ngOnChanges = function(changeRecord) {
-    _getBaseInstance(this).ngOnChanges.apply(this, arguments);
-  };
   
   function _getBaseInstance(context){ 
     if(!_base){ _base = context.getBaseInstance(ngxLinkComponent); }
@@ -40,7 +38,7 @@ module.exports = ng.core.Component({
   queries: {
     link: new ng.core.ViewChild('link')
   },
-  properties: ['href', 'hreflang', 'media-query', 'media-type', 'rel', 'target', 'color', 'size', 'state'],
+  properties: ['href', 'hreflang', 'media-query', 'media-type', 'rel', 'target', 'color', 'size', 'state', 'prefixClass:prefix-class'],
   events: ['clickEmitter: click']
 })
 .Class(new _ngxLinkButtonComponent());

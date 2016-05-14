@@ -3,11 +3,9 @@ var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
 function _ngxAnimationService() {
   var _ANIMATIONS;
 
-  this.constructor = function ngxAnimationService() {
-    this.prefixClass = '';
-  };
+  this.constructor = function ngxAnimationService() {};
 
-  this.getAnimationClass = function (animations) {
+  this.getAnimationClass = function (prefixClass, animations) {
     if (!animations) { return ''; }
 
     var _animations = animations.split(' ');
@@ -18,7 +16,7 @@ function _ngxAnimationService() {
       _animation = _animation.charAt(0).toUpperCase() + _animation.slice(1);
 
       _funcName = 'get' + _animation + 'AnimationClass';
-      _animationClasses.push(_self[_funcName] ? _self[_funcName]() : _self.prefixClass + '-animation-' + _animation);
+      _animationClasses.push(_self[_funcName] ? _self[_funcName](prefixClass) : prefixClass + '-animation-' + _animation);
     });
 
     return _animationClasses.length === 0 ? '' : _animationClasses.join(' ');
@@ -43,18 +41,18 @@ function _ngxAnimationService() {
     return ngxBootstrap.shallowCopy({}, _ANIMATIONS);
   };
 
-  this.isFadeAnimationClass = function (animation) {
-    return this.getAnimationClass(animation).indexOf(this.getFadeAnimationClass()) > -1;
+  this.isFadeAnimationClass = function (prefixClass, animation) {
+    return this.getAnimationClass(prefixClass, animation).indexOf(this.getFadeAnimationClass(prefixClass)) > -1;
   };
-  this.getFadeAnimationClass = function () {
-    return this.prefixClass + '-animation-fade';
+  this.getFadeAnimationClass = function (prefixClass) {
+    return prefixClass + '-animation-fade';
   };
   
-  this.isFadeInAnimationClass = function (animation) {
-    return this.getAnimationClass(animation).indexOf(this.getFadeInAnimationClass()) > -1;
+  this.isFadeInAnimationClass = function (prefixClass, animation) {
+    return this.getAnimationClass(prefixClass, animation).indexOf(this.getFadeInAnimationClass(prefixClass)) > -1;
   };
-  this.getFadeInAnimationClass = function () {
-    return this.prefixClass + '-animation-fade-in';
+  this.getFadeInAnimationClass = function (prefixClass) {
+    return prefixClass + '-animation-fade-in';
   };
   
 }

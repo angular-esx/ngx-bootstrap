@@ -22,7 +22,9 @@ function _ngxButtonComponent() {
     function ngxButtonComponent(elementRef, ngxRenderService, ngxButtonService) {
       ngxBaseComponent.apply(this, arguments);
       
-      this.ngxButtonService = ngxButtonService;
+      if (elementRef) {
+        this.ngxButtonService = ngxButtonService;
+      }
     }
   ];
   
@@ -37,6 +39,6 @@ module.exports = ng.core.Component({
   templateUrl: 'components/button/templates/button.bootstrap4.html',
   styleUrls: ['components/button/css/button.bootstrap4.css'],
   providers:[ngxRenderService],
-  properties: ['color', 'size', 'state']
+  properties: ['color', 'size', 'state', 'prefixClass:prefix-class']
 })
 .Class(new _ngxButtonComponent());

@@ -3,11 +3,9 @@
 function _ngxSizeService() {
   var _SIZES;
 
-  this.constructor = function ngxSizeService() {
-    this.prefixClass = '';
-  };
+  this.constructor = function ngxSizeService() {};
 
-  this.getSizeClass = function (sizes) {
+  this.getSizeClass = function (prefixClass, sizes) {
     if (!sizes) { return ''; }
     
     var _sizes = sizes.split(' ');
@@ -18,7 +16,7 @@ function _ngxSizeService() {
       _size = _size.charAt(0).toUpperCase() + _size.slice(1);
 
       _funcName = 'get' + _size + 'SizeClass';
-      _sizeClasses.push(_self[_funcName] ? _self[_funcName]() : _self.prefixClass + '-size-' + _size);
+      _sizeClasses.push(_self[_funcName] ? _self[_funcName](prefixClass) : prefixClass + '-size-' + _size);
     });
 
     return _sizeClasses.length === 0 ? '' : _sizeClasses.join(' ');
@@ -43,25 +41,25 @@ function _ngxSizeService() {
     return ngxBootstrap.shallowCopy({}, _SIZES);
   };
 
-  this.isLargeSizeClass = function (size) {
-    return this.getSizeClass(size).indexOf(this.getLargeSizeClass()) > -1;
+  this.isLargeSizeClass = function (prefixClass, size) {
+    return this.getSizeClass(prefixClass, size).indexOf(this.getLargeSizeClass(prefixClass)) > -1;
   };
-  this.getLargeSizeClass = function () {
-    return this.prefixClass + '-size-large';
-  };
-  
-  this.isSmallSizeClass = function (size) {
-    return this.getSizeClass(size).indexOf(this.getSmallSizeClass()) > -1;
-  };
-  this.getSmallSizeClass = function () {
-    return this.prefixClass + '-size-small';
+  this.getLargeSizeClass = function (prefixClass) {
+    return prefixClass + '-size-large';
   };
   
-  this.isBlockSizeClass = function (size) {
-    return this.getSizeClass(size).indexOf(this.getBlockSizeClass()) > -1;
+  this.isSmallSizeClass = function (prefixClass, size) {
+    return this.getSizeClass(prefixClass, size).indexOf(this.getSmallSizeClass(prefixClass)) > -1;
   };
-  this.getBlockSizeClass = function () {
-    return this.prefixClass + '-size-block';
+  this.getSmallSizeClass = function (prefixClass) {
+    return prefixClass + '-size-small';
+  };
+  
+  this.isBlockSizeClass = function (prefixClass, size) {
+    return this.getSizeClass(prefixClass, size).indexOf(this.getBlockSizeClass(prefixClass)) > -1;
+  };
+  this.getBlockSizeClass = function (prefixClass) {
+    return prefixClass + '-size-block';
   };
 }
 

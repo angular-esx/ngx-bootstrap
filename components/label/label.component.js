@@ -21,7 +21,9 @@ function _ngxLabelComponent() {
     function ngxLabelComponent(elementRef, ngxRenderService, ngxLabelService) {
       ngxBaseComponent.apply(this, arguments);
 
-      this.ngxLabelService = ngxLabelService;
+      if (elementRef) {
+        this.ngxLabelService = ngxLabelService;
+      }
     }
   ];
   
@@ -38,6 +40,6 @@ module.exports = ng.core.Component({
   templateUrl: 'components/label/templates/label.bootstrap4.html',
   styleUrls: ['components/label/css/label.bootstrap4.css'],
   providers: [ngxRenderService],
-  properties:['color', 'type']
+  properties: ['color', 'type', 'prefixClass:prefix-class']
 })
 .Class(new _ngxLabelComponent());

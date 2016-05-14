@@ -11,16 +11,14 @@ function _ngxLabelService() {
     function ngxLabelService(ngxColorService, ngxTypeService) {
       ngxBootstrap.shallowCopy(this, ngxColorService);
       ngxBootstrap.shallowCopy(this, ngxTypeService);
-
-      this.prefixClass = 'ngx-label';
     }
   ];
 
-  this.isPillTypeClass = function (type) {
-    return  this.getTypeClass(type).indexOf(this.getPillTypeClass()) > -1;
+  this.isPillTypeClass = function (prefixClass, type) {
+    return this.getTypeClass(prefixClass, type).indexOf(this.getPillTypeClass(prefixClass)) > -1;
   };
-  this.getPillTypeClass = function () {
-    return  this.prefixClass + '-type-pill';
+  this.getPillTypeClass = function (prefixClass) {
+    return  prefixClass + '-type-pill';
   };
 }
 

@@ -22,7 +22,9 @@ function _ngxItemComponent() {
     function ngxItemComponent(elementRef, ngxRenderService, ngxItemService) {
       ngxBaseComponent.apply(this, arguments);
       
-      this.ngxItemService = ngxItemService;
+      if (elementRef) {
+        this.ngxItemService = ngxItemService;
+      }
     }
   ];
   
@@ -36,6 +38,6 @@ module.exports = ng.core.Component({
   selector: 'ngx-item',
   template: '<ng-content></ng-content>',
   providers: [ngxRenderService],
-  properties: ['color', 'size', 'state']
+  properties: ['color', 'size', 'state', 'prefixClass:prefix-class']
 })
 .Class(new _ngxItemComponent());

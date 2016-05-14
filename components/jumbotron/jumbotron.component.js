@@ -17,10 +17,6 @@ function _ngxJumbotronComponent() {
     }
   ];
   
-  this.getPrefixClass = function() {
-    return 'ngx-jumbotron';
-  };
-  
   function _getBaseInstance(context){ 
     if(!_base){ _base = context.getBaseInstance(ngxBaseComponent); }
     return _base;
@@ -31,6 +27,7 @@ module.exports = ng.core.Component({
   selector: 'ngx-jumbotron',
   templateUrl: 'components/jumbotron/templates/jumbotron.bootstrap4.html',
   styleUrls: ['components/jumbotron/css/jumbotron.bootstrap4.css'],
-  providers: [ngxRenderService]
+  providers: [ngxRenderService],
+  properties: ['prefixClass:prefix-class']
 })
 .Class(new _ngxJumbotronComponent());

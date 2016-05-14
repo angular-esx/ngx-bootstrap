@@ -16,7 +16,8 @@
   color: #818a91;
 }
 
-:host(.ngx-breadcrumb) /deep/ .ngx-breadcrumb-item > a {
+:host(.ngx-breadcrumb) /deep/ .ngx-breadcrumb-item > a,
+:host(.ngx-breadcrumb) /deep/ a.ngx-breadcrumb-item {
   color: #0275d8;
 }
 
@@ -34,7 +35,8 @@
   color: #000;
 }
 
-:host(.ngx-breadcrumb-color-primary) /deep/ .ngx-breadcrumb-item > a {
+:host(.ngx-breadcrumb-color-primary) /deep/ .ngx-breadcrumb-item > a,
+:host(.ngx-breadcrumb-color-primary) /deep/ a.ngx-breadcrumb-item {
   color: #fff;
 }
 
@@ -46,7 +48,8 @@
   color: #000;
 }
 
-:host(.ngx-breadcrumb-color-success) /deep/ .ngx-breadcrumb-item > a {
+:host(.ngx-breadcrumb-color-success) /deep/ .ngx-breadcrumb-item > a,
+:host(.ngx-breadcrumb-color-success) /deep/ a.ngx-breadcrumb-item {
   color: #fff;
 }
 
@@ -58,7 +61,8 @@
   color: #000;
 }
 
-:host(.ngx-breadcrumb-color-info) /deep/ .ngx-breadcrumb-item > a {
+:host(.ngx-breadcrumb-color-info) /deep/ .ngx-breadcrumb-item > a,
+:host(.ngx-breadcrumb-color-info) /deep/ a.ngx-breadcrumb-item {
   color: #fff;
 }
 
@@ -70,7 +74,8 @@
   color: #000;
 }
 
-:host(.ngx-breadcrumb-color-warning) /deep/ .ngx-breadcrumb-item > a {
+:host(.ngx-breadcrumb-color-warning) /deep/ .ngx-breadcrumb-item > a,
+:host(.ngx-breadcrumb-color-warning) /deep/ a.ngx-breadcrumb-item  {
   color: #fff;
 }
 
@@ -82,6 +87,7 @@
   color: #000;
 }
 
-:host(.ngx-breadcrumb-color-danger) /deep/ .ngx-breadcrumb-item > a {
+:host(.ngx-breadcrumb-color-danger) /deep/ .ngx-breadcrumb-item > a,
+:host(.ngx-breadcrumb-color-danger) /deep/ a.ngx-breadcrumb-item {
   color: #fff;
 }

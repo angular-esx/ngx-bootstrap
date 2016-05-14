@@ -33,7 +33,7 @@ function _customLabelService() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-test-case',
-  templateUrl: ngxBootstrap.configs.fileService.getTestCaseTemplate('label', 'custom-label-color'),
+  templateUrl: 'components/label/tests/ui/custom-label-color/test-case.html',
   directives: [
     ngxLabelComponent
   ],

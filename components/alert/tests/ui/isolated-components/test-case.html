@@ -14,12 +14,14 @@
 
 <ngx-alert id="mySuccessAlert" color="success" type="dismissible">
   <strong>Well done!</strong> You successfully read 
-  <ngx-link href="https://translate.google.com.vn">this important alert message</ngx-link>
+  <a href="https://translate.google.com.vn">this important alert message</a>
 </ngx-alert>
 
 <ngx-alert color="warning">
   <strong>Warning!</strong> 
-  Better check yourself, you're not looking too good
+  <ngx-item ngx-alert-link>
+    <a [href]="href">Better check yourself, you're not looking too good</a>
+  </ngx-item>
 </ngx-alert>
 
 <ngx-alert id="myDangerAlert" 
@@ -27,6 +29,8 @@
           [type]="TYPES.DISMISSIBLE" 
           (dismiss)="dismiss($event)">
   <p><strong>Oh snap!</strong></p> 
-  <ngx-link [href]="href">Change a few things up</ngx-link>
+  <ngx-item prefix-class="ngx-alert-link">
+    <a [href]="href">Change a few things up</a>
+  </ngx-item>
   and try submitting again.
 </ngx-alert>

@@ -1,8 +1,5 @@
 ﻿var ngxDropMenuService = require('./services/drop-menu.service.js');
-var ngxDropMenuItemService = require('./services/drop-menu-item.service.js');
 var ngxBaseComponent = require('./../../cores/components/base/base.component.js');
-var ngxItemService = require('./../../cores/components/item/services/item.service.js');
-var ngxLinkService = require('./../../cores/components/link/services/link.service.js');
 var ngxRenderService = require('./../../cores/services/render/render.service.js');
 var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
@@ -23,9 +20,9 @@ function _ngxDropMenuComponent() {
     function ngxDropMenuComponent(elementRef, ngxRenderService, ngxDropMenuService) {
       ngxBaseComponent.apply(this, arguments);
 
-      this.ngxDropMenuService = ngxDropMenuService;
-
       if (elementRef) {
+        this.ngxDropMenuService = ngxDropMenuService;
+
         var _self = this;
         this.ngxDropMenuService.subscribe(
           function (event) {
@@ -45,7 +42,7 @@ function _ngxDropMenuComponent() {
   ];
 
   this.toggle = function (action) {
-    var _isActive = this.ngxDropMenuService.isActiveStateClass(this.state);
+    var _isActive = this.ngxDropMenuService.isActiveStateClass(this.getPrefixClass(), this.state);
     var _types = this.ngxDropMenuService.getTypes();
 
     var _changeRecord = {
@@ -84,11 +81,7 @@ module.exports = ng.core.Component({
   selector: 'ngx-drop-menu',
   templateUrl: 'components/drop-menu/templates/drop-menu.bootstrap4.html',
   styleUrls: ['components/drop-menu/css/drop-menu.bootstrap4.css'],
-  providers: [
-    ngxRenderService,
-    ng.core.provide(ngxLinkService, { useClass: ngxDropMenuItemService }),
-    ng.core.provide(ngxItemService, { useClass: ngxDropMenuItemService })
-  ],
-  properties: ['id', 'state']
+  providers: [ngxRenderService],
+  properties: ['id', 'state', 'prefixClass:prefix-class']
 })
 .Class(new _ngxDropMenuComponent());

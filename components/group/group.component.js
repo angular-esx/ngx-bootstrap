@@ -38,6 +38,6 @@ module.exports = ng.core.Component({
   templateUrl: 'components/group/templates/group.bootstrap4.html',
   styleUrls: ['components/group/css/group.bootstrap4.css'],
   providers: [ngxRenderService],
-  properties: ['type', 'size']
+  properties: ['type', 'size', 'prefixClass:prefix-class']
 })
 .Class(new _ngxGroupComponent());

@@ -17,7 +17,6 @@ function _ngxDropMenuService() {
       ngxBootstrap.shallowCopy(this, ngxTypeService);
       ngxBootstrap.shallowCopy(this, ngxStateService);
 
-      this.prefixClass = 'ngx-drop-menu';
       this.dropMenuEmitter = new ng.core.EventEmitter();
     }
   ];
@@ -26,18 +25,18 @@ function _ngxDropMenuService() {
     return ngxBootstrap.shallowCopy({}, _ACTIONS);
   };
 
-  this.isDropdownTypeClass = function (type) {
-    return this.getTypeClass(type).indexOf(this.getDropdownTypeClass()) > -1;
+  this.isDropdownTypeClass = function (prefixClass, type) {
+    return this.getTypeClass(prefixClass, type).indexOf(this.getDropdownTypeClass(prefixClass)) > -1;
   };
-  this.getDropdownTypeClass = function () {
-    return this.prefixClass + '-type-dropdown';
+  this.getDropdownTypeClass = function (prefixClass) {
+    return prefixClass + '-type-dropdown';
   };
 
-  this.isDropupTypeClass = function (type) {
-    return this.getTypeClass(type).indexOf(this.getDropupTypeClass()) > -1;
+  this.isDropupTypeClass = function (prefixClass, type) {
+    return this.getTypeClass(prefixClass, type).indexOf(this.getDropupTypeClass(prefixClass)) > -1;
   };
-  this.getDropupTypeClass = function () {
-    return this.prefixClass + '-type-dropup';
+  this.getDropupTypeClass = function (prefixClass) {
+    return prefixClass + '-type-dropup';
   };
 
   this.subscribe = function (onNext, onError, onCompleted) {

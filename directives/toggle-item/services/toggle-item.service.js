@@ -2,15 +2,14 @@
 var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../../cores/ngx-bootstrap.utils.js');
 
-function _ngxDropMenuItemService() {
+function _ngxToggleItemService() {
   this.constructor = [
     ngxStateService,
 
-    function ngxDropMenuItemService(ngxStateService) {
-    ngxBootstrap.shallowCopy(this, ngxStateService);
-
-    this.prefixClass = 'ngx-drop-menu-item';
-  }];
+    function ngxToggleItemService(ngxStateService) {
+      ngxBootstrap.shallowCopy(this, ngxStateService);
+    }
+  ];
 }
 
-module.exports = ng.core.Class(new _ngxDropMenuItemService());
+module.exports = ng.core.Class(new _ngxToggleItemService());

@@ -17,7 +17,9 @@ function _ngxToggleDropupDirective() {
     function ngxToggleDropupDirective(elementRef, ngxRenderService, ngxDropMenuService) {
       ngxBaseDirective.apply(this, arguments);
 
-      this.ngxDropMenuService = ngxDropMenuService;
+      if (elementRef) {
+        this.ngxDropMenuService = ngxDropMenuService;
+      }
     }
   ];
 

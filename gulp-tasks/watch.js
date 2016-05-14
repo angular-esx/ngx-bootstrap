@@ -13,7 +13,10 @@ module.exports = function(params) {
       './components/**/*.js',
       './cores/**/*.js',
       './ngx-bootstrap.js',
-      './ngx-bootstrap.utils.js'
+      './ngx-bootstrap.utils.js',
+      './components/**/*.sass',
+      './components/**/*.scss',
+      './components/**/*.html',    
     ], ['lint', 'webpack']);
 
     _gulp.watch('./scss/**/*.scss', ['sass', 'webpack']);

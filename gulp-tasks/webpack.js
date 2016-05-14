@@ -5,12 +5,20 @@ module.exports = function(params) {
       _webpack = require('webpack-stream'),
       _fileService = params.fileService,
       _componentName = params.args.component,
+      _directiveName = params.args.directive,
       _testCase = params.args.testcase,
       _notReadOption = { read: false };
       
-    return _gulp.src(_fileService.getTestCaseBoot(_componentName, _testCase))
-      .pipe(_webpack( require('./../webpack.config.js') ))
-      .pipe(_rename('ngx-bootstrap-test-ui.js'))
-      .pipe(_gulp.dest(''));
+    var _testUI;
+    if (_componentName) {
+      _testUI = _gulp.src(_fileService.getComponentTestCaseBoot(_componentName, _testCase));
+    }
+    else if (_directiveName) {
+      _testUI = _gulp.src(_fileService.getDirectiveTestCaseBoot(_directiveName, _testCase))
+    }
+
+    return _testUI.pipe(_webpack( require('./../webpack.config.js') ))
+                  .pipe(_rename('ngx-bootstrap-test-ui.js'))
+                  .pipe(_gulp.dest(''));
   };
 };

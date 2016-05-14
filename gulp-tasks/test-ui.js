@@ -8,6 +8,7 @@
         _fileService = params.fileService,
         _libs = _fileService.LIBRARIES,
         _componentName = params.args.component,
+        _directiveName = params.args.directive,
         _testCase = params.args.testcase,
         _notReadOption = { read: false };
 
@@ -19,10 +20,16 @@
 
     var _bootstrapCss = _gulp.src(_libs.BOOTSTRAP_04_CSS, _notReadOption);
 
-    _gulp.src(_fileService.getTestCaseBoot(_componentName, _testCase))
-      .pipe(_webpack( require('./../webpack.config.js') ))
-      .pipe(_rename('ngx-bootstrap-test-ui.js'))
-      .pipe(_gulp.dest(''));
+    var _testUI;
+    if (_componentName) {
+      _testUI = _gulp.src(_fileService.getComponentTestCaseBoot(_componentName, _testCase))
+    }
+    else if (_directiveName) {
+      _testUI = _gulp.src(_fileService.getDirectiveTestCaseBoot(_directiveName, _testCase))
+    }
+    _testUI.pipe(_webpack(require('./../webpack.config.js')))
+          .pipe(_rename('ngx-bootstrap-test-ui.js'))
+          .pipe(_gulp.dest(''));
       
     var ngxBootstrap = _gulp.src('ngx-bootstrap-test-ui.js', _notReadOption);
 
@@ -39,18 +46,18 @@
                 .pipe(_gulp.dest(_fileService.PATHS.ROOT));
   };
 
-  function _getOrderedDependencies(rootFolder, outputFile) {
-    var _fileStream = require('fs'),
-        _Infos = _readJsonFile(outputFile),
-        _result = [];
-    for (var prop in _Infos) {
-      _result.push(rootFolder + prop + '.js');
-    }
+  //function _getOrderedDependencies(rootFolder, outputFile) {
+  //  var _fileStream = require('fs'),
+  //      _Infos = _readJsonFile(outputFile),
+  //      _result = [];
+  //  for (var prop in _Infos) {
+  //    _result.push(rootFolder + prop + '.js');
+  //  }
 
-    return _result;
+  //  return _result;
 
-    function _readJsonFile(filePath) {
-      return JSON.parse(_fileStream.readFileSync(filePath, 'utf8').replace(/^\uFEFF/, ''));
-    };
-  };
+  //  function _readJsonFile(filePath) {
+  //    return JSON.parse(_fileStream.readFileSync(filePath, 'utf8').replace(/^\uFEFF/, ''));
+  //  };
+  //};
 };

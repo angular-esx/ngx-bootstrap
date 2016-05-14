@@ -3,11 +3,9 @@
 function _ngxTypeService() {
   var _TYPES;
 
-  this.constructor = function ngxTypeService() {
-    this.prefixClass = '';
-  };
+  this.constructor = function ngxTypeService() {};
 
-  this.getTypeClass = function (types) {
+  this.getTypeClass = function (prefixClass, types) {
     if (!types) { return ''; }
 
     var _types = types.split(' ');
@@ -18,7 +16,7 @@ function _ngxTypeService() {
       _type = _type.charAt(0).toUpperCase() + _type.slice(1);
 
       _funcName = 'get' + _type + 'TypeClass';
-      _typeClasses.push(_self[_funcName] ? _self[_funcName]() : _self.prefixClass + '-type-' + _type);
+      _typeClasses.push(_self[_funcName] ? _self[_funcName](prefixClass) : prefixClass + '-type-' + _type);
     });
 
     return _typeClasses.length === 0 ? '' : _typeClasses.join(' ');

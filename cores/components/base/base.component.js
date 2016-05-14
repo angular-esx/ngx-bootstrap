@@ -19,10 +19,8 @@ function _ngxBaseComponent() {
   ];
 
   this.ngAfterViewInit = function(){
-    var _prefixClass = this.getPrefixClass();
-    
-    if(_prefixClass && (this.cssClass === null || this.cssClass === undefined)){
-      this.cssClass = _prefixClass;
+    if(this.prefixClass && (this.cssClass === null || this.cssClass === undefined)){
+      this.cssClass = this.prefixClass;
       
       this.ngxRenderService.insertClass(this.cssClass, 0);
     }

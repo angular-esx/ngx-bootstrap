@@ -14,8 +14,6 @@ function _ngxLinkService() {
       ngxBootstrap.shallowCopy(this, ngxColorService);
       ngxBootstrap.shallowCopy(this, ngxSizeService);
       ngxBootstrap.shallowCopy(this, ngxStateService);
-      
-      this.prefixClass = 'ngx-link';
     }
   ];
 }

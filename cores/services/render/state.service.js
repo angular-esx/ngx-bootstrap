@@ -3,11 +3,9 @@
 function _ngxStateService() {
   var _STATES;
 
-  this.constructor = function ngxStateService() {
-    this.prefixClass = '';
-  };
+  this.constructor = function ngxStateService() {};
 
-  this.getStateClass = function (states) {
+  this.getStateClass = function (prefixClass, states) {
     if (!states) { return ''; }
 
     var _states = states.split(' ');
@@ -18,7 +16,7 @@ function _ngxStateService() {
       _state = _state.charAt(0).toUpperCase() + _state.slice(1);
 
       _funcName = 'get' + _state + 'StateClass';
-      _stateClasses.push(_self[_funcName] ? _self[_funcName]() : _self.prefixClass + '-state-' + _state);
+      _stateClasses.push(_self[_funcName] ? _self[_funcName](prefixClass) : prefixClass + '-state-' + _state);
     });
 
     return _stateClasses.length === 0 ? '' : _stateClasses.join(' ');
@@ -43,32 +41,32 @@ function _ngxStateService() {
     return ngxBootstrap.shallowCopy({}, _STATES);
   };
 
-  this.isActiveStateClass = function (state) {
-    return this.getStateClass(state).indexOf(this.getActiveStateClass()) > -1;
+  this.isActiveStateClass = function (prefixClass, state) {
+    return this.getStateClass(prefixClass, state).indexOf(this.getActiveStateClass(prefixClass)) > -1;
   };
-  this.getActiveStateClass = function () {
-    return this.prefixClass + '-state-active';
-  };
-  
-  this.isDisabledStateClass = function (state) {
-    return this.getStateClass(state).indexOf(this.getDisabledStateClass()) > -1;
-  };
-  this.getDisabledStateClass = function () {
-    return this.prefixClass + '-state-disabled';
+  this.getActiveStateClass = function (prefixClass) {
+    return prefixClass + '-state-active';
   };
   
-  this.isFocusStateClass = function (state) {
-    return this.getStateClass(state).indexOf(this.getFocusStateClass()) > -1;
+  this.isDisabledStateClass = function (prefixClass, state) {
+    return this.getStateClass(prefixClass, state).indexOf(this.getDisabledStateClass(prefixClass)) > -1;
   };
-  this.getFocusStateClass = function () {
-    return this.prefixClass + '-state-focus';
+  this.getDisabledStateClass = function (prefixClass) {
+    return prefixClass + '-state-disabled';
   };
   
-  this.isHiddenStateClass = function (state) {
-    return this.getStateClass(state).indexOf(this.getHiddenStateClass()) > -1;
+  this.isFocusStateClass = function (prefixClass, state) {
+    return this.getStateClass(prefixClass, state).indexOf(this.getFocusStateClass(prefixClass)) > -1;
   };
-  this.getHiddenStateClass = function () {
-    return this.prefixClass + '-state-hidden';
+  this.getFocusStateClass = function (prefixClass) {
+    return prefixClass + '-state-focus';
+  };
+  
+  this.isHiddenStateClass = function (prefixClass, state) {
+    return this.getStateClass(prefixClass, state).indexOf(this.getHiddenStateClass(prefixClass)) > -1;
+  };
+  this.getHiddenStateClass = function (prefixClass) {
+    return prefixClass + '-state-hidden';
   };
   
 }

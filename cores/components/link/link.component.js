@@ -100,7 +100,7 @@ function _ngxLinkComponent() {
   };
   
   this.click = function ($event) {
-    if (this.ngxLinkService.isDisabledStateClass(this.state)) {
+    if (this.ngxLinkService.isDisabledStateClass(this.prefixClass, this.state)) {
       $event.preventDefault();
       return;
     }
@@ -126,7 +126,7 @@ module.exports = ng.core.Component({
   queries: {
     link: new ng.core.ViewChild('link')
   },
-  properties: ['href', 'hreflang', 'media-query', 'media-type', 'rel', 'target', 'color', 'size', 'state'],
+  properties: ['href', 'hreflang', 'media-query', 'media-type', 'rel', 'target', 'color', 'size', 'state', 'prefixClass:prefix-class'],
   events: ['clickEmitter: click']
 })
 .Class(new _ngxLinkComponent());

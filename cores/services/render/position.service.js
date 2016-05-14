@@ -3,11 +3,9 @@ var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
 function _ngxPositionService() {
   var _POSITIONS;
 
-  this.constructor = function ngxPositionService() {
-    this.prefixClass = '';
-  };
+  this.constructor = function ngxPositionService() {};
 
-  this.getPositionClass = function (positions) {
+  this.getPositionClass = function (prefixClass, positions) {
     if (!positions) { return ''; }
 
     var _positions = positions.split(' ');
@@ -18,7 +16,7 @@ function _ngxPositionService() {
       _position = _position.charAt(0).toUpperCase() + _position.slice(1);
 
       _funcName = 'get' + _position + 'PositionClass';
-      _positionClasses.push(_self[_funcName] ? _self[_funcName]() : _self.prefixClass + '-position-' + _position);
+      _positionClasses.push(_self[_funcName] ? _self[_funcName](prefixClass) : prefixClass + '-position-' + _position);
     });
 
     return _positionClasses.length === 0 ? '' : _positionClasses.join(' ');
@@ -43,32 +41,32 @@ function _ngxPositionService() {
     return ngxBootstrap.shallowCopy({}, _POSITIONS);
   };
 
-  this.isTopPositionClass = function (position) {
-    return this.getPositionClass(position).indexOf(this.getTopPositionClass()) > -1;
+  this.isTopPositionClass = function (prefixClass, position) {
+    return this.getPositionClass(prefixClass, position).indexOf(this.getTopPositionClass(prefixClass)) > -1;
   };
-  this.getTopPositionClass = function () {
-    return this.prefixClass + '-position-top';
-  };
-  
-  this.isBottomPositionClass = function (position) {
-    return this.getPositionClass(position).indexOf(this.getBottomPositionClass()) > -1;
-  };
-  this.getBottomPositionClass = function () {
-    return this.prefixClass + '-position-bottom';
+  this.getTopPositionClass = function (prefixClass) {
+    return prefixClass + '-position-top';
   };
   
-  this.isLeftPositionClass = function (position) {
-    return this.getPositionClass(position).indexOf(this.getLeftPositionClass()) > -1;
+  this.isBottomPositionClass = function (prefixClass, position) {
+    return this.getPositionClass(prefixClass, position).indexOf(this.getBottomPositionClass(prefixClass)) > -1;
   };
-  this.getLeftPositionClass = function () {
-    return this.prefixClass + '-position-left';
+  this.getBottomPositionClass = function (prefixClass) {
+    return prefixClass + '-position-bottom';
   };
   
-  this.isRightPositionClass = function (position) {
-    return this.getPositionClass(position).indexOf(this.getRightPositionClass()) > -1;
+  this.isLeftPositionClass = function (prefixClass, position) {
+    return this.getPositionClass(prefixClass, position).indexOf(this.getLeftPositionClass(prefixClass)) > -1;
   };
-  this.getRightPositionClass = function () {
-    return this.prefixClass + '-position-right';
+  this.getLeftPositionClass = function (prefixClass) {
+    return prefixClass + '-position-left';
+  };
+  
+  this.isRightPositionClass = function (prefixClass, position) {
+    return this.getPositionClass(prefixClass, position).indexOf(this.getRightPositionClass(prefixClass)) > -1;
+  };
+  this.getRightPositionClass = function (prefixClass) {
+    return prefixClass + '-position-right';
   };
 }
 

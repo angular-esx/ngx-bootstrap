@@ -41,7 +41,7 @@ function _testCase() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-test-case',
-  templateUrl: ngxBootstrap.configs.fileService.getTestCaseTemplate('alert'),
+  templateUrl: 'components/alert/tests/ui/isolated-components/test-case.html',
   directives: [
     ngxLinkComponent,
     ngxItemComponent,

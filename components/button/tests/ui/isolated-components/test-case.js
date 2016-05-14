@@ -16,7 +16,7 @@ function _testCase() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-test-case',
-  templateUrl: ngxBootstrap.configs.fileService.getTestCaseTemplate('button'),
+  templateUrl: 'components/button/tests/ui/isolated-components/test-case.html',
   directives: [
     ngxButtonComponent
   ],

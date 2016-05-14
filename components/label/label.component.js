@@ -37,8 +37,6 @@ module.exports = ng.core.Component({
   selector: 'ngx-label',
   /*Inject template at here*/
   /*Inject style at here*/
-  templateUrl: 'components/label/templates/label.bootstrap4.html',
-  styleUrls: ['components/label/css/label.bootstrap4.css'],
   providers: [ngxRenderService],
   properties: ['color', 'type', 'prefixClass:prefix-class']
 })

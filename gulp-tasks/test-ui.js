@@ -77,12 +77,14 @@ function injectTemplateStyle(component, theme) {
   var insertTemplate = function(component, theme) {
     var contents = fs.readFileSync(templatePath(component, theme), 'utf8');
 
-    return 'template: "' + jsStringEscape(contents) + '",';
+    return "template: '" + jsStringEscape(contents) + "',";
   }
   var insertStyle = function(component, theme) {
-    var contents = fs.readFileSync(stylePath(component, theme), 'utf8').replace(/[\r\n]+/g, ' ').replace(/  +/g, ' ');
+    var contents = fs.readFileSync(stylePath(component, theme), 'utf8')
+      .replace(/[\r\n]+/g, ' ')
+      .replace(/  +/g, ' ');
 
-    return 'styles: `' + contents + '`,';
+    return "styles: ['" + contents + "'],";
   }
   
   var styleTheme = stylePath(component, theme);

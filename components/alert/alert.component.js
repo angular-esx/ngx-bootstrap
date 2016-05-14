@@ -55,19 +55,20 @@ function _ngxAlertComponent() {
     
     if(this.ngxAlertService.getPositionClass){
       _aggregate[_ATTRIBUTES.POSITION] = {
-        prev: this.ngxAlertService.getPositionClass(this.prefixClass, this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.POSITION)),
-        current: this.ngxAlertService.getPositionClass(this.prefixClass, this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.POSITION))
+        prev: this.ngxAlertService.getPositionClass(this.getPrefixClass(), this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.POSITION)),
+        current: this.ngxAlertService.getPositionClass(this.getPrefixClass(), this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.POSITION))
       };
     }
     
     return _aggregate;
   };
   
-  this.onBuildOwnCssClass = function(aggregate){
-    this.isDismissible = this.ngxAlertService.isDismissibleTypeClass(this.prefixClass, this.type);
+  this.onBuildOwnCssClass = function (aggregate) {
+    var _prefixClass = this.getPrefixClass();
+    this.isDismissible = this.ngxAlertService.isDismissibleTypeClass(_prefixClass, this.type);
     
     var _self = this;
-        _classes = [this.prefixClass];
+    _classes = [_prefixClass];
     
     ngxBootstrap.forEach(aggregate, function(attributeValues, attributeName){
       if(attributeValues.current && 
@@ -76,9 +77,9 @@ function _ngxAlertComponent() {
       }
     });
     
-    _classes.push(this.ngxAlertService.getFadeAnimationClass(this.prefixClass));
-    if(!this.ngxAlertService.isHiddenStateClass(this.prefixClass, this.state)){
-      _classes.push(this.ngxAlertService.getFadeInAnimationClass(this.prefixClass));
+    _classes.push(this.ngxAlertService.getFadeAnimationClass(_prefixClass));
+    if (!this.ngxAlertService.isHiddenStateClass(_prefixClass, this.state)) {
+      _classes.push(this.ngxAlertService.getFadeInAnimationClass(_prefixClass));
     }
     
     return _classes;
@@ -86,13 +87,14 @@ function _ngxAlertComponent() {
   
   this.show = function () {
     var _self = this,
-        _floatTypeClass = this.ngxAlertService.getFloatTypeClass(this.prefixClass),
-        _fadeInAnimationClass = this.ngxAlertService.getFadeInAnimationClass(this.prefixClass),
+        _prefixClass = this.getPrefixClass(),
+        _floatTypeClass = this.ngxAlertService.getFloatTypeClass(_prefixClass),
+        _fadeInAnimationClass = this.ngxAlertService.getFadeInAnimationClass(_prefixClass),
         _cssClasses = [];
     
     ngxBootstrap.forEach(this.cssClass.split(' '), function(cssClass){
       if (cssClass ===  _floatTypeClass && 
-          _self.ngxAlertService.isFloatTypeClass(_self.prefixClass, _self.type)) {
+          _self.ngxAlertService.isFloatTypeClass(_prefixClass, _self.type)) {
         _cssClasses.push(cssClass);
       }
       else{
@@ -110,13 +112,14 @@ function _ngxAlertComponent() {
 
   this.dismiss = function () {
     var _self = this,
-        _floatTypeClass = this.ngxAlertService.getFloatTypeClass(this.prefixClass),
-        _fadeInAnimationClass = this.ngxAlertService.getFadeInAnimationClass(this.prefixClass),
+        _prefixClass = this.getPrefixClass(),
+        _floatTypeClass = this.ngxAlertService.getFloatTypeClass(_prefixClass),
+        _fadeInAnimationClass = this.ngxAlertService.getFadeInAnimationClass(_prefixClass),
         _cssClasses = [];
     
     ngxBootstrap.forEach(this.cssClass.split(' '), function(cssClass){
       if (cssClass ===  _floatTypeClass && 
-          !_self.ngxAlertService.isFloatTypeClass(_self.prefixClass, _self.type)) {
+          !_self.ngxAlertService.isFloatTypeClass(_prefixClass, _self.type)) {
         _cssClasses.push(cssClass);
       }
       else if(cssClass != _fadeInAnimationClass){

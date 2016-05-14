@@ -100,7 +100,7 @@ function _ngxLinkComponent() {
   };
   
   this.click = function ($event) {
-    if (this.ngxLinkService.isDisabledStateClass(this.prefixClass, this.state)) {
+    if (this.ngxLinkService.isDisabledStateClass(this.getPrefixClass(), this.state)) {
       $event.preventDefault();
       return;
     }

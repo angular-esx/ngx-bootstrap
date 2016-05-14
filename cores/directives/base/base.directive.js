@@ -42,29 +42,29 @@ function _ngxBaseDirective() {
 
     if (this.ngxBaseService.getColorClass) {
       _aggregate[_ATTRIBUTES.COLOR] = {
-        prev: this.ngxBaseService.getColorClass(this.prefixClass, this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.COLOR)),
-        current: this.ngxBaseService.getColorClass(this.prefixClass, this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.COLOR))
+        prev: this.ngxBaseService.getColorClass(this.getPrefixClass(), this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.COLOR)),
+        current: this.ngxBaseService.getColorClass(this.getPrefixClass(), this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.COLOR))
       };
     }
 
     if (this.ngxBaseService.getTypeClass) {
       _aggregate[_ATTRIBUTES.TYPE] = {
-        prev: this.ngxBaseService.getTypeClass(this.prefixClass, this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.TYPE)),
-        current: this.ngxBaseService.getTypeClass(this.prefixClass, this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.TYPE))
+        prev: this.ngxBaseService.getTypeClass(this.getPrefixClass(), this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.TYPE)),
+        current: this.ngxBaseService.getTypeClass(this.getPrefixClass(), this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.TYPE))
       };
     }
 
     if (this.ngxBaseService.getStateClass) {
       _aggregate[_ATTRIBUTES.STATE] = {
-        prev: this.ngxBaseService.getStateClass(this.prefixClass, this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.STATE)),
-        current: this.ngxBaseService.getStateClass(this.prefixClass, this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.STATE))
+        prev: this.ngxBaseService.getStateClass(this.getPrefixClass(), this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.STATE)),
+        current: this.ngxBaseService.getStateClass(this.getPrefixClass(), this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.STATE))
       };
     }
 
     if (this.ngxBaseService.getSizeClass) {
       _aggregate[_ATTRIBUTES.SIZE] = {
-        prev: this.ngxBaseService.getSizeClass(this.prefixClass, this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.SIZE)),
-        current: this.ngxBaseService.getSizeClass(this.prefixClass, this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.SIZE))
+        prev: this.ngxBaseService.getSizeClass(this.getPrefixClass(), this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.SIZE)),
+        current: this.ngxBaseService.getSizeClass(this.getPrefixClass(), this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.SIZE))
       };
     }
 
@@ -74,7 +74,8 @@ function _ngxBaseDirective() {
   this.onBuildOwnCssClass = function (aggregate) {
     var _classes = [];
 
-    if (this.prefixClass) { _classes.push(this.prefixClass); }
+    var _prefixClass = this.getPrefixClass();
+    if (_prefixClass) { _classes.push(_prefixClass); }
 
     ngxBootstrap.forEach(aggregate, function (attribute) {
       if (attribute.current) { _classes.push(attribute.current); }
@@ -88,7 +89,7 @@ function _ngxBaseDirective() {
 
     if (!_currentClass) { return []; }
 
-    var _prefixClass = this.prefixClass,
+    var _prefixClass = this.getPrefixClass(),
         _classes = [],
         _isExistingCssClass = false;
 
@@ -112,6 +113,10 @@ function _ngxBaseDirective() {
 
   this.onSetCssClass = function () {
     this.ngxRenderService.setClass(this.cssClass);
+  };
+
+  this.getPrefixClass = function () {
+    return this.prefixClass || '';
   };
 
   this.getPrevPropertyValue = function (changeRecord, propertyName) {

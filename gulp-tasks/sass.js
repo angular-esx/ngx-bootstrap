@@ -5,7 +5,7 @@ module.exports = function (params) {
         _rename = params.plugins.rename;
         _reload = params.plugins.browserSync.reload;
 
-    return _gulp.src('./scss/ngx-bootstrap.scss')
+    _gulp.src('./scss/ngx-bootstrap.scss')
       .pipe(_reload({stream:true}))
       .pipe(_sass({outputStyle: 'expanded'}).on('error', _sass.logError))
       .pipe(_gulp.dest('./dist/css/'))

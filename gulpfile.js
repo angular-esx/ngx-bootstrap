@@ -49,13 +49,13 @@
 
       return this.PATHS.DIRECTIVES + directiveName + '/tests/ui/' + testCase + '/boot.js';
     };
-
+    
   })();
 
   var taskService = new(function() {
     this.WATCH = 'watch';
     this.BROWSER_SYNC = 'browser-sync';
-    this.SASS = 'sass';
+    this.SCSS = 'scss';
     this.LINT = 'lint';
     this.TEST_UI = 'test-ui';
     this.BUILD = 'build';
@@ -76,10 +76,10 @@
   gulp.task('default', ['serve']);
 
   gulp.task('serve', function() {
-    runSequence('sass', 'lint', ['browserSync', 'watch']);
+    runSequence('scss', 'lint', ['browserSync', 'watch']);
   });
   
-  gulp.task('sass', getTask(taskService.SASS));
+  gulp.task('scss', getTask(taskService.SCSS));
 
   gulp.task('lint', getTask(taskService.LINT));
   

@@ -122,9 +122,9 @@
   border-top-color: #f7ecb5;
 }
 
-.ngx-alert-color-warning) /deep/ .ngx-alert-link > a,
-.ngx-alert-color-warning) /deep/ .ngx-link > a,
-.ngx-alert-color-warning) /deep/ > a {
+:host(.ngx-alert-color-warning) /deep/ .ngx-alert-link > a,
+:host(.ngx-alert-color-warning) /deep/ .ngx-link > a,
+:host(.ngx-alert-color-warning) /deep/ > a {
   color: #66512c;
 }
 

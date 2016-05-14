@@ -19,7 +19,9 @@
 
 <ngx-alert color="warning">
   <strong>Warning!</strong> 
-  Better check yourself, you're not looking too good
+  <ngx-item ngx-alert-link>
+    <a [href]="href">Better check yourself, you're not looking too good</a>
+  </ngx-item>
 </ngx-alert>
 
 <ngx-alert id="myDangerAlert" 

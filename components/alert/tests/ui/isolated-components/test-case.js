@@ -1,5 +1,6 @@
 ﻿var ngxAlertComponent = require('./../../../alert.component.js');
 var ngxAlertService = require('./../../../services/alert.service.js');
+var ngxAlertLinkDirective = require('./../../../../../directives/alert-link/alert-link.directive.js');
 var ngxLinkComponent = require('./../../../../../cores/components/link/link.component.js');
 var ngxLinkService = require('./../../../../../cores/components/link/services/link.service.js');
 var ngxItemComponent = require('./../../../../../cores/components/item/item.component.js');
@@ -43,6 +44,7 @@ module.exports = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/alert/tests/ui/isolated-components/test-case.html',
   directives: [
+    ngxAlertLinkDirective,
     ngxLinkComponent,
     ngxItemComponent,
     ngxAlertComponent

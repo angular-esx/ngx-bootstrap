@@ -8,8 +8,6 @@ function _ngxBreadcumbService() {
 
     function ngxBreadcumbService(ngxColorService) {
       ngxBootstrap.shallowCopy(this, ngxColorService);
-      
-      this.prefixClass = 'ngx-breadcrumb';
     }
   ];
 }

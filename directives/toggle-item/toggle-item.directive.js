@@ -29,9 +29,9 @@ function _ngxToggleItemDirective() {
   ];
 
   this.toggle = function () {
-    if (this.ngxToggleItemService.isDisabledStateClass(this.prefixClass, this.state)) { return; }
+    if (this.ngxToggleItemService.isDisabledStateClass(this.getPrefixClass(), this.state)) { return; }
 
-    var _isActive = this.ngxToggleItemService.isActiveStateClass(this.prefixClass, this.state);
+    var _isActive = this.ngxToggleItemService.isActiveStateClass(this.getPrefixClass(), this.state);
     var _isCanceled = false;
 
     this.toggleEmitter.next({

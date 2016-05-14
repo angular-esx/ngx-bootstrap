@@ -1,9 +1,13 @@
 ﻿var ngxBreadcrumbComponent = require('./../../../breadcrumb.component.js');
 var ngxBreadcrumbService = require('./../../../services/breadcrumb.service.js');
-var ngxBreadcrumbItemService = require('./../../../services/breadcrumb-item.service.js');
+var ngxBreadcrumbItemDirective = require('./../../../../../directives/breadcrumb-item/breadcrumb-item.directive.js');
 var ngxLinkComponent = require('./../../../../../cores/components/link/link.component.js');
+var ngxLinkService = require('./../../../../../cores/components/link/services/link.service.js');
 var ngxItemComponent = require('./../../../../../cores/components/item/item.component.js');
+var ngxItemService = require('./../../../../../cores/components/item/services/item.service.js');
 var ngxColorService = require('./../../../../../cores/services/render/color.service.js');
+var ngxStateService = require('./../../../../../cores/services/render/state.service.js');
+var ngxSizeService = require('./../../../../../cores/services/render/size.service.js');
 var ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.utils.js');
 
@@ -23,16 +27,20 @@ function _testCase() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-test-case',
-  templateUrl: ngxBootstrap.configs.fileService.getTestCaseTemplate('breadcrumb'),
+  templateUrl: 'components/breadcrumb/tests/ui/isolated-components/test-case.html',
   directives: [
+    ngxBreadcrumbItemDirective,
     ngxLinkComponent,
     ngxItemComponent,
     ngxBreadcrumbComponent
   ],
    providers: [
     ngxColorService,
-    ngxBreadcrumbService,
-    ngxBreadcrumbItemService
+    ngxStateService,
+    ngxSizeService,
+    ngxItemService,
+    ngxLinkService,
+    ngxBreadcrumbService
   ]
 })
 .Class(new _testCase());

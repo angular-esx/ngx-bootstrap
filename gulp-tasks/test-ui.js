@@ -80,7 +80,7 @@ function injectTemplateStyle(component, theme) {
     return 'template: "' + jsStringEscape(contents) + '",';
   }
   var insertStyle = function(component, theme) {
-    var contents = fs.readFileSync(stylePath(component, theme), 'utf8');
+    var contents = fs.readFileSync(stylePath(component, theme), 'utf8').replace(/[\r\n]+/g, ' ').replace(/  +/g, ' ');
 
     return 'styles: `' + contents + '`,';
   }

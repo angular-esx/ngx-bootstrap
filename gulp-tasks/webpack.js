@@ -4,7 +4,8 @@ var insert = require('gulp-insert');
 var inject = require('gulp-inject');
 var rename = require('gulp-rename');
 var jsStringEscape = require('js-string-escape');
-var webpack = require('webpack-stream');
+var webpack = require('webpack');
+var webpackStream = require('webpack-stream');
 
 module.exports = function(params) {
   return function() {
@@ -17,7 +18,8 @@ module.exports = function(params) {
     
     _themeName = _themeName || 'bootstrap4';
       
-    var _testUI;
+    var _testUI, webpackConfig;
+    
     if (_componentName) {
       _testUI = gulp.src(_fileService.getComponentTestCaseBoot(_componentName, _testCase));
     }
@@ -26,10 +28,27 @@ module.exports = function(params) {
     }
     
     injectTemplateStyle(_componentName, _themeName);
-
-    return _testUI.pipe(webpack( require('./../webpack.config.js') ))
-                  .pipe(rename('ngx-bootstrap-test-ui.js'))
-                  .pipe(gulp.dest(''));
+    
+    var _componentThemeName = _componentName + '.component.' + _themeName + '.js';
+    
+    webpackConfig = {
+      context: __dirname,
+      output: {
+        path: __dirname,
+        libraryTarget: 'umd',
+        umdNamedDefine: true,
+        library: 'ngxBootstrap',
+      },
+      plugins: [
+        new webpack.DefinePlugin({
+          __COMPONENT_FILE__: JSON.stringify(_componentThemeName),
+        })
+      ]
+    };
+    
+    return _testUI.pipe(webpackStream(webpackConfig))
+      .pipe(rename('ngx-bootstrap-test-ui.js'))
+      .pipe(gulp.dest(''));
   };
 };
 
@@ -56,7 +75,7 @@ function injectTemplateStyle(component, theme) {
     var contents = fs.readFileSync(stylePath(component, theme), 'utf8')
       .replace(/[\r\n]+/g, ' ')
       .replace(/  +/g, ' ');
-    console.log(contents);
+    
     return "styles: ['" + contents + "'],";
   }
   

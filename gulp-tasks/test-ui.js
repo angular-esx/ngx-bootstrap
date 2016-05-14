@@ -23,7 +23,7 @@ module.exports = function (params) {
     var _bootstrapCss = gulp.src(_libs.BOOTSTRAP_04_CSS, _notReadOption);
     
     var ngxBootstrap = gulp.src('ngx-bootstrap-test-ui.js', _notReadOption);
-
+    
     return gulp.src(_fileService.FILES.INDEX_TEMPLATE_HTML)
                 .pipe(inject(_streamSeries(ngxBootstrap), { relative: true, name: 'component' }))
                 .pipe(inject(_streamSeries
@@ -35,5 +35,6 @@ module.exports = function (params) {
                 ))
                 .pipe(rename(_fileService.FILES.INDEX_HTML.replace(_fileService.PATHS.ROOT, '')))
                 .pipe(gulp.dest(_fileService.PATHS.ROOT));
+                // .run('webpack');
   };
 };

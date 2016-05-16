@@ -14,6 +14,7 @@ function _ngxLinkComponent() {
     REL: 'rel',
     TARGET: 'target',
     COLOR: 'color',
+    TYPE: 'type',
     SIZE: 'size',
     STATE: 'state'
   };
@@ -124,6 +125,6 @@ module.exports = ng.core.Component({
   queries: {
     link: new ng.core.ViewChild('link')
   },
-  properties: ['href', 'hreflang', 'media-query', 'media-type', 'rel', 'target', 'color', 'size', 'state', 'prefixClass:prefix-class']
+  properties: ['href', 'hreflang', 'media-query', 'media-type', 'rel', 'target', 'color', 'type', 'size', 'state', 'prefixClass:prefix-class']
 })
 .Class(new _ngxLinkComponent());

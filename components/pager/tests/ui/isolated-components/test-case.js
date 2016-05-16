@@ -1,36 +1,47 @@
-﻿(function (testCases, cores, components, fileService) {
-  testCases.isolatedComponents = ng.core.Component({
-    selector: 'ngx-test-case',
-    templateUrl: fileService.getTestCaseTemplate('pager'),
-    directives: [
-      cores.ngxLinkComponent,
-      components.ngxPagerComponent
-    ],
-    providers: [
-      cores.ngxTypeService,
-      cores.ngxStateService,
-      cores.ngxLinkService,
-      components.ngxPagerService
-    ]
-  })
-  .Class(new testCase());
+﻿var ngxPagerComponent = require('./../../../pager.component.js');
+var ngxPagerService = require('./../../../services/pager.service.js');
+var ngxColorService = require('./../../../../../cores/services/render/color.service.js');
+var ngxTypeService = require('./../../../../../cores/services/render/type.service.js');
+var ngxStateService = require('./../../../../../cores/services/render/state.service.js');
+var ngxSizeService = require('./../../../../../cores/services/render/size.service.js');
+var ngxLinkComponent = require('./../../../../../cores/components/link/link.component.js');
+var ngxLinkService = require('./../../../../../cores/components/link/services/link.service.js');
+var ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.js');
+ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.utils.js');
 
-  function testCase() {
-    this.constructor = [components.ngxPagerService, function (ngxPagerService) {
+function _testCase() {
+  this.constructor = [ngxPagerService, function (ngxPagerService) {
 
-      this.TYPES = ngxPagerService.getTypes();
-    }];
+    this.TYPES = ngxPagerService.getTypes();
+  }];
 
-    this.onSetLinkPage = function (event) {
-      event.setPrevLink('https://mywebsite.com/page/' + event.currentPage - 1);
-      event.setNextLink('https://mywebsite.com/page/' + event.currentPage + 1);
-    };
+  this.setLinkPage = function (event) {
+    event.setPrevLink('https://mywebsite.com/page/' + event.currentPage - 1);
+    event.setNextLink('https://mywebsite.com/page/' + event.currentPage + 1);
+  };
 
-    this.onChangePage = function (event) {
-      event.preventDefault();
+  this.changePage = function (event) {
+    event.preventDefault();
 
-      alert('Changed to page: ' + event.page.number);
-    };
+    alert('Changed to page: ' + event.page.number);
+  };
 
-  }
-})(window.testCases || (window.testCases = {}), window.ngxBootstrap.ngxCores, window.ngxBootstrap.ngxComponents, ngxBootstrap.configs.fileService);
+}
+
+module.exports = ng.core.Component({
+  selector: 'ngx-test-case',
+  templateUrl: 'components/pager/tests/ui/isolated-components/test-case.html',
+  directives: [
+    ngxLinkComponent,
+    ngxPagerComponent
+  ],
+  providers: [
+   ngxColorService,
+   ngxTypeService,
+   ngxStateService,
+   ngxSizeService,
+   ngxLinkService,
+   ngxPagerService
+  ]
+})
+.Class(new _testCase());

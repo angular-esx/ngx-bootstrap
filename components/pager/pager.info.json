@@ -1,8 +1,0 @@
-﻿{
-  "pager/services/pager.service": { },
-  "pager/pager.component": {
-    "dependencies": [
-      "pager/services/pager.service"
-    ]
-  }
-}

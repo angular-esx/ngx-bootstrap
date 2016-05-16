@@ -1,34 +1,22 @@
-﻿(function (ngxBootstrap) {
-  ngxBootstrap.ngxComponents.ngxProgressService = ng.core.Class(new _ngxProgressService());
+﻿var ngxColorService = require('./../../../cores/services/render/color.service.js');
+var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
+ngxBootstrap = require('./../../../cores/ngx-bootstrap.utils.js');
 
-  function _ngxProgressService() {
-    this.constructor = [
-      ngxBootstrap.ngxCores.ngxColorService,
-      ngxBootstrap.ngxCores.ngxTypeService,
+function _ngxProgressService() {
+  this.constructor = [
+    ngxColorService,
 
-      function (ngxColorService, ngxTypeService) {
-        ngxBootstrap.shallowCopy(this, ngxColorService);
-        ngxBootstrap.shallowCopy(this, ngxTypeService);
+    function ngxProgressService(ngxColorService) {
+      ngxBootstrap.shallowCopy(this, ngxColorService);
+    }
+  ];
 
-        this.setPrefix('progress');
-      }
-    ];
+  this.isStripedColorClass = function (prefix, color) {
+    return this.getColorClass(prefixClass, color).indexOf(this.getStripedColorClass(prefixClass)) > -1;
+  };
+  this.getStripedColorClass = function (prefix) {
+    return prefix + '-color-striped';
+  };
+}
 
-    this.getStripedTypeClass = function () {
-      return this.prefix + 'striped';
-    };
-
-    this.combineColorWithType = function (color, type) {
-      var _typeClass = this.getTypeClass(type);
-      var _colorClass = this.getColorClass(color);
-
-      if (_typeClass == this.getStripedTypeClass()) {
-        return this.prefix + type + ' ' + _colorClass;
-      }
-      else {
-        return _typeClass ? _colorClass + '-' + _typeClass : _colorClass;
-      }
-    };
-  }
-
-})(window.ngxBootstrap);
+module.exports = ng.core.Class(new _ngxProgressService());

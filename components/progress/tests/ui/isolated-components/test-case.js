@@ -1,22 +1,24 @@
-﻿(function (testCases, cores, components, fileService) {
-  testCases.isolatedComponents = ng.core.Component({
-    selector: 'ngx-test-case',
-    templateUrl: fileService.getTestCaseTemplate('progress'),
-    directives: [
-      components.ngxProgressComponent
-    ],
-    providers: [
-      cores.ngxColorService,
-      cores.ngxTypeService,
-      components.ngxProgressService
-    ]
-  })
-  .Class(new testCase());
+﻿var ngxProgressComponent = require('./../../../progress.component.js');
+var ngxProgressService = require('./../../../services/progress.service.js');
+var ngxColorService = require('./../../../../../cores/services/render/color.service.js');
+var ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.js');
+ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.utils.js');
 
-  function testCase() {
-    this.constructor = [components.ngxProgressService, function (ngxProgressService) {
-      this.COLORS = ngxProgressService.getColors();
-      this.TYPES = ngxProgressService.getTypes();
-    }];
-  }
-})(window.testCases || (window.testCases = {}), window.ngxBootstrap.ngxCores, window.ngxBootstrap.ngxComponents, ngxBootstrap.configs.fileService);
+function _testCase() {
+  this.constructor = [ngxProgressService, function (ngxProgressService) {
+    this.COLORS = ngxProgressService.getColors();
+  }];
+}
+
+module.exports = ng.core.Component({
+  selector: 'ngx-test-case',
+  templateUrl: 'components/progress/tests/ui/isolated-components/test-case.html',
+  directives: [
+    ngxProgressComponent
+  ],
+  providers: [
+   ngxColorService,
+   ngxProgressService
+  ]
+})
+.Class(new _testCase());

@@ -8,6 +8,7 @@ function _ngxItemComponent() {
   var _base;
   var _ATTRIBUTES = {
     COLOR: 'color',
+    TYPE: 'type',
     SIZE: 'size',
     STATE: 'state'
   };
@@ -38,6 +39,6 @@ module.exports = ng.core.Component({
   selector: 'ngx-item',
   template: '<ng-content></ng-content>',
   providers: [ngxRenderService],
-  properties: ['color', 'size', 'state', 'prefixClass:prefix-class']
+  properties: ['color', 'type', 'size', 'state', 'prefixClass:prefix-class']
 })
 .Class(new _ngxItemComponent());

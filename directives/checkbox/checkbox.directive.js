@@ -31,12 +31,13 @@ function _ngxCheckboxDirective() {
     }
   ];
 
-  this.hasValue = function () {
-    return ngxBootstrap.isArray(this.model) ? this.model.indexOf(this.checkedValue) !== -1 : this.model === this.checkedValue;
-  };
-
   this.isChecked = function () {
-    return this.ngxCheckboxGroup ? this.ngxCheckboxGroup.hasValue(this.checkedValue) : this.hasValue();
+    if (this.ngxCheckboxGroup) {
+      return this.ngxCheckboxGroup.hasValue(this.checkedValue);
+    }
+    else {
+      return ngxBootstrap.isArray(this.model) ? this.model.indexOf(this.checkedValue) !== -1 : this.model === this.checkedValue;
+    }
   };
 
   this.check = function () {
@@ -49,6 +50,31 @@ function _ngxCheckboxDirective() {
       this.addOrRemoveValue();
     }
 
+    this.updateState();
+  };
+
+  this.addOrRemoveValue = function () {
+    if (this.isChecked()) {
+      if (ngxBootstrap.isArray(this.model)) {
+        this.model.splice(this.model.indexOf(this.checkedValue), 1);
+      }
+      else {
+        this.model = this.unCheckedValue;
+      }
+    }
+    else {
+      if (ngxBootstrap.isArray(this.model)) {
+        this.model.push(this.checkedValue);
+      }
+      else {
+        this.model = this.checkedValue;
+      }
+    }
+
+    this.modelChange.emit(this.model);
+  };
+
+  this.updateState = function () {
     var _isActive = this.ngxCheckboxService.isActiveStateClass(this.getPrefixClass(), this.state);
     var _changeRecord = {
       state: { previousValue: this.state || '' }
@@ -62,27 +88,6 @@ function _ngxCheckboxDirective() {
     _changeRecord.state.currentValue = this.state;
 
     this.ngOnChanges(_changeRecord);
-  };
-
-  this.addOrRemoveValue = function () {
-    if (ngxBootstrap.isArray(this.model)) {
-      if (this.hasValue()) {
-        this.model.splice(this.model.indexOf(this.checkedValue), 1);
-      }
-      else {
-        this.model.push(this.checkedValue);
-      }
-    }
-    else {
-      if (this.model === this.checkedValue) {
-        this.model = this.unCheckedValue;
-      }
-      else {
-        this.model = this.checkedValue;
-      }
-    }
-
-    this.modelChange.emit(this.model);
   };
 
   function _getBaseInstance(context) {

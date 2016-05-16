@@ -1,16 +1,13 @@
-﻿var ngxRenderService = require('./../../cores/services/render/render.service.js');
-var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
+﻿var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 
 function _ngxCheckboxGroupDirective() {
   this.constructor = [
     ng.core.ElementRef,
-    ngxRenderService,
 
-    function ngxCheckboxGroupDirective(elementRef, ngxRendererService) {
+    function ngxCheckboxGroupDirective(elementRef) {
       if (elementRef) {
         this.elementRef = elementRef;
-        this.ngxRendererService = ngxRendererService;
 
         this.modelChange = new ng.core.EventEmitter();
       }
@@ -35,8 +32,7 @@ function _ngxCheckboxGroupDirective() {
 
 module.exports = ng.core.Directive({
   selector: '[ngx-checkbox-group]',
-  providers: [ngxRenderService],
-  properties: ['model: model'],
+  properties: ['model'],
   events: ['modelChange']
 })
 .Class(new _ngxCheckboxGroupDirective());

@@ -30,14 +30,12 @@ function _ngxLinkComponent() {
       
       this.ngxLinkService = ngxLinkService;
       
-      if(elementRef){
-        if(!this.href){ this.href = '#'; }
-      
+      if (elementRef) {
         this.clickEmitter = new ng.core.EventEmitter(); 
       }
     }
   ];
-  
+
   this.ngOnChanges = function(changeRecord) {
     _getBaseInstance(this).ngOnChanges.apply(this, arguments);
     
@@ -71,6 +69,12 @@ function _ngxLinkComponent() {
     
   };
   
+  this.ngOnInit = function () {
+    if (this.elementRef) {
+      if (!this.href) { this.href = '#'; }
+    }
+  };
+
   this.ngAfterViewInit = function () {
     _getBaseInstance(this).ngAfterViewInit.apply(this);
     
@@ -102,15 +106,9 @@ function _ngxLinkComponent() {
   this.click = function ($event) {
     if (this.ngxLinkService.isDisabledStateClass(this.getPrefixClass(), this.state)) {
       $event.preventDefault();
+      $event.stopPropagation();
       return;
-    }
-    
-    if(this.clickEmitter){
-      this.clickEmitter.emit({
-        href: this.href,
-        preventDefault: function () { $event.preventDefault(); }
-      });
-    }   
+    }  
   };
 
   function _getBaseInstance(context){ 
@@ -126,7 +124,6 @@ module.exports = ng.core.Component({
   queries: {
     link: new ng.core.ViewChild('link')
   },
-  properties: ['href', 'hreflang', 'media-query', 'media-type', 'rel', 'target', 'color', 'size', 'state', 'prefixClass:prefix-class'],
-  events: ['clickEmitter: click']
+  properties: ['href', 'hreflang', 'media-query', 'media-type', 'rel', 'target', 'color', 'size', 'state', 'prefixClass:prefix-class']
 })
 .Class(new _ngxLinkComponent());

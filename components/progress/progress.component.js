@@ -1,36 +1,35 @@
-﻿(function (ngxBootstrap) {
-  ngxBootstrap.ngxComponents.ngxProgressComponent = ng.core.Component({
-    selector: 'ngx-progress',
-    template: '<progress [value]="value" [max]="max">{{value}}/{{max}}</progress>',
-    providers: [ngxBootstrap.ngxCores.ngxRendererService],
-    properties: ['value', 'max']
-  })
-  .Class(new _ngxProgress());
+﻿var ngxProgressService = require('./services/progress.service.js');
+var ngxBaseComponent = require('./../../cores/components/base/base.component.js');
+var ngxRenderService = require('./../../cores/services/render/render.service.js');
+var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
+ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 
-  function _ngxProgress() {
-    var _ATTRIBUTES = {
-      COLOR: 'color',
-      TYPE: 'type'
-    };
+function _ngxProgressComponent() {
+  var _base;
+  var _ATTRIBUTES = {
+    COLOR: 'color',
+    VALUE: 'value',
+    MAX: 'max'
+  };
 
-    this.constructor = [
-      ng.core.ElementRef,
-      ngxBootstrap.ngxCores.ngxRendererService,
-      ngxBootstrap.ngxComponents.ngxProgressService,
+  this.extends = ngxBaseComponent;
 
-      function (elementRef, ngxRendererService, ngxProgressService) {
-        this.cssClass = 'progress';
+  this.constructor = [
+    ng.core.ElementRef,
+    ngxRenderService,
+    ngxProgressService,
 
-        this.elementRef = elementRef;
-        this.ngxRendererService = ngxRendererService.for(elementRef.nativeElement);
+    function ngxProgressComponent(elementRef, ngxRenderService, ngxProgressService) {
+      ngxBaseComponent.apply(this, arguments);
+      
+      if (elementRef) {
         this.ngxProgressService = ngxProgressService;
       }
-    ];
+    }
+  ];
 
-    this.ngAfterContentInit = function () {
-      this.color = this.ngxRendererService.getElementAttribute(_ATTRIBUTES.COLOR);
-      this.type = this.ngxRendererService.getElementAttribute(_ATTRIBUTES.TYPE);
-      
+  this.ngOnInit = function () {
+    if (this.elementRef) {
       if (this.value === undefined || this.value === null || isNaN(this.value) || this.value < 0) {
         this.value = 0;
       }
@@ -38,21 +37,32 @@
       if (this.max === undefined || this.max === null || isNaN(this.max) || this.max < 0) {
         this.max = 100;
       }
-    };
+    }
+  };
 
-    this.ngAfterViewInit = function () {
-      var _className = this.cssClass + ' ' + this.ngxProgressService.combineColorWithType(this.color, this.type);
-      var _self = this;
-      ngxBootstrap.forEach(_ATTRIBUTES, function (attribute) {
-        _self.ngxRendererService.removeElementAttribute(attribute);
-      });
-      this.ngxRendererService.removeElementAttribute('class');
+  this.ngAfterViewInit = function () {
+    _getBaseInstance(this).ngAfterViewInit.apply(this);
 
-      this.ngxRendererService.for(this.elementRef.nativeElement.firstChild);
-      this.ngxRendererService.addToElementAttribute('class', _className, true);
+    var _self = this,
+        _attributes = [
+      _ATTRIBUTES.VALUE,
+      _ATTRIBUTES.MAX
+    ];
 
-      this.ngxRendererService.for(this.elementRef.nativeElement);
-    };
+    this.removeOneTimeBindingAttributes(_attributes);
+  };
+
+  function _getBaseInstance(context) {
+    if (!_base) { _base = context.getBaseInstance(ngxBaseComponent); }
+    return _base;
   }
+}
 
-})(window.ngxBootstrap);
+module.exports = ng.core.Component({
+  selector: 'ngx-progress',
+  templateUrl: 'components/progress/templates/progress.bootstrap4.html',
+  styleUrls: ['components/progress/css/progress.bootstrap4.css'],
+  providers: [ngxRenderService],
+  properties: ['color', 'value', 'max']
+})
+.Class(new _ngxProgressComponent());

@@ -1,41 +1,43 @@
-﻿(function (ngxBootstrap) {
-  ngxBootstrap.ngxComponents.ngxPaginationComponent = ng.core.Component({
-    selector: 'ngx-pagination',
-    template: _getNgxPaginationTemplate(),
-    directives: [
-      ngxBootstrap.ngxCores.ngxLinkComponent
-    ],
-    providers: [ngxBootstrap.ngxCores.ngxRendererService],
-    properties: ['totalPages: total-pages', 'pageSize: page-size', 'currentPage: current-page', 'showPrevious: show-previous', 'showNext: show-next'],
-    events: ['onSetLinkPage', 'onChangePage']
-  })
-  .Class(new _ngxPagination());
+﻿var ngxPaginationService = require('./services/pagination.service.js');
+var ngxLinkComponent = require('./../../cores/components/link/link.component.js');
+var ngxLinkService = require('./../../cores/components/link/services/link.service.js');
+var ngxBaseComponent = require('./../../cores/components/base/base.component.js');
+var ngxRenderService = require('./../../cores/services/render/render.service.js');
+var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
+ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 
-  function _ngxPagination() {
-    var _ATTRIBUTES = {
-      SIZE: 'size'
-    };
+function _ngxPaginationComponent() {
+  var _base;
+  var _ATTRIBUTES = {
+    SIZE: 'size',
+    TOTAL_PAGES: 'total-pages',
+    PAGE_SIZE: 'page-size',
+    CURRENT_PAGE: 'current-page',
+    SHOW_PREVIOUS: 'show-previous',
+    SHOW_NEXT: 'show_next'
+  };
 
-    this.constructor = [
-      ng.core.ElementRef,
-      ngxBootstrap.ngxCores.ngxRendererService,
-      ngxBootstrap.ngxComponents.ngxPaginationService,
+  this.extends = ngxBaseComponent;
 
-      function (elementRef, ngxRendererService, ngxPaginationService) {
-        this.cssClass = 'pagination';
+  this.constructor = [
+    ng.core.ElementRef,
+    ngxRenderService,
+    ngxPaginationService,
 
-        this.elementRef = elementRef;
-        this.ngxRendererService = ngxRendererService.for(elementRef.nativeElement);
+    function ngxPaginationComponent(elementRef, ngxRenderService, ngxPaginationService) {
+      ngxBaseComponent.apply(this, arguments);
+      
+      if (elementRef) {
         this.ngxPaginationService = ngxPaginationService;
 
-        this.onSetLinkPage = new ng.core.EventEmitter();
-        this.onChangePage = new ng.core.EventEmitter(false);
+        this.setLinkPageEmitter = new ng.core.EventEmitter();
+        this.changePageEmitter = new ng.core.EventEmitter(false);
       }
-    ];
+    }
+  ];
 
-    this.ngAfterContentInit = function () {
-      this.size = this.ngxRendererService.getElementAttribute(_ATTRIBUTES.SIZE);
-
+  this.ngOnInit = function () {
+    if (this.elementRef) {
       if (!this.totalPages || this.totalPages < 0) { this.totalPages = 0; }
       else { this.totalPages = parseInt(this.totalPages); }
 
@@ -52,97 +54,102 @@
 
       this.pageBuilder = new _pageBuilder();
       this.pageBuilder.build(this.totalPages, this.pageSize, this.startPage, this.onSetLinkPage);
-    };
+    }
+  };
 
-    this.ngAfterViewInit = function () {
-      var _className = this.cssClass;
-      if (this.size) {
-        _className += ' ' + this.ngxPaginationService.getSizeClass(this.size);
-      }
+  this.prev = function ($event) {
+    this.changePage($event, this.pageBuilder.getPage(this.currentPage - 1));
+  };
 
-      this.ngxRendererService.addToElementAttribute('class', _className, true);
-    };
+  this.next = function ($event) {
+    this.changePage($event, this.pageBuilder.getPage(this.currentPage + 1));
+  };
 
-    this.prev = function ($event) {
-      this.changePage($event, this.pageBuilder.getPage(this.currentPage - 1));
-    };
+  this.changePage = function ($event, page) {
+    if (page < 1 || page > this.totalPages) { return; }
 
-    this.next = function ($event) {
-      this.changePage($event, this.pageBuilder.getPage(this.currentPage + 1));
-    };
-
-    this.changePage = function ($event, page) {
-      if (page < 1 || page > this.totalPages) { return; }
-
-      var _isCanceled = false;
-      if (this.onChangePage) {
-        this.onChangePage.emit({
-          page: page,
-          cancel: function () { _isCanceled = true; },
-          preventDefault: function () { $event.preventDefault(); }
-        });
-      }
-
-      if (_isCanceled) { return; }
-
-      this.currentPage = page.number;
-      this.startPage = _getStartPage(this.pageSize, this.currentPage);
-      this.pageBuilder.build(this.totalPages, this.pageSize, this.startPage, this.onSetLinkPage);
-    };
-
-    function _getStartPage(pageSize, currentPage) {
-      var _startPage = currentPage - parseInt(pageSize / 2);
-      return _startPage <= 0 ? 1 : _startPage;
+    var _isCanceled = false;
+    if (this.onChangePage) {
+      this.onChangePage.emit({
+        page: page,
+        cancel: function () { _isCanceled = true; },
+        preventDefault: function () { $event.preventDefault(); }
+      });
     }
 
-    function _pageBuilder () {
-      var _indexedPages = {};
-      var _sortedPages = [];
-      this.pages = [];
+    if (_isCanceled) { return; }
 
-      this.build = function (totalPages, pageSize, startPage, onSetLinkPage) {
-        var _page;
-        for (var i = startPage; i <= totalPages; i++) {
-          if (i === startPage + pageSize) { break; }
-          if (_indexedPages[i]) { continue; }
+    this.currentPage = page.number;
+    this.startPage = _getStartPage(this.pageSize, this.currentPage);
+    this.pageBuilder.build(this.totalPages, this.pageSize, this.startPage, this.onSetLinkPage);
+  };
 
-          _page = { number: i, link: '#' };
-          if (onSetLinkPage) { onSetLinkPage.emit({ page: _page }); }
+  function _getStartPage(pageSize, currentPage) {
+    var _startPage = currentPage - parseInt(pageSize / 2);
+    return _startPage <= 0 ? 1 : _startPage;
+  }
 
-          _indexedPages[i] = _page;
+  function _pageBuilder() {
+    var _indexedPages = {};
+    var _sortedPages = [];
+    this.pages = [];
 
-          _sortedPages.push(_page);
+    this.build = function (totalPages, pageSize, startPage, onSetLinkPage) {
+      var _page;
+      for (var i = startPage; i <= totalPages; i++) {
+        if (i === startPage + pageSize) { break; }
+        if (_indexedPages[i]) { continue; }
+
+        _page = { number: i, link: '#' };
+        if (onSetLinkPage) { onSetLinkPage.emit({ page: _page }); }
+
+        _indexedPages[i] = _page;
+
+        _sortedPages.push(_page);
+      }
+
+      _sortedPages.sort(function (item01, item02) {
+        return item01.number === item02.number ? 0 : (item01.number > item02.number ? 1 : -1);
+      });
+
+      var _tempPages = [];
+      ngxBootstrap.forEach(_sortedPages, function (page) {
+        if (page.number === startPage + pageSize) { return true; }
+
+        if (page.number >= startPage) {
+          _tempPages.push(page);
         }
+      });
 
-        _sortedPages.sort(function (item01, item02) {
-          return item01.number === item02.number ? 0 : (item01.number > item02.number ? 1 : -1);
-        });
+      this.pages = _tempPages;
+    };
 
-        var _tempPages = [];
-        ngxBootstrap.forEach(_sortedPages, function (page) {
-          if (page.number === startPage + pageSize) { return true; }
-
-          if (page.number >= startPage) {
-            _tempPages.push(page);
-          }
-        });
-
-        this.pages = _tempPages;
-      };
-
-      this.getPage = function (pageNumber) {
-        return _indexedPages[pageNumber];
-      };
-    }
-
+    this.getPage = function (pageNumber) {
+      return _indexedPages[pageNumber];
+    };
   }
 
-  function _getNgxPaginationTemplate() {
-    return [
-      '<ngx-link href="#" *ngIf="showPrevious" (click)="prev($event)">&laquo;</ngx-link>',
-      '<ngx-link *ngFor="#page of pageBuilder.pages" href="{{page.link}}" state="{{page.number === currentPage ? \'active\': \'\'}}" (click)="changePage($event, page)">{{page.number}}</ngx-link>',
-      '<ngx-link href="#" *ngIf="showNext" (click)="next($event)">&raquo;</ngx-link>',
-    ].join('');
+  function _getBaseInstance(context) {
+    if (!_base) { _base = context.getBaseInstance(ngxBaseComponent); }
+    return _base;
   }
+}
 
-})(window.ngxBootstrap);
+module.exports = ng.core.Component({
+  selector: 'ngx-pagination',
+  templateUrl: 'components/pagination/templates/pagination.bootstrap4.html',
+  styleUrls: ['components/pagination/css/pagination.bootstrap4.css'],
+  directives: [ngxLinkComponent],
+  providers: [ngxRenderService, ngxLinkService],
+  properties: [
+    'size',
+    'totalPages: total-pages',
+    'pageSize: page-size',
+    'currentPage: current-page',
+    'showPrevious: show-previous',
+    'showNext: show-next',
+    'prefixClass: prefix-class'
+  ],
+  events: ['setLinkPageEmitter: setLinkPage', 'changePageEmitter: changePage']
+})
+.Class(new _ngxPaginationComponent());

@@ -1,4 +1,4 @@
-﻿var ngxLabelComponent = require('./../../../label.component.js');
+﻿var ngxLabelComponent = require('./../../../' + __COMPONENT_FILE__);
 var ngxLabelService = require('./../../../services/label.service.js');
 var ngxColorService = require('./../../../../../cores/services/render/color.service.js');
 var ngxTypeService = require('./../../../../../cores/services/render/type.service.js');

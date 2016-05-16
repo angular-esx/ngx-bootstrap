@@ -1,4 +1,7 @@
-﻿:host(.ngx-label) {
+@import "./../../../node_modules/bootstrap/scss/variables";
+@import "./../../../node_modules/bootstrap/scss/mixins";
+
+:host(.ngx-label) {
   display: inline-block;
   padding: .25em .4em;
   font-size: 75%;
@@ -37,4 +40,3 @@
 :host(.ngx-label-color-danger) {
   background-color: #d9534f;
 }
-

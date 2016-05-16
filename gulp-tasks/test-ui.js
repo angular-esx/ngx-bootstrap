@@ -1,63 +1,40 @@
-﻿module.exports = function (params) {
+﻿var fs = require('fs');
+var gulp = require('gulp');
+var insert = require('gulp-insert');
+var inject = require('gulp-inject');
+var rename = require('gulp-rename');
+var jsStringEscape = require('js-string-escape');
+var webpack = require('webpack-stream');
+
+module.exports = function (params) {
   return function () {
-    var _gulp = params.gulp,
-        _streamSeries = params.plugins.streamSeries,
-        _inject = params.plugins.inject,
-        _rename = params.plugins.rename,
-        _webpack = require('webpack-stream'),
+    var _streamSeries = params.plugins.streamSeries,
         _fileService = params.fileService,
         _libs = _fileService.LIBRARIES,
-        _componentName = params.args.component,
-        _directiveName = params.args.directive,
         _testCase = params.args.testcase,
         _notReadOption = { read: false };
 
-    var _es6ShimJs = _gulp.src(_libs.ES6_SHIM_JS, _notReadOption),
-        _rxJs = _gulp.src(_libs.RX_JS, _notReadOption),
-        _angularPolyfillJs = _gulp.src(_libs.ANGULAR_02_POLYFILLS_JS, _notReadOption),
-        _angularJs = _gulp.src(_libs.ANGULAR_02_JS, _notReadOption),
-        _ngxBootstrapCss = _gulp.src(_fileService.FILES.NGX_BOOTSTRAP_CSS, _notReadOption);
+    var _es6ShimJs = gulp.src(_libs.ES6_SHIM_JS, _notReadOption),
+        _rxJs = gulp.src(_libs.RX_JS, _notReadOption),
+        _angularPolyfillJs = gulp.src(_libs.ANGULAR_02_POLYFILLS_JS, _notReadOption),
+        _angularJs = gulp.src(_libs.ANGULAR_02_JS, _notReadOption),
+        _ngxBootstrapCss = gulp.src(_fileService.FILES.NGX_BOOTSTRAP_CSS, _notReadOption);
 
-    var _bootstrapCss = _gulp.src(_libs.BOOTSTRAP_04_CSS, _notReadOption);
-
-    var _testUI;
-    if (_componentName) {
-      _testUI = _gulp.src(_fileService.getComponentTestCaseBoot(_componentName, _testCase))
-    }
-    else if (_directiveName) {
-      _testUI = _gulp.src(_fileService.getDirectiveTestCaseBoot(_directiveName, _testCase))
-    }
-    _testUI.pipe(_webpack(require('./../webpack.config.js')))
-          .pipe(_rename('ngx-bootstrap-test-ui.js'))
-          .pipe(_gulp.dest(''));
-      
-    var ngxBootstrap = _gulp.src('ngx-bootstrap-test-ui.js', _notReadOption);
-
-    return _gulp.src(_fileService.FILES.INDEX_TEMPLATE_HTML)
-                .pipe(_inject(_streamSeries(ngxBootstrap), { relative: true, name: 'component' }))
-                .pipe(_inject(_streamSeries
+    var _bootstrapCss = gulp.src(_libs.BOOTSTRAP_04_CSS, _notReadOption);
+    
+    var ngxBootstrap = gulp.src('ngx-bootstrap-test-ui.js', _notReadOption);
+    
+    return gulp.src(_fileService.FILES.INDEX_TEMPLATE_HTML)
+                .pipe(inject(_streamSeries(ngxBootstrap), { relative: true, name: 'component' }))
+                .pipe(inject(_streamSeries
                   (
                     _es6ShimJs, _rxJs, _angularPolyfillJs, _angularJs,
                     _bootstrapCss, _ngxBootstrapCss
                   ),
                   { relative: true, name: 'core' }
                 ))
-                .pipe(_rename(_fileService.FILES.INDEX_HTML.replace(_fileService.PATHS.ROOT, '')))
-                .pipe(_gulp.dest(_fileService.PATHS.ROOT));
+                .pipe(rename(_fileService.FILES.INDEX_HTML.replace(_fileService.PATHS.ROOT, '')))
+                .pipe(gulp.dest(_fileService.PATHS.ROOT));
+                // .run('webpack');
   };
-
-  //function _getOrderedDependencies(rootFolder, outputFile) {
-  //  var _fileStream = require('fs'),
-  //      _Infos = _readJsonFile(outputFile),
-  //      _result = [];
-  //  for (var prop in _Infos) {
-  //    _result.push(rootFolder + prop + '.js');
-  //  }
-
-  //  return _result;
-
-  //  function _readJsonFile(filePath) {
-  //    return JSON.parse(_fileStream.readFileSync(filePath, 'utf8').replace(/^\uFEFF/, ''));
-  //  };
-  //};
 };

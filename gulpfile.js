@@ -9,18 +9,10 @@
       _paths.NODE_MODULES = _paths.ROOT + 'node_modules/';
       _paths.GULP_TASKS = _paths.ROOT + 'gulp-tasks/';
 
-      _paths.ANGULAR_02_CORE = _paths.NODE_MODULES + '@angular/core/';
-      _paths.ANGULAR_02_COMMON = _paths.NODE_MODULES + '@angular/common/';
-      _paths.ANGULAR_02_COMPILER = _paths.NODE_MODULES + '@angular/compiler/';
-      _paths.ANGULAR_02_PLATFORM_BROWSER = _paths.NODE_MODULES + '@angular/platform-browser/';
-      _paths.ANGULAR_02_PLATFORM_BROWSER_DYNAMIC = _paths.NODE_MODULES + '@angular/platform-browser-dynamic/';
-      _paths.ANGULAR_02_PLATFORM_SERVER = _paths.NODE_MODULES + '@angular/platform-server/';
-
+      _paths.ANGULAR_02 = _paths.NODE_MODULES + 'angular2/bundles/';
       _paths.BOOTSTRAP_04 = _paths.NODE_MODULES + 'bootstrap/dist/css/';
       _paths.ES6_SHIM = _paths.NODE_MODULES + 'es6-shim/';
       _paths.RX = _paths.NODE_MODULES + 'rxjs/bundles/';
-      _paths.REFLECT_METADATA = _paths.NODE_MODULES + 'reflect-metadata/';
-      _paths.ZONE = _paths.NODE_MODULES + 'zone.js/dist/';
 
       return _paths;
     })();
@@ -39,15 +31,8 @@
       return {
         ES6_SHIM_JS: paths.ES6_SHIM + 'es6-shim.js',
         RX_JS: paths.RX + 'Rx.umd.js',
-        REFLECT_METADATA_JS: paths.REFLECT_METADATA + 'Reflect.js',
-        ZONE_JS: paths.ZONE + 'zone.min.js',
-        
-        ANGULAR_02_CORE: paths.ANGULAR_02_CORE + 'core.umd.js',
-        ANGULAR_02_COMMON: paths.ANGULAR_02_COMMON + 'common.umd.js',
-        ANGULAR_02_COMPILER: paths.ANGULAR_02_COMPILER + 'compiler.umd.js',
-        ANGULAR_02_PLATFORM_BROWSER: paths.ANGULAR_02_PLATFORM_BROWSER + 'platform-browser.umd.js',
-        ANGULAR_02_PLATFORM_BROWSER_DYNAMIC: paths.ANGULAR_02_PLATFORM_BROWSER_DYNAMIC + 'platform-browser-dynamic.umd.js',
-        ANGULAR_02_PLATFORM_SERVER: paths.ANGULAR_02_PLATFORM_SERVER + 'platform-server.umd.js',
+        ANGULAR_02_POLYFILLS_JS: paths.ANGULAR_02 + 'angular2-polyfills.js',
+        ANGULAR_02_JS: paths.ANGULAR_02 + 'angular2-all.umd.js',
 
         BOOTSTRAP_04_CSS: paths.BOOTSTRAP_04 + 'bootstrap.min.css'
       };

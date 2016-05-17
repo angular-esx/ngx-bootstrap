@@ -16,15 +16,9 @@ module.exports = function (params) {
 
     var _es6ShimJs = gulp.src(_libs.ES6_SHIM_JS, _notReadOption),
         _rxJs = gulp.src(_libs.RX_JS, _notReadOption),
-        _reflectMetaDataJs = gulp.src(_libs.REFLECT_METADATA_JS, _notReadOption),
-        _zoneJs = gulp.src(_libs.ZONE_JS, _notReadOption),
-        
-        _angularCore = gulp.src(_libs.ANGULAR_02_CORE, _notReadOption),
-        _angularCommon = gulp.src(_libs.ANGULAR_02_COMMON, _notReadOption),
-        _angularCompiler = gulp.src(_libs.ANGULAR_02_COMPILER, _notReadOption),
-        _angularPlatformBrowser = gulp.src(_libs.ANGULAR_02_PLATFORM_BROWSER, _notReadOption),
-        _angularPlatformBrowserDynamic = gulp.src(_libs.ANGULAR_02_PLATFORM_BROWSER_DYNAMIC, _notReadOption),
-        _angularPlatformServer = gulp.src(_libs.ANGULAR_02_PLATFORM_SERVER, _notReadOption),
+
+        _angularPolyfillJs = gulp.src(_libs.ANGULAR_02_POLYFILLS_JS, _notReadOption),
+        _angularJs = gulp.src(_libs.ANGULAR_02_JS, _notReadOption),
         _ngxBootstrapCss = gulp.src(_fileService.FILES.NGX_BOOTSTRAP_CSS, _notReadOption);
 
     var _bootstrapCss = gulp.src(_libs.BOOTSTRAP_04_CSS, _notReadOption);
@@ -35,9 +29,7 @@ module.exports = function (params) {
                 .pipe(inject(_streamSeries(ngxBootstrap), { relative: true, name: 'component' }))
                 .pipe(inject(_streamSeries
                   (
-                    _es6ShimJs, _rxJs, _reflectMetaDataJs, _zoneJs,
-                    
-                    _angularCore, _angularCommon, _angularCompiler, _angularPlatformBrowser, _angularPlatformBrowserDynamic, _angularPlatformServer,
+                    _es6ShimJs, _rxJs, _angularPolyfillJs, _angularJs,
                     _bootstrapCss, _ngxBootstrapCss
                   ),
                   { relative: true, name: 'core' }

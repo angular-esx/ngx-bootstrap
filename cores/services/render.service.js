@@ -2,7 +2,7 @@
 
 function _ngxRenderService() {
   this.constructor = function ngxRenderService() {
-    this.domAdapter = new ng.platform.browser.BrowserDomAdapter();
+    this.domAdapter = new ng.platformServer.Parse5DomAdapter();
   };
 
   this.for = function (nativeElement) {

@@ -1,5 +1,5 @@
 var isolatedComponents = require('./test-case.js');
 
 document.addEventListener('DOMContentLoaded', function () {
-  ng.platform.browser.bootstrap(isolatedComponents, []);
+  ng.platformBrowserDynamic.bootstrap(isolatedComponents, []);
 });

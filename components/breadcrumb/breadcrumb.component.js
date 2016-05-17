@@ -1,6 +1,6 @@
 var ngxBreadcrumbService = require('./services/breadcrumb.service.js');
 var ngxBaseComponent = require('./../../cores/components/base/base.component.js');
-var ngxRenderService = require('./../../cores/services/render.service.js');
+var ngxRenderService = require('./../../cores/services/render/render.service.js');
 var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 
@@ -34,8 +34,8 @@ function _breadcrumbComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-breadcrumb',
-  /*Inject template at here*/
-  /*Inject style at here*/
+  templateUrl: 'components/breadcrumb/templates/breadcrumb.bootstrap4.html',
+  styleUrls: ['components/breadcrumb/css/breadcrumb.bootstrap4.css'],
   providers: [ngxRenderService],
   properties: ['color', 'prefixClass:prefix-class']
 })

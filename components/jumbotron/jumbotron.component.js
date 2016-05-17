@@ -1,5 +1,5 @@
 var ngxBaseComponent = require('./../../cores/components/base/base.component.js');
-var ngxRenderService = require('./../../cores/services/render.service.js');
+var ngxRenderService = require('./../../cores/services/render/render.service.js');
 var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 
@@ -25,8 +25,8 @@ function _ngxJumbotronComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-jumbotron',
-  /*Inject template at here*/
-  /*Inject style at here*/
+  templateUrl: 'components/jumbotron/templates/jumbotron.bootstrap4.html',
+  styleUrls: ['components/jumbotron/css/jumbotron.bootstrap4.css'],
   providers: [ngxRenderService],
   properties: ['prefixClass:prefix-class']
 })

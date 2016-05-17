@@ -1,6 +1,6 @@
 ﻿var ngxDropMenuItemService = require('./services/drop-menu-item.service.js');
 var ngxBaseDirective = require('./../../cores/directives/base/base.directive.js');
-var ngxRenderService = require('./../../cores/services/render.service.js');
+var ngxRenderService = require('./../../cores/services/render/render.service.js');
 var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 

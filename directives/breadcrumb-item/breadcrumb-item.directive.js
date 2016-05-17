@@ -1,5 +1,5 @@
 ﻿function _ngxBreadcrumbItemDirective() {
-  this.constructor = function ngxBreadcrumbItemDirective() { };
+  this.constructor = function ngxBreadcrumbItemDirective() { }
 }
 
 module.exports = ng.core.Directive({

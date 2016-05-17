@@ -1,5 +1,5 @@
 ﻿function _ngxAlertLinkDirective() {
-  this.constructor = function ngxAlertLinkDirective() { };
+  this.constructor = function ngxAlertLinkDirective() { }
 }
 
 module.exports = ng.core.Directive({

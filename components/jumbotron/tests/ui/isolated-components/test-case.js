@@ -1,4 +1,4 @@
-﻿var ngxJumbotronComponent = require('./../../../' + __COMPONENT_FILE__);
+﻿var ngxJumbotronComponent = require('./../../../jumbotron.component.js');
 var ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.utils.js');
 

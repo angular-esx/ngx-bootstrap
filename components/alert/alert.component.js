@@ -1,5 +1,5 @@
 ﻿var ngxAlertService = require('./services/alert.service.js');
-var ngxRenderService = require('./../../cores/services/render.service.js');
+var ngxRenderService = require('./../../cores/services/render/render.service.js');
 var ngxBaseComponent = require('./../../cores/components/base/base.component.js');
 var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
@@ -145,6 +145,8 @@ module.exports = ng.core.Component({
   selector: 'ngx-alert',
   /*Inject template at here*/
   /*Inject style at here*/
+  templateUrl: 'components/alert/templates/alert.bootstrap4.html',
+  styleUrls: ['components/alert/css/alert.bootstrap4.css'],
   providers:[ngxRenderService],
   properties: ['id', 'color', 'type', 'position', 'state', 'prefixClass:prefix-class'],
   events: ['dismissEmitter: dismiss'],

@@ -1,7 +1,7 @@
 ﻿var ngxRadioService = require('./services/radio.service.js');
 var ngxRadioGroupDirective = require('./radio-group.directive.js');
 var ngxBaseDirective = require('./../../cores/directives/base/base.directive.js');
-var ngxRenderService = require('./../../cores/services/render.service.js');
+var ngxRenderService = require('./../../cores/services/render/render.service.js');
 var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 

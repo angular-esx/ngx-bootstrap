@@ -1,4 +1,4 @@
-var ngxColorService = require('./../../../cores/services/color.service.js');
+var ngxColorService = require('./../../../cores/services/render/color.service.js');
 var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../../cores/ngx-bootstrap.utils.js');
 

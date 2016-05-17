@@ -1,6 +1,6 @@
 ﻿var ngxGroupService = require('./services/group.service.js');
 var ngxBaseComponent = require('./../../cores/components/base/base.component.js');
-var ngxRenderService = require('./../../cores/services/render.service.js');
+var ngxRenderService = require('./../../cores/services/render/render.service.js');
 var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 
@@ -35,8 +35,8 @@ function _ngxGroupComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-group',
-  /*Inject template at here*/
-  /*Inject style at here*/
+  templateUrl: 'components/group/templates/group.bootstrap4.html',
+  styleUrls: ['components/group/css/group.bootstrap4.css'],
   providers: [ngxRenderService],
   properties: ['type', 'size', 'prefixClass:prefix-class']
 })

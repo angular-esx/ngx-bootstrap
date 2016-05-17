@@ -1,11 +1,11 @@
-﻿var ngxGroupComponent = require('./../../../' + __COMPONENT_FILE__);
+﻿var ngxGroupComponent = require('./../../../../../components/group/group.component.js');
 var ngxGroupService = require('./../../../../../components/group/services/group.service.js');
-var ngxButtonComponent = require('./../../../../../components/button/button.component.bootstrap4.js');
+var ngxButtonComponent = require('./../../../../../components/button/button.component.js');
 var ngxButtonService = require('./../../../../../components/button/services/button.service.js');
-var ngxTypeService = require('./../../../../../cores/services/type.service.js');
-var ngxColorService = require('./../../../../../cores/services/color.service.js');
-var ngxSizeService = require('./../../../../../cores/services/size.service.js');
-var ngxStateService = require('./../../../../../cores/services/state.service.js');
+var ngxTypeService = require('./../../../../../cores/services/render/type.service.js');
+var ngxColorService = require('./../../../../../cores/services/render/color.service.js');
+var ngxSizeService = require('./../../../../../cores/services/render/size.service.js');
+var ngxStateService = require('./../../../../../cores/services/render/state.service.js');
 var ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.utils.js');
 

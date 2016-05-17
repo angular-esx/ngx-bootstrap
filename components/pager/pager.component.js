@@ -2,7 +2,7 @@
 var ngxLinkComponent = require('./../../cores/components/link/link.component.js');
 var ngxLinkService = require('./../../cores/components/link/services/link.service.js');
 var ngxBaseComponent = require('./../../cores/components/base/base.component.js');
-var ngxRenderService = require('./../../cores/services/render.service.js');
+var ngxRenderService = require('./../../cores/services/render/render.service.js');
 var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 
@@ -115,8 +115,8 @@ function _ngxPagerComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-pager',
-  /*Inject template at here*/
-  /*Inject style at here*/
+  templateUrl: 'components/pager/templates/pager.bootstrap4.html',
+  styleUrls: ['components/pager/css/pager.bootstrap4.css'],
   directives: [ngxLinkComponent],
   providers: [ngxRenderService, ngxLinkService],
   properties: [

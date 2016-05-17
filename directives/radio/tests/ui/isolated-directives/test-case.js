@@ -6,10 +6,10 @@ var ngxGroupComponent = require('./../../../../../components/group/group.compone
 var ngxGroupService = require('./../../../../../components/group/services/group.service.js');
 var ngxRadioGroupDirective = require('./../../../radio-group.directive.js');
 var ngxRadioGroupService = require('./../../../services/radio-group.service.js');
-var ngxColorService = require('./../../../../../cores/services/render/color.service.js');
-var ngxTypeService = require('./../../../../../cores/services/render/type.service.js');
-var ngxSizeService = require('./../../../../../cores/services/render/size.service.js');
-var ngxStateService = require('./../../../../../cores/services/render/state.service.js');
+var ngxColorService = require('./../../../../../cores/services/color.service.js');
+var ngxTypeService = require('./../../../../../cores/services/type.service.js');
+var ngxSizeService = require('./../../../../../cores/services/size.service.js');
+var ngxStateService = require('./../../../../../cores/services/state.service.js');
 var ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.utils.js');
 

@@ -1,5 +1,5 @@
 var ngxLinkButtonService = require('./services/link-button.service.js');
-var ngxRenderService = require('./../../cores/services/render/render.service.js');
+var ngxRenderService = require('./../../cores/services/render.service.js');
 var ngxLinkComponent = require('./../../cores/components/link/link.component.js');
 var ngxBaseComponent = require('./../../cores/components/base/base.component.js');
 var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');

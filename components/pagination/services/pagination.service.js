@@ -1,4 +1,4 @@
-﻿var ngxSizeService = require('./../../../cores/services/render/size.service.js');
+﻿var ngxSizeService = require('./../../../cores/services/size.service.js');
 var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../../cores/ngx-bootstrap.utils.js');
 

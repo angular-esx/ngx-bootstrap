@@ -2,7 +2,7 @@
 var ngxLinkComponent = require('./../../cores/components/link/link.component.js');
 var ngxLinkService = require('./../../cores/components/link/services/link.service.js');
 var ngxBaseComponent = require('./../../cores/components/base/base.component.js');
-var ngxRenderService = require('./../../cores/services/render/render.service.js');
+var ngxRenderService = require('./../../cores/services/render.service.js');
 var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 

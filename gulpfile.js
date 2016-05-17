@@ -41,7 +41,7 @@
         RX_JS: paths.RX + 'Rx.umd.js',
         REFLECT_METADATA_JS: paths.REFLECT_METADATA + 'Reflect.js',
         ZONE_JS: paths.ZONE + 'zone.min.js',
-        //ANGULAR_02_POLYFILLS_JS: paths.ANGULAR_02 + 'angular2-polyfills.js',
+        
         ANGULAR_02_CORE: paths.ANGULAR_02_CORE + 'core.umd.js',
         ANGULAR_02_COMMON: paths.ANGULAR_02_COMMON + 'common.umd.js',
         ANGULAR_02_COMPILER: paths.ANGULAR_02_COMPILER + 'compiler.umd.js',

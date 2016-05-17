@@ -18,7 +18,7 @@ module.exports = function (params) {
         _rxJs = gulp.src(_libs.RX_JS, _notReadOption),
         _reflectMetaDataJs = gulp.src(_libs.REFLECT_METADATA_JS, _notReadOption),
         _zoneJs = gulp.src(_libs.ZONE_JS, _notReadOption),
-        //_angularPolyfillJs = gulp.src(_libs.ANGULAR_02_POLYFILLS_JS, _notReadOption),
+        
         _angularCore = gulp.src(_libs.ANGULAR_02_CORE, _notReadOption),
         _angularCommon = gulp.src(_libs.ANGULAR_02_COMMON, _notReadOption),
         _angularCompiler = gulp.src(_libs.ANGULAR_02_COMPILER, _notReadOption),
@@ -36,7 +36,7 @@ module.exports = function (params) {
                 .pipe(inject(_streamSeries
                   (
                     _es6ShimJs, _rxJs, _reflectMetaDataJs, _zoneJs,
-                    //_angularPolyfillJs,
+                    
                     _angularCore, _angularCommon, _angularCompiler, _angularPlatformBrowser, _angularPlatformBrowserDynamic, _angularPlatformServer,
                     _bootstrapCss, _ngxBootstrapCss
                   ),

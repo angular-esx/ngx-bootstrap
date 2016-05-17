@@ -1,6 +1,6 @@
 ﻿var ngxButtonService = require('./services/button.service.js');
 var ngxBaseComponent = require('./../../cores/components/base/base.component.js');
-var ngxRenderService = require('./../../cores/services/render/render.service.js');
+var ngxRenderService = require('./../../cores/services/render.service.js');
 var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 
@@ -36,8 +36,8 @@ function _ngxButtonComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-button',
-  templateUrl: 'components/button/templates/button.bootstrap4.html',
-  styleUrls: ['components/button/css/button.bootstrap4.css'],
+  /*Inject template at here*/
+  /*Inject style at here*/
   providers:[ngxRenderService],
   properties: ['color', 'size', 'state', 'prefixClass:prefix-class']
 })

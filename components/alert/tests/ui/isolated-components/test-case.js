@@ -1,17 +1,17 @@
-﻿var ngxAlertComponent = require('./../../../alert.component.js');
+﻿var ngxAlertComponent = require('./../../../' + __COMPONENT_FILE__);
 var ngxAlertService = require('./../../../services/alert.service.js');
-var ngxAlertLinkDirective = require('./../../../../../directives/alert-link/alert-link.directive.js');
+var ngxAlertLinkDirective = require('./../../../alert-link.directive.js');
 var ngxLinkComponent = require('./../../../../../cores/components/link/link.component.js');
 var ngxLinkService = require('./../../../../../cores/components/link/services/link.service.js');
 var ngxItemComponent = require('./../../../../../cores/components/item/item.component.js');
 var ngxItemService = require('./../../../../../cores/components/item/services/item.service.js');
-var ngxColorService = require('./../../../../../cores/services/render/color.service.js');
-var ngxTypeService = require('./../../../../../cores/services/render/type.service.js');
-var ngxSizeService = require('./../../../../../cores/services/render/size.service.js');
-var ngxStateService = require('./../../../../../cores/services/render/state.service.js');
-var ngxPositionService = require('./../../../../../cores/services/render/position.service.js');
-var ngxAnimationService = require('./../../../../../cores/services/render/animation.service.js');
-var ngxRenderService = require('./../../../../../cores/services/render/render.service.js');
+var ngxColorService = require('./../../../../../cores/services/color.service.js');
+var ngxTypeService = require('./../../../../../cores/services/type.service.js');
+var ngxSizeService = require('./../../../../../cores/services/size.service.js');
+var ngxStateService = require('./../../../../../cores/services/state.service.js');
+var ngxPositionService = require('./../../../../../cores/services/position.service.js');
+var ngxAnimationService = require('./../../../../../cores/services/animation.service.js');
+var ngxRenderService = require('./../../../../../cores/services/render.service.js');
 var ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.utils.js');
 

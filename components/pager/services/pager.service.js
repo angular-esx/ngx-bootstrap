@@ -1,4 +1,4 @@
-﻿var ngxTypeService = require('./../../../cores/services/render/type.service.js');
+﻿var ngxTypeService = require('./../../../cores/services/type.service.js');
 var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../../cores/ngx-bootstrap.utils.js');
 

@@ -25,8 +25,8 @@ function _ngxJumbotronComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-jumbotron',
-  /*Inject template at here*/
-  /*Inject style at here*/
+  template: '<ng-content></ng-content>',
+  styles: [':host(.ngx-jumbotron) { padding: 2rem 1rem; margin-bottom: 2rem; background-color: #eceeef; display: block; } @media (min-width: 544px) { :host(.ngx-jumbotron) { padding: 4rem 2rem; } } :host(.ngx-jumbotron) /deep/ hr { border-top-color: #d0d5d8; }'],
   providers: [ngxRenderService],
   properties: ['prefixClass:prefix-class']
 })

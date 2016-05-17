@@ -1,4 +1,4 @@
-﻿.ngx-toggle-dropup::after{
+﻿:host-context(body) .ngx-toggle-dropup::after{
   display: inline-block;
   width: 0;
   height: 0;
@@ -11,6 +11,6 @@
   border-bottom: .3em solid;
 }
 
-.ngx-toggle-dropup {
+:host-context(body) .ngx-toggle-dropup {
   outline: 0;
 }

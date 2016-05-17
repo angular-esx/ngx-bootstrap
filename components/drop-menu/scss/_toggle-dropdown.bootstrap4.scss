@@ -1,4 +1,4 @@
-﻿.ngx-toggle-dropdown::after{
+﻿:host-context(body) .ngx-toggle-dropdown::after{
   display: inline-block;
   width: 0;
   height: 0;
@@ -11,6 +11,6 @@
   border-left: .3em solid transparent;
 }
 
-.ngx-toggle-dropdown:focus {
+:host-context(body) .ngx-toggle-dropdown:focus {
   outline: 0;
 }

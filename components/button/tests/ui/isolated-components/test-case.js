@@ -1,4 +1,4 @@
-﻿var ngxButtonComponent = require('./../../../button.component.js');
+﻿var ngxButtonComponent = require('./../../../' + __COMPONENT_FILE__);
 var ngxButtonService = require('./../../../services/button.service.js');
 var ngxColorService = require('./../../../../../cores/services/color.service.js');
 var ngxSizeService = require('./../../../../../cores/services/size.service.js');

@@ -29,10 +29,8 @@ function _ngxLinkComponent() {
     function ngxLinkComponent (elementRef, ngxRenderService, ngxLinkService) {
       ngxBaseComponent.apply(this, arguments);
       
-      this.ngxLinkService = ngxLinkService;
-      
       if (elementRef) {
-        this.clickEmitter = new ng.core.EventEmitter(); 
+        this.ngxLinkService = ngxLinkService;
       }
     }
   ];

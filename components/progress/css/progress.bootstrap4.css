@@ -11,6 +11,7 @@
   appearance: none;
   color: #0074d9;
   border: 0;
+  width: 100%;
 }
 
 :host(.ngx-progress) > .ngx-progress-bar[value]::-webkit-progress-bar {

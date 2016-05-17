@@ -32,8 +32,8 @@ function _ngxLinkButtonComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-link-button',
-  templateUrl: 'components/link-button/templates/link-button.bootstrap4.html',
-  styleUrls: ['components/link-button/css/link-button.bootstrap4.css'],
+  /*Inject template at here*/
+  /*Inject style at here*/
   providers: [ngxRenderService],
   queries: {
     link: new ng.core.ViewChild('link')

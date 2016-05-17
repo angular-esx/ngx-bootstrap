@@ -145,8 +145,6 @@ module.exports = ng.core.Component({
   selector: 'ngx-alert',
   /*Inject template at here*/
   /*Inject style at here*/
-  templateUrl: 'components/alert/templates/alert.bootstrap4.html',
-  styleUrls: ['components/alert/css/alert.bootstrap4.css'],
   providers:[ngxRenderService],
   properties: ['id', 'color', 'type', 'position', 'state', 'prefixClass:prefix-class'],
   events: ['dismissEmitter: dismiss'],

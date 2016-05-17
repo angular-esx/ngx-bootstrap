@@ -1,6 +1,6 @@
-﻿var ngxAlertComponent = require('./../../../alert.component.js');
+﻿var ngxAlertComponent = require('./../../../' + __COMPONENT_FILE__);
 var ngxAlertService = require('./../../../services/alert.service.js');
-var ngxAlertLinkDirective = require('./../../../../../directives/alert-link/alert-link.directive.js');
+var ngxAlertLinkDirective = require('./../../../alert-link.directive.js');
 var ngxLinkComponent = require('./../../../../../cores/components/link/link.component.js');
 var ngxLinkService = require('./../../../../../cores/components/link/services/link.service.js');
 var ngxItemComponent = require('./../../../../../cores/components/item/item.component.js');
@@ -11,7 +11,6 @@ var ngxSizeService = require('./../../../../../cores/services/size.service.js');
 var ngxStateService = require('./../../../../../cores/services/state.service.js');
 var ngxPositionService = require('./../../../../../cores/services/position.service.js');
 var ngxAnimationService = require('./../../../../../cores/services/animation.service.js');
-var ngxRenderService = require('./../../../../../cores/services/render.service.js');
 var ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.utils.js');
 
@@ -44,10 +43,10 @@ module.exports = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/alert/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxAlertLinkDirective,
     ngxLinkComponent,
     ngxItemComponent,
-    ngxAlertComponent
+    ngxAlertComponent,
+    ngxAlertLinkDirective
   ],
   providers: [
     ngxColorService,
@@ -56,7 +55,6 @@ module.exports = ng.core.Component({
     ngxStateService,
     ngxPositionService,
     ngxAnimationService,
-    ngxRenderService,
     ngxAlertService,
     ngxLinkService,
     ngxItemService

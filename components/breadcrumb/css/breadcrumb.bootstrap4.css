@@ -11,17 +11,17 @@
   clear: both;
 }
 
-:host(.ngx-breadcrumb) /deep/ .ngx-breadcrumb-item {
+:host(.ngx-breadcrumb) > .ngx-breadcrumb-item {
   float: left;
   color: #818a91;
 }
 
-:host(.ngx-breadcrumb) /deep/ .ngx-breadcrumb-item > a,
-:host(.ngx-breadcrumb) /deep/ a.ngx-breadcrumb-item {
+:host(.ngx-breadcrumb) > .ngx-breadcrumb-item > a,
+:host(.ngx-breadcrumb) > a.ngx-breadcrumb-item {
   color: #0275d8;
 }
 
-:host(.ngx-breadcrumb) /deep/ .ngx-breadcrumb-item:not(:last-child)::after {
+:host(.ngx-breadcrumb) > .ngx-breadcrumb-item:not(:last-child)::after {
   padding-right: .5rem;
   padding-left: .5rem;
   content: "/";
@@ -31,12 +31,12 @@
   background-color: #0275d8;
 }
 
-:host(.ngx-breadcrumb-color-primary) /deep/ .ngx-breadcrumb-item {
+:host(.ngx-breadcrumb-color-primary) > .ngx-breadcrumb-item {
   color: #000;
 }
 
-:host(.ngx-breadcrumb-color-primary) /deep/ .ngx-breadcrumb-item > a,
-:host(.ngx-breadcrumb-color-primary) /deep/ a.ngx-breadcrumb-item {
+:host(.ngx-breadcrumb-color-primary) > .ngx-breadcrumb-item > a,
+:host(.ngx-breadcrumb-color-primary) > a.ngx-breadcrumb-item {
   color: #fff;
 }
 
@@ -44,12 +44,12 @@
   background-color: #5cb85c;
 }
 
-:host(.ngx-breadcrumb-color-success) /deep/ .ngx-breadcrumb-item {
+:host(.ngx-breadcrumb-color-success) > .ngx-breadcrumb-item {
   color: #000;
 }
 
-:host(.ngx-breadcrumb-color-success) /deep/ .ngx-breadcrumb-item > a,
-:host(.ngx-breadcrumb-color-success) /deep/ a.ngx-breadcrumb-item {
+:host(.ngx-breadcrumb-color-success) > .ngx-breadcrumb-item > a,
+:host(.ngx-breadcrumb-color-success) > a.ngx-breadcrumb-item {
   color: #fff;
 }
 
@@ -57,12 +57,12 @@
   background-color: #5bc0de;
 }
 
-:host(.ngx-breadcrumb-color-info) /deep/ .ngx-breadcrumb-item {
+:host(.ngx-breadcrumb-color-info) > .ngx-breadcrumb-item {
   color: #000;
 }
 
-:host(.ngx-breadcrumb-color-info) /deep/ .ngx-breadcrumb-item > a,
-:host(.ngx-breadcrumb-color-info) /deep/ a.ngx-breadcrumb-item {
+:host(.ngx-breadcrumb-color-info) > .ngx-breadcrumb-item > a,
+:host(.ngx-breadcrumb-color-info) > a.ngx-breadcrumb-item {
   color: #fff;
 }
 
@@ -70,12 +70,12 @@
   background-color: #f0ad4e;
 }
 
-:host(.ngx-breadcrumb-color-warning) /deep/ .ngx-breadcrumb-item {
+:host(.ngx-breadcrumb-color-warning) > .ngx-breadcrumb-item {
   color: #000;
 }
 
-:host(.ngx-breadcrumb-color-warning) /deep/ .ngx-breadcrumb-item > a,
-:host(.ngx-breadcrumb-color-warning) /deep/ a.ngx-breadcrumb-item  {
+:host(.ngx-breadcrumb-color-warning) > .ngx-breadcrumb-item > a,
+:host(.ngx-breadcrumb-color-warning) > a.ngx-breadcrumb-item  {
   color: #fff;
 }
 
@@ -83,11 +83,11 @@
   background-color: #d9534f;
 }
 
-:host(.ngx-breadcrumb-color-danger) /deep/ .ngx-breadcrumb-item {
+:host(.ngx-breadcrumb-color-danger) > .ngx-breadcrumb-item {
   color: #000;
 }
 
-:host(.ngx-breadcrumb-color-danger) /deep/ .ngx-breadcrumb-item > a,
-:host(.ngx-breadcrumb-color-danger) /deep/ a.ngx-breadcrumb-item {
+:host(.ngx-breadcrumb-color-danger) > .ngx-breadcrumb-item > a,
+:host(.ngx-breadcrumb-color-danger) > a.ngx-breadcrumb-item {
   color: #fff;
 }

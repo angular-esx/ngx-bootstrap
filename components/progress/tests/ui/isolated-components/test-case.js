@@ -1,4 +1,4 @@
-﻿var ngxProgressComponent = require('./../../../progress.component.js');
+﻿var ngxProgressComponent = require('./../../../' + __COMPONENT_FILE__);
 var ngxProgressService = require('./../../../services/progress.service.js');
 var ngxColorService = require('./../../../../../cores/services/color.service.js');
 var ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.js');

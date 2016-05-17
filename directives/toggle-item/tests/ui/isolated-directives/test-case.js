@@ -1,6 +1,6 @@
 ﻿var ngxToggleItemDirective = require('./../../../../../directives/toggle-item/toggle-item.directive.js');
 var ngxToggleItemService = require('./../../../../../directives/toggle-item/services/toggle-item.service.js');
-var ngxButtonComponent = require('./../../../../../components/button/button.component.js');
+var ngxButtonComponent = require('./../../../../../components/button/button.component.bootstrap4.js');
 var ngxButtonService = require('./../../../../../components/button/services/button.service.js');
 var ngxColorService = require('./../../../../../cores/services/color.service.js');
 var ngxSizeService = require('./../../../../../cores/services/size.service.js');
@@ -24,8 +24,8 @@ module.exports = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'directives/toggle-item/tests/ui/isolated-directives/test-case.html',
   directives: [
-    ngxToggleItemDirective,
-    ngxButtonComponent
+    ngxButtonComponent,
+    ngxToggleItemDirective
   ],
    providers: [
     ngxColorService,

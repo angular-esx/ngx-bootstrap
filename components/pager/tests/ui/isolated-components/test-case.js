@@ -1,4 +1,4 @@
-﻿var ngxPagerComponent = require('./../../../pager.component.js');
+﻿var ngxPagerComponent = require('./../../../' + __COMPONENT_FILE__);
 var ngxPagerService = require('./../../../services/pager.service.js');
 var ngxColorService = require('./../../../../../cores/services/color.service.js');
 var ngxTypeService = require('./../../../../../cores/services/type.service.js');

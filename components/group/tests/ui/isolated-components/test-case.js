@@ -1,6 +1,6 @@
-﻿var ngxGroupComponent = require('./../../../../../components/group/group.component.js');
+﻿var ngxGroupComponent = require('./../../../' + __COMPONENT_FILE__);
 var ngxGroupService = require('./../../../../../components/group/services/group.service.js');
-var ngxButtonComponent = require('./../../../../../components/button/button.component.js');
+var ngxButtonComponent = require('./../../../../../components/button/button.component.bootstrap4.js');
 var ngxButtonService = require('./../../../../../components/button/services/button.service.js');
 var ngxTypeService = require('./../../../../../cores/services/type.service.js');
 var ngxColorService = require('./../../../../../cores/services/color.service.js');

@@ -1,6 +1,7 @@
-﻿var ngxPaginationComponent = require('./../../../pagination.component.js');
+﻿var ngxPaginationComponent = require('./../../../' + __COMPONENT_FILE__);
 var ngxPaginationService = require('./../../../services/pagination.service.js');
 var ngxColorService = require('./../../../../../cores/services/color.service.js');
+var ngxTypeService = require('./../../../../../cores/services/type.service.js');
 var ngxSizeService = require('./../../../../../cores/services/size.service.js');
 var ngxStateService = require('./../../../../../cores/services/state.service.js');
 var ngxLinkComponent = require('./../../../../../cores/components/link/link.component.js');
@@ -37,6 +38,7 @@ module.exports = ng.core.Component({
   ],
   providers: [
    ngxColorService,
+   ngxTypeService,
    ngxSizeService,
    ngxStateService,
    ngxLinkService,

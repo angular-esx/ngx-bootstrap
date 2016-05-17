@@ -1,8 +1,8 @@
 ﻿var ngxCheckboxDirective = require('./../../../checkbox.directive.js');
 var ngxCheckboxService = require('./../../../services/checkbox.service.js');
-var ngxButtonComponent = require('./../../../../../components/button/button.component.js');
+var ngxButtonComponent = require('./../../../../../components/button/button.component.bootstrap4.js');
 var ngxButtonService = require('./../../../../../components/button/services/button.service.js');
-var ngxGroupComponent = require('./../../../../../components/group/group.component.js');
+var ngxGroupComponent = require('./../../../../../components/group/group.component.bootstrap4.js');
 var ngxGroupService = require('./../../../../../components/group/services/group.service.js');
 var ngxCheckboxGroupDirective = require('./../../../checkbox-group.directive.js');
 var ngxColorService = require('./../../../../../cores/services/color.service.js');
@@ -26,10 +26,10 @@ module.exports = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'directives/checkbox/tests/ui/isolated-directives/test-case.html',
   directives: [
-    ngxCheckboxGroupDirective,
     ngxGroupComponent,
     ngxButtonComponent,
-    ngxCheckboxDirective
+    ngxCheckboxDirective,
+    ngxCheckboxGroupDirective
   ],
   providers: [
    ngxColorService,

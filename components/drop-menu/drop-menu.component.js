@@ -56,15 +56,15 @@ function _ngxDropMenuComponent() {
       this.state = (this.ngxDropMenuService.getStates().ACTIVE + ' ' + _changeRecord.state.previousValue).trim();
     }
     _changeRecord.state.currentValue = this.state;
-
+    
     if(_changeRecord.type.previousValue){
-      _changeRecord.type.previousValue = this.type = this.type.replace(_types.DROPDOWN, '').replace(_types.DROPUP, '').trim();
+      _changeRecord.type.previousValue = this.type = _changeRecord.type.previousValue.replace(_types.DROPDOWN, '').replace(_types.DROPUP, '').trim();
     }
     if (action === this.ngxDropMenuService.getActions().TOGGLE_DROPUP) {
       this.type = (_types.DROPUP + ' ' + _changeRecord.state.previousValue).trim();
     }
     else {
-      this.type = (_types.DRODOWN + ' ' + _changeRecord.state.previousValue).trim();
+      this.type = (_types.DROPDOWN + ' ' + _changeRecord.state.previousValue).trim();
     }
     _changeRecord.type.currentValue = this.type;
 
@@ -79,8 +79,8 @@ function _ngxDropMenuComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-drop-menu',
-  templateUrl: 'components/drop-menu/templates/drop-menu.bootstrap4.html',
-  styleUrls: ['components/drop-menu/css/drop-menu.bootstrap4.css'],
+  /*Inject template at here*/
+  /*Inject style at here*/
   providers: [ngxRenderService],
   properties: ['id', 'state', 'prefixClass:prefix-class']
 })

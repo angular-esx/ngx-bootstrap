@@ -60,8 +60,8 @@ function _ngxProgressComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-progress',
-  templateUrl: 'components/progress/templates/progress.bootstrap4.html',
-  styleUrls: ['components/progress/css/progress.bootstrap4.css'],
+  /*Inject template at here*/
+  /*Inject style at here*/
   providers: [ngxRenderService],
   properties: ['color', 'value', 'max']
 })

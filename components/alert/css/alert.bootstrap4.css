@@ -41,7 +41,7 @@
 
 :host(.ngx-alert-animation-fade) {
   opacity: 0;
-  transition: opacity .15s linear; 
+  transition: opacity .15s linear;
 }
 
 :host(.ngx-alert-animation-fade-in) {
@@ -66,7 +66,7 @@
   -webkit-appearance: none;
 }
 
-:host(.ngx-alert) /deep/ .ngx-alert-close:focus, 
+:host(.ngx-alert) /deep/ .ngx-alert-close:focus,
 :host(.ngx-alert) /deep/ .ngx-alert-close:hover {
   color: #000;
   text-decoration: none;

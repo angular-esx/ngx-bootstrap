@@ -1,4 +1,4 @@
-﻿var ngxPagerService = require('./services/pager.service.js');
+var ngxPagerService = require('./services/pager.service.js');
 var ngxLinkComponent = require('./../../cores/components/link/link.component.js');
 var ngxLinkService = require('./../../cores/components/link/services/link.service.js');
 var ngxBaseComponent = require('./../../cores/components/base/base.component.js');
@@ -115,8 +115,8 @@ function _ngxPagerComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-pager',
-  /*Inject template at here*/
-  /*Inject style at here*/
+  template: '﻿<ngx-link *ngIf=\"showPrevious\" \r\n          class=\"ngx-pager-left-item\"\r\n          prefix-class=\"ngx-pager-item\"\r\n          href=\"pageBuilder.prevPage.link\" \r\n          (click)=\"prev($event)\">Prev</ngx-link>\r\n\r\n<ngx-link *ngIf=\"showNext\" \r\n          class=\"ngx-pager-right-item\"\r\n          prefix-class=\"ngx-pager-item\"\r\n          href=\"pageBuilder.nextPage.link\" \r\n          (click)=\"next($event)\">Next</ngx-link>',
+  styles: ['﻿:host(.ngx-pager) { padding-left: 0; margin-top: 1rem; margin-bottom: 1rem; text-align: center; list-style: none; } :host(.ngx-pager)::after { display: table; clear: both; content: ""; } :host(.ngx-pager) > .ngx-pager-item { display: inline; } :host(.ngx-pager) > .ngx-pager-item > a { display: inline-block; padding: 5px 14px; background-color: #fff; border: 1px solid #ddd; border-radius: 15px; } :host(.ngx-pager) > .ngx-pager-item > a:focus, :host(.ngx-pager) > .ngx-pager-item > a:hover { text-decoration: none; background-color: #eceeef; } :host(.ngx-pager) > .ngx-pager-item.ngx-pager-item-state-disabled > a, :host(.ngx-pager) > .ngx-pager-item.ngx-pager-item-state-disabled > a:focus, :host(.ngx-pager) > .ngx-pager-item.ngx-pager-item-state-disabled > a:hover { color: #818a91; cursor: not-allowed; background-color: #fff; } :host(.ngx-pager.ngx-pager-type-aligned) > .ngx-pager-left-item { float: left; } :host(.ngx-pager.ngx-pager-type-aligned) > .ngx-pager-right-item { float: right; }'],
   directives: [ngxLinkComponent],
   providers: [ngxRenderService, ngxLinkService],
   properties: [

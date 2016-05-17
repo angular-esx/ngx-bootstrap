@@ -30,7 +30,7 @@ function _ngxBaseComponent() {
   this.removeOneTimeBindingAttributes = function (attributes) {
     var _self = this,
         _attributes = ngxBootstrap.isArray(attributes) || ngxBootstrap.isObject(attributes) ? attributes : [attributes];
-        
+    
     ngxBootstrap.forEach(_attributes, function (attribute) {
       _self.ngxRenderService.removeAttribute(attribute);
     });

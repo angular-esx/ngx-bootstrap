@@ -5,6 +5,7 @@ module.exports = function(params) {
 
     gulp.watch([
       './components/**/*.js',
+      './directives/**/*.js',
       './cores/**/*.js',
       './ngx-bootstrap.js',
       './ngx-bootstrap.utils.js',
@@ -12,6 +13,7 @@ module.exports = function(params) {
     
     gulp.watch([
       './components/**/*.html',
+      './directives/**/*.html',
     ], ['webpack']);
 
     gulp.watch([

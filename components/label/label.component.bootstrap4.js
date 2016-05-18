@@ -1,8 +1,8 @@
 var ngxLabelService = require('./services/label.service.js');
-var ngxRenderService = require('./../../cores/services/render.service.js');
-var ngxBaseComponent = require('./../../cores/components/base/base.component.js');
-var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
+var ngxRenderService = require('./../../' + __RENDER_SERVICE__);
+var ngxBaseComponent = require('./../../' + __BASE_COMPONENT__);
+var ngxBootstrap = require('./../../' + __NGX_BOOTSTRAP__);
+ngxBootstrap = require('./../../' + __NGX_BOOTSTRAP_UTILS__);
 
 function _ngxLabelComponent() {
   var _base;

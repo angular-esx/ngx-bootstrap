@@ -42,6 +42,29 @@ module.exports = function(params) {
       plugins: [
         new webpack.DefinePlugin({
           __COMPONENT_FILE__: JSON.stringify(_componentThemeName),
+          
+          /** ngx bootstrap & ngx bootstrap utils **/
+          __NGX_BOOTSTRAP__: JSON.stringify('cores/ngx-bootstrap.js'),
+          __NGX_BOOTSTRAP_UTILS__: JSON.stringify('cores/ngx-bootstrap.utils.js'),
+
+          /** core components **/
+          __BASE_COMPONENT__: JSON.stringify('cores/components/base/base.component.js'),
+          __ITEM_SERVICE__: JSON.stringify('cores/components/item/services/item.service.js'),
+          __ITEM_COMPONENT__: JSON.stringify('cores/components/item/item.component.js'),
+          __LINK_SERVICE__: JSON.stringify('cores/components/link/services/link.service.js'),
+          __LINK_COMPONENT__: JSON.stringify('cores/components/link/link.component.js'),
+          
+          /** core directives **/
+          __BASE_DIRECTIVE__: JSON.stringify('cores/directives/base/base.directive.js'),
+          
+          /** core services **/
+          __ANIMATION_SERVICE__: JSON.stringify('cores/services/animation.service.js'),
+          __COLOR_SERVICE__: JSON.stringify('cores/services/color.service.js'),
+          __POSITION_SERVICE__: JSON.stringify('cores/services/position.service.js'),
+          __RENDER_SERVICE__: JSON.stringify('cores/services/render.service.js'),
+          __SIZE_SERVICE__: JSON.stringify('cores/services/size.service.js'),
+          __STATE_SERVICE__: JSON.stringify('cores/services/state.service.js'),
+          __TYPE_SERVICE__: JSON.stringify('cores/services/type.service.js'),
         })
       ]
     };

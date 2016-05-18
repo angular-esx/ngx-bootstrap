@@ -1,7 +1,7 @@
-﻿var ngxColorService = require('./../../../cores/services/color.service.js');
-var ngxTypeService = require('./../../../cores/services/type.service.js');
-var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../../cores/ngx-bootstrap.utils.js');
+﻿var ngxColorService = require('./../../../' + __COLOR_SERVICE__);
+var ngxTypeService = require('./../../../' + __TYPE_SERVICE__);
+var ngxBootstrap = require('./../../../' + __NGX_BOOTSTRAP__);
+ngxBootstrap = require('./../../../' + __NGX_BOOTSTRAP_UTILS__);
 
 function _ngxLabelService() {
   this.constructor = [

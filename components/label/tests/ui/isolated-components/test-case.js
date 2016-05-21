@@ -2,6 +2,7 @@
 var ngxLabelService = require('./../../../services/label.service.js');
 var ngxColorService = require('./../../../../../' + __COLOR_SERVICE__);
 var ngxTypeService = require('./../../../../../' + __TYPE_SERVICE__);
+var ngxWindowService = require('./../../../../../cores/services/window.service.js');
 var ngxBootstrap = require('./../../../../../' + __NGX_BOOTSTRAP__);
 ngxBootstrap = require('./../../../../../' + __NGX_BOOTSTRAP_UTILS__);
 
@@ -21,6 +22,7 @@ module.exports = ng.core.Component({
   providers: [
     ngxColorService,
     ngxTypeService,
+    ngxWindowService,
     ngxLabelService
   ]
 })

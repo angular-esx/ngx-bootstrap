@@ -5,6 +5,7 @@ var ngxButtonService = require('./../../../../../components/button/services/butt
 var ngxColorService = require('./../../../../../cores/services/color.service.js');
 var ngxSizeService = require('./../../../../../cores/services/size.service.js');
 var ngxStateService = require('./../../../../../cores/services/state.service.js');
+var ngxWindowService = require('./../../../../../cores/services/window.service.js');
 var ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.utils.js');
 
@@ -31,6 +32,7 @@ module.exports = ng.core.Component({
     ngxColorService,
     ngxSizeService,
     ngxStateService,
+    ngxWindowService,
     ngxToggleItemService,
     ngxButtonService
   ]

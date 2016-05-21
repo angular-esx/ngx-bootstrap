@@ -1,6 +1,7 @@
 ﻿var ngxProgressComponent = require('./../../../' + __COMPONENT_FILE__);
 var ngxProgressService = require('./../../../services/progress.service.js');
 var ngxColorService = require('./../../../../../cores/services/color.service.js');
+var ngxWindowService = require('./../../../../../cores/services/window.service.js');
 var ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.utils.js');
 
@@ -18,6 +19,7 @@ module.exports = ng.core.Component({
   ],
   providers: [
    ngxColorService,
+   ngxWindowService,
    ngxProgressService
   ]
 })

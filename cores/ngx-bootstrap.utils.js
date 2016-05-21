@@ -1,9 +1,11 @@
 var ngxBootstrap = require('./ngx-bootstrap.js');
 
-ngxBootstrap.shallowCopy = function (target, source, overrideTarget) {
+ngxBootstrap.shallowCopy = function (target, source, overrideTarget, onCopying) {
   for (var prop in source) {
     if (!target[prop] || (target[prop] && overrideTarget)) {
-      target[prop] = source[prop];
+      if (!onCopying || onCopying(prop)) {
+        target[prop] = source[prop];
+      }
     }
   }
 

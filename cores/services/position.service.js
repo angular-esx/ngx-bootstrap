@@ -68,6 +68,13 @@ function _ngxPositionService() {
   this.getRightPositionClass = function (prefixClass) {
     return prefixClass + '-position-right';
   };
+
+  this.isCenterPositionClass = function (prefixClass, position) {
+    return this.getPositionClass(prefixClass, position).indexOf(this.getCenterPositionClass(prefixClass)) > -1;
+  };
+  this.getCenterPositionClass = function (prefixClass) {
+    return prefixClass + '-position-center';
+  };
 }
 
 module.exports = ng.core.Class(new _ngxPositionService());

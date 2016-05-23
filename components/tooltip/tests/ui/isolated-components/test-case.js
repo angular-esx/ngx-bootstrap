@@ -13,15 +13,57 @@ var ngxLinkService = require('./../../../../../cores/components/link/services/li
 
 function _testCase() {
   this.constructor = [ngxTooltipService, function (ngxTooltipService) {
+    this.ngxTooltipService = ngxTooltipService;
+
     this.STATES = ngxTooltipService.getStates();
     this.POSITIONS = ngxTooltipService.getPositions();
 
     this.delay = 1 * 1000;
-
-    this.alert = function () {
-      alert('You have just clicked me!!!');
-    };
   }];
+
+  this.alert = function () {
+    alert('You have just clicked me!!!');
+    
+    var _tooltipId = 'myTooltipWithTemplate';
+
+    this.ngxTooltipService.hide(_tooltipId);
+  };
+
+  this.toggleTooltip = function () {
+    var _self = this,
+        _tooltipId = 'myTooltip';
+    
+    if (this.toggled) {
+      this.toggled = false;
+      
+      Rx.Observable.zip
+      (
+        this.ngxTooltipService.getHide$(_tooltipId),
+        this.ngxTooltipService.getEnable$(_tooltipId, false),
+        function (hideEvent, enableEvent) {
+          return [hideEvent, enableEvent];
+        }
+      )
+      .subscribe(function (event) {
+        _self.ngxTooltipService.next(event);
+      });
+    }
+    else {
+      this.toggled = true;
+
+      Rx.Observable.zip
+      (
+        this.ngxTooltipService.getEnable$(_tooltipId, true),
+        this.ngxTooltipService.getShow$(_tooltipId),
+        function (enableEvent, showEvent) {
+          return [enableEvent, showEvent];
+        }
+      )
+      .subscribe(function (event) {
+        _self.ngxTooltipService.next(event);
+      });
+    }
+  };
 }
 
 module.exports = ng.core.Component({

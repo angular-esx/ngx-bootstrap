@@ -64,3 +64,21 @@
 <template id="myTemplate" ngxTooltipTemplate>
   <div (click)="alert()">Click me!!!</div>
 </template>
+
+<br />
+
+<hr />
+
+<h3>ngxTooltip with service</h3>
+
+<br />
+
+<center>
+  <div id="myTooltip" style="background-color: red; color: white; width: 200px"
+       (click)="toggleTooltip()"
+       ngx-tooltip="this is content of tooltip"
+       ngx-tooltip-state="disabled"
+       ngx-tooltip-position="top">Tooltip with service</div>
+</center>
+
+<br /><br />

@@ -54,10 +54,11 @@
 <br/>
 
 <center>
-  <div style="background-color: red; color: white; width: 200px"
+  <div id="myTooltipWithTemplate" style="background-color: red; color: white; width: 200px"
        ngx-tooltip="this is content of tooltip"
        ngx-tooltip-position="top"
-       ngx-tooltip-template="myTemplate">Tooltip with template</div>
+       ngx-tooltip-template="myTemplate"
+       ngx-tooltip-auto-hide="false">Tooltip with template</div>
 </center>
 
 <template id="myTemplate" ngxTooltipTemplate>

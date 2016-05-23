@@ -2,7 +2,7 @@
 ngxBootstrap = require('./../../../cores/ngx-bootstrap.utils.js');
 
 function _tooltipOptionClass() {
-  var _PROPERTIES = ['hostElement', 'templateRef', 'content', 'animation', 'state', 'position', 'delay'];
+  var _PROPERTIES = ['hostElement', 'templateRef', 'content', 'animation', 'state', 'position', 'delay', 'autoHide'];
 
   this.constructor = [
     [new ng.core.Optional(), null],

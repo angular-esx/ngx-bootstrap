@@ -40,7 +40,8 @@ function _ngxTooltipDirective() {
       state: this.state,
       position: this.position || this.ngxTooltipService.getPositions().TOP,
       animation: this.ngxTooltipService.getAnimations().FADE,
-      delay: this.delay
+      delay: this.delay,
+      autoHide: this.autoHide
     });
     
     var _binding = ng.core.ReflectiveInjector.resolve([
@@ -71,11 +72,13 @@ function _ngxTooltipDirective() {
 module.exports = ng.core.Directive({
   selector: '[ngx-tooltip]',
   properties: [
+    'id',
     'state: ngx-tooltip-state',
     'position: ngx-tooltip-position',
     'content: ngx-tooltip',
     'template: ngx-tooltip-template',
-    'delay: ngx-tooltip-delay'
+    'delay: ngx-tooltip-delay',
+    'autoHide: ngx-tooltip-auto-hide'
   ],
   host: {
     '(focusin)': 'show()',

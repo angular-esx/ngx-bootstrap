@@ -5,6 +5,8 @@ var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 
 function _ngxTooltipDirective() {
+  var _subscription;
+
   this.constructor = [
     ng.core.ElementRef,
     ng.core.ViewContainerRef,
@@ -28,7 +30,7 @@ function _ngxTooltipDirective() {
     else if (this.autoHide === 'false') { this.autoHide = false; }
 
     var _self = this;
-    this.ngxTooltipService.ngxTooltip$.subscribe(function (event) {
+    _subscription = this.ngxTooltipService.ngxTooltip$.subscribe(function (event) {
       if (!event) { return; }
 
       var _events = ngxBootstrap.isArray(event) ? event : [event];
@@ -51,6 +53,10 @@ function _ngxTooltipDirective() {
         }
       });
     });
+  };
+
+  this.ngOnDestroy = function () {
+    if (_subscription) { _subscription.unsubscribe(); }
   };
 
   this.getPrefixClass = function () {
@@ -131,9 +137,9 @@ module.exports = ng.core.Directive({
   selector: '[ngx-tooltip]',
   properties: [
     'id',
+    'content: ngx-tooltip',
     'state: ngx-tooltip-state',
     'position: ngx-tooltip-position',
-    'content: ngx-tooltip',
     'template: ngx-tooltip-template',
     'delay: ngx-tooltip-delay',
     'autoHide: ngx-tooltip-auto-hide'

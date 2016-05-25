@@ -1,5 +1,6 @@
-﻿var tooltipOptionClass = require('./classes/tooltip-option.class.js');
-var tooltipComponent = require('./' + __COMPONENT_FILE__);
+﻿var ngxTooltipOptionClass = require('./classes/tooltip-option.class.js');
+//var ngxTooltipComponent = require('./' + __COMPONENT_FILE__);
+var ngxTooltipComponent = require('./tooltip.component.bootstrap4.js');
 var ngxTooltipService = require('./services/tooltip.service.js');
 var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
@@ -28,7 +29,19 @@ function _ngxTooltipDirective() {
 
     if (this.autoHide === 'true') { this.autoHide = true; }
     else if (this.autoHide === 'false') { this.autoHide = false; }
+    
+    this.subscribe();
+  };
 
+  this.ngOnDestroy = function () {
+    if (_subscription) { _subscription.unsubscribe(); }
+  };
+
+  this.getPrefixClass = function () {
+    return 'ngx-tooltip';
+  };
+
+  this.subscribe = function () {
     var _self = this;
     _subscription = this.ngxTooltipService.ngxTooltip$.subscribe(function (event) {
       if (!event) { return; }
@@ -55,14 +68,6 @@ function _ngxTooltipDirective() {
     });
   };
 
-  this.ngOnDestroy = function () {
-    if (_subscription) { _subscription.unsubscribe(); }
-  };
-
-  this.getPrefixClass = function () {
-    return 'ngx-tooltip';
-  };
-
   this.enable = function (isEnable) {
     if (isEnable && this.state && this.ngxTooltipService.isDisabledStateClass(this.getPrefixClass(), this.state)) {
       this.state = this.state.replace(this.ngxTooltipService.getStates().DISABLED, '').trim();
@@ -78,9 +83,10 @@ function _ngxTooltipDirective() {
   };
 
   this.show = function (options) {
-    if (this.ngxTooltipService.isActiveStateClass(this.getPrefixClass(), this.state) ||
+    if ((!this.content && !this.template) ||
+        this.ngxTooltipService.isActiveStateClass(this.getPrefixClass(), this.state) ||
         this.ngxTooltipService.isDisabledStateClass(this.getPrefixClass(), this.state) ||
-        this.tooltipComponentRef) { return; }
+        this.componentRef) { return; }
     
     if (options) {
       this.delay = (options.delay !== undefined && options.delay !== null) ? options.delay : this.delay;
@@ -89,7 +95,33 @@ function _ngxTooltipDirective() {
 
     this.state = this.ngxTooltipService.getStates().ACTIVE;
     
-    var _options = new tooltipOptionClass({
+    this.componentRef = this.loadComponentRef();
+  };
+
+  this.hide = function (options) {
+    if (!this.ngxTooltipService.isActiveStateClass(this.getPrefixClass(), this.state) ||
+        (!options && this.autoHide === false) ||
+        (options && !options.autoHide) ||
+        !this.componentRef) { return; }
+
+    if (this.state) {
+      this.state = this.state.replace(this.ngxTooltipService.getStates().ACTIVE, '').trim();
+    }
+   
+    var _self = this;
+    this.componentRef.then(function (componentRef) {
+      componentRef.instance.hide();
+
+      setTimeout(function () {
+        componentRef.destroy();
+
+        _self.componentRef = null;
+      }, 1 * 1000);
+    });
+  };
+
+  this.loadComponentRef = function () {
+    var _options = new ngxTooltipOptionClass({
       hostElement: this.viewContainerRef.element,
       templateRef: this.ngxTooltipService.getTemplateRef(this.template),
       content: this.content,
@@ -99,37 +131,14 @@ function _ngxTooltipDirective() {
       delay: this.delay,
       autoHide: this.autoHide
     });
-    
+
     var _binding = ng.core.ReflectiveInjector.resolve([
       new ng.core.Provider(ngxTooltipService, { useValue: this.ngxTooltipService }),
-      new ng.core.Provider(tooltipOptionClass, { useValue: _options })
+      new ng.core.Provider(ngxTooltipOptionClass, { useValue: _options })
     ]);
 
-    this.tooltipComponentRef = this.componentLoader
-                                   .loadNextToLocation(tooltipComponent, this.viewContainerRef, _binding)
-                                   .then(function (componentRef) { return componentRef; });
-  };
-
-  this.hide = function (options) {
-    if (!this.ngxTooltipService.isActiveStateClass(this.getPrefixClass(), this.state) ||
-        (!options && this.autoHide === false) ||
-        (options && !options.autoHide) ||
-        !this.tooltipComponentRef) { return; }
-
-    if (this.state) {
-      this.state = this.state.replace(this.ngxTooltipService.getStates().ACTIVE, '').trim();
-    }
-   
-    var _self = this;
-    this.tooltipComponentRef.then(function (componentRef) {
-      componentRef.instance.hide();
-
-      setTimeout(function () {
-        componentRef.destroy();
-
-        _self.tooltipComponentRef = null;
-      }, 1 * 1000);
-    });
+    return this.componentLoader.loadNextToLocation(ngxTooltipComponent, this.viewContainerRef, _binding)
+                               .then(function (componentRef) { return componentRef; });
   };
 }
 

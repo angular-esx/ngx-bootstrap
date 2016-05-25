@@ -47,16 +47,7 @@ function _ngxTooltipComponent() {
   };
 
   this.ngAfterViewInit = function () {
-    if (!this.contentElement) { throw 'Not found content element of tooltip'; }
-
-    if (this.templateRef) {
-      this.contentElement.createEmbeddedView(this.templateRef, 0);
-    }
-    else {
-      this.ngxRenderService.for(this.contentElement.element.nativeElement)
-                           .setInnerHTML(this.content)
-                           .for(this.elementRef.nativeElement);
-    }
+    this.render();
 
     var _offset = this.getOffset();
     this.ngxRenderService.addStyle('top', (_offset.top !== 0 && !_offset.top ? -1000 : _offset.top) + 'px');
@@ -70,6 +61,19 @@ function _ngxTooltipComponent() {
     this.ngOnChanges(_changeRecord);
 
     this.show();
+  };
+
+  this.render = function () {
+    if (!this.contentElement) { throw 'Not found content element of tooltip'; }
+
+    if (this.templateRef) {
+      this.contentElement.createEmbeddedView(this.templateRef, 0);
+    }
+    else {
+      this.ngxRenderService.for(this.contentElement.element.nativeElement)
+                           .setInnerHTML(this.content)
+                           .for(this.elementRef.nativeElement);
+    }
   };
 
   this.show = function () {
@@ -150,8 +154,8 @@ function _ngxTooltipComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-tooltip',
-  template: '﻿<div class=\"ngx-tooltip-arrow\"></div>\r\n<div class=\"ngx-tooltip-inner\" style=\"display: inline-block;\">\r\n  <div #content></div>\r\n</div>',
-  styles: [':host(.ngx-tooltip) { position: absolute; opacity: 0; z-index: 1070; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: .875rem; font-style: normal; font-weight: normal; line-height: 1.5; text-align: left; text-align: start; text-decoration: none; text-shadow: none; text-transform: none; letter-spacing: normal; word-break: normal; word-spacing: normal; word-wrap: normal; white-space: normal; line-break: auto; } :host(.ngx-tooltip-animation-fade) { opacity: 0 !important; } :host(.ngx-tooltip-animation-fade-in) { opacity: .9; transition: opacity .15s linear; } :host(.ngx-tooltip.ngx-tooltip-position-top) { padding: 5px 0; margin-top: 10px; } :host(.ngx-tooltip.ngx-tooltip-position-top) .ngx-tooltip-arrow { bottom: 0; left: 50%; margin-left: -5px; border-width: 5px 5px 0; border-top-color: #000; } :host(.ngx-tooltip.ngx-tooltip-position-right) { padding: 0 5px; } :host(.ngx-tooltip.ngx-tooltip-position-right) .ngx-tooltip-arrow { top: 50%; left: 0; margin-top: -5px; border-width: 5px 5px 5px 0; border-right-color: #000; } :host(.ngx-tooltip.ngx-tooltip-position-bottom) { padding: 5px 0; margin-top: 3px; } :host(.ngx-tooltip.ngx-tooltip-position-bottom) .ngx-tooltip-arrow { top: 0; left: 50%; margin-left: -5px; border-width: 0 5px 5px; border-bottom-color: #000; } :host(.ngx-tooltip.ngx-tooltip-position-left) { padding: 0 5px; margin-left: -8px; } :host(.ngx-tooltip.ngx-tooltip-position-left) .ngx-tooltip-arrow { top: 50%; right: 0; margin-top: -5px; border-width: 5px 0 5px 5px; border-left-color: #000; } :host(.ngx-tooltip) .ngx-tooltip-inner { max-width: 200px; padding: 3px 8px; color: #fff; text-align: center; background-color: #000; border-radius: .25rem; } :host(.ngx-tooltip) .ngx-tooltip-arrow { position: absolute; width: 0; height: 0; border-color: transparent; border-style: solid; } '],
+  template: '﻿<div class=\"ngx-tooltip-arrow\"></div>\r\n<div class=\"ngx-tooltip-content\" style=\"display: inline-block;\">\r\n  <div #content></div>\r\n</div>',
+  styles: [':host(.ngx-tooltip) { position: absolute; opacity: 0; z-index: 1070; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: .875rem; font-style: normal; font-weight: normal; line-height: 1.5; text-align: left; text-align: start; text-decoration: none; text-shadow: none; text-transform: none; letter-spacing: normal; word-break: normal; word-spacing: normal; word-wrap: normal; white-space: normal; line-break: auto; } :host(.ngx-tooltip-animation-fade) { opacity: 0 !important; } :host(.ngx-tooltip-animation-fade-in) { opacity: .9; transition: opacity .15s linear; } :host(.ngx-tooltip.ngx-tooltip-position-top) { padding: 5px 0; margin-top: 10px; } :host(.ngx-tooltip.ngx-tooltip-position-top) .ngx-tooltip-arrow { bottom: 0; left: 50%; margin-left: -5px; border-width: 5px 5px 0; border-top-color: #000; } :host(.ngx-tooltip.ngx-tooltip-position-right) { padding: 0 5px; } :host(.ngx-tooltip.ngx-tooltip-position-right) .ngx-tooltip-arrow { top: 50%; left: 0; margin-top: -5px; border-width: 5px 5px 5px 0; border-right-color: #000; } :host(.ngx-tooltip.ngx-tooltip-position-bottom) { padding: 5px 0; margin-top: 3px; } :host(.ngx-tooltip.ngx-tooltip-position-bottom) .ngx-tooltip-arrow { top: 0; left: 50%; margin-left: -5px; border-width: 0 5px 5px; border-bottom-color: #000; } :host(.ngx-tooltip.ngx-tooltip-position-left) { padding: 0 5px; margin-left: -8px; } :host(.ngx-tooltip.ngx-tooltip-position-left) .ngx-tooltip-arrow { top: 50%; right: 0; margin-top: -5px; border-width: 5px 0 5px 5px; border-left-color: #000; } :host(.ngx-tooltip) .ngx-tooltip-content { max-width: 200px; padding: 3px 8px; color: #fff; text-align: center; background-color: #000; border-radius: .25rem; } :host(.ngx-tooltip) .ngx-tooltip-arrow { position: absolute; width: 0; height: 0; border-color: transparent; border-style: solid; } '],
   providers: [ngxRenderService],
   queries: {
     contentElement: new ng.core.ViewChild('content', { read: ng.core.ViewContainerRef })

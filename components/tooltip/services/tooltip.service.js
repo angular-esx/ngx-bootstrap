@@ -6,7 +6,6 @@ ngxBootstrap = require('./../../../cores/ngx-bootstrap.utils.js');
 
 function _ngxTooltipService() {
   var _templates = {},
-      _subscription,
       _observer;
   var _ACTIONS = {
     ENABLE_TOOLTIP: 'ENABLE_TOOLTIP',

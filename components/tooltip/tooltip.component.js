@@ -47,16 +47,7 @@ function _ngxTooltipComponent() {
   };
 
   this.ngAfterViewInit = function () {
-    if (!this.contentElement) { throw 'Not found content element of tooltip'; }
-
-    if (this.templateRef) {
-      this.contentElement.createEmbeddedView(this.templateRef, 0);
-    }
-    else {
-      this.ngxRenderService.for(this.contentElement.element.nativeElement)
-                           .setInnerHTML(this.content)
-                           .for(this.elementRef.nativeElement);
-    }
+    this.render();
 
     var _offset = this.getOffset();
     this.ngxRenderService.addStyle('top', (_offset.top !== 0 && !_offset.top ? -1000 : _offset.top) + 'px');
@@ -70,6 +61,19 @@ function _ngxTooltipComponent() {
     this.ngOnChanges(_changeRecord);
 
     this.show();
+  };
+
+  this.render = function () {
+    if (!this.contentElement) { throw 'Not found content element of tooltip'; }
+
+    if (this.templateRef) {
+      this.contentElement.createEmbeddedView(this.templateRef, 0);
+    }
+    else {
+      this.ngxRenderService.for(this.contentElement.element.nativeElement)
+                           .setInnerHTML(this.content)
+                           .for(this.elementRef.nativeElement);
+    }
   };
 
   this.show = function () {
@@ -89,29 +93,29 @@ function _ngxTooltipComponent() {
     var _positions = this.position.split(' ');
     if (_positions.length === 1) { _positions[1] = this.ngxTooltipService.getPositions().CENTER; }
    
-    var _hostElementgetOffset = this.ngxRenderService.for(this.hostElement.nativeElement).getOffset(),
+    var _hostElementOffset = this.ngxRenderService.for(this.hostElement.nativeElement).getOffset(),
         _elementOffset = this.ngxRenderService.for(this.elementRef.nativeElement).getOffset();
-    
+   
     switch (_positions[0]) {
       case this.ngxTooltipService.getPositions().RIGHT:
         return {
-          top: _shiftHeight(this, _hostElementgetOffset, _elementOffset, _positions[1]),
-          left: _shiftWidth(this, _hostElementgetOffset, _elementOffset, _positions[0])
+          top: _shiftHeight(this, _hostElementOffset, _elementOffset, _positions[1]),
+          left: _shiftWidth(this, _hostElementOffset, _elementOffset, _positions[0])
         };
       case this.ngxTooltipService.getPositions().LEFT:
         return {
-          top: _shiftHeight(this, _hostElementgetOffset, _elementOffset, _positions[1]),
-          left: _hostElementgetOffset.left - _elementOffset.width
+          top: _shiftHeight(this, _hostElementOffset, _elementOffset, _positions[1]),
+          left: _hostElementOffset.left - _elementOffset.width
         };
       case this.ngxTooltipService.getPositions().BOTTOM:
         return {
-          top: _shiftHeight(this, _hostElementgetOffset, _elementOffset, _positions[0]),
-          left: _shiftWidth(this, _hostElementgetOffset, _elementOffset, _positions[1])
+          top: _shiftHeight(this, _hostElementOffset, _elementOffset, _positions[0]),
+          left: _shiftWidth(this, _hostElementOffset, _elementOffset, _positions[1])
         };
       default:
         return {
-          top: (_hostElementgetOffset.top - _hostElementgetOffset.height) - _elementOffset.height,
-          left: _shiftWidth(this, _hostElementgetOffset, _elementOffset, _positions[1])
+          top: (_hostElementOffset.top - _hostElementOffset.height) - _elementOffset.height,
+          left: _shiftWidth(this, _hostElementOffset, _elementOffset, _positions[1])
         };
     }
   };

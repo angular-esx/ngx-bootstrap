@@ -74,8 +74,8 @@ function _ngxLinkComponent() {
     }
   };
 
-  this.ngAfterViewInit = function () {
-    _getBaseInstance(this).ngAfterViewInit.apply(this);
+  this.ngAfterContentInit = function () {
+    _getBaseInstance(this).ngAfterContentInit.apply(this);
     
     var _self = this, _attributes = [
       _ATTRIBUTES.HREF,

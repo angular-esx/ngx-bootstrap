@@ -3,7 +3,13 @@ var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
 function _ngxAnimationService() {
   var _ANIMATIONS;
 
-  this.constructor = function ngxAnimationService() {};
+  this.constructor = [
+    ng.platform.browser.BROWSER_APP_PROVIDERS[0][16],
+
+    function ngxAnimationService(animationBuilder) {
+      this.cssAnimationBuilder = animationBuilder.css();
+    }
+  ];
 
   this.getAnimationClass = function (prefixClass, animations) {
     if (!animations) { return ''; }
@@ -55,6 +61,37 @@ function _ngxAnimationService() {
     return prefixClass + '-animation-fade-in';
   };
   
+  this.collapseIn = function (nativeElement) {
+    var _self = this;
+    
+    this.cssAnimationBuilder
+        .setDuration(0)
+        .addClass('collapse-in')
+        .setFromStyles({ overflow: 'hidden' })
+        .start(nativeElement)
+        .onComplete(function () {
+          _self.cssAnimationBuilder
+               .setDuration(250)
+               .addAnimationClass('collapse-out')
+               .setFromStyles({ height: '0' })
+               .setToStyles({ height: nativeElement.scrollHeight + 'px' })
+               .start(nativeElement);
+        });
+  };
+  this.collapseOut = function (nativeElement) {
+    if (nativeElement.scrollHeight <= 0) { return; }
+
+    var _animation = this.cssAnimationBuilder
+                           .setDuration(250)
+                           .addAnimationClass('collapse-out')
+                           .setFromStyles({ height: nativeElement.scrollHeight + 'px' })
+                           .setToStyles({ height: '0' })
+                           .start(nativeElement);
+
+    _animation.onComplete(function () {
+      _animation.removeClasses(['collapse-in']);
+    });
+  };
 }
 
 module.exports = ng.core.Class(new _ngxAnimationService());

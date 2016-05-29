@@ -93,29 +93,29 @@ function _ngxTooltipComponent() {
     var _positions = this.position.split(' ');
     if (_positions.length === 1) { _positions[1] = this.ngxTooltipService.getPositions().CENTER; }
    
-    var _hostElementgetOffset = this.ngxRenderService.for(this.hostElement.nativeElement).getOffset(),
+    var _hostElementOffset = this.ngxRenderService.for(this.hostElement.nativeElement).getOffset(),
         _elementOffset = this.ngxRenderService.for(this.elementRef.nativeElement).getOffset();
-    
+   
     switch (_positions[0]) {
       case this.ngxTooltipService.getPositions().RIGHT:
         return {
-          top: _shiftHeight(this, _hostElementgetOffset, _elementOffset, _positions[1]),
-          left: _shiftWidth(this, _hostElementgetOffset, _elementOffset, _positions[0])
+          top: _shiftHeight(this, _hostElementOffset, _elementOffset, _positions[1]),
+          left: _shiftWidth(this, _hostElementOffset, _elementOffset, _positions[0])
         };
       case this.ngxTooltipService.getPositions().LEFT:
         return {
-          top: _shiftHeight(this, _hostElementgetOffset, _elementOffset, _positions[1]),
-          left: _hostElementgetOffset.left - _elementOffset.width
+          top: _shiftHeight(this, _hostElementOffset, _elementOffset, _positions[1]),
+          left: _hostElementOffset.left - _elementOffset.width
         };
       case this.ngxTooltipService.getPositions().BOTTOM:
         return {
-          top: _shiftHeight(this, _hostElementgetOffset, _elementOffset, _positions[0]),
-          left: _shiftWidth(this, _hostElementgetOffset, _elementOffset, _positions[1])
+          top: _shiftHeight(this, _hostElementOffset, _elementOffset, _positions[0]),
+          left: _shiftWidth(this, _hostElementOffset, _elementOffset, _positions[1])
         };
       default:
         return {
-          top: (_hostElementgetOffset.top - _hostElementgetOffset.height) - _elementOffset.height,
-          left: _shiftWidth(this, _hostElementgetOffset, _elementOffset, _positions[1])
+          top: (_hostElementOffset.top - _hostElementOffset.height) - _elementOffset.height,
+          left: _shiftWidth(this, _hostElementOffset, _elementOffset, _positions[1])
         };
     }
   };
@@ -154,7 +154,7 @@ function _ngxTooltipComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-tooltip',
-  template: '﻿<div class=\"ngx-tooltip-arrow\"></div>\r\n<div class=\"ngx-tooltip-content\" style=\"display: inline-block;\">\r\n  <div #content></div>\r\n</div>',
+  template: '﻿<div class=\"ngx-tooltip-arrow\"></div>\n<div class=\"ngx-tooltip-content\" style=\"display: inline-block;\">\n  <div #content></div>\n</div>',
   styles: [':host(.ngx-tooltip) { position: absolute; opacity: 0; z-index: 1070; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: .875rem; font-style: normal; font-weight: normal; line-height: 1.5; text-align: left; text-align: start; text-decoration: none; text-shadow: none; text-transform: none; letter-spacing: normal; word-break: normal; word-spacing: normal; word-wrap: normal; white-space: normal; line-break: auto; } :host(.ngx-tooltip-animation-fade) { opacity: 0 !important; } :host(.ngx-tooltip-animation-fade-in) { opacity: .9; transition: opacity .15s linear; } :host(.ngx-tooltip.ngx-tooltip-position-top) { padding: 5px 0; margin-top: 10px; } :host(.ngx-tooltip.ngx-tooltip-position-top) .ngx-tooltip-arrow { bottom: 0; left: 50%; margin-left: -5px; border-width: 5px 5px 0; border-top-color: #000; } :host(.ngx-tooltip.ngx-tooltip-position-right) { padding: 0 5px; } :host(.ngx-tooltip.ngx-tooltip-position-right) .ngx-tooltip-arrow { top: 50%; left: 0; margin-top: -5px; border-width: 5px 5px 5px 0; border-right-color: #000; } :host(.ngx-tooltip.ngx-tooltip-position-bottom) { padding: 5px 0; margin-top: 3px; } :host(.ngx-tooltip.ngx-tooltip-position-bottom) .ngx-tooltip-arrow { top: 0; left: 50%; margin-left: -5px; border-width: 0 5px 5px; border-bottom-color: #000; } :host(.ngx-tooltip.ngx-tooltip-position-left) { padding: 0 5px; margin-left: -8px; } :host(.ngx-tooltip.ngx-tooltip-position-left) .ngx-tooltip-arrow { top: 50%; right: 0; margin-top: -5px; border-width: 5px 0 5px 5px; border-left-color: #000; } :host(.ngx-tooltip) .ngx-tooltip-content { max-width: 200px; padding: 3px 8px; color: #fff; text-align: center; background-color: #000; border-radius: .25rem; } :host(.ngx-tooltip) .ngx-tooltip-arrow { position: absolute; width: 0; height: 0; border-color: transparent; border-style: solid; } '],
   providers: [ngxRenderService],
   queries: {

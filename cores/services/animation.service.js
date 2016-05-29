@@ -7,7 +7,7 @@ function _ngxAnimationService() {
     ng.platform.browser.BROWSER_APP_PROVIDERS[0][16],
 
     function ngxAnimationService(animationBuilder) {
-      this.cssAnimationBuilder = animationBuilder.css();
+      this.animationBuilder = animationBuilder;
     }
   ];
 
@@ -62,15 +62,16 @@ function _ngxAnimationService() {
   };
   
   this.collapseIn = function (nativeElement) {
-    var _self = this;
+    var _self = this,
+        _cssAnimationBuilder = this.animationBuilder.css();
     
-    this.cssAnimationBuilder
+    _cssAnimationBuilder
         .setDuration(0)
         .addClass('collapse-in')
-        .setFromStyles({ overflow: 'hidden' })
+        .setFromStyles({ overflow: 'hidden', height: '0' })
         .start(nativeElement)
         .onComplete(function () {
-          _self.cssAnimationBuilder
+          _cssAnimationBuilder
                .setDuration(250)
                .addAnimationClass('collapse-out')
                .setFromStyles({ height: '0' })
@@ -80,13 +81,13 @@ function _ngxAnimationService() {
   };
   this.collapseOut = function (nativeElement) {
     if (nativeElement.scrollHeight <= 0) { return; }
-
-    var _animation = this.cssAnimationBuilder
-                           .setDuration(250)
-                           .addAnimationClass('collapse-out')
-                           .setFromStyles({ height: nativeElement.scrollHeight + 'px' })
-                           .setToStyles({ height: '0' })
-                           .start(nativeElement);
+    
+    var _animation = this.animationBuilder.css()
+                         .setDuration(250)
+                         .addAnimationClass('collapse-out')
+                         .setFromStyles({ height: nativeElement.scrollHeight + 'px' })
+                         .setToStyles({ height: '0' })
+                         .start(nativeElement);
 
     _animation.onComplete(function () {
       _animation.removeClasses(['collapse-in']);

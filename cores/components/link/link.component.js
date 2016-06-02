@@ -12,11 +12,7 @@ function _ngxLinkComponent() {
     MEDIA_QUERY: { name: 'media',  alias: 'media-query' },
     MEDIA_TYPE: { name: 'type',  alias: 'media-type' },
     REL: 'rel',
-    TARGET: 'target',
-    COLOR: 'color',
-    TYPE: 'type',
-    SIZE: 'size',
-    STATE: 'state'
+    TARGET: 'target'
   };
 
   this.extends = ngxBaseComponent;
@@ -38,7 +34,7 @@ function _ngxLinkComponent() {
   this.ngOnChanges = function(changeRecord) {
     _getBaseInstance(this).ngOnChanges.apply(this, arguments);
     
-    if(this.link){
+    if(this.linkElement){
       var _property, _self = this; 
       var _attributes = [
         _ATTRIBUTES.HREF_LANG,
@@ -48,7 +44,7 @@ function _ngxLinkComponent() {
         _ATTRIBUTES.TARGET
       ];
       
-      this.ngxRenderService.for(this.link.nativeElement);
+      this.ngxRenderService.for(this.linkElement.nativeElement);
 
       ngxBootstrap.forEach(_attributes, function (attribute) {
         _property = changeRecord[attribute];
@@ -67,16 +63,16 @@ function _ngxLinkComponent() {
     }
     
   };
-  
-  this.ngOnInit = function () {
-    if (this.elementRef) {
-      if (!this.href) { this.href = '#'; }
-    }
-  };
 
   this.ngAfterContentInit = function () {
+    if (!this.href) { this.href = '#'; }
+
     _getBaseInstance(this).ngAfterContentInit.apply(this);
-    
+  };
+
+  this.ngAfterViewInit = function () {
+    if (!this.linkElement) { throw 'Not found link element'; }
+
     var _self = this, _attributes = [
       _ATTRIBUTES.HREF,
       _ATTRIBUTES.HREF_LANG,
@@ -85,21 +81,19 @@ function _ngxLinkComponent() {
       _ATTRIBUTES.REL,
       _ATTRIBUTES.TARGET
     ];
-    
+
     this.removeOneTimeBindingAttributes(_attributes);
-    
-    if(this.link){
-      this.ngxRenderService.for(this.link.nativeElement);
-      _attributes.splice(0, 1);
-      
-      ngxBootstrap.forEach(_attributes, function(attribute) {
-        if(_self[attribute]){
-          _self.ngxRenderService.setAttribute(attribute, _self[attribute]);
-        }
-      });
-      
-      this.ngxRenderService.for(this.elementRef.nativeElement);
-    }
+
+    this.ngxRenderService.for(this.linkElement.nativeElement);
+    _attributes.splice(0, 1);
+
+    ngxBootstrap.forEach(_attributes, function (attribute) {
+      if (_self[attribute]) {
+        _self.ngxRenderService.setAttribute(attribute, _self[attribute]);
+      }
+    });
+
+    this.ngxRenderService.for(this.elementRef.nativeElement);
   };
   
   this.click = function ($event) {
@@ -121,7 +115,7 @@ module.exports = ng.core.Component({
   template: '<a #link [href]="href" (click)="click($event)"><ng-content></ng-content></a>',
   providers: [ngxRenderService],
   queries: {
-    link: new ng.core.ViewChild('link')
+    linkElement: new ng.core.ViewChild('link')
   },
   properties: ['href', 'hreflang', 'media-query', 'media-type', 'rel', 'target', 'color', 'type', 'size', 'state', 'prefixClass:prefix-class']
 })

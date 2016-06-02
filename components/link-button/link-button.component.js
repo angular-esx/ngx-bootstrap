@@ -36,7 +36,7 @@ module.exports = ng.core.Component({
   /*Inject style at here*/
   providers: [ngxRenderService],
   queries: {
-    link: new ng.core.ViewChild('link')
+    linkElement: new ng.core.ViewChild('link')
   },
   properties: ['href', 'hreflang', 'media-query', 'media-type', 'rel', 'target', 'color', 'size', 'state', 'prefixClass:prefix-class'],
   events: ['clickEmitter: click']

@@ -6,9 +6,6 @@ ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 
 function _breadcrumbComponent() {
   var _base;
-  var _ATTRIBUTES = {
-    COLOR: 'color'
-  };
   
   this.extends = ngxBaseComponent;
   

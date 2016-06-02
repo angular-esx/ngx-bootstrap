@@ -61,32 +61,54 @@ function _ngxAnimationService() {
     return prefixClass + '-animation-fade-in';
   };
   
-  this.collapseIn = function (nativeElement) {
+
+  this.fadeIn = function (nativeElement, options) {
+    this.animationBuilder.css()
+        .setDuration(options && options.duration ? options.duration : 250)
+        .addAnimationClass('fade')
+        .setFromStyles({ opacity: 0 })
+        .setToStyles({ opacity: 1 })
+        .start(nativeElement);
+  };
+  this.fadeOut = function (nativeElement, options) {
+    var _animation = this.animationBuilder.css()
+                         .setDuration(options && options.duration ? options.duration : 250)
+                         .addAnimationClass('fade')
+                         .setFromStyles({ opacity: 1 })
+                         .setToStyles({ opacity: 0 })
+                         .start(nativeElement);
+
+    _animation.onComplete(function () {
+      _animation.removeClasses(['fade']);
+    });
+  };
+
+  this.collapseIn = function (nativeElement, options) {
     var _self = this,
         _cssAnimationBuilder = this.animationBuilder.css();
     
     _cssAnimationBuilder
         .setDuration(0)
         .addClass('collapse-in')
-        .setFromStyles({ overflow: 'hidden', height: '0' })
+        .setFromStyles({ overflow: 'hidden', height: 0 })
         .start(nativeElement)
         .onComplete(function () {
           _cssAnimationBuilder
-               .setDuration(250)
+               .setDuration(options && options.duration ? options.duration : 250)
                .addAnimationClass('collapse-out')
-               .setFromStyles({ height: '0' })
+               .setFromStyles({ height: 0 })
                .setToStyles({ height: nativeElement.scrollHeight + 'px' })
                .start(nativeElement);
         });
   };
-  this.collapseOut = function (nativeElement) {
+  this.collapseOut = function (nativeElement, options) {
     if (nativeElement.scrollHeight <= 0) { return; }
     
     var _animation = this.animationBuilder.css()
-                         .setDuration(250)
+                         .setDuration(options && options.duration ? options.duration : 250)
                          .addAnimationClass('collapse-out')
                          .setFromStyles({ height: nativeElement.scrollHeight + 'px' })
-                         .setToStyles({ height: '0' })
+                         .setToStyles({ height: 0 })
                          .start(nativeElement);
 
     _animation.onComplete(function () {

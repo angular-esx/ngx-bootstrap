@@ -6,10 +6,6 @@ ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 
 function _ngxGroupComponent() {
   var _base;
-  var _ATTRIBUTES = {
-    TYPE: 'type',
-    SIZE: 'size'
-  };
 
   this.extends = ngxBaseComponent;
 

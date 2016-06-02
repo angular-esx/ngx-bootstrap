@@ -12,6 +12,13 @@ ngxBootstrap.shallowCopy = function (target, source, overrideTarget, onCopying) 
   return target;
 };
 
+ngxBootstrap.newGUID = function () {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (char) {
+    var _random = Math.random() * 16 | 0;
+    return (char === 'x' ? _random : (_random & 0x3 | 0x8)).toString(16);
+  });
+};
+
 ngxBootstrap.isString = function (target) {
   return target && typeof (target) === 'string';
 };

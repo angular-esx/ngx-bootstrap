@@ -6,11 +6,6 @@ ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 
 function _ngxButtonComponent() {
   var _base;
-  var _ATTRIBUTES = {
-    COLOR: 'color',
-    SIZE: 'size',
-    STATE: 'state'
-  };
   
   this.extends = ngxBaseComponent;
 

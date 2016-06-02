@@ -9,7 +9,6 @@ ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 function _ngxPaginationComponent() {
   var _base;
   var _ATTRIBUTES = {
-    SIZE: 'size',
     TOTAL_PAGES: 'total-pages',
     PAGE_SIZE: 'page-size',
     CURRENT_PAGE: 'current-page',
@@ -36,25 +35,23 @@ function _ngxPaginationComponent() {
     }
   ];
 
-  this.ngOnInit = function () {
-    if (this.elementRef) {
-      if (!this.totalPages || this.totalPages < 0) { this.totalPages = 0; }
-      else { this.totalPages = parseInt(this.totalPages); }
+  this.ngAfterContentInit = function () {
+    if (!this.totalPages || this.totalPages < 0) { this.totalPages = 0; }
+    else { this.totalPages = parseInt(this.totalPages); }
 
-      if (!this.pageSize || this.pageSize < 1) { this.pageSize = 10; }
-      else { this.pageSize = parseInt(this.pageSize); }
+    if (!this.pageSize || this.pageSize < 1) { this.pageSize = 10; }
+    else { this.pageSize = parseInt(this.pageSize); }
 
-      if (!this.currentPage || this.currentPage < 1) { this.currentPage = 1; }
-      else { this.currentPage = parseInt(this.currentPage); }
+    if (!this.currentPage || this.currentPage < 1) { this.currentPage = 1; }
+    else { this.currentPage = parseInt(this.currentPage); }
 
-      if (this.showPrevious === undefined || this.showPrevious === null) { this.showPrevious = true; }
-      if (this.showNext === undefined || this.showNext === null) { this.showNext = true; }
+    if (this.showPrevious === undefined || this.showPrevious === null) { this.showPrevious = true; }
+    if (this.showNext === undefined || this.showNext === null) { this.showNext = true; }
 
-      this.startPage = _getStartPage(this.pageSize, this.currentPage);
+    this.startPage = _getStartPage(this.pageSize, this.currentPage);
 
-      this.pageBuilder = new _pageBuilder();
-      this.pageBuilder.build(this.totalPages, this.pageSize, this.startPage, this.onSetLinkPage);
-    }
+    this.pageBuilder = new _pageBuilder();
+    this.pageBuilder.build(this.totalPages, this.pageSize, this.startPage, this.onSetLinkPage);
   };
 
   this.prev = function ($event) {

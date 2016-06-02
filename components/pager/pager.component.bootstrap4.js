@@ -9,7 +9,6 @@ ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 function _ngxPagerComponent() {
   var _base;
   var _ATTRIBUTES = {
-    TYPE: 'type',
     TOTAL_PAGES: 'total-pages',
     CURRENT_PAGE: 'current-page',
     SHOW_PREVIOUS: 'show-previous',
@@ -35,20 +34,18 @@ function _ngxPagerComponent() {
     }
   ];
 
-  this.ngOnInit = function () {
-    if (this.elementRef) {
-      if (!this.totalPages || this.totalPages < 0) { this.totalPages = 0; }
-      else { this.totalPages = parseInt(this.totalPages); }
+  this.ngAfterContentInit = function () {
+    if (!this.totalPages || this.totalPages < 0) { this.totalPages = 0; }
+    else { this.totalPages = parseInt(this.totalPages); }
 
-      if (!this.currentPage || this.currentPage < 1) { this.currentPage = 1; }
-      else { this.currentPage = parseInt(this.currentPage); }
+    if (!this.currentPage || this.currentPage < 1) { this.currentPage = 1; }
+    else { this.currentPage = parseInt(this.currentPage); }
 
-      if (this.showPrevious === undefined || this.showPrevious === null) { this.showPrevious = true; }
-      if (this.showNext === undefined || this.showNext === null) { this.showNext = true; }
+    if (this.showPrevious === undefined || this.showPrevious === null) { this.showPrevious = true; }
+    if (this.showNext === undefined || this.showNext === null) { this.showNext = true; }
 
-      this.pageBuilder = new _pageBuilder();
-      this.pageBuilder.build(this.totalPages, this.currentPage, this.setLinkPageEmitter);
-    }
+    this.pageBuilder = new _pageBuilder();
+    this.pageBuilder.build(this.totalPages, this.currentPage, this.setLinkPageEmitter);
   };
 
   this.prev = function ($event) {

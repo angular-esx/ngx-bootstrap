@@ -48,16 +48,16 @@ ngxBootstrap.distinct = function (target) {
 };
 ngxBootstrap.forEach = function (target, callback) {
   if (target && callback) {
-    if(ngxBootstrap.isObject(target)){
-      for (var prop in target) {
-        if (callback(target[prop], prop)) {
+    if (ngxBootstrap.isArray(target)) {
+      for (var i = 0, length = target.length; i < length; i++) {
+        if (callback(target[i], i)) {
           break;
         }
       }
     }
-    else if(ngxBootstrap.isFunction(target)){
-      for (var i = 0, length = target.length; i < length; i++) {
-        if (callback(target[i], i)) {
+    else if (ngxBootstrap.isObject(target)) {
+      for (var prop in target) {
+        if (callback(target[prop], prop)) {
           break;
         }
       }

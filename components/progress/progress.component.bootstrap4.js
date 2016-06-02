@@ -7,7 +7,6 @@ ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 function _ngxProgressComponent() {
   var _base;
   var _ATTRIBUTES = {
-    COLOR: 'color',
     VALUE: 'value',
     MAX: 'max'
   };
@@ -28,28 +27,24 @@ function _ngxProgressComponent() {
     }
   ];
 
-  this.ngOnInit = function () {
-    if (this.elementRef) {
-      if (this.value === undefined || this.value === null || isNaN(this.value) || this.value < 0) {
-        this.value = 0;
-      }
-
-      if (this.max === undefined || this.max === null || isNaN(this.max) || this.max < 0) {
-        this.max = 100;
-      }
+  this.ngAfterContentInit = function () {
+    if (this.value === undefined || this.value === null || isNaN(this.value) || this.value < 0) {
+      this.value = 0;
     }
-  };
 
-  this.ngAfterViewInit = function () {
-    _getBaseInstance(this).ngAfterViewInit.apply(this);
+    if (this.max === undefined || this.max === null || isNaN(this.max) || this.max < 0) {
+      this.max = 100;
+    }
 
     var _self = this,
         _attributes = [
       _ATTRIBUTES.VALUE,
       _ATTRIBUTES.MAX
-    ];
+        ];
 
     this.removeOneTimeBindingAttributes(_attributes);
+
+    _getBaseInstance(this).ngAfterContentInit.apply(this);
   };
 
   function _getBaseInstance(context) {

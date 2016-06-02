@@ -6,10 +6,6 @@ ngxBootstrap = require('./../../' + __NGX_BOOTSTRAP_UTILS__);
 
 function _ngxLabelComponent() {
   var _base;
-  var _ATTRIBUTES = {
-    COLOR: 'color',
-    TYPE: 'type'
-  };
 
   this.extends = ngxBaseComponent;
 

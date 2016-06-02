@@ -38,8 +38,10 @@ function _ngxCollapseComponent() {
     }
   };
 
-  this.ngOnInit = function () {
-    if (this.elementRef) { this.subscribe(); }
+  this.ngAfterContentInit = function () {
+    this.subscribe();
+
+    _getBaseInstance(this).ngAfterContentInit.apply(this);
   };
 
   this.ngOnDestroy = function () {

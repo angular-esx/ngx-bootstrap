@@ -23,7 +23,7 @@ function _ngxBaseDirective() {
       this.ngxRenderService = ngxRenderService.for(elementRef.nativeElement);
       this.ngxBaseService = ngxBaseService;
 
-      if (!this.prefixClass) { this.prefixClass = elementRef.nativeElement.localName; }
+      this.prefixClass = elementRef.nativeElement.localName;
     }
   ];
 

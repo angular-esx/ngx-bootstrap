@@ -46,15 +46,18 @@ function _ngxDropMenuComponent() {
       ngxBootstrap.forEach(_events, function (_event) {
         if (_event.target && _event.target === _self.elementRef.nativeElement) {
 
-          if (_event.type === _actions.TOGGLE_DROPDOWN || _event.type === _actions.TOGGLE_DROPUP) {
-            _self.toggle(_event.type);
+          if (_event.type === _actions.TOGGLE_DROPDOWN) {
+            _self.toggleDropdown();
+          }
+          else if (_event.type === _actions.TOGGLE_DROPUP){
+            _self.toggleDropup();
           }
         }
       });
     });
   };
 
-  this.toggle = function (action) {
+  this.toggleDropdown = function () {
     var _isActive = this.ngxDropMenuService.isActiveStateClass(this.getPrefixClass(), this.state);
     var _types = this.ngxDropMenuService.getTypes();
 
@@ -71,14 +74,34 @@ function _ngxDropMenuComponent() {
     _changeRecord.state.currentValue = this.state;
     
     if(_changeRecord.type.previousValue){
-      _changeRecord.type.previousValue = this.type = _changeRecord.type.previousValue.replace(_types.DROPDOWN, '').replace(_types.DROPUP, '').trim();
+      _changeRecord.type.previousValue = this.type = _changeRecord.type.previousValue.replace(_types.DROPDOWN, '').trim();
     }
-    if (action === this.ngxDropMenuService.getActions().TOGGLE_DROPUP) {
-      this.type = (_types.DROPUP + ' ' + _changeRecord.state.previousValue).trim();
+    this.type = (_types.DROPDOWN + ' ' + _changeRecord.state.previousValue).trim();
+    _changeRecord.type.currentValue = this.type;
+
+    this.ngOnChanges(_changeRecord);
+  };
+
+  this.toggleDropup = function () {
+    var _isActive = this.ngxDropMenuService.isActiveStateClass(this.getPrefixClass(), this.state);
+    var _types = this.ngxDropMenuService.getTypes();
+
+    var _changeRecord = {
+      state: { previousValue: this.state || '' },
+      type: { previousValue: this.type || '' }
+    };
+    if (_isActive) {
+      this.state = this.state.replace(this.ngxDropMenuService.getStates().ACTIVE, '').trim();
     }
     else {
-      this.type = (_types.DROPDOWN + ' ' + _changeRecord.state.previousValue).trim();
+      this.state = (this.ngxDropMenuService.getStates().ACTIVE + ' ' + _changeRecord.state.previousValue).trim();
     }
+    _changeRecord.state.currentValue = this.state;
+
+    if (_changeRecord.type.previousValue) {
+      _changeRecord.type.previousValue = this.type = _changeRecord.type.previousValue.replace(_types.DROPUP, '').trim();
+    }
+    this.type = (_types.DROPUP + ' ' + _changeRecord.state.previousValue).trim();
     _changeRecord.type.currentValue = this.type;
 
     this.ngOnChanges(_changeRecord);

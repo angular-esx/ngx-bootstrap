@@ -33,11 +33,18 @@ function _ngxDropMenuService() {
     _observer.next(event);
   };
 
-  this.getToggle$ = function (dropMenuElement, action) {
-    return Rx.Observable.from([{ target: dropMenuElement, type: action }]);
+  this.getToggleDropdown$ = function (dropMenuElement) {
+    return Rx.Observable.from([{ target: dropMenuElement, type: _ACTIONS.TOGGLE_DROPDOWN }]);
   };
-  this.toggle = function (dropMenuElement, action) {
-    _observer.next({ target: dropMenuElement, type: action });
+  this.toggleDropdown = function (dropMenuElement) {
+    _observer.next({ target: dropMenuElement, type: _ACTIONS.TOGGLE_DROPDOWN });
+  };
+
+  this.getToggleDropup$ = function (dropMenuElement) {
+    return Rx.Observable.from([{ target: dropMenuElement, type: _ACTIONS.TOGGLE_DROPUP }]);
+  };
+  this.toggleDropup = function (dropMenuElement) {
+    _observer.next({ target: dropMenuElement, type: _ACTIONS.TOGGLE_DROPUP });
   };
 
   this.isDropdownTypeClass = function (prefixClass, type) {

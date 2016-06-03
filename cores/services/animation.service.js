@@ -8,56 +8,80 @@ function _ngxAnimationService() {
   ]; 
 
   this.fadeIn = function (nativeElement, options) {
-    this.animationBuilder.css()
-        .setDuration(options && options.duration ? options.duration : 250)
-        .addAnimationClass('fade')
-        .setFromStyles({ opacity: 0 })
-        .setToStyles({ opacity: 1 })
-        .start(nativeElement);
+    var _self = this;
+
+    return new Promise(function (resolve) {
+      var _cssAnimationBuilder = _self.animationBuilder.css()
+      .setDuration(options && options.duration ? options.duration : 250)
+      .addAnimationClass('fade')
+      .setFromStyles({ opacity: 0 })
+      .setToStyles({ opacity: 1 })
+      .start(nativeElement);
+
+      _cssAnimationBuilder.onComplete(function () {
+        resolve();
+      });
+    });
   };
   this.fadeOut = function (nativeElement, options) {
-    var _animation = this.animationBuilder.css()
-                         .setDuration(options && options.duration ? options.duration : 250)
-                         .addAnimationClass('fade')
-                         .setFromStyles({ opacity: 1 })
-                         .setToStyles({ opacity: 0 })
-                         .start(nativeElement);
+    var _self = this;
 
-    _animation.onComplete(function () {
-      _animation.removeClasses(['fade']);
+    return new Promise(function (resolve) {
+      var _cssAnimationBuilder = _self.animationBuilder.css()
+      .setDuration(options && options.duration ? options.duration : 250)
+      .addAnimationClass('fade')
+      .setFromStyles({ opacity: 1 })
+      .setToStyles({ opacity: 0 })
+      .start(nativeElement);
+
+      _cssAnimationBuilder.onComplete(function () {
+        _cssAnimationBuilder.removeClasses(['fade']);
+
+        resolve();
+      });
     });
   };
 
   this.collapseIn = function (nativeElement, options) {
-    var _self = this,
-        _cssAnimationBuilder = this.animationBuilder.css();
-    
-    _cssAnimationBuilder
-        .setDuration(0)
-        .addClass('collapse-in')
-        .setFromStyles({ overflow: 'hidden', height: 0 })
+    var _self = this;
+
+    return new Promise(function (resolve) {
+      var _cssAnimationBuilder = _self.animationBuilder.css()
+      .setDuration(0)
+      .addClass('collapse-in')
+      .setFromStyles({ overflow: 'hidden', height: 0 })
+      .start(nativeElement)
+      .onComplete(function () {
+        _cssAnimationBuilder
+        .setDuration(options && options.duration ? options.duration : 250)
+        .addAnimationClass('collapse-out')
+        .setFromStyles({ height: 0 })
+        .setToStyles({ height: nativeElement.scrollHeight + 'px' })
         .start(nativeElement)
         .onComplete(function () {
-          _cssAnimationBuilder
-               .setDuration(options && options.duration ? options.duration : 250)
-               .addAnimationClass('collapse-out')
-               .setFromStyles({ height: 0 })
-               .setToStyles({ height: nativeElement.scrollHeight + 'px' })
-               .start(nativeElement);
+          resolve();
         });
+      });
+    });
   };
   this.collapseOut = function (nativeElement, options) {
     if (nativeElement.scrollHeight <= 0) { return; }
     
-    var _animation = this.animationBuilder.css()
-                         .setDuration(options && options.duration ? options.duration : 250)
-                         .addAnimationClass('collapse-out')
-                         .setFromStyles({ height: nativeElement.scrollHeight + 'px' })
-                         .setToStyles({ height: 0 })
-                         .start(nativeElement);
+    var _self = this;
 
-    _animation.onComplete(function () {
-      _animation.removeClasses(['collapse-in']);
+    return new Promise(function (resolve) {
+      var _cssAnimationBuilder = _self.animationBuilder.css()
+      .setDuration(options && options.duration ? options.duration : 250)
+      .addAnimationClass('collapse-out')
+      .setFromStyles({ height: nativeElement.scrollHeight + 'px' })
+      .setToStyles({ height: 0 })
+      .start(nativeElement);
+
+      _cssAnimationBuilder.onComplete(function () {
+        _cssAnimationBuilder.removeClasses(['collapse-in']);
+
+        resolve();
+      });
     });
   };
 }

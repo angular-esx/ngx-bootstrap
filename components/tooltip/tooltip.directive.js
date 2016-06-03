@@ -24,9 +24,7 @@ function _ngxTooltipDirective() {
     }
   ];
 
-  this.ngOnInit = function () {
-    if (!this.elementRef) { return; }
-
+  this.ngAfterContentInit = function () {
     if (this.autoHide === 'true') { this.autoHide = true; }
     else if (this.autoHide === 'false') { this.autoHide = false; }
     
@@ -48,11 +46,11 @@ function _ngxTooltipDirective() {
 
       var _events = ngxBootstrap.isArray(event) ? event : [event];
       var _actions = _self.ngxTooltipService.getActions();
-
+      
       ngxBootstrap.forEach(_events, function (_event) {
-        if (!_event.id || _self.id === _event.id) {
+        if (_event.target && _event.target === _self.elementRef.nativeElement) {
           if (_event.type === _actions.ENABLE_TOOLTIP) {
-            _self.enable(_event.isEnable);
+            _self.enable(_event.isEnabled);
           }
           else if (_event.type === _actions.SHOW_TOOLTIP) {
             _self.show({
@@ -68,11 +66,11 @@ function _ngxTooltipDirective() {
     });
   };
 
-  this.enable = function (isEnable) {
-    if (isEnable && this.state && this.ngxTooltipService.isDisabledStateClass(this.getPrefixClass(), this.state)) {
+  this.enable = function (isEnabled) {
+    if (isEnabled && this.state && this.ngxTooltipService.isDisabledStateClass(this.getPrefixClass(), this.state)) {
       this.state = this.state.replace(this.ngxTooltipService.getStates().DISABLED, '').trim();
     }
-    else if (!isEnable && !this.ngxTooltipService.isDisabledStateClass(this.getPrefixClass(), this.state)) {
+    else if (!isEnabled && !this.ngxTooltipService.isDisabledStateClass(this.getPrefixClass(), this.state)) {
       var _states = [];
       if (this.state) { _states = this.state.split(' '); }
 
@@ -127,7 +125,6 @@ function _ngxTooltipDirective() {
       content: this.content,
       state: this.state,
       position: this.position || this.ngxTooltipService.getPositions().TOP,
-      animation: this.ngxTooltipService.getAnimations().FADE,
       delay: this.delay,
       autoHide: this.autoHide
     });
@@ -145,7 +142,6 @@ function _ngxTooltipDirective() {
 module.exports = ng.core.Directive({
   selector: '[ngx-tooltip]',
   properties: [
-    'id',
     'content: ngx-tooltip',
     'state: ngx-tooltip-state',
     'position: ngx-tooltip-position',

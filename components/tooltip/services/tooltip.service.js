@@ -38,25 +38,25 @@ function _ngxTooltipService() {
     _observer.next(event);
   };
 
-  this.getEnable$ = function (tooltipId, isEnable) {
-    return Rx.Observable.from([{ id: tooltipId, type: _ACTIONS.ENABLE_TOOLTIP, isEnable: isEnable }]);
+  this.getEnable$ = function (tooltipElement, isEnabled) {
+    return Rx.Observable.from([{ target: tooltipElement, type: _ACTIONS.ENABLE_TOOLTIP, isEnabled: isEnabled }]);
   };
-  this.enable = function (tooltipId, isEnable) {
-    _observer.next({ id: tooltipId, type: _ACTIONS.ENABLE_TOOLTIP, isEnable: isEnable });
-  };
-
-  this.getShow$ = function (tooltipId, delay) {
-    return Rx.Observable.from([{ id: tooltipId, type: _ACTIONS.SHOW_TOOLTIP, delay: delay }]);
-  };
-  this.show = function (tooltipId, delay) {
-    _observer.next({ id: tooltipId, type: _ACTIONS.SHOW_TOOLTIP, delay: delay });
+  this.enable = function (tooltipElement, isEnabled) {
+    _observer.next({ target: tooltipElement, type: _ACTIONS.ENABLE_TOOLTIP, isEnabled: isEnabled });
   };
 
-  this.getHide$ = function (tooltipId) {
-    return Rx.Observable.from([{ id: tooltipId, type: _ACTIONS.HIDE_TOOLTIP }]);
+  this.getShow$ = function (tooltipElement, delay) {
+    return Rx.Observable.from([{ target: tooltipElement, type: _ACTIONS.SHOW_TOOLTIP, delay: delay }]);
   };
-  this.hide = function (tooltipId) {
-    _observer.next({ id: tooltipId, type: _ACTIONS.HIDE_TOOLTIP });
+  this.show = function (tooltipElement, delay) {
+    _observer.next({ target: tooltipElement, type: _ACTIONS.SHOW_TOOLTIP, delay: delay });
+  };
+
+  this.getHide$ = function (tooltipElement) {
+    return Rx.Observable.from([{ target: tooltipElement, type: _ACTIONS.HIDE_TOOLTIP }]);
+  };
+  this.hide = function (tooltipElement) {
+    _observer.next({ target: tooltipElement, type: _ACTIONS.HIDE_TOOLTIP });
   };
 
   this.cacheTemplateRef = function (id, template) {

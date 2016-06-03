@@ -9,8 +9,6 @@ ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 function _ngxTooltipComponent() {
   var _base;
   var _ATTRIBUTES = {
-    ANIMATION: 'animation',
-    STATE: 'state',
     POSITION: 'position'
   };
 
@@ -77,16 +75,14 @@ function _ngxTooltipComponent() {
   };
 
   this.show = function () {
-    if (this.ngxTooltipService.isFadeAnimationClass(this.getPrefixClass(), this.animation)) {
-      var _self = this;
-      setTimeout(function () {
-        _self.ngxRenderService.addClass(_self.ngxTooltipService.getFadeInAnimationClass(_self.getPrefixClass()));
-      }, _self.delay);
-    }
+    var _self = this;
+    setTimeout(function () {
+      _self.ngxTooltipService.fadeIn(_self.elementRef.nativeElement);
+    }, _self.delay);
   };
 
   this.hide = function () {
-    this.ngxRenderService.addClass(this.ngxTooltipService.getFadeAnimationClass(this.getPrefixClass()));
+    this.ngxTooltipService.fadeOut(this.elementRef.nativeElement);
   };
 
   this.getOffset = function () {

@@ -24,22 +24,19 @@ function _testCase() {
   this.alert = function () {
     alert('You have just clicked me!!!');
     
-    var _tooltipId = 'myTooltipWithTemplate';
-
-    this.ngxTooltipService.hide(_tooltipId);
+    this.ngxTooltipService.hide(this.tooltipWithTemplateElement.nativeElement);
   };
 
   this.toggleTooltip = function () {
-    var _self = this,
-        _tooltipId = 'myTooltip';
+    var _self = this;
     
     if (this.toggled) {
       this.toggled = false;
       
       Rx.Observable.zip
       (
-        this.ngxTooltipService.getHide$(_tooltipId),
-        this.ngxTooltipService.getEnable$(_tooltipId, false),
+        this.ngxTooltipService.getHide$(_self.tooltipElement.nativeElement),
+        this.ngxTooltipService.getEnable$(_self.tooltipElement.nativeElement, false),
         function (hideEvent, enableEvent) {
           return [hideEvent, enableEvent];
         }
@@ -53,8 +50,8 @@ function _testCase() {
 
       Rx.Observable.zip
       (
-        this.ngxTooltipService.getEnable$(_tooltipId, true),
-        this.ngxTooltipService.getShow$(_tooltipId),
+        this.ngxTooltipService.getEnable$(_self.tooltipElement.nativeElement, true),
+        this.ngxTooltipService.getShow$(_self.tooltipElement.nativeElement),
         function (enableEvent, showEvent) {
           return [enableEvent, showEvent];
         }
@@ -81,6 +78,10 @@ module.exports = ng.core.Component({
     ngxWindowService,
     ngxTooltipService,
     ngxLinkService
-  ]
+  ],
+  queries: {
+    tooltipElement: new ng.core.ViewChild('myTooltip', { read: ng.core.ElementRef }),
+    tooltipWithTemplateElement: new ng.core.ViewChild('myTooltipWithTemplate', { read: ng.core.ElementRef })
+  }
 })
 .Class(new _testCase());

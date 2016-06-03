@@ -20,15 +20,6 @@
   line-break: auto;
 }
 
-:host(.ngx-tooltip-animation-fade) {
-  opacity: 0 !important;
-}
-
-:host(.ngx-tooltip-animation-fade-in) {
-  opacity: .9;
-  transition: opacity .15s linear;
-}
-
 :host(.ngx-tooltip.ngx-tooltip-position-top) {
   padding: 5px 0;
   margin-top: 10px;

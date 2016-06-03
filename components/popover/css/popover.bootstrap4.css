@@ -27,15 +27,6 @@
   line-break: auto;
 }
 
-:host(.ngx-popover-animation-fade) {
-  opacity: 0 !important;
-}
-
-:host(.ngx-popover-animation-fade-in) {
-  opacity: .9;
-  transition: opacity .15s linear;
-}
-
 :host(.ngx-popover.ngx-popover-position-top) {
   margin-top: -18px;
   margin-left: -7px;

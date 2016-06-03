@@ -43,9 +43,9 @@ function _ngxPopoverDirective() {
       var _actions = _self.ngxPopoverService.getActions();
 
       ngxBootstrap.forEach(_events, function (_event) {
-        if (!_event.id || _self.id === _event.id) {
+        if (_event.target && _event.target === _self.elementRef.nativeElement) {
           if (_event.type === _actions.ENABLE_POPOVER) {
-            _self.enable(_event.isEnable);
+            _self.enable(_event.isEnabled);
           }
           else if (_event.type === _actions.TOGGLE_POPOVER) {
             _self.toggle({
@@ -78,7 +78,6 @@ function _ngxPopoverDirective() {
       content: this.content,
       state: this.state,
       position: this.position || this.ngxPopoverService.getPositions().TOP,
-      animation: this.ngxPopoverService.getAnimations().FADE,
       delay: this.delay
     });
 
@@ -100,7 +99,6 @@ function _ngxPopoverDirective() {
 module.exports = ng.core.Directive({
   selector: '[ngx-popover]',
   properties: [
-    'id',
     'title: ngx-popover-title',
     'content: ngx-popover-content',
     'state: ngx-popover-state',

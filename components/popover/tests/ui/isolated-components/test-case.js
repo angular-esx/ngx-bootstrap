@@ -23,23 +23,20 @@ function _testCase() {
 
   this.alert = function () {
     alert('You have just clicked me!!!');
-    
-    var _popoverId = 'myPopoverWithTemplate';
 
-    this.ngxPopoverService.toggle(_popoverId);
+    this.ngxPopoverService.toggle(this.popoverWithTemplateElement.nativeElement);
   };
 
   this.togglePopover = function () {
-    var _self = this,
-        _popoverId = 'myPopover';
+    var _self = this;
     
     if (this.toggled) {
       this.toggled = false;
       
       Rx.Observable.zip
       (
-        this.ngxPopoverService.getToggle$(_popoverId),
-        this.ngxPopoverService.getEnable$(_popoverId, false),
+        this.ngxPopoverService.getToggle$(_self.popoverElement.nativeElement),
+        this.ngxPopoverService.getEnable$(_self.popoverElement.nativeElement, false),
         function (toggleEvent, enableEvent) {
           return [toggleEvent, enableEvent];
         }
@@ -53,8 +50,8 @@ function _testCase() {
 
       Rx.Observable.zip
       (
-        this.ngxPopoverService.getEnable$(_popoverId, true),
-        this.ngxPopoverService.getToggle$(_popoverId),
+        this.ngxPopoverService.getEnable$(_self.popoverElement.nativeElement, true),
+        this.ngxPopoverService.getToggle$(_self.popoverElement.nativeElement),
         function (enableEvent, toggleEvent) {
           return [enableEvent, toggleEvent];
         }
@@ -81,6 +78,10 @@ module.exports = ng.core.Component({
     ngxWindowService,
     ngxPopoverService,
     ngxLinkService
-  ]
+  ],
+  queries: {
+    popoverElement: new ng.core.ViewChild('myPopover', { read: ng.core.ElementRef }),
+    popoverWithTemplateElement: new ng.core.ViewChild('myPopoverWithTemplate', { read: ng.core.ElementRef })
+  }
 })
 .Class(new _testCase());

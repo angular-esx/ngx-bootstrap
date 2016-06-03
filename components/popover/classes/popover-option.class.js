@@ -2,7 +2,7 @@
 ngxBootstrap = require('./../../../cores/ngx-bootstrap.utils.js');
 
 function _popoverOptionClass() {
-  var _PROPERTIES = ['hostElement', 'templateRef', 'title', 'content', 'animation', 'state', 'position', 'delay'];
+  var _PROPERTIES = ['hostElement', 'templateRef', 'title', 'content', 'state', 'position', 'delay'];
 
   this.constructor = [
     [new ng.core.Optional(), null],

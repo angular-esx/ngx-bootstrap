@@ -39,10 +39,10 @@ function _ngxTooltipService() {
   };
 
   this.getEnable$ = function (tooltipElement, isEnabled) {
-    return Rx.Observable.from([{ target: tooltipElement, type: _ACTIONS.ENABLE_TOOLTIP, isEnabled: isEnabled }]);
+    return Rx.Observable.from([{ target: tooltipElement, isEnabled: isEnabled, type: _ACTIONS.ENABLE_TOOLTIP }]);
   };
   this.enable = function (tooltipElement, isEnabled) {
-    _observer.next({ target: tooltipElement, type: _ACTIONS.ENABLE_TOOLTIP, isEnabled: isEnabled });
+    _observer.next({ target: tooltipElement, isEnabled: isEnabled, type: _ACTIONS.ENABLE_TOOLTIP });
   };
 
   this.getShow$ = function (tooltipElement, delay) {

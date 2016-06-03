@@ -37,18 +37,18 @@ function _ngxPopoverService() {
     _observer.next(event);
   };
 
-  this.getEnable$ = function (popoverId, isEnable) {
-    return Rx.Observable.from([{ id: popoverId, type: _ACTIONS.ENABLE_POPOVER, isEnable: isEnable }]);
+  this.getEnable$ = function (popoverElement, isEnabled) {
+    return Rx.Observable.from([{ target: popoverElement, isEnabled: isEnabled, type: _ACTIONS.ENABLE_POPOVER }]);
   };
-  this.enable = function (popoverId, isEnable) {
-    _observer.next({ id: popoverId, type: _ACTIONS.ENABLE_POPOVER, isEnable: isEnable });
+  this.enable = function (popoverElement, isEnabled) {
+    _observer.next({ target: popoverElement, isEnabled: isEnabled, type: _ACTIONS.ENABLE_POPOVER });
   };
 
-  this.getToggle$ = function (popoverId, delay) {
-    return Rx.Observable.from([{ id: popoverId, type: _ACTIONS.TOGGLE_POPOVER, delay: delay }]);
+  this.getToggle$ = function (popoverElement, delay) {
+    return Rx.Observable.from([{ target: popoverElement, type: _ACTIONS.TOGGLE_POPOVER, delay: delay }]);
   };
-  this.toggle = function (popoverId, delay) {
-    _observer.next({ id: popoverId, type: _ACTIONS.TOGGLE_POPOVER, delay: delay });
+  this.toggle = function (popoverElement, delay) {
+    _observer.next({ target: popoverElement, type: _ACTIONS.TOGGLE_POPOVER, delay: delay });
   };
 
   this.cacheTemplateRef = function (id, template) {

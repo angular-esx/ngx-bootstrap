@@ -4,6 +4,7 @@ var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../../cores/ngx-bootstrap.utils.js');
 
 function _ngxDropMenuService() {
+  var _observer;
   var _ACTIONS = {
     TOGGLE_DROPDOWN: 'TOGGLE_DROPDOWN',
     TOGGLE_DROPUP: 'TOGGLE_DROPUP'
@@ -17,12 +18,26 @@ function _ngxDropMenuService() {
       ngxBootstrap.shallowCopy(this, ngxTypeService);
       ngxBootstrap.shallowCopy(this, ngxStateService);
 
-      this.dropMenuEmitter = new ng.core.EventEmitter();
+      this.ngxDropMenu$ = new Rx.Observable(function (observer) {
+        _observer = observer;
+      })
+     .share();
     }
   ];
 
   this.getActions = function () {
     return ngxBootstrap.shallowCopy({}, _ACTIONS);
+  };
+
+  this.next = function (event) {
+    _observer.next(event);
+  };
+
+  this.getToggle$ = function (dropMenuElement, action) {
+    return Rx.Observable.from([{ target: dropMenuElement, type: action }]);
+  };
+  this.toggle = function (dropMenuElement, action) {
+    _observer.next({ target: dropMenuElement, type: action });
   };
 
   this.isDropdownTypeClass = function (prefixClass, type) {
@@ -37,14 +52,6 @@ function _ngxDropMenuService() {
   };
   this.getDropupTypeClass = function (prefixClass) {
     return prefixClass + '-type-dropup';
-  };
-
-  this.subscribe = function (onNext, onError, onCompleted) {
-    this.dropMenuEmitter.subscribe(onNext, onError, onCompleted);
-  };
-
-  this.toggle = function (dropMenuId, action) {
-    this.dropMenuEmitter.next({ id: dropMenuId, action: action });
   };
 }
 

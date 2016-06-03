@@ -23,6 +23,10 @@ function _ngxDropMenuItemDirective() {
     }
   ];
 
+  this.getPrefixClass = function () {
+    return 'ngx-drop-menu-item';
+  };
+
   function _getBaseInstance(context) {
     if (!_base) { _base = context.getBaseInstance(ngxBaseDirective); }
     return _base;
@@ -32,9 +36,6 @@ function _ngxDropMenuItemDirective() {
 module.exports = ng.core.Directive({
   selector: '[ngx-drop-menu-item]',
   providers: [ngxRenderService],
-  host: {
-    '[class.ngx-drop-menu-item]': 'true'
-  },
-  properties: ['state', 'prefixClass:prefix-class']
+  properties: ['state']
 })
 .Class(new _ngxDropMenuItemDirective());

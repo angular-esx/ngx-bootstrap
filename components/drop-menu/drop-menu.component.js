@@ -5,10 +5,8 @@ var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 
 function _ngxDropMenuComponent() {
-  var _base;
-  var _ATTRIBUTES = {
-    ID: 'id',
-  };
+  var _base,
+      _subscription;
 
   this.extends = ngxBaseComponent;
 
@@ -22,24 +20,39 @@ function _ngxDropMenuComponent() {
 
       if (elementRef) {
         this.ngxDropMenuService = ngxDropMenuService;
-
-        var _self = this;
-        this.ngxDropMenuService.subscribe(
-          function (event) {
-            if (!event || !event.id || _self.id == event.id) {
-              var _actions = _self.ngxDropMenuService.getActions();
-
-              if (event.action === _actions.TOGGLE_DROPDOWN || event.action === _actions.TOGGLE_DROPUP) {
-                _self.toggle(event.action);
-              }
-            }
-          },
-          function (error) {
-            console.error('ngxDropMenuService', error);
-          });
       }
     }
   ];
+
+  this.ngAfterContentInit = function () {
+    this.subscribe();
+
+    _getBaseInstance(this).ngAfterContentInit.apply(this);
+  };
+
+  this.ngOnDestroy = function () {
+    if (_subscription) { _subscription.unsubscribe(); }
+  };
+
+  this.subscribe = function () {
+    var _self = this;
+
+    _subscription = this.ngxDropMenuService.ngxDropMenu$.subscribe(function (event) {
+      if (!event) { return; }
+
+      var _events = ngxBootstrap.isArray(event) ? event : [event];
+      var _actions = _self.ngxDropMenuService.getActions();
+
+      ngxBootstrap.forEach(_events, function (_event) {
+        if (_event.target && _event.target === _self.elementRef.nativeElement) {
+
+          if (_event.type === _actions.TOGGLE_DROPDOWN || _event.type === _actions.TOGGLE_DROPUP) {
+            _self.toggle(_event.type);
+          }
+        }
+      });
+    });
+  };
 
   this.toggle = function (action) {
     var _isActive = this.ngxDropMenuService.isActiveStateClass(this.getPrefixClass(), this.state);
@@ -82,6 +95,6 @@ module.exports = ng.core.Component({
   /*Inject template at here*/
   /*Inject style at here*/
   providers: [ngxRenderService],
-  properties: ['id', 'state', 'prefixClass:prefix-class']
+  properties: ['state', 'prefixClass:prefix-class']
 })
 .Class(new _ngxDropMenuComponent());

@@ -13,34 +13,29 @@ module.exports = function (params) {
     var contents = addSCSS(CORE_SASS);
 
     if (_componentName) {
+      contents += getSCSS(component, _themeName);
 
-      fs.readdirSync('./components/' + _componentName)
-        .filter(function (directive) {
-          return directive.match(/directive.js$/g);
-        }).map(function (directive) {
-          var directiveName = directive.replace('.directive.js', '');
-          return './components/' + _componentName + '/scss/' + directive.replace('.directive.js', '') + '.' + _themeName + '.scss';
-        }).filter(function (directive) {
+    } else {
+      fs.readdirSync('./components')
+        .filter(function (component) {
           try {
-            var stats = fs.statSync(directive);
-            return stats.isFile();
+            return fs.statSync('./components/' + component).isDirectory();
           } catch (e) {
             return false;
           }
-        }).forEach(function (scss) {
-          contents += addSCSS(scss);
-          fs.writeFileSync('./scss/ngx-bootstrap.scss', contents, { encoding: 'utf8' });
+        })
+        .forEach(function (component) {
+          contents += getSCSS(component, _themeName);
         });
 
-      gulp.src('./components/' + _componentName + '/scss/' + _componentName + '.' + _themeName + '.scss')
+    }
+    
+    fs.writeFileSync('./scss/ngx-bootstrap.scss', contents, { encoding: 'utf8' });
+    
+    gulp.src('./components/' + _componentName + '/scss/' + _componentName + '.' + _themeName + '.scss')
         .pipe(reload({ stream: true }))
         .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
         .pipe(gulp.dest('./components/' + _componentName + '/css/'));
-
-    } else {
-
-
-    }
 
     return gulp.src('./scss/ngx-bootstrap.scss')
       .pipe(reload({ stream: true }))
@@ -55,4 +50,26 @@ module.exports = function (params) {
 
 function addSCSS(scssName) {
   return "@import " + '"' + scssName + '";' + "\n";
+}
+
+function getSCSS(componentName, themeName) {
+  var contents = '';
+  fs.readdirSync('./components/' + componentName)
+    .filter(function (directive) {
+      return directive.match(/directive.js$/g);
+    }).map(function (directive) {
+      var directiveName = directive.replace('.directive.js', '');
+      return './components/' + componentName + '/scss/' + directive.replace('.directive.js', '') + '.' + themeName + '.scss';
+    }).filter(function (directive) {
+      try {
+        var stats = fs.statSync(directive);
+        return stats.isFile();
+      } catch (e) {
+        return false;
+      }
+    }).forEach(function (scss) {
+      contents += addSCSS(scss);
+    });
+    
+    return contents;
 }

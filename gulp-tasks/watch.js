@@ -1,15 +1,25 @@
+var gulp = require('gulp');
+
 module.exports = function(params) {
   return function() {
-    var _gulp = params.gulp,
-      _watch = params.plugins.watch;
 
-    _gulp.watch([
+    gulp.watch([
       './components/**/*.js',
+      './directives/**/*.js',
       './cores/**/*.js',
       './ngx-bootstrap.js',
-      './ngx-bootstrap.utils.js'
-    ], ['lint']);
+      './ngx-bootstrap.utils.js',
+    ], ['lint', 'webpack']);
+    
+    gulp.watch([
+      './components/**/*.html',
+      './directives/**/*.html',
+    ], ['webpack']);
 
-    _gulp.watch('./scss/**/*.scss', ['sass']);
+    gulp.watch([
+      './components/**/*.scss',
+      './scss/**/*.scss',
+      './cores/scss/**/*.scss'
+    ], ['scss', 'webpack']);
   };
 };

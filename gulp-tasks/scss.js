@@ -8,13 +8,13 @@ module.exports = function (params) {
   return function () {
     var _componentName = params.args.component,
       _themeName = params.args.theme || 'bootstrap4';
-    
+
     var CORE_SASS = './cores/scss/ngx-bootstrap.' + _themeName + '.scss';
     var contents = addSCSS(CORE_SASS);
-    
+
     if (_componentName) {
-      
-      var scssPath = fs.readdirSync('./components/' + _componentName)
+
+      fs.readdirSync('./components/' + _componentName)
         .filter(function (directive) {
           return directive.match(/directive.js$/g);
         }).map(function (directive) {
@@ -27,29 +27,28 @@ module.exports = function (params) {
           } catch (e) {
             return false;
           }
-        }).forEach(function(scss){
+        }).forEach(function (scss) {
           contents += addSCSS(scss);
-          fs.writeFileSync('./scss/ngx-bootstrap.scss', contents, {encoding: 'utf8'});
-        })
-        ;
-      
+          fs.writeFileSync('./scss/ngx-bootstrap.scss', contents, { encoding: 'utf8' });
+        });
+
       gulp.src('./components/' + _componentName + '/scss/' + _componentName + '.' + _themeName + '.scss')
         .pipe(reload({ stream: true }))
         .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
         .pipe(gulp.dest('./components/' + _componentName + '/css/'));
 
     } else {
-      
+
 
     }
-    
+
     return gulp.src('./scss/ngx-bootstrap.scss')
-        .pipe(reload({ stream: true }))
-        .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
-        .pipe(gulp.dest('./dist/css/'))
-        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
-        .pipe(rename('ngx-bootstrap.min.css'))
-        .pipe(gulp.dest('./dist/css/'));
+      .pipe(reload({ stream: true }))
+      .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
+      .pipe(gulp.dest('./dist/css/'))
+      .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+      .pipe(rename('ngx-bootstrap.min.css'))
+      .pipe(gulp.dest('./dist/css/'));
 
   };
 };

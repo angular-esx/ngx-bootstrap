@@ -72,7 +72,8 @@ module.exports = function (params) {
           }
         })
         .map(function (component) {
-          return "require('../../components/" + component + '/' + component + ".component.js')";
+          injectTemplateStyle(component, _themeName);
+          return "require('../../components/" + component + '/' + component + ".component." + _themeName + ".js')";
         });
 
       try {
@@ -153,12 +154,5 @@ function injectTemplateStyle(component, theme) {
 
   } else {
     console.log("Don't have css or template");
-  }
-}
-
-var mkdirpSync = function (dirpath) {
-  var parts = dirpath.split(path.sep);
-  for (var i = 1; i <= parts.length; i++) {
-    mkdirSync(path.join.apply(null, parts.slice(0, i)));
   }
 }

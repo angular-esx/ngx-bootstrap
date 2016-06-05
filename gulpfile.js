@@ -88,7 +88,6 @@
 
   gulp.task('watch', getTask(taskService.WATCH));
   
-  // gulp.task('build', ['scss', 'lint', 'webpack'], getTask(taskService.BUILD));
   gulp.task('build', ['scss', 'lint', 'webpack']);
   
   function getTask(task) {

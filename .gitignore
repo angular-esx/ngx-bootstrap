@@ -7,3 +7,4 @@ cores/cores.info.json
 ngx-bootstrap-test-ui.js
 dist
 scss/ngx-bootstrap.scss
+.DS_Store

@@ -23,7 +23,7 @@ module.exports = function (params) {
 
     var _bootstrapCss = gulp.src(_libs.BOOTSTRAP_04_CSS, _notReadOption);
     
-    var ngxBootstrap = gulp.src('ngx-bootstrap-test-ui.js', _notReadOption);
+    var ngxBootstrap = gulp.src('./dist/js/ngx-bootstrap.js', _notReadOption);
     
     return gulp.src(_fileService.FILES.INDEX_TEMPLATE_HTML)
                 .pipe(inject(_streamSeries(ngxBootstrap), { relative: true, name: 'component' }))

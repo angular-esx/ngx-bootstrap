@@ -8,3 +8,5 @@ ngx-bootstrap-test-ui.js
 dist/
 scss/ngx-bootstrap.scss
 .DS_Store
+*.bootstrap4.js
+*.material.js

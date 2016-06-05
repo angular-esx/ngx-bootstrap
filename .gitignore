@@ -1,6 +1,10 @@
 node_modules
 bower_components
 index.html
+.vscode/settings.json
 components/components.info.json
 cores/cores.info.json
+ngx-bootstrap-test-ui.js
+dist
+scss/ngx-bootstrap.scss
 .DS_Store

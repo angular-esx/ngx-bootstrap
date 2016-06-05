@@ -13,7 +13,7 @@ module.exports = function (params) {
     var contents = addSCSS(CORE_SASS);
 
     if (_componentName) {
-      contents += getSCSS(component, _themeName);
+      contents += getSCSS(_componentName, _themeName);
 
     } else {
       fs.readdirSync('./components')
@@ -27,7 +27,6 @@ module.exports = function (params) {
         .forEach(function (component) {
           contents += getSCSS(component, _themeName);
         });
-
     }
     
     fs.writeFileSync('./scss/ngx-bootstrap.scss', contents, { encoding: 'utf8' });

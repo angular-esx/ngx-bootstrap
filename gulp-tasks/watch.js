@@ -18,7 +18,8 @@ module.exports = function(params) {
 
     gulp.watch([
       './components/**/*.scss',
-      './scss/**/*.scss'
+      './scss/**/*.scss',
+      './cores/scss/**/*.scss'
     ], ['scss', 'webpack']);
   };
 };

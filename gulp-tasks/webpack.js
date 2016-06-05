@@ -71,8 +71,6 @@ module.exports = function (params) {
     };
 
     return _testUI.pipe(webpackStream(webpackConfig))
-      .pipe(rename('ngx-bootstrap-test-ui.js'))
-      .pipe(gulp.dest(''))
       .pipe(rename('ngx-bootstrap.js'))
       .pipe(gulp.dest('./dist/js'))
       .pipe(rename('ngx-bootstrap.min.js'))

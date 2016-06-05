@@ -7,6 +7,7 @@ var jsStringEscape = require('js-string-escape');
 var webpack = require('webpack');
 var webpackStream = require('webpack-stream');
 var uglify = require('gulp-uglify');
+var mkdirp = require('mkdirp');
 
 module.exports = function (params) {
   return function () {
@@ -19,20 +20,9 @@ module.exports = function (params) {
 
     _themeName = _themeName || 'bootstrap4';
 
-    var _testUI, webpackConfig;
+    var sourcePath, webpackVariables;
 
-    if (_componentName) {
-      _testUI = gulp.src(_fileService.getComponentTestCaseBoot(_componentName, _testCase));
-    }
-    else if (_directiveName) {
-      _testUI = gulp.src(_fileService.getDirectiveTestCaseBoot(_directiveName, _testCase));
-    }
-
-    injectTemplateStyle(_componentName, _themeName);
-
-    var _componentThemeName = _componentName + '.component.' + _themeName + '.js';
-
-    webpackConfig = {
+    webpackVariables = {
       context: __dirname,
       output: {
         path: __dirname,
@@ -42,8 +32,6 @@ module.exports = function (params) {
       },
       plugins: [
         new webpack.DefinePlugin({
-          __COMPONENT_FILE__: JSON.stringify(_componentThemeName),
-
           /** ngx bootstrap & ngx bootstrap utils **/
           __NGX_BOOTSTRAP__: JSON.stringify('cores/ngx-bootstrap.js'),
           __NGX_BOOTSTRAP_UTILS__: JSON.stringify('cores/ngx-bootstrap.utils.js'),
@@ -70,7 +58,45 @@ module.exports = function (params) {
       ]
     };
 
-    return _testUI.pipe(webpackStream(webpackConfig))
+    if (_componentName || _directiveName) {
+
+      if (_componentName) {
+        sourcePath = gulp.src(_fileService.getComponentTestCaseBoot(_componentName, _testCase));
+      } else if (_directiveName) {
+        sourcePath = gulp.src(_fileService.getDirectiveTestCaseBoot(_directiveName, _testCase));
+      }
+
+      injectTemplateStyle(_componentName, _themeName);
+
+      var _componentThemeName = _componentName + '.component.' + _themeName + '.js';
+
+      webpackVariables.__COMPONENT_FILE__ = JSON.stringify(_componentThemeName);
+
+    } else {
+      
+      var components = fs.readdirSync('./components')
+        .filter(function (component) {
+          try {
+            return fs.statSync('./components/' + component).isDirectory();
+          } catch (e) {
+            return false;
+          }
+        })
+        .map(function (component) {
+          return "require('../../components/" + component + '/' + component + ".component.js')";
+        });
+
+      try {
+        mkdirp.sync('./dist/js');
+      } catch (e) {
+        console.log(e);
+      }
+      
+      fs.writeFileSync('./dist/js/ngx-bootstrap.js', components.join('\n'), { encoding: 'utf8' });
+      sourcePath = gulp.src('./dist/js/ngx-bootstrap.js');
+    }
+
+    return sourcePath.pipe(webpackStream(webpackVariables))
       .pipe(rename('ngx-bootstrap.js'))
       .pipe(gulp.dest('./dist/js'))
       .pipe(rename('ngx-bootstrap.min.js'))
@@ -127,5 +153,12 @@ function injectTemplateStyle(component, theme) {
 
   } else {
     console.log("Don't have css or template");
+  }
+}
+
+var mkdirpSync = function (dirpath) {
+  var parts = dirpath.split(path.sep);
+  for (var i = 1; i <= parts.length; i++) {
+    mkdirSync(path.join.apply(null, parts.slice(0, i)));
   }
 }

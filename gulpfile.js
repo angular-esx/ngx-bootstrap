@@ -59,7 +59,6 @@
     this.LINT = 'lint';
     this.TEST_UI = 'test-ui';
     this.BUILD = 'build';
-    this.BUNDLE = 'bundle';
     this.WEBPACK = 'webpack';
   })();
 
@@ -89,10 +88,9 @@
 
   gulp.task('watch', getTask(taskService.WATCH));
   
-  gulp.task('build', getTask(taskService.BUILD));
+  // gulp.task('build', ['scss', 'lint', 'webpack'], getTask(taskService.BUILD));
+  gulp.task('build', ['scss', 'lint', 'webpack']);
   
-  gulp.task('bundle', getTask(taskService.BUNDLE));
-
   function getTask(task) {
     return require(fileService.PATHS.GULP_TASKS + task)({
       gulp: gulp,

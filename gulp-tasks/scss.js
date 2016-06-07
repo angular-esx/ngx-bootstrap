@@ -10,13 +10,12 @@ var themeName = args.theme || 'bootstrap4';
 
 module.exports = function (params) {
   return function () {
-    var _componentName = params.args.component;
 
     var CORE_SASS = './cores/scss/ngx-bootstrap.' + themeName + '.scss';
     var contents = addSCSS(CORE_SASS);
 
-    if (_componentName) {
-      contents += getSCSS(_componentName);
+    if (componentName) {
+      contents += getSCSS(componentName);
 
     } else {
       fs.readdirSync('./components')

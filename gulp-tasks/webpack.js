@@ -45,6 +45,7 @@ module.exports = function (params) {
       __SIZE_SERVICE__: JSON.stringify('cores/services/size.service.js'),
       __STATE_SERVICE__: JSON.stringify('cores/services/state.service.js'),
       __TYPE_SERVICE__: JSON.stringify('cores/services/type.service.js'),
+      __WINDOW_SERVICE__: JSON.stringify('cores/services/window.service.js'),
     };
 
     if (_componentName || _directiveName) {

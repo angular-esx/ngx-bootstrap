@@ -1,6 +1,8 @@
 var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var jshintStylish = require('jshint-stylish');
+var args = require('yargs').argv;
+var theme = args.theme || 'bootstrap4';
 
 module.exports = function(params) {
   return function() {
@@ -8,6 +10,7 @@ module.exports = function(params) {
     return gulp
       .src([
         './components/**/*.js',
+        '!./components/**/*.' + theme + '.js',
         './cores/**/*.js',
         './ngx-bootstrap.js',
         './ngx-bootstrap.utils.js'

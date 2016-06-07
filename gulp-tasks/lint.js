@@ -1,19 +1,18 @@
+var gulp = require('gulp');
+var jshint = require('gulp-jshint');
+var jshintStylish = require('jshint-stylish');
+
 module.exports = function(params) {
   return function() {
-    var _gulp = params.gulp,
-      _jshint = params.plugins.jshint,
-      _reload = params.plugins.browserSync.reload,
-      _jshintStylish = params.plugins.jshintStylish;
 
-    return _gulp
+    return gulp
       .src([
         './components/**/*.js',
         './cores/**/*.js',
         './ngx-bootstrap.js',
         './ngx-bootstrap.utils.js'
       ])
-      .pipe(_reload({ stream: true }))
-      .pipe(_jshint())
-      .pipe(_jshint.reporter(_jshintStylish));
+      .pipe(jshint())
+      .pipe(jshint.reporter(jshintStylish));
   };
 };

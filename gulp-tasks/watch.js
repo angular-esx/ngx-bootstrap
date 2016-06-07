@@ -1,25 +1,35 @@
 var gulp = require('gulp');
+var runSequence = require('run-sequence');
 
-module.exports = function(params) {
-  return function() {
+module.exports = function (params) {
+  return function () {
+    
+    var _themeName = params.args.theme || 'bootstrap4';
 
     gulp.watch([
       './components/**/*.js',
+      '!./components/**/*.' + _themeName + '.js',
       './directives/**/*.js',
       './cores/**/*.js',
       './ngx-bootstrap.js',
       './ngx-bootstrap.utils.js',
-    ], ['lint', 'webpack']);
-    
+    ], function () {
+      runSequence('lint', 'webpack', 'clean-scripts');
+    });
+
     gulp.watch([
       './components/**/*.html',
       './directives/**/*.html',
-    ], ['webpack']);
+    ], function () {
+      runSequence('webpack', 'clean-scripts');
+    });
 
     gulp.watch([
       './components/**/*.scss',
       './scss/**/*.scss',
       './cores/scss/**/*.scss'
-    ], ['scss', 'webpack']);
+    ], function () {
+      runSequence('scss', 'webpack', 'clean-scripts');
+    });
   };
 };

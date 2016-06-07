@@ -11,7 +11,7 @@ var mkdirp = require('mkdirp');
 
 module.exports = function (params) {
   return function () {
-
+    
     var _fileService = params.fileService,
       _componentName = params.args.component,
       _themeName = params.args.theme,

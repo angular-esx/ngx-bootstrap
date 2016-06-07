@@ -21,6 +21,7 @@
     "browser-sync": "^2.11.1",
     "clean-css": "^3.4.12",
     "gulp": "^3.9.0",
+    "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.6.0",
     "gulp-filter": "^3.0.1",
     "gulp-inject": "^3.0.0",

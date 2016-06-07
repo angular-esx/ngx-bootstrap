@@ -22,7 +22,7 @@ function _ngxLabelComponent() {
       }
     }
   ];
-  
+
   function _getBaseInstance(context){ 
     if(!_base){ _base = context.getBaseInstance(ngxBaseComponent); }
     return _base;

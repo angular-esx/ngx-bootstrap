@@ -1,6 +1,6 @@
-(function() {
-  var fileService = new(function() {
-    this.PATHS = (function() {
+(function () {
+  var fileService = new (function () {
+    this.PATHS = (function () {
       var _paths = {};
       _paths.ROOT = './';
       _paths.CORES = _paths.ROOT + 'cores/';
@@ -17,7 +17,7 @@
       return _paths;
     })();
 
-    this.FILES = (function(paths) {
+    this.FILES = (function (paths) {
       return {
         INDEX_HTML: paths.ROOT + 'index.html',
         INDEX_TEMPLATE_HTML: paths.ROOT + 'index.template.html',
@@ -27,7 +27,7 @@
       };
     })(this.PATHS);
 
-    this.LIBRARIES = (function(paths) {
+    this.LIBRARIES = (function (paths) {
       return {
         ES6_SHIM_JS: paths.ES6_SHIM + 'es6-shim.js',
         RX_JS: paths.RX + 'Rx.umd.js',
@@ -38,7 +38,7 @@
       };
     })(this.PATHS);
 
-    this.getComponentTestCaseBoot = function(componentName, testCase) {
+    this.getComponentTestCaseBoot = function (componentName, testCase) {
       if (!testCase) { testCase = 'isolated-components'; }
 
       return this.PATHS.COMPONENTS + componentName + '/tests/ui/' + testCase + '/boot.js';
@@ -49,17 +49,18 @@
 
       return this.PATHS.DIRECTIVES + directiveName + '/tests/ui/' + testCase + '/boot.js';
     };
-    
+
   })();
 
-  var taskService = new(function() {
+  var taskService = new (function () {
     this.WATCH = 'watch';
     this.BROWSER_SYNC = 'browser-sync';
     this.SCSS = 'scss';
     this.LINT = 'lint';
-    this.TEST_UI = 'test-ui';
+    this.INJECT_ASSETS = 'inject-assets';
     this.BUILD = 'build';
     this.WEBPACK = 'webpack';
+    this.CLEAN_SCRIPTS = 'clean-scripts';
   })();
 
   var gulp = require('gulp');
@@ -69,27 +70,35 @@
     pattern: ['gulp-*', 'gulp.*', 'stream-series', 'jsoncombine', 'browser-sync', 'jshint-stylish', 'webpack-stream'],
     replaceString: /\bgulp[\-.]/
   });
-
-  gulp.task('test-ui', ['serve', 'webpack'], getTask(taskService.TEST_UI));
-
-  gulp.task('default', ['serve']);
-
-  gulp.task('serve', function() {
-    runSequence('scss', 'lint', ['browserSync', 'watch']);
+  
+  gulp.task('inject-assets', getTask(taskService.INJECT_ASSETS));
+  
+  gulp.task('test-ui', function(){
+    runSequence('serve', 'webpack', 'inject-assets', 'clean-scripts');
   });
   
+  gulp.task('default', ['serve']);
+
+  gulp.task('serve', function () {
+    runSequence('scss', 'lint', ['browserSync', 'watch']);
+  });
+
   gulp.task('scss', getTask(taskService.SCSS));
 
   gulp.task('lint', getTask(taskService.LINT));
-  
+
   gulp.task('webpack', getTask(taskService.WEBPACK));
 
   gulp.task('browserSync', getTask(taskService.BROWSER_SYNC));
 
   gulp.task('watch', getTask(taskService.WATCH));
-  
-  gulp.task('build', ['scss', 'lint', 'webpack']);
-  
+
+  gulp.task('build', function () {
+    runSequence('scss', 'lint', 'webpack', 'clean-scripts');
+  });
+
+  gulp.task('clean-scripts', getTask(taskService.CLEAN_SCRIPTS));
+
   function getTask(task) {
     return require(fileService.PATHS.GULP_TASKS + task)({
       gulp: gulp,

@@ -4,16 +4,19 @@ var rename = require('gulp-rename');
 var reload = require('browser-sync').reload;
 var fs = require('fs');
 
+var args = require('yargs').argv;
+var componentName = args.component;
+var themeName = args.theme || 'bootstrap4';
+
 module.exports = function (params) {
   return function () {
-    var _componentName = params.args.component,
-      _themeName = params.args.theme || 'bootstrap4';
+    var _componentName = params.args.component;
 
-    var CORE_SASS = './cores/scss/ngx-bootstrap.' + _themeName + '.scss';
+    var CORE_SASS = './cores/scss/ngx-bootstrap.' + themeName + '.scss';
     var contents = addSCSS(CORE_SASS);
 
     if (_componentName) {
-      contents += getSCSS(_componentName, _themeName);
+      contents += getSCSS(_componentName);
 
     } else {
       fs.readdirSync('./components')
@@ -25,17 +28,12 @@ module.exports = function (params) {
           }
         })
         .forEach(function (component) {
-          contents += getSCSS(component, _themeName);
+          contents += getSCSS(component);
         });
     }
     
     fs.writeFileSync('./scss/ngx-bootstrap.scss', contents, { encoding: 'utf8' });
     
-    gulp.src('./components/' + _componentName + '/scss/' + _componentName + '.' + _themeName + '.scss')
-        .pipe(reload({ stream: true }))
-        .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
-        .pipe(gulp.dest('./components/' + _componentName + '/css/'));
-
     return gulp.src('./scss/ngx-bootstrap.scss')
       .pipe(reload({ stream: true }))
       .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
@@ -51,7 +49,7 @@ function addSCSS(scssName) {
   return "@import " + '"' + scssName + '";' + "\n";
 }
 
-function getSCSS(componentName, themeName) {
+function getSCSS(componentName) {
   var contents = '';
   fs.readdirSync('./components/' + componentName)
     .filter(function (directive) {

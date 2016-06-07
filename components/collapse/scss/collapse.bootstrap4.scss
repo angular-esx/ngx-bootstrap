@@ -1,0 +1,6 @@
+:host(.ngx-collapse) {
+  display: none;
+}
+:host(.ngx-collapse.ngx-collapse-state-active) {
+  display: block;
+}

@@ -1,13 +1,15 @@
 var gulp = require('gulp');
 var clean = require('gulp-clean');
 
+var args = require('yargs').argv;
+var themeName = args.theme || 'bootstrap4';
+
 module.exports = function (params) {
   return function () {
-    var _themeName = params.args.theme || 'bootstrap4';
 
     return gulp
       .src([
-        './components/**/*.' + _themeName + '.js',
+        './components/**/*.' + themeName + '.js',
       ])
       .pipe(clean());
   };

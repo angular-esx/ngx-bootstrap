@@ -1,13 +1,8 @@
-﻿var ngxLabelComponent = require('./../../../' + __COMPONENT_FILE__);
-var ngxLabelService = require('./../../../services/label.service.js');
-var ngxColorService = require('./../../../../../' + __COLOR_SERVICE__);
-var ngxTypeService = require('./../../../../../' + __TYPE_SERVICE__);
-var ngxWindowService = require('./../../../../../cores/services/window.service.js');
-var ngxBootstrap = require('./../../../../../' + __NGX_BOOTSTRAP__);
-ngxBootstrap = require('./../../../../../' + __NGX_BOOTSTRAP_UTILS__);
+﻿var NGX_LABEL = require('./../../../index.js');
+var ngxCoreService = require('./../../../../../' + __CORE_SERVICE__);
 
 function _testCase() {
-  this.constructor = [ngxLabelService, function (ngxLabelService) {
+  this.constructor = [NGX_LABEL.SERVICE, function (ngxLabelService) {
     this.COLORS = ngxLabelService.getColors();
     this.TYPES = ngxLabelService.getTypes();
   }];
@@ -17,13 +12,11 @@ module.exports = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/label/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxLabelComponent
+    NGX_LABEL.DIRECTIVES
   ],
   providers: [
-    ngxColorService,
-    ngxTypeService,
-    ngxWindowService,
-    ngxLabelService
+    NGX_LABEL.SERVICE,
+    ngxCoreService
   ]
 })
 .Class(new _testCase());

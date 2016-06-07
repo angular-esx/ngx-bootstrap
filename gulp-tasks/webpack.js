@@ -38,6 +38,7 @@ module.exports = function (params) {
       __BASE_DIRECTIVE__: JSON.stringify('cores/directives/base/base.directive.js'),
 
       /** core services **/
+      __CORE_SERVICE__: JSON.stringify('cores/services/index.js'),
       __ANIMATION_SERVICE__: JSON.stringify('cores/services/animation.service.js'),
       __COLOR_SERVICE__: JSON.stringify('cores/services/color.service.js'),
       __POSITION_SERVICE__: JSON.stringify('cores/services/position.service.js'),

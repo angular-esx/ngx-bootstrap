@@ -1,24 +1,27 @@
-﻿@import "../../../../../cores/themes/bootstrap/palette/palette.scss";
+﻿@import "../../../../../cores/themes/bootstrap/typography/typography.scss";
+@import "../../../../../cores/themes/bootstrap/palette/palette.scss";
 
-$ngx-breadcrumb-padding: .75rem 1rem;
-$ngx-breadcrumb-item-padding: 0 .5rem 0 .5rem;
+$ngx-breadcrumb-font-family: $ngx-font-family-base;
 
-$ngx-breadcrumb-margin: 0 0 1rem 0;
+$ngx-breadcrumb-padding: .75rem 1rem !default;
+$ngx-breadcrumb-item-padding: 0 .5rem 0 .5rem  !default;
 
-$ngx-breadcrumb-background-color-primary: ngx-color($ngx-color-primary);
-$ngx-breadcrumb-item-foreground-color-primary: ngx-color($ngx-color-secondary);
+$ngx-breadcrumb-margin: 0 0 1rem 0  !default;
 
-$ngx-breadcrumb-background-color-secondary: ngx-color($ngx-color-gray, lightest, .5);
-$ngx-breadcrumb-item-foreground-color-secondary: ngx-color($ngx-color-gray, darkest);
+$ngx-breadcrumb-background-color-primary: $ngx-color-primary !default;
+$ngx-breadcrumb-item-foreground-color-primary: $ngx-color-secondary !default;
 
-$ngx-breadcrumb-background-color-info: ngx-color($ngx-color-info);
-$ngx-breadcrumb-item-foreground-color-info: ngx-color($ngx-color-secondary);
+$ngx-breadcrumb-background-color-secondary: ngx-color($ngx-color-gray, lightest, .5) !default;
+$ngx-breadcrumb-item-foreground-color-secondary: ngx-color($ngx-color-gray, darkest) !default;
 
-$ngx-breadcrumb-background-color-success: ngx-color($ngx-color-success);
-$ngx-breadcrumb-item-foreground-color-success: ngx-color($ngx-color-secondary);
+$ngx-breadcrumb-background-color-info: $ngx-color-info !default;
+$ngx-breadcrumb-item-foreground-color-info: $ngx-color-secondary !default;
 
-$ngx-breadcrumb-background-color-warning: ngx-color($ngx-color-warning);
-$ngx-breadcrumb-item-foreground-color-warning: ngx-color($ngx-color-secondary);
+$ngx-breadcrumb-background-color-success: $ngx-color-success !default;
+$ngx-breadcrumb-item-foreground-color-success: $ngx-color-secondary !default;
 
-$ngx-breadcrumb-background-color-danger: ngx-color($ngx-color-danger);
-$ngx-breadcrumb-item-foreground-color-danger: ngx-color($ngx-color-secondary);
+$ngx-breadcrumb-background-color-warning: $ngx-color-warning !default;
+$ngx-breadcrumb-item-foreground-color-warning: $ngx-color-secondary !default;
+
+$ngx-breadcrumb-background-color-danger: $ngx-color-danger !default;
+$ngx-breadcrumb-item-foreground-color-danger: $ngx-color-secondary !default;

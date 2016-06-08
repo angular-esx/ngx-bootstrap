@@ -1,0 +1,10 @@
+﻿@import "_variables.scss";
+
+@mixin ngx-breadcrumb-variant($foreground, $background) {
+  background-color: ngx-color($background);
+
+  > .ngx-breadcrumb-item,
+  > .ngx-breadcrumb-item a {
+    color: ngx-color($foreground);
+  }
+}

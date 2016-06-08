@@ -1,9 +1,9 @@
-﻿@import "../../../../../cores/themes/bootstrap/typography/typography.scss";
-@import "../../../../../cores/themes/bootstrap/normalize/normalize.scss";
+﻿@import "../../../../../cores/themes/bootstrap/normalize/normalize.scss";
 
-@import "_variables.scss";
+@import "_mixins.scss";
 
 :host(.ngx-breadcrumb) {
+  font-family: $ngx-breadcrumb-font-family;
   display: block;
   padding: $ngx-breadcrumb-padding;
   margin: $ngx-breadcrumb-margin;
@@ -26,62 +26,26 @@
   }
 
   &.ngx-breadcrumb-color-primary{
-    background-color: $ngx-breadcrumb-background-color-primary;
-
-    > .ngx-breadcrumb-item,
-    > .ngx-breadcrumb-item a,
-    > a.ngx-breadcrumb-item {
-      color: $ngx-breadcrumb-item-foreground-color-primary;
-    }
+    @include ngx-breadcrumb-variant($ngx-breadcrumb-item-foreground-color-primary, $ngx-breadcrumb-background-color-primary);
   }
 
   &.ngx-breadcrumb-color-secondary{
-    background-color: $ngx-breadcrumb-background-color-secondary;
-
-    > .ngx-breadcrumb-item,
-    > .ngx-breadcrumb-item a,
-    > a.ngx-breadcrumb-item {
-      color: $ngx-breadcrumb-item-foreground-color-secondary;
-    }
+    @include ngx-breadcrumb-variant($ngx-breadcrumb-item-foreground-color-secondary, $ngx-breadcrumb-background-color-secondary);
   }
 
   &.ngx-breadcrumb-color-info{
-    background-color: $ngx-breadcrumb-background-color-info;
-
-    > .ngx-breadcrumb-item,
-    > .ngx-breadcrumb-item a,
-    > a.ngx-breadcrumb-item {
-      color: $ngx-breadcrumb-item-foreground-color-info;
-    }
+    @include ngx-breadcrumb-variant($ngx-breadcrumb-item-foreground-color-info, $ngx-breadcrumb-background-color-info);
   }
 
   &.ngx-breadcrumb-color-success{
-    background-color: $ngx-breadcrumb-background-color-success;
-
-    > .ngx-breadcrumb-item,
-    > .ngx-breadcrumb-item a,
-    > a.ngx-breadcrumb-item {
-      color: $ngx-breadcrumb-item-foreground-color-success;
-    }
+    @include ngx-breadcrumb-variant($ngx-breadcrumb-item-foreground-color-success, $ngx-breadcrumb-background-color-success);
   }
 
   &.ngx-breadcrumb-color-warning{
-    background-color: $ngx-breadcrumb-background-color-warning;
-
-    > .ngx-breadcrumb-item,
-    > .ngx-breadcrumb-item a,
-    > a.ngx-breadcrumb-item {
-      color: $ngx-breadcrumb-item-foreground-color-warning;
-    }
+    @include ngx-breadcrumb-variant($ngx-breadcrumb-item-foreground-color-warning, $ngx-breadcrumb-background-color-warning);
   }
 
   &.ngx-breadcrumb-color-danger{
-    background-color: $ngx-breadcrumb-background-color-danger;
-
-    > .ngx-breadcrumb-item,
-    > .ngx-breadcrumb-item a,
-    > a.ngx-breadcrumb-item {
-      color: $ngx-breadcrumb-item-foreground-color-danger;
-    }
+    @include ngx-breadcrumb-variant($ngx-breadcrumb-item-foreground-color-danger, $ngx-breadcrumb-background-color-danger);
   }
 }

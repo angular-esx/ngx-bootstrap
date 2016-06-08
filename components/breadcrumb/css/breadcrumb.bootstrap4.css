@@ -9,6 +9,7 @@
 }
 
 :host(.ngx-breadcrumb) {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   display: block;
   padding: 0.75rem 1rem;
   margin: 0 0 1rem 0;
@@ -36,18 +37,16 @@
 }
 
 :host(.ngx-breadcrumb).ngx-breadcrumb-color-primary > .ngx-breadcrumb-item,
-:host(.ngx-breadcrumb).ngx-breadcrumb-color-primary > .ngx-breadcrumb-item a,
-:host(.ngx-breadcrumb).ngx-breadcrumb-color-primary > a.ngx-breadcrumb-item {
+:host(.ngx-breadcrumb).ngx-breadcrumb-color-primary > .ngx-breadcrumb-item a {
   color: white;
 }
 
 :host(.ngx-breadcrumb).ngx-breadcrumb-color-secondary {
-  background-color: rgba(165, 171, 175, 0.5);
+  background-color: #a5abaf;
 }
 
 :host(.ngx-breadcrumb).ngx-breadcrumb-color-secondary > .ngx-breadcrumb-item,
-:host(.ngx-breadcrumb).ngx-breadcrumb-color-secondary > .ngx-breadcrumb-item a,
-:host(.ngx-breadcrumb).ngx-breadcrumb-color-secondary > a.ngx-breadcrumb-item {
+:host(.ngx-breadcrumb).ngx-breadcrumb-color-secondary > .ngx-breadcrumb-item a {
   color: #646a71;
 }
 
@@ -56,8 +55,7 @@
 }
 
 :host(.ngx-breadcrumb).ngx-breadcrumb-color-info > .ngx-breadcrumb-item,
-:host(.ngx-breadcrumb).ngx-breadcrumb-color-info > .ngx-breadcrumb-item a,
-:host(.ngx-breadcrumb).ngx-breadcrumb-color-info > a.ngx-breadcrumb-item {
+:host(.ngx-breadcrumb).ngx-breadcrumb-color-info > .ngx-breadcrumb-item a {
   color: white;
 }
 
@@ -66,8 +64,7 @@
 }
 
 :host(.ngx-breadcrumb).ngx-breadcrumb-color-success > .ngx-breadcrumb-item,
-:host(.ngx-breadcrumb).ngx-breadcrumb-color-success > .ngx-breadcrumb-item a,
-:host(.ngx-breadcrumb).ngx-breadcrumb-color-success > a.ngx-breadcrumb-item {
+:host(.ngx-breadcrumb).ngx-breadcrumb-color-success > .ngx-breadcrumb-item a {
   color: white;
 }
 
@@ -76,8 +73,7 @@
 }
 
 :host(.ngx-breadcrumb).ngx-breadcrumb-color-warning > .ngx-breadcrumb-item,
-:host(.ngx-breadcrumb).ngx-breadcrumb-color-warning > .ngx-breadcrumb-item a,
-:host(.ngx-breadcrumb).ngx-breadcrumb-color-warning > a.ngx-breadcrumb-item {
+:host(.ngx-breadcrumb).ngx-breadcrumb-color-warning > .ngx-breadcrumb-item a {
   color: white;
 }
 
@@ -86,7 +82,6 @@
 }
 
 :host(.ngx-breadcrumb).ngx-breadcrumb-color-danger > .ngx-breadcrumb-item,
-:host(.ngx-breadcrumb).ngx-breadcrumb-color-danger > .ngx-breadcrumb-item a,
-:host(.ngx-breadcrumb).ngx-breadcrumb-color-danger > a.ngx-breadcrumb-item {
+:host(.ngx-breadcrumb).ngx-breadcrumb-color-danger > .ngx-breadcrumb-item a {
   color: white;
 }

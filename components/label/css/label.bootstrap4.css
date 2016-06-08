@@ -1,62 +1,69 @@
+:host(.ngx-label) a {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+:host(.ngx-label) a:focus, :host(.ngx-label) a:hover, :host(.ngx-label) a:active {
+  outline: 0;
+}
+
 :host(.ngx-label) {
   display: inline-block;
-  padding: .25em .4em;
-  font-size: 75%;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.75em;
   font-weight: bold;
   line-height: 1;
-  color: #fff;
+  padding: 0.25em 0.4em;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: 0.25rem;
 }
 
+:host(.ngx-label) a {
+  color: white;
+}
+
+:host(.ngx-label) a :focus, :host(.ngx-label) a:hover {
+  color: white;
+  text-decoration: none;
+}
+
 :host(.ngx-label):empty {
   display: none;
 }
 
-:host(.ngx-label-type-pill) {
-  padding-right: .6em;
-  padding-left: .6em;
+:host(.ngx-label).ngx-label-type-pill {
+  padding: 0.25em 0.6em;
   border-radius: 10rem;
 }
 
-:host(.ngx-label-color-primary) {
-  background-color: #0275d8;
+:host(.ngx-label).ngx-label-color-primary {
+  color: white;
+  background-color: #0270d2;
 }
 
-:host(.ngx-label-color-primary)[href]:focus, :host(.ngx-label-color-primary)[href]:hover {
-  background-color: #025aa5;
+:host(.ngx-label).ngx-label-color-secondary {
+  color: white;
+  background-color: #838b92;
 }
 
-:host(.ngx-label-color-success) {
+:host(.ngx-label).ngx-label-color-info {
+  color: white;
+  background-color: #60c2df;
+}
+
+:host(.ngx-label).ngx-label-color-success {
+  color: white;
   background-color: #5cb85c;
 }
 
-:host(.ngx-label-color-success)[href]:focus, :host(.ngx-label-color-success)[href]:hover {
-  background-color: #449d44;
-}
-
-:host(.ngx-label-color-info) {
-  background-color: #5bc0de;
-}
-
-:host(.ngx-label-color-info)[href]:focus, :host(.ngx-label-color-info)[href]:hover {
-  background-color: #31b0d5;
-}
-
-:host(.ngx-label-color-warning) {
+:host(.ngx-label).ngx-label-color-warning {
+  color: white;
   background-color: #f0ad4e;
 }
 
-:host(.ngx-label-color-warning)[href]:focus, :host(.ngx-label-color-warning)[href]:hover {
-  background-color: #ec971f;
-}
-
-:host(.ngx-label-color-danger) {
-  background-color: #d9534f;
-}
-
-:host(.ngx-label-color-danger)[href]:focus, :host(.ngx-label-color-danger)[href]:hover {
-  background-color: #c9302c;
+:host(.ngx-label).ngx-label-color-danger {
+  color: white;
+  background-color: #da5350;
 }

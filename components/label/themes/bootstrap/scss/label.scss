@@ -14,7 +14,7 @@
   vertical-align: baseline;
   @include ngx-border-radius();
 
-  & a {
+  a {
     @extend %ngx-link-normalize;
 
     color: ngx-color($ngx-color-secondary);
@@ -35,21 +35,21 @@
   }
 
   &.ngx-label-color-primary {
-    @include ngx-label-variant($ngx-color-secondary, $ngx-color-primary);
+    @include ngx-label-variant($ngx-label-foreground-color-primary, $ngx-label-background-color-primary);
   }
   &.ngx-label-color-secondary {
-    @include ngx-label-variant($ngx-color-secondary, $ngx-color-gray);
+    @include ngx-label-variant($ngx-label-foreground-color-secondary, $ngx-label-background-color-secondary);
   }
   &.ngx-label-color-info {
-    @include ngx-label-variant($ngx-color-secondary, $ngx-color-info);
+    @include ngx-label-variant($ngx-label-foreground-color-info, $ngx-label-background-color-info);
   }
   &.ngx-label-color-success {
-    @include ngx-label-variant($ngx-color-secondary, $ngx-color-success);
+    @include ngx-label-variant($ngx-label-foreground-color-success, $ngx-label-background-color-success);
   }
   &.ngx-label-color-warning {
-    @include ngx-label-variant($ngx-color-secondary, $ngx-color-warning);
+    @include ngx-label-variant($ngx-label-foreground-color-warning, $ngx-label-background-color-warning);
   }
   &.ngx-label-color-danger {
-    @include ngx-label-variant($ngx-color-secondary, $ngx-color-danger);
+    @include ngx-label-variant($ngx-label-foreground-color-danger, $ngx-label-background-color-danger);
   }
 }

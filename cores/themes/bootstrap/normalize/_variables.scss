@@ -1,4 +1,13 @@
-﻿%ngx-link-normalize {
+﻿
+%ngx-hr-normalize {
+  height: 0;
+  border-width: 0 0 0 0;
+  border-top-width: 1px;
+  border-style: solid;
+  box-sizing: content-box;
+}
+
+%ngx-link-normalize {
   text-decoration: none;
   background-color: transparent;
   cursor: pointer;

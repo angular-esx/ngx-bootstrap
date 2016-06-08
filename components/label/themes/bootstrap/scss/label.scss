@@ -1,0 +1,55 @@
+﻿@import "../../../../../cores/themes/bootstrap/normalize/normalize.scss";
+
+@import "_mixins.scss";
+
+:host(.ngx-label) {
+  display: inline-block;
+  font-family: $ngx-label-font-family;
+  font-size: $ngx-label-font-size;
+  font-weight: $ngx-label-font-weight;
+  line-height: $ngx-label-line-weight;
+  padding: $ngx-label-padding;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  @include ngx-border-radius();
+
+  & a {
+    @extend %ngx-link-normalize;
+
+    color: ngx-color($ngx-color-secondary);
+
+    @include ngx-state('focus hover'){
+      color: ngx-color($ngx-color-secondary);
+      text-decoration: none;
+    }
+  }
+
+  &:empty {
+    display: none;
+  }
+
+  &.ngx-label-type-pill {
+    padding: $ngx-label-pill-padding;
+    @include ngx-border-radius($ngx-label-pill-border-radius);
+  }
+
+  &.ngx-label-color-primary {
+    @include ngx-label-variant($ngx-color-secondary, $ngx-color-primary);
+  }
+  &.ngx-label-color-secondary {
+    @include ngx-label-variant($ngx-color-secondary, $ngx-color-gray);
+  }
+  &.ngx-label-color-info {
+    @include ngx-label-variant($ngx-color-secondary, $ngx-color-info);
+  }
+  &.ngx-label-color-success {
+    @include ngx-label-variant($ngx-color-secondary, $ngx-color-success);
+  }
+  &.ngx-label-color-warning {
+    @include ngx-label-variant($ngx-color-secondary, $ngx-color-warning);
+  }
+  &.ngx-label-color-danger {
+    @include ngx-label-variant($ngx-color-secondary, $ngx-color-danger);
+  }
+}

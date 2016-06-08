@@ -1,0 +1,6 @@
+﻿@import "_variables.scss";
+
+@mixin ngx-label-variant($foreground, $background){
+  color: ngx-color($foreground);
+  background-color: ngx-color($background);
+}

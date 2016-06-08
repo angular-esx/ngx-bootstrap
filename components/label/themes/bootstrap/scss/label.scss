@@ -18,11 +18,6 @@
     @extend %ngx-link-normalize;
 
     color: ngx-color($ngx-color-secondary);
-
-    @include ngx-state('focus hover'){
-      color: ngx-color($ngx-color-secondary);
-      text-decoration: none;
-    }
   }
 
   &:empty {

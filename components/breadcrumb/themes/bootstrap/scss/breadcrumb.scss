@@ -1,0 +1,87 @@
+﻿@import "../../../../../cores/themes/bootstrap/typography/typography.scss";
+@import "../../../../../cores/themes/bootstrap/normalize/normalize.scss";
+
+@import "_variables.scss";
+
+:host(.ngx-breadcrumb) {
+  display: block;
+  padding: $ngx-breadcrumb-padding;
+  margin: $ngx-breadcrumb-margin;
+  background-color: transparent;
+  
+  @include clearfix();
+
+  a {
+    @extend %ngx-link-normalize;
+  }
+
+  > .ngx-breadcrumb-item {
+    float: left;
+
+    &:not(:last-child)::after {
+      text-decoration: none;
+      padding: $ngx-breadcrumb-item-padding;
+      content: "/";
+    }
+  }
+
+  &.ngx-breadcrumb-color-primary{
+    background-color: $ngx-breadcrumb-background-color-primary;
+
+    > .ngx-breadcrumb-item,
+    > .ngx-breadcrumb-item a,
+    > a.ngx-breadcrumb-item {
+      color: $ngx-breadcrumb-item-foreground-color-primary;
+    }
+  }
+
+  &.ngx-breadcrumb-color-secondary{
+    background-color: $ngx-breadcrumb-background-color-secondary;
+
+    > .ngx-breadcrumb-item,
+    > .ngx-breadcrumb-item a,
+    > a.ngx-breadcrumb-item {
+      color: $ngx-breadcrumb-item-foreground-color-secondary;
+    }
+  }
+
+  &.ngx-breadcrumb-color-info{
+    background-color: $ngx-breadcrumb-background-color-info;
+
+    > .ngx-breadcrumb-item,
+    > .ngx-breadcrumb-item a,
+    > a.ngx-breadcrumb-item {
+      color: $ngx-breadcrumb-item-foreground-color-info;
+    }
+  }
+
+  &.ngx-breadcrumb-color-success{
+    background-color: $ngx-breadcrumb-background-color-success;
+
+    > .ngx-breadcrumb-item,
+    > .ngx-breadcrumb-item a,
+    > a.ngx-breadcrumb-item {
+      color: $ngx-breadcrumb-item-foreground-color-success;
+    }
+  }
+
+  &.ngx-breadcrumb-color-warning{
+    background-color: $ngx-breadcrumb-background-color-warning;
+
+    > .ngx-breadcrumb-item,
+    > .ngx-breadcrumb-item a,
+    > a.ngx-breadcrumb-item {
+      color: $ngx-breadcrumb-item-foreground-color-warning;
+    }
+  }
+
+  &.ngx-breadcrumb-color-danger{
+    background-color: $ngx-breadcrumb-background-color-danger;
+
+    > .ngx-breadcrumb-item,
+    > .ngx-breadcrumb-item a,
+    > a.ngx-breadcrumb-item {
+      color: $ngx-breadcrumb-item-foreground-color-danger;
+    }
+  }
+}

@@ -1,4 +1,5 @@
 :host(.ngx-label) a {
+  text-decoration: none;
   background-color: transparent;
   cursor: pointer;
 }
@@ -22,11 +23,6 @@
 
 :host(.ngx-label) a {
   color: white;
-}
-
-:host(.ngx-label) a :focus, :host(.ngx-label) a:hover {
-  color: white;
-  text-decoration: none;
 }
 
 :host(.ngx-label):empty {

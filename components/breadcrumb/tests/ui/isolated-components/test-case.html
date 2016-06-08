@@ -6,26 +6,26 @@
 </ngx-breadcrumb>
 
 
-<ngx-breadcrumb>
-  <ngx-link ngx-breadcrumb-item href="http://my-website.com/Home">Home</ngx-link>
-</ngx-breadcrumb>
-
-<ngx-breadcrumb color="{{COLORS.WARNING}}">
+<ngx-breadcrumb color="secondary">
   <ngx-link ngx-breadcrumb-item href="http://my-website.com/Home">Home</ngx-link>
   <a ngx-breadcrumb-item href="{{categoryPage}}">Categories</a>
 </ngx-breadcrumb>
 
+<ngx-breadcrumb color="{{COLORS.INFO}}">
+  <ngx-link ngx-breadcrumb-item href="http://my-website.com/Home">Home</ngx-link>
+</ngx-breadcrumb>
 
-<ngx-breadcrumb>
+
+<ngx-breadcrumb color="success">
   <ngx-item ngx-breadcrumb-item>Detail</ngx-item>
 </ngx-breadcrumb>
 
-<ngx-breadcrumb [color]="COLORS.DANGER">
+<ngx-breadcrumb [color]="COLORS.WARNING">
   <ngx-item ngx-breadcrumb-item>Detail 01</ngx-item>
   <ngx-item ngx-breadcrumb-item>Detail 02</ngx-item>
 </ngx-breadcrumb>
 
-<ngx-breadcrumb>
+<ngx-breadcrumb color="danger">
   <ngx-item ngx-breadcrumb-item>Detail 01</ngx-item>
   <ngx-link ngx-breadcrumb-item href="{{categoryPage}}">Categories</ngx-link>
   <ngx-item ngx-breadcrumb-item>Detail 02</ngx-item>

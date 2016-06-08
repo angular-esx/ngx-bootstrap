@@ -59,6 +59,7 @@
     this.BUILD = 'build';
     this.BUNDLE = 'bundle';
     this.WEBPACK = 'webpack';
+    this.BUILD_SCSS = 'build-scss';
   })();
 
   var gulp = require('gulp');
@@ -90,6 +91,8 @@
   gulp.task('build', getTask(taskService.BUILD));
   
   gulp.task('bundle', getTask(taskService.BUNDLE));
+
+  gulp.task('build-scss', getTask(taskService.BUILD_SCSS));
 
   function getTask(task) {
     return require(fileService.PATHS.GULP_TASKS + task)({

@@ -1,0 +1,5 @@
+﻿@function ngx-color($color, $hue: default, $opacity: 1){
+  $color: map-get($color, $hue);
+
+  @return rgba($color, $opacity);
+}

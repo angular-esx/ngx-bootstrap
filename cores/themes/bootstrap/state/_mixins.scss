@@ -1,0 +1,14 @@
+﻿@mixin ngx-state($states){
+  $properties: '';
+
+  @if str-index($states, self) != null { $properties: $properties + '&,'; }
+  @if str-index($states, focus) != null { $properties: $properties + '&:focus,'; }
+  @if str-index($states, hover) != null { $properties: $properties + '&:hover,'; }
+  @if str-index($states, active) != null { $properties: $properties + '&:active,'; }
+
+  @if str-length($properties) > 0 { 
+    $properties: str_slice($properties, -(str-length($properties) - 1));
+
+    #{$properties} { @content; } 
+  }
+}

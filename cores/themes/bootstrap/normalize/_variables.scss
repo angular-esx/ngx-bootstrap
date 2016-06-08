@@ -1,0 +1,10 @@
+﻿%ngx-link-normalize {
+  background-color: transparent;
+  cursor: pointer;
+
+  &:focus,
+  &:hover,
+  &:active {
+    outline: 0;
+  }
+}

@@ -32,9 +32,7 @@
         ES6_SHIM_JS: paths.ES6_SHIM + 'es6-shim.js',
         RX_JS: paths.RX + 'Rx.umd.js',
         ANGULAR_02_POLYFILLS_JS: paths.ANGULAR_02 + 'angular2-polyfills.js',
-        ANGULAR_02_JS: paths.ANGULAR_02 + 'angular2-all.umd.js',
-
-        BOOTSTRAP_04_CSS: paths.BOOTSTRAP_04 + 'bootstrap.min.css'
+        ANGULAR_02_JS: paths.ANGULAR_02 + 'angular2-all.umd.js'
       };
     })(this.PATHS);
 

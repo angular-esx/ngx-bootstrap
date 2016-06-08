@@ -20,8 +20,6 @@ module.exports = function (params) {
         _angularPolyfillJs = gulp.src(_libs.ANGULAR_02_POLYFILLS_JS, _notReadOption),
         _angularJs = gulp.src(_libs.ANGULAR_02_JS, _notReadOption),
         _ngxBootstrapCss = gulp.src(_fileService.FILES.NGX_BOOTSTRAP_CSS, _notReadOption);
-
-    var _bootstrapCss = gulp.src(_libs.BOOTSTRAP_04_CSS, _notReadOption);
     
     var ngxBootstrap = gulp.src('ngx-bootstrap-test-ui.js', _notReadOption);
     
@@ -30,12 +28,11 @@ module.exports = function (params) {
                 .pipe(inject(_streamSeries
                   (
                     _es6ShimJs, _rxJs, _angularPolyfillJs, _angularJs,
-                    _bootstrapCss, _ngxBootstrapCss
+                    _ngxBootstrapCss
                   ),
                   { relative: true, name: 'core' }
                 ))
                 .pipe(rename(_fileService.FILES.INDEX_HTML.replace(_fileService.PATHS.ROOT, '')))
                 .pipe(gulp.dest(_fileService.PATHS.ROOT));
-                // .run('webpack');
   };
 };

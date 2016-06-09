@@ -26,7 +26,7 @@ function _ngxJumbotronComponent() {
 module.exports = ng.core.Component({
   selector: 'ngx-jumbotron',
   template: '<ng-content></ng-content>',
-  styles: [':host(.ngx-jumbotron) { padding: 2rem 1rem; margin-bottom: 2rem; background-color: #eceeef; display: block; } @media (min-width: 544px) { :host(.ngx-jumbotron) { padding: 4rem 2rem; } } :host(.ngx-jumbotron) /deep/ hr { border-top-color: #d0d5d8; }'],
+  styles: [':host(.ngx-jumbotron) hr { height: 0; border-width: 0 0 0 0; border-top-width: 1px; border-style: solid; box-sizing: content-box; } :host(.ngx-jumbotron) { display: block; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; padding: 2rem 1rem 2rem 1rem; margin: 0 0 2rem 0; background-color: rgba(131, 139, 146, 0.2); } @media (min-width: 544px) { :host(.ngx-jumbotron) { padding: 4rem 2rem 4rem 2rem; } } :host(.ngx-jumbotron) hr { border-top-color: #a5abaf; } '],
   providers: [ngxRenderService],
   properties: ['prefixClass:prefix-class']
 })

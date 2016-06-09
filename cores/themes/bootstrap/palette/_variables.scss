@@ -1,6 +1,4 @@
-﻿@import "_functions.scss";
-
-$ngx-color-gray: (
+﻿$ngx-color-gray: (
   darkest: #646a71,
   darker: #6d757c,
   dark: #778088,
@@ -8,11 +6,11 @@ $ngx-color-gray: (
   light: #8e959b,
   lighter: #99a0a6,
   lightest: #a5abaf
-);
+) !default;
 
 $ngx-color-white: (
   default: #ffffff
-);
+) !default;
 
 $ngx-color-red: (
   darkest: #c02e29,
@@ -22,7 +20,7 @@ $ngx-color-red: (
   light: #dd6562,
   lighter: #e17673,
   lightest: #e48785
-);
+) !default;
 
 $ngx-color-green: (
   darkest: #419441,
@@ -32,7 +30,7 @@ $ngx-color-green: (
   light: #6bbe6b,
   lighter: #7ac57a,
   lightest: #89cb89
-);
+) !default;
 
 $ngx-color-blue: (
   darkest: #024e93,
@@ -42,7 +40,7 @@ $ngx-color-blue: (
   light: #027ae8,
   lighter: #0286fd,
   lightest: #178ffd
-);
+) !default;
 
 $ngx-color-sky: (
   darkest: #29afd6,
@@ -52,7 +50,7 @@ $ngx-color-sky: (
   light: #72c9e2,
   lighter: #84cfe6,
   lightest: #95d7ea
-);
+) !default;
 
 $ngx-color-orange: (
   darkest: #ec8f13,
@@ -62,7 +60,7 @@ $ngx-color-orange: (
   light: #f2b562,
   lighter: #f3be76,
   lightest: #f4c88a
-);
+) !default;
 
 $ngx-color-primary: $ngx-color-blue !default;
 $ngx-color-secondary: $ngx-color-white !default;

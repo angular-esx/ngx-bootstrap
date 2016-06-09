@@ -1,4 +1,6 @@
-﻿@function ngx-color($color, $hue: default, $opacity: 1){
+﻿@import "_variables.scss";
+
+@function ngx-color($color, $hue: default, $opacity: 1){
   $color: if(type-of($color) == map, map-get($color, $hue), $color);
 
   @return rgba($color, $opacity);

@@ -1,18 +1,16 @@
 ﻿@import "_variables.scss";
 
-@mixin ngx-alert-variant($background){
-  $foreground: ngx-color($background);
-
+@mixin ngx-alert-variant($foreground, $background){
   color: $foreground;
-  background-color: ngx-color($background, default, .2);
-  border-color: ngx-color($background, default, .3);
+  background-color: $background;
+  border-color: $background;
 
   hr {
     border-top-color: $foreground;
   }
 
-  .ngx-alert-link,
-  .ngx-alert-link a {
+  .#{$ngx-alert-prefix-class}-link,
+  .#{$ngx-alert-prefix-class}-link a {
     font-weight: bold;
     color: $foreground;
   }

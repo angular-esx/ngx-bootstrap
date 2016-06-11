@@ -4,7 +4,7 @@
 
 @import "_mixins.scss";
 
-:host(.ngx-alert) {
+:host(.#{$ngx-alert-prefix-class}) {
   display: block;
   font-family: $ngx-alert-font-family;
   margin: $ngx-alert-margin;
@@ -30,11 +30,11 @@
     margin-top: 5px;
   }
 
-  &.ngx-alert-state-hidden{
+  &.#{$ngx-alert-prefix-class}-state-hidden{
     display: none !important;
   }
 
-  &.ngx-alert-type-float {
+  &.#{$ngx-alert-prefix-class}-type-float {
     width: 100%;
     margin: 0;
     position: fixed;
@@ -43,23 +43,23 @@
     box-sizing: border-box;
   }
 
-  &.ngx-alert-position-top {
+  &.#{$ngx-alert-prefix-class}-position-top {
     top: 0;
   }
 
-  &.ngx-alert-position-bottom {
+  &.#{$ngx-alert-prefix-class}-position-bottom {
     bottom: 0;
   }
 
-  &.ngx-alert-type-dismissible {
+  &.#{$ngx-alert-prefix-class}-type-dismissible {
     padding: $ngx-alert-type-dismissible-padding;
   }
 
-  > .ngx-alert-dismiss {
+  > .#{$ngx-alert-prefix-class}-dismiss {
       font-size: 1.5rem;
       font-weight: 700;
       line-height: 1;
-      color: ngx-color($ngx-color-gray, darkest);
+      color: ngx-color-dark($ngx-color-gray);
       background: transparent;
       padding: 0;
       border: 0;
@@ -72,21 +72,21 @@
       cursor: pointer;
       -webkit-appearance: none;
 
-      @include ngx-state('focus hover'){
+      @include ngx-state(&, 'focus hover'){
         opacity: .5;
       }
     }
 
-  &.ngx-alert-color-info {
-    @include ngx-alert-variant($ngx-alert-background-color-info);
+  &.#{$ngx-alert-prefix-class}-color-info {
+    @include ngx-alert-variant($ngx-alert-foreground-color-info, $ngx-alert-background-color-info);
   }
-  &.ngx-alert-color-success {
-    @include ngx-alert-variant($ngx-alert-background-color-success);
+  &.#{$ngx-alert-prefix-class}-color-success {
+    @include ngx-alert-variant($ngx-alert-foreground-color-success, $ngx-alert-background-color-success);
   }
-  &.ngx-alert-color-warning {
-    @include ngx-alert-variant($ngx-alert-background-color-warning);
+  &.#{$ngx-alert-prefix-class}-color-warning {
+    @include ngx-alert-variant($ngx-alert-foreground-color-warning, $ngx-alert-background-color-warning);
   }
-  &.ngx-alert-color-danger {
-    @include ngx-alert-variant($ngx-alert-background-color-danger);
+  &.#{$ngx-alert-prefix-class}-color-danger {
+    @include ngx-alert-variant($ngx-alert-foreground-color-danger, $ngx-alert-background-color-danger);
   }
 }

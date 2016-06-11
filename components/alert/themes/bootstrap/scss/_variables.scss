@@ -1,6 +1,8 @@
 ﻿@import "../../../../../cores/themes/bootstrap/typography/typography.scss";
 @import "../../../../../cores/themes/bootstrap/palette/palette.scss";
 
+$ngx-alert-prefix-class: ngx-alert !default;
+
 $ngx-alert-font-family: $ngx-font-family-base !default;
 
 $ngx-alert-padding: 1rem !default;
@@ -9,9 +11,16 @@ $ngx-alert-type-dismissible-padding: 1rem 2rem 1rem 1rem !default;
 $ngx-alert-margin: 0 0 1rem 0 !default;
 
 $ngx-alert-border: 1px solid transparent !default;
-$ngx-alert-border-radius: .25rem !default;
+$ngx-alert-border-radius: ngx-border-radius(base) !default;
 
-$ngx-alert-background-color-info: $ngx-color-info !default;
-$ngx-alert-background-color-success: $ngx-color-success !default;
-$ngx-alert-background-color-warning: $ngx-color-warning !default;
-$ngx-alert-background-color-danger: $ngx-color-danger !default;
+$ngx-alert-foreground-color-info: ngx-color($ngx-color-info) !default;
+$ngx-alert-background-color-info: ngx-color-light($ngx-color-info, $opacity: .4) !default;
+
+$ngx-alert-foreground-color-success: ngx-color($ngx-color-success) !default;
+$ngx-alert-background-color-success: ngx-color-light($ngx-color-success, $opacity: .4) !default;
+
+$ngx-alert-foreground-color-warning: ngx-color($ngx-color-warning) !default;
+$ngx-alert-background-color-warning: ngx-color-light($ngx-color-warning, $opacity: .4) !default;
+
+$ngx-alert-foreground-color-danger: ngx-color($ngx-color-danger) !default;
+$ngx-alert-background-color-danger: ngx-color-light($ngx-color-danger, $opacity: .4) !default;

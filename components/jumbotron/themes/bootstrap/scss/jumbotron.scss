@@ -3,12 +3,12 @@
 
 @import "_variables.scss";
 
-:host(.ngx-jumbotron) {
+:host(.#{$ngx-jumbotron-prefix-class}) {
   display: block;
   font-family: $ngx-jumbotron-font-family;
   padding: $ngx-jumbotron-padding;
   margin: $ngx-jumbotron-margin;
-  background-color: ngx-color($color: $ngx-jumbotron-background-color, $opacity: .2);
+  background-color: $ngx-jumbotron-background-color;
 
   @include ngx-media-breakpoint-up(sm) {
     padding: $ngx-jumbotron-padding-sm;
@@ -17,6 +17,6 @@
   hr {
     @extend %ngx-hr-normalize;
 
-    border-top-color: ngx-color($ngx-jumbotron-background-color, lightest);
+    border-top-color: $ngx-jumbotron-hr-border-top-color;
   }
 }

@@ -30,21 +30,21 @@
   }
 
   &.#{$ngx-label-prefix-class}-color-primary {
-    @include ngx-label-variant($ngx-label-foreground-color-primary, $ngx-label-background-color-primary);
+    @include ngx-label-variant($ngx-label-primary);
   }
   &.#{$ngx-label-prefix-class}-color-secondary {
-    @include ngx-label-variant($ngx-label-foreground-color-secondary, $ngx-label-background-color-secondary);
+    @include ngx-label-variant($ngx-label-secondary);
   }
   &.#{$ngx-label-prefix-class}-color-info {
-    @include ngx-label-variant($ngx-label-foreground-color-info, $ngx-label-background-color-info);
+    @include ngx-label-variant($ngx-label-info);
   }
   &.#{$ngx-label-prefix-class}-color-success {
-    @include ngx-label-variant($ngx-label-foreground-color-success, $ngx-label-background-color-success);
+    @include ngx-label-variant($ngx-label-success);
   }
   &.#{$ngx-label-prefix-class}-color-warning {
-    @include ngx-label-variant($ngx-label-foreground-color-warning, $ngx-label-background-color-warning);
+    @include ngx-label-variant($ngx-label-warning);
   }
   &.#{$ngx-label-prefix-class}-color-danger {
-    @include ngx-label-variant($ngx-label-foreground-color-danger, $ngx-label-background-color-danger);
+    @include ngx-label-variant($ngx-label-danger);
   }
 }

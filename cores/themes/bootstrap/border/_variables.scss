@@ -1,1 +1,5 @@
-﻿$ngx-border-radius-base: .25rem !default;
+﻿$ngx-border-radius: (
+  lg: .3rem,
+  base: .25rem,
+  sm: .2rem
+) !default;

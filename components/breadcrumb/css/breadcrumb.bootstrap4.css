@@ -42,12 +42,12 @@
 }
 
 :host(.ngx-breadcrumb).ngx-breadcrumb-color-secondary {
-  background-color: #a5abaf;
+  background-color: #dfdfdf;
 }
 
 :host(.ngx-breadcrumb).ngx-breadcrumb-color-secondary > .ngx-breadcrumb-item,
 :host(.ngx-breadcrumb).ngx-breadcrumb-color-secondary > .ngx-breadcrumb-item a {
-  color: #646a71;
+  color: #373a3c;
 }
 
 :host(.ngx-breadcrumb).ngx-breadcrumb-color-info {

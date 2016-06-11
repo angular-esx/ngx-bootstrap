@@ -10,20 +10,32 @@ $ngx-breadcrumb-item-padding: 0 .5rem 0 .5rem !default;
 
 $ngx-breadcrumb-margin: 0 0 1rem 0 !default;
 
-$ngx-breadcrumb-background-color-primary: ngx-color($ngx-color-primary) !default;
-$ngx-breadcrumb-item-foreground-color-primary: ngx-color($ngx-color-white) !default;
+$ngx-breadcrumb-primary: (
+  foreground: ngx-color($ngx-color-white),
+  background: ngx-color($ngx-color-primary)
+) !default;
 
-$ngx-breadcrumb-background-color-secondary: ngx-color-light($ngx-color-gray) !default;
-$ngx-breadcrumb-item-foreground-color-secondary: ngx-color($ngx-color-black) !default;
+$ngx-breadcrumb-secondary: (
+  foreground: ngx-color($ngx-color-black),
+  background: ngx-color-light($ngx-color-gray)
+) !default;
 
-$ngx-breadcrumb-background-color-info: ngx-color($ngx-color-info) !default;
-$ngx-breadcrumb-item-foreground-color-info: ngx-color($ngx-color-white) !default;
+$ngx-breadcrumb-info: (
+  foreground: ngx-color($ngx-color-white),
+  background: ngx-color($ngx-color-info)
+) !default;
 
-$ngx-breadcrumb-background-color-success: ngx-color($ngx-color-success) !default;
-$ngx-breadcrumb-item-foreground-color-success: ngx-color($ngx-color-white) !default;
+$ngx-breadcrumb-success: (
+  foreground: ngx-color($ngx-color-white),
+  background: ngx-color($ngx-color-success)
+) !default;
 
-$ngx-breadcrumb-background-color-warning: ngx-color($ngx-color-warning) !default;
-$ngx-breadcrumb-item-foreground-color-warning: ngx-color($ngx-color-white) !default;
+$ngx-breadcrumb-warning: (
+  foreground: ngx-color($ngx-color-white),
+  background: ngx-color($ngx-color-warning)
+) !default;
 
-$ngx-breadcrumb-background-color-danger: ngx-color($ngx-color-danger) !default;
-$ngx-breadcrumb-item-foreground-color-danger: ngx-color($ngx-color-white) !default;
+$ngx-breadcrumb-danger: (
+  foreground: ngx-color($ngx-color-white),
+  background: ngx-color($ngx-color-danger)
+) !default;

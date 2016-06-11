@@ -26,26 +26,26 @@
   }
 
   &.#{$ngx-breadcrumb-prefix-class}-color-primary{
-    @include ngx-breadcrumb-variant($ngx-breadcrumb-item-foreground-color-primary, $ngx-breadcrumb-background-color-primary);
+    @include ngx-breadcrumb-variant($ngx-breadcrumb-primary);
   }
 
   &.#{$ngx-breadcrumb-prefix-class}-color-secondary{
-    @include ngx-breadcrumb-variant($ngx-breadcrumb-item-foreground-color-secondary, $ngx-breadcrumb-background-color-secondary);
+    @include ngx-breadcrumb-variant($ngx-breadcrumb-secondary);
   }
 
   &.#{$ngx-breadcrumb-prefix-class}-color-info{
-    @include ngx-breadcrumb-variant($ngx-breadcrumb-item-foreground-color-info, $ngx-breadcrumb-background-color-info);
+    @include ngx-breadcrumb-variant($ngx-breadcrumb-info);
   }
 
   &.#{$ngx-breadcrumb-prefix-class}-color-success{
-    @include ngx-breadcrumb-variant($ngx-breadcrumb-item-foreground-color-success, $ngx-breadcrumb-background-color-success);
+    @include ngx-breadcrumb-variant($ngx-breadcrumb-success);
   }
 
   &.#{$ngx-breadcrumb-prefix-class}-color-warning{
-    @include ngx-breadcrumb-variant($ngx-breadcrumb-item-foreground-color-warning, $ngx-breadcrumb-background-color-warning);
+    @include ngx-breadcrumb-variant($ngx-breadcrumb-warning);
   }
 
   &.#{$ngx-breadcrumb-prefix-class}-color-danger{
-    @include ngx-breadcrumb-variant($ngx-breadcrumb-item-foreground-color-danger, $ngx-breadcrumb-background-color-danger);
+    @include ngx-breadcrumb-variant($ngx-breadcrumb-danger);
   }
 }

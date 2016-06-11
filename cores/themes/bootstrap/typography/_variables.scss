@@ -1,1 +1,14 @@
 ﻿$ngx-font-family-base:	"Helvetica Neue", Helvetica, Arial, sans-serif !default;
+
+$ngx-font-sizes: (
+  lg: 1.25rem,
+  base: 1rem,
+  sm: .875rem,
+  xs: .75rem
+) !default;
+
+$ngx-line-heights: (
+  lg: (4 / 3),
+  base: 1.5,
+  sm: 1.5
+) !default;

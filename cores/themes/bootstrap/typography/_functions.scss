@@ -1,0 +1,9 @@
+﻿@import "_variables.scss";
+
+@function ngx-font-size($size-name, $font-sizes: $ngx-font-sizes){
+  @return map-get($font-sizes, $size-name);
+}
+
+@function ngx-line-height($line-height-name, $line-heights: $ngx-line-heights){
+  @return map-get($line-heights, $line-height-name);
+}

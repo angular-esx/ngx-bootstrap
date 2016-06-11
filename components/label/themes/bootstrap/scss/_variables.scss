@@ -2,30 +2,33 @@
 @import "../../../../../cores/themes/bootstrap/palette/palette.scss";
 @import "../../../../../cores/themes/bootstrap/border/border.scss";
 
+$ngx-label-prefix-class: ngx-label !default;
+
 $ngx-label-font-family: $ngx-font-family-base !default;
 $ngx-label-font-size: .75em !default;
 $ngx-label-font-weight: bold !default;
-$ngx-label-line-weight: 1 !default;
+$ngx-label-line-height: ngx-line-height(base) !default;
 
 $ngx-label-padding: .25em .4em !default;
 $ngx-label-pill-padding: .25em .6em !default;
 
+$ngx-label-border-radius: ngx-border-radius(base) !default;
 $ngx-label-pill-border-radius: 10rem !default;
 
-$ngx-label-foreground-color-primary: $ngx-color-secondary !default;
-$ngx-label-background-color-primary: $ngx-color-primary !default;
+$ngx-label-foreground-color-primary: ngx-color($ngx-color-white) !default;
+$ngx-label-background-color-primary: ngx-color($ngx-color-primary) !default;
 
-$ngx-label-foreground-color-secondary: $ngx-color-secondary !default;
-$ngx-label-background-color-secondary: $ngx-color-gray !default;
+$ngx-label-foreground-color-secondary: ngx-color($ngx-color-white) !default;
+$ngx-label-background-color-secondary: ngx-color-dark($ngx-color-gray) !default;
 
-$ngx-label-foreground-color-info: $ngx-color-secondary !default;
-$ngx-label-background-color-info: $ngx-color-info !default;
+$ngx-label-foreground-color-info: ngx-color($ngx-color-white) !default;
+$ngx-label-background-color-info: ngx-color($ngx-color-info) !default;
 
-$ngx-label-foreground-color-success: $ngx-color-secondary !default;
-$ngx-label-background-color-success: $ngx-color-success !default;
+$ngx-label-foreground-color-success: ngx-color($ngx-color-white) !default;
+$ngx-label-background-color-success: ngx-color($ngx-color-success) !default;
 
-$ngx-label-foreground-color-warning: $ngx-color-secondary !default;
-$ngx-label-background-color-warning: $ngx-color-warning !default;
+$ngx-label-foreground-color-warning: ngx-color($ngx-color-white) !default;
+$ngx-label-background-color-warning: ngx-color($ngx-color-warning) !default;
 
-$ngx-label-foreground-color-danger: $ngx-color-secondary !default;
-$ngx-label-background-color-danger: $ngx-color-danger !default;
+$ngx-label-foreground-color-danger: ngx-color($ngx-color-white) !default;
+$ngx-label-background-color-danger: ngx-color($ngx-color-danger) !default;

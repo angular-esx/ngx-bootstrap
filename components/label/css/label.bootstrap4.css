@@ -13,7 +13,7 @@
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.75em;
   font-weight: bold;
-  line-height: 1;
+  line-height: 1.5;
   padding: 0.25em 0.4em;
   text-align: center;
   white-space: nowrap;
@@ -41,7 +41,7 @@
 
 :host(.ngx-label).ngx-label-color-secondary {
   color: white;
-  background-color: #838b92;
+  background-color: #9f9f9f;
 }
 
 :host(.ngx-label).ngx-label-color-info {

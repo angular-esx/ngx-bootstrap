@@ -2,49 +2,49 @@
 
 @import "_mixins.scss";
 
-:host(.ngx-label) {
+:host(.#{$ngx-label-prefix-class}) {
   display: inline-block;
   font-family: $ngx-label-font-family;
   font-size: $ngx-label-font-size;
   font-weight: $ngx-label-font-weight;
-  line-height: $ngx-label-line-weight;
+  line-height: $ngx-label-line-height;
   padding: $ngx-label-padding;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  @include ngx-border-radius();
+  @include ngx-border-radius($ngx-label-border-radius);
 
   a {
     @extend %ngx-link-normalize;
 
-    color: ngx-color($ngx-color-secondary);
+    color: ngx-color($ngx-color-white);
   }
 
   &:empty {
     display: none;
   }
 
-  &.ngx-label-type-pill {
+  &.#{$ngx-label-prefix-class}-type-pill {
     padding: $ngx-label-pill-padding;
     @include ngx-border-radius($ngx-label-pill-border-radius);
   }
 
-  &.ngx-label-color-primary {
+  &.#{$ngx-label-prefix-class}-color-primary {
     @include ngx-label-variant($ngx-label-foreground-color-primary, $ngx-label-background-color-primary);
   }
-  &.ngx-label-color-secondary {
+  &.#{$ngx-label-prefix-class}-color-secondary {
     @include ngx-label-variant($ngx-label-foreground-color-secondary, $ngx-label-background-color-secondary);
   }
-  &.ngx-label-color-info {
+  &.#{$ngx-label-prefix-class}-color-info {
     @include ngx-label-variant($ngx-label-foreground-color-info, $ngx-label-background-color-info);
   }
-  &.ngx-label-color-success {
+  &.#{$ngx-label-prefix-class}-color-success {
     @include ngx-label-variant($ngx-label-foreground-color-success, $ngx-label-background-color-success);
   }
-  &.ngx-label-color-warning {
+  &.#{$ngx-label-prefix-class}-color-warning {
     @include ngx-label-variant($ngx-label-foreground-color-warning, $ngx-label-background-color-warning);
   }
-  &.ngx-label-color-danger {
+  &.#{$ngx-label-prefix-class}-color-danger {
     @include ngx-label-variant($ngx-label-foreground-color-danger, $ngx-label-background-color-danger);
   }
 }

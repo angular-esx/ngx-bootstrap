@@ -10,8 +10,6 @@ ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.utils.js');
 function _testCase() {
   this.constructor = [ngxButtonService, function (ngxButtonService) {
     this.COLORS = ngxButtonService.getColors();
-    this.SIZES = ngxButtonService.getSizes();
-    this.STATES = ngxButtonService.getStates();
   }];
 }
 

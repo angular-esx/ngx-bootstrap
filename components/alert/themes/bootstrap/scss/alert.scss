@@ -78,15 +78,15 @@
     }
 
   &.#{$ngx-alert-prefix-class}-color-info {
-    @include ngx-alert-variant($ngx-alert-foreground-color-info, $ngx-alert-background-color-info);
+    @include ngx-alert-variant($ngx-alert-info);
   }
   &.#{$ngx-alert-prefix-class}-color-success {
-    @include ngx-alert-variant($ngx-alert-foreground-color-success, $ngx-alert-background-color-success);
+    @include ngx-alert-variant($ngx-alert-success);
   }
   &.#{$ngx-alert-prefix-class}-color-warning {
-    @include ngx-alert-variant($ngx-alert-foreground-color-warning, $ngx-alert-background-color-warning);
+    @include ngx-alert-variant($ngx-alert-warning);
   }
   &.#{$ngx-alert-prefix-class}-color-danger {
-    @include ngx-alert-variant($ngx-alert-foreground-color-danger, $ngx-alert-background-color-danger);
+    @include ngx-alert-variant($ngx-alert-danger);
   }
 }

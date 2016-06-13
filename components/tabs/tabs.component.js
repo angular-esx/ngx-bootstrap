@@ -8,8 +8,7 @@ ngxBootstrap = require('./../../' + __NGX_BOOTSTRAP_UTILS__);
 
 function _ngxTabsComponent() {
   var _base,
-      _subscription,
-      _currentActiveTab;
+      _subscription;
 
   this.extends = ngxBaseComponent;
 
@@ -35,8 +34,8 @@ function _ngxTabsComponent() {
 
     this.subscribe();
 
-    _currentActiveTab = { index: 0, item: this.tabs.first };
-    _currentActiveTab.item.activate(true);
+    this.currentActiveTab = { index: 0, item: this.tabs.first };
+    this.currentActiveTab.item.activate(true);
 
     _getBaseInstance(this).ngAfterContentInit.apply(this);
   };
@@ -75,28 +74,28 @@ function _ngxTabsComponent() {
     this.tabs.changes.subscribe(function (tabs) {
       var _tabs = tabs.toArray();
       
-      if (_tabs.indexOf(_currentActiveTab.item) > -1) {
+      if (_tabs.indexOf(_self.currentActiveTab.item) > -1) {
         ngxBootstrap.forEach(_tabs, function (tab, index) {
-          if (tab === _currentActiveTab.item) {
-            _currentActiveTab.index = index;
+          if (tab === _self.currentActiveTab.item) {
+            _self.currentActiveTab.index = index;
             return true;
           }
         });
       }
       else {
-        if (_tabs.length > _currentActiveTab.index) {
-          _currentActiveTab.item = _tabs[_currentActiveTab.index];
+        if (_tabs.length > _self.currentActiveTab.index) {
+          _self.currentActiveTab.item = _tabs[_self.currentActiveTab.index];
         }
-        else if (_currentActiveTab.index >= _tabs.length) {
-          _currentActiveTab.index = _tabs.length - 1;
-          _currentActiveTab.item = _tabs[_currentActiveTab.index];
+        else if (_self.currentActiveTab.index >= _tabs.length) {
+          _self.currentActiveTab.index = _tabs.length - 1;
+          _self.currentActiveTab.item = _tabs[_self.currentActiveTab.index];
         }
         else {
-          _currentActiveTab = null;
+          _self.currentActiveTab = null;
         }
       }
 
-      if (_currentActiveTab) { _currentActiveTab.item.activate(true); }
+      if (_self.currentActiveTab) { _self.currentActiveTab.item.activate(true); }
 
     });
   };
@@ -108,7 +107,7 @@ function _ngxTabsComponent() {
   };
 
   this.select = function (tab, index) {
-    if (!tab || tab.isDisabled || (_currentActiveTab && _currentActiveTab.item === tab)) { return; }
+    if (!tab || tab.isDisabled || (this.currentActiveTab && this.currentActiveTab.item === tab)) { return; }
 
     var _isCanceled = false;
     this.changingTabEmitter.emit({
@@ -118,17 +117,17 @@ function _ngxTabsComponent() {
 
     if (_isCanceled) { return; }
 
-    if (_currentActiveTab) {
-      _currentActiveTab.item.activate(false);
+    if (this.currentActiveTab) {
+      this.currentActiveTab.item.activate(false);
 
-      _currentActiveTab.index = index;
-      _currentActiveTab.item = tab;
+      this.currentActiveTab.index = index;
+      this.currentActiveTab.item = tab;
     }
     else {
-      _currentActiveTab = { index: index, item: tab };
+      this.currentActiveTab = { index: index, item: tab };
     }
     
-    _currentActiveTab.item.activate(true);
+    this.currentActiveTab.item.activate(true);
 
     this.changedTabEmitter.emit({
       target: tab
@@ -151,7 +150,7 @@ module.exports = ng.core.Component({
   /*Inject style at here*/
   directives: [ngxTranscludeDirective],
   providers: [ngxRenderService],
-  properties: ['prefixClass:prefix-class'],
+  properties: ['type', 'prefixClass:prefix-class'],
   events: ['changingTabEmitter: changingTab', 'changedTabEmitter: changedTab'],
   queries: {
     tabs: new ng.core.ContentChildren(ngxTabDirective)

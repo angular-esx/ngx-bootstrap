@@ -1,0 +1,30 @@
+﻿@import "../../../../../cores/themes/bootstrap/state/state.scss";
+
+@import "_variables.scss";
+
+@mixin ngx-navbar-variant($default, $active){
+  background-color: map-get($default, background);
+
+  > .#{$ngx-navbar-prefix-class}-divider {
+    background-color: map-get($default, divider-background);
+  }
+
+  > .#{$ngx-navbar-prefix-class}-brand,
+  > .#{$ngx-navbar-prefix-class}-brand a {
+    @include ngx-state(#{$ngx-navbar-prefix-class}-brand, 'self focus hover'){
+      color: map-get($default, brand-foreground);
+    }
+  }
+
+  > .#{$ngx-navbar-prefix-class}-item,
+  > .#{$ngx-navbar-prefix-class}-item a {
+    color: map-get($default, item-foreground);
+  }
+
+  > .#{$ngx-navbar-prefix-class}-item,
+  > .#{$ngx-navbar-prefix-class}-item a {
+    @include ngx-state(#{$ngx-navbar-prefix-class}-item, 'focus hover active'){
+      color: map-get($active, item-foreground);
+    }
+  }
+}

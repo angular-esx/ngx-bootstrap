@@ -24,10 +24,19 @@ function _testCase() {
       { id: 'tab03', head: 'Tab 03', content: 'this is content of tab 03' },
       { id: 'tab04', head: 'Tab 04', content: 'this is content of tab 04' }
     ];
+
+    this.pillTabs = [
+      { id: 'tab03', head: 'Tab 03', content: 'this is content of tab 03' },
+      { id: 'tab04', head: 'Tab 04', content: 'this is content of tab 04' }
+    ];
   }];
 
   this.removeTab = function (tab) {
     ngxBootstrap.splice(this.tabs, tab);
+  };
+
+  this.removePillTab = function (tab) {
+    ngxBootstrap.splice(this.pillTabs, tab);
   };
 
   this.selectTab = function (tab) {

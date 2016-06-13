@@ -8,8 +8,7 @@ ngxBootstrap = require('./../../' + __NGX_BOOTSTRAP_UTILS__);
 
 function _ngxTabsComponent() {
   var _base,
-      _subscription,
-      _currentActiveTab;
+      _subscription;
 
   this.extends = ngxBaseComponent;
 
@@ -35,8 +34,8 @@ function _ngxTabsComponent() {
 
     this.subscribe();
 
-    _currentActiveTab = { index: 0, item: this.tabs.first };
-    _currentActiveTab.item.activate(true);
+    this.currentActiveTab = { index: 0, item: this.tabs.first };
+    this.currentActiveTab.item.activate(true);
 
     _getBaseInstance(this).ngAfterContentInit.apply(this);
   };
@@ -75,28 +74,28 @@ function _ngxTabsComponent() {
     this.tabs.changes.subscribe(function (tabs) {
       var _tabs = tabs.toArray();
       
-      if (_tabs.indexOf(_currentActiveTab.item) > -1) {
+      if (_tabs.indexOf(_self.currentActiveTab.item) > -1) {
         ngxBootstrap.forEach(_tabs, function (tab, index) {
-          if (tab === _currentActiveTab.item) {
-            _currentActiveTab.index = index;
+          if (tab === _self.currentActiveTab.item) {
+            _self.currentActiveTab.index = index;
             return true;
           }
         });
       }
       else {
-        if (_tabs.length > _currentActiveTab.index) {
-          _currentActiveTab.item = _tabs[_currentActiveTab.index];
+        if (_tabs.length > _self.currentActiveTab.index) {
+          _self.currentActiveTab.item = _tabs[_self.currentActiveTab.index];
         }
-        else if (_currentActiveTab.index >= _tabs.length) {
-          _currentActiveTab.index = _tabs.length - 1;
-          _currentActiveTab.item = _tabs[_currentActiveTab.index];
+        else if (_self.currentActiveTab.index >= _tabs.length) {
+          _self.currentActiveTab.index = _tabs.length - 1;
+          _self.currentActiveTab.item = _tabs[_self.currentActiveTab.index];
         }
         else {
-          _currentActiveTab = null;
+          _self.currentActiveTab = null;
         }
       }
 
-      if (_currentActiveTab) { _currentActiveTab.item.activate(true); }
+      if (_self.currentActiveTab) { _self.currentActiveTab.item.activate(true); }
 
     });
   };
@@ -108,7 +107,7 @@ function _ngxTabsComponent() {
   };
 
   this.select = function (tab, index) {
-    if (!tab || tab.isDisabled || (_currentActiveTab && _currentActiveTab.item === tab)) { return; }
+    if (!tab || tab.isDisabled || (this.currentActiveTab && this.currentActiveTab.item === tab)) { return; }
 
     var _isCanceled = false;
     this.changingTabEmitter.emit({
@@ -118,17 +117,17 @@ function _ngxTabsComponent() {
 
     if (_isCanceled) { return; }
 
-    if (_currentActiveTab) {
-      _currentActiveTab.item.activate(false);
+    if (this.currentActiveTab) {
+      this.currentActiveTab.item.activate(false);
 
-      _currentActiveTab.index = index;
-      _currentActiveTab.item = tab;
+      this.currentActiveTab.index = index;
+      this.currentActiveTab.item = tab;
     }
     else {
-      _currentActiveTab = { index: index, item: tab };
+      this.currentActiveTab = { index: index, item: tab };
     }
     
-    _currentActiveTab.item.activate(true);
+    this.currentActiveTab.item.activate(true);
 
     this.changedTabEmitter.emit({
       target: tab
@@ -147,11 +146,11 @@ function _ngxTabsComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-tabs',
-  template: '﻿<div class=\"ngx-tab-heads\">\r\n  <div *ngFor=\"let tab of tabs; let i=index; trackBy:trackByTabs\"\r\n       [class.ngx-tab-head-state-active]=\"tab.isActive\"\r\n       [class.ngx-tab-head-state-disabled]=\"tab.isDisabled\"\r\n       (click)=\"select(tab, i)\"\r\n       class=\"ngx-tab-head\">\r\n    <span *ngIf=\"tab.headTemplateRef\" [ngxTransclude]=\"tab.headTemplateRef\"></span>\r\n    <span *ngIf=\"!tab.headTemplateRef\">{{tab.head}}</span>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"ngx-tab-contents\">\r\n  <ng-content></ng-content>\r\n</div>',
-  styles: ['﻿:host(.ngx-tabs) > .ngx-tab-heads { display: block; padding-left: 0; margin-bottom: 1rem; margin-top: 0; border-bottom: 1px solid #ddd; } :host(.ngx-tabs) > .ngx-tab-heads::after { display: table; clear: both; content: ""; } :host(.ngx-tabs) > .ngx-tab-heads > .ngx-tab-head { display: block; float: left; margin-bottom: -1px; padding: .5em 1em; border: 1px solid transparent; border-radius: .25rem .25rem 0 0; } :host(.ngx-tabs) > .ngx-tab-heads .ngx-tab-head + .ngx-tab-head { margin-left: .2rem; } :host(.ngx-tabs) > .ngx-tab-heads > .ngx-tab-head:focus, :host(.ngx-tabs) > .ngx-tab-heads > .ngx-tab-head:hover, :host(.ngx-tabs) > .ngx-tab-heads > .ngx-tab-head.ngx-tab-head-state-active, :host(.ngx-tabs) > .ngx-tab-heads > .ngx-tab-head.ngx-tab-head-state-active:focus, :host(.ngx-tabs) > .ngx-tab-heads > .ngx-tab-head.ngx-tab-head-state-active:hover { color: #55595c; background-color: #fff; border-color: #eceeef #eceeef #ddd; text-decoration: none; cursor: pointer; } :host(.ngx-tabs) > .ngx-tab-heads > .ngx-tab-head.ngx-tab-head-state-active, :host(.ngx-tabs) > .ngx-tab-heads > .ngx-tab-head.ngx-tab-head-state-active:focus, :host(.ngx-tabs) > .ngx-tab-heads > .ngx-tab-head.ngx-tab-head-state-active:hover{ border-color: #ddd #ddd transparent; } :host(.ngx-tabs) > .ngx-tab-heads > .ngx-tab-head.ngx-tab-head-state-disabled, :host(.ngx-tabs) > .ngx-tab-heads > .ngx-tab-head.ngx-tab-head-state-disabled:focus, :host(.ngx-tabs) > .ngx-tab-heads > .ngx-tab-head.ngx-tab-head-state-disabled:hover { color: #818a91; cursor: not-allowed; background-color: transparent; border-color: transparent; } :host(.ngx-tabs) > .ngx-tab-contents{ display: block; } :host(.ngx-tabs) > .ngx-tab-contents > .ngx-tab { display: none; opacity: 0; } :host(.ngx-tabs) > .ngx-tab-contents > .ngx-tab.ngx-tab-state-active { display: block; }'],
+  template: '﻿<div class=\"ngx-tabs-heads\">\r\n  <div *ngFor=\"let tab of tabs; let i=index; trackBy:trackByTabs\"\r\n       [class.ngx-tabs-head-state-active]=\"tab.isActive\"\r\n       [class.ngx-tabs-head-state-disabled]=\"tab.isDisabled\"\r\n       (click)=\"select(tab, i)\"\r\n       class=\"ngx-tabs-head\">\r\n    <span *ngIf=\"tab.headTemplateRef\" [ngxTransclude]=\"tab.headTemplateRef\"></span>\r\n    <span *ngIf=\"!tab.headTemplateRef\">{{tab.head}}</span>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"ngx-tabs-contents\">\r\n  <ng-content></ng-content>\r\n</div>',
+  styles: [':host(.ngx-tabs) > .ngx-tabs-heads { display: block; padding: 0; margin: 0 0 1rem 0; border-bottom: 1px solid #bfbfbf; } :host(.ngx-tabs) > .ngx-tabs-heads::after { content: ""; display: table; clear: both; } :host(.ngx-tabs) > .ngx-tabs-heads > .ngx-tabs-head { display: block; float: left; color: #373a3c; background-color: transparent; text-decoration: none; padding: 0.5em 1em; margin: 0 0 -1px 0; border: 1px solid transparent; cursor: pointer; border-top-right-radius: 0.25rem; border-top-left-radius: 0.25rem; } :host(.ngx-tabs) > .ngx-tabs-heads > .ngx-tabs-head + .ngx-tabs-head { margin-left: .2rem; } :host(.ngx-tabs) > .ngx-tabs-heads > .ngx-tabs-head:focus, :host(.ngx-tabs) > .ngx-tabs-heads > .ngx-tabs-head:hover { border-color: rgba(191, 191, 191, 0.5) rgba(191, 191, 191, 0.5) rgba(191, 191, 191, 0.5); } :host(.ngx-tabs) > .ngx-tabs-heads > .ngx-tabs-head.ngx-tabs-head-state-active { color: #373a3c; background-color: white; border-color: #bfbfbf #bfbfbf transparent; } :host(.ngx-tabs) > .ngx-tabs-heads > .ngx-tabs-head.ngx-tabs-head-state-disabled { color: #dfdfdf; border-color: transparent; cursor: not-allowed; } :host(.ngx-tabs).ngx-tabs-type-pill > .ngx-tabs-heads { border-bottom: initial; } :host(.ngx-tabs).ngx-tabs-type-pill > .ngx-tabs-heads > .ngx-tabs-head { color: #373a3c; border: initial; border-radius: 0.25rem; } :host(.ngx-tabs).ngx-tabs-type-pill > .ngx-tabs-heads > .ngx-tabs-head.ngx-tabs-head-state-active { color: white; background-color: #0270d2; } :host(.ngx-tabs).ngx-tabs-type-pill > .ngx-tabs-heads > .ngx-tabs-head.ngx-tabs-head-state-active a { color: white; } :host(.ngx-tabs).ngx-tabs-type-pill > .ngx-tabs-heads > .ngx-tabs-head.ngx-tabs-head-state-disabled { color: #dfdfdf; } :host(.ngx-tabs) > .ngx-tabs-contents { display: block; } :host(.ngx-tabs) > .ngx-tabs-contents > .ngx-tab { display: none; opacity: 0; } :host(.ngx-tabs) > .ngx-tabs-contents > .ngx-tab.ngx-tab-state-active { display: block; } '],
   directives: [ngxTranscludeDirective],
   providers: [ngxRenderService],
-  properties: ['prefixClass:prefix-class'],
+  properties: ['type', 'prefixClass:prefix-class'],
   events: ['changingTabEmitter: changingTab', 'changedTabEmitter: changedTab'],
   queries: {
     tabs: new ng.core.ContentChildren(ngxTabDirective)

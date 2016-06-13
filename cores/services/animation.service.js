@@ -46,13 +46,13 @@ function _ngxAnimationService() {
     var _self = this;
 
     return new Promise(function (resolve) {
-      var _cssAnimationBuilder = _self.animationBuilder.css()
+      _self.animationBuilder.css()
       .setDuration(0)
       .addClass('collapse-in')
       .setFromStyles({ overflow: 'hidden', height: 0 })
       .start(nativeElement)
       .onComplete(function () {
-        _cssAnimationBuilder
+        _self.animationBuilder.css()
         .setDuration(options && options.duration ? options.duration : 250)
         .addAnimationClass('collapse-out')
         .setFromStyles({ height: 0 })

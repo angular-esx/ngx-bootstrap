@@ -127,7 +127,7 @@ function _ngxCollapseComponent() {
 module.exports = ng.core.Component({
   selector: 'ngx-collapse',
   template: '﻿<ng-content></ng-content>',
-  styles: ['﻿:host(.ngx-collapse) { display: none; } :host(.ngx-collapse.ngx-collapse-state-active) { display: block; }'],
+  styles: [':host(.ngx-collapse) { display: none; } :host(.ngx-collapse).ngx-collapse-state-active { display: block; } '],
   providers: [ngxRenderService],
   properties: ['id', 'state', 'group', 'prefixClass:prefix-class']
 })

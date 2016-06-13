@@ -1,0 +1,9 @@
+﻿@import "_variables.scss";
+
+:host(.#{$ngx-collapse-prefix-class}) {
+  display: none;
+
+  &.#{$ngx-collapse-prefix-class}-state-active {
+    display: block;
+  }
+}

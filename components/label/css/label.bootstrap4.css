@@ -10,7 +10,6 @@
 
 :host(.ngx-label) {
   display: inline-block;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.75em;
   font-weight: bold;
   line-height: 1.5;

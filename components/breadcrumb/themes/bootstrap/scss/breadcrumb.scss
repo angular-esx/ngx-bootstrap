@@ -3,7 +3,6 @@
 @import "_mixins.scss";
 
 :host(.#{$ngx-breadcrumb-prefix-class}) {
-  font-family: $ngx-breadcrumb-font-family;
   display: block;
   padding: $ngx-breadcrumb-padding;
   margin: $ngx-breadcrumb-margin;

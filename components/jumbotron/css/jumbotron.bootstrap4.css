@@ -8,7 +8,6 @@
 
 :host(.ngx-jumbotron) {
   display: block;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 2rem 1rem 2rem 1rem;
   margin: 0 0 2rem 0;
   background-color: #dfdfdf;

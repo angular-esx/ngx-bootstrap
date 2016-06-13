@@ -5,7 +5,6 @@
 
 :host(.#{$ngx-jumbotron-prefix-class}) {
   display: block;
-  font-family: $ngx-jumbotron-font-family;
   padding: $ngx-jumbotron-padding;
   margin: $ngx-jumbotron-margin;
   background-color: $ngx-jumbotron-background-color;

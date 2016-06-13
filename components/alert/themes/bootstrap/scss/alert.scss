@@ -6,7 +6,6 @@
 
 :host(.#{$ngx-alert-prefix-class}) {
   display: block;
-  font-family: $ngx-alert-font-family;
   margin: $ngx-alert-margin;
   padding: $ngx-alert-padding;
   border: $ngx-alert-border;

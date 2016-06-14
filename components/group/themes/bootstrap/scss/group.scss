@@ -17,7 +17,7 @@
 
   &.#{$ngx-group-prefix-class}-type-vertical {
     > .#{$ngx-group-prefix-class} {
-      @include ngx-group-vertical-inside();
+      @include ngx-group-vertical-children();
 
       @include clearfix();
 

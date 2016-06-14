@@ -75,7 +75,7 @@
 :host(.#{$ngx-group-prefix-class}).#{$ngx-group-prefix-class}-type-vertical {
   > .#{$ngx-button-prefix-class},
   > .#{$ngx-group-prefix-class} > .#{$ngx-button-prefix-class} {
-    @include ngx-group-vertical-inside()
+    @include ngx-group-vertical-children()
   }
 
   > .#{$ngx-button-prefix-class} {

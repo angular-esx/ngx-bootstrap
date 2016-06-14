@@ -1,4 +1,6 @@
-﻿@import "_variables.scss";
+﻿@import "../../../../../cores/themes/bootstrap/normalize/normalize.scss";
+
+@import "_variables.scss";
 
 @mixin ngx-alert-variant($default){
   $foreground: map-get($default, foreground);
@@ -9,6 +11,8 @@
   border-color: $background;
 
   hr {
+    @extend %ngx-hr-normalize;
+
     border-top-color: $foreground;
   }
 

@@ -7,6 +7,9 @@ ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 function _ngxDropMenuComponent() {
   var _base,
       _subscription;
+  var _ATTRIBUTES = {
+    POSITION: 'position'
+  };
 
   this.extends = ngxBaseComponent;
 
@@ -32,6 +35,19 @@ function _ngxDropMenuComponent() {
 
   this.ngOnDestroy = function () {
     if (_subscription) { _subscription.unsubscribe(); }
+  };
+
+  this.onAggregatePropertyValueState = function (changeRecord) {
+    var _aggregate = _getBaseInstance(this).onAggregatePropertyValueState.apply(this, arguments);
+
+    if (this.ngxDropMenuService.getPositionClass) {
+      _aggregate[_ATTRIBUTES.POSITION] = {
+        prev: this.ngxDropMenuService.getPositionClass(this.getPrefixClass(), this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.POSITION)),
+        current: this.ngxDropMenuService.getPositionClass(this.getPrefixClass(), this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.POSITION))
+      };
+    }
+
+    return _aggregate;
   };
 
   this.subscribe = function () {
@@ -118,6 +134,6 @@ module.exports = ng.core.Component({
   /*Inject template at here*/
   /*Inject style at here*/
   providers: [ngxRenderService],
-  properties: ['state', 'prefixClass:prefix-class']
+  properties: ['state', 'position', 'prefixClass:prefix-class']
 })
 .Class(new _ngxDropMenuComponent());

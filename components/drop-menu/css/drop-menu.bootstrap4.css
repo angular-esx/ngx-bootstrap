@@ -1,169 +1,114 @@
+:host(.ngx-drop-menu) > h1,
+:host(.ngx-drop-menu) > h2,
+:host(.ngx-drop-menu) > h3,
+:host(.ngx-drop-menu) > h4,
+:host(.ngx-drop-menu) > h5,
+:host(.ngx-drop-menu) > h6 {
+  margin-top: 0;
+  margin-bottom: .5rem;
+}
+
+:host(.ngx-drop-menu) > hr {
+  height: 0;
+  border-width: 0 0 0 0;
+  border-top-width: 1px;
+  border-style: solid;
+  box-sizing: content-box;
+}
+
 :host(.ngx-drop-menu) {
+  display: none;
   position: absolute;
   top: 100%;
   left: 0;
-  z-index: 1000;
-  display: none;
-  float: left;
+  padding: 0.3rem 0;
+  margin: 0.1rem 0 0;
   min-width: 160px;
-  padding: 5px 0;
-  margin: 2px 0 0;
+  z-index: 1000;
   font-size: 1rem;
-  color: #373a3c;
   text-align: left;
-  list-style: none;
-  background-color: #fff;
-  -webkit-background-clip: padding-box;
+  color: #373a3c;
+  background-color: white;
   background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: .25rem;
+  border: 1px solid #bfbfbf;
+  border-radius: 0.25rem;
 }
 
-:host(.ngx-drop-menu-state-active) {
-  display: block;
+:host(.ngx-drop-menu) > * {
+  float: left;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-:host(.ngx-drop-menu-type-dropup) {
+:host(.ngx-drop-menu).ngx-drop-menu-state-active {
+  display: inline;
+}
+
+:host(.ngx-drop-menu).ngx-drop-menu-position-left {
+  right: auto;
+  left: 0;
+}
+
+:host(.ngx-drop-menu).ngx-drop-menu-position-right {
+  right: 0;
+  left: auto;
+}
+
+:host(.ngx-drop-menu).ngx-drop-menu-type-dropup {
   top: auto;
   bottom: 100%;
   margin-bottom: 2px;
 }
 
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item,
-:host(.ngx-drop-menu) /deep/ .ngx-item,
-:host(.ngx-drop-menu) /deep/ .ngx-link,
-:host(.ngx-drop-menu) /deep/ a.ngx-drop-menu-item {
+:host(.ngx-drop-menu) > h1,
+:host(.ngx-drop-menu) > h2,
+:host(.ngx-drop-menu) > h3,
+:host(.ngx-drop-menu) > h4,
+:host(.ngx-drop-menu) > h5,
+:host(.ngx-drop-menu) > h6 {
   display: block;
-  width: 100%;
-  padding: 3px 20px;
-  clear: both;
+  padding: 0.3rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  white-space: nowrap;
+  color: #bfbfbf;
+}
+
+:host(.ngx-drop-menu) > hr {
+  margin: 0.5rem 0;
+  color: transparent;
+  background-color: #bfbfbf;
+}
+
+:host(.ngx-drop-menu) > .ngx-drop-menu-item,
+:host(.ngx-drop-menu) > a {
+  display: block;
+  text-align: inherit;
+  text-decoration: none;
   font-weight: normal;
   line-height: 1.5;
-  color: #373a3c;
-  text-align: inherit;
   white-space: nowrap;
-  background: none;
+  padding: 0.3rem 1rem;
+  clear: both;
+  color: #373a3c;
+  background: white;
   border: 0;
   cursor: pointer;
 }
 
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item > a,
-:host(.ngx-drop-menu) /deep/ .ngx-link > a {
+:host(.ngx-drop-menu) > .ngx-drop-menu-item:focus, :host(.ngx-drop-menu) > .ngx-drop-menu-item:hover, :host(.ngx-drop-menu) > .ngx-drop-menu-item.ngx-drop-menu-item-state-active,
+:host(.ngx-drop-menu) > a:focus,
+:host(.ngx-drop-menu) > a:hover,
+:host(.ngx-drop-menu) > a.ngx-drop-menu-item-state-active {
   color: #373a3c;
-}
-
-:host(.ngx-drop-menu-state-active) /deep/ .ngx-drop-menu-item > a,
-:host(.ngx-drop-menu-state-active) /deep/ .ngx-link > a
-:host(.ngx-drop-menu-state-active) /deep/ a.ngx-drop-menu-item {
-  color: #373a3c;
+  background-color: rgba(191, 191, 191, 0.2);
   outline: 0;
 }
 
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item:focus,
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item:hover,
-:host(.ngx-drop-menu) /deep/ .ngx-item:focus,
-:host(.ngx-drop-menu) /deep/ .ngx-item:hover,
-:host(.ngx-drop-menu) /deep/ .ngx-link:focus,
-:host(.ngx-drop-menu) /deep/ .ngx-link:hover,
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item:focus,
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item:hover,
-:host(.ngx-drop-menu) /deep/ a.ngx-drop-menu-item:focus,
-:host(.ngx-drop-menu) /deep/ a.ngx-drop-menu-item:hover {
-  color: #2b2d2f;
-  text-decoration: none;
-  background-color: #f5f5f5;
-}
-
-:host(.ngx-drop-menu) /deep/ .ngx-link:focus > a,
-:host(.ngx-drop-menu) /deep/ .ngx-link:hover > a,
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item:focus > a,
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item:hover > a {
-  color: #2b2d2f;
-  text-decoration: none;
-}
-
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-active,
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-active:focus,
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-active:hover,
-:host(.ngx-drop-menu) /deep/ .ngx-item.ngx-item-state-active,
-:host(.ngx-drop-menu) /deep/ .ngx-item.ngx-item-state-active:focus,
-:host(.ngx-drop-menu) /deep/ .ngx-item.ngx-item-state-active:hover,
-:host(.ngx-drop-menu) /deep/ .ngx-link.ngx-link-state-active,
-:host(.ngx-drop-menu) /deep/ .ngx-link.ngx-link-state-active:focus,
-:host(.ngx-drop-menu) /deep/ .ngx-link.ngx-link-state-active:hover,
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-active,
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-active:focus,
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-active:hover,
-:host(.ngx-drop-menu) /deep/ a.ngx-drop-menu-item.ngx-drop-menu-item-state-active:focus,
-:host(.ngx-drop-menu) /deep/ a.ngx-drop-menu-item.ngx-drop-menu-item-state-active:hover {
-  color: #fff;
-  text-decoration: none;
-  background-color: #0275d8;
-  outline: 0;
-}
-
-:host(.ngx-drop-menu) /deep/ .ngx-link.ngx-link-state-active > a,
-:host(.ngx-drop-menu) /deep/ .ngx-link.ngx-link-state-active:focus > a,
-:host(.ngx-drop-menu) /deep/ .ngx-link.ngx-link-state-active:hover > a,
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-active > a,
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-active:focus > a,
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-active:hover > a {
-  color: #fff;
-  text-decoration: none;
-}
-
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-disabled,
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-disabled:focus,
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-disabled:hover,
-:host(.ngx-drop-menu) /deep/ .ngx-item.ngx-item-state-disabled,
-:host(.ngx-drop-menu) /deep/ .ngx-item.ngx-item-state-disabled:focus,
-:host(.ngx-drop-menu) /deep/ .ngx-item.ngx-item-state-disabled:hover,
-:host(.ngx-drop-menu) /deep/ .ngx-link.ngx-link-state-disabled > a,
-:host(.ngx-drop-menu) /deep/ .ngx-link.ngx-link-state-disabled:focus > a,
-:host(.ngx-drop-menu) /deep/ .ngx-link.ngx-link-state-disabled:hover > a,
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-disabled > a,
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-disabled:focus > a,
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-disabled:hover > a,
-:host(.ngx-drop-menu) /deep/ a.ngx-drop-menu-item.ngx-drop-menu-item-state-disabled,
-:host(.ngx-drop-menu) /deep/ a.ngx-drop-menu-item.ngx-drop-menu-item-state-disabled:focus,
-:host(.ngx-drop-menu) /deep/ a.ngx-drop-menu-item.ngx-drop-menu-item-state-disabled:hover {
-  color: #818a91;
-}
-
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-disabled:focus,
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-disabled:hover,
-:host(.ngx-drop-menu) /deep/ .ngx-item.ngx-item-state-disabled:focus,
-:host(.ngx-drop-menu) /deep/ .ngx-item.ngx-item-state-disabled:hover,
-:host(.ngx-drop-menu) /deep/ .ngx-link.ngx-link-state-disabled:focus > a,
-:host(.ngx-drop-menu) /deep/ .ngx-link.ngx-link-state-disabled:hover > a,
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-disabled:focus > a,
-:host(.ngx-drop-menu) /deep/ .ngx-drop-menu-item.ngx-drop-menu-item-state-disabled:hover > a,
-:host(.ngx-drop-menu) /deep/ a.ngx-drop-menu-item.ngx-drop-menu-item-state-disabled:focus,
-:host(.ngx-drop-menu) /deep/ a.ngx-drop-menu-item.ngx-drop-menu-item-state-disabled:hover {
-  text-decoration: none;
-  cursor: not-allowed;
+:host(.ngx-drop-menu) > .ngx-drop-menu-item.ngx-drop-menu-item-state-disabled,
+:host(.ngx-drop-menu) > a.ngx-drop-menu-item-state-disabled {
+  color: rgba(55, 58, 60, 0.65);
   background-color: transparent;
   background-image: none;
-  filter: "progid:DXImageTransform.Microsoft.gradient(enabled = false)";
-}
-
-:host(.ngx-drop-menu) /deep/ h1,
-:host(.ngx-drop-menu) /deep/ h2,
-:host(.ngx-drop-menu) /deep/ h3,
-:host(.ngx-drop-menu) /deep/ h4,
-:host(.ngx-drop-menu) /deep/ h5,
-:host(.ngx-drop-menu) /deep/ h6 {
-  display: block;
-  padding: 3px 20px;
-  font-size: .875rem;
-  line-height: 1.5;
-  color: #818a91;
-  white-space: nowrap;
-}
-
-:host(.ngx-drop-menu) /deep/ hr {
-  height: 1px;
-  margin: .5rem 0;
-  overflow: hidden;
-  background-color: #e5e5e5;
+  cursor: not-allowed;
 }

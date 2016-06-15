@@ -18,7 +18,7 @@ module.exports = function (params) {
       _directiveName = params.args.directive,
       _testCase = params.args.testcase;
 
-    _themeName = _themeName || 'bootstrap4';
+    _themeName = _themeName || 'bootstrap';
 
     var sourcePath, webpackVariables;
 

@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var jshintStylish = require('jshint-stylish');
 var args = require('yargs').argv;
-var theme = args.theme || 'bootstrap4';
+var theme = args.theme || 'bootstrap';
 
 module.exports = function(params) {
   return function() {

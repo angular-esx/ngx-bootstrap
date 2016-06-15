@@ -6,7 +6,7 @@ var fs = require('fs');
 
 var args = require('yargs').argv;
 var componentName = args.component;
-var themeName = args.theme || 'bootstrap4';
+var themeName = args.theme || 'bootstrap';
 
 module.exports = function (params) {
   return function () {
@@ -15,7 +15,7 @@ module.exports = function (params) {
     var contents = addSCSS(CORE_SASS);
 
     if (componentName) {
-      contents += getSCSS(componentName);
+      contents += getPathDirectiveSCSS(componentName);
 
     } else {
       fs.readdirSync('./components')
@@ -27,7 +27,7 @@ module.exports = function (params) {
           }
         })
         .forEach(function (component) {
-          contents += getSCSS(component);
+          contents += getPathDirectiveSCSS(component);
         });
     }
     
@@ -48,14 +48,13 @@ function addSCSS(scssName) {
   return "@import " + '"' + scssName + '";' + "\n";
 }
 
-function getSCSS(componentName) {
+function getPathDirectiveSCSS(componentName) {
   var contents = '';
   fs.readdirSync('./components/' + componentName)
     .filter(function (directive) {
       return directive.match(/directive.js$/g);
     }).map(function (directive) {
-      var directiveName = directive.replace('.directive.js', '');
-      return './components/' + componentName + '/scss/' + directive.replace('.directive.js', '') + '.' + themeName + '.scss';
+      return './components/' + componentName + '/themes/ ' + themeName + ' /scss/' + directive.replace('.directive.js', '') + '.scss';
     }).filter(function (directive) {
       try {
         var stats = fs.statSync(directive);

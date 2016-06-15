@@ -25,8 +25,8 @@ function _ngxJumbotronComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-jumbotron',
-  /*Inject template at here*/
-  /*Inject style at here*/
+  template: require('./themes/' + __THEME__ + '/templates/jumbotron.html'),
+  styles: [require('./themes/' + __THEME__  + '/scss/jumbotron.scss')],
   providers: [ngxRenderService],
   properties: ['prefixClass:prefix-class']
 })

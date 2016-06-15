@@ -8,10 +8,11 @@ var webpack = require('webpack');
 var webpackStream = require('webpack-stream');
 var uglify = require('gulp-uglify');
 var mkdirp = require('mkdirp');
+var autoprefixer = require('autoprefixer');
 
 module.exports = function (params) {
   return function () {
-    
+
     var _fileService = params.fileService,
       _componentName = params.args.component,
       _themeName = params.args.theme,
@@ -23,6 +24,8 @@ module.exports = function (params) {
     var sourcePath, webpackVariables;
 
     webpackVariables = {
+
+      __THEME__: JSON.stringify(_themeName),
       /** ngx bootstrap & ngx bootstrap utils **/
       __NGX_BOOTSTRAP__: JSON.stringify('cores/ngx-bootstrap.js'),
       __NGX_BOOTSTRAP_UTILS__: JSON.stringify('cores/ngx-bootstrap.utils.js'),
@@ -57,9 +60,7 @@ module.exports = function (params) {
         sourcePath = gulp.src(_fileService.getDirectiveTestCaseBoot(_directiveName, _testCase));
       }
 
-      injectTemplateStyle(_componentName, _themeName);
-
-      var _componentThemeName = _componentName + '.component.' + _themeName + '.js';
+      var _componentThemeName = _componentName + '.component.js';
 
       webpackVariables.__COMPONENT_FILE__ = JSON.stringify(_componentThemeName);
 
@@ -74,7 +75,6 @@ module.exports = function (params) {
           }
         })
         .map(function (component) {
-          injectTemplateStyle(component, _themeName);
           return "require('../../components/" + component + '/' + component + ".component." + _themeName + ".js')";
         });
 
@@ -87,7 +87,7 @@ module.exports = function (params) {
       fs.writeFileSync('./dist/js/ngx-bootstrap.js', components.join('\n'), { encoding: 'utf8' });
       sourcePath = gulp.src('./dist/js/ngx-bootstrap.js');
     }
-    
+
     return sourcePath.pipe(webpackStream({
       context: __dirname,
       output: {
@@ -98,7 +98,20 @@ module.exports = function (params) {
       },
       plugins: [
         new webpack.DefinePlugin(webpackVariables)
-      ]
+      ],
+      module: {
+        loaders: [
+          { test: /\.html$/, loader: 'html-loader' },
+          { test: /\.css$/, loader: 'raw-loader' },
+          {
+            test: /\.(scss|sass)$/,
+            loader: 'raw-loader!postcss-loader!sass-loader'
+          },
+        ]
+      },
+      postcss: function () {
+        return [autoprefixer];
+      }
     }))
       .pipe(rename('ngx-bootstrap.js'))
       .pipe(gulp.dest('./dist/js'))
@@ -107,54 +120,3 @@ module.exports = function (params) {
       .pipe(gulp.dest('./dist/js'));
   };
 };
-
-function injectTemplateStyle(component, theme) {
-  var componentPath = './components/' + component + '/' + component + '.component.js';
-  var componentDistPath = './components/' + component + '/';
-
-  var templatePath = function (component, theme) {
-    return './components/' + component + '/templates/' + component + '.' + theme + '.html';
-  }
-  var stylePath = function (component, theme) {
-    return './components/' + component + '/css/' + component + '.' + theme + '.css';
-  }
-
-  var injectTemplateKey = '/*Inject template at here*/';
-  var injectStyleKey = '/*Inject style at here*/';
-
-  var insertTemplate = function (component, theme) {
-    var contents = fs.readFileSync(templatePath(component, theme), 'utf8');
-
-    return "template: '" + jsStringEscape(contents) + "',";
-  }
-  var insertStyle = function (component, theme) {
-    var contents = fs.readFileSync(stylePath(component, theme), 'utf8')
-      .replace(/[\r\n]+/g, ' ')
-      .replace(/  +/g, ' ');
-
-    return "styles: ['" + contents + "'],";
-  }
-
-  var styleTheme = stylePath(component, theme);
-  var templateTheme = templatePath(component, theme);
-
-  if (fs.existsSync(styleTheme) || fs.existsSync(templateTheme)) {
-    gulp.src(componentPath)
-      .pipe(insert.transform(function (contents, file) {
-        if (fs.existsSync(styleTheme)) {
-          contents = contents.replace(injectTemplateKey, insertTemplate(component, theme))
-        }
-
-        if (fs.existsSync(templateTheme)) {
-          contents = contents.replace(injectStyleKey, insertStyle(component, theme));
-        }
-
-        return contents;
-      }))
-      .pipe(rename(component + '.component.' + theme + '.js'))
-      .pipe(gulp.dest(componentDistPath));
-
-  } else {
-    console.log("Don't have css or template");
-  }
-}

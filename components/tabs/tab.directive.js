@@ -112,8 +112,6 @@ function _ngxTabDirective() {
 
 module.exports = ng.core.Directive({
   selector: 'ngx-tab',
-  /*Inject template at here*/
-  /*Inject style at here*/
   providers: [ngxRenderService],
   properties: ['id', 'head', 'state', 'prefixClass:prefix-class'],
   queries: {

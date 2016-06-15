@@ -145,8 +145,8 @@ function _ngxAlertComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-alert',
-  /*Inject template at here*/
-  /*Inject style at here*/
+  template: require('./themes/' + __THEME__ + '/templates/alert.html'),
+  styles: [require('./themes/' + __THEME__  + '/scss/alert.scss')],
   providers:[ngxRenderService],
   properties: ['color', 'type', 'position', 'state', 'prefixClass:prefix-class'],
   events: [

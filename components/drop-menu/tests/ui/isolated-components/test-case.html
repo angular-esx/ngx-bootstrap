@@ -6,8 +6,8 @@
 
     <ngx-drop-menu #dropdown01>
       <h6>Dropdown Header</h6>
-      <ngx-item>Acion 01</ngx-item>
-      <ngx-link href="{{href}}">Acion 02</ngx-link>
+      <ngx-item prefix-class="ngx-drop-menu-item">Acion 01</ngx-item>
+      <ngx-link prefix-class="ngx-drop-menu-item" href="{{href}}">Acion 02</ngx-link>
       <hr />
       <div ngx-drop-menu-item state="disabled">Acion 03</div>
     </ngx-drop-menu>
@@ -21,12 +21,12 @@
   <ngx-group>
     <ngx-button ngx-toggle-dropup color="danger" (click)="dropup01.toggleDropup()">Action</ngx-button>
 
-    <ngx-drop-menu #dropup01>
+    <ngx-drop-menu #dropup01 position="left">
       <h6>Dropup Header</h6>
       <a ngx-drop-menu-item>Acion 01</a>
-      <ngx-link href="{{href}}">Acion 02</ngx-link>
+      <ngx-link prefix-class="ngx-drop-menu-item" href="{{href}}">Acion 02</ngx-link>
       <hr />
-      <ngx-item state="disabled">Acion 03</ngx-item>
+      <ngx-item prefix-class="ngx-drop-menu-item" state="disabled">Acion 03</ngx-item>
     </ngx-drop-menu>
   </ngx-group>
 </center>
@@ -42,10 +42,10 @@
 
     <ngx-drop-menu #splitdropdown01>
       <h6>Dropdown Header</h6>
-      <ngx-item>Acion 01</ngx-item>
-      <ngx-link href="{{href}}">Acion 02</ngx-link>
+      <ngx-item prefix-class="ngx-drop-menu-item">Acion 01</ngx-item>
+      <ngx-link prefix-class="ngx-drop-menu-item" href="{{href}}">Acion 02</ngx-link>
       <hr />
-      <ngx-item state="disabled">Acion 03</ngx-item>
+      <ngx-item prefix-class="ngx-drop-menu-item" state="disabled">Acion 03</ngx-item>
     </ngx-drop-menu>
   </ngx-group>
 </center>
@@ -59,12 +59,12 @@
     <ngx-button color="danger" (click)="alert('splitdropup01')">Action</ngx-button>
     <ngx-button ngx-toggle-dropup color="danger" (click)="splitdropup01.toggleDropup()"></ngx-button>
 
-    <ngx-drop-menu #splitdropup01>
+    <ngx-drop-menu #splitdropup01 position="right">
       <h6>Dropup Header</h6>
       <div ngx-drop-menu-item>Acion 01</div>
-      <ngx-link href="{{href}}">Acion 02</ngx-link>
+      <ngx-link prefix-class="ngx-drop-menu-item" href="{{href}}">Acion 02</ngx-link>
       <hr />
-      <ngx-item state="disabled">Acion 03</ngx-item>
+      <ngx-item prefix-class="ngx-drop-menu-item" state="disabled">Acion 03</ngx-item>
     </ngx-drop-menu>
   </ngx-group>
 </center>

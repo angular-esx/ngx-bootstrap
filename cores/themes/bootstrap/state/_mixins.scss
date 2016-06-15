@@ -1,0 +1,15 @@
+﻿@mixin ngx-state($prefix-class, $states){
+  $properties: '';
+
+  @if str-index($states, self) != null { $properties: $properties + '&,'; }
+  @if str-index($states, focus) != null { $properties: $properties + '&:focus,'; }
+  @if str-index($states, hover) != null { $properties: $properties + '&:hover,'; }
+  @if str-index($states, active) != null { $properties: $properties + '&.#{$prefix-class}-state-active,'; }
+  @if str-index($states, disabled) != null { $properties: $properties + '&.#{$prefix-class}-state-disabled,'; }
+
+  @if str-length($properties) > 0 { 
+    $properties: str_slice($properties, 1, str-length($properties) - 1);
+
+    #{$properties} { @content; } 
+  }
+}

@@ -1,38 +1,36 @@
 :host(.ngx-navbar) {
   display: block;
   position: relative;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
 }
 
 :host(.ngx-navbar)::after {
+  content: "";
   display: table;
   clear: both;
-  content: "";
 }
 
-:host(.ngx-navbar.ngx-navbar-position-top),
-:host(.ngx-navbar.ngx-navbar-position-bottom) {
+:host(.ngx-navbar).ngx-navbar-position-top, :host(.ngx-navbar).ngx-navbar-position-bottom {
   position: fixed;
   right: 0;
   left: 0;
-  z-index: 1030;
+  z-index: 1000;
 }
 
-:host(.ngx-navbar.ngx-navbar-position-top) {
+:host(.ngx-navbar).ngx-navbar-position-top {
   top: 0;
 }
 
-:host(.ngx-navbar.ngx-navbar-position-bottom) {
+:host(.ngx-navbar).ngx-navbar-position-bottom {
   bottom: 0;
 }
 
 :host(.ngx-navbar) > .ngx-navbar-divider {
+  color: transparent;
   float: left;
   width: 1px;
-  padding-top: .425rem;
-  padding-bottom: .425rem;
-  margin-right: 1rem;
-  margin-left: 1rem;
+  padding: 0.425rem 0 0.425rem 0;
+  margin: 0 1rem 0 1rem;
   overflow: hidden;
 }
 
@@ -42,18 +40,9 @@
 
 :host(.ngx-navbar) > .ngx-navbar-brand {
   float: left;
-  padding-top: .25rem;
-  padding-bottom: .25rem;
-  margin-right: 1rem;
+  padding: 0.25rem 0 0.25rem 0;
+  margin: 0 0 0 1rem;
   font-size: 1.25rem;
-}
-
-:host(.ngx-navbar) > .ngx-navbar-brand > a:focus,
-:host(.ngx-navbar) > .ngx-navbar-brand > a:hover,
-:host(.ngx-navbar) > .ngx-navbar-brand.ngx-navbar-brand-state-active > a:focus,
-:host(.ngx-navbar) > .ngx-navbar-brand.ngx-navbar-brand-state-active > a:hover,
-:host(.ngx-navbar) > a.ngx-navbar-brand:focus,
-:host(.ngx-navbar) > a.ngx-navbar-brand:hover {
   text-decoration: none;
 }
 
@@ -64,16 +53,7 @@
 :host(.ngx-navbar) > .ngx-navbar-item {
   display: block;
   float: left;
-  padding-top: .425rem;
-  padding-bottom: .425rem;
-}
-
-:host(.ngx-navbar) > .ngx-navbar-item > a:focus,
-:host(.ngx-navbar) > .ngx-navbar-item > a:hover,
-:host(.ngx-navbar) > .ngx-navbar-item.ngx-navbar-item-state-active > a:focus,
-:host(.ngx-navbar) > .ngx-navbar-item.ngx-navbar-item-state-active > a:hover,
-:host(.ngx-navbar) > a.ngx-navbar-item:focus,
-:host(.ngx-navbar) > a.ngx-navbar-item:hover {
+  padding: 0.425rem 0 0.425rem 0;
   text-decoration: none;
 }
 
@@ -81,218 +61,164 @@
   margin-left: 1rem;
 }
 
-:host(.ngx-navbar.ngx-navbar-color-primary) {
-  background-color: #0275d8;
+:host(.ngx-navbar).ngx-navbar-color-primary {
+  background-color: #0270d2;
 }
 
-:host(.ngx-navbar.ngx-navbar-color-primary) > .ngx-navbar-divider {
-  background-color: rgba(255, 255, 255, 0.75);
+:host(.ngx-navbar).ngx-navbar-color-primary > .ngx-navbar-divider {
+  background-color: white;
 }
 
-:host(.ngx-navbar.ngx-navbar-color-primary) > .ngx-navbar-brand,
-:host(.ngx-navbar.ngx-navbar-color-primary) > .ngx-navbar-brand:focus,
-:host(.ngx-navbar.ngx-navbar-color-primary) > .ngx-navbar-brand:hover {
-  color: #fff;
+:host(.ngx-navbar).ngx-navbar-color-primary > .ngx-navbar-brand, :host(.ngx-navbar).ngx-navbar-color-primary > .ngx-navbar-brand:focus, :host(.ngx-navbar).ngx-navbar-color-primary > .ngx-navbar-brand:hover,
+:host(.ngx-navbar).ngx-navbar-color-primary > .ngx-navbar-brand a,
+:host(.ngx-navbar).ngx-navbar-color-primary > .ngx-navbar-brand a:focus,
+:host(.ngx-navbar).ngx-navbar-color-primary > .ngx-navbar-brand a:hover {
+  color: white;
 }
 
-:host(.ngx-navbar.ngx-navbar-color-primary) > .ngx-navbar-item.ngx-navbar-item-state-active,
-:host(.ngx-navbar.ngx-navbar-color-primary) > .ngx-navbar-item.ngx-navbar-item-state-active > a,
-:host(.ngx-navbar.ngx-navbar-color-primary) > .ngx-navbar-item.ngx-navbar-item-state-active > a:focus,
-:host(.ngx-navbar.ngx-navbar-color-primary) > .ngx-navbar-item.ngx-navbar-item-state-active > a:hover,
-:host(.ngx-navbar.ngx-navbar-color-primary) > a.ngx-navbar-item.ngx-navbar-item-state-active,
-:host(.ngx-navbar.ngx-navbar-color-primary) > a.ngx-navbar-item.ngx-navbar-item-state-active:focus,
-:host(.ngx-navbar.ngx-navbar-color-primary) > a.ngx-navbar-item.ngx-navbar-item-state-active:hover {
-  color: #fff;
-}
-
-:host(.ngx-navbar.ngx-navbar-color-primary) > .ngx-navbar-item > a,
-:host(.ngx-navbar.ngx-navbar-color-primary) > a.ngx-navbar-item {
+:host(.ngx-navbar).ngx-navbar-color-primary > .ngx-navbar-item,
+:host(.ngx-navbar).ngx-navbar-color-primary > .ngx-navbar-item a {
   color: rgba(255, 255, 255, 0.5);
 }
 
-:host(.ngx-navbar.ngx-navbar-color-primary) > .ngx-navbar-item > a:focus,
-:host(.ngx-navbar.ngx-navbar-color-primary) > .ngx-navbar-item > a:hover,
-:host(.ngx-navbar.ngx-navbar-color-primary) > a.ngx-navbar-item:focus,
-:host(.ngx-navbar.ngx-navbar-color-primary) > a.ngx-navbar-item:hover {
-  color: rgba(255, 255, 255, 0.75);
+:host(.ngx-navbar).ngx-navbar-color-primary > .ngx-navbar-item:focus, :host(.ngx-navbar).ngx-navbar-color-primary > .ngx-navbar-item:hover, :host(.ngx-navbar).ngx-navbar-color-primary > .ngx-navbar-item.ngx-navbar-item-state-active,
+:host(.ngx-navbar).ngx-navbar-color-primary > .ngx-navbar-item a:focus,
+:host(.ngx-navbar).ngx-navbar-color-primary > .ngx-navbar-item a:hover,
+:host(.ngx-navbar).ngx-navbar-color-primary > .ngx-navbar-item a.ngx-navbar-item-state-active {
+  color: white;
 }
 
-:host(.ngx-navbar.ngx-navbar-color-secondary) {
-  background-color: #e6e6e6;
+:host(.ngx-navbar).ngx-navbar-color-secondary {
+  background-color: #dfdfdf;
 }
 
-:host(.ngx-navbar.ngx-navbar-color-secondary) > .ngx-navbar-divider {
-  background-color: rgba(0, 0, 0, 0.3);
+:host(.ngx-navbar).ngx-navbar-color-secondary > .ngx-navbar-divider {
+  background-color: #373a3c;
 }
 
-:host(.ngx-navbar.ngx-navbar-color-secondary) > .ngx-navbar-brand,
-:host(.ngx-navbar.ngx-navbar-color-secondary) > .ngx-navbar-brand:focus,
-:host(.ngx-navbar.ngx-navbar-color-secondary) > .ngx-navbar-brand:hover {
-  color: rgba(0, 0, 0, 0.8);
+:host(.ngx-navbar).ngx-navbar-color-secondary > .ngx-navbar-brand, :host(.ngx-navbar).ngx-navbar-color-secondary > .ngx-navbar-brand:focus, :host(.ngx-navbar).ngx-navbar-color-secondary > .ngx-navbar-brand:hover,
+:host(.ngx-navbar).ngx-navbar-color-secondary > .ngx-navbar-brand a,
+:host(.ngx-navbar).ngx-navbar-color-secondary > .ngx-navbar-brand a:focus,
+:host(.ngx-navbar).ngx-navbar-color-secondary > .ngx-navbar-brand a:hover {
+  color: #373a3c;
 }
 
-:host(.ngx-navbar.ngx-navbar-color-secondary) > .ngx-navbar-item.ngx-navbar-item-state-active,
-:host(.ngx-navbar.ngx-navbar-color-secondary) > .ngx-navbar-item.ngx-navbar-item-state-active > a,
-:host(.ngx-navbar.ngx-navbar-color-secondary) > .ngx-navbar-item.ngx-navbar-item-state-active > a:focus,
-:host(.ngx-navbar.ngx-navbar-color-secondary) > .ngx-navbar-item.ngx-navbar-item-state-active > a:hover,
-:host(.ngx-navbar.ngx-navbar-color-secondary) > a.ngx-navbar-item.ngx-navbar-item-state-active,
-:host(.ngx-navbar.ngx-navbar-color-secondary) > a.ngx-navbar-item.ngx-navbar-item-state-active:focus,
-:host(.ngx-navbar.ngx-navbar-color-secondary) > a.ngx-navbar-item.ngx-navbar-item-state-active:hover {
-  color: rgba(0, 0, 0, 0.8);
+:host(.ngx-navbar).ngx-navbar-color-secondary > .ngx-navbar-item,
+:host(.ngx-navbar).ngx-navbar-color-secondary > .ngx-navbar-item a {
+  color: rgba(55, 58, 60, 0.5);
 }
 
-:host(.ngx-navbar.ngx-navbar-color-secondary) > .ngx-navbar-item > a,
-:host(.ngx-navbar.ngx-navbar-color-secondary) > a.ngx-navbar-item {
-  color: rgba(0, 0, 0, 0.3);
+:host(.ngx-navbar).ngx-navbar-color-secondary > .ngx-navbar-item:focus, :host(.ngx-navbar).ngx-navbar-color-secondary > .ngx-navbar-item:hover, :host(.ngx-navbar).ngx-navbar-color-secondary > .ngx-navbar-item.ngx-navbar-item-state-active,
+:host(.ngx-navbar).ngx-navbar-color-secondary > .ngx-navbar-item a:focus,
+:host(.ngx-navbar).ngx-navbar-color-secondary > .ngx-navbar-item a:hover,
+:host(.ngx-navbar).ngx-navbar-color-secondary > .ngx-navbar-item a.ngx-navbar-item-state-active {
+  color: #373a3c;
 }
 
-:host(.ngx-navbar.ngx-navbar-color-secondary) > .ngx-navbar-item > a:focus,
-:host(.ngx-navbar.ngx-navbar-color-secondary) > .ngx-navbar-item > a:hover,
-:host(.ngx-navbar.ngx-navbar-color-secondary) > a.ngx-navbar-item:focus,
-:host(.ngx-navbar.ngx-navbar-color-secondary) > a.ngx-navbar-item:hover {
-  color: rgba(0, 0, 0, 0.6);
+:host(.ngx-navbar).ngx-navbar-color-info {
+  background-color: #60c2df;
 }
 
-:host(.ngx-navbar.ngx-navbar-color-success) {
+:host(.ngx-navbar).ngx-navbar-color-info > .ngx-navbar-divider {
+  background-color: white;
+}
+
+:host(.ngx-navbar).ngx-navbar-color-info > .ngx-navbar-brand, :host(.ngx-navbar).ngx-navbar-color-info > .ngx-navbar-brand:focus, :host(.ngx-navbar).ngx-navbar-color-info > .ngx-navbar-brand:hover,
+:host(.ngx-navbar).ngx-navbar-color-info > .ngx-navbar-brand a,
+:host(.ngx-navbar).ngx-navbar-color-info > .ngx-navbar-brand a:focus,
+:host(.ngx-navbar).ngx-navbar-color-info > .ngx-navbar-brand a:hover {
+  color: white;
+}
+
+:host(.ngx-navbar).ngx-navbar-color-info > .ngx-navbar-item,
+:host(.ngx-navbar).ngx-navbar-color-info > .ngx-navbar-item a {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+:host(.ngx-navbar).ngx-navbar-color-info > .ngx-navbar-item:focus, :host(.ngx-navbar).ngx-navbar-color-info > .ngx-navbar-item:hover, :host(.ngx-navbar).ngx-navbar-color-info > .ngx-navbar-item.ngx-navbar-item-state-active,
+:host(.ngx-navbar).ngx-navbar-color-info > .ngx-navbar-item a:focus,
+:host(.ngx-navbar).ngx-navbar-color-info > .ngx-navbar-item a:hover,
+:host(.ngx-navbar).ngx-navbar-color-info > .ngx-navbar-item a.ngx-navbar-item-state-active {
+  color: white;
+}
+
+:host(.ngx-navbar).ngx-navbar-color-success {
   background-color: #5cb85c;
 }
 
-:host(.ngx-navbar.ngx-navbar-color-success) > .ngx-navbar-divider {
-  background-color: rgba(255, 255, 255, 0.75);
+:host(.ngx-navbar).ngx-navbar-color-success > .ngx-navbar-divider {
+  background-color: white;
 }
 
-:host(.ngx-navbar.ngx-navbar-color-success) > .ngx-navbar-brand,
-:host(.ngx-navbar.ngx-navbar-color-success) > .ngx-navbar-brand:focus,
-:host(.ngx-navbar.ngx-navbar-color-success) > .ngx-navbar-brand:hover {
-  color: #fff;
+:host(.ngx-navbar).ngx-navbar-color-success > .ngx-navbar-brand, :host(.ngx-navbar).ngx-navbar-color-success > .ngx-navbar-brand:focus, :host(.ngx-navbar).ngx-navbar-color-success > .ngx-navbar-brand:hover,
+:host(.ngx-navbar).ngx-navbar-color-success > .ngx-navbar-brand a,
+:host(.ngx-navbar).ngx-navbar-color-success > .ngx-navbar-brand a:focus,
+:host(.ngx-navbar).ngx-navbar-color-success > .ngx-navbar-brand a:hover {
+  color: white;
 }
 
-:host(.ngx-navbar.ngx-navbar-color-success) > .ngx-navbar-item.ngx-navbar-item-state-active,
-:host(.ngx-navbar.ngx-navbar-color-success) > .ngx-navbar-item.ngx-navbar-item-state-active > a,
-:host(.ngx-navbar.ngx-navbar-color-success) > .ngx-navbar-item.ngx-navbar-item-state-active > a:focus,
-:host(.ngx-navbar.ngx-navbar-color-success) > .ngx-navbar-item.ngx-navbar-item-state-active > a:hover,
-:host(.ngx-navbar.ngx-navbar-color-success) > a.ngx-navbar-item.ngx-navbar-item-state-active,
-:host(.ngx-navbar.ngx-navbar-color-success) > a.ngx-navbar-item.ngx-navbar-item-state-active:focus,
-:host(.ngx-navbar.ngx-navbar-color-success) > a.ngx-navbar-item.ngx-navbar-item-state-active:hover {
-  color: #fff;
-}
-
-:host(.ngx-navbar.ngx-navbar-color-success) > .ngx-navbar-item > a,
-:host(.ngx-navbar.ngx-navbar-color-success) > a.ngx-navbar-item {
+:host(.ngx-navbar).ngx-navbar-color-success > .ngx-navbar-item,
+:host(.ngx-navbar).ngx-navbar-color-success > .ngx-navbar-item a {
   color: rgba(255, 255, 255, 0.5);
 }
 
-:host(.ngx-navbar.ngx-navbar-color-success) > .ngx-navbar-item > a:focus,
-:host(.ngx-navbar.ngx-navbar-color-success) > .ngx-navbar-item > a:hover,
-:host(.ngx-navbar.ngx-navbar-color-success) > a.ngx-navbar-item:focus,
-:host(.ngx-navbar.ngx-navbar-color-success) > a.ngx-navbar-item:hover {
-  color: rgba(255, 255, 255, 0.75);
+:host(.ngx-navbar).ngx-navbar-color-success > .ngx-navbar-item:focus, :host(.ngx-navbar).ngx-navbar-color-success > .ngx-navbar-item:hover, :host(.ngx-navbar).ngx-navbar-color-success > .ngx-navbar-item.ngx-navbar-item-state-active,
+:host(.ngx-navbar).ngx-navbar-color-success > .ngx-navbar-item a:focus,
+:host(.ngx-navbar).ngx-navbar-color-success > .ngx-navbar-item a:hover,
+:host(.ngx-navbar).ngx-navbar-color-success > .ngx-navbar-item a.ngx-navbar-item-state-active {
+  color: white;
 }
 
-:host(.ngx-navbar.ngx-navbar-color-info) {
-  background-color: #5bc0de;
-}
-
-:host(.ngx-navbar.ngx-navbar-color-info) > .ngx-navbar-divider {
-  background-color: rgba(255, 255, 255, 0.75);
-}
-
-:host(.ngx-navbar.ngx-navbar-color-info) > .ngx-navbar-brand,
-:host(.ngx-navbar.ngx-navbar-color-info) > .ngx-navbar-brand:focus,
-:host(.ngx-navbar.ngx-navbar-color-info) > .ngx-navbar-brand:hover {
-  color: #fff;
-}
-
-:host(.ngx-navbar.ngx-navbar-color-info) > .ngx-navbar-item.ngx-navbar-item-state-active,
-:host(.ngx-navbar.ngx-navbar-color-info) > .ngx-navbar-item.ngx-navbar-item-state-active > a,
-:host(.ngx-navbar.ngx-navbar-color-info) > .ngx-navbar-item.ngx-navbar-item-state-active > a:focus,
-:host(.ngx-navbar.ngx-navbar-color-info) > .ngx-navbar-item.ngx-navbar-item-state-active > a:hover,
-:host(.ngx-navbar.ngx-navbar-color-info) > a.ngx-navbar-item.ngx-navbar-item-state-active,
-:host(.ngx-navbar.ngx-navbar-color-info) > a.ngx-navbar-item.ngx-navbar-item-state-active:focus,
-:host(.ngx-navbar.ngx-navbar-color-info) > a.ngx-navbar-item.ngx-navbar-item-state-active:hover {
-  color: #fff;
-}
-
-:host(.ngx-navbar.ngx-navbar-color-info) > .ngx-navbar-item > a,
-:host(.ngx-navbar.ngx-navbar-color-info) > a.ngx-navbar-item {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-:host(.ngx-navbar.ngx-navbar-color-info) > .ngx-navbar-item > a:focus,
-:host(.ngx-navbar.ngx-navbar-color-info) > .ngx-navbar-item > a:hover,
-:host(.ngx-navbar.ngx-navbar-color-info) > a.ngx-navbar-item:focus,
-:host(.ngx-navbar.ngx-navbar-color-info) > a.ngx-navbar-item:hover {
-  color: rgba(255, 255, 255, 0.75);
-}
-
-:host(.ngx-navbar.ngx-navbar-color-warning) {
+:host(.ngx-navbar).ngx-navbar-color-warning {
   background-color: #f0ad4e;
 }
 
-:host(.ngx-navbar.ngx-navbar-color-warning) > .ngx-navbar-divider {
-  background-color: rgba(255, 255, 255, 0.75);
+:host(.ngx-navbar).ngx-navbar-color-warning > .ngx-navbar-divider {
+  background-color: white;
 }
 
-:host(.ngx-navbar.ngx-navbar-color-warning) > .ngx-navbar-brand,
-:host(.ngx-navbar.ngx-navbar-color-warning) > .ngx-navbar-brand:focus,
-:host(.ngx-navbar.ngx-navbar-color-warning) > .ngx-navbar-brand:hover {
-  color: #fff;
+:host(.ngx-navbar).ngx-navbar-color-warning > .ngx-navbar-brand, :host(.ngx-navbar).ngx-navbar-color-warning > .ngx-navbar-brand:focus, :host(.ngx-navbar).ngx-navbar-color-warning > .ngx-navbar-brand:hover,
+:host(.ngx-navbar).ngx-navbar-color-warning > .ngx-navbar-brand a,
+:host(.ngx-navbar).ngx-navbar-color-warning > .ngx-navbar-brand a:focus,
+:host(.ngx-navbar).ngx-navbar-color-warning > .ngx-navbar-brand a:hover {
+  color: white;
 }
 
-:host(.ngx-navbar.ngx-navbar-color-warning) > .ngx-navbar-item.ngx-navbar-item-state-active,
-:host(.ngx-navbar.ngx-navbar-color-warning) > .ngx-navbar-item.ngx-navbar-item-state-active > a,
-:host(.ngx-navbar.ngx-navbar-color-warning) > .ngx-navbar-item.ngx-navbar-item-state-active > a:focus,
-:host(.ngx-navbar.ngx-navbar-color-warning) > .ngx-navbar-item.ngx-navbar-item-state-active > a:hover,
-:host(.ngx-navbar.ngx-navbar-color-warning) > a.ngx-navbar-item.ngx-navbar-item-state-active,
-:host(.ngx-navbar.ngx-navbar-color-warning) > a.ngx-navbar-item.ngx-navbar-item-state-active:focus,
-:host(.ngx-navbar.ngx-navbar-color-warning) > a.ngx-navbar-item.ngx-navbar-item-state-active:hover {
-  color: #fff;
-}
-
-:host(.ngx-navbar.ngx-navbar-color-warning) > .ngx-navbar-item > a,
-:host(.ngx-navbar.ngx-navbar-color-warning) > a.ngx-navbar-item {
+:host(.ngx-navbar).ngx-navbar-color-warning > .ngx-navbar-item,
+:host(.ngx-navbar).ngx-navbar-color-warning > .ngx-navbar-item a {
   color: rgba(255, 255, 255, 0.5);
 }
 
-:host(.ngx-navbar.ngx-navbar-color-warning) > .ngx-navbar-item > a:focus,
-:host(.ngx-navbar.ngx-navbar-color-warning) > .ngx-navbar-item > a:hover,
-:host(.ngx-navbar.ngx-navbar-color-warning) > a.ngx-navbar-item:focus,
-:host(.ngx-navbar.ngx-navbar-color-warning) > a.ngx-navbar-item:hover {
-  color: rgba(255, 255, 255, 0.75);
+:host(.ngx-navbar).ngx-navbar-color-warning > .ngx-navbar-item:focus, :host(.ngx-navbar).ngx-navbar-color-warning > .ngx-navbar-item:hover, :host(.ngx-navbar).ngx-navbar-color-warning > .ngx-navbar-item.ngx-navbar-item-state-active,
+:host(.ngx-navbar).ngx-navbar-color-warning > .ngx-navbar-item a:focus,
+:host(.ngx-navbar).ngx-navbar-color-warning > .ngx-navbar-item a:hover,
+:host(.ngx-navbar).ngx-navbar-color-warning > .ngx-navbar-item a.ngx-navbar-item-state-active {
+  color: white;
 }
 
-:host(.ngx-navbar.ngx-navbar-color-danger) {
-  background-color: #d9534f;
+:host(.ngx-navbar).ngx-navbar-color-danger {
+  background-color: #da5350;
 }
 
-:host(.ngx-navbar.ngx-navbar-color-danger) > .ngx-navbar-divider {
-  background-color: rgba(255, 255, 255, 0.75);
+:host(.ngx-navbar).ngx-navbar-color-danger > .ngx-navbar-divider {
+  background-color: white;
 }
 
-:host(.ngx-navbar.ngx-navbar-color-danger) > .ngx-navbar-brand,
-:host(.ngx-navbar.ngx-navbar-color-danger) > .ngx-navbar-brand:focus,
-:host(.ngx-navbar.ngx-navbar-color-danger) > .ngx-navbar-brand:hover {
-  color: #fff;
+:host(.ngx-navbar).ngx-navbar-color-danger > .ngx-navbar-brand, :host(.ngx-navbar).ngx-navbar-color-danger > .ngx-navbar-brand:focus, :host(.ngx-navbar).ngx-navbar-color-danger > .ngx-navbar-brand:hover,
+:host(.ngx-navbar).ngx-navbar-color-danger > .ngx-navbar-brand a,
+:host(.ngx-navbar).ngx-navbar-color-danger > .ngx-navbar-brand a:focus,
+:host(.ngx-navbar).ngx-navbar-color-danger > .ngx-navbar-brand a:hover {
+  color: white;
 }
 
-:host(.ngx-navbar.ngx-navbar-color-danger) > .ngx-navbar-item.ngx-navbar-item-state-active,
-:host(.ngx-navbar.ngx-navbar-color-danger) > .ngx-navbar-item.ngx-navbar-item-state-active > a,
-:host(.ngx-navbar.ngx-navbar-color-danger) > .ngx-navbar-item.ngx-navbar-item-state-active > a:focus,
-:host(.ngx-navbar.ngx-navbar-color-danger) > .ngx-navbar-item.ngx-navbar-item-state-active > a:hover,
-:host(.ngx-navbar.ngx-navbar-color-danger) > a.ngx-navbar-item.ngx-navbar-item-state-active,
-:host(.ngx-navbar.ngx-navbar-color-danger) > a.ngx-navbar-item.ngx-navbar-item-state-active:focus,
-:host(.ngx-navbar.ngx-navbar-color-danger) > a.ngx-navbar-item.ngx-navbar-item-state-active:hover {
-  color: #fff;
-}
-
-:host(.ngx-navbar.ngx-navbar-color-danger) > .ngx-navbar-item > a,
-:host(.ngx-navbar.ngx-navbar-color-danger) > a.ngx-navbar-item {
+:host(.ngx-navbar).ngx-navbar-color-danger > .ngx-navbar-item,
+:host(.ngx-navbar).ngx-navbar-color-danger > .ngx-navbar-item a {
   color: rgba(255, 255, 255, 0.5);
 }
 
-:host(.ngx-navbar.ngx-navbar-color-danger) > .ngx-navbar-item > a:focus,
-:host(.ngx-navbar.ngx-navbar-color-danger) > .ngx-navbar-item > a:hover,
-:host(.ngx-navbar.ngx-navbar-color-danger) > a.ngx-navbar-item:focus,
-:host(.ngx-navbar.ngx-navbar-color-danger) > a.ngx-navbar-item:hover {
-  color: rgba(255, 255, 255, 0.75);
+:host(.ngx-navbar).ngx-navbar-color-danger > .ngx-navbar-item:focus, :host(.ngx-navbar).ngx-navbar-color-danger > .ngx-navbar-item:hover, :host(.ngx-navbar).ngx-navbar-color-danger > .ngx-navbar-item.ngx-navbar-item-state-active,
+:host(.ngx-navbar).ngx-navbar-color-danger > .ngx-navbar-item a:focus,
+:host(.ngx-navbar).ngx-navbar-color-danger > .ngx-navbar-item a:hover,
+:host(.ngx-navbar).ngx-navbar-color-danger > .ngx-navbar-item a.ngx-navbar-item-state-active {
+  color: white;
 }

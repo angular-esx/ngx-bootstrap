@@ -1,15 +1,13 @@
-﻿:host(.ngx-pager) {
+:host(.ngx-pager) {
   padding-left: 0;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin: 1rem 0 1rem 0;
   text-align: center;
-  list-style: none;
 }
 
 :host(.ngx-pager)::after {
+  content: "";
   display: table;
   clear: both;
-  content: "";
 }
 
 :host(.ngx-pager) > .ngx-pager-item {
@@ -18,30 +16,22 @@
 
 :host(.ngx-pager) > .ngx-pager-item > a {
   display: inline-block;
-  padding: 5px 14px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 15px;
-}
-
-:host(.ngx-pager) > .ngx-pager-item > a:focus, 
-:host(.ngx-pager) > .ngx-pager-item > a:hover {
   text-decoration: none;
-  background-color: #eceeef;
+  padding: 5px 14px;
+  color: #0270d2;
+  background-color: white;
+  border: 1px solid #dfdfdf;
+  border-radius: 1rem;
 }
 
-:host(.ngx-pager) > .ngx-pager-item.ngx-pager-item-state-disabled > a, 
-:host(.ngx-pager) > .ngx-pager-item.ngx-pager-item-state-disabled > a:focus, 
-:host(.ngx-pager) > .ngx-pager-item.ngx-pager-item-state-disabled > a:hover {
-  color: #818a91;
-  cursor: not-allowed;
-  background-color: #fff;
+:host(.ngx-pager) > .ngx-pager-item > a:focus, :host(.ngx-pager) > .ngx-pager-item > a:hover {
+  background-color: rgba(191, 191, 191, 0.2);
 }
 
-:host(.ngx-pager.ngx-pager-type-aligned) > .ngx-pager-left-item {
+:host(.ngx-pager).ngx-pager-type-aligned > .ngx-pager-left-item {
   float: left;
 }
 
-:host(.ngx-pager.ngx-pager-type-aligned) > .ngx-pager-right-item {
+:host(.ngx-pager).ngx-pager-type-aligned > .ngx-pager-right-item {
   float: right;
 }

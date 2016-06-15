@@ -1,5 +1,6 @@
 ﻿var ngxTypeService = require('./../../../cores/services/type.service.js');
 var ngxStateService = require('./../../../cores/services/state.service.js');
+var ngxPositionService = require('./../../../cores/services/position.service.js');
 var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
 ngxBootstrap = require('./../../../cores/ngx-bootstrap.utils.js');
 
@@ -13,10 +14,12 @@ function _ngxDropMenuService() {
   this.constructor = [
     ngxTypeService,
     ngxStateService,
+    ngxPositionService,
 
-    function ngxDropMenuService(ngxTypeService, ngxStateService) {
+    function ngxDropMenuService(ngxTypeService, ngxStateService, ngxPositionService) {
       ngxBootstrap.shallowCopy(this, ngxTypeService);
       ngxBootstrap.shallowCopy(this, ngxStateService);
+      ngxBootstrap.shallowCopy(this, ngxPositionService);
 
       this.ngxDropMenu$ = new Rx.Observable(function (observer) {
         _observer = observer;

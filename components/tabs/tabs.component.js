@@ -146,8 +146,8 @@ function _ngxTabsComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-tabs',
-  /*Inject template at here*/
-  /*Inject style at here*/
+  template: require('./themes/' + __THEME__ + '/templates/tabs.html'),
+  styles: [require('./themes/' + __THEME__  + '/scss/tabs.scss')],
   directives: [ngxTranscludeDirective],
   providers: [ngxRenderService],
   properties: ['type', 'prefixClass:prefix-class'],

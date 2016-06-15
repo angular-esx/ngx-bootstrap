@@ -4,7 +4,7 @@ var runSequence = require('run-sequence');
 module.exports = function (params) {
   return function () {
     
-    var _themeName = params.args.theme || 'bootstrap4';
+    var _themeName = params.args.theme || 'bootstrap';
 
     gulp.watch([
       './components/**/*.js',

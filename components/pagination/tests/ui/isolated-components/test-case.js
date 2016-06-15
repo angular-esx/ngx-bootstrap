@@ -16,13 +16,11 @@ function _testCase() {
     this.SIZES = ngxPaginationService.getSizes();
   }];
 
-  this.setLinkPage = function (event) {
+  this.setPage = function (event) {
     event.page.link = 'https://mywebsite.com/page/' + event.page.number;
   };
 
   this.changePage = function (event) {
-    event.preventDefault();
-
     if (event.page.number % 2 === 0) {
       event.cancel();
       alert('Canceled changing page');

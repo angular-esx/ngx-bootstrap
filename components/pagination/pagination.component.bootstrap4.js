@@ -29,7 +29,7 @@ function _ngxPaginationComponent() {
       if (elementRef) {
         this.ngxPaginationService = ngxPaginationService;
 
-        this.setLinkPageEmitter = new ng.core.EventEmitter();
+        this.setPageEmitter = new ng.core.EventEmitter();
         this.changePageEmitter = new ng.core.EventEmitter(false);
       }
     }
@@ -51,7 +51,7 @@ function _ngxPaginationComponent() {
     this.startPage = _getStartPage(this.pageSize, this.currentPage);
 
     this.pageBuilder = new _pageBuilder();
-    this.pageBuilder.build(this.totalPages, this.pageSize, this.startPage, this.onSetLinkPage);
+    this.pageBuilder.build(this.totalPages, this.pageSize, this.startPage, this.setPageEmitter);
   };
 
   this.prev = function ($event) {
@@ -66,19 +66,21 @@ function _ngxPaginationComponent() {
     if (page < 1 || page > this.totalPages) { return; }
 
     var _isCanceled = false;
-    if (this.onChangePage) {
-      this.onChangePage.emit({
-        page: page,
-        cancel: function () { _isCanceled = true; },
-        preventDefault: function () { $event.preventDefault(); }
-      });
-    }
+    this.changePageEmitter.emit({
+      page: page,
+      cancel: function () {
+        _isCanceled = true;
+
+        $event.preventDefault();
+        $event.stopPropagation();
+      }
+    });
 
     if (_isCanceled) { return; }
 
     this.currentPage = page.number;
     this.startPage = _getStartPage(this.pageSize, this.currentPage);
-    this.pageBuilder.build(this.totalPages, this.pageSize, this.startPage, this.onSetLinkPage);
+    this.pageBuilder.build(this.totalPages, this.pageSize, this.startPage, this.setPageEmitter);
   };
 
   function _getStartPage(pageSize, currentPage) {
@@ -91,14 +93,14 @@ function _ngxPaginationComponent() {
     var _sortedPages = [];
     this.pages = [];
 
-    this.build = function (totalPages, pageSize, startPage, onSetLinkPage) {
+    this.build = function (totalPages, pageSize, startPage, setPageEmitter) {
       var _page;
       for (var i = startPage; i <= totalPages; i++) {
         if (i === startPage + pageSize) { break; }
         if (_indexedPages[i]) { continue; }
 
         _page = { number: i, link: '#' };
-        if (onSetLinkPage) { onSetLinkPage.emit({ page: _page }); }
+        setPageEmitter.emit({ page: _page });
 
         _indexedPages[i] = _page;
 
@@ -114,6 +116,8 @@ function _ngxPaginationComponent() {
         if (page.number === startPage + pageSize) { return true; }
 
         if (page.number >= startPage) {
+
+
           _tempPages.push(page);
         }
       });
@@ -135,7 +139,7 @@ function _ngxPaginationComponent() {
 module.exports = ng.core.Component({
   selector: 'ngx-pagination',
   template: '﻿<ngx-link href=\"#\" *ngIf=\"showPrevious\" prefix-class=\"ngx-page-item\" (click)=\"prev($event)\">&laquo;</ngx-link>\r\n\r\n<ngx-link *ngFor=\"let page of pageBuilder.pages\" \r\n          href=\"{{page.link}}\" \r\n          state=\"{{page.number === currentPage ? \'active\' : \'\'}}\" \r\n          prefix-class=\"ngx-page-item\"\r\n          (click)=\"changePage($event, page)\">{{page.number}}\r\n</ngx-link>\r\n\r\n<ngx-link href=\"#\" *ngIf=\"showNext\" prefix-class=\"ngx-page-item\" (click)=\"next($event)\">&raquo;</ngx-link>\r\n',
-  styles: ['﻿:host(.ngx-pagination) { display: inline-block; padding-left: 0; margin-top: 1rem; margin-bottom: 1rem; border-radius: .25rem; } :host(.ngx-pagination) > .ngx-page-item { display: inline; } :host(.ngx-pagination) > .ngx-page-item:first-child > a { margin-left: 0; border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; } :host(.ngx-pagination) > .ngx-page-item:last-child > a { border-top-right-radius: .25rem; border-bottom-right-radius: .25rem; } :host(.ngx-pagination) > .ngx-page-item.ngx-page-item-state-active > a, :host(.ngx-pagination) > .ngx-page-item.ngx-page-item-state-active > a:focus, :host(.ngx-pagination) > .ngx-page-item.ngx-page-item-state-active > a:hover { z-index: 2; color: #fff; cursor: default; background-color: #0275d8; border-color: #0275d8; } :host(.ngx-pagination) > .ngx-page-item.ngx-page-item-state-disabled > a, :host(.ngx-pagination) > .ngx-page-item.ngx-page-item-state-disabled > a:focus, :host(.ngx-pagination) > .ngx-page-item.ngx-page-item-state-disabled > a:hover { color: #818a91; cursor: not-allowed; background-color: #fff; border-color: #ddd; } :host(.ngx-pagination) > .ngx-page-item > a { position: relative; float: left; padding: .5rem .75rem; margin-left: -1px; line-height: 1.5; color: #0275d8; text-decoration: none; background-color: #fff; border: 1px solid #ddd; } :host(.ngx-pagination) > .ngx-page-item > a:focus, :host(.ngx-pagination) > .ngx-page-item > a:hover { color: #014c8c; background-color: #eceeef; border-color: #ddd; } :host(.ngx-pagination.ngx-pagination-size-large) > .ngx-page-item > a { padding: .75rem 1.5rem; font-size: 1.25rem; line-height: 1.333333; } :host(.ngx-pagination.ngx-pagination-size-large) > .ngx-page-item:first-child > a { border-top-left-radius: .3rem; border-bottom-left-radius: .3rem; } :host(.ngx-pagination.ngx-pagination-size-large) > .ngx-page-item:last-child > a { border-top-right-radius: .3rem; border-bottom-right-radius: .3rem; } :host(.ngx-pagination.ngx-pagination-size-small) > .ngx-page-item > a { padding: .275rem .75rem; font-size: .875rem; line-height: 1.5; } :host(.ngx-pagination.ngx-pagination-size-small) > .ngx-page-item:first-child > a { border-top-left-radius: .2rem; border-bottom-left-radius: .2rem; } :host(.ngx-pagination.ngx-pagination-size-small) > .ngx-page-item:last-child > a { border-top-right-radius: .2rem; border-bottom-right-radius: .2rem; }'],
+  styles: [':host(.ngx-pagination) { display: inline-block; padding-left: 0; margin: 1rem 0 1rem 0; border-radius: 0.25rem; } :host(.ngx-pagination) > .ngx-page-item { display: inline; } :host(.ngx-pagination) > .ngx-page-item:first-child > a { margin-left: 0; border-bottom-left-radius: 0.25rem; border-top-left-radius: 0.25rem; } :host(.ngx-pagination) > .ngx-page-item:last-child > a { border-bottom-right-radius: 0.25rem; border-top-right-radius: 0.25rem; } :host(.ngx-pagination) > .ngx-page-item > a { line-height: 1.5; text-decoration: none; position: relative; float: left; padding: 0.5rem 0.75rem; margin-left: -1px; color: #0270d2; background-color: white; border: 1px solid #dfdfdf; } :host(.ngx-pagination) > .ngx-page-item > a:focus, :host(.ngx-pagination) > .ngx-page-item > a:hover { color: #0270d2; background-color: rgba(191, 191, 191, 0.2); border-color: #dfdfdf; } :host(.ngx-pagination) > .ngx-page-item.ngx-page-item-state-active > a, :host(.ngx-pagination) > .ngx-page-item.ngx-page-item-state-active > a:focus, :host(.ngx-pagination) > .ngx-page-item.ngx-page-item-state-active > a:hover { color: white; background-color: #0270d2; border-color: #0270d2; z-index: 2; cursor: default; } :host(.ngx-pagination).ngx-pagination-size-small > .ngx-page-item > a { font-size: 0.875rem; line-height: 1.5; padding: 0.275rem 0.75rem; } :host(.ngx-pagination).ngx-pagination-size-small > .ngx-page-item:first-child > a { border-bottom-left-radius: 0.2rem; border-top-left-radius: 0.2rem; } :host(.ngx-pagination).ngx-pagination-size-small > .ngx-page-item:last-child > a { border-bottom-right-radius: 0.2rem; border-top-right-radius: 0.2rem; } :host(.ngx-pagination).ngx-pagination-size-large > .ngx-page-item > a { font-size: 1.25rem; line-height: 1.33333; padding: 0.75rem 1.5rem; } :host(.ngx-pagination).ngx-pagination-size-large > .ngx-page-item:first-child > a { border-bottom-left-radius: 0.3rem; border-top-left-radius: 0.3rem; } :host(.ngx-pagination).ngx-pagination-size-large > .ngx-page-item:last-child > a { border-bottom-right-radius: 0.3rem; border-top-right-radius: 0.3rem; } '],
   directives: [ngxLinkComponent],
   providers: [ngxRenderService, ngxLinkService],
   properties: [
@@ -147,6 +151,6 @@ module.exports = ng.core.Component({
     'showNext: show-next',
     'prefixClass: prefix-class'
   ],
-  events: ['setLinkPageEmitter: setLinkPage', 'changePageEmitter: changePage']
+  events: ['setPageEmitter: setPage', 'changePageEmitter: changePage']
 })
 .Class(new _ngxPaginationComponent());

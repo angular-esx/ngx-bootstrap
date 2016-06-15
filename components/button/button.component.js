@@ -31,8 +31,8 @@ function _ngxButtonComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-button',
-  /*Inject template at here*/
-  /*Inject style at here*/
+  template: require('./themes/' + __THEME__ + '/templates/button.html'),
+  styles: [require('./themes/' + __THEME__  + '/scss/button.scss')],
   providers:[ngxRenderService],
   properties: ['color', 'size', 'state', 'prefixClass:prefix-class']
 })

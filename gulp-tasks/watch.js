@@ -3,25 +3,22 @@ var runSequence = require('run-sequence');
 
 module.exports = function (params) {
   return function () {
-    
-    var _themeName = params.args.theme || 'bootstrap';
 
     gulp.watch([
       './components/**/*.js',
-      '!./components/**/*.' + _themeName + '.js',
       './directives/**/*.js',
       './cores/**/*.js',
       './ngx-bootstrap.js',
       './ngx-bootstrap.utils.js',
     ], function () {
-      runSequence('lint', 'webpack', 'clean-scripts');
+      runSequence('lint', 'webpack');
     });
 
     gulp.watch([
       './components/**/*.html',
       './directives/**/*.html',
     ], function () {
-      runSequence('webpack', 'clean-scripts');
+      runSequence('webpack');
     });
 
     gulp.watch([
@@ -29,7 +26,7 @@ module.exports = function (params) {
       './scss/**/*.scss',
       './cores/scss/**/*.scss'
     ], function () {
-      runSequence('scss', 'webpack', 'clean-scripts');
+      runSequence('scss', 'webpack');
     });
   };
 };

@@ -31,8 +31,8 @@ function _ngxLabelComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-label',
-  /*Inject template at here*/
-  /*Inject style at here*/
+  template: require('./themes/' + __THEME__ + '/templates/label.html'),
+  styles: [require('./themes/' + __THEME__  + '/scss/label.scss')],
   providers: [ngxRenderService],
   properties: ['color', 'type', 'prefixClass:prefix-class']
 })

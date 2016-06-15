@@ -31,8 +31,8 @@ function _breadcrumbComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-breadcrumb',
-  /*Inject template at here*/
-  /*Inject style at here*/
+  template: require('./themes/' + __THEME__ + '/templates/breadcrumb.html'),
+  styles: [require('./themes/' + __THEME__  + '/scss/breadcrumb.scss')],
   providers: [ngxRenderService],
   properties: ['color', 'prefixClass:prefix-class']
 })

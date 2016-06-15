@@ -16,13 +16,13 @@ function _testCase() {
     this.TYPES = ngxPagerService.getTypes();
   }];
 
-  this.setLinkPage = function (event) {
+  this.setPage = function (event) {
     event.setPrevLink('https://mywebsite.com/page/' + event.currentPage - 1);
     event.setNextLink('https://mywebsite.com/page/' + event.currentPage + 1);
   };
 
   this.changePage = function (event) {
-    event.preventDefault();
+    event.cancel();
 
     alert('Changed to page: ' + event.page.number);
   };

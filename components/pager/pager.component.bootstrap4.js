@@ -28,7 +28,7 @@ function _ngxPagerComponent() {
       if (elementRef) {
         this.ngxPagerService = ngxPagerService;
 
-        this.setLinkPageEmitter = new ng.core.EventEmitter();
+        this.setPageEmitter = new ng.core.EventEmitter();
         this.changePageEmitter = new ng.core.EventEmitter(false);
       }
     }
@@ -45,37 +45,39 @@ function _ngxPagerComponent() {
     if (this.showNext === undefined || this.showNext === null) { this.showNext = true; }
 
     this.pageBuilder = new _pageBuilder();
-    this.pageBuilder.build(this.totalPages, this.currentPage, this.setLinkPageEmitter);
+    this.pageBuilder.build(this.totalPages, this.currentPage, this.setPageEmitter);
   };
 
   this.prev = function ($event) {
     if (_changePage($event, this.pageBuilder.prevPage, this.changePageEmitter)) {
       this.currentPage = this.pageBuilder.prevPage.number;
-      this.pageBuilder.build(this.totalPages, this.currentPage, this.setLinkPageEmitter);
+      this.pageBuilder.build(this.totalPages, this.currentPage, this.setPageEmitter);
     }
   };
 
   this.next = function ($event) {
     if (_changePage($event, this.pageBuilder.nextPage, this.changePageEmitter)) {
       this.currentPage = this.pageBuilder.nextPage.number;
-      this.pageBuilder.build(this.totalPages, this.currentPage, this.setLinkPageEmitter);
+      this.pageBuilder.build(this.totalPages, this.currentPage, this.setPageEmitter);
     }
   };
 
-  function _changePage($event, page, onChangePage) {
+  function _changePage($event, page, changePageEmitter) {
     if (!page || !page.number) {
       $event.preventDefault();
       return false;
     }
 
     var _isCanceled = false;
-    if (onChangePage) {
-      onChangePage.emit({
-        page: page,
-        cancel: function () { _isCanceled = true; },
-        preventDefault: function () { $event.preventDefault(); }
-      });
-    }
+    changePageEmitter.emit({
+      page: page,
+      cancel: function () {
+        _isCanceled = true;
+
+        $event.preventDefault();
+        $event.stopPropagation();
+      }
+    });
 
     return !_isCanceled;
   }
@@ -84,7 +86,7 @@ function _ngxPagerComponent() {
     this.prevPage = { number: null, link: '#' };
     this.nextPage = { number: null, link: '#' };
 
-    this.build = function (totalPages, currentPage, onSetLinkPage) {
+    this.build = function (totalPages, currentPage, setPageEmitter) {
       this.prevPage.number = currentPage - 1 > 0 ? currentPage - 1 : null;
       this.prevPage.link = '#';
 
@@ -92,7 +94,7 @@ function _ngxPagerComponent() {
       this.nextPage.link = '#';
 
       var _self = this;
-      onSetLinkPage.emit({
+      setPageEmitter.emit({
         currentPage: currentPage,
         setPrevLink: function (link) {
           if (link && _self.prevPage.number > 0) { _self.prevPage.link = link; }
@@ -113,7 +115,7 @@ function _ngxPagerComponent() {
 module.exports = ng.core.Component({
   selector: 'ngx-pager',
   template: '﻿<ngx-link *ngIf=\"showPrevious\" \r\n          class=\"ngx-pager-left-item\"\r\n          prefix-class=\"ngx-pager-item\"\r\n          href=\"pageBuilder.prevPage.link\" \r\n          (click)=\"prev($event)\">Prev</ngx-link>\r\n\r\n<ngx-link *ngIf=\"showNext\" \r\n          class=\"ngx-pager-right-item\"\r\n          prefix-class=\"ngx-pager-item\"\r\n          href=\"pageBuilder.nextPage.link\" \r\n          (click)=\"next($event)\">Next</ngx-link>',
-  styles: ['﻿:host(.ngx-pager) { padding-left: 0; margin-top: 1rem; margin-bottom: 1rem; text-align: center; list-style: none; } :host(.ngx-pager)::after { display: table; clear: both; content: ""; } :host(.ngx-pager) > .ngx-pager-item { display: inline; } :host(.ngx-pager) > .ngx-pager-item > a { display: inline-block; padding: 5px 14px; background-color: #fff; border: 1px solid #ddd; border-radius: 15px; } :host(.ngx-pager) > .ngx-pager-item > a:focus, :host(.ngx-pager) > .ngx-pager-item > a:hover { text-decoration: none; background-color: #eceeef; } :host(.ngx-pager) > .ngx-pager-item.ngx-pager-item-state-disabled > a, :host(.ngx-pager) > .ngx-pager-item.ngx-pager-item-state-disabled > a:focus, :host(.ngx-pager) > .ngx-pager-item.ngx-pager-item-state-disabled > a:hover { color: #818a91; cursor: not-allowed; background-color: #fff; } :host(.ngx-pager.ngx-pager-type-aligned) > .ngx-pager-left-item { float: left; } :host(.ngx-pager.ngx-pager-type-aligned) > .ngx-pager-right-item { float: right; }'],
+  styles: [':host(.ngx-pager) { padding-left: 0; margin: 1rem 0 1rem 0; text-align: center; } :host(.ngx-pager)::after { content: ""; display: table; clear: both; } :host(.ngx-pager) > .ngx-pager-item { display: inline; } :host(.ngx-pager) > .ngx-pager-item > a { display: inline-block; text-decoration: none; padding: 5px 14px; color: #0270d2; background-color: white; border: 1px solid #dfdfdf; border-radius: 1rem; } :host(.ngx-pager) > .ngx-pager-item > a:focus, :host(.ngx-pager) > .ngx-pager-item > a:hover { background-color: rgba(191, 191, 191, 0.2); } :host(.ngx-pager).ngx-pager-type-aligned > .ngx-pager-left-item { float: left; } :host(.ngx-pager).ngx-pager-type-aligned > .ngx-pager-right-item { float: right; } '],
   directives: [ngxLinkComponent],
   providers: [ngxRenderService, ngxLinkService],
   properties: [
@@ -124,6 +126,6 @@ module.exports = ng.core.Component({
     'showNext: show-next',
     'prefixClass: prefix-class'
   ],
-  events: ['setLinkPageEmitter: setLinkPage', 'changePageEmitter: changePage']
+  events: ['setPageEmitter: setPage', 'changePageEmitter: changePage']
 })
 .Class(new _ngxPagerComponent());

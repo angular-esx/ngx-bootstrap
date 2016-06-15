@@ -28,7 +28,7 @@ function _ngxPagerComponent() {
       if (elementRef) {
         this.ngxPagerService = ngxPagerService;
 
-        this.setLinkPageEmitter = new ng.core.EventEmitter();
+        this.setPageEmitter = new ng.core.EventEmitter();
         this.changePageEmitter = new ng.core.EventEmitter(false);
       }
     }
@@ -45,37 +45,39 @@ function _ngxPagerComponent() {
     if (this.showNext === undefined || this.showNext === null) { this.showNext = true; }
 
     this.pageBuilder = new _pageBuilder();
-    this.pageBuilder.build(this.totalPages, this.currentPage, this.setLinkPageEmitter);
+    this.pageBuilder.build(this.totalPages, this.currentPage, this.setPageEmitter);
   };
 
   this.prev = function ($event) {
     if (_changePage($event, this.pageBuilder.prevPage, this.changePageEmitter)) {
       this.currentPage = this.pageBuilder.prevPage.number;
-      this.pageBuilder.build(this.totalPages, this.currentPage, this.setLinkPageEmitter);
+      this.pageBuilder.build(this.totalPages, this.currentPage, this.setPageEmitter);
     }
   };
 
   this.next = function ($event) {
     if (_changePage($event, this.pageBuilder.nextPage, this.changePageEmitter)) {
       this.currentPage = this.pageBuilder.nextPage.number;
-      this.pageBuilder.build(this.totalPages, this.currentPage, this.setLinkPageEmitter);
+      this.pageBuilder.build(this.totalPages, this.currentPage, this.setPageEmitter);
     }
   };
 
-  function _changePage($event, page, onChangePage) {
+  function _changePage($event, page, changePageEmitter) {
     if (!page || !page.number) {
       $event.preventDefault();
       return false;
     }
 
     var _isCanceled = false;
-    if (onChangePage) {
-      onChangePage.emit({
-        page: page,
-        cancel: function () { _isCanceled = true; },
-        preventDefault: function () { $event.preventDefault(); }
-      });
-    }
+    changePageEmitter.emit({
+      page: page,
+      cancel: function () {
+        _isCanceled = true;
+
+        $event.preventDefault();
+        $event.stopPropagation();
+      }
+    });
 
     return !_isCanceled;
   }
@@ -84,7 +86,7 @@ function _ngxPagerComponent() {
     this.prevPage = { number: null, link: '#' };
     this.nextPage = { number: null, link: '#' };
 
-    this.build = function (totalPages, currentPage, onSetLinkPage) {
+    this.build = function (totalPages, currentPage, setPageEmitter) {
       this.prevPage.number = currentPage - 1 > 0 ? currentPage - 1 : null;
       this.prevPage.link = '#';
 
@@ -92,7 +94,7 @@ function _ngxPagerComponent() {
       this.nextPage.link = '#';
 
       var _self = this;
-      onSetLinkPage.emit({
+      setPageEmitter.emit({
         currentPage: currentPage,
         setPrevLink: function (link) {
           if (link && _self.prevPage.number > 0) { _self.prevPage.link = link; }
@@ -124,6 +126,6 @@ module.exports = ng.core.Component({
     'showNext: show-next',
     'prefixClass: prefix-class'
   ],
-  events: ['setLinkPageEmitter: setLinkPage', 'changePageEmitter: changePage']
+  events: ['setPageEmitter: setPage', 'changePageEmitter: changePage']
 })
 .Class(new _ngxPagerComponent());

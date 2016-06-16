@@ -1,8 +1,8 @@
-﻿var ngxColorService = require('./../../../cores/services/color.service.js');
-var ngxStateService = require('./../../../cores/services/state.service.js');
-var ngxPositionService = require('./../../../cores/services/position.service.js');
-var ngxBootstrap = require('./../../../' + __NGX_BOOTSTRAP__);
-ngxBootstrap = require('./../../../' + __NGX_BOOTSTRAP_UTILS__);
+﻿var ngxColorService = require('colorService');
+var ngxStateService = require('stateService');
+var ngxPositionService = require('positionService');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _ngxNavbarService() {
   this.constructor = [

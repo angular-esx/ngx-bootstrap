@@ -1,8 +1,8 @@
-﻿var ngxNavbarService = require('./../../components/navbar/services/navbar.service.js');
-var ngxBaseComponent = require('./../../cores/components/base/base.component.js');
-var ngxRenderService = require('./../../cores/services/render.service.js');
-var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
+﻿var ngxNavbarService = require('components/navbar/services/navbar.service.js');
+var ngxBaseComponent = require('baseComponent');
+var ngxRenderService = require('renderService');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _ngxNavbarComponent() {
   var _base;
@@ -46,8 +46,8 @@ function _ngxNavbarComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-navbar',
-  /*Inject template at here*/
-  /*Inject style at here*/
+  template: require('./themes/' + __THEME__ + '/templates/navbar.html'),
+  styles: [require('./themes/' + __THEME__  + '/scss/navbar.scss')],
   providers: [ngxRenderService],
   properties: ['color', 'position', 'prefixClass:prefix-class']
 })

@@ -1,4 +1,4 @@
-﻿var ngxNavbarService = require('./../../components/navbar/services/navbar.service.js');
+﻿var ngxNavbarService = require('components/navbar/services/navbar.service.js');
 
 function _ngxNavbarItemDirective() {
   this.constructor = [

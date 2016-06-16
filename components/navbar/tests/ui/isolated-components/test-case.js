@@ -1,20 +1,15 @@
-﻿var ngxNavbarComponent = require('./../../../' + __COMPONENT_FILE__);
-var ngxNavbarBrandDirective = require('./../../../navbar-brand.directive.js');
-var ngxNavbarItemDirective = require('./../../../navbar-item.directive.js');
-var ngxNavbarDividerDirective = require('./../../../navbar-divider.directive.js');
-var ngxNavbarService = require('./../../../services/navbar.service.js');
-var ngxColorService = require('./../../../../../' + __COLOR_SERVICE__);
-var ngxTypeService = require('./../../../../../cores/services/type.service.js');
-var ngxSizeService = require('./../../../../../cores/services/size.service.js');
-var ngxStateService = require('./../../../../../cores/services/state.service.js');
-var ngxPositionService = require('./../../../../../cores/services/position.service.js');
-var ngxLinkComponent = require('./../../../../../cores/components/link/link.component.js');
-var ngxLinkService = require('./../../../../../cores/components/link/services/link.service.js');
-var ngxItemComponent = require('./../../../../../cores/components/item/item.component.js');
-var ngxItemService = require('./../../../../../cores/components/item/services/item.service.js');
-var ngxWindowService = require('./../../../../../cores/services/window.service.js');
-var ngxBootstrap = require('./../../../../../' + __NGX_BOOTSTRAP__);
-ngxBootstrap = require('./../../../../../' + __NGX_BOOTSTRAP_UTILS__);
+﻿var ngxNavbarComponent = require('components/navbar/navbar.component.js');
+var ngxNavbarBrandDirective = require('components/navbar/navbar-brand.directive.js');
+var ngxNavbarItemDirective = require('components/navbar/navbar-item.directive.js');
+var ngxNavbarDividerDirective = require('components/navbar/navbar-divider.directive.js');
+var ngxNavbarService = require('components/navbar/services/navbar.service.js');
+var ngxCoreService = require('coreService');
+var ngxLinkComponent = require('cores/components/link/link.component.js');
+var ngxLinkService = require('cores/components/link/services/link.service.js');
+var ngxItemComponent = require('cores/components/item/item.component.js');
+var ngxItemService = require('cores/components/item/services/item.service.js');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _testCase() {
   this.constructor = [ngxNavbarService, function (ngxNavbarService) {
@@ -34,12 +29,7 @@ module.exports = ng.core.Component({
     ngxNavbarDividerDirective
   ],
   providers: [
-    ngxColorService,
-    ngxTypeService,
-    ngxSizeService,
-    ngxStateService,
-    ngxPositionService,
-    ngxWindowService,
+    ngxCoreService,
     ngxNavbarService,
     ngxLinkService,
     ngxItemService

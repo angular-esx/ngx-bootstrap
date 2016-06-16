@@ -1,6 +1,6 @@
-﻿var ngxSizeService = require('./../../../cores/services/size.service.js');
-var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../../cores/ngx-bootstrap.utils.js');
+﻿var ngxSizeService = require('sizeService');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _ngxPaginationService() {
   this.constructor = [

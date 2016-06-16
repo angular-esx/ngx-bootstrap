@@ -1,6 +1,6 @@
 module.exports = {
   DIRECTIVES: [
-    require('./' + __COMPONENT_FILE__)
+    require('./label.component.js')
   ],
   SERVICE: require('./services/label.service.js')
 };

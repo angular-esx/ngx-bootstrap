@@ -1,18 +1,8 @@
-﻿var ngxPopoverDirective = require('./../../../popover.directive.js');
-var ngxPopoverTemplateDirective = require('./../../../popover-template.directive.js');
-var ngxPopoverService = require('./../../../services/popover.service.js');
-var ngxAnimationService = require('./../../../../../cores/services/animation.service.js');
-var ngxStateService = require('./../../../../../cores/services/state.service.js');
-var ngxPositionService = require('./../../../../../cores/services/position.service.js');
-var ngxWindowService = require('./../../../../../cores/services/window.service.js');
-var ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.utils.js');
-
-var ngxLinkComponent = require('./../../../../../cores/components/link/link.component.js');
-var ngxLinkService = require('./../../../../../cores/components/link/services/link.service.js');
+﻿var NGX_POPOVER = require('components/popover/index.js');
+var NGX_CORE_SERVICES = require('coreService');
 
 function _testCase() {
-  this.constructor = [ngxPopoverService, function (ngxPopoverService) {
+  this.constructor = [NGX_POPOVER.SERVICE, function (ngxPopoverService) {
     this.ngxPopoverService = ngxPopoverService;
 
     this.STATES = ngxPopoverService.getStates();
@@ -67,17 +57,11 @@ module.exports = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/popover/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxPopoverDirective,
-    ngxPopoverTemplateDirective,
-    ngxLinkComponent
+    NGX_POPOVER.DIRECTIVES
   ],
   providers: [
-    ngxAnimationService,
-    ngxStateService,
-    ngxPositionService,
-    ngxWindowService,
-    ngxPopoverService,
-    ngxLinkService
+    NGX_POPOVER.SERVICE,
+    NGX_CORE_SERVICES
   ],
   queries: {
     popoverElement: new ng.core.ViewChild('myPopover', { read: ng.core.ElementRef }),

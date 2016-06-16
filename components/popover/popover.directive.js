@@ -1,9 +1,9 @@
 ﻿var ngxPopoverOptionClass = require('./classes/popover-option.class.js');
-var ngxPopoverComponent = require('./' + __COMPONENT_FILE__);
+var ngxPopoverComponent = require('./popover.component.js');
 var ngxPopoverService = require('./services/popover.service.js');
 var ngxTooltipDirective = require('./../../components/tooltip/tooltip.directive.js');
-var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _ngxPopoverDirective() {
   var _base,
@@ -80,7 +80,7 @@ function _ngxPopoverDirective() {
       position: this.position || this.ngxPopoverService.getPositions().TOP,
       delay: this.delay
     });
-
+    
     var _binding = ng.core.ReflectiveInjector.resolve([
       new ng.core.Provider(ngxPopoverService, { useValue: this.ngxPopoverService }),
       new ng.core.Provider(ngxPopoverOptionClass, { useValue: _options })

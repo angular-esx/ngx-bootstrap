@@ -1,6 +1,4 @@
 ﻿var ngxPopoverService = require('./services/popover.service.js');
-var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 
 function _ngxPopoverTemplateDirective() {
   this.constructor = [

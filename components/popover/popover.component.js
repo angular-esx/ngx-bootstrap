@@ -1,10 +1,10 @@
 ﻿var popoverOptionClass = require('./classes/popover-option.class.js');
 var ngxPopoverService = require('./services/popover.service.js');
 var ngxTooltipComponent = require('./../../components/tooltip/tooltip.component.js');
-var ngxWindowService = require('./../../cores/services/window.service.js');
-var ngxRenderService = require('./../../cores/services/render.service.js');
-var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
+var ngxRenderService = require('renderService');
+var ngxWindowService = require('windowService');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _ngxPopoverComponent() {
   var _base;
@@ -51,8 +51,8 @@ function _ngxPopoverComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-popover',
-  /*Inject template at here*/
-  /*Inject style at here*/
+  template: require('./themes/' + __THEME__ + '/templates/popover.html'),
+  styles: [require('./themes/' + __THEME__ + '/scss/popover.scss')],
   providers: [ngxRenderService],
   queries: {
     templateElement: new ng.core.ViewChild('template', { read: ng.core.ViewContainerRef }),

@@ -1,10 +1,10 @@
 ﻿var ngxTabsService = require('./services/tabs.service.js');
 var ngxTabHeadDirective = require('./tab-head.directive.js');
 var ngxTabContentDirective = require('./tab-content.directive.js');
-var ngxBaseDirective = require('./../../cores/directives/base/base.directive.js');
-var ngxRenderService = require('./../../' + __RENDER_SERVICE__);
-var ngxBootstrap = require('./../../' + __NGX_BOOTSTRAP__);
-ngxBootstrap = require('./../../' + __NGX_BOOTSTRAP_UTILS__);
+var ngxBaseDirective = require('baseDirective');
+var ngxRenderService = require('renderService');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _ngxTabDirective() {
   var _base;

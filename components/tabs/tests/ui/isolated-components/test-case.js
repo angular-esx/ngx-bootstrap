@@ -1,20 +1,15 @@
-﻿var ngxTabsComponent = require('./../../../' + __COMPONENT_FILE__);
-var ngxTabsService = require('./../../../../../components/tabs/services/tabs.service.js');
-var ngxTabDirective = require('./../../../../../components/tabs/tab.directive.js');
-var ngxTabHeadDirective = require('./../../../../../components/tabs/tab-head.directive.js');
-var ngxTabContentDirective = require('./../../../../../components/tabs/tab-content.directive.js');
-var ngxAnimationService = require('./../../../../../cores/services/animation.service.js');
-var ngxColorService = require('./../../../../../' + __COLOR_SERVICE__);
-var ngxTypeService = require('./../../../../../cores/services/type.service.js');
-var ngxSizeService = require('./../../../../../cores/services/size.service.js');
-var ngxStateService = require('./../../../../../cores/services/state.service.js');
-var ngxLinkComponent = require('./../../../../../cores/components/link/link.component.js');
-var ngxLinkService = require('./../../../../../cores/components/link/services/link.service.js');
-var ngxItemComponent = require('./../../../../../cores/components/item/item.component.js');
-var ngxItemService = require('./../../../../../cores/components/item/services/item.service.js');
-var ngxWindowService = require('./../../../../../cores/services/window.service.js');
-var ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.utils.js');
+﻿var ngxTabsComponent = require('components/tabs/tabs.component.js');
+var ngxTabsService = require('components/tabs/services/tabs.service.js');
+var ngxTabDirective = require('components/tabs/tab.directive.js');
+var ngxTabHeadDirective = require('components/tabs/tab-head.directive.js');
+var ngxTabContentDirective = require('components/tabs/tab-content.directive.js');
+var ngxLinkComponent = require('cores/components/link/link.component.js');
+var ngxLinkService = require('cores/components/link/services/link.service.js');
+var ngxItemComponent = require('cores/components/item/item.component.js');
+var ngxItemService = require('cores/components/item/services/item.service.js');
+var ngxCoreService = require('coreService');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _testCase() {
   this.constructor = [ngxTabsService, function (ngxTabsService) {
@@ -60,12 +55,7 @@ module.exports = ng.core.Component({
     ngxTabContentDirective
   ],
   providers: [
-    ngxWindowService,
-    ngxAnimationService,
-    ngxColorService,
-    ngxTypeService,
-    ngxSizeService,
-    ngxStateService,
+    ngxCoreService,
     ngxLinkService,
     ngxItemService,
     ngxTabsService

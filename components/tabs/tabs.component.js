@@ -1,10 +1,10 @@
 ﻿var ngxTabDirective = require('./tab.directive.js');
 var ngxTabsService = require('./services/tabs.service.js');
-var ngxTranscludeDirective = require('./../../cores/directives/transclude/transclude.directive.js');
-var ngxBaseComponent = require('./../../cores/components/base/base.component.js');
-var ngxRenderService = require('./../../' + __RENDER_SERVICE__);
-var ngxBootstrap = require('./../../' + __NGX_BOOTSTRAP__);
-ngxBootstrap = require('./../../' + __NGX_BOOTSTRAP_UTILS__);
+var ngxTranscludeDirective = require('cores/directives/transclude/transclude.directive.js');
+var ngxBaseComponent = require('baseComponent');
+var ngxRenderService = require('renderService');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _ngxTabsComponent() {
   var _base,

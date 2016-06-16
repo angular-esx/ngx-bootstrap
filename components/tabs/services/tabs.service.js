@@ -1,8 +1,8 @@
-﻿var ngxAnimationService = require('./../../../cores/services/animation.service.js');
-var ngxTypeService = require('./../../../' + __TYPE_SERVICE__);
-var ngxStateService = require('./../../../' + __STATE_SERVICE__);
-var ngxBootstrap = require('./../../../' + __NGX_BOOTSTRAP__);
-ngxBootstrap = require('./../../../' + __NGX_BOOTSTRAP_UTILS__);
+﻿var ngxAnimationService = require('animationService');
+var ngxTypeService = require('typeService');
+var ngxStateService = require('stateService');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _ngxTabsService() {
   var _observer;

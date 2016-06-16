@@ -9,6 +9,7 @@ var webpackStream = require('webpack-stream');
 var uglify = require('gulp-uglify');
 var mkdirp = require('mkdirp');
 var autoprefixer = require('autoprefixer');
+var path = require('path');
 
 module.exports = function (params) {
   return function () {
@@ -111,7 +112,39 @@ module.exports = function (params) {
       },
       postcss: function () {
         return [autoprefixer];
-      }
+      },
+      resolve: {
+        root: path.resolve(__dirname, '..'),
+        alias: {
+          cores: 'cores',
+          components: 'components',
+          directive: 'directive',
+          ngxBootstrap: 'cores/ngx-bootstrap.js',
+          utils: 'cores/ngx-bootstrap.utils.js',
+
+          /** core components **/
+          baseComponent: 'cores/components/base/base.component.js',
+          itemService: 'cores/components/item/services/item.service.js',
+          itemComponent: 'cores/components/item/item.component.js',
+          linkService: 'cores/components/link/services/link.service.js',
+          linkComponent: 'cores/components/link/link.component.js',
+
+          /** core directives **/
+          baseDirective: 'cores/directives/base/base.directive.js',
+          
+          /** core services **/
+          coreService: 'cores/services/index.js',
+          animationService: 'cores/services/animation.service.js',
+          colorService: 'cores/services/color.service.js',
+          positionService: 'cores/services/position.service.js',
+          renderService: 'cores/services/render.service.js',
+          sizeService: 'cores/services/size.service.js',
+          stateService: 'cores/services/state.service.js',
+          typeService: 'cores/services/type.service.js',
+          windowService: 'cores/services/window.service.js',
+        },
+        extensions: ['', '.js']
+      },
     }))
       .pipe(rename('ngx-bootstrap.js'))
       .pipe(gulp.dest('./dist/js'))

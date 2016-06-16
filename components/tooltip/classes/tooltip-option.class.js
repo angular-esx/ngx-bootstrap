@@ -1,5 +1,5 @@
-﻿var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../../cores/ngx-bootstrap.utils.js');
+﻿var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _tooltipOptionClass() {
   var _PROPERTIES = ['hostElement', 'templateRef', 'content', 'state', 'position', 'delay', 'autoHide'];

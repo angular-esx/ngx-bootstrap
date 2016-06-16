@@ -1,8 +1,8 @@
-﻿var ngxAnimationService = require('./../../../cores/services/animation.service.js');
-var ngxStateService = require('./../../../cores/services/state.service.js');
-var ngxPositionService = require('./../../../cores/services/position.service.js');
-var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../../cores/ngx-bootstrap.utils.js');
+﻿var ngxAnimationService = require('animationService');
+var ngxStateService = require('stateService');
+var ngxPositionService = require('positionService');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _ngxTooltipService() {
   var _templates = {},

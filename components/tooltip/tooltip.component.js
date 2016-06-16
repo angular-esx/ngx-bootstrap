@@ -1,10 +1,10 @@
 ﻿var tooltipOptionClass = require('./classes/tooltip-option.class.js');
 var ngxTooltipService = require('./services/tooltip.service.js');
-var ngxBaseComponent = require('./../../cores/components/base/base.component.js');
-var ngxWindowService = require('./../../cores/services/window.service.js');
-var ngxRenderService = require('./../../cores/services/render.service.js');
-var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
+var ngxBaseComponent = require('baseComponent');
+var ngxRenderService = require('renderService');
+var ngxWindowService = require('windowService');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _ngxTooltipComponent() {
   var _base;
@@ -91,7 +91,7 @@ function _ngxTooltipComponent() {
    
     var _hostElementOffset = this.ngxRenderService.for(this.hostElement.nativeElement).getOffset(),
         _elementOffset = this.ngxRenderService.for(this.elementRef.nativeElement).getOffset();
-   
+    
     switch (_positions[0]) {
       case this.ngxTooltipService.getPositions().RIGHT:
         return {
@@ -110,7 +110,7 @@ function _ngxTooltipComponent() {
         };
       default:
         return {
-          top: (_hostElementOffset.top - _hostElementOffset.height) - _elementOffset.height,
+          top: _hostElementOffset.top - _elementOffset.height,
           left: _shiftWidth(this, _hostElementOffset, _elementOffset, _positions[1])
         };
     }
@@ -150,8 +150,8 @@ function _ngxTooltipComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-tooltip',
-  /*Inject template at here*/
-  /*Inject style at here*/
+  template: require('./themes/' + __THEME__ + '/templates/tooltip.html'),
+  styles: [require('./themes/' + __THEME__ + '/scss/tooltip.scss')],
   providers: [ngxRenderService],
   queries: {
     contentElement: new ng.core.ViewChild('content', { read: ng.core.ViewContainerRef })

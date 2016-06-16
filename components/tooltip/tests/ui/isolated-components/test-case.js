@@ -1,18 +1,8 @@
-﻿var ngxTooltipDirective = require('./../../../tooltip.directive.js');
-var ngxTooltipTemplateDirective = require('./../../../tooltip-template.directive.js');
-var ngxTooltipService = require('./../../../services/tooltip.service.js');
-var ngxAnimationService = require('./../../../../../cores/services/animation.service.js');
-var ngxStateService = require('./../../../../../cores/services/state.service.js');
-var ngxPositionService = require('./../../../../../cores/services/position.service.js');
-var ngxWindowService = require('./../../../../../cores/services/window.service.js');
-var ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.utils.js');
-
-var ngxLinkComponent = require('./../../../../../cores/components/link/link.component.js');
-var ngxLinkService = require('./../../../../../cores/components/link/services/link.service.js');
+﻿var NGX_TOOLTIP = require('components/tooltip/index.js');
+var NGX_CORE_SERVICES = require('coreService');
 
 function _testCase() {
-  this.constructor = [ngxTooltipService, function (ngxTooltipService) {
+  this.constructor = [NGX_TOOLTIP.SERVICE, function (ngxTooltipService) {
     this.ngxTooltipService = ngxTooltipService;
 
     this.STATES = ngxTooltipService.getStates();
@@ -67,17 +57,11 @@ module.exports = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/tooltip/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxTooltipDirective,
-    ngxTooltipTemplateDirective,
-    ngxLinkComponent
+    NGX_TOOLTIP.DIRECTIVES
   ],
   providers: [
-    ngxAnimationService,
-    ngxStateService,
-    ngxPositionService,
-    ngxWindowService,
-    ngxTooltipService,
-    ngxLinkService
+    NGX_TOOLTIP.SERVICE,
+    NGX_CORE_SERVICES
   ],
   queries: {
     tooltipElement: new ng.core.ViewChild('myTooltip', { read: ng.core.ElementRef }),

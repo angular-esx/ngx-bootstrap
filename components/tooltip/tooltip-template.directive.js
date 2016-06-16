@@ -1,6 +1,4 @@
 ﻿var ngxTooltipService = require('./services/tooltip.service.js');
-var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 
 function _ngxTooltipTemplateDirective() {
   this.constructor = [

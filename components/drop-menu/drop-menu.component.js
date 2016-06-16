@@ -1,8 +1,8 @@
 ﻿var ngxDropMenuService = require('./services/drop-menu.service.js');
-var ngxBaseComponent = require('./../../cores/components/base/base.component.js');
-var ngxRenderService = require('./../../cores/services/render.service.js');
-var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
+var ngxBaseComponent = require('baseComponent');
+var ngxRenderService = require('renderService');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _ngxDropMenuComponent() {
   var _base,
@@ -131,8 +131,8 @@ function _ngxDropMenuComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-drop-menu',
-  /*Inject template at here*/
-  /*Inject style at here*/
+  template: require('./themes/' + __THEME__ + '/templates/drop-menu.html'),
+  styles: [require('./themes/' + __THEME__  + '/scss/drop-menu.scss')],
   providers: [ngxRenderService],
   properties: ['state', 'position', 'prefixClass:prefix-class']
 })

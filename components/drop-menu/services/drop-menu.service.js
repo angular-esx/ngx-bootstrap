@@ -1,8 +1,8 @@
-﻿var ngxTypeService = require('./../../../cores/services/type.service.js');
-var ngxStateService = require('./../../../cores/services/state.service.js');
-var ngxPositionService = require('./../../../cores/services/position.service.js');
-var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../../cores/ngx-bootstrap.utils.js');
+﻿var ngxTypeService = require('typeService');
+var ngxStateService = require('stateService');
+var ngxPositionService = require('positionService');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _ngxDropMenuService() {
   var _observer;

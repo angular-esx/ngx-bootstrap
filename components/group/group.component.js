@@ -31,8 +31,8 @@ function _ngxGroupComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-group',
-  /*Inject template at here*/
-  /*Inject style at here*/
+  template: require('./themes/' + __THEME__ + '/templates/group.html'),
+  styles: [require('./themes/' + __THEME__  + '/scss/group.scss')],
   providers: [ngxRenderService],
   properties: ['type', 'size', 'prefixClass:prefix-class']
 })

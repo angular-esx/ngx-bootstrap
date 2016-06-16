@@ -1,16 +1,11 @@
-﻿var ngxCollapseComponent = require('./../../../' + __COMPONENT_FILE__);
-var ngxToggleCollapseDirective = require('./../../../toggle-collapse.directive.js');
-var ngxCollapseService = require('./../../../services/collapse.service.js');
-var ngxColorService = require('./../../../../../' + __COLOR_SERVICE__);
-var ngxTypeService = require('./../../../../../cores/services/type.service.js');
-var ngxSizeService = require('./../../../../../cores/services/size.service.js');
-var ngxStateService = require('./../../../../../cores/services/state.service.js');
-var ngxAnimationService = require('./../../../../../cores/services/animation.service.js');
-var ngxButtonComponent = require('./../../../../../components/button/button.component.bootstrap4.js');
-var ngxButtonService = require('./../../../../../components/button/services/button.service.js');
-var ngxWindowService = require('./../../../../../cores/services/window.service.js');
-var ngxBootstrap = require('./../../../../../' + __NGX_BOOTSTRAP__);
-ngxBootstrap = require('./../../../../../' + __NGX_BOOTSTRAP_UTILS__);
+﻿var ngxCollapseComponent = require('components/collapse/collapse.component.js');
+var ngxToggleCollapseDirective = require('components/collapse/toggle-collapse.directive.js');
+var ngxCollapseService = require('components/collapse/services/collapse.service.js');
+var ngxCoreService = require('coreService');
+var ngxButtonComponent = require('components/button/button.component.js');
+var ngxButtonService = require('components/button/services/button.service.js');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _testCase() {
   this.constructor = [ngxCollapseService, function (ngxCollapseService) {
@@ -27,12 +22,7 @@ module.exports = ng.core.Component({
     ngxToggleCollapseDirective
   ],
   providers: [
-    ngxColorService,
-    ngxTypeService,
-    ngxSizeService,
-    ngxStateService,
-    ngxAnimationService,
-    ngxWindowService,
+    ngxCoreService,
     ngxCollapseService,
     ngxButtonService
   ]

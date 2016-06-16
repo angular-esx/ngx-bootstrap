@@ -1,8 +1,8 @@
 ﻿var ngxCollapseService = require('./services/collapse.service.js');
-var ngxBaseComponent = require('./../../cores/components/base/base.component.js');
-var ngxRenderService = require('./../../cores/services/render.service.js');
-var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
+var ngxBaseComponent = require('baseComponent');
+var ngxRenderService = require('renderService');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _ngxCollapseComponent() {
   var _base,
@@ -126,8 +126,8 @@ function _ngxCollapseComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-collapse',
-  /*Inject template at here*/
-  /*Inject style at here*/
+  template: require('./themes/' + __THEME__ + '/templates/collapse.html'),
+  styles: [require('./themes/' + __THEME__  + '/scss/collapse.scss')],
   providers: [ngxRenderService],
   properties: ['id', 'state', 'group', 'prefixClass:prefix-class']
 })

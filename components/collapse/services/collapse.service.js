@@ -1,7 +1,7 @@
-﻿var ngxStateService = require('./../../../cores/services/state.service.js');
-var ngxAnimationService = require('./../../../cores/services/animation.service.js');
-var ngxBootstrap = require('./../../../' + __NGX_BOOTSTRAP__);
-ngxBootstrap = require('./../../../' + __NGX_BOOTSTRAP_UTILS__);
+﻿var ngxStateService = require('stateService');
+var ngxAnimationService = require('animationService');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _ngxCollapseService() {
   var _observer;

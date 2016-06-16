@@ -1,9 +1,9 @@
-﻿var ngxDropMenuComponent = require('./../../../' + __COMPONENT_FILE__);
-var ngxDropMenuService = require('./../../../services/drop-menu.service.js');
-var ngxDropMenuItemDirective = require('./../../../drop-menu-item.directive.js');
-var ngxDropMenuItemService = require('./../../../services/drop-menu-item.service.js');
-var ngxToggleDropdownDirective = require('./../../../toggle-dropdown.directive.js');
-var ngxToggleDropupDirective = require('./../../../toggle-dropup.directive.js');
+﻿var ngxDropMenuComponent = require('components/drop-menu/drop-menu.component.js');
+var ngxDropMenuService = require('components/drop-menu/services/drop-menu.service.js');
+var ngxDropMenuItemDirective = require('components/drop-menu/drop-menu-item.directive.js');
+var ngxDropMenuItemService = require('components/drop-menu/services/drop-menu-item.service.js');
+var ngxToggleDropdownDirective = require('components/drop-menu/toggle-dropdown.directive.js');
+var ngxToggleDropupDirective = require('components/drop-menu/toggle-dropup.directive.js');
 var ngxGroupComponent = require('components/group/group.component.js');
 var ngxGroupService = require('components/group/services/group.service.js');
 var ngxButtonComponent = require('components/button/button.component.js');
@@ -13,13 +13,9 @@ var ngxLinkService = require('cores/components/link/services/link.service.js');
 var ngxItemComponent = require('cores/components/item/item.component.js');
 var ngxItemService = require('cores/components/item/services/item.service.js');
 var ngxTypeService = require('cores/services/type.service.js');
-var ngxColorService = require('cores/services/color.service.js');
-var ngxSizeService = require('cores/services/size.service.js');
-var ngxStateService = require('cores/services/state.service.js');
-var ngxPositionService = require('cores/services/position.service.js');
-var ngxWindowService = require('cores/services/window.service.js');
-var ngxBootstrap = require('cores/ngx-bootstrap.js');
-ngxBootstrap = require('cores/ngx-bootstrap.utils.js');
+var ngxCoreService = require('coreService');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _testCase() {
   this.constructor = [ngxDropMenuService, function (ngxDropMenuService) {
@@ -47,18 +43,14 @@ module.exports = ng.core.Component({
     ngxToggleDropupDirective
   ],
   providers: [
-   ngxColorService,
-   ngxSizeService,
    ngxTypeService,
-   ngxStateService,
-   ngxPositionService,
-   ngxWindowService,
    ngxGroupService,
    ngxButtonService,
    ngxLinkService,
    ngxItemService,
    ngxDropMenuItemService,
-   ngxDropMenuService
+   ngxDropMenuService,
+   ngxCoreService
   ]
 })
 .Class(new _testCase());

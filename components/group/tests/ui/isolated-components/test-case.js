@@ -1,14 +1,10 @@
-﻿var ngxGroupComponent = require('./../../../' + __COMPONENT_FILE__);
-var ngxGroupService = require('./../../../../../components/group/services/group.service.js');
-var ngxButtonComponent = require('./../../../../../components/button/button.component.bootstrap4.js');
-var ngxButtonService = require('./../../../../../components/button/services/button.service.js');
-var ngxTypeService = require('./../../../../../cores/services/type.service.js');
-var ngxColorService = require('./../../../../../cores/services/color.service.js');
-var ngxSizeService = require('./../../../../../cores/services/size.service.js');
-var ngxStateService = require('./../../../../../cores/services/state.service.js');
-var ngxWindowService = require('./../../../../../cores/services/window.service.js');
-var ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.utils.js');
+﻿var ngxGroupComponent = require('components/group/group.component.js');
+var ngxGroupService = require('components/group/services/group.service.js');
+var ngxButtonComponent = require('components/button/button.component.js');
+var ngxButtonService = require('components/button/services/button.service.js');
+var ngxCoreService = require('coreService');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _testCase() {
   this.constructor = [ngxGroupService, function (ngxGroupService) {
@@ -25,11 +21,7 @@ module.exports = ng.core.Component({
     ngxButtonComponent
   ],
   providers: [
-   ngxColorService,
-   ngxSizeService,
-   ngxTypeService,
-   ngxStateService,
-   ngxWindowService,
+   ngxCoreService,
    ngxGroupService,
    ngxButtonService
   ]

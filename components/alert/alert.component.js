@@ -1,8 +1,8 @@
 ﻿var ngxAlertService = require('./services/alert.service.js');
-var ngxRenderService = require('./../../cores/services/render.service.js');
-var ngxBaseComponent = require('./../../cores/components/base/base.component.js');
-var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
+var ngxRenderService = require('renderService');
+var ngxBaseComponent = require('baseComponent');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _ngxAlertComponent() {
   var _base,

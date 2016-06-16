@@ -1,10 +1,10 @@
-﻿var ngxColorService = require('./../../../cores/services/color.service.js');
-var ngxTypeService = require('./../../../cores/services/type.service.js');
-var ngxStateService = require('./../../../cores/services/state.service.js');
-var ngxPositionService = require('./../../../cores/services/position.service.js');
-var ngxAnimationService = require('./../../../cores/services/animation.service.js');
-var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../../cores/ngx-bootstrap.utils.js');
+﻿var ngxColorService = require('colorService');
+var ngxTypeService = require('typeService');
+var ngxStateService = require('stateService');
+var ngxPositionService = require('positionService');
+var ngxAnimationService = require('animationService');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _ngxAlertService() {
   var _observer;

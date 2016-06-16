@@ -124,6 +124,7 @@ module.exports = function (params) {
 
           /** core components **/
           baseComponent: 'cores/components/base/base.component.js',
+          coreComponent: 'cores/components/index.js',
           itemService: 'cores/components/item/services/item.service.js',
           itemComponent: 'cores/components/item/item.component.js',
           linkService: 'cores/components/link/services/link.service.js',

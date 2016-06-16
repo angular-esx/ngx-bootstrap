@@ -1,9 +1,8 @@
-﻿var ngxProgressComponent = require('./../../../' + __COMPONENT_FILE__);
-var ngxProgressService = require('./../../../services/progress.service.js');
-var ngxColorService = require('./../../../../../cores/services/color.service.js');
-var ngxWindowService = require('./../../../../../cores/services/window.service.js');
-var ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.utils.js');
+﻿var ngxProgressComponent = require('components/progress/progress.component.js');
+var ngxProgressService = require('components/progress/services/progress.service.js');
+var ngxCoreService = require('coreService');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _testCase() {
   this.constructor = [ngxProgressService, function (ngxProgressService) {
@@ -18,8 +17,7 @@ module.exports = ng.core.Component({
     ngxProgressComponent
   ],
   providers: [
-   ngxColorService,
-   ngxWindowService,
+   ngxCoreService,
    ngxProgressService
   ]
 })

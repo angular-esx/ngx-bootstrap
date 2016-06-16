@@ -1,8 +1,8 @@
 ﻿var ngxProgressService = require('./services/progress.service.js');
-var ngxBaseComponent = require('./../../cores/components/base/base.component.js');
-var ngxRenderService = require('./../../cores/services/render.service.js');
-var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
+var ngxBaseComponent = require('baseComponent');
+var ngxRenderService = require('renderService');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _ngxProgressComponent() {
   var _base;
@@ -55,8 +55,8 @@ function _ngxProgressComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-progress',
-  /*Inject template at here*/
-  /*Inject style at here*/
+  template: require('./themes/' + __THEME__ + '/templates/progress.html'),
+  styles: [require('./themes/' + __THEME__  + '/scss/progress.scss')],
   providers: [ngxRenderService],
   properties: ['color', 'value', 'max']
 })

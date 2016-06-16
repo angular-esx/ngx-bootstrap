@@ -1,17 +1,13 @@
-﻿var ngxListComponent = require('./../../../' + __COMPONENT_FILE__);
-var ngxListItemDirective = require('./../../../list-item.directive.js');
-var ngxListService = require('./../../../services/list.service.js');
-var ngxColorService = require('./../../../../../' + __COLOR_SERVICE__);
-var ngxTypeService = require('./../../../../../cores/services/type.service.js');
-var ngxSizeService = require('./../../../../../cores/services/size.service.js');
-var ngxStateService = require('./../../../../../cores/services/state.service.js');
-var ngxLinkComponent = require('./../../../../../cores/components/link/link.component.js');
-var ngxLinkService = require('./../../../../../cores/components/link/services/link.service.js');
-var ngxItemComponent = require('./../../../../../cores/components/item/item.component.js');
-var ngxItemService = require('./../../../../../cores/components/item/services/item.service.js');
-var ngxWindowService = require('./../../../../../cores/services/window.service.js');
-var ngxBootstrap = require('./../../../../../' + __NGX_BOOTSTRAP__);
-ngxBootstrap = require('./../../../../../' + __NGX_BOOTSTRAP_UTILS__);
+﻿var ngxListComponent = require('components/list/list.component.js');
+var ngxListItemDirective = require('components/list/list-item.directive.js');
+var ngxListService = require('components/list/services/list.service.js');
+var ngxCoreService = require('coreService');
+var ngxLinkComponent = require('cores/components/link/link.component.js');
+var ngxLinkService = require('cores/components/link/services/link.service.js');
+var ngxItemComponent = require('cores/components/item/item.component.js');
+var ngxItemService = require('cores/components/item/services/item.service.js');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _testCase() {
   this.constructor = [ngxListService, function (ngxListService) {
@@ -29,11 +25,7 @@ module.exports = ng.core.Component({
     ngxListItemDirective
   ],
   providers: [
-    ngxColorService,
-    ngxTypeService,
-    ngxSizeService,
-    ngxStateService,
-    ngxWindowService,
+    ngxCoreService,
     ngxListService,
     ngxLinkService,
     ngxItemService

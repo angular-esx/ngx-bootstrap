@@ -1,8 +1,8 @@
-﻿var ngxListService = require('./../../components/list/services/list.service.js');
-var ngxBaseComponent = require('./../../cores/components/base/base.component.js');
-var ngxRenderService = require('./../../cores/services/render.service.js');
-var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
+﻿var ngxListService = require('components/list/services/list.service.js');
+var ngxBaseComponent = require('baseComponent');
+var ngxRenderService = require('renderService');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _ngxListComponent() {
   var _base;
@@ -30,8 +30,8 @@ function _ngxListComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-list',
-  /*Inject template at here*/
-  /*Inject style at here*/
+  template: require('./themes/' + __THEME__ + '/templates/list.html'),
+  styles: [require('./themes/' + __THEME__  + '/scss/list.scss')],
   providers: [ngxRenderService],
   properties: ['prefixClass:prefix-class']
 })

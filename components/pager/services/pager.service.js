@@ -1,6 +1,6 @@
-﻿var ngxTypeService = require('./../../../cores/services/type.service.js');
-var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../../cores/ngx-bootstrap.utils.js');
+﻿var ngxTypeService = require('typeService');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _ngxPagerService() {
   this.constructor = [

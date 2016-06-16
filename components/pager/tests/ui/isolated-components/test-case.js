@@ -1,14 +1,10 @@
-﻿var ngxPagerComponent = require('./../../../' + __COMPONENT_FILE__);
-var ngxPagerService = require('./../../../services/pager.service.js');
-var ngxColorService = require('./../../../../../cores/services/color.service.js');
-var ngxTypeService = require('./../../../../../cores/services/type.service.js');
-var ngxStateService = require('./../../../../../cores/services/state.service.js');
-var ngxSizeService = require('./../../../../../cores/services/size.service.js');
-var ngxWindowService = require('./../../../../../cores/services/window.service.js');
-var ngxLinkComponent = require('./../../../../../cores/components/link/link.component.js');
-var ngxLinkService = require('./../../../../../cores/components/link/services/link.service.js');
-var ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.utils.js');
+﻿var ngxPagerComponent = require('components/pager/pager.component.js');
+var ngxPagerService = require('components/pager/services/pager.service.js');
+var ngxCoreService = require('coreService');
+var ngxLinkComponent = require('cores/components/link/link.component.js');
+var ngxLinkService = require('cores/components/link/services/link.service.js');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _testCase() {
   this.constructor = [ngxPagerService, function (ngxPagerService) {
@@ -37,11 +33,7 @@ module.exports = ng.core.Component({
     ngxPagerComponent
   ],
   providers: [
-   ngxColorService,
-   ngxTypeService,
-   ngxStateService,
-   ngxSizeService,
-   ngxWindowService,
+   ngxCoreService,
    ngxLinkService,
    ngxPagerService
   ]

@@ -1,10 +1,10 @@
 ﻿var ngxPagerService = require('./services/pager.service.js');
-var ngxLinkComponent = require('./../../cores/components/link/link.component.js');
-var ngxLinkService = require('./../../cores/components/link/services/link.service.js');
-var ngxBaseComponent = require('./../../cores/components/base/base.component.js');
-var ngxRenderService = require('./../../cores/services/render.service.js');
-var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
+var ngxLinkComponent = require('cores/components/link/link.component.js');
+var ngxLinkService = require('cores/components/link/services/link.service.js');
+var ngxBaseComponent = require('baseComponent');
+var ngxRenderService = require('renderService');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
 function _ngxPagerComponent() {
   var _base;
@@ -114,8 +114,8 @@ function _ngxPagerComponent() {
 
 module.exports = ng.core.Component({
   selector: 'ngx-pager',
-  /*Inject template at here*/
-  /*Inject style at here*/
+  template: require('./themes/' + __THEME__ + '/templates/pager.html'),
+  styles: [require('./themes/' + __THEME__  + '/scss/pager.scss')],
   directives: [ngxLinkComponent],
   providers: [ngxRenderService, ngxLinkService],
   properties: [

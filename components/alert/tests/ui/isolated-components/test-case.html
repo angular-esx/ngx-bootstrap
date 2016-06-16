@@ -1,28 +1,41 @@
 ﻿<h3>ngxAlert</h3>
 
-<ngx-alert id="myInfoAlert" 
-           state="{{STATES.HIDDEN}}" 
-           color="{{COLORS.INFO}}" 
-           type="{{TYPES.DISMISSIBLE_FLOAT}}" 
-           position="{{POSITIONS.BOTTOM}}" 
-           (onDismissed)="dismissed($event)">
-  <strong>Heads up!</strong>
-  <ngx-alert-link>Alert needs your attention</ngx-alert-link>
-  , but it's not super important.
-</ngx-alert>
+<div>
+  <ngx-alert #myInfoAlert
+             state="{{STATES.HIDDEN}}"
+             color="{{COLORS.INFO}}"
+             type="{{TYPES.DISMISSIBLE}} {{TYPES.FLOAT}}"
+             position="{{POSITIONS.BOTTOM}}"
+             (showing)="showing($event)"
+             (shown)="shown($event)"
+             (dismissing)="dismissing($event)"
+             (dismissed)="dismissed($event)">
+    <p><strong>Heads up!</strong></p>
+    <hr />
+    <ngx-link class="ngx-alert-link">Alert needs your attention</ngx-link>
+    , but it's not super important.
+  </ngx-alert>
+</div>
 
-<ngx-alert id="mySuccessAlert"  color="success" type="dismissible">
+<ngx-alert #mySuccessAlert color="success" type="dismissible">
   <strong>Well done!</strong> You successfully read 
-  <ngx-alert-link href="https://translate.google.com.vn">this important alert message</ngx-alert-link>
+  <a class="ngx-alert-link" href="https://translate.google.com.vn">this important alert message</a>
 </ngx-alert>
 
 <ngx-alert color="warning">
   <strong>Warning!</strong> 
-  Better check yourself, you're not looking too good
+  <ngx-item ngx-alert-link>
+    <a [href]="href">Better check yourself, </a>
+  </ngx-item>
+  you're not looking too good
 </ngx-alert>
 
-<ngx-alert color="{{COLORS.DANGER}}" type="{{TYPES.DISMISSIBLE}}" (onDismissed)="dismissed($event)">
-  <strong>Oh snap!</strong> 
-  <ngx-alert-link href="{{href}}">Change a few things up</ngx-alert-link>
+<ngx-alert [color]="COLORS.DANGER" 
+           [type]="TYPES.DISMISSIBLE" 
+           (dismissed)="dismissed($event)">
+  <p><strong>Oh snap!</strong></p> 
+  <ngx-item prefix-class="ngx-alert-link">
+    <a [href]="href">Change a few things up</a>
+  </ngx-item>
   and try submitting again.
 </ngx-alert>

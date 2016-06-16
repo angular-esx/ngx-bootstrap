@@ -1,9 +1,0 @@
-﻿{
-  "alert/services/alert.service": { },
-  "alert/alert-link.component": { },
-  "alert/alert.component": {
-    "dependencies": [
-      "alert/services/alert.service"
-    ]
-  }
-}

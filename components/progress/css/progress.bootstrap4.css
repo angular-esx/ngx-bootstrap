@@ -1,0 +1,82 @@
+:host(.ngx-progress) {
+  display: block;
+  margin: 0 0 1rem 0;
+  width: 100%;
+  height: 1rem;
+}
+
+:host(.ngx-progress) > .ngx-progress-bar[value] {
+  border: 0;
+  width: 100%;
+  appearance: none;
+}
+
+:host(.ngx-progress) > .ngx-progress-bar[value]::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 0.25rem;
+}
+
+:host(.ngx-progress) > .ngx-progress-bar[value]::-webkit-progress-value::before {
+  content: attr(value);
+}
+
+:host(.ngx-progress) > .ngx-progress-bar[value]::-webkit-progress-value {
+  background-color: #0074d9;
+  border-bottom-left-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+}
+
+:host(.ngx-progress) > .ngx-progress-bar[value="100"]::-webkit-progress-value {
+  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+:host(.ngx-progress).ngx-progress-color-striped > .ngx-progress-bar[value]::-webkit-progress-value {
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-size: 1rem 1rem;
+}
+
+:host(.ngx-progress).ngx-progress-color-striped > .ngx-progress-bar[value]::-moz-progress-bar {
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-size: 1rem 1rem;
+}
+
+:host(.ngx-progress).ngx-progress-color-primary > .ngx-progress-bar[value]::-webkit-progress-value {
+  background-color: #0270d2;
+}
+
+:host(.ngx-progress).ngx-progress-color-primary > .ngx-progress-bar[value]::-moz-progress-bar {
+  background-color: #0270d2;
+}
+
+:host(.ngx-progress).ngx-progress-color-info > .ngx-progress-bar[value]::-webkit-progress-value {
+  background-color: #60c2df;
+}
+
+:host(.ngx-progress).ngx-progress-color-info > .ngx-progress-bar[value]::-moz-progress-bar {
+  background-color: #60c2df;
+}
+
+:host(.ngx-progress).ngx-progress-color-success > .ngx-progress-bar[value]::-webkit-progress-value {
+  background-color: #5cb85c;
+}
+
+:host(.ngx-progress).ngx-progress-color-success > .ngx-progress-bar[value]::-moz-progress-bar {
+  background-color: #5cb85c;
+}
+
+:host(.ngx-progress).ngx-progress-color-warning > .ngx-progress-bar[value]::-webkit-progress-value {
+  background-color: #f0ad4e;
+}
+
+:host(.ngx-progress).ngx-progress-color-warning > .ngx-progress-bar[value]::-moz-progress-bar {
+  background-color: #f0ad4e;
+}
+
+:host(.ngx-progress).ngx-progress-color-danger > .ngx-progress-bar[value]::-webkit-progress-value {
+  background-color: #da5350;
+}
+
+:host(.ngx-progress).ngx-progress-color-danger > .ngx-progress-bar[value]::-moz-progress-bar {
+  background-color: #da5350;
+}

@@ -1,21 +1,22 @@
-﻿(function (ngxBootstrap) {
-  ngxBootstrap.ngxComponents.ngxPagerService = ng.core.Class(new _ngxPagerService());
+﻿var ngxTypeService = require('./../../../cores/services/type.service.js');
+var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
+ngxBootstrap = require('./../../../cores/ngx-bootstrap.utils.js');
 
-  function _ngxPagerService() {
-    this.constructor = [
-      ngxBootstrap.ngxCores.ngxTypeService,
+function _ngxPagerService() {
+  this.constructor = [
+    ngxTypeService,
 
-      function (ngxTypeService) {
-        ngxBootstrap.shallowCopy(this, ngxTypeService);
+    function ngxPagerService(ngxTypeService) {
+      ngxBootstrap.shallowCopy(this, ngxTypeService);
+    }
+  ];
 
-        this.setPrefix('pager');
-      }
-    ];
+  this.isAlignedTypeClass = function (prefixClass, type) {
+    return this.getTypeClass(prefixClass, type).indexOf(this.getAlignedTypeClass(prefixClass)) > -1;
+  };
+  this.getAlignedTypeClass = function (prefixClass) {
+    return prefixClass + '-type-aligned';
+  };
+}
 
-    this.getAlignedTypeClass = function () {
-      return 'aligned';
-    };
-
-  }
-
-})(window.ngxBootstrap);
+module.exports = ng.core.Class(new _ngxPagerService());

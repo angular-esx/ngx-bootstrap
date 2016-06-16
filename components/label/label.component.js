@@ -1,39 +1,39 @@
-﻿(function (ngxBootstrap) {
-  ngxBootstrap.ngxClass.ngxLabelClass = ngxLabel;
+var ngxLabelService = require('./services/label.service.js');
+var ngxRenderService = require('renderService');
+var ngxBaseComponent = require('baseComponent');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
-  ngxBootstrap.ngxComponents.ngxLabelComponent = ng.core.Directive({
-    selector: 'ngx-label',
-    providers: [ngxBootstrap.ngxCores.ngxRendererService]
-  })
-  .Class(new ngxLabel());
+function _ngxLabelComponent() {
+  var _base;
 
-  function ngxLabel() {
-    var _ATTRIBUTES = {
-      COLOR: 'color',
-      TYPE: 'type'
-    };
+  this.extends = ngxBaseComponent;
 
-    this.constructor = [
-      ng.core.ElementRef,
-      ngxBootstrap.ngxCores.ngxRendererService,
-      ngxBootstrap.ngxComponents.ngxLabelService,
+  this.constructor = [
+    ng.core.ElementRef,
+    ngxRenderService,
+    ngxLabelService,
 
-      function (elementRef, ngxRendererService, ngxLabelService) {
-        this.cssClass = 'label';
+    function ngxLabelComponent(elementRef, ngxRenderService, ngxLabelService) {
+      ngxBaseComponent.apply(this, arguments);
 
-        this.elementRef = elementRef;
-        this.ngxRendererService = ngxRendererService.for(elementRef.nativeElement);
+      if (elementRef) {
         this.ngxLabelService = ngxLabelService;
       }
-    ];
+    }
+  ];
 
-    this.ngAfterViewInit = function () {
-      this.color = this.ngxRendererService.getElementAttribute(_ATTRIBUTES.COLOR);
-      this.type = this.ngxRendererService.getElementAttribute(_ATTRIBUTES.TYPE);
-
-      var _className = this.cssClass + ' ' + this.ngxLabelService.combineColorWithType(this.color, this.type);
-      this.ngxRendererService.addToElementAttribute('class', _className, true);
-    };
+  function _getBaseInstance(context){ 
+    if(!_base){ _base = context.getBaseInstance(ngxBaseComponent); }
+    return _base;
   }
+}
 
-})(window.ngxBootstrap);
+module.exports = ng.core.Component({
+  selector: 'ngx-label',
+  template: require('./themes/' + __THEME__ + '/templates/label.html'),
+  styles: [require('./themes/' + __THEME__  + '/scss/label.scss')],
+  providers: [ngxRenderService],
+  properties: ['color', 'type', 'prefixClass:prefix-class']
+})
+.Class(new _ngxLabelComponent());

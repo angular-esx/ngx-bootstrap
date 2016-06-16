@@ -1,0 +1,5 @@
+﻿@import "_variables.scss";
+
+@function ngx-border-radius($border-radius-name, $border-radius: $ngx-border-radius){
+  @return map-get($border-radius, $border-radius-name);
+}

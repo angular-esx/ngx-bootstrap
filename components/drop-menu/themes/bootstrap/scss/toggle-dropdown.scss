@@ -1,0 +1,15 @@
+﻿@import "_variables.scss";
+
+.#{$ngx-toggle-dropdown-prefix-class} {
+  &::after{
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin: $ngx-toggle-dropdown-margin;
+    vertical-align: middle;
+    content: "";
+    border-top: $ngx-toggle-dropdown-border;
+    border-right: $ngx-toggle-dropdown-border transparent;
+    border-left: $ngx-toggle-dropdown-border transparent;
+  }
+}

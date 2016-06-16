@@ -1,35 +1,25 @@
-﻿(function (ngxBootstrap) {
-  ngxBootstrap.ngxClass.ngxLabelServiceClass = ngxLabelService;
-  ngxBootstrap.ngxComponents.ngxLabelService = ng.core.Class(new ngxLabelService());
+﻿var ngxColorService = require('colorService');
+var ngxTypeService = require('typeService');
+var ngxBootstrap = require('ngxBootstrap');
+ngxBootstrap = require('utils');
 
-  function ngxLabelService() {
-    this.constructor = [
-      ngxBootstrap.ngxCores.ngxColorService,
-      ngxBootstrap.ngxCores.ngxTypeService,
+function _ngxLabelService() {
+  this.constructor = [
+    ngxColorService,
+    ngxTypeService,
 
-      function (ngxColorService, ngxTypeService) {
-        ngxBootstrap.shallowCopy(this, ngxColorService);
-        ngxBootstrap.shallowCopy(this, ngxTypeService);
+    function ngxLabelService(ngxColorService, ngxTypeService) {
+      ngxBootstrap.shallowCopy(this, ngxColorService);
+      ngxBootstrap.shallowCopy(this, ngxTypeService);
+    }
+  ];
 
-        this.setPrefix('label');
-      }
-    ];
+  this.isPillTypeClass = function (prefixClass, type) {
+    return this.getTypeClass(prefixClass, type).indexOf(this.getPillTypeClass(prefixClass)) > -1;
+  };
+  this.getPillTypeClass = function (prefixClass) {
+    return  prefixClass + '-type-pill';
+  };
+}
 
-    this.getPillTypeClass = function () {
-      return 'pill';
-    };
-
-    this.combineColorWithType = function (color, type) {
-      var _typeClass = this.getTypeClass(type);
-      var _colorClass = this.getColorClass(color);
-
-      if (_typeClass == this.getPillTypeClass()) {
-        return this.prefix + type + ' ' + _colorClass;
-      }
-      else {
-        return _typeClass ? _colorClass + '-' + _typeClass : _colorClass;
-      }
-    };
-  }
-
-})(window.ngxBootstrap);
+module.exports = ng.core.Class(new _ngxLabelService());

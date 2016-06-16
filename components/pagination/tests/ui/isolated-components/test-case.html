@@ -1,11 +1,11 @@
 ﻿<h3>ngxPagination</h3>
 
 <center>
-  <ngx-pagination size="small"
+  <ngx-pagination size="large"
                   total-pages="50"
                   page-size="10"
                   current-page="12"
-                  (onSetLinkPage)="onSetLinkPage($event)"
-                  (onChangePage)="onChangePage($event)">
+                  (setPage)="setPage($event)"
+                  (changePage)="changePage($event)">
   </ngx-pagination>
 </center>

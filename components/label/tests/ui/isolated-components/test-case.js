@@ -1,22 +1,22 @@
-﻿(function (testCases, cores, components, fileService) {
-  testCases.isolatedComponents = ng.core.Component({
-    selector: 'ngx-test-case',
-    templateUrl: fileService.getTestCaseTemplate('label'),
-    directives: [
-      components.ngxLabelComponent
-    ],
-    providers: [
-      cores.ngxColorService,
-      cores.ngxTypeService,
-      components.ngxLabelService
-    ]
-  })
-  .Class(new testCase());
+﻿var NGX_LABEL = require('components/label/index.js');
+var ngxCoreService = require('coreService');
 
-  function testCase() {
-    this.constructor = [components.ngxLabelService, function (ngxLabelService) {
-      this.COLORS = ngxLabelService.getColors();
-      this.TYPES = ngxLabelService.getTypes();
-    }];
-  }
-})(window.testCases || (window.testCases = {}), window.ngxBootstrap.ngxCores, window.ngxBootstrap.ngxComponents, ngxBootstrap.configs.fileService);
+function _testCase() {
+  this.constructor = [NGX_LABEL.SERVICE, function (ngxLabelService) {
+    this.COLORS = ngxLabelService.getColors();
+    this.TYPES = ngxLabelService.getTypes();
+  }];
+}
+
+module.exports = ng.core.Component({
+  selector: 'ngx-test-case',
+  templateUrl: 'components/label/tests/ui/isolated-components/test-case.html',
+  directives: [
+    NGX_LABEL.DIRECTIVES
+  ],
+  providers: [
+    NGX_LABEL.SERVICE,
+    ngxCoreService
+  ]
+})
+.Class(new _testCase());

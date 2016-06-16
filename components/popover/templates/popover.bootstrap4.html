@@ -1,0 +1,8 @@
+﻿<div class="ngx-popover-arrow"></div>
+
+<div #template *ngIf="templateRef" style="display: inline-block;"></div>
+
+<div *ngIf="!templateRef" style="display: inline-block;">
+  <div #title class="ngx-popover-title"></div>
+  <div #content class="ngx-popover-content"></div>
+</div>

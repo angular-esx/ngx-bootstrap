@@ -1,32 +1,46 @@
-﻿(function (testCases, ngxBootstrap, fileService) {
-  testCases.customLabelColor = ng.core.Component({
-    selector: 'ngx-test-case',
-    templateUrl: fileService.getTestCaseTemplate('label', 'custom-label-color'),
-    directives: [
-      ngxBootstrap.ngxComponents.ngxLabelComponent
-    ],
-    providers: [
-      ngxBootstrap.ngxCores.ngxColorService,
-      ngxBootstrap.ngxCores.ngxTypeService,
-      ng.core.provide(ngxBootstrap.ngxComponents.ngxLabelService, { useClass: ng.core.Class(new customLabelService()) })
-    ]
-  })
-  .Class(new testCase());
+﻿var ngxLabelComponent = require('./../../../' + __COMPONENT_FILE__);
+var ngxLabelService = require('./../../../services/label.service.js');
+var ngxColorService = require('./../../../../../' + __COLOR_SERVICE__);
+var ngxTypeService = require('./../../../../../' + __TYPE_SERVICE__);
+var ngxBootstrap = require('./../../../../../' + __NGX_BOOTSTRAP__);
+ngxBootstrap = require('./../../../../../' + __NGX_BOOTSTRAP_UTILS);
 
-  function testCase() {
-    this.constructor = [ngxBootstrap.ngxComponents.ngxLabelService, function (ngxLabelService) {
-      this.COLORS = ngxLabelService.getColors();
-    }];
-  }
+function _testCase() {
+  this.constructor = [ngxLabelService, function (ngxLabelService) {
+    this.COLORS = ngxLabelService.getColors();
+  }];
+}
 
-  function customLabelService() {
-    ngxBootstrap.shallowCopy(this, new ngxBootstrap.ngxClass.ngxLabelServiceClass(), true);
+function _customLabelService() {
+  this.constructor = [
+   ngxColorService, 
+   ngxTypeService,
+   function (ngxColorService, ngxTypeService) {
+    ngxBootstrap.shallowCopy(this, ngxColorService);
+    ngxBootstrap.shallowCopy(this, ngxTypeService);   
+    
+    this.prefixClass = 'ngx-label';
+   }
+  ];
 
-    this.getDefaultColorClass = function () {
-      return this.prefix + 'custom-default';
-    };
-    this.getOrangeColorClass = function () {
-      return this.prefix + 'custom-orange';
-    };
-  }
-})(window.testCases || (window.testCases = {}), window.ngxBootstrap, ngxBootstrap.configs.fileService);
+  this.getSecondaryColorClass = function () {
+    return this.prefixClass + '-color-custom-secondary';
+  };
+  this.getOrangeColorClass = function () {
+    return this.prefixClass + '-color-custom-orange';
+  };
+}
+
+module.exports = ng.core.Component({
+  selector: 'ngx-test-case',
+  templateUrl: 'components/label/tests/ui/custom-label-color/test-case.html',
+  directives: [
+    ngxLabelComponent
+  ],
+  providers: [
+    ngxColorService,
+    ngxTypeService,
+    ng.core.provide(ngxLabelService, { useClass: ng.core.Class(new _customLabelService()) })
+  ]
+})
+.Class(new _testCase());

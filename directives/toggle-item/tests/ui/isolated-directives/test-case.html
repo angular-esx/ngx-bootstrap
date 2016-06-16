@@ -1,0 +1,19 @@
+﻿<h3>ngxToggleButton</h3>
+
+<ngx-button ngx-toggle-item id="ngxToggleButton" color="{{COLORS.PRIMARY}}" (toggle)="toggle($event)">Primary</ngx-button>
+<ngx-button ngx-toggle-item color="{{COLORS.SECONDARY}}" size="{{SIZES.SMALL}}">Secondary</ngx-button>
+<ngx-button ngx-toggle-item color="{{COLORS.INFO}}" size="{{SIZES.LARGE}}">Info</ngx-button>
+<ngx-button ngx-toggle-item color="success" state="active">Success</ngx-button>
+<ngx-button ngx-toggle-item color="warning" state="disabled">Warning</ngx-button>
+<ngx-button ngx-toggle-item color="danger" size="block">Danger</ngx-button>
+
+<hr />
+
+<h3>ngxToggleButton with outline type</h3>
+
+<ngx-button ngx-toggle-item id="ngxToggleButtonOutline" color="{{COLORS.PRIMARY}} {{COLORS.OUTLINE}}" (toggle)="toggle($event)">Primary</ngx-button>
+<ngx-button ngx-toggle-item color="{{COLORS.SECONDARY}} {{COLORS.OUTLINE}}">Secondary</ngx-button>
+<ngx-button ngx-toggle-item color="{{COLORS.INFO}} {{COLORS.OUTLINE}}" state="{{STATES.ACTIVE}}">Info</ngx-button>
+<ngx-button ngx-toggle-item color="success outline" state="disabled">Success</ngx-button>
+<ngx-button ngx-toggle-item color="warning outline" size="large block">Warning</ngx-button>
+<ngx-button ngx-toggle-item color="danger outline" size="{{SIZES.SMALL}} {{SIZES.BLOCK}}">Danger</ngx-button>

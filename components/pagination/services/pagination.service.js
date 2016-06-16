@@ -1,17 +1,15 @@
-﻿(function (ngxBootstrap) {
-  ngxBootstrap.ngxComponents.ngxPaginationService = ng.core.Class(new _ngxPaginationService());
+﻿var ngxSizeService = require('./../../../cores/services/size.service.js');
+var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
+ngxBootstrap = require('./../../../cores/ngx-bootstrap.utils.js');
 
-  function _ngxPaginationService() {
-    this.constructor = [
-      ngxBootstrap.ngxCores.ngxSizeService,
+function _ngxPaginationService() {
+  this.constructor = [
+    ngxSizeService,
 
-      function (ngxSizeService) {
-        ngxBootstrap.shallowCopy(this, ngxSizeService);
+    function ngxButtonService(ngxSizeService) {
+      ngxBootstrap.shallowCopy(this, ngxSizeService);
+    }
+  ];
+}
 
-        this.setPrefix('pagination');
-      }
-    ];
-
-  }
-
-})(window.ngxBootstrap);
+module.exports = ng.core.Class(new _ngxPaginationService());

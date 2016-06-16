@@ -1,46 +1,33 @@
-(function (ngxBootstrap) {
-  ngxBootstrap.ngxClass.ngxLabelClass = ngxJumbotron;
+var ngxBaseComponent = require('./../../cores/components/base/base.component.js');
+var ngxRenderService = require('./../../cores/services/render.service.js');
+var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
+ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
 
-  ngxBootstrap.ngxComponents.ngxJumbotronComponent = ng.core.Directive({
-    selector: 'ngx-jumbotron',
-    providers: [ngxBootstrap.ngxCores.ngxRendererService],
-    injectable: []
-  })
-  .Class(new ngxJumbotron());
+function _ngxJumbotronComponent() {
+  var _base;
+  
+  this.extends = ngxBaseComponent;
+  
+  this.constructor = [
+    ng.core.ElementRef,
+    ngxRenderService,
 
-  function ngxJumbotron() {
-    var _ATTRIBUTES = {
-      TYPE: 'type'
-    };
-
-    this.constructor = [
-      ng.core.ElementRef,
-      ngxBootstrap.ngxCores.ngxRendererService,
-      ngxBootstrap.ngxComponents.ngxJumbotronService,
-
-      function (elementRef, ngxRendererService, ngxJumbotronService) {
-        this.cssClass = 'jumbotron';
-
-        this.elementRef = elementRef;
-        this.ngxRendererService = ngxRendererService.for(elementRef.nativeElement);
-        this.ngxJumbotronService = ngxJumbotronService;
-      }
-    ];
-
-    this.ngAfterViewInit = function () {
-      var _className, type;
-      
-      _className = this.cssClass;
-
-      _type = this.ngxRendererService.getElementAttribute(_ATTRIBUTES.TYPE);
-
-      if(_type) {
-        _className += ' ' + this.ngxJumbotronService.combineType(_type);
-      }
-
-      this.ngxRendererService.addToElementAttribute('class', _className, true);
-    };
-
+    function ngxJumbotronComponent(elementRef, ngxRenderService) {
+      ngxBaseComponent.apply(this, arguments);
+    }
+  ];
+  
+  function _getBaseInstance(context){ 
+    if(!_base){ _base = context.getBaseInstance(ngxBaseComponent); }
+    return _base;
   }
+}
 
-})(window.ngxBootstrap);
+module.exports = ng.core.Component({
+  selector: 'ngx-jumbotron',
+  template: require('./themes/' + __THEME__ + '/templates/jumbotron.html'),
+  styles: [require('./themes/' + __THEME__  + '/scss/jumbotron.scss')],
+  providers: [ngxRenderService],
+  properties: ['prefixClass:prefix-class']
+})
+.Class(new _ngxJumbotronComponent());

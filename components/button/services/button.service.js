@@ -1,43 +1,21 @@
-﻿(function (ngxBootstrap) {
-  ngxBootstrap.ngxComponents.ngxButtonService = ng.core.Class(new _ngxButtonService());
-  
-  function _ngxButtonService() {
-    this.constructor = [
-      ngxBootstrap.ngxCores.ngxColorService,
-      ngxBootstrap.ngxCores.ngxTypeService,
-      ngxBootstrap.ngxCores.ngxSizeService,
-      ngxBootstrap.ngxCores.ngxStateService,
+﻿var ngxColorService = require('./../../../cores/services/color.service.js');
+var ngxSizeService = require('./../../../cores/services/size.service.js');
+var ngxStateService = require('./../../../cores/services/state.service.js');
+var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
+ngxBootstrap = require('./../../../cores/ngx-bootstrap.utils.js');
 
-      function (ngxColorService, ngxTypeService, ngxSizeService, ngxStateService) {
-        ngxBootstrap.shallowCopy(this, ngxColorService);
-        ngxBootstrap.shallowCopy(this, ngxTypeService);
-        ngxBootstrap.shallowCopy(this, ngxSizeService);
-        ngxBootstrap.shallowCopy(this, ngxStateService);
+function _ngxButtonService() {
+  this.constructor = [
+    ngxColorService,
+    ngxSizeService,
+    ngxStateService,
 
-        this.setPrefix('btn');
-      }
-    ];
+    function ngxButtonService(ngxColorService, ngxSizeService, ngxStateService) {
+      ngxBootstrap.shallowCopy(this, ngxColorService);
+      ngxBootstrap.shallowCopy(this, ngxSizeService);
+      ngxBootstrap.shallowCopy(this, ngxStateService);
+    }
+  ];
+}
 
-    this.getSmallBlockSizeClass = function () {
-      return this.getSmallSizeClass() + ' ' + this.getBlockSizeClass();
-    };
-    this.getLargeBlockSizeClass = function () {
-      return this.getLargeSizeClass() + ' ' + this.getBlockSizeClass();
-    };
-
-    this.isDisabledState = function (state) {
-      return state && state === this.getStates().DISABLED;
-    };
-    this.isActiveState = function (state) {
-      return state && state === this.getStates().ACTIVE;
-    };
-
-    this.combineColorWithType = function (color, type) {
-      var _typeClass = this.getTypeClass(type);
-      var _colorClass = this.getColorClass(color);
-
-      return _typeClass ? _colorClass + '-' + _typeClass : _colorClass;
-    };
-  }
-
-})(window.ngxBootstrap);
+module.exports = ng.core.Class(new _ngxButtonService());

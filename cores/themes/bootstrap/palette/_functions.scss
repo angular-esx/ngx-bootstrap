@@ -1,0 +1,27 @@
+﻿@import "_variables.scss";
+
+//Required structure of color map: $color-map: (...,dark-01: #3c763d, dark: #4eb14e, default: #5cb85c, light: #95d195, light-01: #dff0d8,...)
+//ngx-color-dark($color-map, dark) => #3c763d
+@function ngx-color-dark($color-map, $color-name: default, $opacity: 1){
+  $color-names: map-keys($color-map);
+  $index: index($color-names, $color-name);
+  $length: length($color-names);
+  $color: if($index > 1 and $index <= $length, map-get($color-map, nth($color-names, $index - 1)), map-get($color-map, nth($color-names, 1)));
+
+  @return rgba($color, $opacity);
+}
+
+//Required structure of color map: $color-map: (...,dark-01: #3c763d, dark: #4eb14e, default: #5cb85c, light: #95d195, light-01: #dff0d8,...)
+//ngx-color-light($color-map, light) => #dff0d8
+@function ngx-color-light($color-map, $color-name: default, $opacity: 1){
+  $color-names: map-keys($color-map);
+  $index: index($color-names, $color-name);
+  $length: length($color-names);
+  $color: if($index < $length,  map-get($color-map, nth($color-names, $index + 1)),  map-get($color-map, nth($color-names, $length)));
+
+  @return rgba($color, $opacity);
+}
+
+@function ngx-color($color-map,  $color-name: default, $opacity: 1){
+  @return rgba(map-get($color-map, $color-name), $opacity);
+}

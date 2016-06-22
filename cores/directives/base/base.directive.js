@@ -128,12 +128,22 @@ function _ngxBaseDirective() {
     return this.prefixClass || '';
   };
 
-  this.getPrevPropertyValue = function (changeRecord, propertyName) {
-    return !changeRecord[propertyName] || (changeRecord[propertyName].isFirstChange && changeRecord[propertyName].isFirstChange()) ? this[propertyName] : changeRecord[propertyName].previousValue;
+  this.getPrevPropertyValue = function (changeRecord, propertyName, propertyAlias) {
+    if (propertyAlias) {
+      return !changeRecord[propertyAlias] || (changeRecord[propertyAlias].isFirstChange && changeRecord[propertyAlias].isFirstChange()) ? this[propertyName] : changeRecord[propertyAlias].previousValue;
+    }
+    else {
+      return !changeRecord[propertyName] || (changeRecord[propertyName].isFirstChange && changeRecord[propertyName].isFirstChange()) ? this[propertyName] : changeRecord[propertyName].previousValue;
+    }
   };
 
-  this.getCurrentPropertyValue = function (changeRecord, propertyName) {
-    return changeRecord[propertyName] ? changeRecord[propertyName].currentValue : this[propertyName];
+  this.getCurrentPropertyValue = function (changeRecord, propertyName, propertyAlias) {
+    if (propertyAlias) {
+      return changeRecord[propertyAlias] ? changeRecord[propertyAlias].currentValue : this[propertyName];
+    }
+    else {
+      return changeRecord[propertyName] ? changeRecord[propertyName].currentValue : this[propertyName];
+    }
   };
 
   this.getBaseInstance = function (baseClass) {

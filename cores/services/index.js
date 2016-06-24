@@ -1,5 +1,6 @@
 module.exports = [
   require('./animation.service.js'),
+  require('./breakpoint.service.js'),
   require('./color.service.js'),
   require('./position.service.js'),
   require('./render.service.js'),

@@ -136,6 +136,7 @@ module.exports = function (params) {
           /** core services **/
           coreService: 'cores/services/index.js',
           animationService: 'cores/services/animation.service.js',
+          breakpointService: 'cores/services/breakpoint.service.js',
           colorService: 'cores/services/color.service.js',
           positionService: 'cores/services/position.service.js',
           renderService: 'cores/services/render.service.js',

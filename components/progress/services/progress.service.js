@@ -17,6 +17,13 @@ function _ngxProgressService() {
   this.getStripedColorClass = function (prefix) {
     return prefix + '-color-striped';
   };
+
+  this.isAnimatedStripedColorClass = function (prefix, color) {
+    return this.getColorClass(prefixClass, color).indexOf(this.getAnimatedStripedColorClass(prefixClass)) > -1;
+  };
+  this.getAnimatedStripedColorClass = function (prefix) {
+    return prefix + '-color-animated-striped';
+  };
 }
 
 module.exports = ng.core.Class(new _ngxProgressService());

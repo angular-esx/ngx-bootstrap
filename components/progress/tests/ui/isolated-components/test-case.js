@@ -7,6 +7,11 @@ ngxBootstrap = require('utils');
 function _testCase() {
   this.constructor = [ngxProgressService, function (ngxProgressService) {
     this.COLORS = ngxProgressService.getColors();
+
+    this.progresses = {
+      warning: { value: 75, max: 100 },
+      danger: { value: 100, max: 100 }
+    };
   }];
 }
 

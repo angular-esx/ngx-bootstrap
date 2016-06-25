@@ -23,11 +23,12 @@ function _ngxProgressComponent() {
       
       if (elementRef) {
         this.ngxProgressService = ngxProgressService;
+        this.currentProgress = 0;
       }
     }
   ];
 
-  this.ngAfterContentInit = function () {
+  this.ngOnChanges = function (changeRecord) {
     if (this.value === undefined || this.value === null || isNaN(this.value) || this.value < 0) {
       this.value = 0;
     }
@@ -36,11 +37,20 @@ function _ngxProgressComponent() {
       this.max = 100;
     }
 
-    var _self = this,
-        _attributes = [
+    var _self = this;
+    setTimeout(function () {
+      _self.currentProgress = (_self.value / _self.max) * 100;
+    });
+
+    _getBaseInstance(this).ngOnChanges.apply(this, arguments);
+  };
+
+  this.ngAfterContentInit = function () {
+    var _self = this;
+    var _attributes = [
       _ATTRIBUTES.VALUE,
       _ATTRIBUTES.MAX
-        ];
+    ];
 
     this.removeOneTimeBindingAttributes(_attributes);
 

@@ -1,66 +1,59 @@
 ﻿@import "_mixins.scss";
 
+@-webkit-keyframes ngx-progress-bar-stripes {
+  from  { background-position: 1rem 0; }
+  to    { background-position: 0 0; }
+}
+
 :host(.#{$ngx-progress-prefix-class}) {
   display: block;
-  margin: $ngx-progress-margin;
-  width: 100%;
   height: $ngx-progress-height;
+  margin: $ngx-progress-margin;
+  overflow: hidden;
+  background-color: $ngx-progress-background-color;
+  @include ngx-border-radius($ngx-progress-border-radius);
 
-  > .#{$ngx-progress-prefix-class}-bar[value] {
-    border: 0;
-    width: 100%;
-    appearance: none;
-
-    &::-webkit-progress-bar {
-      background-color: #eee;
-      @include ngx-border-radius($ngx-progress-border-radius);
-    }
-
-    &::-webkit-progress-value::before {
-      content: attr(value);
-    }
-
-    &::-webkit-progress-value {
-      background-color: #0074d9;
-      @include ngx-border-radius($ngx-progress-border-radius, left);
-    }
+  > .#{$ngx-progress-prefix-class}-bar {
+    text-align: center;
+    font-size: $ngx-progress-bar-font-size;
+    line-height: $ngx-progress-bar-line-height;
+    float: left;
+    width: 0%;
+    height: 100%;
+    color: $ngx-progress-bar-foreground-color;
+    transition: $ngx-progress-bar-transition;
   }
 
-  > .#{$ngx-progress-prefix-class}-bar[value="100"]::-webkit-progress-value {
-    @include ngx-border-radius($ngx-progress-border-radius, right);
-  } 
-
   &.#{$ngx-progress-prefix-class}-color-striped {
-    > .#{$ngx-progress-prefix-class}-bar[value] {
-      &::-webkit-progress-value {
-        @include ngx-gradient-striped();
-        background-size: $ngx-progress-bar-striped-background-size;
-      }
+    > .#{$ngx-progress-prefix-class}-bar {
+      background-size: $ngx-progress-bar-striped-background-size;
+      @include ngx-gradient-striped();
+    }
 
-      &::-moz-progress-bar {
-        @include ngx-gradient-striped();
-        background-size: $ngx-progress-bar-striped-background-size;
+    &.#{$ngx-progress-prefix-class}-color-animated-striped {
+      > .#{$ngx-progress-prefix-class}-bar {
+        animation: ngx-progress-bar-stripes 2s linear infinite;
       }
     }
   }
 
   &.#{$ngx-progress-prefix-class}-color-primary {
-    @include ngx-progress-variant(#{$ngx-progress-prefix-class}, $ngx-progress-primary-background-color);
+    @include ngx-progress-variant(#{$ngx-progress-prefix-class}, $ngx-progress-bar-primary-background-color);
   }
 
   &.#{$ngx-progress-prefix-class}-color-info {
-    @include ngx-progress-variant(#{$ngx-progress-prefix-class}, $ngx-progress-info-background-color);
+    @include ngx-progress-variant(#{$ngx-progress-prefix-class}, $ngx-progress-bar-info-background-color);
   }
 
   &.#{$ngx-progress-prefix-class}-color-success {
-    @include ngx-progress-variant(#{$ngx-progress-prefix-class}, $ngx-progress-success-background-color);
+    @include ngx-progress-variant(#{$ngx-progress-prefix-class}, $ngx-progress-bar-success-background-color);
   }
 
   &.#{$ngx-progress-prefix-class}-color-warning {
-    @include ngx-progress-variant(#{$ngx-progress-prefix-class}, $ngx-progress-warning-background-color);
+    @include ngx-progress-variant(#{$ngx-progress-prefix-class}, $ngx-progress-bar-warning-background-color);
   }
 
   &.#{$ngx-progress-prefix-class}-color-danger {
-    @include ngx-progress-variant(#{$ngx-progress-prefix-class}, $ngx-progress-danger-background-color);
+    @include ngx-progress-variant(#{$ngx-progress-prefix-class}, $ngx-progress-bar-danger-background-color);
   }
 }

@@ -59,6 +59,7 @@
     this.BUILD = 'build';
     this.WEBPACK = 'webpack';
     this.BUILD_SCSS = 'build-scss';
+    this.BUILD_JS = 'build-js';
   })();
 
   var gulp = require('gulp');
@@ -91,8 +92,10 @@
 
   gulp.task('watch', getTask(taskService.WATCH));
 
+  gulp.task('build-js', getTask(taskService.BUILD_JS));
+
   gulp.task('build', function () {
-    runSequence('scss', 'lint', 'webpack');
+    runSequence('scss', 'lint', 'build-js');
   });
 
   gulp.task('build-scss', getTask(taskService.BUILD_SCSS));

@@ -13,7 +13,6 @@ module.exports = function (params) {
 
     var CORE_SASS = './cores/scss/ngx-bootstrap.' + themeName + '.scss';
     var contents = addSCSS(CORE_SASS);
-
     if (componentName) {
       contents += getPathDirectiveSCSS(componentName);
 
@@ -34,7 +33,7 @@ module.exports = function (params) {
     fs.writeFileSync('./scss/ngx-bootstrap.scss', contents, { encoding: 'utf8' });
     
     return gulp.src('./scss/ngx-bootstrap.scss')
-      .pipe(reload({ stream: true }))
+
       .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
       .pipe(gulp.dest('./dist/css/'))
       .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
@@ -50,11 +49,11 @@ function addSCSS(scssName) {
 
 function getPathDirectiveSCSS(componentName) {
   var contents = '';
-  fs.readdirSync('./components/' + componentName)
+  var data = fs.readdirSync('./components/' + componentName)
     .filter(function (directive) {
       return directive.match(/directive.js$/g);
     }).map(function (directive) {
-      return './components/' + componentName + '/themes/ ' + themeName + ' /scss/' + directive.replace('.directive.js', '') + '.scss';
+      return './components/' + componentName + '/themes/' + themeName + '/scss/' + directive.replace('.directive.js', '') + '.scss';
     }).filter(function (directive) {
       try {
         var stats = fs.statSync(directive);
@@ -62,9 +61,7 @@ function getPathDirectiveSCSS(componentName) {
       } catch (e) {
         return false;
       }
-    }).forEach(function (scss) {
-      contents += addSCSS(scss);
     });
-    
+
     return contents;
 }

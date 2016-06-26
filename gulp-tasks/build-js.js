@@ -10,7 +10,6 @@ var uglify = require('gulp-uglify');
 var mkdirp = require('mkdirp');
 var autoprefixer = require('autoprefixer');
 var path = require('path');
-var reload = require('browser-sync').reload;
 
 module.exports = function (params) {
   return function () {
@@ -22,51 +21,28 @@ module.exports = function (params) {
       _testCase = params.args.testcase;
 
     _themeName = _themeName || 'bootstrap';
-
-    var sourcePath, webpackVariables;
+   
+    var sourcePath, webpackVariables, fileName;
 
     webpackVariables = {
-
       __THEME__: JSON.stringify(_themeName),
-      /** ngx bootstrap & ngx bootstrap utils **/
-      __NGX_BOOTSTRAP__: JSON.stringify('cores/ngx-bootstrap.js'),
-      __NGX_BOOTSTRAP_UTILS__: JSON.stringify('cores/ngx-bootstrap.utils.js'),
-
-      /** core components **/
-      __BASE_COMPONENT__: JSON.stringify('cores/components/base/base.component.js'),
-      __ITEM_SERVICE__: JSON.stringify('cores/components/item/services/item.service.js'),
-      __ITEM_COMPONENT__: JSON.stringify('cores/components/item/item.component.js'),
-      __LINK_SERVICE__: JSON.stringify('cores/components/link/services/link.service.js'),
-      __LINK_COMPONENT__: JSON.stringify('cores/components/link/link.component.js'),
-
-      /** core directives **/
-      __BASE_DIRECTIVE__: JSON.stringify('cores/directives/base/base.directive.js'),
-
-      /** core services **/
-      __CORE_SERVICE__: JSON.stringify('cores/services/index.js'),
-      __ANIMATION_SERVICE__: JSON.stringify('cores/services/animation.service.js'),
-      __COLOR_SERVICE__: JSON.stringify('cores/services/color.service.js'),
-      __POSITION_SERVICE__: JSON.stringify('cores/services/position.service.js'),
-      __RENDER_SERVICE__: JSON.stringify('cores/services/render.service.js'),
-      __SIZE_SERVICE__: JSON.stringify('cores/services/size.service.js'),
-      __STATE_SERVICE__: JSON.stringify('cores/services/state.service.js'),
-      __TYPE_SERVICE__: JSON.stringify('cores/services/type.service.js'),
-      __WINDOW_SERVICE__: JSON.stringify('cores/services/window.service.js'),
     };
 
     if (_componentName || _directiveName) {
 
       if (_componentName) {
-        sourcePath = gulp.src(_fileService.getComponentTestCaseBoot(_componentName, _testCase));
+        sourcePath = gulp.src('./components/' + _componentName + '/' + _componentName + '.component.js');
+        fileName = _componentName + '.' + _themeName;
+  
       } else if (_directiveName) {
-        sourcePath = gulp.src(_fileService.getDirectiveTestCaseBoot(_directiveName, _testCase));
+        sourcePath = gulp.src('./directives/' + _directiveName + '/' + _directiveName + '.directive.js');
+        fileName = _directiveName + '.' + _themeName;
       }
 
       var _componentThemeName = _componentName + '.component.js';
 
-      webpackVariables.__COMPONENT_FILE__ = JSON.stringify(_componentThemeName);
-
     } else {
+      fileName = 'ngx.' + _themeName;
 
       var components = fs.readdirSync('./components')
         .filter(function (component) {
@@ -147,10 +123,9 @@ module.exports = function (params) {
         extensions: ['', '.js']
       },
     }))
-      .pipe(rename('ngx-bootstrap.js'))
+      .pipe(rename(fileName + '.js'))
       .pipe(gulp.dest('./dist/js'))
-      .pipe(reload({ stream: true }))
-      .pipe(rename('ngx-bootstrap.min.js'))
+      .pipe(rename(fileName + '.min.js'))
       .pipe(uglify())
       .pipe(gulp.dest('./dist/js'));
   };

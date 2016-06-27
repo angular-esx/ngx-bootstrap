@@ -12,7 +12,7 @@
              (dismissed)="dismissed($event)">
     <p><strong>Heads up!</strong></p>
     <hr />
-    <ngx-link class="ngx-alert-link">Alert needs your attention</ngx-link>
+    <a ngx-link class="ngx-alert-link">Alert needs your attention</a>
     , but it's not super important.
   </ngx-alert>
 </div>
@@ -24,9 +24,7 @@
 
 <ngx-alert color="warning">
   <strong>Warning!</strong> 
-  <ngx-item ngx-alert-link>
-    <a [href]="href">Better check yourself, </a>
-  </ngx-item>
+  <a ngx-alert-link [href]="href">Better check yourself, </a>
   you're not looking too good
 </ngx-alert>
 
@@ -34,8 +32,6 @@
            [type]="TYPES.DISMISSIBLE" 
            (dismissed)="dismissed($event)">
   <p><strong>Oh snap!</strong></p> 
-  <ngx-item prefix-class="ngx-alert-link">
-    <a [href]="href">Change a few things up</a>
-  </ngx-item>
+  <a ngx-link prefix-class="ngx-alert-link" [href]="href">Change a few things up</a>
   and try submitting again.
 </ngx-alert>

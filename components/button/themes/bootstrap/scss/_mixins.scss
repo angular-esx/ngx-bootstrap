@@ -16,12 +16,14 @@
   border-color: map-get($default, border);
 
   @include ngx-state($ngx-button-prefix-class, 'focus hover active'){
+    color: map-get($active, foreground);
     background-image: none;
     background-color: map-get($active, background);
     border-color: map-get($active, border);
   }
 
   @include ngx-state($ngx-button-prefix-class, 'disabled'){
+    color: map-get($disabled, foreground);
     background-color: map-get($disabled, background);
     border-color: map-get($disabled, border);
   }

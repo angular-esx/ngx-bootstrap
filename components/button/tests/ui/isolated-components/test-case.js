@@ -11,6 +11,10 @@ function _testCase() {
   this.constructor = [ngxButtonService, function (ngxButtonService) {
     this.COLORS = ngxButtonService.getColors();
   }];
+
+  this.click = function (event) {
+    console.log('clicked');
+  };
 }
 
 module.exports = ng.core.Component({

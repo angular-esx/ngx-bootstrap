@@ -148,6 +148,6 @@ module.exports = ng.core.Component({
     'showNext: show-next',
     'prefixClass: prefix-class'
   ],
-  events: ['setPageEmitter: setPage', 'changePageEmitter: changePage']
+  events: ['setPageEmitter: onSetPage', 'changePageEmitter: onChangePage']
 })
 .Class(new _ngxPaginationComponent());

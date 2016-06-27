@@ -24,7 +24,7 @@ function _ngxLinkComponent() {
   ];
 
   this.getPrefixClass = function () {
-    return 'ngx-link';
+    return this.prefixClass || 'ngx-link';
   };
 
   this.click = function (event) {

@@ -150,10 +150,10 @@ module.exports = ng.core.Component({
   providers:[ngxRenderService],
   properties: ['color', 'type', 'position', 'state', 'prefixClass:prefix-class'],
   events: [
-    'showingEmitter: showing',
-    'shownEmitter: shown',
-    'dismissingEmitter: dismissing',
-    'dismissedEmitter: dismissed'
+    'showingEmitter: onShowing',
+    'shownEmitter: onShown',
+    'dismissingEmitter: onDismissing',
+    'dismissedEmitter: onDismissed'
   ],
 })
 .Class(new _ngxAlertComponent());

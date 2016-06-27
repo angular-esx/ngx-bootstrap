@@ -6,10 +6,10 @@
              color="{{COLORS.INFO}}"
              type="{{TYPES.DISMISSIBLE}} {{TYPES.FLOAT}}"
              position="{{POSITIONS.BOTTOM}}"
-             (showing)="showing($event)"
-             (shown)="shown($event)"
-             (dismissing)="dismissing($event)"
-             (dismissed)="dismissed($event)">
+             (onShowing)="showing($event)"
+             (onShown)="shown($event)"
+             (onDismissing)="dismissing($event)"
+             (onDismissed)="dismissed($event)">
     <p><strong>Heads up!</strong></p>
     <hr />
     <a ngx-link class="ngx-alert-link">Alert needs your attention</a>
@@ -30,7 +30,7 @@
 
 <ngx-alert [color]="COLORS.DANGER" 
            [type]="TYPES.DISMISSIBLE" 
-           (dismissed)="dismissed($event)">
+           (onDismissed)="dismissed($event)">
   <p><strong>Oh snap!</strong></p> 
   <a ngx-link prefix-class="ngx-alert-link" [href]="href">Change a few things up</a>
   and try submitting again.

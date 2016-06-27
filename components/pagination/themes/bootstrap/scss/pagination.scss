@@ -1,4 +1,5 @@
-﻿@import "../../../../../cores/themes/bootstrap/state/state.scss";
+﻿@import "../../../../../cores/themes/bootstrap/normalize/normalize.scss";
+@import "../../../../../cores/themes/bootstrap/state/state.scss";
 
 @import "_mixins.scss";
 
@@ -10,36 +11,33 @@
   @include ngx-border-radius($ngx-pagination-border-radius);
 
   > .#{$ngx-page-item-prefix-class} {
-    display: inline;
+     @extend %ngx-link-normalize;
 
-    &:first-child > a {
+    line-height: $ngx-page-item-line-height;
+    position: relative;
+    float: left;
+    padding: $ngx-page-item-padding;
+    margin-left: -1px;
+    color: map-get($ngx-page-item, foreground);
+    background-color: map-get($ngx-page-item, background);
+    border: 1px solid map-get($ngx-page-item, border);
+
+    @include ngx-state(#{$ngx-page-item-prefix-class}, 'focus hover'){
+      color: map-get($ngx-page-item-hover, foreground);
+      background-color: map-get($ngx-page-item-hover, background);
+      border-color: map-get($ngx-page-item-hover, border);
+    }
+
+    &:first-child {
       margin-left: 0;
       @include ngx-border-radius($ngx-page-item-border-radius, left);
     }
 
-    &:last-child > a {
+    &:last-child {
       @include ngx-border-radius($ngx-page-item-border-radius, right);
     }
 
-    > a {
-      line-height: $ngx-page-item-line-height;
-      text-decoration: none;
-      position: relative;
-      float: left;
-      padding: $ngx-page-item-padding;
-      margin-left: -1px;
-      color: map-get($ngx-page-item, foreground);
-      background-color: map-get($ngx-page-item, background);
-      border: 1px solid map-get($ngx-page-item, border);
-
-      @include ngx-state(null, 'focus hover'){
-        color: map-get($ngx-page-item-hover, foreground);
-        background-color: map-get($ngx-page-item-hover, background);
-        border-color: map-get($ngx-page-item-hover, border);
-      }
-    }
-
-    &.#{$ngx-page-item-prefix-class}-state-active > a {
+    &.#{$ngx-page-item-prefix-class}-state-active {
       @include ngx-state(null, 'self focus hover'){
         color: map-get($ngx-page-item-active, foreground);
         background-color: map-get($ngx-page-item-active, background);

@@ -25,7 +25,7 @@ function _ngxButtonComponent() {
   ];
 
   this.getPrefixClass = function () {
-    return this.prefixClass || 'ngx-button';
+    return this.prefixClass && this.prefixClass != 'a' ? this.prefixClass : 'ngx-button';
   };
 
   this.click = function (event) {

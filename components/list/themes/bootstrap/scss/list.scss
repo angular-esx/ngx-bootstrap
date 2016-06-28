@@ -7,6 +7,8 @@
   margin-bottom: 0;
 
   > .#{$ngx-list-item-prefix-class} {
+    @extend %ngx-link-normalize;
+
     display: flex;
     text-align: inherit;
     position: relative;
@@ -14,7 +16,6 @@
     padding: $ngx-list-item-padding;
     border: $ngx-list-item-border;
     box-sizing: border-box;
-    cursor: pointer;
 
     h1,
     h2,

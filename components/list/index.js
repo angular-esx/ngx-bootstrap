@@ -1,7 +1,9 @@
 ﻿module.exports = {
   DIRECTIVES: [
     require('./list.component.js'),
-    require('./list-item.directive.js')
+    require('./list-item.component.js'),
+    require('./list-item-content.component.js')
   ],
-  SERVICE: require('./services/list.service.js')
+  SERVICES: [require('./services/list-item.service.js')],
+  ITEM_SERVICE: require('./services/list-item.service.js')
 };

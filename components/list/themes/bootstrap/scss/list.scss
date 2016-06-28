@@ -6,42 +6,52 @@
   padding-left: 0;
   margin-bottom: 0;
 
-  > .#{$ngx-list-prefix-class}-item {
-    display: block;
+  > .#{$ngx-list-item-prefix-class} {
+    display: flex;
+    text-align: inherit;
     position: relative;
+    width: 100%;
     padding: $ngx-list-item-padding;
-    margin-bottom: -1px;
     border: $ngx-list-item-border;
+    box-sizing: border-box;
     cursor: pointer;
 
-    > h1,
-    > h2,
-    > h3,
-    > h4,
-    > h5,
-    > h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       @extend %ngx-h-normalize;
-
-      color: inherit;
+      margin-bottom: 5px;
     }
 
-    > p {
+    p {
+      @extend %ngx-p-normalize;
+
       text-align: inherit;
       line-height: $ngx-list-item-line-height;
       margin-bottom: 0;
     }
-  }
 
-  > .#{$ngx-list-prefix-class}-item,
-  > a, 
-  > button {
-    display:block;
-    text-align: inherit;
-    width: 100%;
-    box-sizing: border-box;
-  }
+    > .#{$ngx-list-item-prefix-class}-content {
+      &.#{$ngx-list-item-prefix-class}-content-type-left {
+        padding-right: 10px;
 
-  > .#{$ngx-list-prefix-class}-item {
+        @include ngx-list-item-content-position();
+      }
+
+      &.#{$ngx-list-item-prefix-class}-content-type-center {
+        flex: 1;
+      }
+
+      &.#{$ngx-list-item-prefix-class}-content-type-right {
+        padding-left: 10px;
+
+        @include ngx-list-item-content-position();
+      }
+    }
+
     &.#{$ngx-list-prefix-class}-item-color-primary {
       &, a, button {
         @include ngx-list-item-variant(#{$ngx-list-prefix-class}-item, $ngx-list-item-primary, $ngx-list-item-primary-active, $ngx-list-item-primary-disabled);
@@ -78,4 +88,5 @@
       }
     }
   }
+
 }

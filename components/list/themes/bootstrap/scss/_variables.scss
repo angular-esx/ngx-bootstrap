@@ -3,10 +3,11 @@
 
 $ngx-list-prefix-class: ngx-list !default;
 
+$ngx-list-item-prefix-class: ngx-list-item !default;
 
 $ngx-list-item-padding: .75rem 1.25rem !default;
 
-$ngx-list-item-line-height: ngx-line-height(lg) !default;
+$ngx-list-item-line-height: ngx-line-height(base) !default;
 
 $ngx-list-item-border: 1px solid;
 

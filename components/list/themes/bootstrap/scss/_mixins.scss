@@ -2,18 +2,6 @@
 
 @import "_variables.scss";
 
-@mixin ngx-list-item-content-position(){
-  &.#{$ngx-list-item-prefix-class}-content-position-top {
-    align-self: flex-start;
-  }
-  &.#{$ngx-list-item-prefix-class}-content-position-center {
-    align-self: center;
-  }
-  &.#{$ngx-list-item-prefix-class}-content-position-bottom {
-    align-self: flex-end;
-  }
-}
-
 @mixin ngx-list-item-variant($prefix-class, $default, $active, $disabled){
   color: map-get($default, foreground);
   background-color: map-get($default, background);

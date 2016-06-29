@@ -35,21 +35,35 @@
       margin-bottom: 0;
     }
 
-    > .#{$ngx-list-item-prefix-class}-content {
-      &.#{$ngx-list-item-prefix-class}-content-type-left {
-        padding-right: 10px;
+    > #{$ngx-list-item-prefix-class}-image {
+      padding-right: 10px;
 
-        @include ngx-list-item-content-position();
+      &[align-self="start"] {
+        align-self: flex-start;
       }
-
-      &.#{$ngx-list-item-prefix-class}-content-type-center {
-        flex: 1;
+      &[align-self="center"] {
+        align-self: center;
       }
+      &[align-self="end"] {
+        align-self: flex-end;
+      }
+    }
 
-      &.#{$ngx-list-item-prefix-class}-content-type-right {
-        padding-left: 10px;
+    > #{$ngx-list-item-prefix-class}-content {
+      flex: 1;
+    }
 
-        @include ngx-list-item-content-position();
+    > #{$ngx-list-item-prefix-class}-actions {
+      padding-left: 10px;
+
+      &[align-self="start"] {
+        align-self: flex-start;
+      }
+      &[align-self="center"] {
+        align-self: center;
+      }
+      &[align-self="end"] {
+        align-self: flex-end;
       }
     }
 

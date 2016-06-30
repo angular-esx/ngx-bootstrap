@@ -1,18 +1,10 @@
-﻿var ngxTabsComponent = require('components/tabs/tabs.component.js');
-var ngxTabsService = require('components/tabs/services/tabs.service.js');
-var ngxTabDirective = require('components/tabs/tab.directive.js');
-var ngxTabHeadDirective = require('components/tabs/tab-head.directive.js');
-var ngxTabContentDirective = require('components/tabs/tab-content.directive.js');
-var ngxLinkComponent = require('cores/components/link/link.component.js');
-var ngxLinkService = require('cores/components/link/services/link.service.js');
-var ngxItemComponent = require('cores/components/item/item.component.js');
-var ngxItemService = require('cores/components/item/services/item.service.js');
-var ngxCoreService = require('coreService');
-var ngxBootstrap = require('ngxBootstrap');
-ngxBootstrap = require('utils');
+﻿var NGX_TABS = require('components/tabs/index.js');
+var NGX_LINK = require('components/link/index.js');
+var NGX_CORE_SERVICES = require('coreService');
+var ngxBootstrap = require('utils');
 
 function _testCase() {
-  this.constructor = [ngxTabsService, function (ngxTabsService) {
+  this.constructor = [NGX_TABS.SERVICE, function (ngxTabsService) {
     this.ngxTabsService = ngxTabsService;
 
     this.tabs = [
@@ -47,18 +39,13 @@ module.exports = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/tabs/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxTabsComponent,
-    ngxLinkComponent,
-    ngxItemComponent,
-    ngxTabDirective,
-    ngxTabHeadDirective,
-    ngxTabContentDirective
+    NGX_LINK.DIRECTIVES,
+    NGX_TABS.DIRECTIVES
   ],
   providers: [
-    ngxCoreService,
-    ngxLinkService,
-    ngxItemService,
-    ngxTabsService
+    NGX_CORE_SERVICES,
+    NGX_LINK.SERVICE,
+    NGX_TABS.SERVICE
   ]
 })
 .Class(new _testCase());

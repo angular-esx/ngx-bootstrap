@@ -1,13 +1,8 @@
-﻿var ngxPaginationComponent = require('components/pagination/pagination.component.js');
-var ngxPaginationService = require('components/pagination/services/pagination.service.js');
-var ngxLinkComponent = require('cores/components/link/link.component.js');
-var ngxLinkService = require('cores/components/link/services/link.service.js');
-var ngxCoreService = require('coreService');
-var ngxBootstrap = require('ngxBootstrap');
-ngxBootstrap = require('utils');
+﻿var NGX_PAGINATION = require('components/pagination/index.js');
+var NGX_CORE_SERVICES = require('coreService');
 
 function _testCase() {
-  this.constructor = [ngxPaginationService, function (ngxPaginationService) {
+  this.constructor = [NGX_PAGINATION.SERVICE, function (ngxPaginationService) {
 
     this.SIZES = ngxPaginationService.getSizes();
   }];
@@ -28,13 +23,11 @@ module.exports = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/pagination/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxLinkComponent,
-    ngxPaginationComponent
+    NGX_PAGINATION.DIRECTIVES
   ],
   providers: [
-   ngxLinkService,
-   ngxPaginationService,
-   ngxCoreService
+  NGX_CORE_SERVICES,
+   NGX_PAGINATION.SERVICE
   ]
 })
 .Class(new _testCase());

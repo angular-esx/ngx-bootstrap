@@ -34,10 +34,6 @@ module.exports = function (params) {
 
       /** core components **/
       __BASE_COMPONENT__: JSON.stringify('cores/components/base/base.component.js'),
-      __ITEM_SERVICE__: JSON.stringify('cores/components/item/services/item.service.js'),
-      __ITEM_COMPONENT__: JSON.stringify('cores/components/item/item.component.js'),
-      __LINK_SERVICE__: JSON.stringify('cores/components/link/services/link.service.js'),
-      __LINK_COMPONENT__: JSON.stringify('cores/components/link/link.component.js'),
 
       /** core directives **/
       __BASE_DIRECTIVE__: JSON.stringify('cores/directives/base/base.directive.js'),
@@ -125,10 +121,6 @@ module.exports = function (params) {
           /** core components **/
           baseComponent: 'cores/components/base/base.component.js',
           coreComponent: 'cores/components/index.js',
-          itemService: 'cores/components/item/services/item.service.js',
-          itemComponent: 'cores/components/item/item.component.js',
-          linkService: 'cores/components/link/services/link.service.js',
-          linkComponent: 'cores/components/link/link.component.js',
 
           /** core directives **/
           baseDirective: 'cores/directives/base/base.directive.js',

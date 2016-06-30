@@ -1,6 +1,4 @@
 ﻿var ngxPagerService = require('./services/pager.service.js');
-var ngxLinkComponent = require('cores/components/link/link.component.js');
-var ngxLinkService = require('cores/components/link/services/link.service.js');
 var ngxBaseComponent = require('baseComponent');
 var ngxRenderService = require('renderService');
 var ngxBootstrap = require('ngxBootstrap');
@@ -48,23 +46,24 @@ function _ngxPagerComponent() {
     this.pageBuilder.build(this.totalPages, this.currentPage, this.setPageEmitter);
   };
 
-  this.prev = function ($event) {
-    if (_changePage($event, this.pageBuilder.prevPage, this.changePageEmitter)) {
+  this.prev = function (event) {
+    if (_changePage(event, this.pageBuilder.prevPage, this.changePageEmitter)) {
       this.currentPage = this.pageBuilder.prevPage.number;
       this.pageBuilder.build(this.totalPages, this.currentPage, this.setPageEmitter);
     }
   };
 
-  this.next = function ($event) {
-    if (_changePage($event, this.pageBuilder.nextPage, this.changePageEmitter)) {
+  this.next = function (event) {
+    if (_changePage(event, this.pageBuilder.nextPage, this.changePageEmitter)) {
       this.currentPage = this.pageBuilder.nextPage.number;
       this.pageBuilder.build(this.totalPages, this.currentPage, this.setPageEmitter);
     }
   };
 
-  function _changePage($event, page, changePageEmitter) {
+  function _changePage(event, page, changePageEmitter) {
     if (!page || !page.number) {
-      $event.preventDefault();
+      event.preventDefault();
+      event.stopImmediatePropagation();
       return false;
     }
 
@@ -74,8 +73,8 @@ function _ngxPagerComponent() {
       cancel: function () {
         _isCanceled = true;
 
-        $event.preventDefault();
-        $event.stopPropagation();
+        event.preventDefault();
+        event.stopImmediatePropagation();
       }
     });
 
@@ -116,8 +115,7 @@ module.exports = ng.core.Component({
   selector: 'ngx-pager',
   template: require('./themes/' + __THEME__ + '/templates/pager.html'),
   styles: [require('./themes/' + __THEME__  + '/scss/pager.scss')],
-  directives: [ngxLinkComponent],
-  providers: [ngxRenderService, ngxLinkService],
+  providers: [ngxRenderService],
   properties: [
     'type',
     'totalPages: total-pages',
@@ -126,6 +124,6 @@ module.exports = ng.core.Component({
     'showNext: show-next',
     'prefixClass: prefix-class'
   ],
-  events: ['setPageEmitter: setPage', 'changePageEmitter: changePage']
+  events: ['setPageEmitter: onSetPage', 'changePageEmitter: onChangePage']
 })
 .Class(new _ngxPagerComponent());

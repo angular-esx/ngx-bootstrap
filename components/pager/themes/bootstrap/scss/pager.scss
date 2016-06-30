@@ -1,4 +1,5 @@
 ﻿@import "../../../../../cores/themes/bootstrap/typography/typography.scss";
+@import "../../../../../cores/themes/bootstrap/normalize/normalize.scss";
 @import "../../../../../cores/themes/bootstrap/state/state.scss";
 
 @import "_variables.scss";
@@ -11,20 +12,17 @@
   @include clearfix();
 
   > .#{$ngx-pager-prefix-class}-item {
-    display: inline;
+    @extend %ngx-link-normalize;
 
-    > a {
-      display: inline-block;
-      text-decoration: none;
-      padding: 5px 14px;
-      color: map-get($ngx-pager-item, foreground);
-      background-color: map-get($ngx-pager-item, background);
-      border: 1px solid map-get($ngx-pager-item, border);
-      border-radius: $ngx-pager-item-border-radius;
+    display: inline-block;
+    padding: 5px 14px;
+    color: map-get($ngx-pager-item, foreground);
+    background-color: map-get($ngx-pager-item, background);
+    border: 1px solid map-get($ngx-pager-item, border);
+    border-radius: $ngx-pager-item-border-radius;
 
-      @include ngx-state(null, 'focus hover'){
-        background-color: map-get($ngx-pager-item-active, background);
-      }
+    @include ngx-state(#{$ngx-pager-prefix-class}-item, 'focus hover'){
+      background-color: map-get($ngx-pager-item-active, background);
     }
   }
 

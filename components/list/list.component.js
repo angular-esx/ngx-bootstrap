@@ -1,8 +1,6 @@
-﻿var ngxListService = require('components/list/services/list.service.js');
-var ngxBaseComponent = require('baseComponent');
+﻿var ngxBaseComponent = require('baseComponent');
 var ngxRenderService = require('renderService');
-var ngxBootstrap = require('ngxBootstrap');
-ngxBootstrap = require('utils');
+var ngxBootstrap = require('utils');
 
 function _ngxListComponent() {
   var _base;
@@ -12,13 +10,9 @@ function _ngxListComponent() {
   this.constructor = [
     ng.core.ElementRef,
     ngxRenderService,
-    ngxListService,
 
-    function ngxListComponent(elementRef, ngxRenderService, ngxListService) {
+  function ngxListComponent(elementRef, ngxRenderService) {
       ngxBaseComponent.apply(this, arguments);
-      if (elementRef) {
-        this.ngxListService = ngxListService;
-      }
     }
   ];
 

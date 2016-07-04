@@ -4,6 +4,14 @@ var NGX_CORE_SERVICES = require('coreService');
 function _testCase() {
   this.constructor = [NGX_ICON.SERVICE, function (ngxIconService) {
     ngxIconService.setDefaultFontSet('material-icons');
+
+    ngxIconService.setSvgIcon('components/icon/tests/ui/isolated-components/svgs/favorite.svg', 'favorite');
+
+    ngxIconService.setSvgIcon('components/icon/tests/ui/isolated-components/svgs/face.svg', 'face', 'face-set');
+
+    ngxIconService.setSvgIconSet('components/icon/tests/ui/isolated-components/svgs/material-set.svg');
+
+    this.svg_face = 'components/icon/tests/ui/isolated-components/svgs/face.svg';
   }];
 }
 
@@ -20,7 +28,8 @@ module.exports = ng.core.Component({
   ],
   providers: [
     NGX_ICON.SERVICE,
-    NGX_CORE_SERVICES
+    NGX_CORE_SERVICES,
+    ng.http.HTTP_PROVIDERS
   ]
 })
 .Class(new _testCase());

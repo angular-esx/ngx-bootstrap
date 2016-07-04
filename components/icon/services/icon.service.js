@@ -84,7 +84,7 @@ function _ngxIconService() {
       }
 
       var _getSvgElement$ = [];
-      for (var i = 0; i < _svgIconSetsHaveNoElement.length; i++) {
+      for (i = 0; i < _svgIconSetsHaveNoElement.length; i++) {
         _getSvgElement$.push(_svgIconSets[i].getSvgElement(this));
       }
 

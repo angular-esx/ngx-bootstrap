@@ -1,10 +1,9 @@
 ﻿var popoverOptionClass = require('./classes/popover-option.class.js');
 var ngxPopoverService = require('./services/popover.service.js');
-var ngxTooltipComponent = require('./../../components/tooltip/tooltip.component.js');
+var ngxTooltipComponent = require('components/tooltip/tooltip.component.js');
 var ngxRenderService = require('renderService');
 var ngxWindowService = require('windowService');
-var ngxBootstrap = require('ngxBootstrap');
-ngxBootstrap = require('utils');
+var ngxBootstrap = require('utils');
 
 function _ngxPopoverComponent() {
   var _base;

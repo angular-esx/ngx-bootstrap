@@ -1,5 +1,5 @@
-﻿var ngxWindowService = require('./../../cores/services/window.service.js');
-var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
+﻿var ngxWindowService = require('windowService');
+var ngxBootstrap = require('utils');
 
 function _ngxRenderService() {
   this.constructor = [ngxWindowService, function ngxRenderService(ngxWindowService) {

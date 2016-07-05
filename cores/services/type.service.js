@@ -1,4 +1,4 @@
-﻿var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
+﻿var ngxBootstrap = require('utils');
 
 function _ngxTypeService() {
   var _TYPES;

@@ -11,7 +11,7 @@ module.exports = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'directives/hide/tests/ui/isolated-directives/test-case.html',
   directives: [
-    NGX_HIDE.DIRECTIVES
+    NGX_HIDE.DIRECTIVES.HIDE
   ],
   providers: [
    NGX_HIDE.SERVICE,

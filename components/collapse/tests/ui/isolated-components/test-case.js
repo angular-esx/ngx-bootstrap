@@ -4,8 +4,7 @@ var ngxCollapseService = require('components/collapse/services/collapse.service.
 var ngxCoreService = require('coreService');
 var ngxButtonComponent = require('components/button/button.component.js');
 var ngxButtonService = require('components/button/services/button.service.js');
-var ngxBootstrap = require('ngxBootstrap');
-ngxBootstrap = require('utils');
+var ngxBootstrap = require('utils');
 
 function _testCase() {
   this.constructor = [ngxCollapseService, function (ngxCollapseService) {

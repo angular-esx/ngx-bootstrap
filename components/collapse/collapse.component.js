@@ -1,8 +1,7 @@
 ﻿var ngxCollapseService = require('./services/collapse.service.js');
 var ngxBaseComponent = require('baseComponent');
 var ngxRenderService = require('renderService');
-var ngxBootstrap = require('ngxBootstrap');
-ngxBootstrap = require('utils');
+var ngxBootstrap = require('utils');
 
 function _ngxCollapseComponent() {
   var _base,

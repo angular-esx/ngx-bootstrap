@@ -1,8 +1,7 @@
 ﻿var ngxCollapseService = require('./services/collapse.service.js');
 var ngxBaseDirective = require('baseDirective');
 var ngxRenderService = require('renderService');
-var ngxBootstrap = require('ngxBootstrap');
-ngxBootstrap = require('utils');
+var ngxBootstrap = require('utils');
 
 function _ngxToggleCollapseDirective() {
   var _base;

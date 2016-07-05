@@ -1,5 +1,5 @@
 ﻿var NGX_LABEL = require('components/label/index.js');
-var NGX_CORE_SERVICE = require('coreService');
+var NGX_CORE_SERVICES = require('coreService');
 
 function _testCase() {
   this.constructor = [NGX_LABEL.SERVICE, function (ngxLabelService) {
@@ -16,7 +16,7 @@ module.exports = ng.core.Component({
   ],
   providers: [
     NGX_LABEL.SERVICE,
-    NGX_CORE_SERVICE
+    NGX_CORE_SERVICES
   ]
 })
 .Class(new _testCase());

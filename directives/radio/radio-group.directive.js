@@ -1,6 +1,5 @@
 ﻿var ngxRadioGroupService = require('./services/radio-group.service.js');
-var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
+var ngxBootstrap = require('utils');
 
 function _ngxRadioGroupDirective() {
   this.constructor = [

@@ -1,5 +1,4 @@
-﻿var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
+﻿var ngxBootstrap = require('utils');
 
 function _ngxCheckboxGroupDirective() {
   this.constructor = [

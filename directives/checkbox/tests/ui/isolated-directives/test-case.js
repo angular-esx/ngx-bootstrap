@@ -6,7 +6,6 @@ var ngxGroupComponent = require('components/group/group.component.js');
 var ngxGroupService = require('components/group/services/group.service.js');
 var ngxCheckboxGroupDirective = require('directives/checkbox/checkbox-group.directive.js');
 var ngxCoreService = require('coreService');
-var ngxBootstrap = require('utils');
 
 function _testCase() {
   this.constructor = [ngxCheckboxService, function (ngxCheckboxService) {

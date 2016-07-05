@@ -99,12 +99,19 @@ module.exports = function (params) {
       ],
       module: {
         loaders: [
-          { test: /\.html$/, loader: 'html-loader' },
+          { test: /\.html$/, loader: '../../gulp-tasks/clean-code-loader!html-minifier' },
           {
             test: /\.(scss|sass)$/,
-            loader: 'raw-loader!postcss-loader!sass-loader'
-          },
+            loader: '../../gulp-tasks/clean-code-loader!postcss-loader!sass-loader'
+          }
         ]
+      },
+      'html-minifier-loader': {
+        removeComments: true,
+        collapseWhitespace: true,
+        conservativeCollapse: true,
+        preserveLineBreaks: true,
+        caseSensitive: true
       },
       postcss: function () {
         return [autoprefixer];

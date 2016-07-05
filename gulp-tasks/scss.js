@@ -29,9 +29,9 @@ module.exports = function (params) {
           contents += getPathDirectiveSCSS(component);
         });
     }
-    
+
     fs.writeFileSync('./scss/ngx-bootstrap.scss', contents, { encoding: 'utf8' });
-    
+
     return gulp.src('./scss/ngx-bootstrap.scss')
 
       .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
@@ -61,7 +61,9 @@ function getPathDirectiveSCSS(componentName) {
       } catch (e) {
         return false;
       }
+    }).forEach(function (scss) {
+      contents += addSCSS(scss);
     });
 
-    return contents;
+  return contents;
 }

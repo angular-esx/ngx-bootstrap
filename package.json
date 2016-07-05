@@ -38,6 +38,7 @@
     "gulp-uglify": "^1.5.3",
     "gulp-watch": "^4.3.5",
     "html-loader": "^0.4.3",
+    "html-minifier-loader": "^1.0.14",
     "js-string-escape": "^1.0.1",
     "jshint": "^2.9.1",
     "jshint-stylish": "^2.1.0",

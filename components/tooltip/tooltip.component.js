@@ -3,8 +3,7 @@ var ngxTooltipService = require('./services/tooltip.service.js');
 var ngxBaseComponent = require('baseComponent');
 var ngxRenderService = require('renderService');
 var ngxWindowService = require('windowService');
-var ngxBootstrap = require('ngxBootstrap');
-ngxBootstrap = require('utils');
+var ngxBootstrap = require('utils');
 
 function _ngxTooltipComponent() {
   var _base;

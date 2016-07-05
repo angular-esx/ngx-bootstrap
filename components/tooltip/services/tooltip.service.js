@@ -1,8 +1,7 @@
 ﻿var ngxAnimationService = require('animationService');
 var ngxStateService = require('stateService');
 var ngxPositionService = require('positionService');
-var ngxBootstrap = require('ngxBootstrap');
-ngxBootstrap = require('utils');
+var ngxBootstrap = require('utils');
 
 function _ngxTooltipService() {
   var _templates = {},

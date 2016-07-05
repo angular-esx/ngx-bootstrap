@@ -1,8 +1,7 @@
 ﻿var ngxPagerService = require('./services/pager.service.js');
 var ngxBaseComponent = require('baseComponent');
 var ngxRenderService = require('renderService');
-var ngxBootstrap = require('ngxBootstrap');
-ngxBootstrap = require('utils');
+var ngxBootstrap = require('utils');
 
 function _ngxPagerComponent() {
   var _base;

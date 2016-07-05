@@ -1,8 +1,7 @@
 ﻿var ngxDropMenuService = require('./services/drop-menu.service.js');
 var ngxBaseComponent = require('baseComponent');
 var ngxRenderService = require('renderService');
-var ngxBootstrap = require('ngxBootstrap');
-ngxBootstrap = require('utils');
+var ngxBootstrap = require('utils');
 
 function _ngxDropMenuComponent() {
   var _base,

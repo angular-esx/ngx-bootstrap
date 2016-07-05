@@ -1,6 +1,5 @@
 ﻿var ngxColorService = require('colorService');
-var ngxBootstrap = require('ngxBootstrap');
-ngxBootstrap = require('utils');
+var ngxBootstrap = require('utils');
 
 function _ngxProgressService() {
   this.constructor = [

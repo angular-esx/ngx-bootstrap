@@ -1,8 +1,6 @@
 ﻿var ngxProgressComponent = require('components/progress/progress.component.js');
 var ngxProgressService = require('components/progress/services/progress.service.js');
 var ngxCoreService = require('coreService');
-var ngxBootstrap = require('ngxBootstrap');
-ngxBootstrap = require('utils');
 
 function _testCase() {
   this.constructor = [ngxProgressService, function (ngxProgressService) {

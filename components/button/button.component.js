@@ -1,8 +1,7 @@
 ﻿var ngxButtonService = require('./services/button.service.js');
-var ngxBaseComponent = require('./../../cores/components/base/base.component.js');
-var ngxRenderService = require('./../../cores/services/render.service.js');
-var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
+var ngxBaseComponent = require('baseComponent');
+var ngxRenderService = require('renderService');
+var ngxBootstrap = require('utils');
 
 function _ngxButtonComponent() {
   var _base;
@@ -19,9 +18,24 @@ function _ngxButtonComponent() {
       
       if (elementRef) {
         this.ngxButtonService = ngxButtonService;
+        this.clickEmitter = new ng.core.EventEmitter();
       }
     }
   ];
+
+  this.getPrefixClass = function () {
+    return this.prefixClass && this.prefixClass != 'a' ? this.prefixClass : 'ngx-button';
+  };
+
+  this.click = function (event) {
+    if (this.ngxButtonService.isDisabledStateClass(this.getPrefixClass(), this.state)) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    }
+    else {
+      this.clickEmitter.emit(event);
+    }
+  };
   
   function _getBaseInstance(context){ 
     if(!_base){ _base = context.getBaseInstance(ngxBaseComponent); }
@@ -30,10 +44,14 @@ function _ngxButtonComponent() {
 }
 
 module.exports = ng.core.Component({
-  selector: 'ngx-button',
+  selector: 'ngx-button, a[ngx-button]',
   template: require('./themes/' + __THEME__ + '/templates/button.html'),
   styles: [require('./themes/' + __THEME__  + '/scss/button.scss')],
   providers:[ngxRenderService],
-  properties: ['color', 'size', 'state', 'prefixClass:prefix-class']
+  properties: ['color', 'size', 'state', 'prefixClass:prefix-class'],
+  events: ['clickEmitter:onClick'],
+  host: {
+    '(click)': 'click($event)'
+  }
 })
 .Class(new _ngxButtonComponent());

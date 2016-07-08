@@ -1,6 +1,5 @@
 ﻿var ngxColorService = require('colorService');
-var ngxBootstrap = require('ngxBootstrap');
-ngxBootstrap = require('utils');
+var ngxBootstrap = require('utils');
 
 function _ngxProgressService() {
   this.constructor = [
@@ -16,6 +15,13 @@ function _ngxProgressService() {
   };
   this.getStripedColorClass = function (prefix) {
     return prefix + '-color-striped';
+  };
+
+  this.isAnimatedStripedColorClass = function (prefix, color) {
+    return this.getColorClass(prefixClass, color).indexOf(this.getAnimatedStripedColorClass(prefixClass)) > -1;
+  };
+  this.getAnimatedStripedColorClass = function (prefix) {
+    return prefix + '-color-animated-striped';
   };
 }
 

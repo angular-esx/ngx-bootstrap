@@ -3,8 +3,7 @@ var ngxTabHeadDirective = require('./tab-head.directive.js');
 var ngxTabContentDirective = require('./tab-content.directive.js');
 var ngxBaseDirective = require('baseDirective');
 var ngxRenderService = require('renderService');
-var ngxBootstrap = require('ngxBootstrap');
-ngxBootstrap = require('utils');
+var ngxBootstrap = require('utils');
 
 function _ngxTabDirective() {
   var _base;

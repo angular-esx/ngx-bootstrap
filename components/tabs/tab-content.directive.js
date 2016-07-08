@@ -1,7 +1,4 @@
-﻿var ngxBootstrap = require('ngxBootstrap');
-ngxBootstrap = require('utils');
-
-function _ngxTabContentDirective() {
+﻿function _ngxTabContentDirective() {
   this.constructor = [
     ng.core.TemplateRef,
 

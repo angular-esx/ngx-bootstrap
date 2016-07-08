@@ -1,0 +1,61 @@
+﻿@import "_mixins.scss";
+
+:host(.#{$ngx-link-prefix-class}) {
+  font-weight: $ngx-link-font-weight;
+  text-align: center;
+  text-decoration: none;
+  background-color: transparent;
+  border-color: transparent;
+
+  @include ngx-link-size($ngx-link-font-size, $ngx-link-line-height);
+
+  @include ngx-state($ngx-link-prefix-class, 'active'){
+    outline: 0;
+  }
+
+  @include ngx-state($ngx-link-prefix-class, 'disabled'){
+    cursor: not-allowed;
+  }
+
+  &.#{$ngx-link-prefix-class}-color-primary {
+    @include ngx-link-variant($ngx-link-primary, $ngx-link-primary-active, $ngx-link-primary-disabled);
+  }
+
+  &.#{$ngx-link-prefix-class}-color-secondary {
+    @include ngx-link-variant($ngx-link-secondary, $ngx-link-secondary-active, $ngx-link-secondary-disabled);
+  }
+
+  &.#{$ngx-link-prefix-class}-color-info {
+    @include ngx-link-variant($ngx-link-info, $ngx-link-info-active, $ngx-link-info-disabled);
+  }
+
+  &.#{$ngx-link-prefix-class}-color-success {
+    @include ngx-link-variant($ngx-link-success, $ngx-link-success-active, $ngx-link-success-disabled);
+  }
+
+  &.#{$ngx-link-prefix-class}-color-warning {
+    @include ngx-link-variant($ngx-link-warning, $ngx-link-warning-active, $ngx-link-warning-disabled);
+  }
+
+  &.#{$ngx-link-prefix-class}-color-danger {
+    @include ngx-link-variant($ngx-link-danger, $ngx-link-danger-active, $ngx-link-danger-disabled);
+  }
+
+  &.#{$ngx-link-prefix-class}-size-small {
+    @include ngx-link-size($ngx-link-font-size-sm, $ngx-link-line-height-sm);
+  }
+
+  &.#{$ngx-link-prefix-class}-size-large {
+    @include ngx-link-size($ngx-link-font-size-lg, $ngx-link-line-height-lg);
+  }
+
+  &.#{$ngx-link-prefix-class}-size-block {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+
+    + .#{$ngx-link-prefix-class}-size-block{
+       margin-top: .5rem;
+    }
+  }
+}

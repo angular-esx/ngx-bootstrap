@@ -1,8 +1,7 @@
-﻿var ngxColorService = require('./../../../cores/services/color.service.js');
-var ngxSizeService = require('./../../../cores/services/size.service.js');
-var ngxStateService = require('./../../../cores/services/state.service.js');
-var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../../cores/ngx-bootstrap.utils.js');
+﻿var ngxColorService = require('colorService');
+var ngxSizeService = require('sizeService');
+var ngxStateService = require('stateService');
+var ngxBootstrap = require('utils');
 
 function _ngxButtonService() {
   this.constructor = [

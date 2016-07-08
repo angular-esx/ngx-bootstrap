@@ -10,6 +10,7 @@ var uglify = require('gulp-uglify');
 var mkdirp = require('mkdirp');
 var autoprefixer = require('autoprefixer');
 var path = require('path');
+var reload = require('browser-sync').reload;
 
 module.exports = function (params) {
   return function () {
@@ -25,32 +26,7 @@ module.exports = function (params) {
     var sourcePath, webpackVariables;
 
     webpackVariables = {
-
-      __THEME__: JSON.stringify(_themeName),
-      /** ngx bootstrap & ngx bootstrap utils **/
-      __NGX_BOOTSTRAP__: JSON.stringify('cores/ngx-bootstrap.js'),
-      __NGX_BOOTSTRAP_UTILS__: JSON.stringify('cores/ngx-bootstrap.utils.js'),
-
-      /** core components **/
-      __BASE_COMPONENT__: JSON.stringify('cores/components/base/base.component.js'),
-      __ITEM_SERVICE__: JSON.stringify('cores/components/item/services/item.service.js'),
-      __ITEM_COMPONENT__: JSON.stringify('cores/components/item/item.component.js'),
-      __LINK_SERVICE__: JSON.stringify('cores/components/link/services/link.service.js'),
-      __LINK_COMPONENT__: JSON.stringify('cores/components/link/link.component.js'),
-
-      /** core directives **/
-      __BASE_DIRECTIVE__: JSON.stringify('cores/directives/base/base.directive.js'),
-
-      /** core services **/
-      __CORE_SERVICE__: JSON.stringify('cores/services/index.js'),
-      __ANIMATION_SERVICE__: JSON.stringify('cores/services/animation.service.js'),
-      __COLOR_SERVICE__: JSON.stringify('cores/services/color.service.js'),
-      __POSITION_SERVICE__: JSON.stringify('cores/services/position.service.js'),
-      __RENDER_SERVICE__: JSON.stringify('cores/services/render.service.js'),
-      __SIZE_SERVICE__: JSON.stringify('cores/services/size.service.js'),
-      __STATE_SERVICE__: JSON.stringify('cores/services/state.service.js'),
-      __TYPE_SERVICE__: JSON.stringify('cores/services/type.service.js'),
-      __WINDOW_SERVICE__: JSON.stringify('cores/services/window.service.js'),
+      __THEME__: JSON.stringify(_themeName)
     };
 
     if (_componentName || _directiveName) {
@@ -102,13 +78,19 @@ module.exports = function (params) {
       ],
       module: {
         loaders: [
-          { test: /\.html$/, loader: 'html-loader' },
-          { test: /\.css$/, loader: 'raw-loader' },
+          { test: /\.html$/, loader: '../../gulp-tasks/clean-code-loader!html-minifier' },
           {
             test: /\.(scss|sass)$/,
-            loader: 'raw-loader!postcss-loader!sass-loader'
-          },
+            loader: '../../gulp-tasks/clean-code-loader!postcss-loader!sass-loader'
+          }
         ]
+      },
+      'html-minifier-loader': {
+        removeComments: true,
+        collapseWhitespace: true,
+        conservativeCollapse: true,
+        preserveLineBreaks: true,
+        caseSensitive: true
       },
       postcss: function () {
         return [autoprefixer];
@@ -125,10 +107,6 @@ module.exports = function (params) {
           /** core components **/
           baseComponent: 'cores/components/base/base.component.js',
           coreComponent: 'cores/components/index.js',
-          itemService: 'cores/components/item/services/item.service.js',
-          itemComponent: 'cores/components/item/item.component.js',
-          linkService: 'cores/components/link/services/link.service.js',
-          linkComponent: 'cores/components/link/link.component.js',
 
           /** core directives **/
           baseDirective: 'cores/directives/base/base.directive.js',
@@ -150,6 +128,7 @@ module.exports = function (params) {
     }))
       .pipe(rename('ngx-bootstrap.js'))
       .pipe(gulp.dest('./dist/js'))
+      .pipe(reload({ stream: true }))
       .pipe(rename('ngx-bootstrap.min.js'))
       .pipe(uglify())
       .pipe(gulp.dest('./dist/js'));

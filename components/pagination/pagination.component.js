@@ -1,10 +1,7 @@
 ﻿var ngxPaginationService = require('./services/pagination.service.js');
-var ngxLinkComponent = require('cores/components/link/link.component.js');
-var ngxLinkService = require('cores/components/link/services/link.service.js');
 var ngxBaseComponent = require('baseComponent');
 var ngxRenderService = require('renderService');
-var ngxBootstrap = require('ngxBootstrap');
-ngxBootstrap = require('utils');
+var ngxBootstrap = require('utils');
 
 function _ngxPaginationComponent() {
   var _base;
@@ -54,15 +51,15 @@ function _ngxPaginationComponent() {
     this.pageBuilder.build(this.totalPages, this.pageSize, this.startPage, this.setPageEmitter);
   };
 
-  this.prev = function ($event) {
-    this.changePage($event, this.pageBuilder.getPage(this.currentPage - 1));
+  this.prev = function (event) {
+    this.changePage(event, this.pageBuilder.getPage(this.currentPage - 1));
   };
 
-  this.next = function ($event) {
-    this.changePage($event, this.pageBuilder.getPage(this.currentPage + 1));
+  this.next = function (event) {
+    this.changePage(event, this.pageBuilder.getPage(this.currentPage + 1));
   };
 
-  this.changePage = function ($event, page) {
+  this.changePage = function (event, page) {
     if (page < 1 || page > this.totalPages) { return; }
 
     var _isCanceled = false;
@@ -71,8 +68,8 @@ function _ngxPaginationComponent() {
       cancel: function () {
         _isCanceled = true;
 
-        $event.preventDefault();
-        $event.stopPropagation();
+        event.preventDefault();
+        event.stopImmediatePropagation();
       }
     });
 
@@ -140,8 +137,7 @@ module.exports = ng.core.Component({
   selector: 'ngx-pagination',
   template: require('./themes/' + __THEME__ + '/templates/pagination.html'),
   styles: [require('./themes/' + __THEME__  + '/scss/pagination.scss')],
-  directives: [ngxLinkComponent],
-  providers: [ngxRenderService, ngxLinkService],
+  providers: [ngxRenderService],
   properties: [
     'size',
     'totalPages: total-pages',
@@ -151,6 +147,6 @@ module.exports = ng.core.Component({
     'showNext: show-next',
     'prefixClass: prefix-class'
   ],
-  events: ['setPageEmitter: setPage', 'changePageEmitter: changePage']
+  events: ['setPageEmitter: onSetPage', 'changePageEmitter: onChangePage']
 })
 .Class(new _ngxPaginationComponent());

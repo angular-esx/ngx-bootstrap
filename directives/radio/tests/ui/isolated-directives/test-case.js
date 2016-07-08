@@ -1,18 +1,12 @@
-﻿var ngxRadioDirective = require('./../../../radio.directive.js');
-var ngxRadioService = require('./../../../services/radio.service.js');
-var ngxButtonComponent = require('./../../../../../components/button/button.component.bootstrap4.js');
-var ngxButtonService = require('./../../../../../components/button/services/button.service.js');
-var ngxGroupComponent = require('./../../../../../components/group/group.component.bootstrap4.js');
-var ngxGroupService = require('./../../../../../components/group/services/group.service.js');
-var ngxRadioGroupDirective = require('./../../../radio-group.directive.js');
-var ngxRadioGroupService = require('./../../../services/radio-group.service.js');
-var ngxColorService = require('./../../../../../cores/services/color.service.js');
-var ngxTypeService = require('./../../../../../cores/services/type.service.js');
-var ngxSizeService = require('./../../../../../cores/services/size.service.js');
-var ngxStateService = require('./../../../../../cores/services/state.service.js');
-var ngxWindowService = require('./../../../../../cores/services/window.service.js');
-var ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.utils.js');
+﻿var ngxRadioDirective = require('directives/radio/radio.directive.js');
+var ngxRadioService = require('directives/radio/services/radio.service.js');
+var ngxButtonComponent = require('components/button/button.component.js');
+var ngxButtonService = require('components/button/services/button.service.js');
+var ngxGroupComponent = require('components/group/group.component.js');
+var ngxGroupService = require('components/group/services/group.service.js');
+var ngxRadioGroupDirective = require('directives/radio/radio-group.directive.js');
+var ngxRadioGroupService = require('directives/radio/services/radio-group.service.js');
+var ngxCoreService = require('coreService');
 
 function _testCase() {
   this.constructor = [ngxRadioService, function (ngxRadioService) {
@@ -33,15 +27,11 @@ module.exports = ng.core.Component({
     ngxRadioGroupDirective
   ],
   providers: [
-   ngxColorService,
-   ngxTypeService,
-   ngxSizeService,
-   ngxStateService,
-   ngxWindowService,
    ngxGroupService,
    ngxButtonService,
    ngxRadioService,
-   ngxRadioGroupService
+   ngxRadioGroupService,
+   ngxCoreService
   ]
 })
 .Class(new _testCase());

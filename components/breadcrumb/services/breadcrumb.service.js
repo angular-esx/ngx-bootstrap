@@ -1,6 +1,5 @@
-var ngxColorService = require('./../../../cores/services/color.service.js');
-var ngxBootstrap = require('./../../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../../cores/ngx-bootstrap.utils.js');
+var ngxColorService = require('colorService');
+var ngxBootstrap = require('utils');
 
 function _ngxBreadcumbService() {
   this.constructor = [

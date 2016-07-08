@@ -1,6 +1,5 @@
-﻿var ngxRenderService = require('./../../services/render.service.js');
-var ngxBootstrap = require('./../../ngx-bootstrap.js');
-ngxBootstrap = require('./../../ngx-bootstrap.utils.js');
+﻿var ngxRenderService = require('renderService');
+var ngxBootstrap = require('utils');
 
 function _ngxBaseDirective() {
   var _ATTRIBUTES = {

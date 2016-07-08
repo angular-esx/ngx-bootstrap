@@ -1,7 +1,7 @@
 ﻿<h3>ngxButton</h3>
 
-<ngx-button color="{{COLORS.PRIMARY}}">Primary</ngx-button>
-<ngx-button color="{{COLORS.SECONDARY}}">Secondary</ngx-button>
+<ngx-button color="{{COLORS.PRIMARY}}" (onClick)="click($event)">Primary</ngx-button>
+<a ngx-button href="http://www.google.com" color="{{COLORS.SECONDARY}}">Secondary</a>
 <ngx-button color="{{COLORS.INFO}}">Info</ngx-button>
 <ngx-button color="success">Success</ngx-button>
 <ngx-button color="warning">Warning</ngx-button>
@@ -41,7 +41,7 @@
 <h3>ngxButton with disabled state</h3>
 
 <ngx-button color="{{COLORS.PRIMARY}}" state="disabled">Primary</ngx-button>
-<ngx-button color="{{COLORS.SECONDARY}}" state="disabled">Secondary</ngx-button>
+<a ngx-button href="http://www.google.com" color="{{COLORS.SECONDARY}}" state="disabled" (onClick)="click($event)">Secondary</a>
 <ngx-button color="{{COLORS.INFO}}" state="disabled">Info</ngx-button>
 <ngx-button color="success" state="disabled">Success</ngx-button>
 <ngx-button color="warning" state="disabled">Warning</ngx-button>

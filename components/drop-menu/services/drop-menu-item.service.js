@@ -1,6 +1,5 @@
 ﻿var ngxStateService = require('stateService');
-var ngxBootstrap = require('ngxBootstrap');
-ngxBootstrap = require('utils');
+var ngxBootstrap = require('utils');
 
 function _ngxDropMenuItemService() {
   this.constructor = [

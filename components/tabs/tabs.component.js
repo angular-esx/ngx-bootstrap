@@ -3,8 +3,7 @@ var ngxTabsService = require('./services/tabs.service.js');
 var ngxTranscludeDirective = require('cores/directives/transclude/transclude.directive.js');
 var ngxBaseComponent = require('baseComponent');
 var ngxRenderService = require('renderService');
-var ngxBootstrap = require('ngxBootstrap');
-ngxBootstrap = require('utils');
+var ngxBootstrap = require('utils');
 
 function _ngxTabsComponent() {
   var _base,
@@ -151,7 +150,7 @@ module.exports = ng.core.Component({
   directives: [ngxTranscludeDirective],
   providers: [ngxRenderService],
   properties: ['type', 'prefixClass:prefix-class'],
-  events: ['changingTabEmitter: changingTab', 'changedTabEmitter: changedTab'],
+  events: ['changingTabEmitter: onChangingTab', 'changedTabEmitter: onChangedTab'],
   queries: {
     tabs: new ng.core.ContentChildren(ngxTabDirective)
   }

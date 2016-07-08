@@ -1,17 +1,11 @@
-﻿var ngxCheckboxDirective = require('./../../../checkbox.directive.js');
-var ngxCheckboxService = require('./../../../services/checkbox.service.js');
-var ngxButtonComponent = require('./../../../../../components/button/button.component.bootstrap4.js');
-var ngxButtonService = require('./../../../../../components/button/services/button.service.js');
-var ngxGroupComponent = require('./../../../../../components/group/group.component.bootstrap4.js');
-var ngxGroupService = require('./../../../../../components/group/services/group.service.js');
-var ngxCheckboxGroupDirective = require('./../../../checkbox-group.directive.js');
-var ngxColorService = require('./../../../../../cores/services/color.service.js');
-var ngxTypeService = require('./../../../../../cores/services/type.service.js');
-var ngxSizeService = require('./../../../../../cores/services/size.service.js');
-var ngxStateService = require('./../../../../../cores/services/state.service.js');
-var ngxWindowService = require('./../../../../../cores/services/window.service.js');
-var ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.utils.js');
+﻿var ngxCheckboxDirective = require('directives/checkbox/checkbox.directive.js');
+var ngxCheckboxService = require('directives/checkbox/services/checkbox.service.js');
+var ngxButtonComponent = require('components/button/button.component.js');
+var ngxButtonService = require('components/button/services/button.service.js');
+var ngxGroupComponent = require('components/group/group.component.js');
+var ngxGroupService = require('components/group/services/group.service.js');
+var ngxCheckboxGroupDirective = require('directives/checkbox/checkbox-group.directive.js');
+var ngxCoreService = require('coreService');
 
 function _testCase() {
   this.constructor = [ngxCheckboxService, function (ngxCheckboxService) {
@@ -33,11 +27,7 @@ module.exports = ng.core.Component({
     ngxCheckboxGroupDirective
   ],
   providers: [
-   ngxColorService,
-   ngxTypeService,
-   ngxSizeService,
-   ngxStateService,
-   ngxWindowService,
+   ngxCoreService,
    ngxGroupService,
    ngxButtonService,
    ngxCheckboxService

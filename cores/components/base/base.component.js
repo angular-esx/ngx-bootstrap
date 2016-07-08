@@ -1,7 +1,6 @@
-﻿var ngxBaseDirective = require('./../../directives/base/base.directive.js');
-var ngxRenderService = require('./../../services/render.service.js');
-var ngxBootstrap = require('./../../ngx-bootstrap.js');
-ngxBootstrap = require('./../../ngx-bootstrap.utils.js');
+﻿var ngxBaseDirective = require('baseDirective');
+var ngxRenderService = require('renderService');
+var ngxBootstrap = require('utils');
 
 function _ngxBaseComponent() {
   var _base;

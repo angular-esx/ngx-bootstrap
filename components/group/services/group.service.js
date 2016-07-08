@@ -1,7 +1,6 @@
 ﻿var ngxTypeService = require('typeService');
 var ngxSizeService = require('sizeService');
-var ngxBootstrap = require('ngxBootstrap');
-ngxBootstrap = require('utils');
+var ngxBootstrap = require('utils');
 
 function _ngxGroupService() {
   this.constructor = [

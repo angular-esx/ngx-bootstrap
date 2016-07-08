@@ -1,8 +1,7 @@
 ﻿var ngxColorService = require('colorService');
 var ngxStateService = require('stateService');
 var ngxPositionService = require('positionService');
-var ngxBootstrap = require('ngxBootstrap');
-ngxBootstrap = require('utils');
+var ngxBootstrap = require('utils');
 
 function _ngxNavbarService() {
   this.constructor = [

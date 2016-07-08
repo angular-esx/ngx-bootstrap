@@ -1,6 +1,6 @@
 ﻿<h1>ngxTabs</h1>
 
-<ngx-tabs (changedTab)="changedTab($event)">
+<ngx-tabs (onChangedTab)="changedTab($event)">
   <ngx-tab #tab01>
     <template ngx-tab-head>
       <ngx-item>Tab 01</ngx-item>
@@ -14,7 +14,7 @@
 
   <ngx-tab *ngFor="let tab of tabs" [id]="tab.id">
     <template ngx-tab-head>
-      <ngx-link>{{tab.head}}</ngx-link>
+      <a ngx-link>{{tab.head}}</a>
     </template>
     <template ngx-tab-content>
       {{tab.content}}
@@ -35,10 +35,10 @@
 
 <h1>ngxTabs with pill type</h1>
 
-<ngx-tabs type="pill" (changedTab)="changedTab($event)">
+<ngx-tabs type="pill" (onChangedTab)="changedTab($event)">
   <ngx-tab #tab02>
     <template ngx-tab-head>
-      <ngx-item>Tab 01</ngx-item>
+      <div>Tab 01</div>
     </template>
     This is content of tab 01
   </ngx-tab>
@@ -51,7 +51,7 @@
 
   <ngx-tab *ngFor="let tab of pillTabs" [id]="tab.id">
     <template ngx-tab-head>
-      <ngx-link>{{tab.head}}</ngx-link>
+      <a ngx-link>{{tab.head}}</a>
     </template>
     <template ngx-tab-content>
       {{tab.content}}

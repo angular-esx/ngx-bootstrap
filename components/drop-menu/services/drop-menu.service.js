@@ -1,8 +1,7 @@
 ﻿var ngxTypeService = require('typeService');
 var ngxStateService = require('stateService');
 var ngxPositionService = require('positionService');
-var ngxBootstrap = require('ngxBootstrap');
-ngxBootstrap = require('utils');
+var ngxBootstrap = require('utils');
 
 function _ngxDropMenuService() {
   var _observer;

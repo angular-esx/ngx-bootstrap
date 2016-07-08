@@ -1,8 +1,7 @@
 ﻿var ngxNavbarService = require('components/navbar/services/navbar.service.js');
 var ngxBaseComponent = require('baseComponent');
 var ngxRenderService = require('renderService');
-var ngxBootstrap = require('ngxBootstrap');
-ngxBootstrap = require('utils');
+var ngxBootstrap = require('utils');
 
 function _ngxNavbarComponent() {
   var _base;

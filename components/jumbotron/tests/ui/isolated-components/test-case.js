@@ -1,7 +1,5 @@
-﻿var ngxJumbotronComponent = require('./../../../' + __COMPONENT_FILE__);
-var ngxWindowService = require('./../../../../../cores/services/window.service.js');
-var ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../../../../cores/ngx-bootstrap.utils.js');
+﻿var NGX_JUMBOTRON = require('components/jumbotron/index.js');
+var NGX_CORE_SERVICES = require('coreService');
 
 function _testCase() {
   this.constructor = function() {};
@@ -11,8 +9,8 @@ module.exports = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/jumbotron/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxJumbotronComponent
+    NGX_JUMBOTRON.DIRECTIVES
   ],
-  providers: [ngxWindowService]
+  providers: [NGX_CORE_SERVICES]
 })
 .Class(new _testCase());

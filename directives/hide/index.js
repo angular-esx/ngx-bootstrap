@@ -1,6 +1,6 @@
 ﻿module.exports = {
-  DIRECTIVES: {
-    HIDE: require('./hide.directive.js')
-  },
+  DIRECTIVES: [
+    require('./hide.directive.js')
+  ],
   SERVICE: require('./services/hide.service.js')
 };

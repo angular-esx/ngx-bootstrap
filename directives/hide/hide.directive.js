@@ -1,8 +1,7 @@
-﻿var ngxHideService = require('./services/hide.service.js');
-var ngxBaseDirective = require('./../../cores/directives/base/base.directive.js');
-var ngxRenderService = require('./../../cores/services/render.service.js');
-var ngxBootstrap = require('./../../cores/ngx-bootstrap.js');
-ngxBootstrap = require('./../../cores/ngx-bootstrap.utils.js');
+var ngxHideService = require('./services/hide.service.js');
+var ngxBaseDirective = require('baseDirective');
+var ngxRenderService = require('renderService');
+var ngxBootstrap = require('utils');
 
 var ngxBaseHideDirective = ng.core.Class(new _ngxBaseHideDirective());
 
@@ -19,7 +18,7 @@ function _ngxBaseHideDirective() {
     ngxRenderService,
     ngxHideService,
 
-    function ngxHideDownDirective(elementRef, ngxRenderService, ngxHideService) {
+    function ngxBaseHideDirective(elementRef, ngxRenderService, ngxHideService) {
       ngxBaseDirective.apply(this, arguments);
 
       if (elementRef) {
@@ -69,7 +68,7 @@ function _ngxHideDownDirective() {
   ];
 
   this.getPrefixClass = function () {
-    return 'ngx-hide-down'
+    return 'ngx-hide-down';
   };
 
   function _getBaseInstance(context) {
@@ -98,7 +97,7 @@ function _ngxHideUpDirective() {
   ];
 
   this.getPrefixClass = function () {
-    return 'ngx-hide-up'
+    return 'ngx-hide-up';
   };
 
   function _getBaseInstance(context) {
@@ -107,14 +106,18 @@ function _ngxHideUpDirective() {
   };
 }
 
-module.exports = ng.core.Directive({
-  selector: '[ngx-hide-down]',
-  properties: ['breakpoint:ngx-hide-down']
-})
-.Class(new _ngxHideDownDirective());
+module.exports = [
+  ng.core.Directive({
+    selector: '[ngx-hide-up]',
+    providers: [ngxRenderService],
+    properties: ['breakpoint:ngx-hide-up']
+  })
+  .Class(new _ngxHideUpDirective()),
 
-module.exports = ng.core.Directive({
-  selector: '[ngx-hide-up]',
-  properties: ['breakpoint:ngx-hide-up']
-})
-.Class(new _ngxHideUpDirective());
+  ng.core.Directive({
+    selector: '[ngx-hide-down]',
+    providers: [ngxRenderService],
+    properties: ['breakpoint:ngx-hide-down']
+  })
+  .Class(new _ngxHideDownDirective())
+];

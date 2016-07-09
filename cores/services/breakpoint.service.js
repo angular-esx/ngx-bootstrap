@@ -12,9 +12,8 @@ function _ngxBreakpointService() {
     var _breakpoint, _funcName, _self = this, _breakpointClasses = [];
 
     ngxBootstrap.forEach(_breakpoints, function (breakpoint) {
-      _breakpoint = _breakpoint.toLowerCase().replace(/-([a-z])/g, function (x, y) { return y.toUpperCase(); });
-      _breakpoint = _breakpoint.charAt(0).toUpperCase() + _breakpoint.slice(1);
-
+      _breakpoint = breakpoint.toUpperCase();
+      
       _funcName = 'get' + _breakpoint + 'BreakpointClass';
       _breakpointClasses.push(_self[_funcName] ? _self[_funcName](prefixClass) : prefixClass + '-' + _breakpoint);
     });
@@ -29,11 +28,9 @@ function _ngxBreakpointService() {
 
       for (var prop in this) {
         if (typeof this[prop] == 'function' && /get.+BreakpointClass/.test(prop)) {
-          _breakpoint = prop.replace('get', '').replace('BreakpointClass', '')
-                      .replace(/([A-Z])/g, function (x, y) { return '_' + y; })
-                      .replace(/^_/, '');
+          _breakpoint = prop.replace('get', '').replace('BreakpointClass', '');
 
-          _BREAKPOINTS[_breakpoint.toUpperCase()] = _breakpoint.toLocaleLowerCase().replace(/_/g, '-');
+          _BREAKPOINTS[_breakpoint.toUpperCase()] = _breakpoint.toLocaleLowerCase();
         }
       }
     }

@@ -3,7 +3,7 @@ var ngxTabsService = require('./services/tabs.service.js');
 var ngxTranscludeDirective = require('cores/directives/transclude/transclude.directive.js');
 var ngxBaseComponent = require('baseComponent');
 var ngxRenderService = require('renderService');
-var ngxBootstrap = require('utils');
+var ngxBootstrap = require('ngxBootstrap');
 
 function _ngxTabsComponent() {
   var _base,

@@ -1,7 +1,6 @@
 ﻿var ngxListItemService = require('components/list/services/list-item.service.js');
 var ngxBaseComponent = require('baseComponent');
 var ngxRenderService = require('renderService');
-var ngxBootstrap = require('utils');
 
 function _ngxListItemComponent() {
   var _base;

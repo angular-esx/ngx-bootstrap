@@ -1,4 +1,4 @@
-﻿var ngxBootstrap = require('utils');
+﻿var ngxBootstrap = require('ngxBootstrap');
 
 function _popoverOptionClass() {
   var _PROPERTIES = ['hostElement', 'templateRef', 'title', 'content', 'state', 'position', 'delay'];

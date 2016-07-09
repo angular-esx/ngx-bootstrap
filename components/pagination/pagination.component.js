@@ -1,7 +1,7 @@
 ﻿var ngxPaginationService = require('./services/pagination.service.js');
 var ngxBaseComponent = require('baseComponent');
 var ngxRenderService = require('renderService');
-var ngxBootstrap = require('utils');
+var ngxBootstrap = require('ngxBootstrap');
 
 function _ngxPaginationComponent() {
   var _base;

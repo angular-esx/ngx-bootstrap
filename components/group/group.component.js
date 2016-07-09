@@ -1,7 +1,6 @@
 ﻿var ngxGroupService = require('./services/group.service.js');
 var ngxBaseComponent = require('baseComponent');
 var ngxRenderService = require('renderService');
-var ngxBootstrap = require('utils');
 
 function _ngxGroupComponent() {
   var _base;

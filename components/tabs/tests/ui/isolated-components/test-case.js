@@ -1,7 +1,7 @@
 ﻿var NGX_TABS = require('components/tabs/index.js');
 var NGX_LINK = require('components/link/index.js');
 var NGX_CORE_SERVICES = require('coreService');
-var ngxBootstrap = require('utils');
+var ngxBootstrap = require('ngxBootstrap');
 
 function _testCase() {
   this.constructor = [NGX_TABS.SERVICE, function (ngxTabsService) {

@@ -1,6 +1,5 @@
 ﻿var ngxBaseComponent = require('baseComponent');
 var ngxRenderService = require('renderService');
-var ngxBootstrap = require('utils');
 
 function _ngxListComponent() {
   var _base;

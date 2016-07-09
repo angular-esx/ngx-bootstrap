@@ -1,6 +1,6 @@
 ﻿var ngxStateService = require('stateService');
 var ngxAnimationService = require('animationService');
-var ngxBootstrap = require('utils');
+var ngxBootstrap = require('ngxBootstrap');
 
 function _ngxCollapseService() {
   var _observer;

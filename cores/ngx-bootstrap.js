@@ -1,4 +1,4 @@
-var ngxBootstrap = {};
+var ngxBootstrap = require('utils');
 
 var _configs = ngxBootstrap.configs = {};
 _configs.fileService = new fileService();

@@ -1,7 +1,6 @@
 ﻿var ngxButtonService = require('./services/button.service.js');
 var ngxBaseComponent = require('baseComponent');
 var ngxRenderService = require('renderService');
-var ngxBootstrap = require('utils');
 
 function _ngxButtonComponent() {
   var _base;

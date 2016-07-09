@@ -1,5 +1,5 @@
 ﻿var ngxTypeService = require('typeService');
-var ngxBootstrap = require('utils');
+var ngxBootstrap = require('ngxBootstrap');
 
 function _ngxPagerService() {
   this.constructor = [

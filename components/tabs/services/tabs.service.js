@@ -1,7 +1,7 @@
 ﻿var ngxAnimationService = require('animationService');
 var ngxTypeService = require('typeService');
 var ngxStateService = require('stateService');
-var ngxBootstrap = require('utils');
+var ngxBootstrap = require('ngxBootstrap');
 
 function _ngxTabsService() {
   var _observer;

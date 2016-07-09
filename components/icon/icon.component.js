@@ -1,7 +1,6 @@
 ﻿var ngxIconService = require('./services/icon.service.js');
 var ngxRenderService = require('renderService');
 var ngxBaseComponent = require('baseComponent');
-var ngxBootstrap = require('utils');
 
 function _ngxIconComponent() {
   var _base;

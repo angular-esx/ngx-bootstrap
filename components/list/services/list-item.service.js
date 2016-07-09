@@ -1,6 +1,6 @@
 ﻿var ngxColorService = require('colorService');
 var ngxStateService = require('stateService');
-var ngxBootstrap = require('utils');
+var ngxBootstrap = require('ngxBootstrap');
 
 function _ngxListItemService() {
   this.constructor = [

@@ -78,7 +78,7 @@ module.exports = function (params) {
       ],
       module: {
         loaders: [
-          { test: /\.html$/, loader: '../../gulp-tasks/clean-code-loader!html-minifier' },
+          { test: /\.html$/, loader: 'html-loader' },
           {
             test: /\.(scss|sass)$/,
             loader: '../../gulp-tasks/clean-code-loader!postcss-loader!sass-loader'

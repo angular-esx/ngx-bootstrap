@@ -1,7 +1,7 @@
 ﻿var ngxAnimationService = require('animationService');
 var ngxStateService = require('stateService');
 var ngxPositionService = require('positionService');
-var ngxBootstrap = require('utils');
+var ngxBootstrap = require('ngxBootstrap');
 
 function _ngxPopoverService() {
   var _templates = {},

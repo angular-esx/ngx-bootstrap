@@ -69,7 +69,7 @@ module.exports = function (params) {
       context: __dirname,
       entry: {
         core: ['cores/index.js'],
-        // alert: 'components/alert/index.js',
+        alert: 'components/alert/index.js',
         // breadcrumb: 'components/breadcrumb/index.js',
         // button: 'components/button/index.js',
         // card: 'components/card/index.js',
@@ -80,7 +80,7 @@ module.exports = function (params) {
         // icon: 'components/icon/index.js',
         jumbotron: 'components/jumbotron/index.js',
         label: 'components/label/index.js',
-        link: ['components/link/index.js'],
+        link: 'components/link/index.js',
         // list: 'components/list/index.js',
         // navbar: 'components/navbar/index.js',
         // pager: 'components/pager/index.js',

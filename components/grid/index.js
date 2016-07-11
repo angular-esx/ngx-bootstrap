@@ -1,4 +1,6 @@
-﻿module.exports = {
+﻿var ngxBootstrap = require('ngxBootstrap');
+
+ngxBootstrap.grid = {
   DIRECTIVES: [
     require('./grid.component.js'),
     require('./grid-row.directive.js'),
@@ -6,3 +8,5 @@
   ],
   SERVICE: require('./services/grid.service.js')
 };
+
+module.exports = ngxBootstrap;

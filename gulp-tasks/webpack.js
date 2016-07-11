@@ -106,7 +106,7 @@ module.exports = function (params) {
           cores: 'cores',
           components: 'components',
           directive: 'directive',
-          ngxBootstrap: 'cores/ngx-bootstrap.js',
+          ngxBootstrap: 'cores/index.js',
           utils: 'cores/utils.js',
 
           /** core components **/

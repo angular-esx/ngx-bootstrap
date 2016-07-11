@@ -1,5 +1,7 @@
 var ngxBootstrap = require('utils');
 
+ngxBootstrap.coreService = require('coreService');  
+
 var _configs = ngxBootstrap.configs = {};
 _configs.fileService = new fileService();
 

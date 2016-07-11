@@ -65,13 +65,17 @@ module.exports = function (params) {
       sourcePath = gulp.src('./dist/js/ngx-bootstrap.js');
     }
 
-    return sourcePath.pipe(webpackStream({
+    return gulp.src('').pipe(webpackStream({
       context: __dirname,
+      entry: {
+        label: 'components/label/index.js',
+      },
       output: {
         path: __dirname,
         libraryTarget: 'umd',
         umdNamedDefine: true,
         library: 'ngxBootstrap',
+        filename: 'ngx.[name].js',
       },
       plugins: [
         new webpack.DefinePlugin(webpackVariables)
@@ -102,7 +106,7 @@ module.exports = function (params) {
           components: 'components',
           directive: 'directive',
           ngxBootstrap: 'cores/ngx-bootstrap.js',
-          utils: 'cores/ngx-bootstrap.utils.js',
+          utils: 'cores/utils.js',
 
           /** core components **/
           baseComponent: 'cores/components/base/base.component.js',
@@ -110,7 +114,8 @@ module.exports = function (params) {
 
           /** core directives **/
           baseDirective: 'cores/directives/base/base.directive.js',
-          
+          transcludeDirective: 'cores/directives/transclude/transclude.directive.js',
+
           /** core services **/
           coreService: 'cores/services/index.js',
           animationService: 'cores/services/animation.service.js',
@@ -125,11 +130,7 @@ module.exports = function (params) {
         extensions: ['', '.js']
       },
     }))
-      .pipe(rename('ngx-bootstrap.js'))
       .pipe(gulp.dest('./dist/js'))
-      .pipe(reload({ stream: true }))
-      .pipe(rename('ngx-bootstrap.min.js'))
-      .pipe(uglify())
-      .pipe(gulp.dest('./dist/js'));
+      .pipe(reload({ stream: true }));
   };
 };

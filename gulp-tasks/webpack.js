@@ -70,7 +70,7 @@ module.exports = function (params) {
       entry: {
         core: ['cores/index.js'],
         alert: 'components/alert/index.js',
-        // breadcrumb: 'components/breadcrumb/index.js',
+        breadcrumb: 'components/breadcrumb/index.js',
         // button: 'components/button/index.js',
         // card: 'components/card/index.js',
         // collapse: 'components/collapse/index.js',

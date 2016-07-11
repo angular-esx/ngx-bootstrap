@@ -68,6 +68,7 @@ module.exports = function (params) {
     return gulp.src('').pipe(webpackStream({
       context: __dirname,
       entry: {
+        jumbotron: 'components/jumbotron/index.js',
         label: 'components/label/index.js',
       },
       output: {

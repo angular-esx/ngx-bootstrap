@@ -76,7 +76,7 @@ module.exports = function (params) {
         collapse: 'components/collapse/index.js',
         'drop-menu': 'components/drop-menu/index.js',
         grid: 'components/grid/index.js',
-        // group: 'components/group/index.js',
+        group: 'components/group/index.js',
         // icon: 'components/icon/index.js',
         jumbotron: 'components/jumbotron/index.js',
         label: 'components/label/index.js',

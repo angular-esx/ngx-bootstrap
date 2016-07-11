@@ -51,6 +51,7 @@
   })();
 
   var taskService = new (function () {
+    this.CLEAN = 'clean';
     this.WATCH = 'watch';
     this.BROWSER_SYNC = 'browser-sync';
     this.SCSS = 'scss';
@@ -72,10 +73,12 @@
   gulp.task('inject-assets', getTask(taskService.INJECT_ASSETS));
   
   gulp.task('test-ui', function(){
-    runSequence('serve', 'webpack', 'inject-assets');
+    runSequence('clean', 'serve', 'webpack', 'inject-assets');
   });
   
-  gulp.task('default', ['serve']);
+  gulp.task('default', ['build']);
+
+  gulp.task('clean', getTask(taskService.CLEAN));
 
   gulp.task('serve', function () {
     runSequence('scss', 'lint', ['browserSync', 'watch']);
@@ -92,7 +95,7 @@
   gulp.task('watch', getTask(taskService.WATCH));
 
   gulp.task('build', function () {
-    runSequence('scss', 'lint', 'webpack');
+    runSequence('clean', 'scss', 'lint', 'webpack');
   });
 
   gulp.task('build-scss', getTask(taskService.BUILD_SCSS));

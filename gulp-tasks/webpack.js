@@ -80,7 +80,7 @@ module.exports = function (params) {
         // icon: 'components/icon/index.js',
         jumbotron: 'components/jumbotron/index.js',
         label: 'components/label/index.js',
-        // link: ['components/link/index.js'],
+        link: ['components/link/index.js'],
         // list: 'components/list/index.js',
         // navbar: 'components/navbar/index.js',
         // pager: 'components/pager/index.js',

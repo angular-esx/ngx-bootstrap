@@ -81,7 +81,7 @@ module.exports = function (params) {
         jumbotron: 'components/jumbotron/index.js',
         label: 'components/label/index.js',
         link: 'components/link/index.js',
-        // list: 'components/list/index.js',
+        list: 'components/list/index.js',
         // navbar: 'components/navbar/index.js',
         // pager: 'components/pager/index.js',
         // pagination: 'components/pagination/index.js',

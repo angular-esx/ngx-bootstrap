@@ -83,7 +83,7 @@ module.exports = function (params) {
         link: 'components/link/index.js',
         list: 'components/list/index.js',
         navbar: 'components/navbar/index.js',
-        // pager: 'components/pager/index.js',
+        pager: 'components/pager/index.js',
         // pagination: 'components/pagination/index.js',
         // popover: 'components/popover/index.js',
         // progress: 'components/progress/index.js',

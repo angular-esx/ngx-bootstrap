@@ -73,7 +73,7 @@ module.exports = function (params) {
         breadcrumb: 'components/breadcrumb/index.js',
         button: 'components/button/index.js',
         card: 'components/card/index.js',
-        // collapse: 'components/collapse/index.js',
+        collapse: 'components/collapse/index.js',
         // 'drop-menu': 'components/drop-menu/index.js',
         // grid: 'components/grid/index.js',
         // group: 'components/group/index.js',

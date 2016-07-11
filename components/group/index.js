@@ -7,4 +7,4 @@ ngxBootstrap.group = {
   SERVICE: require('./services/group.service.js')
 };
 
-module.exports = ngxBootstrap
+module.exports = ngxBootstrap;

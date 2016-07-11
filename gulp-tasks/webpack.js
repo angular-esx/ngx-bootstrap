@@ -88,7 +88,7 @@ module.exports = function (params) {
         popover: 'components/popover/index.js',
         progress: 'components/progress/index.js',
         tabs: 'components/tabs/index.js',
-        // tooltip: 'components/tooltip/index.js',
+        tooltip: 'components/tooltip/index.js',
       },
       output: {
         path: __dirname,

@@ -87,7 +87,7 @@ module.exports = function (params) {
         pagination: 'components/pagination/index.js',
         popover: 'components/popover/index.js',
         progress: 'components/progress/index.js',
-        // tabs: 'components/tabs/index.js',
+        tabs: 'components/tabs/index.js',
         // tooltip: 'components/tooltip/index.js',
       },
       output: {

@@ -1,3 +1,4 @@
+var path = require('path');
 var gulp = require('gulp');
 var webpack = require('webpack');
 var webpackStream = require('webpack-stream');

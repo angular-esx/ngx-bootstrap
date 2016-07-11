@@ -68,8 +68,27 @@ module.exports = function (params) {
     return gulp.src('').pipe(webpackStream({
       context: __dirname,
       entry: {
+        core: ['cores/index.js'],
+        // alert: 'components/alert/index.js',
+        // breadcrumb: 'components/breadcrumb/index.js',
+        // button: 'components/button/index.js',
+        // card: 'components/card/index.js',
+        // collapse: 'components/collapse/index.js',
+        // 'drop-menu': 'components/drop-menu/index.js',
+        // grid: 'components/grid/index.js',
+        // group: 'components/group/index.js',
+        // icon: 'components/icon/index.js',
         jumbotron: 'components/jumbotron/index.js',
         label: 'components/label/index.js',
+        // link: ['components/link/index.js'],
+        // list: 'components/list/index.js',
+        // navbar: 'components/navbar/index.js',
+        // pager: 'components/pager/index.js',
+        // pagination: 'components/pagination/index.js',
+        // popover: 'components/popover/index.js',
+        // progress: 'components/progress/index.js',
+        // tabs: 'components/tabs/index.js',
+        // tooltip: 'components/tooltip/index.js',
       },
       output: {
         path: __dirname,
@@ -79,7 +98,11 @@ module.exports = function (params) {
         filename: 'ngx.[name].js',
       },
       plugins: [
-        new webpack.DefinePlugin(webpackVariables)
+        new webpack.DefinePlugin(webpackVariables),
+        new webpack.optimize.CommonsChunkPlugin({
+          filename: "ngx.core.js",
+          name: "core"
+        })
       ],
       module: {
         loaders: [

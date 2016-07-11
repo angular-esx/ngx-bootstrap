@@ -77,7 +77,7 @@ module.exports = function (params) {
         'drop-menu': 'components/drop-menu/index.js',
         grid: 'components/grid/index.js',
         group: 'components/group/index.js',
-        // icon: 'components/icon/index.js',
+        icon: 'components/icon/index.js',
         jumbotron: 'components/jumbotron/index.js',
         label: 'components/label/index.js',
         link: 'components/link/index.js',

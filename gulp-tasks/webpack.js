@@ -1,13 +1,7 @@
-var fs = require('fs');
 var gulp = require('gulp');
-var insert = require('gulp-insert');
-var inject = require('gulp-inject');
-var rename = require('gulp-rename');
-var jsStringEscape = require('js-string-escape');
 var webpack = require('webpack');
 var webpackStream = require('webpack-stream');
 var uglify = require('gulp-uglify');
-var mkdirp = require('mkdirp');
 var autoprefixer = require('autoprefixer');
 var path = require('path');
 var reload = require('browser-sync').reload;
@@ -15,55 +9,10 @@ var reload = require('browser-sync').reload;
 module.exports = function (params) {
   return function () {
 
-    var _fileService = params.fileService,
-      _componentName = params.args.component,
-      _themeName = params.args.theme,
-      _directiveName = params.args.directive,
-      _testCase = params.args.testcase;
-
-    _themeName = _themeName || 'bootstrap';
-
-    var sourcePath, webpackVariables;
-
-    webpackVariables = {
-      __THEME__: JSON.stringify(_themeName)
-    };
-
-    if (_componentName || _directiveName) {
-
-      if (_componentName) {
-        sourcePath = gulp.src(_fileService.getComponentTestCaseBoot(_componentName, _testCase));
-      } else if (_directiveName) {
-        sourcePath = gulp.src(_fileService.getDirectiveTestCaseBoot(_directiveName, _testCase));
-      }
-
-      var _componentThemeName = _componentName + '.component.js';
-
-      webpackVariables.__COMPONENT_FILE__ = JSON.stringify(_componentThemeName);
-
-    } else {
-
-      var components = fs.readdirSync('./components')
-        .filter(function (component) {
-          try {
-            return fs.statSync('./components/' + component).isDirectory();
-          } catch (e) {
-            return false;
-          }
-        })
-        .map(function (component) {
-          return "require('../../components/" + component + '/' + component + ".component." + _themeName + ".js')";
-        });
-
-      try {
-        mkdirp.sync('./dist/js');
-      } catch (e) {
-        console.log(e);
-      }
-
-      fs.writeFileSync('./dist/js/ngx-bootstrap.js', components.join('\n'), { encoding: 'utf8' });
-      sourcePath = gulp.src('./dist/js/ngx-bootstrap.js');
-    }
+    var _themeName = params.args.theme || 'bootstrap',
+      webpackVariables = {
+        __THEME__: JSON.stringify(_themeName)
+      };
 
     return gulp.src('').pipe(webpackStream({
       context: __dirname,

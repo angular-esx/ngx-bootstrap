@@ -1,5 +1,4 @@
 ﻿var ngxBaseDirective = require('baseDirective');
-var ngxRenderService = require('renderService');
 var ngxBootstrap = require('utils');
 
 function _ngxBaseComponent() {
@@ -9,22 +8,12 @@ function _ngxBaseComponent() {
 
   this.constructor = [
     ng.core.ElementRef,
-    ngxRenderService,
-    [new ng.core.Optional(), null],
+    ng.core.Renderer,
 
-    function ngxBaseComponent(elementRef, ngxRenderService, ngxBaseService) {
+    function ngxBaseComponent(elementRef, renderer) {
       ngxBaseDirective.apply(this, arguments);
     }
   ];
-
-  this.removeOneTimeBindingAttributes = function (attributes) {
-    var _self = this,
-        _attributes = ngxBootstrap.isArray(attributes) || ngxBootstrap.isObject(attributes) ? attributes : [attributes];
-    
-    ngxBootstrap.forEach(_attributes, function (attribute) {
-      _self.ngxRenderService.removeAttribute(attribute);
-    });
-  };
   
   function _getBaseInstance(context) {
     if (!_base) { _base = context.getBaseInstance(ngxBaseDirective); }

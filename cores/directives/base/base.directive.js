@@ -1,148 +1,95 @@
-﻿var ngxRenderService = require('renderService');
-var ngxBootstrap = require('utils');
+﻿var ngxBootstrap = require('utils');
 
 function _ngxBaseDirective() {
-  var _ATTRIBUTES = {
+  var _STYLE_PROPERTIES = {
     COLOR: 'color',
     TYPE: 'type',
     STATE: 'state',
-    SIZE: 'size'
+    SIZE: 'size',
+    POSITION: 'position'
   };
 
   this.constructor = [
     ng.core.ElementRef,
-    ngxRenderService,
-    [new ng.core.Optional(), null],
+    ng.core.Renderer,
 
-    function ngxBaseDirective(elementRef, ngxRenderService, ngxBaseService) {
+    function ngxBaseDirective(elementRef, renderer) {
       if (!elementRef) { throw 'elementRef is required'; }
-      if (!ngxRenderService) { throw 'ngxRenderService is required'; }
+      if (!renderer) { throw 'renderer is required'; }
 
       this.elementRef = elementRef;
-      this.ngxRenderService = ngxRenderService.for(elementRef.nativeElement);
-      this.ngxBaseService = ngxBaseService;
-
-      this.prefixClass = elementRef.nativeElement.localName;
+      this.renderer = renderer;
     }
   ];
 
   this.ngOnChanges = function (changeRecord) {
-    var _aggregate = this.onAggregatePropertyValueState(changeRecord);
-
-    this.cssClass = (this.onBuildOwnCssClass(_aggregate).join(' ') + ' ' + this.onBuildExtendCssClass(_aggregate).join(' ')).trim();
-
-    this.onSetCssClass();
-  };
-
-  this.ngAfterContentInit = function () {
-    var _prefixClass = this.getPrefixClass();
-    if (_prefixClass && (this.cssClass === null || this.cssClass === undefined)) {
-      this.cssClass = _prefixClass;
-
-      this.ngxRenderService.insertClass(this.cssClass, 0);
+    if(this.needRebuildCssClass(changeRecord)){
+      this.cssClass = this.buildCssClass(changeRecord);
+      
+      this.renderer.setElementProperty(this.elementRef.nativeElement, 'className', this.cssClass);
     }
   };
 
-  this.onAggregatePropertyValueState = function (changeRecord) {
-    var _aggregate = {};
 
-    if (!this.ngxBaseService) { return _aggregate; }
+  this.needRebuildCssClass = function(changeRecord){
+    var _styleProperties = this.getStyleProperties(),
+        _propertyName;
 
-    if (this.ngxBaseService.getColorClass) {
-      _aggregate[_ATTRIBUTES.COLOR] = {
-        prev: this.ngxBaseService.getColorClass(this.getPrefixClass(), this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.COLOR)),
-        current: this.ngxBaseService.getColorClass(this.getPrefixClass(), this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.COLOR))
-      };
+    for (var prop in _styleProperties) {
+      _propertyName = _styleProperties[prop];
+
+      if (changeRecord[_propertyName]) { return true; }
     }
 
-    if (this.ngxBaseService.getTypeClass) {
-      _aggregate[_ATTRIBUTES.TYPE] = {
-        prev: this.ngxBaseService.getTypeClass(this.getPrefixClass(), this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.TYPE)),
-        current: this.ngxBaseService.getTypeClass(this.getPrefixClass(), this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.TYPE))
-      };
-    }
-
-    if (this.ngxBaseService.getStateClass) {
-      _aggregate[_ATTRIBUTES.STATE] = {
-        prev: this.ngxBaseService.getStateClass(this.getPrefixClass(), this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.STATE)),
-        current: this.ngxBaseService.getStateClass(this.getPrefixClass(), this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.STATE))
-      };
-    }
-
-    if (this.ngxBaseService.getSizeClass) {
-      _aggregate[_ATTRIBUTES.SIZE] = {
-        prev: this.ngxBaseService.getSizeClass(this.getPrefixClass(), this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.SIZE)),
-        current: this.ngxBaseService.getSizeClass(this.getPrefixClass(), this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.SIZE))
-      };
-    }
-
-    return _aggregate;
+    return false;
   };
 
-  this.onBuildOwnCssClass = function (aggregate) {
-    var _classes = [];
+  this.buildCssClass = function(changeRecord){
+    var _cssClasses = [],
+        _self = this,
+        _styleProperties = this.getStyleProperties(),
+        _cssClass;
 
-    var _prefixClass = this.getPrefixClass();
-    if (_prefixClass) { _classes.push(_prefixClass); }
-
-    ngxBootstrap.forEach(aggregate, function (attribute) {
-      if (attribute.current) { _classes.push(attribute.current); }
-    });
-
-    return _classes;
-  };
-
-  this.onBuildExtendCssClass = function (aggregate) {
-    var _currentClass = this.ngxRenderService.getClass();
-
-    if (!_currentClass) { return []; }
-
-    var _prefixClass = this.getPrefixClass(),
-        _classes = [],
-        _isExistingCssClass = false;
-
-    ngxBootstrap.forEach(_currentClass.split(' '), function (className) {
-      if (className && className != _prefixClass) {
-        _isExistingCssClass = false;
-
-        ngxBootstrap.forEach(aggregate, function (attribute) {
-          if (attribute.prev && attribute.prev.indexOf(className) > -1) {
-            _isExistingCssClass = true;
-            return true;
-          }
-        });
-
-        if (!_isExistingCssClass) { _classes.push(className); }
+    ngxBootstrap.forEach(_styleProperties, function(prop){
+      if(changeRecord[prop]){
+        _cssClass = _self.buildCssClassForProperty(changeRecord[prop], prop);
+        if(_cssClass){ _cssClasses.push(_cssClass); }
       }
     });
 
-    return _classes;
+    if(this.initCssClass){ _cssClasses.push(this.initCssClass); }
+
+    return _cssClasses.join(' ');
   };
 
-  this.onSetCssClass = function () {
-    this.ngxRenderService.setClass(this.cssClass);
+  this.buildCssClassForProperty = function(changedProperty, propertyName){
+    var _parts = [],
+        _prefixClass = this.getPrefixClass();
+
+    if(_prefixClass){ _parts.push(_prefixClass); }
+    _parts.push(propertyName);
+    _parts.push(changedProperty.currentValue);
+
+    return _parts.join('-');
   };
+
+  this.buildChangeRecord = function(propertyName, currentValue, previousValue, currentChangeRecord){
+    var _changeRecord = currentChangeRecord || {};
+    _changeRecord[propertyName] = {
+      previousValue: previousValue,
+      currentValue: currentValue
+    };
+
+    return _changeRecord;
+  };
+
 
   this.getPrefixClass = function () {
-    return this.prefixClass || '';
+    return '';
   };
 
-  this.getPrevPropertyValue = function (changeRecord, propertyName, propertyAlias) {
-    if (propertyAlias) {
-      return !changeRecord[propertyAlias] || (changeRecord[propertyAlias].isFirstChange && changeRecord[propertyAlias].isFirstChange()) ? this[propertyName] : changeRecord[propertyAlias].previousValue;
-    }
-    else {
-      return !changeRecord[propertyName] || (changeRecord[propertyName].isFirstChange && changeRecord[propertyName].isFirstChange()) ? this[propertyName] : changeRecord[propertyName].previousValue;
-    }
-  };
-
-  this.getCurrentPropertyValue = function (changeRecord, propertyName, propertyAlias) {
-    if (propertyAlias) {
-      return changeRecord[propertyAlias] ? changeRecord[propertyAlias].currentValue : this[propertyName];
-    }
-    else {
-      return changeRecord[propertyName] ? changeRecord[propertyName].currentValue : this[propertyName];
-    }
+  this.getStyleProperties = function(){
+    return _STYLE_PROPERTIES;
   };
 
   this.getBaseInstance = function (baseClass) {

@@ -1,8 +1,5 @@
-﻿var NGX_PAGER = require('components/pager/index.js');
-var NGX_CORE_SERVICES = require('coreService');
-
-function _testCase() {
-  this.constructor = [NGX_PAGER.SERVICE, function (ngxPagerService) {
+﻿function _testCase() {
+  this.constructor = [ngxBootstrap.pager.SERVICE, function (ngxPagerService) {
 
     this.TYPES = ngxPagerService.getTypes();
   }];
@@ -19,16 +16,15 @@ function _testCase() {
   };
 
 }
-
-module.exports = ng.core.Component({
+var isolatedComponents = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/pager/tests/ui/isolated-components/test-case.html',
   directives: [
-    NGX_PAGER.DIRECTIVES
+    ngxBootstrap.pager.DIRECTIVES
   ],
   providers: [
-    NGX_CORE_SERVICES,
-    NGX_PAGER.SERVICE
+    ngxBootstrap.coreService,
+    ngxBootstrap.pager.SERVICE
   ]
 })
 .Class(new _testCase());

@@ -1,9 +1,5 @@
-﻿var ngxProgressComponent = require('components/progress/progress.component.js');
-var ngxProgressService = require('components/progress/services/progress.service.js');
-var ngxCoreService = require('coreService');
-
-function _testCase() {
-  this.constructor = [ngxProgressService, function (ngxProgressService) {
+﻿function _testCase() {
+  this.constructor = [ngxBootstrap.progress.SERVICE, function (ngxProgressService) {
     this.COLORS = ngxProgressService.getColors();
 
     this.progresses = {
@@ -13,15 +9,15 @@ function _testCase() {
   }];
 }
 
-module.exports = ng.core.Component({
+var isolatedComponents = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/progress/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxProgressComponent
+    ngxBootstrap.progress.DIRECTIVES
   ],
   providers: [
-   ngxCoreService,
-   ngxProgressService
+   ngxBootstrap.coreService,
+   ngxBootstrap.progress.SERVICE
   ]
 })
 .Class(new _testCase());

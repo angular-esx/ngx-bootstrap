@@ -36,16 +36,15 @@
       };
     })(this.PATHS);
 
-    this.getComponentTestBoot = function (componentName, testCase) {
-      if (!testCase) { testCase = 'isolated-components'; }
-
-      return this.PATHS.COMPONENTS + componentName + '/tests/ui/' + testCase + '/boot.js';
-    };
-
     this.getComponentTestCase = function (componentName, testCase) {
       if (!testCase) { testCase = 'isolated-components'; }
 
-      return this.PATHS.COMPONENTS + componentName + '/tests/ui/' + testCase + '/test-case.js';
+      var pathComponent = this.PATHS.COMPONENTS + componentName + '/tests/ui/' + testCase; 
+
+      return {
+        bootScript: pathComponent + '/boot.js',
+        testCaseScript: pathComponent + '/test-case.js'
+      };
     };
 
     this.getDirectiveTestBoot = function (directiveName, testCase) {

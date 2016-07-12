@@ -15,7 +15,7 @@ module.exports = function (params) {
       _componentName = params.args.component,
       _directiveName = params.args.directive,
       _notReadOption = { read: false },
-      bootTestScript, testCaseScript;
+      bootTestScript, testCaseScripts;
 
     var _es6ShimJs = gulp.src(_libs.ES6_SHIM_JS, _notReadOption),
       _rxJs = gulp.src(_libs.RX_JS, _notReadOption),
@@ -26,8 +26,9 @@ module.exports = function (params) {
 
     if (_componentName || _directiveName) {
       if (_componentName) {
-        testCaseScript = gulp.src(_fileService.getComponentTestCase(_componentName, _testCase), _notReadOption);
-        bootTestScript = gulp.src(_fileService.getComponentTestBoot(_componentName, _testCase), _notReadOption);
+        testCaseScripts = _fileService.getComponentTestCase(_componentName, _testCase);
+        testCaseScript = gulp.src(testCaseScripts.testCaseScript, _notReadOption);
+        bootTestScript = gulp.src(testCaseScripts.bootScript, _notReadOption);
       } else if (_directiveName) {
         testCaseScript = gulp.src(_fileService.getDirectiveTestCase(_componentName, _testCase), _notReadOption);
         bootTestScript = gulp.src(_fileService.getDirectiveTestBoot(_directiveName, _testCase), _notReadOption);

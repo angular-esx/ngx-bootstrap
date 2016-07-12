@@ -1,8 +1,5 @@
-﻿var NGX_ICON = require('components/icon/index.js');
-var NGX_CORE_SERVICES = require('coreService');
-
-function _testCase() {
-  this.constructor = [NGX_ICON.SERVICE, function (ngxIconService) {
+﻿function _testCase() {
+  this.constructor = [ngxBootstrap.icon.SERVICE, function (ngxIconService) {
     ngxIconService.setDefaultFontSet('material-icons');
 
     ngxIconService.setSvgIcon('components/icon/tests/ui/isolated-components/svgs/favorite.svg', 'favorite');
@@ -15,7 +12,7 @@ function _testCase() {
   }];
 }
 
-module.exports = ng.core.Component({
+var isolatedComponents = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/icon/tests/ui/isolated-components/test-case.html',
   styleUrls: [
@@ -24,11 +21,11 @@ module.exports = ng.core.Component({
   ],
   encapsulation: ng.core.ViewEncapsulation.None,
   directives: [
-    NGX_ICON.DIRECTIVES
+    ngxBootstrap.icon.DIRECTIVES
   ],
   providers: [
-    NGX_ICON.SERVICE,
-    NGX_CORE_SERVICES,
+    ngxBootstrap.icon.SERVICE,
+    ngxBootstrap.coreService,
     ng.http.HTTP_PROVIDERS
   ]
 })

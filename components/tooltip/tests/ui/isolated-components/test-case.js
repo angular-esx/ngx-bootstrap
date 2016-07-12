@@ -1,8 +1,5 @@
-﻿var NGX_TOOLTIP = require('components/tooltip/index.js');
-var NGX_CORE_SERVICES = require('coreService');
-
-function _testCase() {
-  this.constructor = [NGX_TOOLTIP.SERVICE, function (ngxTooltipService) {
+﻿function _testCase() {
+  this.constructor = [ngxBootstrap.tooltip.SERVICE, function (ngxTooltipService) {
     this.ngxTooltipService = ngxTooltipService;
 
     this.STATES = ngxTooltipService.getStates();
@@ -53,15 +50,15 @@ function _testCase() {
   };
 }
 
-module.exports = ng.core.Component({
+var isolatedComponents = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/tooltip/tests/ui/isolated-components/test-case.html',
   directives: [
-    NGX_TOOLTIP.DIRECTIVES
+    ngxBootstrap.tooltip.DIRECTIVES
   ],
   providers: [
-    NGX_TOOLTIP.SERVICE,
-    NGX_CORE_SERVICES
+    ngxBootstrap.tooltip.SERVICE,
+    ngxBootstrap.coreService
   ],
   queries: {
     tooltipElement: new ng.core.ViewChild('myTooltip', { read: ng.core.ElementRef }),

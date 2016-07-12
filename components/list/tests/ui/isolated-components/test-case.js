@@ -1,8 +1,5 @@
-﻿var NGX_LIST = require('components/list/index.js');
-var NGX_CORE_SERVICES = require('coreService');
-
-function _testCase() {
-  this.constructor = [NGX_LIST.ITEM_SERVICE, function (ngxListItemService) {
+﻿function _testCase() {
+  this.constructor = [ngxBootstrap.list.ITEM_SERVICE, function (ngxListItemService) {
     this.COLORS = ngxListItemService.getColors();
   }];
 
@@ -12,15 +9,15 @@ function _testCase() {
   };
 }
 
-module.exports = ng.core.Component({
+var isolatedComponents = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/list/tests/ui/isolated-components/test-case.html',
   directives: [
-    NGX_LIST.DIRECTIVES
+    ngxBootstrap.list.DIRECTIVES
   ],
   providers: [
-    NGX_CORE_SERVICES,
-    NGX_LIST.SERVICES
+    ngxBootstrap.coreService,
+    ngxBootstrap.list.SERVICES
   ]
 })
 .Class(new _testCase());

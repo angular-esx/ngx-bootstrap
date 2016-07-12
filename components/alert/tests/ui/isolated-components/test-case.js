@@ -1,9 +1,5 @@
-﻿var NGX_ALERT = require('components/alert/index.js');
-var NGX_LINK = require('components/link/index.js');
-var NGX_CORE_SERVICES = require('coreService');
-
 function _testCase() {
-  this.constructor = [NGX_ALERT.SERVICE, function (ngxAlertService) {
+  this.constructor = [ngxBootstrap.alert.SERVICE, function (ngxAlertService) {
     this.ngxAlertService = ngxAlertService;
 
     this.COLORS = ngxAlertService.getColors();
@@ -39,18 +35,18 @@ function _testCase() {
   };
 }
 
-module.exports = ng.core.Component({
+var isolatedComponents = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/alert/tests/ui/isolated-components/test-case.html',
   directives: [
-    NGX_ALERT.DIRECTIVES.ALERT,
-    NGX_ALERT.DIRECTIVES.ALERT_LINK,
-    NGX_LINK.DIRECTIVES
+    ngxBootstrap.alert.DIRECTIVES.ALERT,
+    ngxBootstrap.alert.DIRECTIVES.ALERT_LINK,
+    ngxBootstrap.link.DIRECTIVES
   ],
   providers: [
-    NGX_CORE_SERVICES,
-    NGX_ALERT.SERVICE,
-    NGX_LINK.SERVICE
+    ngxBootstrap.coreService,
+    ngxBootstrap.alert.SERVICE,
+    ngxBootstrap.link.SERVICE
   ],
   queries: {
     infoAlertElement: new ng.core.ViewChild('myInfoAlert', { read: ng.core.ElementRef }),

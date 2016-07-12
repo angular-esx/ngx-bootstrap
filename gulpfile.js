@@ -36,21 +36,33 @@
       };
     })(this.PATHS);
 
-    this.getComponentTestCaseBoot = function (componentName, testCase) {
+    this.getComponentTestCase = function (componentName, testCase) {
       if (!testCase) { testCase = 'isolated-components'; }
 
-      return this.PATHS.COMPONENTS + componentName + '/tests/ui/' + testCase + '/boot.js';
+      var pathComponent = this.PATHS.COMPONENTS + componentName + '/tests/ui/' + testCase; 
+
+      return {
+        bootScript: pathComponent + '/boot.js',
+        testCaseScript: pathComponent + '/test-case.js'
+      };
     };
 
-    this.getDirectiveTestCaseBoot = function (directiveName, testCase) {
+    this.getDirectiveTestBoot = function (directiveName, testCase) {
       if (!testCase) { testCase = 'isolated-directives'; }
 
       return this.PATHS.DIRECTIVES + directiveName + '/tests/ui/' + testCase + '/boot.js';
     };
 
+    this.getDirectiveTestCase = function (directiveName, testCase) {
+      if (!testCase) { testCase = 'isolated-directives'; }
+
+      return this.PATHS.DIRECTIVES + directiveName + '/tests/ui/' + testCase + '/test-case.js';
+    };
+
   })();
 
   var taskService = new (function () {
+    this.CLEAN = 'clean';
     this.WATCH = 'watch';
     this.BROWSER_SYNC = 'browser-sync';
     this.SCSS = 'scss';
@@ -59,7 +71,6 @@
     this.BUILD = 'build';
     this.WEBPACK = 'webpack';
     this.BUILD_SCSS = 'build-scss';
-    this.BUILD_JS = 'build-js';
   })();
 
   var gulp = require('gulp');
@@ -73,10 +84,12 @@
   gulp.task('inject-assets', getTask(taskService.INJECT_ASSETS));
   
   gulp.task('test-ui', function(){
-    runSequence('serve', 'webpack', 'inject-assets');
+    runSequence('clean', 'serve', 'webpack', 'inject-assets');
   });
   
-  gulp.task('default', ['serve']);
+  gulp.task('default', ['build']);
+
+  gulp.task('clean', getTask(taskService.CLEAN));
 
   gulp.task('serve', function () {
     runSequence('scss', 'lint', ['browserSync', 'watch']);
@@ -92,10 +105,8 @@
 
   gulp.task('watch', getTask(taskService.WATCH));
 
-  gulp.task('build-js', getTask(taskService.BUILD_JS));
-
   gulp.task('build', function () {
-    runSequence('scss', 'lint', 'build-js');
+    runSequence('clean', 'scss', 'lint', 'webpack');
   });
 
   gulp.task('build-scss', getTask(taskService.BUILD_SCSS));

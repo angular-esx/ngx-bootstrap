@@ -2,8 +2,7 @@
 var ngxLabelService = require('./../../../services/label.service.js');
 var ngxColorService = require('./../../../../../' + __COLOR_SERVICE__);
 var ngxTypeService = require('./../../../../../' + __TYPE_SERVICE__);
-var ngxBootstrap = require('./../../../../../' + __NGX_BOOTSTRAP__);
-ngxBootstrap = require('./../../../../../' + __NGX_BOOTSTRAP_UTILS);
+var ngxBootstrap = require('ngxBootstrap');
 
 function _testCase() {
   this.constructor = [ngxLabelService, function (ngxLabelService) {

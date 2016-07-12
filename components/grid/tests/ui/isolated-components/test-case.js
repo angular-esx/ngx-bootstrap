@@ -1,8 +1,5 @@
-﻿var NGX_GRID = require('components/grid/index.js');
-var ngxCoreService = require('coreService');
-
-function _testCase() {
-  this.constructor = [NGX_GRID.SERVICE, function (ngxGridService) {
+﻿function _testCase() {
+  this.constructor = [ngxBootstrap.grid.SERVICE, function (ngxGridService) {
     this.TYPES = ngxGridService.getTypes();
     this.COLUMN_SIZES = ngxGridService.getColumnSizes();
 
@@ -15,15 +12,15 @@ function _testCase() {
   }];
 }
 
-module.exports = ng.core.Component({
+var isolatedComponents = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/grid/tests/ui/isolated-components/test-case.html',
   directives: [
-    NGX_GRID.DIRECTIVES
+    ngxBootstrap.grid.DIRECTIVES
   ],
   providers: [
-    NGX_GRID.SERVICE,
-    ngxCoreService
+    ngxBootstrap.grid.SERVICE,
+    ngxBootstrap.coreService
   ]
 })
 .Class(new _testCase());

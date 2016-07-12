@@ -1,7 +1,6 @@
 ﻿var ngxProgressService = require('./services/progress.service.js');
 var ngxBaseComponent = require('baseComponent');
 var ngxRenderService = require('renderService');
-var ngxBootstrap = require('utils');
 
 function _ngxProgressComponent() {
   var _base;

@@ -1,7 +1,7 @@
 ﻿var ngxColorService = require('colorService');
 var ngxSizeService = require('sizeService');
 var ngxStateService = require('stateService');
-var ngxBootstrap = require('utils');
+var ngxBootstrap = require('ngxBootstrap');
 
 function _ngxLinkService() {
   this.constructor = [

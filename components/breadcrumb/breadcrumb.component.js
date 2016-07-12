@@ -1,7 +1,6 @@
 var ngxBreadcrumbService = require('./services/breadcrumb.service.js');
 var ngxBaseComponent = require('baseComponent');
 var ngxRenderService = require('renderService');
-var ngxBootstrap = require('utils');
 
 function _breadcrumbComponent() {
   var _base;

@@ -2,7 +2,7 @@
 var ngxPopoverComponent = require('./popover.component.js');
 var ngxPopoverService = require('./services/popover.service.js');
 var ngxTooltipDirective = require('components/tooltip/tooltip.directive.js');
-var ngxBootstrap = require('utils');
+var ngxBootstrap = require('ngxBootstrap');
 
 function _ngxPopoverDirective() {
   var _base,

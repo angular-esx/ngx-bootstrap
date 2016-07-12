@@ -1,7 +1,6 @@
 ﻿var ngxGridService = require('./services/grid.service.js');
 var ngxBaseDirective = require('baseDirective');
 var ngxRenderService = require('renderService');
-var ngxBootstrap = require('utils');
 
 function _ngxGridColumnDirective() {
   var _base;

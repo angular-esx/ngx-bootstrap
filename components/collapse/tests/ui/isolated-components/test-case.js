@@ -1,29 +1,20 @@
-﻿var ngxCollapseComponent = require('components/collapse/collapse.component.js');
-var ngxToggleCollapseDirective = require('components/collapse/toggle-collapse.directive.js');
-var ngxCollapseService = require('components/collapse/services/collapse.service.js');
-var ngxCoreService = require('coreService');
-var ngxButtonComponent = require('components/button/button.component.js');
-var ngxButtonService = require('components/button/services/button.service.js');
-var ngxBootstrap = require('utils');
-
 function _testCase() {
-  this.constructor = [ngxCollapseService, function (ngxCollapseService) {
+  this.constructor = [ngxBootstrap.collapse.SERVICE, function (ngxCollapseService) {
     this.STATES = ngxCollapseService.getStates();
   }];
 }
 
-module.exports = ng.core.Component({
+var isolatedComponents = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/collapse/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxCollapseComponent,
-    ngxButtonComponent,
-    ngxToggleCollapseDirective
+    ngxBootstrap.collapse.DIRECTIVES,
+    ngxBootstrap.button.DIRECTIVES,
   ],
   providers: [
-    ngxCoreService,
-    ngxCollapseService,
-    ngxButtonService
+    ngxBootstrap.coreService,
+    ngxBootstrap.collapse.SERVICE,
+    ngxBootstrap.button.SERVICE
   ]
 })
 .Class(new _testCase());

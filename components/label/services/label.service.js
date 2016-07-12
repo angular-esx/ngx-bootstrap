@@ -1,7 +1,6 @@
 ﻿var ngxColorService = require('colorService');
 var ngxTypeService = require('typeService');
 var ngxBootstrap = require('ngxBootstrap');
-ngxBootstrap = require('utils');
 
 function _ngxLabelService() {
   this.constructor = [

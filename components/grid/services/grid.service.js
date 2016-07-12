@@ -1,5 +1,5 @@
 ﻿var ngxTypeService = require('typeService');
-var ngxBootstrap = require('utils');
+var ngxBootstrap = require('ngxBootstrap');
 
 function _ngxGridService() {
   var _MAX_COLUMNS = 12;

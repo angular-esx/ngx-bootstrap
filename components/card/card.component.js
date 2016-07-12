@@ -1,6 +1,5 @@
 ﻿var ngxRenderService = require('renderService');
 var ngxBaseComponent = require('baseComponent');
-var ngxBootstrap = require('utils');
 
 function _ngxCardComponent() {
   var _base;

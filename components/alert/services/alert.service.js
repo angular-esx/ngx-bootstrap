@@ -4,7 +4,6 @@ var ngxStateService = require('stateService');
 var ngxPositionService = require('positionService');
 var ngxAnimationService = require('animationService');
 var ngxBootstrap = require('ngxBootstrap');
-ngxBootstrap = require('utils');
 
 function _ngxAlertService() {
   var _observer;

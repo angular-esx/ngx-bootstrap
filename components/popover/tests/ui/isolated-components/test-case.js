@@ -1,8 +1,5 @@
-﻿var NGX_POPOVER = require('components/popover/index.js');
-var NGX_CORE_SERVICES = require('coreService');
-
-function _testCase() {
-  this.constructor = [NGX_POPOVER.SERVICE, function (ngxPopoverService) {
+﻿function _testCase() {
+  this.constructor = [ngxBootstrap.popover.SERVICE, function (ngxPopoverService) {
     this.ngxPopoverService = ngxPopoverService;
 
     this.STATES = ngxPopoverService.getStates();
@@ -53,15 +50,15 @@ function _testCase() {
   };
 }
 
-module.exports = ng.core.Component({
+var isolatedComponents = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/popover/tests/ui/isolated-components/test-case.html',
   directives: [
-    NGX_POPOVER.DIRECTIVES
+    ngxBootstrap.popover.DIRECTIVES
   ],
   providers: [
-    NGX_POPOVER.SERVICE,
-    NGX_CORE_SERVICES
+    ngxBootstrap.popover.SERVICE,
+    ngxBootstrap.coreService
   ],
   queries: {
     popoverElement: new ng.core.ViewChild('myPopover', { read: ng.core.ElementRef }),

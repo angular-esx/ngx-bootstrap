@@ -1,5 +1,3 @@
-var ngxLabelService = require('./services/label.service.js');
-var ngxRenderService = require('renderService');
 var ngxBaseComponent = require('baseComponent');
 var ngxBootstrap = require('ngxBootstrap');
 
@@ -10,17 +8,16 @@ function _ngxLabelComponent() {
 
   this.constructor = [
     ng.core.ElementRef,
-    ngxRenderService,
-    ngxLabelService,
+    ng.core.Renderer,
 
-    function ngxLabelComponent(elementRef, ngxRenderService, ngxLabelService) {
+    function ngxLabelComponent(elementRef, renderer) {
       ngxBaseComponent.apply(this, arguments);
-
-      if (elementRef) {
-        this.ngxLabelService = ngxLabelService;
-      }
     }
   ];
+
+  this.getPrefixClass = function(){
+    return 'ngx-label';
+  };
 
   function _getBaseInstance(context){ 
     if(!_base){ _base = context.getBaseInstance(ngxBaseComponent); }
@@ -32,7 +29,6 @@ module.exports = ng.core.Component({
   selector: 'ngx-label',
   template: require('./themes/' + __THEME__ + '/templates/label.html'),
   styles: [require('./themes/' + __THEME__  + '/scss/label.scss')],
-  providers: [ngxRenderService],
-  properties: ['color', 'type', 'prefixClass:prefix-class']
+  properties: ['color', 'type']
 })
 .Class(new _ngxLabelComponent());

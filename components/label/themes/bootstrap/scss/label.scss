@@ -2,7 +2,7 @@
 
 @import "_mixins.scss";
 
-:host(.#{$ngx-label-prefix-class}) {
+:host() {
   display: inline-block;
   font-size: $ngx-label-font-size;
   font-weight: $ngx-label-font-weight;
@@ -23,27 +23,27 @@
     display: none;
   }
 
-  &.#{$ngx-label-prefix-class}-type-pill {
+  &.ngx-label-type-pill {
     padding: $ngx-label-pill-padding;
     @include ngx-border-radius($ngx-label-pill-border-radius);
   }
 
-  &.#{$ngx-label-prefix-class}-color-primary {
+  &.ngx-label-color-primary {
     @include ngx-label-variant($ngx-label-primary);
   }
-  &.#{$ngx-label-prefix-class}-color-secondary {
+  &.ngx-label-color-secondary {
     @include ngx-label-variant($ngx-label-secondary);
   }
-  &.#{$ngx-label-prefix-class}-color-info {
+  &.ngx-label-color-info {
     @include ngx-label-variant($ngx-label-info);
   }
-  &.#{$ngx-label-prefix-class}-color-success {
+  &.ngx-label-color-success {
     @include ngx-label-variant($ngx-label-success);
   }
-  &.#{$ngx-label-prefix-class}-color-warning {
+  &.ngx-label-color-warning {
     @include ngx-label-variant($ngx-label-warning);
   }
-  &.#{$ngx-label-prefix-class}-color-danger {
+  &.ngx-label-color-danger {
     @include ngx-label-variant($ngx-label-danger);
   }
 }

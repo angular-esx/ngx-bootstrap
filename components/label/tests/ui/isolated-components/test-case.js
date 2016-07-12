@@ -1,8 +1,7 @@
 function _testCase() {
-  this.constructor = [ngxBootstrap.label.SERVICE, function (ngxLabelService) {
-    this.COLORS = ngxLabelService.getColors();
-    this.TYPES = ngxLabelService.getTypes();
-  }];
+  this.constructor = function () {
+    this.type = 'pill';
+  };
 }
 
 var isolatedComponents = ng.core.Component({
@@ -10,10 +9,6 @@ var isolatedComponents = ng.core.Component({
   templateUrl: 'components/label/tests/ui/isolated-components/test-case.html',
   directives: [
     ngxBootstrap.label.DIRECTIVES
-  ],
-  providers: [
-    ngxBootstrap.label.SERVICE,
-    ngxBootstrap.coreService
   ]
 })
 .Class(new _testCase());

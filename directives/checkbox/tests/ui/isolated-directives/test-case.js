@@ -1,14 +1,5 @@
-﻿var ngxCheckboxDirective = require('directives/checkbox/checkbox.directive.js');
-var ngxCheckboxService = require('directives/checkbox/services/checkbox.service.js');
-var ngxButtonComponent = require('components/button/button.component.js');
-var ngxButtonService = require('components/button/services/button.service.js');
-var ngxGroupComponent = require('components/group/group.component.js');
-var ngxGroupService = require('components/group/services/group.service.js');
-var ngxCheckboxGroupDirective = require('directives/checkbox/checkbox-group.directive.js');
-var ngxCoreService = require('coreService');
-
-function _testCase() {
-  this.constructor = [ngxCheckboxService, function (ngxCheckboxService) {
+﻿function _testCase() {
+  this.constructor = [ngxBootstrap.checkbox.SERVICE, function (ngxCheckboxService) {
     this.STATES = ngxCheckboxService.getStates();
 
     this.ngxCheckboxTracker = { value: '' };
@@ -17,20 +8,19 @@ function _testCase() {
   }];
 }
 
-module.exports = ng.core.Component({
+var isolatedDirectives = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'directives/checkbox/tests/ui/isolated-directives/test-case.html',
   directives: [
-    ngxGroupComponent,
-    ngxButtonComponent,
-    ngxCheckboxDirective,
-    ngxCheckboxGroupDirective
+    ngxBootstrap.group.DIRECTIVES,
+    ngxBootstrap.button.DIRECTIVES,
+    ngxBootstrap.checkbox.DIRECTIVES,
   ],
   providers: [
-   ngxCoreService,
-   ngxGroupService,
-   ngxButtonService,
-   ngxCheckboxService
+   ngxBootstrap.coreService,
+   ngxBootstrap.group.SERVICE,
+   ngxBootstrap.button.SERVICE,
+   ngxBootstrap.checkbox.SERVICE
   ]
 })
 .Class(new _testCase());

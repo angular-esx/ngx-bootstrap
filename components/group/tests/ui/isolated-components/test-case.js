@@ -1,25 +1,20 @@
-﻿var NGX_GROUP = require('components/group/index.js');
-var NGX_BUTTON = require('components/button/index.js');
-var NGX_CORE_SERVICES = require('coreService');
-
-function _testCase() {
-  this.constructor = [NGX_GROUP.SERVICE, function (ngxGroupService) {
+﻿function _testCase() {
+  this.constructor = [ngxBootstrap.group.SERVICE, function (ngxGroupService) {
     this.TYPES = ngxGroupService.getTypes();
     this.SIZES = ngxGroupService.getSizes();
   }];
 }
 
-module.exports = ng.core.Component({
+var isolatedComponents = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/group/tests/ui/isolated-components/test-case.html',
   directives: [
-    NGX_GROUP.DIRECTIVES,
-    NGX_BUTTON.DIRECTIVES
+    ngxBootstrap.group.DIRECTIVES,
+    ngxBootstrap.button.DIRECTIVES
   ],
   providers: [
-   NGX_CORE_SERVICES,
-   NGX_GROUP.SERVICE,
-   NGX_BUTTON.SERVICE
+   ngxBootstrap.group.SERVICE,
+   ngxBootstrap.button.SERVICE
   ]
 })
 .Class(new _testCase());

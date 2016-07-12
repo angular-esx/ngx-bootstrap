@@ -15,7 +15,7 @@ module.exports = function (params) {
       _componentName = params.args.component,
       _directiveName = params.args.directive,
       _notReadOption = { read: false },
-      bootTestScript;
+      bootTestScript, testCaseScript;
 
     var _es6ShimJs = gulp.src(_libs.ES6_SHIM_JS, _notReadOption),
       _rxJs = gulp.src(_libs.RX_JS, _notReadOption),
@@ -26,9 +26,11 @@ module.exports = function (params) {
 
     if (_componentName || _directiveName) {
       if (_componentName) {
-        bootTestScript = gulp.src(_fileService.getComponentTestCaseBoot(_componentName, _testCase), _notReadOption);
+        testCaseScript = gulp.src(_fileService.getComponentTestCase(_componentName, _testCase), _notReadOption);
+        bootTestScript = gulp.src(_fileService.getComponentTestBoot(_componentName, _testCase), _notReadOption);
       } else if (_directiveName) {
-        bootTestScript = gulp.src(_fileService.getDirectiveTestCaseBoot(_directiveName, _testCase), _notReadOption);
+        testCaseScript = gulp.src(_fileService.getDirectiveTestCase(_componentName, _testCase), _notReadOption);
+        bootTestScript = gulp.src(_fileService.getDirectiveTestBoot(_directiveName, _testCase), _notReadOption);
       }
     }
 
@@ -37,7 +39,7 @@ module.exports = function (params) {
     var ngxBootstrap = gulp.src('./dist/js/ngx-bootstrap.js', _notReadOption);
 
     return gulp.src(_fileService.FILES.INDEX_TEMPLATE_HTML)
-      .pipe(inject(_streamSeries(ngxBootstrap, ngxCore, ngxComponent, bootTestScript), { relative: true, name: 'component' }))
+      .pipe(inject(_streamSeries(ngxBootstrap, ngxCore, ngxComponent, testCaseScript, bootTestScript), { relative: true, name: 'component' }))
       .pipe(inject(_streamSeries
         (
         _es6ShimJs, _rxJs, _angularPolyfillJs, _angularJs,

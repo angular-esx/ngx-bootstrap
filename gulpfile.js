@@ -36,16 +36,28 @@
       };
     })(this.PATHS);
 
-    this.getComponentTestCaseBoot = function (componentName, testCase) {
+    this.getComponentTestBoot = function (componentName, testCase) {
       if (!testCase) { testCase = 'isolated-components'; }
 
       return this.PATHS.COMPONENTS + componentName + '/tests/ui/' + testCase + '/boot.js';
     };
 
-    this.getDirectiveTestCaseBoot = function (directiveName, testCase) {
+    this.getComponentTestCase = function (componentName, testCase) {
+      if (!testCase) { testCase = 'isolated-components'; }
+
+      return this.PATHS.COMPONENTS + componentName + '/tests/ui/' + testCase + '/test-case.js';
+    };
+
+    this.getDirectiveTestBoot = function (directiveName, testCase) {
       if (!testCase) { testCase = 'isolated-directives'; }
 
       return this.PATHS.DIRECTIVES + directiveName + '/tests/ui/' + testCase + '/boot.js';
+    };
+
+    this.getDirectiveTestCase = function (directiveName, testCase) {
+      if (!testCase) { testCase = 'isolated-directives'; }
+
+      return this.PATHS.DIRECTIVES + directiveName + '/tests/ui/' + testCase + '/test-case.js';
     };
 
   })();

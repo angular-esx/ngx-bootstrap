@@ -78,7 +78,7 @@ module.exports = function (params) {
         alias: {
           cores: 'cores',
           components: 'components',
-          directive: 'directive',
+          directive: 'directives',
           ngxBootstrap: 'cores/index.js',
           utils: 'cores/utils.js',
 

@@ -30,7 +30,7 @@ module.exports = function (params) {
         testCaseScript = gulp.src(testCaseScripts.testCaseScript, _notReadOption);
         bootTestScript = gulp.src(testCaseScripts.bootScript, _notReadOption);
       } else if (_directiveName) {
-        testCaseScript = gulp.src(_fileService.getDirectiveTestCase(_componentName, _testCase), _notReadOption);
+        testCaseScript = gulp.src(_fileService.getDirectiveTestCase(_directiveName, _testCase), _notReadOption);
         bootTestScript = gulp.src(_fileService.getDirectiveTestBoot(_directiveName, _testCase), _notReadOption);
       }
     }

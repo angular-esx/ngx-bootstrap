@@ -1,10 +1,5 @@
-﻿var NGX_TABS = require('components/tabs/index.js');
-var NGX_LINK = require('components/link/index.js');
-var NGX_CORE_SERVICES = require('coreService');
-var ngxBootstrap = require('ngxBootstrap');
-
-function _testCase() {
-  this.constructor = [NGX_TABS.SERVICE, function (ngxTabsService) {
+﻿function _testCase() {
+  this.constructor = [ngxBootstrap.tabs.SERVICE, function (ngxTabsService) {
     this.ngxTabsService = ngxTabsService;
 
     this.tabs = [
@@ -35,17 +30,17 @@ function _testCase() {
   };
 }
 
-module.exports = ng.core.Component({
+var isolatedComponents = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/tabs/tests/ui/isolated-components/test-case.html',
   directives: [
-    NGX_LINK.DIRECTIVES,
-    NGX_TABS.DIRECTIVES
+    ngxBootstrap.link.DIRECTIVES,
+    ngxBootstrap.tabs.DIRECTIVES
   ],
   providers: [
-    NGX_CORE_SERVICES,
-    NGX_LINK.SERVICE,
-    NGX_TABS.SERVICE
+    ngxBootstrap.coreService,
+    ngxBootstrap.link.SERVICE,
+    ngxBootstrap.tabs.SERVICE
   ]
 })
 .Class(new _testCase());

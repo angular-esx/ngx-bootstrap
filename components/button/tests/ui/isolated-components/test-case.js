@@ -1,8 +1,5 @@
-﻿var NGX_BUTTON = require('components/button/index.js');
-var NGX_CORE_SERVICES = require('coreService');
-
-function _testCase() {
-  this.constructor = [NGX_BUTTON.SERVICE, function (ngxButtonService) {
+﻿function _testCase() {
+  this.constructor = [ngxBootstrap.button.SERVICE, function (ngxButtonService) {
     this.COLORS = ngxButtonService.getColors();
   }];
 
@@ -11,15 +8,15 @@ function _testCase() {
   };
 }
 
-module.exports = ng.core.Component({
+var isolatedComponents = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/button/tests/ui/isolated-components/test-case.html',
   directives: [
-    NGX_BUTTON.DIRECTIVES
+    ngxBootstrap.button.DIRECTIVES
   ],
   providers: [
-    NGX_CORE_SERVICES,
-    NGX_BUTTON.SERVICE
+    ngxBootstrap.coreService,
+    ngxBootstrap.button.SERVICE
   ]
 })
 .Class(new _testCase());

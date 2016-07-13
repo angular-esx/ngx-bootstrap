@@ -2,7 +2,7 @@
 
 @import "_variables.scss";
 
-:host(.#{$ngx-card-prefix-class}) {
+:host(.ngx-card) {
   display: block;
   position: relative;
   padding: $ngx-card-padding;
@@ -19,22 +19,22 @@
   img { @extend %ngx-img-normalize; }
 
 
-  #{$ngx-card-prefix-class}-title {
+  ngx-card-title {
     display: block;
     margin: $ngx-card-title-margin;
   }
 
-  #{$ngx-card-prefix-class}-subtitle {
+  ngx-card-subtitle {
     display: block;
     margin: $ngx-card-subtitle-margin;
     color: $ngx-card-subtitle-foreground-color;
   }
 
-  > .#{$ngx-card-prefix-class}-header {
+  > .ngx-card-header {
     display: flex;
     flex-direction: row;
 
-    > #{$ngx-card-prefix-class}-image {
+    > ngx-card-image {
       padding-right: 10px;
 
       &[align-self="start"] {
@@ -50,11 +50,11 @@
       }
     }
 
-    > .#{$ngx-card-prefix-class}-header-content {
+    > .ngx-card-header-content {
       flex: 1;
     }
 
-    > #{$ngx-card-prefix-class}-actions {
+    > ngx-card-actions {
       padding-left: 10px;
 
       &[align-self="start"] {
@@ -71,7 +71,7 @@
     }
   }
 
-  > #{$ngx-card-prefix-class}-image {
+  > ngx-card-image {
     display: block;
     width: $ngx-card-image-width;
     margin: $ngx-card-image-margin;
@@ -95,7 +95,7 @@
     }
   }
 
-  > #{$ngx-card-prefix-class}-content {
+  > ngx-card-content {
     display: block;
 
     > *:last-child {
@@ -103,7 +103,7 @@
     }
   }
 
-  > #{$ngx-card-prefix-class}-actions {
+  > ngx-card-actions {
     display: flex;
     margin: $ngx-card-actions-margin;
 

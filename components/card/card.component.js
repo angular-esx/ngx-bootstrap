@@ -1,5 +1,4 @@
-﻿var ngxRenderService = require('renderService');
-var ngxBaseComponent = require('baseComponent');
+﻿var ngxBaseComponent = require('baseComponent');
 
 function _ngxCardComponent() {
   var _base;
@@ -8,12 +7,16 @@ function _ngxCardComponent() {
 
   this.constructor = [
     ng.core.ElementRef,
-    ngxRenderService,
+    ng.core.Renderer,
 
-    function ngxLabelComponent(elementRef, ngxRenderService) {
+    function ngxCardComponent(elementRef, renderer) {
       ngxBaseComponent.apply(this, arguments);
     }
   ];
+
+  this.getPrefixClass = function () {
+    return 'ngx-card';
+  };
 
   function _getBaseInstance(context) {
     if (!_base) { _base = context.getBaseInstance(ngxBaseComponent); }
@@ -25,7 +28,6 @@ module.exports = ng.core.Component({
   selector: 'ngx-card',
   template: require('./themes/' + __THEME__ + '/templates/card.html'),
   styles: [require('./themes/' + __THEME__ + '/scss/card.scss')],
-  providers: [ngxRenderService],
-  properties: ['prefixClass:prefix-class']
+  properties: ['initCssClass:class']
 })
 .Class(new _ngxCardComponent());

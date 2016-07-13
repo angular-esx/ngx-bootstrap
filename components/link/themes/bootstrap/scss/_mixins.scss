@@ -2,9 +2,8 @@
 
 @import "_variables.scss";
 
-@mixin ngx-link-size($font-size, $line-height){
+@mixin ngx-link-size($font-size){
   font-size: $font-size;
-  line-height: $line-height;
 }
 
 @mixin ngx-link-variant($default, $active, $disabled){

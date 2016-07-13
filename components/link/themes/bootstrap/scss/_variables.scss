@@ -7,10 +7,6 @@ $ngx-link-font-size-lg: ngx-font-size(lg) !default;
 
 $ngx-link-font-weight: normal !default;
 
-$ngx-link-line-height: ngx-line-height(base) !default;
-$ngx-link-line-height-sm: ngx-line-height(sm) !default;
-$ngx-link-line-height-lg: ngx-line-height(lg) !default;
-
 $ngx-link-primary: (
   foreground: ngx-color($ngx-color-primary)
 ) !default;

@@ -7,7 +7,7 @@
   background-color: transparent;
   border-color: transparent;
 
-  @include ngx-link-size($ngx-link-font-size, $ngx-link-line-height);
+  @include ngx-link-size($ngx-link-font-size);
 
   @include ngx-state(ngx-link, 'active'){
     outline: 0;
@@ -42,11 +42,11 @@
   }
 
   &.ngx-link-size-small {
-    @include ngx-link-size($ngx-link-font-size-sm, $ngx-link-line-height-sm);
+    @include ngx-link-size($ngx-link-font-size-sm);
   }
 
   &.ngx-link-size-large {
-    @include ngx-link-size($ngx-link-font-size-lg, $ngx-link-line-height-lg);
+    @include ngx-link-size($ngx-link-font-size-lg);
   }
 
   &.ngx-link-size-block {

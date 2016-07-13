@@ -7,8 +7,9 @@ function _ngxAnimationService() {
     }
   ]; 
 
-  this.fadeIn = function (nativeElement, options) {
-    var _self = this;
+  this.fadeIn = function (elementRef, options) {
+    var _self = this, 
+        _nativeElement = elementRef.nativeElement;
 
     return new Promise(function (resolve) {
       var _cssAnimationBuilder = _self.animationBuilder.css()
@@ -16,15 +17,16 @@ function _ngxAnimationService() {
       .addAnimationClass('fade')
       .setFromStyles({ opacity: 0 })
       .setToStyles({ opacity: 1 })
-      .start(nativeElement);
+      .start(_nativeElement);
 
       _cssAnimationBuilder.onComplete(function () {
         resolve();
       });
     });
   };
-  this.fadeOut = function (nativeElement, options) {
-    var _self = this;
+  this.fadeOut = function (elementRef, options) {
+    var _self = this,
+        _nativeElement = elementRef.nativeElement;
 
     return new Promise(function (resolve) {
       var _cssAnimationBuilder = _self.animationBuilder.css()
@@ -32,7 +34,7 @@ function _ngxAnimationService() {
       .addAnimationClass('fade')
       .setFromStyles({ opacity: 1 })
       .setToStyles({ opacity: 0 })
-      .start(nativeElement);
+      .start(_nativeElement);
 
       _cssAnimationBuilder.onComplete(function () {
         _cssAnimationBuilder.removeClasses(['fade']);
@@ -42,40 +44,42 @@ function _ngxAnimationService() {
     });
   };
 
-  this.collapseIn = function (nativeElement, options) {
-    var _self = this;
+  this.collapseIn = function (elementRef, options) {
+    var _self = this,
+        _nativeElement = elementRef.nativeElement;
 
     return new Promise(function (resolve) {
       _self.animationBuilder.css()
       .setDuration(0)
       .addClass('collapse-in')
       .setFromStyles({ overflow: 'hidden', height: 0 })
-      .start(nativeElement)
+      .start(_nativeElement)
       .onComplete(function () {
         _self.animationBuilder.css()
         .setDuration(options && options.duration ? options.duration : 250)
         .addAnimationClass('collapse-out')
         .setFromStyles({ height: 0 })
-        .setToStyles({ height: nativeElement.scrollHeight + 'px' })
-        .start(nativeElement)
+        .setToStyles({ height: _nativeElement.scrollHeight + 'px' })
+        .start(_nativeElement)
         .onComplete(function () {
           resolve();
         });
       });
     });
   };
-  this.collapseOut = function (nativeElement, options) {
-    if (nativeElement.scrollHeight <= 0) { return; }
+  this.collapseOut = function (elementRef, options) {
+    var _self = this,
+        _nativeElement = elementRef.nativeElement;
     
-    var _self = this;
+    if (_nativeElement.scrollHeight <= 0) { return; }
 
     return new Promise(function (resolve) {
       var _cssAnimationBuilder = _self.animationBuilder.css()
       .setDuration(options && options.duration ? options.duration : 250)
       .addAnimationClass('collapse-out')
-      .setFromStyles({ height: nativeElement.scrollHeight + 'px' })
+      .setFromStyles({ height: _nativeElement.scrollHeight + 'px' })
       .setToStyles({ height: 0 })
-      .start(nativeElement);
+      .start(_nativeElement);
 
       _cssAnimationBuilder.onComplete(function () {
         _cssAnimationBuilder.removeClasses(['collapse-in']);

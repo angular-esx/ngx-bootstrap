@@ -1,11 +1,5 @@
-﻿var ngxToggleItemDirective = require('directives/toggle-item/toggle-item.directive.js');
-var ngxToggleItemService = require('directives/toggle-item/services/toggle-item.service.js');
-var ngxButtonComponent = require('components/button/button.component.js');
-var ngxButtonService = require('components/button/services/button.service.js');
-var ngxCoreService = require('coreService');
-
-function _testCase() {
-  this.constructor = [ngxButtonService, function (ngxButtonService) {
+﻿function _testCase() {
+  this.constructor = [ngxBootstrap.button.SERVICE, function (ngxButtonService) {
     this.COLORS = ngxButtonService.getColors();
     this.SIZES = ngxButtonService.getSizes();
     this.STATES = ngxButtonService.getStates();
@@ -16,17 +10,17 @@ function _testCase() {
   };
 }
 
-module.exports = ng.core.Component({
+var isolatedDirectives = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'directives/toggle-item/tests/ui/isolated-directives/test-case.html',
   directives: [
-    ngxButtonComponent,
-    ngxToggleItemDirective
+    ngxBootstrap.button.DIRECTIVES,
+    ngxBootstrap.toggleItem.DIRECTIVES
   ],
    providers: [
-    ngxToggleItemService,
-    ngxButtonService,
-    ngxCoreService
+    ngxBootstrap.toggleItem.SERVICE,
+    ngxBootstrap.button.SERVICE,
+    ngxBootstrap.coreService
   ]
 })
 .Class(new _testCase());

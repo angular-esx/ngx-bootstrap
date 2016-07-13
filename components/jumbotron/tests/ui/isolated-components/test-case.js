@@ -7,7 +7,6 @@ var isolatedComponents = ng.core.Component({
   templateUrl: 'components/jumbotron/tests/ui/isolated-components/test-case.html',
   directives: [
     ngxBootstrap.jumbotron.DIRECTIVES
-  ],
-  providers: [ngxBootstrap.coreService]
+  ]
 })
 .Class(new _testCase());

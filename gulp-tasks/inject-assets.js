@@ -35,8 +35,8 @@ module.exports = function (params) {
       }
     }
 
-    var ngxCore = gulp.src('./dist/js/ngx.core.js', _notReadOption);
-    var ngxComponent = gulp.src('./dist/js/ngx.' + _componentName + '.js', _notReadOption);
+    var ngxCore = gulp.src('./dist/js/ngx-core.js', _notReadOption);
+    var ngxComponent = gulp.src('./dist/js/ngx-' + _componentName + '.js', _notReadOption);
     var ngxBootstrap = gulp.src('./dist/js/ngx-bootstrap.js', _notReadOption);
 
     return gulp.src(_fileService.FILES.INDEX_TEMPLATE_HTML)

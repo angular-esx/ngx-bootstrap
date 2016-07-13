@@ -19,7 +19,7 @@ function _ngxLinkComponent() {
   ];
 
   this.ngOnChanges = function(changeRecord){
-    if(this.state === 'disabled'){ this.isDisabled = true; }
+    this.isDisabled = this.propertyHasValue(this.getStyleProperties().STATE, 'disabled');
 
     _getBaseInstance(this).ngOnChanges.apply(this, arguments);
   };

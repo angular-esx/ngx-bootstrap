@@ -1,15 +1,5 @@
-﻿var ngxRadioDirective = require('directives/radio/radio.directive.js');
-var ngxRadioService = require('directives/radio/services/radio.service.js');
-var ngxButtonComponent = require('components/button/button.component.js');
-var ngxButtonService = require('components/button/services/button.service.js');
-var ngxGroupComponent = require('components/group/group.component.js');
-var ngxGroupService = require('components/group/services/group.service.js');
-var ngxRadioGroupDirective = require('directives/radio/radio-group.directive.js');
-var ngxRadioGroupService = require('directives/radio/services/radio-group.service.js');
-var ngxCoreService = require('coreService');
-
-function _testCase() {
-  this.constructor = [ngxRadioService, function (ngxRadioService) {
+﻿function _testCase() {
+  this.constructor = [ngxBootstrap.radio.radioService, function (ngxRadioService) {
     this.STATES = ngxRadioService.getStates();
 
     this.ngxRadioGroupTracker = { value: '' };
@@ -17,21 +7,19 @@ function _testCase() {
   }];
 }
 
-module.exports = ng.core.Component({
+var isolatedDirectives = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'directives/radio/tests/ui/isolated-directives/test-case.html',
   directives: [
-    ngxGroupComponent,
-    ngxButtonComponent,
-    ngxRadioDirective,
-    ngxRadioGroupDirective
+    ngxBootstrap.group.DIRECITVES,
+    ngxBootstrap.button.DIRECITVES,
+    ngxBootstrap.radio.DIRECTIVES
   ],
   providers: [
-   ngxGroupService,
-   ngxButtonService,
-   ngxRadioService,
-   ngxRadioGroupService,
-   ngxCoreService
+   ngxBootstrap.group.SERVICE,
+   ngxBootstrap.button.SERVICE,
+   ngxBootstrap.radio.services,
+   ngxBootstrap.coreService
   ]
 })
 .Class(new _testCase());

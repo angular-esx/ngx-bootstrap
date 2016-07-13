@@ -40,6 +40,6 @@ module.exports = ng.core.Component({
   selector: 'ngx-label',
   template: require('./themes/' + __THEME__ + '/templates/label.html'),
   styles: [require('./themes/' + __THEME__  + '/scss/label.scss')],
-  properties: ['color', 'type']
+  properties: ['color', 'type', 'initCssClass:class']
 })
 .Class(new _ngxLabelComponent());

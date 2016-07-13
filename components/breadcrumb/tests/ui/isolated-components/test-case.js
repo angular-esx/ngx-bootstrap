@@ -1,14 +1,8 @@
 function _testCase() {
-  this.constructor = [
-    ngxBootstrap.breadcrumb.SERVICE,
-  
-    function (ngxBreadcrumbService) {
-      this.COLORS = ngxBreadcrumbService.getColors();
-      
-      this.categoryPage = 'http://my-website.com/category';
-      this.productPage = 'http://my-website.com/product';
-    }
-  ];
+  this.constructor = function () {
+    this.categoryPage = 'http://my-website.com/category';
+    this.productPage = 'http://my-website.com/product';
+  };
 }
 
 var isolatedComponents = ng.core.Component({
@@ -17,11 +11,6 @@ var isolatedComponents = ng.core.Component({
   directives: [
     ngxBootstrap.link.DIRECTIVES,
     ngxBootstrap.breadcrumb.DIRECTIVES
-  ],
-   providers: [
-    ngxBootstrap.coreService,
-    ngxBootstrap.link.SERVICE,
-    ngxBootstrap.breadcrumb.SERVICE
   ]
 })
 .Class(new _testCase());

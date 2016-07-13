@@ -6,8 +6,8 @@
 
   background-color: $background;
 
-  > .#{$ngx-breadcrumb-prefix-class}-item,
-  > .#{$ngx-breadcrumb-prefix-class}-item a {
-    color: $foreground;
+  > .ngx-breadcrumb-item,
+  > .ngx-breadcrumb-item a {
+    color: $foreground !important;
   }
 }

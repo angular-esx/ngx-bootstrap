@@ -1,7 +1,7 @@
 ﻿<ngx-breadcrumb color="primary">
   <a ngx-breadcrumb-item href="http://my-website.com/Home">Home</a>
   <a ngx-link class="ngx-breadcrumb-item" href="{{categoryPage}}">Categories</a>
-  <a ngx-link prefix-class="ngx-breadcrumb-item" [href]="productPage">Products</a>
+  <a ngx-link ngx-breadcrumb-item [href]="productPage">Products</a>
   <div ngx-breadcrumb-item color="danger">Detail</div>
 </ngx-breadcrumb>
 
@@ -11,7 +11,7 @@
   <a ngx-breadcrumb-item href="{{categoryPage}}">Categories</a>
 </ngx-breadcrumb>
 
-<ngx-breadcrumb color="{{COLORS.INFO}}">
+<ngx-breadcrumb color="info">
   <a ngx-breadcrumb-item href="http://my-website.com/Home">Home</a>
 </ngx-breadcrumb>
 
@@ -20,7 +20,7 @@
   <div ngx-breadcrumb-item>Detail</div>
 </ngx-breadcrumb>
 
-<ngx-breadcrumb [color]="COLORS.WARNING">
+<ngx-breadcrumb color="warning">
   <div ngx-breadcrumb-item>Detail 01</div>
   <div ngx-breadcrumb-item>Detail 02</div>
 </ngx-breadcrumb>

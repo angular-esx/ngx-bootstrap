@@ -30,6 +30,12 @@ function _ngxBaseDirective() {
     }
   };
 
+  this.ngOnInit = function() {
+    var _changeRecord = this.initDefaultValues();
+    
+    if(_changeRecord){ this.ngOnChanges(_changeRecord); }
+  };
+
 
   this.needRebuildCssClass = function(changeRecord){
     var _styleProperties = this.getStyleProperties(),
@@ -71,6 +77,10 @@ function _ngxBaseDirective() {
     _parts.push(changedProperty.currentValue);
 
     return _parts.join('-');
+  };
+
+  this.initDefaultValues = function(){
+    return null;
   };
 
   this.buildChangeRecord = function(propertyName, currentValue, previousValue, currentChangeRecord){

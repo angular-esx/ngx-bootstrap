@@ -37,10 +37,9 @@ module.exports = function (params) {
 
     var ngxCore = gulp.src('./dist/js/ngx-core.js', _notReadOption);
     var ngxComponent = gulp.src('./dist/js/ngx-' + _componentName + '.js', _notReadOption);
-    var ngxBootstrap = gulp.src('./dist/js/ngx-bootstrap.js', _notReadOption);
 
     return gulp.src(_fileService.FILES.INDEX_TEMPLATE_HTML)
-      .pipe(inject(_streamSeries(ngxBootstrap, ngxCore, ngxComponent, testCaseScript, bootTestScript), { relative: true, name: 'component' }))
+      .pipe(inject(_streamSeries(ngxCore, ngxComponent, testCaseScript, bootTestScript), { relative: true, name: 'component' }))
       .pipe(inject(_streamSeries
         (
         _es6ShimJs, _rxJs, _angularPolyfillJs, _angularJs,

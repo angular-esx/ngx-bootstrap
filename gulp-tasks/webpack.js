@@ -45,12 +45,12 @@ module.exports = function (params) {
         libraryTarget: 'umd',
         umdNamedDefine: true,
         library: 'ngxBootstrap',
-        filename: 'ngx.[name].js',
+        filename: 'ngx-[name].js',
       },
       plugins: [
         new webpack.DefinePlugin(webpackVariables),
         new webpack.optimize.CommonsChunkPlugin({
-          filename: "ngx.core.js",
+          filename: "ngx-core.js",
           name: "core"
         })
       ],

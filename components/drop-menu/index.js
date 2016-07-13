@@ -1,6 +1,6 @@
 ﻿var ngxBootstrap = require('ngxBootstrap');
 
-ngxBootstrap['drop-menu'] = {
+ngxBootstrap.dropMenu = {
   DIRECTIVES: [
     require('./drop-menu.component.js'),
     require('./drop-menu-item.directive.js'),

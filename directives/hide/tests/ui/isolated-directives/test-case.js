@@ -1,21 +1,18 @@
-﻿var NGX_HIDE = require('directives/hide/index.js');
-var NGX_CORE_SERVICES = require('coreService');
-
-function _testCase() {
-  this.constructor = [NGX_HIDE.SERVICE, function (ngxHideService) {
+﻿function _testCase() {
+  this.constructor = [ngxBootstrap.hide.SERVICE, function (ngxHideService) {
     this.BREAKPOINTS = ngxHideService.getBreakpoints();
   }];
 }
 
-module.exports = ng.core.Component({
+var isolatedDirectives = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'directives/hide/tests/ui/isolated-directives/test-case.html',
   directives: [
-    NGX_HIDE.DIRECTIVES
+    ngxBootstrap.hide.DIRECTIVES
   ],
   providers: [
-   NGX_HIDE.SERVICE,
-   NGX_CORE_SERVICES
+   ngxBootstrap.hide.SERVICE,
+   ngxBootstrap.coreService
   ]
 })
 .Class(new _testCase());

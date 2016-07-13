@@ -43,7 +43,8 @@
 
       return {
         bootScript: pathComponent + '/boot.js',
-        testCaseScript: pathComponent + '/test-case.js'
+        testCaseScript: pathComponent + '/test-case.js',
+        dependenceScript: pathComponent + '/load-dependence.js'
       };
     };
 

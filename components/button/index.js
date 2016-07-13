@@ -1,10 +1,9 @@
 ﻿var ngxBootstrap = require('ngxBootstrap');
+var ngxButtonComponent = require('./button.component.js');
 
 ngxBootstrap.button = {
-  DIRECTIVES: [
-    require('./button.component.js')
-  ],
-  SERVICE: require('./services/button.service.js')
+  BUTTON_COMPONENT: ngxButtonComponent,
+  DIRECTIVES: [ ngxButtonComponent ]
 };
 
 module.exports = ngxBootstrap;

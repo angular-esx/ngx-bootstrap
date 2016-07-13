@@ -55,18 +55,18 @@
     @include ngx-border-radius(0, left);
   }
 
-  &ngx-group-size-small > ngx-button {
+  &.ngx-group-size-small > ngx-button {
     @include ngx-button-size($ngx-button-font-size-sm, $ngx-button-line-height-sm, $ngx-button-padding-sm, $ngx-button-border-radius-sm);
   }
 
-  &ngx-group-size-large > ngx-button {
+  &.ngx-group-size-large > ngx-button {
     @include ngx-button-size($ngx-button-font-size-lg, $ngx-button-line-height-lg, $ngx-button-padding-lg, $ngx-button-border-radius-lg);
   }
 
-  > ngx-button-size-large + .ngx-toggle-dropdown,
-  > ngx-button-size-large + .ngx-toggle-dropup,
-  &ngx-group-size-large > ngx-button + .ngx-toggle-dropdown,
-  &ngx-group-size-large > ngx-button + .ngx-toggle-dropup {
+  > .ngx-button-size-large + .ngx-toggle-dropdown,
+  > .ngx-button-size-large + .ngx-toggle-dropup,
+  &.ngx-group-size-large > ngx-button + .ngx-toggle-dropdown,
+  &.ngx-group-size-large > ngx-button + .ngx-toggle-dropup {
     padding-right: 12px;
     padding-left: 12px;
   }

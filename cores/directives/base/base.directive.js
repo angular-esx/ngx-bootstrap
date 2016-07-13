@@ -58,9 +58,13 @@ function _ngxBaseDirective() {
 
     ngxBootstrap.forEach(_styleProperties, function(prop){
       if(changeRecord[prop]){
-        _cssClass = _self.buildCssClassForProperty(changeRecord[prop], prop);
-        if(_cssClass){ _cssClasses.push(_cssClass); }
+        _cssClass = _self.buildCssClassForProperty(prop, changeRecord[prop].currentValue);
       }
+      else {
+        _cssClass = _self.buildCssClassForProperty(prop, _self[prop]);
+      }
+
+      if(_cssClass){ _cssClasses.push(_cssClass); }
     });
 
     if(this.initCssClass){ _cssClasses.push(this.initCssClass); }
@@ -68,13 +72,15 @@ function _ngxBaseDirective() {
     return _cssClasses.join(' ');
   };
 
-  this.buildCssClassForProperty = function(changedProperty, propertyName){
+  this.buildCssClassForProperty = function(propertyName, propertyValue){
+    if(!propertyName || !propertyValue){ return ''; } 
+
     var _parts = [],
         _prefixClass = this.getPrefixClass();
 
     if(_prefixClass){ _parts.push(_prefixClass); }
     _parts.push(propertyName);
-    _parts.push(changedProperty.currentValue);
+    _parts.push(propertyValue);
 
     return _parts.join('-');
   };

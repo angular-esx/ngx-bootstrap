@@ -8,5 +8,6 @@ ngxBootstrap.coreService = require('coreService');
 // import directives
 ngxBootstrap.checkbox = require('directive/checkbox/index.js');
 ngxBootstrap.hide = require('directive/hide/index.js');
+ngxBootstrap.radio = require('directive/radio/index.js');
 
 module.exports = ngxBootstrap;

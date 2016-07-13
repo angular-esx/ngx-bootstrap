@@ -44,7 +44,7 @@ function _ngxBaseDirective() {
     for (var prop in _styleProperties) {
       _propertyName = _styleProperties[prop];
 
-      if (changeRecord[_propertyName]) { return true; }
+      if (changeRecord.hasOwnProperty(_propertyName)) { return true; }
     }
 
     return false;
@@ -57,7 +57,7 @@ function _ngxBaseDirective() {
         _cssClass;
 
     ngxBootstrap.forEach(_styleProperties, function(prop){
-      if(changeRecord[prop]){
+      if(changeRecord.hasOwnProperty(prop)){
         _cssClass = _self.buildCssClassForProperty(prop, changeRecord[prop].currentValue);
       }
       else {
@@ -78,11 +78,29 @@ function _ngxBaseDirective() {
     var _parts = [],
         _prefixClass = this.getPrefixClass();
 
-    if(_prefixClass){ _parts.push(_prefixClass); }
-    _parts.push(propertyName);
-    _parts.push(propertyValue);
+    if(propertyValue.trim().indexOf(' ') > -1){
+      var _cssClasses = [];
 
-    return _parts.join('-');
+      ngxBootstrap.forEach(propertyValue.split(' '), function(value) {
+        _parts.length = 0;  
+        
+        if(_prefixClass){ _parts.push(_prefixClass); }
+        
+        _parts.push(propertyName);
+        _parts.push(value);
+
+        _cssClasses.push(_parts.join('-'));
+      });
+
+      return _cssClasses.join(' ');
+    }
+    else {
+      if(_prefixClass){ _parts.push(_prefixClass); }
+      _parts.push(propertyName);
+      _parts.push(propertyValue);
+
+      return _parts.join('-');
+    }
   };
 
   this.initDefaultValues = function(){
@@ -97,6 +115,24 @@ function _ngxBaseDirective() {
     };
 
     return _changeRecord;
+  };
+
+  this.propertyHasValue = function(propertyName, value){
+    if(!propertyName || !value || !this[propertyName]){ return false; }
+
+    return this[propertyName].indexOf(value) > -1;
+  };
+
+  this.addValueToProperty = function(propertyName, value){
+    if(!propertyName || !value) { return; }
+
+    this[propertyName] = ((this[propertyName] || '') + ' ' + value).trim();
+  };
+
+  this.removeValueFromProperty = function(propertyName, value){
+    if(!propertyName || !value || !this[propertyName]) { return; }
+
+    this[propertyName] = this[propertyName].replace(new RegExp(value, 'g'), '').trim();
   };
 
 

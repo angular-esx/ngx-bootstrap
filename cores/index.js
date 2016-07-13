@@ -9,5 +9,6 @@ ngxBootstrap.coreService = require('coreService');
 ngxBootstrap.checkbox = require('directive/checkbox/index.js');
 ngxBootstrap.hide = require('directive/hide/index.js');
 ngxBootstrap.radio = require('directive/radio/index.js');
+ngxBootstrap.toggleItem = require('directive/toggle-item/index.js');
 
 module.exports = ngxBootstrap;

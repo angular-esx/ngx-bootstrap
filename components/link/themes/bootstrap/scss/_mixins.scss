@@ -10,11 +10,11 @@
 @mixin ngx-link-variant($default, $active, $disabled){
   color: map-get($default, foreground);
 
-  @include ngx-state($ngx-link-prefix-class, 'focus hover active'){
+  @include ngx-state(ngx-link, 'focus hover active'){
     color: map-get($active, foreground);
   }
 
-  @include ngx-state($ngx-link-prefix-class, 'disabled'){
+  @include ngx-state(ngx-link, 'disabled'){
     color: map-get($disabled, foreground);
   }
 }

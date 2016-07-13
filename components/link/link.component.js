@@ -1,6 +1,4 @@
-﻿var ngxLinkService = require('./services/link.service.js');
-var ngxRenderService = require('renderService');
-var ngxBaseComponent = require('baseComponent');
+﻿var ngxBaseComponent = require('baseComponent');
 
 function _ngxLinkComponent() {
   var _base;
@@ -9,25 +7,43 @@ function _ngxLinkComponent() {
 
   this.constructor = [
     ng.core.ElementRef,
-    ngxRenderService,
-    ngxLinkService,
+    ng.core.Renderer,
 
-    function ngxLinkComponent(elementRef, ngxRenderService, ngxLinkService) {
+    function ngxLinkComponent(elementRef, renderer) {
       ngxBaseComponent.apply(this, arguments);
 
       if (elementRef) {
-        this.ngxLinkService = ngxLinkService;
         this.clickEmitter = new ng.core.EventEmitter();
       }
     }
   ];
 
+  this.ngOnChanges = function(changeRecord){
+    if(this.state === 'disabled'){ this.isDisabled = true; }
+
+    _getBaseInstance(this).ngOnChanges.apply(this, arguments);
+  };
+
+  this.initDefaultValues = function(){
+    var _styleProperties = this.getStyleProperties(),
+        _changeRecord;
+
+    if(!this.color){ 
+      this.color = 'primary';
+      _changeRecord = this.buildChangeRecord(_styleProperties.COLOR, this.color);
+     }
+
+    if(!this.state && !this.isDisabled){ this.isDisabled = false; }
+
+    return _changeRecord;
+  };
+
   this.getPrefixClass = function () {
-    return this.prefixClass && this.prefixClass != 'a' ? this.prefixClass : 'ngx-link';
+    return 'ngx-link';
   };
 
   this.click = function (event) {
-    if (this.ngxLinkService.isDisabledStateClass(this.getPrefixClass(), this.state)) {
+    if (this.isDisabled) {
       event.preventDefault();
       event.stopImmediatePropagation();
     }
@@ -46,8 +62,7 @@ module.exports = ng.core.Component({
   selector: 'a[ngx-link]',
   template: require('./themes/' + __THEME__ + '/templates/link.html'),
   styles: [require('./themes/' + __THEME__ + '/scss/link.scss')],
-  providers: [ngxRenderService],
-  properties: ['color', 'size', 'state', 'prefixClass:prefix-class'],
+  properties: ['color', 'size', 'state', 'initCssClass:class'],
   events: ['clickEmitter:onClick'],
   host: {
     '(click)': 'click($event)'

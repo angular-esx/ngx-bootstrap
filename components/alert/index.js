@@ -1,14 +1,14 @@
 var ngxBootstrap = require('ngxBootstrap');
-var alertComponent = require('./alert.component.js');
-var alertLinkDirective = require('./alert-link.directive.js');
-var alertService = require('./services/alert.service.js');
+var ngxAlertComponent = require('./alert.component.js');
+var ngxAlertLinkDirective = require('./alert-link.directive.js');
+var ngxAlertService = require('./services/alert.service.js');
 
 ngxBootstrap.alert = {
-  ALERT_COMPONENT: alertComponent,
-  ALERT_LINK_DIRECTIVE: alertLinkDirective,
-  ALERT_SERVICE: alertService,
-  DIRECTIVES: [ alertComponent, alertLinkDirective ],
-  SERVICES: [ alertService ]
+  ALERT_COMPONENT: ngxAlertComponent,
+  ALERT_LINK_DIRECTIVE: ngxAlertLinkDirective,
+  ALERT_SERVICE: ngxAlertService,
+  DIRECTIVES: [ ngxAlertComponent, ngxAlertLinkDirective ],
+  SERVICES: [ ngxAlertService ]
 };
 
 module.exports = ngxBootstrap;

@@ -1,6 +1,4 @@
-﻿var ngxGroupService = require('./services/group.service.js');
-var ngxBaseComponent = require('baseComponent');
-var ngxRenderService = require('renderService');
+﻿var ngxBaseComponent = require('baseComponent');
 
 function _ngxGroupComponent() {
   var _base;
@@ -9,17 +7,16 @@ function _ngxGroupComponent() {
 
   this.constructor = [
     ng.core.ElementRef,
-    ngxRenderService,
-    ngxGroupService,
+    ng.core.Renderer,
 
-    function ngxGroupComponent(elementRef, ngxRenderService, ngxGroupService) {
+    function ngxGroupComponent(elementRef, renderer) {
       ngxBaseComponent.apply(this, arguments);
-
-      if (elementRef) {
-        this.ngxGroupService = ngxGroupService;
-      }
     }
   ];
+
+  this.getPrefixClass = function () {
+    return 'ngx-group';
+  };
 
   function _getBaseInstance(context) {
     if (!_base) { _base = context.getBaseInstance(ngxBaseComponent); }
@@ -31,7 +28,6 @@ module.exports = ng.core.Component({
   selector: 'ngx-group',
   template: require('./themes/' + __THEME__ + '/templates/group.html'),
   styles: [require('./themes/' + __THEME__  + '/scss/group.scss')],
-  providers: [ngxRenderService],
-  properties: ['type', 'size', 'prefixClass:prefix-class']
+  properties: ['type', 'size', 'initCssClass:class']
 })
 .Class(new _ngxGroupComponent());

@@ -2,26 +2,26 @@
 
 @import "_mixins.scss";
 
-:host(.#{$ngx-group-prefix-class}) {
+:host() {
   position: relative;
   display: inline-block;
   vertical-align: middle;
 
-  > .#{$ngx-group-prefix-class} {
+  > ngx-group {
     float: left;
 
-    + .#{$ngx-group-prefix-class} {
+    + ngx-group {
       margin-left: -1px;
     }
   }
 
-  &.#{$ngx-group-prefix-class}-type-vertical {
-    > .#{$ngx-group-prefix-class} {
+  &.ngx-group-type-vertical {
+    > ngx-group {
       @include ngx-group-vertical-children();
 
       @include clearfix();
 
-      + .#{$ngx-group-prefix-class} {
+      + ngx-group {
         margin-left: -1px;
         margin-left: 0;
       }

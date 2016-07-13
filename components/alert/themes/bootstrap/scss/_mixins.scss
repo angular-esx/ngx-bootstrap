@@ -18,7 +18,7 @@
 
   .ngx-alert-link,
   .ngx-alert-link a {
-    font-weight: bold;
-    color: $foreground;
+    font-weight: bold !important;
+    color: $foreground !important;
   }
 }

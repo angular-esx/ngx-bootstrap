@@ -2,11 +2,11 @@
 
 @import "_mixins.scss";
 
-:host(.#{$ngx-list-prefix-class}) {
+:host(.ngx-list) {
   padding-left: 0;
   margin-bottom: 0;
 
-  > .#{$ngx-list-item-prefix-class} {
+  > .ngx-list-item, {
     @extend %ngx-link-normalize;
 
     display: flex;
@@ -35,7 +35,7 @@
       margin-bottom: 0;
     }
 
-    > #{$ngx-list-item-prefix-class}-image {
+    > ngx-list-item-image {
       padding-right: 10px;
 
       &[align-self="start"] {
@@ -49,11 +49,11 @@
       }
     }
 
-    > #{$ngx-list-item-prefix-class}-content {
+    > ngx-list-item-content {
       flex: 1;
     }
 
-    > #{$ngx-list-item-prefix-class}-actions {
+    > ngx-list-item-actions {
       padding-left: 10px;
 
       &[align-self="start"] {
@@ -67,39 +67,39 @@
       }
     }
 
-    &.#{$ngx-list-prefix-class}-item-color-primary {
+    &.ngx-list-item-color-primary {
       &, a, button {
-        @include ngx-list-item-variant(#{$ngx-list-prefix-class}-item, $ngx-list-item-primary, $ngx-list-item-primary-active, $ngx-list-item-primary-disabled);
+        @include ngx-list-item-variant($ngx-list-item-primary, $ngx-list-item-primary-active, $ngx-list-item-primary-disabled);
       }
     }
 
-    &.#{$ngx-list-prefix-class}-item-color-secondary {
+    &.ngx-list-item-color-secondary {
       &, a, button {
-        @include ngx-list-item-variant(#{$ngx-list-prefix-class}-item, $ngx-list-item-secondary, $ngx-list-item-secondary-active, $ngx-list-item-secondary-disabled);
+        @include ngx-list-item-variant($ngx-list-item-secondary, $ngx-list-item-secondary-active, $ngx-list-item-secondary-disabled);
       }
     }
 
-    &.#{$ngx-list-prefix-class}-item-color-info {
+    &.ngx-list-item-color-info {
       &, a, button {
-        @include ngx-list-item-variant(#{$ngx-list-prefix-class}-item, $ngx-list-item-info, $ngx-list-item-info-active, $ngx-list-item-info-disabled);
+        @include ngx-list-item-variant($ngx-list-item-info, $ngx-list-item-info-active, $ngx-list-item-info-disabled);
       }
     }
 
-    &.#{$ngx-list-prefix-class}-item-color-success {
+    &.ngx-list-item-color-success {
       &, a, button {
-        @include ngx-list-item-variant(#{$ngx-list-prefix-class}-item, $ngx-list-item-success, $ngx-list-item-success-active, $ngx-list-item-success-disabled);
+        @include ngx-list-item-variant($ngx-list-item-success, $ngx-list-item-success-active, $ngx-list-item-success-disabled);
       }
     }
 
-    &.#{$ngx-list-prefix-class}-item-color-warning {
+    &.ngx-list-item-color-warning {
       &, a, button {
-        @include ngx-list-item-variant(#{$ngx-list-prefix-class}-item, $ngx-list-item-warning, $ngx-list-item-warning-active, $ngx-list-item-warning-disabled);
+        @include ngx-list-item-variant($ngx-list-item-warning, $ngx-list-item-warning-active, $ngx-list-item-warning-disabled);
       }
     }
 
-    &.#{$ngx-list-prefix-class}-item-color-danger {
+    &.ngx-list-item-color-danger {
       &, a, button {
-        @include ngx-list-item-variant(#{$ngx-list-prefix-class}-item, $ngx-list-item-danger, $ngx-list-item-danger-active, $ngx-list-item-danger-disabled);
+        @include ngx-list-item-variant($ngx-list-item-danger, $ngx-list-item-danger-active, $ngx-list-item-danger-disabled);
       }
     }
   }

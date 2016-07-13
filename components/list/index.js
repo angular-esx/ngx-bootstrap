@@ -1,12 +1,14 @@
 ﻿var ngxBootstrap = require('ngxBootstrap');
+var ngxListComponent = require('./list.component.js');
+var ngxListItemComponent = require('./list-item.component.js');
 
 ngxBootstrap.list = {
+  LIST_COMPONENT: ngxListComponent,
+  LIST_ITEM_COMPONENT: ngxListItemComponent,
   DIRECTIVES: [
-    require('./list.component.js'),
-    require('./list-item.component.js')
-  ],
-  SERVICES: [require('./services/list-item.service.js')],
-  ITEM_SERVICE: require('./services/list-item.service.js')
+    ngxListComponent,
+    ngxListItemComponent
+  ]
 };
 
 module.exports = ngxBootstrap;

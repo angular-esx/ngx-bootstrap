@@ -1,7 +1,5 @@
 ﻿function _testCase() {
-  this.constructor = [ngxBootstrap.list.ITEM_SERVICE, function (ngxListItemService) {
-    this.COLORS = ngxListItemService.getColors();
-  }];
+  this.constructor = function () {};
 
   this.click = function (event) {
     event.preventDefault();
@@ -14,10 +12,6 @@ var isolatedComponents = ng.core.Component({
   templateUrl: 'components/list/tests/ui/isolated-components/test-case.html',
   directives: [
     ngxBootstrap.list.DIRECTIVES
-  ],
-  providers: [
-    ngxBootstrap.coreService,
-    ngxBootstrap.list.SERVICES
   ]
 })
 .Class(new _testCase());

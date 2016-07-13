@@ -1,6 +1,4 @@
-﻿var ngxListItemService = require('components/list/services/list-item.service.js');
-var ngxBaseComponent = require('baseComponent');
-var ngxRenderService = require('renderService');
+﻿var ngxBaseComponent = require('baseComponent');
 
 function _ngxListItemComponent() {
   var _base;
@@ -9,21 +7,39 @@ function _ngxListItemComponent() {
 
   this.constructor = [
     ng.core.ElementRef,
-    ngxRenderService,
-    ngxListItemService,
+    ng.core.Renderer,
 
-    function ngxListItemComponent(elementRef, ngxRenderService, ngxListItemService) {
+    function ngxListItemComponent(elementRef, renderer) {
       ngxBaseComponent.apply(this, arguments);
 
       if (elementRef) {
-        this.ngxListItemService = ngxListItemService;
         this.clickEmitter = new ng.core.EventEmitter();
       }
     }
   ];
 
+  this.ngOnChanges = function(changeRecord){
+    this.isDisabled = this.propertyHasValue(this.getStyleProperties().STATE, 'disabled');
+
+    _getBaseInstance(this).ngOnChanges.apply(this, arguments);
+  };
+
+  this.initDefaultValues = function(){
+    var _styleProperties = this.getStyleProperties(),
+        _changeRecord;
+
+    if(!this.color){ 
+      this.color = 'secondary';
+      _changeRecord = this.buildChangeRecord(_styleProperties.COLOR, this.color);
+     }
+
+    if(!this.state && !this.isDisabled){ this.isDisabled = false; }
+
+    return _changeRecord;
+  };
+
   this.click = function (event) {
-    if (this.ngxListItemService.isDisabledStateClass(this.getPrefixClass(), this.state)) {
+    if (this.isDisabled) {
       event.preventDefault();
       event.stopImmediatePropagation();
     }
@@ -33,7 +49,7 @@ function _ngxListItemComponent() {
   };
 
   this.getPrefixClass = function () {
-    return this.prefixClass && this.prefixClass != 'a' ? this.prefixClass : 'ngx-list-item';
+    return 'ngx-list-item';
   };
 
   function _getBaseInstance(context) {
@@ -45,10 +61,10 @@ function _ngxListItemComponent() {
 module.exports = ng.core.Directive({
   selector: 'ngx-list-item, a[ngx-list-item]',
   template: require('./themes/' + __THEME__ + '/templates/list-item.html'),
-  providers: [ngxRenderService],
-  properties: ['color', 'state', 'prefixClass:prefix-class'],
+  properties: ['color', 'state', 'initCssClass:class'],
   events: ['clickEmitter:onClick'],
   host: {
+    '[class.ngx-list-item]': 'true',
     '(click)': 'click($event)'
   }
 })

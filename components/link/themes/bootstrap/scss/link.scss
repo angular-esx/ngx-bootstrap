@@ -1,6 +1,6 @@
 ﻿@import "_mixins.scss";
 
-:host() {
+:host(.ngx-link) {
   font-weight: $ngx-link-font-weight;
   text-align: center;
   text-decoration: none;

@@ -61,6 +61,9 @@ module.exports = ng.core.Component({
   selector: 'ngx-progress',
   template: require('./themes/' + __THEME__ + '/templates/progress.html'),
   styles: [require('./themes/' + __THEME__  + '/scss/progress.scss')],
-  properties: ['color', 'value', 'max', 'initCssClass:class']
+  properties: ['color', 'value', 'max', 'initCssClass:class'],
+  host: {
+    '[class.ngx-progress]': 'true'
+  }
 })
 .Class(new _ngxProgressComponent());

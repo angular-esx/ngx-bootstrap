@@ -1,6 +1,6 @@
 ﻿@import "_mixins.scss";
 
-:host() {
+:host(.ngx-navbar) {
   display: block;
   position: relative;
   padding: $ngx-navbar-padding;

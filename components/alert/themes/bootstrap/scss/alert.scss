@@ -4,7 +4,7 @@
 
 @import "_mixins.scss";
 
-:host() {
+:host(.ngx-alert) {
   display: block;
   margin: $ngx-alert-margin;
   padding: $ngx-alert-padding;
@@ -71,7 +71,7 @@
       cursor: pointer;
       -webkit-appearance: none;
 
-      @include ngx-state(&, 'focus hover'){
+      @include ngx-state(ngx-alert-dismiss, 'focus hover'){
         opacity: .5;
       }
     }

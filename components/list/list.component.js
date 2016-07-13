@@ -28,9 +28,6 @@ module.exports = ng.core.Component({
   selector: 'ngx-list',
   template: require('./themes/' + __THEME__ + '/templates/list.html'),
   styles: [require('./themes/' + __THEME__  + '/scss/list.scss')],
-  properties: ['initCssClass:class'],
-  host: {
-    '[class.ngx-list]': 'true',
-  }
+  properties: ['initCssClass:class']
 })
 .Class(new _ngxListComponent());

@@ -3,7 +3,7 @@
 
 @import "_variables.scss";
 
-:host() {
+:host(.ngx-jumbotron) {
   display: block;
   padding: $ngx-jumbotron-padding;
   margin: $ngx-jumbotron-margin;

@@ -2,26 +2,26 @@
 
 @import "_mixins.scss";
 
-:host() {
+:host(.ngx-group) {
   position: relative;
   display: inline-block;
   vertical-align: middle;
 
-  > ngx-group {
+  > .ngx-group {
     float: left;
 
-    + ngx-group {
+    + .ngx-group {
       margin-left: -1px;
     }
   }
 
   &.ngx-group-type-vertical {
-    > ngx-group {
+    > .ngx-group {
       @include ngx-group-vertical-children();
 
       @include clearfix();
 
-      + ngx-group {
+      + .ngx-group {
         margin-left: -1px;
         margin-left: 0;
       }

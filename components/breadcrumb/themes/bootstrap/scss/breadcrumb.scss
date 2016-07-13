@@ -2,7 +2,7 @@
 
 @import "_mixins.scss";
 
-:host() {
+:host(.ngx-breadcrumb) {
   display: block;
   padding: $ngx-breadcrumb-padding;
   margin: $ngx-breadcrumb-margin;

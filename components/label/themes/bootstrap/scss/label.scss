@@ -2,7 +2,7 @@
 
 @import "_mixins.scss";
 
-:host() {
+:host(.ngx-label) {
   display: inline-block;
   font-size: $ngx-label-font-size;
   font-weight: $ngx-label-font-weight;

@@ -2,7 +2,7 @@
 
 @import "_mixins.scss";
 
-:host() {
+:host(.ngx-button) {
   display: inline-block;
   font-weight: $ngx-button-font-weight;
   text-align: center;

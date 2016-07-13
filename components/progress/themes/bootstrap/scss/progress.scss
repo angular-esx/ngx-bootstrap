@@ -5,7 +5,7 @@
   to    { background-position: 0 0; }
 }
 
-:host() {
+:host(.ngx-progress) {
   display: block;
   height: $ngx-progress-height;
   margin: $ngx-progress-margin;

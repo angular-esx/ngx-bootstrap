@@ -64,7 +64,6 @@ module.exports = ng.core.Directive({
   properties: ['color', 'state', 'initCssClass:class'],
   events: ['clickEmitter:onClick'],
   host: {
-    '[class.ngx-list-item]': 'true',
     '(click)': 'click($event)'
   }
 })

@@ -146,6 +146,6 @@ module.exports = ng.core.Component({
     'shownEmitter: onShown',
     'dismissingEmitter: onDismissing',
     'dismissedEmitter: onDismissed'
-  ],
+  ]
 })
 .Class(new _ngxAlertComponent());

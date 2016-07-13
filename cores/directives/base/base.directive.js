@@ -26,14 +26,22 @@ function _ngxBaseDirective() {
     if(this.needRebuildCssClass(changeRecord)){
       this.cssClass = this.buildCssClass(changeRecord);
       
-      this.renderer.setElementProperty(this.elementRef.nativeElement, 'className', this.cssClass);
+      _setCssClass(this, this.cssClass);
     }
   };
 
   this.ngOnInit = function() {
     var _changeRecord = this.initDefaultValues();
     
-    if(_changeRecord){ this.ngOnChanges(_changeRecord); }
+    if(_changeRecord){ 
+      this.ngOnChanges(_changeRecord); 
+    }
+    else if(this.cssClass === undefined && this.getPrefixClass()){
+      var _cssClasses = [this.getPrefixClass()];
+      if(this.initCssClass){ _cssClasses.push(this.initCssClass); }
+
+      _setCssClass(this, _cssClasses.join(' '));
+     }
   };
 
 
@@ -53,8 +61,11 @@ function _ngxBaseDirective() {
   this.buildCssClass = function(changeRecord){
     var _cssClasses = [],
         _self = this,
+        _prefixClass = this.getPrefixClass(),
         _styleProperties = this.getStyleProperties(),
         _cssClass;
+
+    if(_prefixClass){ _cssClasses.push(_prefixClass); }
 
     ngxBootstrap.forEach(_styleProperties, function(prop){
       if(changeRecord.hasOwnProperty(prop)){
@@ -161,6 +172,10 @@ function _ngxBaseDirective() {
     if (!_baseInstance) { baseClass.apply(_baseInstance); }
     return _baseInstance;
   };
+
+  function _setCssClass(context, cssClass){
+    context.renderer.setElementProperty(context.elementRef.nativeElement, 'className', cssClass);
+  }
 }
 
 module.exports = ng.core.Class(new _ngxBaseDirective());

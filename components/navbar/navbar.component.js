@@ -1,6 +1,4 @@
-﻿var ngxNavbarService = require('components/navbar/services/navbar.service.js');
-var ngxBaseComponent = require('baseComponent');
-var ngxRenderService = require('renderService');
+﻿var ngxBaseComponent = require('baseComponent');
 
 function _ngxNavbarComponent() {
   var _base;
@@ -12,28 +10,15 @@ function _ngxNavbarComponent() {
 
   this.constructor = [
     ng.core.ElementRef,
-    ngxRenderService,
-    ngxNavbarService,
+    ng.core.Renderer,
 
-    function ngxNavbarComponent(elementRef, ngxRenderService, ngxNavbarService) {
+    function ngxNavbarComponent(elementRef, renderer) {
       ngxBaseComponent.apply(this, arguments);
-      if (elementRef) {
-        this.ngxNavbarService = ngxNavbarService;
-      }
     }
   ];
 
-  this.onAggregatePropertyValueState = function (changeRecord) {
-    var _aggregate = _getBaseInstance(this).onAggregatePropertyValueState.apply(this, arguments);
-
-    if (this.ngxNavbarService.getPositionClass) {
-      _aggregate[_ATTRIBUTES.POSITION] = {
-        prev: this.ngxNavbarService.getPositionClass(this.getPrefixClass(), this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.POSITION)),
-        current: this.ngxNavbarService.getPositionClass(this.getPrefixClass(), this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.POSITION))
-      };
-    }
-
-    return _aggregate;
+  this.getPrefixClass = function () {
+    return 'ngx-navbar';
   };
 
   function _getBaseInstance(context) {
@@ -46,7 +31,6 @@ module.exports = ng.core.Component({
   selector: 'ngx-navbar',
   template: require('./themes/' + __THEME__ + '/templates/navbar.html'),
   styles: [require('./themes/' + __THEME__  + '/scss/navbar.scss')],
-  providers: [ngxRenderService],
-  properties: ['color', 'position', 'prefixClass:prefix-class']
+  properties: ['color', 'position', 'initCssClass:class']
 })
 .Class(new _ngxNavbarComponent());

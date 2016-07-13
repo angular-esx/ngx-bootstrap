@@ -1,7 +1,5 @@
 ﻿function _testCase() {
-  this.constructor = [ngxBootstrap.navbar.SERVICE, function (ngxNavbarService) {
-    this.COLORS = ngxNavbarService.getColors();
-  }];
+  this.constructor = function () {};
 }
 
 var isolatedComponents = ng.core.Component({
@@ -10,11 +8,6 @@ var isolatedComponents = ng.core.Component({
   directives: [
     ngxBootstrap.navbar.DIRECTIVES,
     ngxBootstrap.link.DIRECTIVES
-  ],
-  providers: [
-    ngxBootstrap.coreService,
-    ngxBootstrap.navbar.SERVICE,
-    ngxBootstrap.link.SERVICE
   ]
 })
 .Class(new _testCase());

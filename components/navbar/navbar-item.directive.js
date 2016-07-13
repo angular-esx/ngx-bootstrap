@@ -1,20 +1,8 @@
-﻿var ngxNavbarService = require('components/navbar/services/navbar.service.js');
-
-function _ngxNavbarItemDirective() {
-  this.constructor = [
-    ngxNavbarService,
-
-    function ngxNavbarItemDirective(ngxNavbarService) {
-      this.ngxNavbarService = ngxNavbarService;
-    }
-  ];
+﻿function _ngxNavbarItemDirective() {
+  this.constructor = function ngxNavbarItemDirective() {};
 
   this.ngOnChanges = function (changeRecord) {
-    this.isActive = this.ngxNavbarService.isActiveStateClass(this.getPrefixClass(), this.state);
-  };
-
-  this.getPrefixClass = function () {
-    return 'ngx-navbar-item';
+    this.isActive = this.state && this.state.indexOf('active') > -1;
   };
 }
 

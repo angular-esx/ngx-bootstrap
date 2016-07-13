@@ -1,29 +1,29 @@
 ﻿@import "_mixins.scss";
 
-:host(.#{$ngx-navbar-prefix-class}) {
+:host() {
   display: block;
   position: relative;
   padding: $ngx-navbar-padding;
 
   @include clearfix();
 
-  &.#{$ngx-navbar-prefix-class}-position-top,
-  &.#{$ngx-navbar-prefix-class}-position-bottom {
+  &.ngx-navbar-position-top,
+  &.ngx-navbar-position-bottom {
     position: fixed;
     right: 0;
     left: 0;
     z-index: $ngx-navbar-index;
   }
 
-  &.#{$ngx-navbar-prefix-class}-position-top {
+  &.ngx-navbar-position-top {
     top: 0;
   }
 
-  &.#{$ngx-navbar-prefix-class}-position-bottom {
+  &.ngx-navbar-position-bottom {
     bottom: 0;
   }
 
-  > .#{$ngx-navbar-prefix-class}-divider {
+  > .ngx-navbar-divider {
     color: transparent;
     float: left;
     width: 1px;
@@ -36,7 +36,7 @@
     }
   }
 
-  > .#{$ngx-navbar-prefix-class}-brand {
+  > .ngx-navbar-brand {
     float: left;
     padding: $ngx-navbar-brand-padding;
     margin: $ngx-navbar-brand-margin;
@@ -48,38 +48,38 @@
     }
   }
 
-  > .#{$ngx-navbar-prefix-class}-item {
+  > .ngx-navbar-item {
     display: block;
     float: left;
     padding: $ngx-navbar-item-padding;
     text-decoration: none;
 
-    + .#{$ngx-navbar-prefix-class}-item{
+    + .ngx-navbar-item{
       margin-left: 1rem;
     }
   }
 
-  &.#{$ngx-navbar-prefix-class}-color-primary {
+  &.ngx-navbar-color-primary {
     @include ngx-navbar-variant($ngx-navbar-color-primary, $ngx-navbar-color-primary-active);
   }
 
-  &.#{$ngx-navbar-prefix-class}-color-secondary {
+  &.ngx-navbar-color-secondary {
     @include ngx-navbar-variant($ngx-navbar-color-secondary, $ngx-navbar-color-secondary-active);
   }
 
-  &.#{$ngx-navbar-prefix-class}-color-info {
+  &.ngx-navbar-color-info {
     @include ngx-navbar-variant($ngx-navbar-color-info, $ngx-navbar-color-info-active);
   }
 
-  &.#{$ngx-navbar-prefix-class}-color-success {
+  &.ngx-navbar-color-success {
     @include ngx-navbar-variant($ngx-navbar-color-success, $ngx-navbar-color-success-active);
   }
 
-  &.#{$ngx-navbar-prefix-class}-color-warning {
+  &.ngx-navbar-color-warning {
     @include ngx-navbar-variant($ngx-navbar-color-warning, $ngx-navbar-color-warning-active);
   }
 
-  &.#{$ngx-navbar-prefix-class}-color-danger {
+  &.ngx-navbar-color-danger {
     @include ngx-navbar-variant($ngx-navbar-color-danger, $ngx-navbar-color-danger-active);
   }
 }

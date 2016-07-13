@@ -1,5 +1,4 @@
 var ngxBaseComponent = require('baseComponent');
-var ngxBootstrap = require('ngxBootstrap');
 
 function _ngxLabelComponent() {
   var _base;

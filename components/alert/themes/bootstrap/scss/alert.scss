@@ -4,7 +4,7 @@
 
 @import "_mixins.scss";
 
-:host(.#{$ngx-alert-prefix-class}) {
+:host() {
   display: block;
   margin: $ngx-alert-margin;
   padding: $ngx-alert-padding;
@@ -29,11 +29,11 @@
     margin-top: 5px;
   }
 
-  &.#{$ngx-alert-prefix-class}-state-hidden{
+  &.ngx-alert-state-hidden{
     display: none !important;
   }
 
-  &.#{$ngx-alert-prefix-class}-type-float {
+  &.ngx-alert-type-float {
     width: 100%;
     margin: 0;
     position: fixed;
@@ -42,19 +42,19 @@
     box-sizing: border-box;
   }
 
-  &.#{$ngx-alert-prefix-class}-position-top {
+  &.ngx-alert-position-top {
     top: 0;
   }
 
-  &.#{$ngx-alert-prefix-class}-position-bottom {
+  &.ngx-alert-position-bottom {
     bottom: 0;
   }
 
-  &.#{$ngx-alert-prefix-class}-type-dismissible {
+  &.ngx-alert-type-dismissible {
     padding: $ngx-alert-type-dismissible-padding;
   }
 
-  > .#{$ngx-alert-prefix-class}-dismiss {
+  > .ngx-alert-dismiss {
       font-size: 1.5rem;
       font-weight: 700;
       line-height: 1;
@@ -76,16 +76,16 @@
       }
     }
 
-  &.#{$ngx-alert-prefix-class}-color-info {
+  &.ngx-alert-color-info {
     @include ngx-alert-variant($ngx-alert-info);
   }
-  &.#{$ngx-alert-prefix-class}-color-success {
+  &.ngx-alert-color-success {
     @include ngx-alert-variant($ngx-alert-success);
   }
-  &.#{$ngx-alert-prefix-class}-color-warning {
+  &.ngx-alert-color-warning {
     @include ngx-alert-variant($ngx-alert-warning);
   }
-  &.#{$ngx-alert-prefix-class}-color-danger {
+  &.ngx-alert-color-danger {
     @include ngx-alert-variant($ngx-alert-danger);
   }
 }

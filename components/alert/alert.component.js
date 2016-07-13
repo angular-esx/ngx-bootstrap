@@ -1,23 +1,19 @@
 ﻿var ngxAlertService = require('./services/alert.service.js');
-var ngxRenderService = require('renderService');
 var ngxBaseComponent = require('baseComponent');
 var ngxBootstrap = require('ngxBootstrap');
 
 function _ngxAlertComponent() {
   var _base,
       _subscription;
-  var _ATTRIBUTES = {
-    POSITION: 'position'
-  };
 
   this.extends = ngxBaseComponent;
 
   this.constructor = [
     ng.core.ElementRef,
-    ngxRenderService,
+    ng.core.Renderer,
     ngxAlertService,
 
-    function ngxAlertComponent(elementRef, ngxRenderService, ngxAlertService) {
+    function ngxAlertComponent(elementRef, renderer, ngxAlertService) {
       ngxBaseComponent.apply(this, arguments);
       
       if (elementRef) {
@@ -32,30 +28,33 @@ function _ngxAlertComponent() {
     }
   ];
 
-  this.ngAfterContentInit = function () {
-    this.isDismissible = this.ngxAlertService.isDismissibleTypeClass(this.getPrefixClass(), this.type);
+  this.ngOnChanges = function(){
+    var _styleProperties = this.getStyleProperties();
+    this.isHidden = this.propertyHasValue(_styleProperties.STATE, 'hidden');
+    this.isDismissible = this.propertyHasValue(_styleProperties.TYPE, 'dismissible');
 
+    _getBaseInstance(this).ngOnChanges.apply(this, arguments);
+  };
+
+  this.ngOnInit = function () {
     this.subscribe();
 
-    _getBaseInstance(this).ngAfterContentInit.apply(this);
+    _getBaseInstance(this).ngOnInit.apply(this);
   };
 
   this.ngOnDestroy = function () {
     if (_subscription) { _subscription.unsubscribe(); }
   };
 
-  this.onAggregatePropertyValueState = function(changeRecord){
-    var _aggregate = _getBaseInstance(this).onAggregatePropertyValueState.apply(this, arguments);
-    
-    if(this.ngxAlertService.getPositionClass){
-      _aggregate[_ATTRIBUTES.POSITION] = {
-        prev: this.ngxAlertService.getPositionClass(this.getPrefixClass(), this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.POSITION)),
-        current: this.ngxAlertService.getPositionClass(this.getPrefixClass(), this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.POSITION))
-      };
-    }
-    
-    return _aggregate;
-  }; 
+
+  this.initDefaultValues = function(){
+    if(!this.type && !this.isDismissible){ this.isDismissible = false; }
+
+    if(!this.state && !this.isHidden){ this.isHidden = false; }
+
+    return null;
+  };
+
   
   this.subscribe = function () {
     var _self = this;
@@ -67,8 +66,7 @@ function _ngxAlertComponent() {
       var _actions = _self.ngxAlertService.getActions();
       
       ngxBootstrap.forEach(_events, function (_event) {
-        if (_event.target && _event.target === _self.elementRef.nativeElement) {
-
+        if (_event.target && (!_event.target || _event.target === _self.id)) {
           if (_event.type === _actions.SHOW_ALERT) {
             _self.show();
           }
@@ -81,61 +79,57 @@ function _ngxAlertComponent() {
   };
 
   this.show = function () {
-    if (!this.ngxAlertService.isHiddenStateClass(this.getPrefixClass(), this.state)) { return; }
+    if (!this.isHidden) { return; }
 
     var _isCanceled = false;
     this.showingEmitter.emit({
-      target: this,
+      target: this.id,
       cancel: function () { _isCanceled = true; }
     });
 
     if (_isCanceled) { return; }
 
-    var _changeRecord = {
-      state: { previousValue: this.state || '' }
-    };
-    this.state = this.state.replace(this.ngxAlertService.getStates().HIDDEN, '').trim();
-    _changeRecord.state.currentValue = this.state;
-
-    this.ngOnChanges(_changeRecord);
-
+    var _styleProperties = this.getStyleProperties();
+    this.removeValueFromProperty(_styleProperties.STATE, 'hidden');
+    this.ngOnChanges(this.buildChangeRecord(_styleProperties.STATE, this.state));
+    
     var _self = this;
-    this.ngxAlertService.fadeIn(this.elementRef.nativeElement)
+    this.ngxAlertService.fadeIn(this.elementRef)
     .then(function () {
       _self.shownEmitter.emit({
-        target: _self
+        target: _self.id
       });
     });
   };
 
   this.dismiss = function () {
-    if (this.ngxAlertService.isHiddenStateClass(this.getPrefixClass(), this.state)) { return; }
+    if (this.isHidden) { return; }
 
     var _isCanceled = false;
     this.dismissingEmitter.emit({
-      target: this,
+      target: this.id,
       cancel: function () { _isCanceled = true; }
     });
 
     if (_isCanceled) { return; }
-
-    var _self = this;
-    this.ngxAlertService.fadeOut(this.elementRef.nativeElement)
+    
+    var _self = this,
+        _styleProperties = this.getStyleProperties();
+    this.ngxAlertService.fadeOut(this.elementRef)
     .then(function(){
-      var _changeRecord = {
-        state: { previousValue: _self.state || '' }
-      };
-      _self.state = (_self.ngxAlertService.getStates().HIDDEN + ' ' + _changeRecord.state.previousValue).trim();
-      _changeRecord.state.currentValue = _self.state;
-
-      _self.ngOnChanges(_changeRecord);
+      _self.addValueToProperty(_styleProperties.STATE, 'hidden');
+      _self.ngOnChanges(_self.buildChangeRecord(_styleProperties.STATE, _self.state));
 
       _self.dismissedEmitter.emit({
-        target: _self
+        target: _self.id
       });
     });
   };
   
+  this.getPrefixClass = function(){
+    return 'ngx-alert';
+  };
+
   function _getBaseInstance(context){ 
     if(!_base){ _base = context.getBaseInstance(ngxBaseComponent); }
     return _base;
@@ -146,8 +140,7 @@ module.exports = ng.core.Component({
   selector: 'ngx-alert',
   template: require('./themes/' + __THEME__ + '/templates/alert.html'),
   styles: [require('./themes/' + __THEME__  + '/scss/alert.scss')],
-  providers:[ngxRenderService],
-  properties: ['color', 'type', 'position', 'state', 'prefixClass:prefix-class'],
+  properties: ['id', 'color', 'type', 'state', 'position', 'initCssClass:class'],
   events: [
     'showingEmitter: onShowing',
     'shownEmitter: onShown',

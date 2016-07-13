@@ -1,11 +1,11 @@
 ﻿<h3>ngxAlert</h3>
 
 <div>
-  <ngx-alert #myInfoAlert
-             state="{{STATES.HIDDEN}}"
-             color="{{COLORS.INFO}}"
-             type="{{TYPES.DISMISSIBLE}} {{TYPES.FLOAT}}"
-             position="{{POSITIONS.BOTTOM}}"
+  <ngx-alert id="myInfoAlert"
+             state="hidden"
+             color="info"
+             type="dismissible float"
+             position="bottom"
              (onShowing)="showing($event)"
              (onShown)="shown($event)"
              (onDismissing)="dismissing($event)"
@@ -17,7 +17,7 @@
   </ngx-alert>
 </div>
 
-<ngx-alert #mySuccessAlert color="success" type="dismissible">
+<ngx-alert id="mySuccessAlert" color="success" type="dismissible">
   <strong>Well done!</strong> You successfully read 
   <a class="ngx-alert-link" href="https://translate.google.com.vn">this important alert message</a>
 </ngx-alert>
@@ -28,10 +28,10 @@
   you're not looking too good
 </ngx-alert>
 
-<ngx-alert [color]="COLORS.DANGER" 
-           [type]="TYPES.DISMISSIBLE" 
+<ngx-alert color="danger" 
+           type="dismissible" 
            (onDismissed)="dismissed($event)">
   <p><strong>Oh snap!</strong></p> 
-  <a ngx-link prefix-class="ngx-alert-link" [href]="href">Change a few things up</a>
+  <a ngx-link ngx-alert-link [href]="href">Change a few things up</a>
   and try submitting again.
 </ngx-alert>

@@ -16,8 +16,8 @@
     border-top-color: $foreground;
   }
 
-  .#{$ngx-alert-prefix-class}-link,
-  .#{$ngx-alert-prefix-class}-link a {
+  .ngx-alert-link,
+  .ngx-alert-link a {
     font-weight: bold;
     color: $foreground;
   }

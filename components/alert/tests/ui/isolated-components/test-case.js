@@ -1,11 +1,6 @@
 function _testCase() {
-  this.constructor = [ngxBootstrap.alert.SERVICE, function (ngxAlertService) {
+  this.constructor = [ngxBootstrap.alert.ALERT_SERVICE, function (ngxAlertService) {
     this.ngxAlertService = ngxAlertService;
-
-    this.COLORS = ngxAlertService.getColors();
-    this.TYPES = ngxAlertService.getTypes();
-    this.POSITIONS = ngxAlertService.getPositions();
-    this.STATES = ngxAlertService.getStates();
 
     this.href = 'https://translate.google.com.vn';
   }];
@@ -13,8 +8,8 @@ function _testCase() {
   this.ngAfterViewInit = function () {
     var _self = this;
     setTimeout(function () {
-      _self.ngxAlertService.show(_self.infoAlertElement.nativeElement);
-      _self.ngxAlertService.dismiss(_self.successAlertElement.nativeElement);
+      _self.ngxAlertService.show('myInfoAlert');
+      _self.ngxAlertService.dismiss('mySuccessAlert');
     }, 2 * 1000);
   };
 
@@ -39,18 +34,12 @@ var isolatedComponents = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/alert/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxBootstrap.alert.DIRECTIVES.ALERT,
-    ngxBootstrap.alert.DIRECTIVES.ALERT_LINK,
-    ngxBootstrap.link.DIRECTIVES
+    ngxBootstrap.link.DIRECTIVES,
+    ngxBootstrap.alert.DIRECTIVES
   ],
   providers: [
-    ngxBootstrap.coreService,
-    ngxBootstrap.alert.SERVICE,
-    ngxBootstrap.link.SERVICE
-  ],
-  queries: {
-    infoAlertElement: new ng.core.ViewChild('myInfoAlert', { read: ng.core.ElementRef }),
-    successAlertElement: new ng.core.ViewChild('mySuccessAlert', { read: ng.core.ElementRef })
-  }
+    ngxBootstrap.coreService.ANIMATION_SERVICE,
+    ngxBootstrap.alert.SERVICES
+  ]
 })
 .Class(new _testCase());

@@ -1,10 +1,8 @@
-﻿var ngxProgressService = require('./services/progress.service.js');
-var ngxBaseComponent = require('baseComponent');
-var ngxRenderService = require('renderService');
+﻿var ngxBaseComponent = require('baseComponent');
 
 function _ngxProgressComponent() {
   var _base;
-  var _ATTRIBUTES = {
+  var _PROPERTIES = {
     VALUE: 'value',
     MAX: 'max'
   };
@@ -13,28 +11,18 @@ function _ngxProgressComponent() {
 
   this.constructor = [
     ng.core.ElementRef,
-    ngxRenderService,
-    ngxProgressService,
+    ng.core.Renderer,
 
-    function ngxProgressComponent(elementRef, ngxRenderService, ngxProgressService) {
+    function ngxProgressComponent(elementRef, renderer) {
       ngxBaseComponent.apply(this, arguments);
       
       if (elementRef) {
-        this.ngxProgressService = ngxProgressService;
         this.currentProgress = 0;
       }
     }
   ];
 
   this.ngOnChanges = function (changeRecord) {
-    if (this.value === undefined || this.value === null || isNaN(this.value) || this.value < 0) {
-      this.value = 0;
-    }
-
-    if (this.max === undefined || this.max === null || isNaN(this.max) || this.max < 0) {
-      this.max = 100;
-    }
-
     var _self = this;
     setTimeout(function () {
       _self.currentProgress = (_self.value / _self.max) * 100;
@@ -43,16 +31,24 @@ function _ngxProgressComponent() {
     _getBaseInstance(this).ngOnChanges.apply(this, arguments);
   };
 
-  this.ngAfterContentInit = function () {
-    var _self = this;
-    var _attributes = [
-      _ATTRIBUTES.VALUE,
-      _ATTRIBUTES.MAX
-    ];
+  this.initDefaultValues = function(){
+    var _changeRecord;
 
-    this.removeOneTimeBindingAttributes(_attributes);
+    if(!this.value){ 
+      this.value = 0;
+      _changeRecord = this.buildChangeRecord(_PROPERTIES.VALUE, this.value);
+     }
 
-    _getBaseInstance(this).ngAfterContentInit.apply(this);
+    if(!this.max){ 
+      this.max = 100;
+      _changeRecord = this.buildChangeRecord(_PROPERTIES.MAX, this.max);
+     }
+
+    return _changeRecord;
+  };
+
+  this.getPrefixClass = function () {
+    return 'ngx-progress';
   };
 
   function _getBaseInstance(context) {
@@ -65,7 +61,6 @@ module.exports = ng.core.Component({
   selector: 'ngx-progress',
   template: require('./themes/' + __THEME__ + '/templates/progress.html'),
   styles: [require('./themes/' + __THEME__  + '/scss/progress.scss')],
-  providers: [ngxRenderService],
-  properties: ['color', 'value', 'max']
+  properties: ['color', 'value', 'max', 'initCssClass:class']
 })
 .Class(new _ngxProgressComponent());

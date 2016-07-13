@@ -1,12 +1,10 @@
 ﻿function _testCase() {
-  this.constructor = [ngxBootstrap.progress.SERVICE, function (ngxProgressService) {
-    this.COLORS = ngxProgressService.getColors();
-
+  this.constructor = function () {
     this.progresses = {
       warning: { value: 75, max: 100 },
       danger: { value: 100, max: 100 }
     };
-  }];
+  };
 }
 
 var isolatedComponents = ng.core.Component({
@@ -14,10 +12,6 @@ var isolatedComponents = ng.core.Component({
   templateUrl: 'components/progress/tests/ui/isolated-components/test-case.html',
   directives: [
     ngxBootstrap.progress.DIRECTIVES
-  ],
-  providers: [
-   ngxBootstrap.coreService,
-   ngxBootstrap.progress.SERVICE
   ]
 })
 .Class(new _testCase());

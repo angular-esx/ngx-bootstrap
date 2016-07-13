@@ -1,5 +1,5 @@
 function _testCase() {
-  this.constructor = [ngxBootstrap['drop-menu'].SERVICE, function (ngxDropMenuService) {
+  this.constructor = [ngxBootstrap.dropMenu.SERVICE, function (ngxDropMenuService) {
     this.href = 'https://translate.google.com.vn';
 
     this.STATES = ngxDropMenuService.getStates();
@@ -17,12 +17,12 @@ var isolatedComponents = ng.core.Component({
     ngxBootstrap.group.DIRECTIVES,
     ngxBootstrap.button.DIRECTIVES,
     ngxBootstrap.link.DIRECTIVES,
-    ngxBootstrap['drop-menu'].DIRECTIVES
+    ngxBootstrap.dropMenu.DIRECTIVES
   ],
   providers: [
    ngxBootstrap.coreService,
-   ngxBootstrap['drop-menu'].SERVICE,
-   ngxBootstrap['drop-menu'].ITEM_SERVICE,
+   ngxBootstrap.dropMenu.SERVICE,
+   ngxBootstrap.dropMenu.ITEM_SERVICE,
    ngxBootstrap.group.SERVICE,
    ngxBootstrap.button.SERVICE,
    ngxBootstrap.link.SERVICE

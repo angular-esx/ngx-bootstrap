@@ -15,6 +15,18 @@ function _ngxLabelComponent() {
     }
   ];
 
+  this.initDefaultValues = function(){
+    var _styleProperties = this.getStyleProperties(),
+        _changeRecord;
+
+    if(!this.color){ 
+      this.color = 'secondary';
+      _changeRecord = this.buildChangeRecord(_styleProperties.COLOR, this.color);
+     }
+
+     return _changeRecord;
+  };
+
   this.getPrefixClass = function(){
     return 'ngx-label';
   };

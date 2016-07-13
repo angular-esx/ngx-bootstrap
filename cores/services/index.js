@@ -1,8 +1,8 @@
-var animationService = require('./animation.service.js');
+var ngxAnimationService = require('./animation.service.js');
 
 module.exports = {
-  ANIMATION_SERVICE: animationService,
+  ANIMATION_SERVICE: ngxAnimationService,
   SERVICES: [
-    animationService
+    ngxAnimationService
   ]
 }; 

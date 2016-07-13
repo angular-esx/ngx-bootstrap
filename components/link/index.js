@@ -1,9 +1,9 @@
 ﻿var ngxBootstrap = require('ngxBootstrap');
-var linkComponent = require('./link.component.js');
+var ngxLinkComponent = require('./link.component.js');
 
 ngxBootstrap.link = {
-  LINK_COMPONENT: linkComponent,
-  DIRECTIVES: [ linkComponent ]
+  LINK_COMPONENT: ngxLinkComponent,
+  DIRECTIVES: [ ngxLinkComponent ]
 };
 
 module.exports = ngxBootstrap;

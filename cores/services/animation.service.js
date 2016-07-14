@@ -71,7 +71,9 @@ function _ngxAnimationService() {
     var _self = this,
         _nativeElement = elementRef.nativeElement;
     
-    if (_nativeElement.scrollHeight <= 0) { return; }
+    if (_nativeElement.scrollHeight <= 0) { 
+      return new Promise(function (resolve) { resolve(); }); 
+    }
 
     return new Promise(function (resolve) {
       var _cssAnimationBuilder = _self.animationBuilder.css()

@@ -44,6 +44,14 @@ function _ngxBaseDirective() {
      }
   };
 
+  this.ngDoCheck = function(){};
+
+  this.ngAfterContentInit = function(){};
+
+  this.ngAfterContentChecked = function(){};
+
+  this.ngOnDestroy = function(){};
+
 
   this.needRebuildCssClass = function(changeRecord){
     var _styleProperties = this.getStyleProperties(),

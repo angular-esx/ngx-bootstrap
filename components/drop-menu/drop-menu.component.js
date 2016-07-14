@@ -29,6 +29,8 @@ function _ngxDropMenuComponent() {
 
   this.ngOnDestroy = function () {
     if (this.subscription) { this.subscription.unsubscribe(); }
+
+    _getBaseInstance(this).ngOnDestroy.apply(this);
   };
 
   this.getPrefixClass = function(){

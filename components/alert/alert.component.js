@@ -74,6 +74,8 @@ function _ngxAlertComponent() {
 
   this.ngOnDestroy = function () {
     if (this.subscription) { this.subscription.unsubscribe(); }
+
+    _getBaseInstance(this).ngOnDestroy.apply(this);
   };
 
 

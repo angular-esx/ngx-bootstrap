@@ -2,7 +2,7 @@
 
 <ngx-button color="primary" ngx-toggle-collapse="myCollapse">Toggle Collapse</ngx-button>
 
-<ngx-collapse id="myCollapse" style="background-color: gainsboro;">
+<ngx-collapse id="myCollapse">
   <div>This is content of ngxCollapse</div>
 </ngx-collapse>
 
@@ -12,18 +12,26 @@
 
 <ngx-button color="primary" size="block" ngx-toggle-collapse="myCollapse01">Toggle Collapse 01</ngx-button>
 
-<ngx-collapse id="myCollapse01" group="myCollapseGroup" style="background-color: gainsboro;">
+<ngx-collapse id="myCollapse01" group="myCollapseGroup">
   <div>This is content of ngxCollapse 01</div>
 </ngx-collapse>
 <br />
 <ngx-button color="primary" size="block" ngx-toggle-collapse="myCollapse02">Toggle Collapse 02</ngx-button>
 
-<ngx-collapse id="myCollapse02" group="myCollapseGroup" style="background-color: gainsboro;">
+<ngx-collapse id="myCollapse02" group="myCollapseGroup">
   <div>This is content of ngxCollapse 02</div>
 </ngx-collapse>
 <br />
 <ngx-button color="primary" size="block" ngx-toggle-collapse="myCollapse03">Toggle Collapse 03</ngx-button>
 
-<ngx-collapse id="myCollapse03" group="myCollapseGroup" style="background-color: gainsboro;">
+<ngx-collapse id="myCollapse03" group="myCollapseGroup">
   <div>This is content of ngxCollapse 03</div>
 </ngx-collapse>
+
+<style>
+  ngx-collapse > div {
+    padding: 20px 10px;
+    margin: 10px 0;
+    background-color: gainsboro;
+  }
+</style>

@@ -1,5 +1,4 @@
-﻿var ngxStateService = require('stateService');
-var ngxAnimationService = require('animationService');
+﻿var ngxAnimationService = require('animationService');
 var ngxBootstrap = require('ngxBootstrap');
 
 function _ngxCollapseService() {
@@ -11,11 +10,9 @@ function _ngxCollapseService() {
   };
 
   this.constructor = [
-    ngxStateService,
     ngxAnimationService,
 
-    function ngxCollapseService(ngxStateService, ngxAnimationService) {
-      ngxBootstrap.shallowCopy(this, ngxStateService);
+    function ngxCollapseService(ngxAnimationService) {
       ngxBootstrap.shallowCopy(this, ngxAnimationService);
 
       this.ngxCollapse$ = new Rx.Observable(function (observer) {

@@ -1,23 +1,18 @@
 ﻿var ngxCollapseService = require('./services/collapse.service.js');
 var ngxBaseComponent = require('baseComponent');
-var ngxRenderService = require('renderService');
 var ngxBootstrap = require('ngxBootstrap');
 
 function _ngxCollapseComponent() {
-  var _base,
-      _subscription;
-  var _ATTRIBUTES = {
-    ID: 'id',
-  };
+  var _base;
 
   this.extends = ngxBaseComponent;
 
   this.constructor = [
     ng.core.ElementRef,
-    ngxRenderService,
+    ng.core.Renderer,
     ngxCollapseService,
 
-    function ngxCollapseComponent(elementRef, ngxRenderService, ngxCollapseService) {
+    function ngxCollapseComponent(elementRef, renderer, ngxCollapseService) {
       ngxBaseComponent.apply(this, arguments);
 
       if (elementRef) {
@@ -27,29 +22,44 @@ function _ngxCollapseComponent() {
   ];
 
   this.ngOnChanges = function (changeRecord) {
-    _getBaseInstance(this).ngOnChanges.apply(this, arguments);
+    this.isActive = this.propertyHasValue(this.getStyleProperties().STATE, 'active');
 
-    if (this.ngxCollapseService.isActiveStateClass(this.getPrefixClass(), this.state)) {
-      this.ngxCollapseService.collapseIn(this.elementRef.nativeElement);
+    if (this.isActive) {
+      _getBaseInstance(this).ngOnChanges.apply(this, [changeRecord]);
+      this.ngxCollapseService.collapseIn(this.elementRef);
     }
     else {
-      this.ngxCollapseService.collapseOut(this.elementRef.nativeElement);
+      var _self = this;
+      this.ngxCollapseService.collapseOut(this.elementRef)
+      .then(function(){
+        _getBaseInstance(_self).ngOnChanges.apply(_self, [changeRecord]);
+      });
     }
   };
 
-  this.ngAfterContentInit = function () {
+  this.ngOnInit = function () {
     this.subscribe();
 
-    _getBaseInstance(this).ngAfterContentInit.apply(this);
+    _getBaseInstance(this).ngOnInit.apply(this);
   };
 
   this.ngOnDestroy = function () {
-    if (_subscription) { _subscription.unsubscribe(); }
+    if (this.subscription) { this.subscription.unsubscribe(); }
+  };
+
+  this.getPrefixClass = function () {
+    return 'ngx-collapse';
+  };
+
+  this.initDefaultValues = function(){
+    if(!this.state && !this.isActive){ this.isActive = false; }
+
+    return null;
   };
 
   this.subscribe = function () {
     var _self = this;
-    _subscription = this.ngxCollapseService.ngxCollapse$.subscribe(function (event) {
+    this.subscription = this.ngxCollapseService.ngxCollapse$.subscribe(function (event) {
       if (!event) { return; }
 
       var _events = ngxBootstrap.isArray(event) ? event : [event];
@@ -75,7 +85,7 @@ function _ngxCollapseComponent() {
   };
 
   this.toggle = function () {
-    if (this.ngxCollapseService.isActiveStateClass(this.getPrefixClass(), this.state)) {
+    if (this.isActive) {
       if (this.group) {
         this.ngxCollapseService.hide(this.id, this.group);
       }
@@ -94,27 +104,19 @@ function _ngxCollapseComponent() {
   };
 
   this.show = function () {
-    if (this.ngxCollapseService.isActiveStateClass(this.getPrefixClass(), this.state)) { return; }
+    if (this.isActive) { return; }
 
-    var _changeRecord = {
-      state: { previousValue: this.state || '' }
-    };
-    this.state = (this.ngxCollapseService.getStates().ACTIVE + ' ' + _changeRecord.state.previousValue).trim();
-    _changeRecord.state.currentValue = this.state;
-
-    this.ngOnChanges(_changeRecord);
+    var _styleProperties = this.getStyleProperties();
+    this.addValueToProperty(_styleProperties.STATE, 'active');
+    this.ngOnChanges(this.buildChangeRecord(_styleProperties.STATE, this.state));
   };
 
   this.hide = function () {
-    if (!this.ngxCollapseService.isActiveStateClass(this.getPrefixClass(), this.state)) { return; }
+    if (!this.isActive) { return; }
 
-    var _changeRecord = {
-      state: { previousValue: this.state || '' }
-    };
-    this.state = this.state.replace(this.ngxCollapseService.getStates().ACTIVE, '').trim();
-    _changeRecord.state.currentValue = this.state;
-
-    this.ngOnChanges(_changeRecord);
+    var _styleProperties = this.getStyleProperties();
+    this.removeValueFromProperty(_styleProperties.STATE, 'active');
+    this.ngOnChanges(this.buildChangeRecord(_styleProperties.STATE, this.state));
   };
 
   function _getBaseInstance(context) {
@@ -127,7 +129,6 @@ module.exports = ng.core.Component({
   selector: 'ngx-collapse',
   template: require('./themes/' + __THEME__ + '/templates/collapse.html'),
   styles: [require('./themes/' + __THEME__  + '/scss/collapse.scss')],
-  providers: [ngxRenderService],
-  properties: ['id', 'state', 'group', 'prefixClass:prefix-class']
+  properties: ['id', 'state', 'group', 'initCssClass:class']
 })
 .Class(new _ngxCollapseComponent());

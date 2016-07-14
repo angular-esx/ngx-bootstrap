@@ -1,6 +1,4 @@
 ﻿var ngxAnimationService = require('animationService');
-var ngxTypeService = require('typeService');
-var ngxStateService = require('stateService');
 var ngxBootstrap = require('ngxBootstrap');
 
 function _ngxTabsService() {
@@ -12,13 +10,9 @@ function _ngxTabsService() {
 
   this.constructor = [
     ngxAnimationService,
-    ngxTypeService,
-    ngxStateService,
 
-    function ngxTabsService(ngxAnimationService, ngxTypeService, ngxStateService) {
+    function ngxTabsService(ngxAnimationService) {
       ngxBootstrap.shallowCopy(this, ngxAnimationService);
-      ngxBootstrap.shallowCopy(this, ngxTypeService);
-      ngxBootstrap.shallowCopy(this, ngxStateService);
 
       this.ngxTabs$ = new Rx.Observable(function (observer) {
         _observer = observer;
@@ -35,25 +29,18 @@ function _ngxTabsService() {
     _observer.next(event);
   };
 
-  this.getEnable$ = function (tabElement, isEnabled) {
-    return Rx.Observable.from([{ target: tabElement, isEnabled: isEnabled, type: _ACTIONS.ENABLE_TAB }]);
+  this.getEnable$ = function (tabId, isEnabled) {
+    return Rx.Observable.from([{ id: tabId, isEnabled: isEnabled, type: _ACTIONS.ENABLE_TAB }]);
   };
-  this.enable = function (tabElement, isEnabled) {
-    _observer.next({ target: tabElement, isEnabled: isEnabled, type: _ACTIONS.ENABLE_TAB });
-  };
-
-  this.getSelect$ = function (tabElement) {
-    return Rx.Observable.from([{ target: tabElement, type: _ACTIONS.SELECT_TAB }]);
-  };
-  this.select = function (tabElement) {
-    _observer.next({ target: tabElement, type: _ACTIONS.SELECT_TAB });
+  this.enable = function (tabId, isEnabled) {
+    _observer.next({ id: tabId, isEnabled: isEnabled, type: _ACTIONS.ENABLE_TAB });
   };
 
-  this.isPillTypeClass = function (prefixClass, type) {
-    return this.getTypeClass(prefixClass, type).indexOf(this.getPillTypeClass(prefixClass)) > -1;
+  this.getSelect$ = function (tabId) {
+    return Rx.Observable.from([{ id: tabId, type: _ACTIONS.SELECT_TAB }]);
   };
-  this.getPillTypeClass = function (prefixClass) {
-    return prefixClass + '-type-pill';
+  this.select = function (tabId) {
+    _observer.next({ id: tabId, type: _ACTIONS.SELECT_TAB });
   };
 }
 

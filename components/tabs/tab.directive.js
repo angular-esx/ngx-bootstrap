@@ -2,12 +2,11 @@
 var ngxTabHeadDirective = require('./tab-head.directive.js');
 var ngxTabContentDirective = require('./tab-content.directive.js');
 var ngxBaseDirective = require('baseDirective');
-var ngxRenderService = require('renderService');
 var ngxBootstrap = require('ngxBootstrap');
 
 function _ngxTabDirective() {
   var _base;
-  var _ATTRIBUTES = {
+  var _PROPERTIES = {
     HEAD: 'head'
   };
 
@@ -15,10 +14,10 @@ function _ngxTabDirective() {
 
   this.constructor = [
     ng.core.ElementRef,
-    ngxRenderService,
+    ng.core.Renderer,
     ngxTabsService,
 
-    function ngxTabDirective(elementRef, ngxRenderService, ngxTabsService) {
+    function ngxTabDirective(elementRef, renderer, ngxTabsService) {
       ngxBaseDirective.apply(this, arguments);
 
       if (elementRef) {
@@ -28,30 +27,41 @@ function _ngxTabDirective() {
   ];
 
   this.ngOnChanges = function (changeRecord) {
-    if (changeRecord[_ATTRIBUTES.HEAD]) { _validateProperties(this); }
+    var _styleProperties = this.getStyleProperties();
 
-    _getBaseInstance(this).ngOnChanges.apply(this, arguments);
+    if (changeRecord[_PROPERTIES.HEAD]) { _validateProperties(this); }
 
-    this.isActive = this.ngxTabsService.isActiveStateClass(this.getPrefixClass(), this.state);
-    this.isDisabled = this.ngxTabsService.isDisabledStateClass(this.getPrefixClass(), this.state);
+    if(!changeRecord[_styleProperties.STATE]){
+      _getBaseInstance(this).ngOnChanges.apply(this, [changeRecord]);
+      return;  
+    }
+
+    var _self = this,
+        _previousIsActive = this.isActive;
+    this.isActive = this.propertyHasValue(_styleProperties.STATE, 'active');
+    this.isDisabled = this.propertyHasValue(_styleProperties.STATE, 'disabled');
     
-    if (!this.hasActivated && this.isActive && this.contentTemplateRef) {
+    if (_previousIsActive === undefined && this.isActive && this.contentTemplateRef) {
       if (!this.contentElement) { throw 'Not found content element of tab'; }
 
-      this.hasActivated = true;
-
-      var _self = this;
       setTimeout(function () {
         _self.contentElement.createEmbeddedView(_self.contentTemplateRef, 0);
 
-        _self.ngxTabsService.fadeIn(_self.elementRef.nativeElement);
+        _getBaseInstance(_self).ngOnChanges.apply(_self, [changeRecord]);
+
+        _self.ngxTabsService.fadeIn(_self.elementRef);
       });
     }
     else if (this.isActive) {
-      this.ngxTabsService.fadeIn(this.elementRef.nativeElement);
+      _getBaseInstance(this).ngOnChanges.apply(this, [changeRecord]);
+
+      this.ngxTabsService.fadeIn(this.elementRef);
     }
-    else if (this.state && !this.isActive) {
-      this.ngxTabsService.fadeOut(this.elementRef.nativeElement);
+    else if (!this.isActive) {
+      this.ngxTabsService.fadeOut(this.elementRef)
+      .then(function () {
+        _getBaseInstance(_self).ngOnChanges.apply(_self, [changeRecord]);
+      });
     }
   };
 
@@ -65,38 +75,38 @@ function _ngxTabDirective() {
     _getBaseInstance(this).ngAfterContentInit.apply(this);
   };
 
+  this.getPrefixClass = function () {
+    return 'ngx-tab';
+  };
+
   this.activate = function (isActive) {
-    if ((isActive && this.isActive) || (!isActive && !this.isActive)) { return; }
+    if (this.isActive === isActive) { return; }
 
-    var _changeRecord = {
-      state: { previousValue: this.state || '' }
-    };
-    if (isActive) {
-      this.state = (this.ngxTabsService.getStates().ACTIVE + ' ' + _changeRecord.state.previousValue).trim();
-    }
-    else {
-      this.state = this.state.replace(this.ngxTabsService.getStates().ACTIVE, '').trim();
-    }
-    _changeRecord.state.currentValue = this.state;
+    var _styleProperties = this.getStyleProperties();
 
-    this.ngOnChanges(_changeRecord);
+    if(isActive){
+      this.addValueToProperty(_styleProperties.STATE, 'active');
+    }
+    else{
+      this.removeValueFromProperty(_styleProperties.STATE, 'active');
+    }
+
+    this.ngOnChanges(this.buildChangeRecord(_styleProperties.STATE, this.state));
   };
 
   this.enable = function (isEnabled) {
-    if ((isEnabled && !this.isDisabled) || (!isEnabled && this.isDisabled)) { return; }
+    if (this.isDisabled !== isEnabled) { return; }
 
-    var _changeRecord = {
-      state: { previousValue: this.state || '' }
-    };
-    if (isEnabled) {
-      this.state = (this.ngxTabsService.getStates().DISABLED + ' ' + _changeRecord.state.previousValue).trim();
-    }
-    else {
-      this.state = this.state.replace(this.ngxTabsService.getStates().DISABLED, '').trim();
-    }
-    _changeRecord.state.currentValue = this.state;
+    var _styleProperties = this.getStyleProperties();
 
-    this.ngOnChanges(_changeRecord);
+    if(isEnabled){
+      this.addValueToProperty(_styleProperties.STATE, 'disabled');
+    }
+    else{
+      this.removeValueFromProperty(_styleProperties.STATE, 'disabled');
+    }
+
+    this.ngOnChanges(this.buildChangeRecord(_styleProperties.STATE, this.state));
   };
 
   function _validateProperties(context) {
@@ -111,8 +121,7 @@ function _ngxTabDirective() {
 
 module.exports = ng.core.Directive({
   selector: 'ngx-tab',
-  providers: [ngxRenderService],
-  properties: ['id', 'head', 'state', 'prefixClass:prefix-class'],
+  properties: ['id', 'head', 'state', 'initCssClass:class'],
   queries: {
     ngxTabHeadDirective: new ng.core.ContentChild(ngxTabHeadDirective),
     ngxTabContentDirective: new ng.core.ContentChild(ngxTabContentDirective),

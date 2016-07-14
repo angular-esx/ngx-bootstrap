@@ -1,5 +1,5 @@
 ﻿function _testCase() {
-  this.constructor = [ngxBootstrap.tabs.SERVICE, function (ngxTabsService) {
+  this.constructor = [ngxBootstrap.tabs.TABS_SERVICE, function (ngxTabsService) {
     this.ngxTabsService = ngxTabsService;
 
     this.tabs = [
@@ -21,12 +21,12 @@
     ngxBootstrap.splice(this.pillTabs, tab);
   };
 
-  this.selectTab = function (tab) {
-    this.ngxTabsService.select(tab);
+  this.selectTab = function (id) {
+    this.ngxTabsService.select(id);
   };
 
   this.changedTab = function (event) {
-    //alert('changed to tab ' + event.target.id);
+    console.log('changed to tab ' + event.id);
   };
 }
 
@@ -38,9 +38,8 @@ var isolatedComponents = ng.core.Component({
     ngxBootstrap.tabs.DIRECTIVES
   ],
   providers: [
-    ngxBootstrap.coreService,
-    ngxBootstrap.link.SERVICE,
-    ngxBootstrap.tabs.SERVICE
+    ngxBootstrap.coreService.ANIMATION_SERVICE,
+    ngxBootstrap.tabs.SERVICES
   ]
 })
 .Class(new _testCase());

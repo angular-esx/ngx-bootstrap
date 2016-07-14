@@ -66,7 +66,7 @@ function _ngxAlertComponent() {
       var _actions = _self.ngxAlertService.getActions();
       
       ngxBootstrap.forEach(_events, function (_event) {
-        if (_event.target && (!_event.target || _event.target === _self.id)) {
+        if (_event.id && (!_event.id || _event.id === _self.id)) {
           if (_event.type === _actions.SHOW_ALERT) {
             _self.show();
           }
@@ -83,7 +83,7 @@ function _ngxAlertComponent() {
 
     var _isCanceled = false;
     this.showingEmitter.emit({
-      target: this.id,
+      id: this.id,
       cancel: function () { _isCanceled = true; }
     });
 
@@ -97,7 +97,7 @@ function _ngxAlertComponent() {
     this.ngxAlertService.fadeIn(this.elementRef)
     .then(function () {
       _self.shownEmitter.emit({
-        target: _self.id
+        id: _self.id
       });
     });
   };
@@ -107,7 +107,7 @@ function _ngxAlertComponent() {
 
     var _isCanceled = false;
     this.dismissingEmitter.emit({
-      target: this.id,
+      id: this.id,
       cancel: function () { _isCanceled = true; }
     });
 
@@ -121,7 +121,7 @@ function _ngxAlertComponent() {
       _self.ngOnChanges(_self.buildChangeRecord(_styleProperties.STATE, _self.state));
 
       _self.dismissedEmitter.emit({
-        target: _self.id
+        id: _self.id
       });
     });
   };

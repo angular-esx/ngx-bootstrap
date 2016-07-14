@@ -1,7 +1,4 @@
-﻿var ngxColorService = require('colorService');
-var ngxBootstrap = require('ngxBootstrap');
-
-function _ngxIconService() {
+﻿function _ngxIconService() {
   var _defaultFontSet = '',
       _iconFontAlias = {};
 
@@ -12,12 +9,9 @@ function _ngxIconService() {
       _fetchingSvgIcons = {};
 
   this.constructor = [
-    ngxColorService,
     ng.http.Http,
 
-    function ngxIconService(ngxColorService, httpService) {
-      ngxBootstrap.shallowCopy(this, ngxColorService);
-      
+    function ngxIconService(httpService) {
       this.httpService = httpService;
     }
   ];
@@ -131,7 +125,7 @@ function _ngxIconService() {
     this.hasSvgElement = function () { return _svgElement !== null && _svgElement !== undefined; };
 
     this.querySvgElement = function (id) {
-      var _result = _svgElement ? _svgElement.querySelector('#' + id) : null;
+      var _result = (_svgElement && id) ? _svgElement.querySelector('#' + id) : null;
       if(!_result){ return null; }
 
       if (_result.tagName.toLowerCase() === 'svg') {

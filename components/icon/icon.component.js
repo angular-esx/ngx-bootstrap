@@ -1,24 +1,22 @@
 ﻿var ngxIconService = require('./services/icon.service.js');
-var ngxRenderService = require('renderService');
 var ngxBaseComponent = require('baseComponent');
+var ngxBootstrap = require('ngxBootstrap');
 
 function _ngxIconComponent() {
-  var _base;
-  var _ATTRIBUTES = {
-    SVG_SRC: { NAME: 'svgSrc', ALIAS: 'svg-src' },
-    SVG_ICON: { NAME: 'svgIcon', ALIAS: 'svg-icon' },
-    FONT_SET: { NAME: 'fontSet', ALIAS: 'font-set' },
-    FONT_ICON: { NAME: 'fontIcon', ALIAS: 'font-icon' },
+  var _base, _STYLE_PROPERTIES;
+  var _PROPERTIES = {
+    SVG_SRC: 'svgSrc',
+    SVG_ICON: 'svgIcon'
   };
 
   this.extends = ngxBaseComponent;
 
   this.constructor = [
     ng.core.ElementRef,
-    ngxRenderService,
+    ng.core.Renderer,
     ngxIconService,
 
-    function ngxIconComponent(elementRef, ngxRenderService, ngxIconService) {
+    function ngxIconComponent(elementRef, renderer, ngxIconService) {
       ngxBaseComponent.apply(this, arguments);
 
       if (elementRef) {
@@ -27,27 +25,11 @@ function _ngxIconComponent() {
     }
   ];
 
-  this.ngAfterContentInit = function () {
-    if (!this.svgSrc && !this.svgIcon && !this.fontSet) {
-      var _changeRecord = {};
-      _changeRecord[_ATTRIBUTES.FONT_SET.ALIAS] = {
-        previousValue: '',
-        currentValue: this.ngxIconService.getIconFontClass(this.ngxIconService.getDefaultFontSet())
-      };
-      
-      this.ngOnChanges(_changeRecord);
-    }
-
-    _getBaseInstance(this).ngAfterContentInit.apply(this);
-  };
-
-  this.onAggregatePropertyValueState = function (changeRecord) {
-    var _aggregate = _getBaseInstance(this).onAggregatePropertyValueState.apply(this, arguments);
-    
-    if(changeRecord[_ATTRIBUTES.SVG_SRC.NAME] || changeRecord[_ATTRIBUTES.SVG_ICON.NAME]){
+  this.ngOnChanges = function (changeRecord) {
+    if(changeRecord.hasOwnProperty(_PROPERTIES.SVG_SRC) || changeRecord.hasOwnProperty(_PROPERTIES.SVG_ICON)){
       var _self = this;
 
-      if (changeRecord[_ATTRIBUTES.SVG_ICON.NAME]) {
+      if (changeRecord.hasOwnProperty(_PROPERTIES.SVG_ICON)) {
         var _parts = _splitIconKey(this.svgIcon);
 
         this.ngxIconService.getSvgIconByName(_parts.iconName, _parts.namespace)
@@ -63,20 +45,76 @@ function _ngxIconComponent() {
       }
     }
     else {
-      if (this.ngxIconService.getIconFontClass) {
-        _aggregate[_ATTRIBUTES.FONT_SET.ALIAS] = {
-          prev: this.ngxIconService.getIconFontClass(this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.FONT_SET.NAME, _ATTRIBUTES.FONT_SET.ALIAS)),
-          current: this.ngxIconService.getIconFontClass(this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.FONT_SET.NAME, _ATTRIBUTES.FONT_SET.ALIAS))
-        };
+      var _styleProperties = this.getStyleProperties();
+
+      if(changeRecord.hasOwnProperty(_styleProperties.FONT_SET)){
+        this.buildChangeRecord
+        (
+          _styleProperties.FONT_SET, 
+          this.ngxIconService.getIconFontClass(changeRecord[_styleProperties.FONT_SET].currentValue), 
+          null, 
+          changeRecord
+        );
       }
 
-      _aggregate[_ATTRIBUTES.FONT_ICON.ALIAS] = {
-        prev: this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.FONT_ICON.NAME, _ATTRIBUTES.FONT_ICON.ALIAS),
-        current: this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.FONT_ICON.NAME, _ATTRIBUTES.FONT_ICON.ALIAS)
-      };
+      if(changeRecord.hasOwnProperty(_styleProperties.FONT_ICON)){
+        this.buildChangeRecord
+        (
+          _styleProperties.FONT_ICON, 
+          changeRecord[_styleProperties.FONT_ICON].currentValue, 
+          null, 
+          changeRecord
+        );
+      }
     }
 
-    return _aggregate;
+    _getBaseInstance(this).ngOnChanges.apply(this, [changeRecord]);
+  };
+
+  this.initDefaultValues = function(){
+    var _changeRecord;
+    if (!this.svgSrc && !this.svgIcon && !this.fontSet) {
+      var _iconFontClass = this.ngxIconService.getIconFontClass(this.ngxIconService.getDefaultFontSet());
+      _changeRecord = this.buildChangeRecord(this.getStyleProperties().FONT_SET, _iconFontClass);
+    }
+
+    return _changeRecord;
+  };
+
+  this.needRebuildCssClass = function(changeRecord){
+    var _styleProperties = this.getStyleProperties();
+
+    return changeRecord.hasOwnProperty(_styleProperties.FONT_ICON) || 
+    changeRecord.hasOwnProperty(_styleProperties.FONT_SET) || 
+    _getBaseInstance(this).needRebuildCssClass.apply(this, arguments);
+  };
+
+  this.buildCssClassForProperty = function(propertyName, propertyValue){
+    var _styleProperties = this.getStyleProperties();
+
+    if(propertyName === _styleProperties.FONT_SET || propertyName === _styleProperties.FONT_ICON){
+      return propertyValue;
+    }
+    else{
+      _getBaseInstance(this).buildCssClassForProperty.apply(this, arguments);
+    }
+  };
+
+  this.getPrefixClass = function () {
+    return 'ngx-icon';
+  };
+
+  this.getStyleProperties = function(){
+    if(!_STYLE_PROPERTIES){
+      _STYLE_PROPERTIES = {
+        FONT_SET: 'fontSet',
+        FONT_ICON: 'fontIcon'
+      };
+
+      ngxBootstrap.shallowCopy(_STYLE_PROPERTIES, _getBaseInstance(this).getStyleProperties.apply(this));
+    }
+
+    return _STYLE_PROPERTIES;
   };
 
   function _splitIconKey(iconKey) {
@@ -110,7 +148,6 @@ module.exports = ng.core.Component({
   selector: 'ngx-icon',
   template: require('./themes/' + __THEME__ + '/templates/icon.html'),
   styles: [require('./themes/' + __THEME__ + '/scss/icon.scss')],
-  providers: [ngxRenderService],
   properties: [
     'alt',
     'svgSrc:svg-src',

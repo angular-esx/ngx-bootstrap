@@ -1,6 +1,6 @@
 ﻿@import "_variables.scss";
 
-:host(.#{$ngx-icon-prefix-class}) {
+:host(.ngx-icon) {
   display: inline-block;
   background-repeat: no-repeat;
   fill: currentColor;

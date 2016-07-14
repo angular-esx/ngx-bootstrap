@@ -1,10 +1,9 @@
 ﻿var ngxBootstrap = require('ngxBootstrap');
+var ngxPaginationComponent = require('./pagination.component.js');
 
 ngxBootstrap.pagination = {
-  DIRECTIVES: [
-    require('./pagination.component.js')
-  ],
-  SERVICE: require('./services/pagination.service.js')
+  PAGINATION_COMPONENT: ngxPaginationComponent,
+  DIRECTIVES: [ ngxPaginationComponent ]
 };
 
 module.exports = ngxBootstrap;

@@ -3,14 +3,14 @@
 
 @import "_mixins.scss";
 
-:host(.#{$ngx-pagination-prefix-class}) {
+:host(.ngx-pagination) {
   display: inline-block;
   padding-left: 0;
   margin: $ngx-pagination-margin;
   
   @include ngx-border-radius($ngx-pagination-border-radius);
 
-  > .#{$ngx-page-item-prefix-class} {
+  > .ngx-page-item {
      @extend %ngx-link-normalize;
 
     line-height: $ngx-page-item-line-height;
@@ -22,7 +22,7 @@
     background-color: map-get($ngx-page-item, background);
     border: 1px solid map-get($ngx-page-item, border);
 
-    @include ngx-state(#{$ngx-page-item-prefix-class}, 'focus hover'){
+    @include ngx-state(ngx-page-item, 'focus hover'){
       color: map-get($ngx-page-item-hover, foreground);
       background-color: map-get($ngx-page-item-hover, background);
       border-color: map-get($ngx-page-item-hover, border);
@@ -37,7 +37,7 @@
       @include ngx-border-radius($ngx-page-item-border-radius, right);
     }
 
-    &.#{$ngx-page-item-prefix-class}-state-active {
+    &.ngx-page-item-state-active {
       @include ngx-state(null, 'self focus hover'){
         color: map-get($ngx-page-item-active, foreground);
         background-color: map-get($ngx-page-item-active, background);
@@ -48,11 +48,11 @@
     }
   }
 
-  &.#{$ngx-pagination-prefix-class}-size-small {
+  &.ngx-pagination-size-small {
     @include ngx-pagination-size($ngx-page-item-font-size-sm, $ngx-page-item-line-height-sm, $ngx-page-item-padding-sm, $ngx-page-item-border-radius-sm);
   }
 
-  &.#{$ngx-pagination-prefix-class}-size-large {
+  &.ngx-pagination-size-large {
     @include ngx-pagination-size($ngx-page-item-font-size-lg, $ngx-page-item-line-height-lg, $ngx-page-item-padding-lg, $ngx-page-item-border-radius-lg);
   }
 }

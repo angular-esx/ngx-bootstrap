@@ -1,8 +1,5 @@
 ﻿function _testCase() {
-  this.constructor = [ngxBootstrap.pagination.SERVICE, function (ngxPaginationService) {
-
-    this.SIZES = ngxPaginationService.getSizes();
-  }];
+  this.constructor = function () {};
 
   this.setPage = function (event) {
     event.page.link = 'https://mywebsite.com/page/' + event.page.number;
@@ -21,10 +18,6 @@ var isolatedComponents = ng.core.Component({
   templateUrl: 'components/pagination/tests/ui/isolated-components/test-case.html',
   directives: [
     ngxBootstrap.pagination.DIRECTIVES
-  ],
-  providers: [
-   ngxBootstrap.coreService,
-   ngxBootstrap.pagination.SERVICE
   ]
 })
 .Class(new _testCase());

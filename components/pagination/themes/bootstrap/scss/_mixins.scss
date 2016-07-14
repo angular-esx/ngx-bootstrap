@@ -1,7 +1,7 @@
 ﻿@import "_variables.scss";
 
 @mixin ngx-pagination-size($font-size, $line-height, $padding, $border-radius) {
-  > .#{$ngx-page-item-prefix-class} {
+  > .ngx-page-item {
     > a {
       font-size: $font-size;
       line-height: $line-height;

@@ -1,38 +1,26 @@
-﻿var ngxPaginationService = require('./services/pagination.service.js');
-var ngxBaseComponent = require('baseComponent');
-var ngxRenderService = require('renderService');
+﻿var ngxBaseComponent = require('baseComponent');
 var ngxBootstrap = require('ngxBootstrap');
 
 function _ngxPaginationComponent() {
   var _base;
-  var _ATTRIBUTES = {
-    TOTAL_PAGES: 'total-pages',
-    PAGE_SIZE: 'page-size',
-    CURRENT_PAGE: 'current-page',
-    SHOW_PREVIOUS: 'show-previous',
-    SHOW_NEXT: 'show_next'
-  };
 
   this.extends = ngxBaseComponent;
 
   this.constructor = [
     ng.core.ElementRef,
-    ngxRenderService,
-    ngxPaginationService,
+    ng.core.Renderer,
 
-    function ngxPaginationComponent(elementRef, ngxRenderService, ngxPaginationService) {
+    function ngxPaginationComponent(elementRef, renderer) {
       ngxBaseComponent.apply(this, arguments);
       
       if (elementRef) {
-        this.ngxPaginationService = ngxPaginationService;
-
         this.setPageEmitter = new ng.core.EventEmitter();
         this.changePageEmitter = new ng.core.EventEmitter(false);
       }
     }
   ];
 
-  this.ngAfterContentInit = function () {
+  this.initDefaultValues = function () {
     if (!this.totalPages || this.totalPages < 0) { this.totalPages = 0; }
     else { this.totalPages = parseInt(this.totalPages); }
 
@@ -49,6 +37,10 @@ function _ngxPaginationComponent() {
 
     this.pageBuilder = new _pageBuilder();
     this.pageBuilder.build(this.totalPages, this.pageSize, this.startPage, this.setPageEmitter);
+  };
+
+  this.getPrefixClass = function () {
+    return 'ngx-pagination';
   };
 
   this.prev = function (event) {
@@ -137,7 +129,6 @@ module.exports = ng.core.Component({
   selector: 'ngx-pagination',
   template: require('./themes/' + __THEME__ + '/templates/pagination.html'),
   styles: [require('./themes/' + __THEME__  + '/scss/pagination.scss')],
-  providers: [ngxRenderService],
   properties: [
     'size',
     'totalPages: total-pages',
@@ -145,7 +136,7 @@ module.exports = ng.core.Component({
     'currentPage: current-page',
     'showPrevious: show-previous',
     'showNext: show-next',
-    'prefixClass: prefix-class'
+    'initCssClass:class'
   ],
   events: ['setPageEmitter: onSetPage', 'changePageEmitter: onChangePage']
 })

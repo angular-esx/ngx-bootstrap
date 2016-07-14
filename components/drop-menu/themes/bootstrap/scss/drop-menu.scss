@@ -3,7 +3,7 @@
 
 @import "_variables.scss";
 
-:host(.#{$ngx-drop-menu-prefix-class}) {
+:host(.ngx-drop-menu) {
   display: none; 
   position: absolute;
   top: 100%;
@@ -27,21 +27,21 @@
     box-sizing: border-box;
   }
 
-  &.#{$ngx-drop-menu-prefix-class}-state-active {
+  &.ngx-drop-menu-state-active {
     display: inline;
   }
 
-  &.#{$ngx-drop-menu-prefix-class}-position-left {
+  &.ngx-drop-menu-position-left {
     right: auto;
     left: 0;
   }
 
-  &.#{$ngx-drop-menu-prefix-class}-position-right {
+  &.ngx-drop-menu-position-right {
     right: 0;
     left: auto;
   }
 
-  &.#{$ngx-drop-menu-prefix-class}-type-dropup {
+  &.ngx-drop-menu-type-dropup {
     top: auto;
     bottom: 100%;
     margin-bottom: 2px;
@@ -71,32 +71,31 @@
     background-color: $ngx-drop-menu-divider-background-color;
   }
 
-  > .#{$ngx-drop-menu-prefix-class}-item,
-  > a {
-    display: block;
-    text-align: inherit;
-    text-decoration: none;
-    font-weight: normal;
-    line-height: $ngx-drop-menu-item-line-height;
-    white-space: nowrap;
-    padding: $ngx-drop-menu-item-padding;
-    clear: both;
-    color: map-get($ngx-drop-menu-item, foreground);
-    background: map-get($ngx-drop-menu-item, background);
-    border: 0;
-    cursor: pointer;
+  > .ngx-drop-menu-item {
+    display: block !important;
+    text-align: inherit !important;
+    text-decoration: none !important;
+    font-weight: normal !important;
+    line-height: $ngx-drop-menu-item-line-height !important;
+    white-space: nowrap !important;
+    padding: $ngx-drop-menu-item-padding !important;
+    clear: both !important;
+    color: map-get($ngx-drop-menu-item, foreground) !important;
+    background: map-get($ngx-drop-menu-item, background) !important;
+    border: 0 !important;
+    cursor: pointer !important;
 
-    @include ngx-state(#{$ngx-drop-menu-prefix-class}-item, 'focus hover active'){
-      color: map-get($ngx-drop-menu-item-active, foreground);
-      background-color: map-get($ngx-drop-menu-item-active, background);
-      outline: 0;
+    @include ngx-state(ngx-drop-menu-item, 'focus hover active'){
+      color: map-get($ngx-drop-menu-item-active, foreground) !important;
+      background-color: map-get($ngx-drop-menu-item-active, background) !important;
+      outline: 0 !important;
     }
 
-    @include ngx-state(#{$ngx-drop-menu-prefix-class}-item, 'disabled'){
-      color: map-get($ngx-drop-menu-item-disabled, foreground);
-      background-color:transparent;
-      background-image: none;
-      cursor: not-allowed;
+    @include ngx-state(ngx-drop-menu-item, 'disabled'){
+      color: map-get($ngx-drop-menu-item-disabled, foreground) !important;
+      background-color:transparent !important;
+      background-image: none !important;
+      cursor: not-allowed !important;
     }
   }
 }

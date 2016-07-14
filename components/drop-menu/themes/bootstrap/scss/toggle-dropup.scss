@@ -1,15 +1,15 @@
 ﻿@import "_variables.scss";
 
-.#{$ngx-toggle-dropup-prefix-class} {
+.ngx-toggle-dropup {
   &::after{
-    display: inline-block;
-    width: 0;
-    height: 0;
-    margin: $ngx-toggle-dropup-margin;
-    vertical-align: middle;
-    content: "";
-    border-right: $ngx-toggle-dropup-border transparent;
-    border-left: $ngx-toggle-dropup-border transparent;
-    border-bottom: $ngx-toggle-dropup-border;
+    display: inline-block !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: $ngx-toggle-dropup-margin !important;
+    vertical-align: middle !important;
+    content: "" !important;
+    border-right: $ngx-toggle-dropup-border transparent !important;
+    border-left: $ngx-toggle-dropup-border transparent !important;
+    border-bottom: $ngx-toggle-dropup-border !important;
   }
 }

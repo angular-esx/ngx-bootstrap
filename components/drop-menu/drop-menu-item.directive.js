@@ -1,39 +1,17 @@
-﻿var ngxDropMenuItemService = require('./services/drop-menu-item.service.js');
-var ngxBaseDirective = require('baseDirective');
-var ngxRenderService = require('renderService');
+﻿function _ngxDropMenuItemDirective() {
+  this.constructor = function ngxDropMenuItemDirective() {};
 
-function _ngxDropMenuItemDirective() {
-  var _base;
-
-  this.extends = ngxBaseDirective;
-
-  this.constructor = [
-    ng.core.ElementRef,
-    ngxRenderService,
-    ngxDropMenuItemService,
-
-    function ngxDropMenuItemDirective(elementRef, ngxRenderService, ngxDropMenuItemService) {
-      ngxBaseDirective.apply(this, arguments);
-
-      if (elementRef) {
-        this.ngxDropMenuItemService = ngxDropMenuItemService;
-      }
-    }
-  ];
-
-  this.getPrefixClass = function () {
-    return 'ngx-drop-menu-item';
+  this.ngOnChanges = function (changeRecord) {
+    this.isDisabled = this.state && this.state.indexOf('disabled') > -1;
   };
-
-  function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxBaseDirective); }
-    return _base;
-  }
 }
 
 module.exports = ng.core.Directive({
   selector: '[ngx-drop-menu-item]',
-  providers: [ngxRenderService],
-  properties: ['state']
+  properties: ['state:ngx-drop-menu-item-state'],
+  host: {
+    '[class.ngx-drop-menu-item]': 'true',
+    '[class.ngx-drop-menu-item-state-disabled]': 'isDisabled',
+  }
 })
 .Class(new _ngxDropMenuItemDirective());

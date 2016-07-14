@@ -1,36 +1,25 @@
-﻿var ngxPagerService = require('./services/pager.service.js');
-var ngxBaseComponent = require('baseComponent');
-var ngxRenderService = require('renderService');
+﻿var ngxBaseComponent = require('baseComponent');
 
 function _ngxPagerComponent() {
   var _base;
-  var _ATTRIBUTES = {
-    TOTAL_PAGES: 'total-pages',
-    CURRENT_PAGE: 'current-page',
-    SHOW_PREVIOUS: 'show-previous',
-    SHOW_NEXT: 'show_next'
-  };
 
   this.extends = ngxBaseComponent;
 
   this.constructor = [
     ng.core.ElementRef,
-    ngxRenderService,
-    ngxPagerService,
+    ng.core.Renderer,
 
-    function ngxPagerComponent(elementRef, ngxRenderService, ngxPagerService) {
+    function ngxPagerComponent(elementRef, renderer) {
       ngxBaseComponent.apply(this, arguments);
 
       if (elementRef) {
-        this.ngxPagerService = ngxPagerService;
-
         this.setPageEmitter = new ng.core.EventEmitter();
         this.changePageEmitter = new ng.core.EventEmitter(false);
       }
     }
   ];
 
-  this.ngAfterContentInit = function () {
+  this.initDefaultValues = function () {
     if (!this.totalPages || this.totalPages < 0) { this.totalPages = 0; }
     else { this.totalPages = parseInt(this.totalPages); }
 
@@ -42,6 +31,10 @@ function _ngxPagerComponent() {
 
     this.pageBuilder = new _pageBuilder();
     this.pageBuilder.build(this.totalPages, this.currentPage, this.setPageEmitter);
+  };
+
+  this.getPrefixClass = function () {
+    return 'ngx-pager';
   };
 
   this.prev = function (event) {
@@ -113,14 +106,13 @@ module.exports = ng.core.Component({
   selector: 'ngx-pager',
   template: require('./themes/' + __THEME__ + '/templates/pager.html'),
   styles: [require('./themes/' + __THEME__  + '/scss/pager.scss')],
-  providers: [ngxRenderService],
   properties: [
     'type',
     'totalPages: total-pages',
     'currentPage: current-page',
     'showPrevious: show-previous',
     'showNext: show-next',
-    'prefixClass: prefix-class'
+    'initCssClass:class'
   ],
   events: ['setPageEmitter: onSetPage', 'changePageEmitter: onChangePage']
 })

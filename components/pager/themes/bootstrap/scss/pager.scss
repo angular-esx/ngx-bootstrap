@@ -4,14 +4,14 @@
 
 @import "_variables.scss";
 
-:host(.#{$ngx-pager-prefix-class}) {
+:host(.ngx-pager) {
   padding-left: 0;
   margin: $ngx-pager-margin;
   text-align: center;
 
   @include clearfix();
 
-  > .#{$ngx-pager-prefix-class}-item {
+  > .ngx-pager-item {
     @extend %ngx-link-normalize;
 
     display: inline-block;
@@ -21,13 +21,13 @@
     border: 1px solid map-get($ngx-pager-item, border);
     border-radius: $ngx-pager-item-border-radius;
 
-    @include ngx-state(#{$ngx-pager-prefix-class}-item, 'focus hover'){
+    @include ngx-state(ngx-pager-item, 'focus hover'){
       background-color: map-get($ngx-pager-item-active, background);
     }
   }
 
-  &.#{$ngx-pager-prefix-class}-type-aligned {
-    > .#{$ngx-pager-prefix-class}-left-item { float: left; }
-    > .#{$ngx-pager-prefix-class}-right-item { float: right; }
+  &.ngx-pager-type-aligned {
+    > .ngx-pager-left-item { float: left; }
+    > .ngx-pager-right-item { float: right; }
   }
 }

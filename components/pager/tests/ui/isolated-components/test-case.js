@@ -1,8 +1,5 @@
 ﻿function _testCase() {
-  this.constructor = [ngxBootstrap.pager.SERVICE, function (ngxPagerService) {
-
-    this.TYPES = ngxPagerService.getTypes();
-  }];
+  this.constructor = function () {};
 
   this.setPage = function (event) {
     event.setPrevLink('https://mywebsite.com/page/' + event.currentPage - 1);
@@ -21,10 +18,6 @@ var isolatedComponents = ng.core.Component({
   templateUrl: 'components/pager/tests/ui/isolated-components/test-case.html',
   directives: [
     ngxBootstrap.pager.DIRECTIVES
-  ],
-  providers: [
-    ngxBootstrap.coreService,
-    ngxBootstrap.pager.SERVICE
   ]
 })
 .Class(new _testCase());

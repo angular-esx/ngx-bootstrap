@@ -1,8 +1,7 @@
-var ngxBootstrap = require('ngxBootstrap');
 var ngxRadioDirective = require('./radio.directive.js');
 var ngxRadioGroupDirective = require('./radio-group.directive.js');
 
-ngxBootstrap.link = {
+module.exports  = {
   RADIO_DIRECTIVE: ngxRadioDirective,
   RADIO_GROUP_DIRECTIVE: ngxRadioGroupDirective,
   DIRECTIVES: [ 
@@ -10,5 +9,3 @@ ngxBootstrap.link = {
     ngxRadioGroupDirective 
   ]
 };
-
-module.exports = ngxBootstrap;

@@ -19,7 +19,7 @@
 
 module.exports = ng.core.Directive({
   selector: '[ngx-radio-group]',
-  properties: ['id: ngx-checkbox-group', 'model:ngx-checkbox-group-model'],
-  events: ['changedModelEmitter:ngx-checkbox-group-onChangedModel']
+  properties: ['id: ngx-radio-group', 'model:ngx-radio-group-model'],
+  events: ['changedModelEmitter:ngx-radio-group-onChangedModel']
 })
 .Class(new _ngxRadioGroupDirective());

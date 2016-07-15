@@ -3,9 +3,9 @@
     ng.core.ElementRef,
 
     function ngxCheckboxGroupDirective(elementRef) {
-      if (elementRef) {
-        this.elementRef = elementRef;
+       this.elementRef = elementRef;
 
+      if (elementRef) {
         this.changedModelEmitter = new ng.core.EventEmitter();
       }
     }

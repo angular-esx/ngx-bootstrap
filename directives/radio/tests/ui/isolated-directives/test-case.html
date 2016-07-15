@@ -1,6 +1,6 @@
 ﻿<h3>ngxRadio With ngxRadioGroup</h3>
 <center>
-  <ngx-group ngx-radio-group="ngxRadioGroup" [(model)]="ngxRadioGroupTracker.value">
+  <ngx-group ngx-radio-group="ngxRadioGroup" [(ngx-radio-group-model)]="ngxRadioGroupTracker.value">
     <ngx-button ngx-radio
                 color="primary"
                 value="item 01">
@@ -9,13 +9,13 @@
 
     <ngx-button ngx-radio
                 color="primary"
-                value="item 02">
+                ngx-radio-value="item 02">
       Item 02
     </ngx-button>
 
     <ngx-button ngx-radio
                 color="primary"
-                value="item 03">
+                ngx-radio-value="item 03">
       Item 03
     </ngx-button>
   </ngx-group>
@@ -25,22 +25,22 @@ selected item: {{ngxRadioGroupTracker.value}}
 
 <h3>ngxRadio With vertical ngxRadioGroup</h3>
 <center>
-  <ngx-group ngx-radio-group="ngxVerticalBoxGroup" type="vertical" [(model)]="ngxVerticalRadioGroupTracker.value">
+  <ngx-group ngx-radio-group="ngxVerticalBoxGroup" type="vertical" [(ngx-radio-group-model)]="ngxVerticalRadioGroupTracker.value">
     <ngx-button ngx-radio
                 color="primary"
-                value="item 01">
+                ngx-radio-value="item 01">
       Item 01
     </ngx-button>
 
     <ngx-button ngx-radio
                 color="primary"
-                value="item 02">
+                ngx-radio-value="item 02">
       Item 02
     </ngx-button>
 
     <ngx-button ngx-radio
                 color="primary"
-                value="item 03">
+                ngx-radio-value="item 03">
       Item 03
     </ngx-button>
   </ngx-group>

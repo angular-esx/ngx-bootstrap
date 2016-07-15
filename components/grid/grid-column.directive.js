@@ -1,64 +1,75 @@
-﻿var ngxGridService = require('./services/grid.service.js');
-var ngxBaseDirective = require('baseDirective');
-var ngxRenderService = require('renderService');
+﻿var ngxBaseDirective = require('baseDirective');
+var ngxBootstrap = require('ngxBootstrap');
 
 function _ngxGridColumnDirective() {
-  var _base;
-  var _ATTRIBUTES = {
-    SIZE: 'size',
-    OFFSET: 'offset',
-    ORDER: 'order',
-    ALIGN_SELF: { NAME: 'alignSelf', ALIAS: 'align-self' }
-  };
+  var _base, _STYLE_PROPERTIES;
 
   this.extends = ngxBaseDirective;
 
   this.constructor = [
     ng.core.ElementRef,
-    ngxRenderService,
-    ngxGridService,
+    ng.core.Renderer,
 
-    function ngxGridColumnDirective(elementRef, ngxRenderService, ngxGridService) {
+    function ngxGridColumnDirective(elementRef, renderer) {
       ngxBaseDirective.apply(this, arguments);
-
-      if (elementRef) {
-        this.ngxGridService = ngxGridService;
-      }
     }
   ];
 
-  this.onAggregatePropertyValueState = function (changeRecord) {
-    var _aggregate = {};
+  this.getPrefixClass = function () {
+    return 'ngx-grid-col';
+  };
 
-    if (this.ngxGridService.getColumnSizeClass) {
-      _aggregate[_ATTRIBUTES.SIZE] = {
-        prev: this.ngxGridService.getColumnSizeClass(this.getPrefixClass(), this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.SIZE)),
-        current: this.ngxGridService.getColumnSizeClass(this.getPrefixClass(), this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.SIZE))
+  this.getStyleProperties = function() {
+    if(!_STYLE_PROPERTIES){
+      _STYLE_PROPERTIES = {
+        SIZE: 'size',
+        OFFSET: 'offset',
+        ORDER: 'order',
+        ALIGN_SELF: 'alignSelf'
       };
+
+      ngxBootstrap.shallowCopy(_STYLE_PROPERTIES, _getBaseInstance(this).getStyleProperties.apply(this));
     }
 
-    if (this.ngxGridService.getColumnOffsetClass) {
-      _aggregate[_ATTRIBUTES.OFFSET] = {
-        prev: this.ngxGridService.getColumnOffsetClass(this.getPrefixClass(), this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.OFFSET)),
-        current: this.ngxGridService.getColumnOffsetClass(this.getPrefixClass(), this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.OFFSET))
-      };
-    }
+    return _STYLE_PROPERTIES;
+  };
 
-    if (this.ngxGridService.getColumnOrderClass) {
-      _aggregate[_ATTRIBUTES.ORDER] = {
-        prev: this.ngxGridService.getColumnOrderClass(this.getPrefixClass(), this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.ORDER)),
-        current: this.ngxGridService.getColumnOrderClass(this.getPrefixClass(), this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.ORDER))
-      };
-    }
+  this.buildCssClassForProperty = function(propertyName, propertyValue){
+    var _styleProperties = this.getStyleProperties();
 
-    if (this.ngxGridService.getColumnAlignSelfClass) {
-      _aggregate[_ATTRIBUTES.ALIGN_SELF.ALIAS] = {
-        prev: this.ngxGridService.getColumnAlignSelfClass(this.getPrefixClass(), this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.ALIGN_SELF.NAME, _ATTRIBUTES.ALIGN_SELF.ALIAS)),
-        current: this.ngxGridService.getColumnAlignSelfClass(this.getPrefixClass(), this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.ALIGN_SELF.NAME, _ATTRIBUTES.ALIGN_SELF.ALIAS))
-      };
-    }
+    if(
+      propertyName === _styleProperties.SIZE || 
+      propertyName === _styleProperties.OFFSET ||
+      propertyName === _styleProperties.ORDER ||
+      propertyName === _styleProperties.ALIGN_SELF
+    ){
+      if (!propertyValue) { return ''; }
 
-    return _aggregate;
+      var _parts,
+          _cssClasses = [],
+          _values = propertyValue.split(' '),
+          _prefixClass = this.getPrefixClass();
+          _propertyName = propertyName
+                          .replace(/([A-Z])/g, function (x, y) { return '-' + y; })
+                          .replace(/^-/, '')
+                          .toLowerCase();
+
+      ngxBootstrap.forEach(_values, function (value) {
+        _parts = value.split('-');
+
+        if (_parts.length === 2) {
+          _cssClasses.push([_prefixClass, _parts[0], _propertyName, _parts[1]].join('-'));
+        }
+        else if(_parts.length === 3){
+          _cssClasses.push([_prefixClass, _parts[0], _propertyName, _parts[1] + '_' + _parts[2]].join('-'));
+        }
+      });
+
+      return _cssClasses.length === 0 ? '' : _cssClasses.join(' ');
+    }
+    else{
+      return _getBaseInstance(this).buildCssClassForProperty.apply(this, arguments);
+    }
   };
 
   function _getBaseInstance(context) {
@@ -69,7 +80,6 @@ function _ngxGridColumnDirective() {
 
 module.exports = ng.core.Directive({
   selector: 'ngx-grid-col',
-  providers: [ngxRenderService],
-  properties: ['size', 'offset', 'order', 'alignSelf:align-self']
+  properties: ['size', 'offset', 'order', 'alignSelf:align-self', 'initCssClass:class']
 })
 .Class(new _ngxGridColumnDirective());

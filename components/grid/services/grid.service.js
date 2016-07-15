@@ -27,14 +27,6 @@ function _ngxGridService() {
     }
   ];
 
-  this.isFluidTypeClass = function (prefixClass, type) {
-    return this.getTypeClass(prefixClass, type).indexOf(this.getFluidTypeClass(prefixClass)) > -1;
-  };
-  this.getFluidTypeClass = function (prefixClass) {
-    return prefixClass + '-type-fluid';
-  };
-
-
 
   this.getRowJustifyContents = function () {
     if (!_ROW_JUSTIFY_CONTENTS) {
@@ -69,26 +61,6 @@ function _ngxGridService() {
     });
 
     return _justifyContentClasses.length === 0 ? '' : _justifyContentClasses.join(' ');
-  };
-
-  this.isExtraSmallRowJustifyContentClass = function (prefixClass, justifyContents) {
-    return justifyContents.indexOf(prefixClass + '-' + _GRID_TIERS.XS + '-justify-content-') > -1;
-  };
-
-  this.isSmallRowJustifyContentClass = function (prefixClass, justifyContents) {
-    return justifyContents.indexOf(prefixClass + '-' + _GRID_TIERS.SM + '-justify-content-') > -1;
-  };
-
-  this.isMediumRowJustifyContentClass = function (prefixClass, justifyContents) {
-    return justifyContents.indexOf(prefixClass + '-' + _GRID_TIERS.MD + '-justify-content-') > -1;
-  };
-
-  this.isLargeRowJustifyContentClass = function (prefixClass, justifyContents) {
-    return justifyContents.indexOf(prefixClass + '-' + _GRID_TIERS.LG + '-justify-content-') > -1;
-  };
-
-  this.isExtraLargeRowJustifyContentClass = function (prefixClass, justifyContents) {
-    return justifyContents.indexOf(prefixClass + '-' + _GRID_TIERS.XL + '-justify-content-') > -1;
   };
 
 
@@ -128,26 +100,6 @@ function _ngxGridService() {
     return _alignContentClasses.length === 0 ? '' : _alignContentClasses.join(' ');
   };
 
-  this.isExtraSmallRowAlignContentClass = function (prefixClass, alignContents) {
-    return alignContents.indexOf(prefixClass + '-' + _GRID_TIERS.XS + '-align-content-') > -1;
-  };
-
-  this.isSmallRowAlignContentClass = function (prefixClass, alignContents) {
-    return alignContents.indexOf(prefixClass + '-' + _GRID_TIERS.SM + '-align-content-') > -1;
-  };
-
-  this.isMediumRowAlignContentClass = function (prefixClass, alignContents) {
-    return alignContents.indexOf(prefixClass + '-' + _GRID_TIERS.MD + '-align-content-') > -1;
-  };
-
-  this.isLargeRowAlignContentClass = function (prefixClass, alignContents) {
-    return alignContents.indexOf(prefixClass + '-' + _GRID_TIERS.LG + '-align-content-') > -1;
-  };
-
-  this.isExtraLargeRowAlignContentClass = function (prefixClass, alignContents) {
-    return alignContents.indexOf(prefixClass + '-' + _GRID_TIERS.XL + '-align-content-') > -1;
-  };
-
 
 
   this.getRowAlginItems = function () {
@@ -185,26 +137,6 @@ function _ngxGridService() {
     return _alignItemsClasses.length === 0 ? '' : _alignItemsClasses.join(' ');
   };
 
-  this.isExtraSmallRowAlignItemsClass = function (prefixClass, alignItems) {
-    return alignItems.indexOf(prefixClass + '-' + _GRID_TIERS.XS + '-align-items-') > -1;
-  };
-
-  this.isSmallRowAlignItemsClass = function (prefixClass, alignItems) {
-    return alignItems.indexOf(prefixClass + '-' + _GRID_TIERS.SM + '-align-items-') > -1;
-  };
-
-  this.isMediumRowAlignItemsClass = function (prefixClass, alignItems) {
-    return alignItems.indexOf(prefixClass + '-' + _GRID_TIERS.MD + '-align-items-') > -1;
-  };
-
-  this.isLargeRowAlignItemsClass = function (prefixClass, alignItems) {
-    return alignItems.indexOf(prefixClass + '-' + _GRID_TIERS.LG + '-align-items-') > -1;
-  };
-
-  this.isExtraLargeRowAlignItemsClass = function (prefixClass, alignItems) {
-    return alignItems.indexOf(prefixClass + '-' + _GRID_TIERS.XL + '-align-items-') > -1;
-  };
-
 
 
   this.getColumnSizes = function () {
@@ -236,26 +168,6 @@ function _ngxGridService() {
     });
 
     return _sizeClasses.length === 0 ? '' : _sizeClasses.join(' ');
-  };
-
-  this.isExtraSmallColumnSizeClass = function (prefixClass, sizes) {
-    return sizes.indexOf(prefixClass + '-' + _GRID_TIERS.XS + '-size-') > -1;
-  };
-
-  this.isSmallColumnSizeClass = function (prefixClass, sizes) {
-    return sizes.indexOf(prefixClass + '-' + _GRID_TIERS.SM + '-size-') > -1;
-  };
-
-  this.isMediumColumnSizeClass = function (prefixClass, sizes) {
-    return sizes.indexOf(prefixClass + '-' + _GRID_TIERS.MD + '-size-') > -1;
-  };
-
-  this.isLargeColumnSizeClass = function (prefixClass, sizes) {
-    return sizes.indexOf(prefixClass + '-' + _GRID_TIERS.LG + '-size-') > -1;
-  };
-
-  this.isExtraLargeColumnSizeClass = function (prefixClass, sizes) {
-    return sizes.indexOf(prefixClass + '-' + _GRID_TIERS.XL + '-size-') > -1;
   };
 
 
@@ -291,26 +203,6 @@ function _ngxGridService() {
     return _offsetClasses.length === 0 ? '' : _offsetClasses.join(' ');
   };
 
-  this.isExtraSmallColumnOffsetClass = function (prefixClass, offsets) {
-    return offsets.indexOf(prefixClass + '-' + _GRID_TIERS.XS + '-offset-') > -1;
-  };
-
-  this.isSmallColumnOffsetClass = function (prefixClass, offsets) {
-    return offsets.indexOf(prefixClass + '-' + _GRID_TIERS.SM + '-offset-') > -1;
-  };
-
-  this.isMediumColumnOffsetClass = function (prefixClass, offsets) {
-    return offsets.indexOf(prefixClass + '-' + _GRID_TIERS.MD + '-offset-') > -1;
-  };
-
-  this.isLargeColumnOffsetClass = function (prefixClass, offsets) {
-    return offsets.indexOf(prefixClass + '-' + _GRID_TIERS.LG + '-offset-') > -1;
-  };
-
-  this.isExtraLargeColumnOffsetClass = function (prefixClass, offsets) {
-    return offsets.indexOf(prefixClass + '-' + _GRID_TIERS.XL + '-offset-') > -1;
-  };
-
 
 
   this.getColumnOrders = function () {
@@ -343,27 +235,6 @@ function _ngxGridService() {
 
     return _orderClasses.length === 0 ? '' : _orderClasses.join(' ');
   };
-
-  this.isExtraSmallColumnOrderClass = function (prefixClass, orders) {
-    return orders.indexOf(prefixClass + '-' + _GRID_TIERS.XS + '-order-') > -1;
-  };
-
-  this.isSmallColumnOrderClass = function (prefixClass, orders) {
-    return orders.indexOf(prefixClass + '-' + _GRID_TIERS.SM + '-order-') > -1;
-  };
-
-  this.isMediumColumnOrderClass = function (prefixClass, orders) {
-    return orders.indexOf(prefixClass + '-' + _GRID_TIERS.MD + '-order-') > -1;
-  };
-
-  this.isLargeColumnOrderClass = function (prefixClass, orders) {
-    return orders.indexOf(prefixClass + '-' + _GRID_TIERS.LG + '-order-') > -1;
-  };
-
-  this.isExtraLargeColumnOrderClass = function (prefixClass, orders) {
-    return orders.indexOf(prefixClass + '-' + _GRID_TIERS.XL + '-order-') > -1;
-  };
-
 
 
   this.getColumnAlignSelfs = function () {
@@ -399,26 +270,6 @@ function _ngxGridService() {
     });
 
     return _alignSelfClasses.length === 0 ? '' : _alignSelfClasses.join(' ');
-  };
-
-  this.isExtraSmallColumnAlignSelfClass = function (prefixClass, alignSelfs) {
-    return alignSelfs.indexOf(prefixClass + '-' + _GRID_TIERS.XS + '-align-self-') > -1;
-  };
-
-  this.isSmallColumnAlignSelfClass = function (prefixClass, alignSelfs) {
-    return alignSelfs.indexOf(prefixClass + '-' + _GRID_TIERS.SM + '-align-self-') > -1;
-  };
-
-  this.isMediumColumnAlignSelfClass = function (prefixClass, alignSelfs) {
-    return alignSelfs.indexOf(prefixClass + '-' + _GRID_TIERS.MD + '-align-self-') > -1;
-  };
-
-  this.isLargeColumnAlignSelfClass = function (prefixClass, alignSelfs) {
-    return alignSelfs.indexOf(prefixClass + '-' + _GRID_TIERS.LG + '-align-self-') > -1;
-  };
-
-  this.isExtraLargeColumnAlignSelfClass = function (prefixClass, alignSelfs) {
-    return alignSelfs.indexOf(prefixClass + '-' + _GRID_TIERS.XL + '-align-self-') > -1;
   };
 }
 

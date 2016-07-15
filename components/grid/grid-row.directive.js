@@ -1,56 +1,73 @@
-﻿var ngxGridService = require('./services/grid.service.js');
-var ngxBaseDirective = require('baseDirective');
-var ngxRenderService = require('renderService');
+﻿var ngxBaseDirective = require('baseDirective');
+var ngxBootstrap = require('ngxBootstrap');
 
 function _ngxGridRowDirective() {
-  var _base;
-  var _ATTRIBUTES = {
-    JUSTIFY_CONTENT: { NAME: 'justifyContent', ALIAS: 'justify-content' },
-    ALIGN_CONTENT: { NAME: 'alignContent', ALIAS: 'align-content' },
-    ALIGN_ITENS: { NAME: 'alignItems', ALIAS: 'align-items' }
-  };
+  var _base, _STYLE_PROPERTIES;
 
   this.extends = ngxBaseDirective;
 
   this.constructor = [
     ng.core.ElementRef,
-    ngxRenderService,
-    ngxGridService,
+    ng.core.Renderer,
 
-    function ngxGridRowDirective(elementRef, ngxRenderService, ngxGridService) {
+    function ngxGridRowDirective(elementRef, renderer) {
       ngxBaseDirective.apply(this, arguments);
-
-      if (elementRef) {
-        this.ngxGridService = ngxGridService;
-      }
     }
   ];
 
-  this.onAggregatePropertyValueState = function (changeRecord) {
-    var _aggregate = {};
+  this.getPrefixClass = function () {
+    return 'ngx-grid-row';
+  };
 
-    if (this.ngxGridService.getRowJustifyContentClass) {
-      _aggregate[_ATTRIBUTES.JUSTIFY_CONTENT.ALIAS] = {
-        prev: this.ngxGridService.getRowJustifyContentClass(this.getPrefixClass(), this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.JUSTIFY_CONTENT.NAME, _ATTRIBUTES.JUSTIFY_CONTENT.ALIAS)),
-        current: this.ngxGridService.getRowJustifyContentClass(this.getPrefixClass(), this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.JUSTIFY_CONTENT.NAME, _ATTRIBUTES.JUSTIFY_CONTENT.ALIAS))
+  this.getStyleProperties = function() {
+    if(!_STYLE_PROPERTIES){
+      _STYLE_PROPERTIES = {
+        JUSTIFY_CONTENT: 'justifyContent',
+        ALIGN_CONTENT: 'alignContent',
+        ALIGN_ITENS: 'alignItems'
       };
+
+      ngxBootstrap.shallowCopy(_STYLE_PROPERTIES, _getBaseInstance(this).getStyleProperties.apply(this));
     }
 
-    if (this.ngxGridService.getRowAlignContentClass) {
-      _aggregate[_ATTRIBUTES.ALIGN_CONTENT.ALIAS] = {
-        prev: this.ngxGridService.getRowAlignContentClass(this.getPrefixClass(), this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.ALIGN_CONTENT.NAME, _ATTRIBUTES.ALIGN_CONTENT.ALIAS)),
-        current: this.ngxGridService.getRowAlignContentClass(this.getPrefixClass(), this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.ALIGN_CONTENT.NAME, _ATTRIBUTES.ALIGN_CONTENT.ALIAS))
-      };
-    }
+    return _STYLE_PROPERTIES;
+  };
 
-    if (this.ngxGridService.getRowAlignItemsClass) {
-      _aggregate[_ATTRIBUTES.ALIGN_ITENS.ALIAS] = {
-        prev: this.ngxGridService.getRowAlignItemsClass(this.getPrefixClass(), this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.ALIGN_ITENS.NAME, _ATTRIBUTES.ALIGN_ITENS.ALIAS)),
-        current: this.ngxGridService.getRowAlignItemsClass(this.getPrefixClass(), this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.ALIGN_ITENS.NAME, _ATTRIBUTES.ALIGN_ITENS.ALIAS))
-      };
-    }
+  this.buildCssClassForProperty = function(propertyName, propertyValue){
+    var _styleProperties = this.getStyleProperties();
 
-    return _aggregate;
+    if(
+      propertyName === _styleProperties.JUSTIFY_CONTENT || 
+      propertyName === _styleProperties.ALIGN_CONTENT ||
+      propertyName === _styleProperties.ALIGN_ITENS
+    ){
+      if (!propertyValue) { return ''; }
+
+      var _parts,
+          _cssClasses = [],
+          _values = propertyValue.split(' '),
+          _prefixClass = this.getPrefixClass();
+          _propertyName = propertyName
+                          .replace(/([A-Z])/g, function (x, y) { return '-' + y; })
+                          .replace(/^-/, '')
+                          .toLowerCase();
+
+      ngxBootstrap.forEach(_values, function (value) {
+        _parts = value.split('-');
+
+        if (_parts.length === 2) {
+          _cssClasses.push([_prefixClass, _parts[0], _propertyName, _parts[1]].join('-'));
+        }
+        else if(_parts.length === 3){
+          _cssClasses.push([_prefixClass, _parts[0], _propertyName, _parts[1] + '_' + _parts[2]].join('-'));
+        }
+      });
+
+      return _cssClasses.length === 0 ? '' : _cssClasses.join(' ');
+    }
+    else{
+      return _getBaseInstance(this).buildCssClassForProperty.apply(this, arguments);
+    }
   };
 
   function _getBaseInstance(context) {
@@ -61,7 +78,11 @@ function _ngxGridRowDirective() {
 
 module.exports = ng.core.Directive({
   selector: 'ngx-grid-row',
-  providers: [ngxRenderService],
-  properties: ['justifyContent:justify-content', 'alignContent:align-content', 'alignItems:align-items']
+  properties: [
+    'justifyContent:justify-content', 
+    'alignContent:align-content', 
+    'alignItems:align-items',
+    'initCssClass:class'
+  ]
 })
 .Class(new _ngxGridRowDirective());

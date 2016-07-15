@@ -1,6 +1,4 @@
-﻿var ngxGridService = require('./services/grid.service.js');
-var ngxRenderService = require('renderService');
-var ngxBaseComponent = require('baseComponent');
+﻿var ngxBaseComponent = require('baseComponent');
 
 function _ngxGridComponent() {
   var _base;
@@ -9,17 +7,16 @@ function _ngxGridComponent() {
 
   this.constructor = [
     ng.core.ElementRef,
-    ngxRenderService,
-    ngxGridService,
+    ng.core.Renderer,
 
-    function ngxGridComponent(elementRef, ngxRenderService, ngxGridService) {
+    function ngxGridComponent(elementRef, renderer) {
       ngxBaseComponent.apply(this, arguments);
-
-      if (elementRef) {
-        this.ngxGridService = ngxGridService;
-      }
     }
   ];
+
+  this.getPrefixClass = function () {
+    return 'ngx-grid';
+  };
 
   function _getBaseInstance(context) {
     if (!_base) { _base = context.getBaseInstance(ngxBaseComponent); }
@@ -31,7 +28,6 @@ module.exports = ng.core.Component({
   selector: 'ngx-grid',
   template: require('./themes/' + __THEME__ + '/templates/grid.html'),
   styles: [require('./themes/' + __THEME__ + '/scss/grid.scss')],
-  providers: [ngxRenderService],
-  properties: ['type']
+  properties: ['type', 'initCssClass:class']
 })
 .Class(new _ngxGridComponent());

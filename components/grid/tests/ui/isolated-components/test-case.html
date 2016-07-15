@@ -8,7 +8,7 @@
   - Extra Small Screen: 1 items per row <br />
 </blockquote>
 
-<ngx-grid [type]="TYPES.FLUID">
+<ngx-grid type="fluid">
   <ngx-grid-row>
     <ngx-grid-col *ngFor="let item of items" [size]="item.size">{{item.name}}</ngx-grid-col>
   </ngx-grid-row>

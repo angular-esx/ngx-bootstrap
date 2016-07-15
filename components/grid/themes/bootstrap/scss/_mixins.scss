@@ -58,21 +58,21 @@
 @mixin ngx-grid-columns($columns: $ngx-grid-columns, $gutter: $ngx-grid-gutter-width, $breakpoints: $ngx-breakpoints) {
   @each $breakpoint in map-keys($breakpoints) {
     @for $i from 1 through $columns {
-      .#{$ngx-grid-prefix-class}-col-#{$breakpoint}-size-#{$i} {
+      .ngx-grid-col-#{$breakpoint}-size-#{$i} {
         @include ngx-col($gutter);
       }
     }
 
     @include ngx-media-breakpoint-up($breakpoint) {
       @for $i from 1 through $columns {
-        .#{$ngx-grid-prefix-class}-col-#{$breakpoint}-size-#{$i} {
+        .ngx-grid-col-#{$breakpoint}-size-#{$i} {
           @include ngx-col-span($i, $columns);
         }
       }
 
       @each $modifier in (order, offset) {
         @for $i from 1 through $columns {
-          .#{$ngx-grid-prefix-class}-col-#{$breakpoint}-#{$modifier}-#{$i} {
+          .ngx-grid-col-#{$breakpoint}-#{$modifier}-#{$i} {
             @include ngx-col-modifier($modifier, $i, $columns)
           }
         }

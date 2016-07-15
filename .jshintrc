@@ -1,0 +1,8 @@
+{
+  // Environments
+  "browser": true, // Web Browser (window, document, etc)
+  "esnext": true,
+
+  // Custom Globals
+  "globals": {} // additional predefined global variables
+}

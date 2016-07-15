@@ -1,0 +1,18 @@
+﻿{
+  "dropdown/services/dropdown.service": { },
+  "dropdown/dropdown.component": {
+    "dependencies": [
+      "dropdown/services/dropdown.service"
+    ]
+  },
+  "dropdown/toggle-dropdown.component": {
+    "dependencies": [
+      "dropdown/services/dropdown.service"
+    ]
+  },
+  "dropdown/toggle-dropup.component": {
+    "dependencies": [
+      "dropdown/toggle-dropdown.component"
+    ]
+  }
+}

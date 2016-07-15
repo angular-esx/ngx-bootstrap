@@ -23,15 +23,15 @@ Minh's checking and merging approved PRs for you, then he's deleting your branch
 
 -----Development-----
 
-This is Integration branch: features/ngxBootstrap
+This is Integration branch: develop
 
 - When you pick a component for development, you should branch off Integration branch with branch name as: 
-features/ngxBootstrap_(componentName)
-Ex: features/ngxBootstrap_ngxDropdownComponent
+feature/(componentName)
+Ex: feature/ngxDropdownComponent
 
 - When someone notify bugs about your component, you should branch off Integration branch with branch name as:
-bugfix/ngBootstrap_(componentName)_(issue)
-Ex: bugfix/ngBootstrap_ngxDropdownComponent_ngxDropdownService-not-working
+bugfix/(componentName)_(issue)
+Ex: bugfix/ngxDropdownComponent_ngxDropdownService-not-working
 
 
 
@@ -65,16 +65,3 @@ EX: function A(){
 EX: function A(){
 	var _MY_CONSTANT = 'my-constant';
 }
-
-- For declarating component's class, you should use below syntax to encapsulate private constants & functions
-...
-.Class((function () {
-	var _COMPONENT_CONSTANT = 'component-constant'; 
-
-    return {
-      constructor: function () {
-      }
-    };
-
-	function _component_func(){}
-})());

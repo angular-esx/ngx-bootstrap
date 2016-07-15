@@ -1,4 +1,6 @@
 node_modules
 bower_components
-
 index.html
+dist/
+scss/ngx-bootstrap.scss
+.DS_Store

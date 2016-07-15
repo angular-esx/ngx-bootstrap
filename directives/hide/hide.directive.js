@@ -1,5 +1,4 @@
 var ngxBaseDirective = require('baseDirective');
-var ngxBootstrap = require('ngxBootstrap');
 
 var ngxBaseHideDirective = ng.core.Class(new _ngxBaseHideDirective());
 
@@ -25,6 +24,16 @@ function _ngxBaseHideDirective() {
     }
 
     return _STYLE_PROPERTIES;
+  };
+
+  this.buildCssClassForProperty = function (propertyName, propertyValue) {
+    var _cssClass = _getBaseInstance(this).buildCssClassForProperty.apply(this, arguments);
+
+    if(propertyName === this.getStyleProperties().BREAKPOINT){
+      _cssClass = _cssClass.replace(new RegExp(propertyName + '-', 'g'), '');
+    }
+    
+    return _cssClass;
   };
 
   function _getBaseInstance(context) {

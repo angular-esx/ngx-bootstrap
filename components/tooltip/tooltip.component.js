@@ -1,7 +1,6 @@
 ﻿var tooltipOptionClass = require('./classes/tooltip-option.class.js');
 var ngxTooltipService = require('./services/tooltip.service.js');
 var ngxBaseComponent = require('baseComponent');
-var ngxBootstrap = require('ngxBootstrap');
 
 function _ngxTooltipComponent() {
   var _base;

@@ -5,18 +5,18 @@ var ngxTooltipDirective = require('components/tooltip/tooltip.directive.js');
 var ngxBootstrap = require('ngxBootstrap');
 
 function _ngxPopoverDirective() {
-  var _base,
-      _subscription;
+  var _base;
 
   this.extends = ngxTooltipDirective;
 
   this.constructor = [
     ng.core.ElementRef,
+    ng.core.Renderer,
     ng.core.ViewContainerRef,
     ng.core.DynamicComponentLoader,
     ngxPopoverService,
 
-    function ngxPopoverDirective(elementRef, viewContainerRef, componentLoader, ngxPopoverService) {
+    function ngxPopoverDirective(elementRef, renderer, viewContainerRef, componentLoader, ngxPopoverService) {
       ngxTooltipDirective.apply(this, arguments);
 
       if (elementRef) {
@@ -25,24 +25,20 @@ function _ngxPopoverDirective() {
     }
   ];
 
-  this.ngOnDestroy = function () {
-    if (_subscription) { _subscription.unsubscribe(); }
-  };
-
   this.getPrefixClass = function () {
     return 'ngx-popover';
   };
 
   this.subscribe = function () {
     var _self = this;
-    _subscription = this.ngxPopoverService.ngxPopover$.subscribe(function (event) {
+    this.subscription = this.ngxPopoverService.ngxPopover$.subscribe(function (event) {
       if (!event) { return; }
 
       var _events = ngxBootstrap.isArray(event) ? event : [event];
       var _actions = _self.ngxPopoverService.getActions();
 
       ngxBootstrap.forEach(_events, function (_event) {
-        if (_event.target && _event.target === _self.elementRef.nativeElement) {
+        if (!_event.id || _event.id === _self.id) {
           if (_event.type === _actions.ENABLE_POPOVER) {
             _self.enable(_event.isEnabled);
           }
@@ -57,7 +53,7 @@ function _ngxPopoverDirective() {
   };
 
   this.toggle = function (options) {
-    if (this.ngxPopoverService.isActiveStateClass(this.getPrefixClass(), this.state)) {
+    if (this.isActive) {
       if (options) { options.autoHide = true; }
       this.hide(options);
     }
@@ -76,7 +72,7 @@ function _ngxPopoverDirective() {
       title: this.title,
       content: this.content,
       state: this.state,
-      position: this.position || this.ngxPopoverService.getPositions().TOP,
+      position: this.position || 'top',
       delay: this.delay
     });
     
@@ -98,12 +94,14 @@ function _ngxPopoverDirective() {
 module.exports = ng.core.Directive({
   selector: '[ngx-popover]',
   properties: [
+    'id',
     'title: ngx-popover-title',
     'content: ngx-popover-content',
     'state: ngx-popover-state',
     'position: ngx-popover-position',
     'template: ngx-popover-template',
-    'delay: ngx-popover-delay'
+    'delay: ngx-popover-delay',
+    'initCssClass:class'
   ],
   host: {
     '(click)': 'toggle()'

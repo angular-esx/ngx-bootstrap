@@ -1,6 +1,6 @@
 ﻿@import "_variables.scss";
 
-:host(.#{$ngx-popover-prefix-class}) {
+:host(.ngx-popover) {
   display: block;
   position: absolute;
   opacity: 0;
@@ -17,7 +17,7 @@
 
   @include ngx-border-radius($ngx-popover-border-radius);
 
-  .#{$ngx-popover-prefix-class}-title {
+  .ngx-popover-title {
     font-size: $ngx-popover-title-font-size;
     padding: $ngx-popover-title-padding;
     margin: 0;
@@ -28,11 +28,11 @@
     @include ngx-border-radius($border-radius);
   }
 
-  .#{$ngx-popover-prefix-class}-content {
+  .ngx-popover-content {
     padding: $ngx-popover-content-padding;
   }
 
-  > .#{$ngx-popover-prefix-class}-arrow {
+  > .ngx-popover-arrow {
     border-width: ($ngx-popover-arrow-width - 1);
 
     &::after {
@@ -51,10 +51,10 @@
     }
   }
 
-  &.#{$ngx-popover-prefix-class}-position-top {
+  &.ngx-popover-position-top {
     margin-top: -$ngx-popover-arrow-width;
 
-    .#{$ngx-popover-prefix-class}-arrow {
+    .ngx-popover-arrow {
       bottom: -$ngx-popover-arrow-width;
       left: 50%;
       margin-left: -$ngx-popover-arrow-width;
@@ -70,10 +70,10 @@
     }
   }
 
-  &.#{$ngx-popover-prefix-class}-position-right {
+  &.ngx-popover-position-right {
     margin-left: $ngx-popover-arrow-width;
 
-    .#{$ngx-popover-prefix-class}-arrow {
+    .ngx-popover-arrow {
       top: 50%;
       left: -$ngx-popover-arrow-width;
       margin-top: -$ngx-popover-arrow-width;
@@ -89,10 +89,10 @@
     }
   }
 
-  &.#{$ngx-popover-prefix-class}-position-bottom {
+  &.ngx-popover-position-bottom {
     margin-top: $ngx-popover-arrow-width;
 
-    .#{$ngx-popover-prefix-class}-arrow {
+    .ngx-popover-arrow {
       top: -$ngx-popover-arrow-width;
       left: 50%;
       margin-left: -$ngx-popover-arrow-width;
@@ -108,10 +108,10 @@
     }
   }
 
-  &.#{$ngx-popover-prefix-class}-position-left {
+  &.ngx-popover-position-left {
     margin-left: -($ngx-popover-arrow-width - 1);
 
-    .#{$ngx-popover-prefix-class}-arrow {
+    .ngx-popover-arrow {
       top: 50%;
       right: -$ngx-popover-arrow-width;
       margin-top: -$ngx-popover-arrow-width;

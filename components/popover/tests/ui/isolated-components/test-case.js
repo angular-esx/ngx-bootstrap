@@ -1,9 +1,6 @@
 ﻿function _testCase() {
-  this.constructor = [ngxBootstrap.popover.SERVICE, function (ngxPopoverService) {
+  this.constructor = [ngxBootstrap.popover.POPOVER_SERVICE, function (ngxPopoverService) {
     this.ngxPopoverService = ngxPopoverService;
-
-    this.STATES = ngxPopoverService.getStates();
-    this.POSITIONS = ngxPopoverService.getPositions();
 
     this.delay = 1 * 1000;
   }];
@@ -11,7 +8,7 @@
   this.alert = function () {
     alert('You have just clicked me!!!');
 
-    this.ngxPopoverService.toggle(this.popoverWithTemplateElement.nativeElement);
+    this.ngxPopoverService.toggle('myPopoverWithTemplate');
   };
 
   this.togglePopover = function () {
@@ -22,8 +19,8 @@
       
       Rx.Observable.zip
       (
-        this.ngxPopoverService.getToggle$(_self.popoverElement.nativeElement),
-        this.ngxPopoverService.getEnable$(_self.popoverElement.nativeElement, false),
+        this.ngxPopoverService.getToggle$('myPopover'),
+        this.ngxPopoverService.getEnable$('myPopover', false),
         function (toggleEvent, enableEvent) {
           return [toggleEvent, enableEvent];
         }
@@ -37,8 +34,8 @@
 
       Rx.Observable.zip
       (
-        this.ngxPopoverService.getEnable$(_self.popoverElement.nativeElement, true),
-        this.ngxPopoverService.getToggle$(_self.popoverElement.nativeElement),
+        this.ngxPopoverService.getEnable$('myPopover', true),
+        this.ngxPopoverService.getToggle$('myPopover'),
         function (enableEvent, toggleEvent) {
           return [enableEvent, toggleEvent];
         }
@@ -57,12 +54,8 @@ var isolatedComponents = ng.core.Component({
     ngxBootstrap.popover.DIRECTIVES
   ],
   providers: [
-    ngxBootstrap.popover.SERVICE,
-    ngxBootstrap.coreService
-  ],
-  queries: {
-    popoverElement: new ng.core.ViewChild('myPopover', { read: ng.core.ElementRef }),
-    popoverWithTemplateElement: new ng.core.ViewChild('myPopoverWithTemplate', { read: ng.core.ElementRef })
-  }
+    ngxBootstrap.coreService.ANIMATION_SERVICE,
+    ngxBootstrap.popover.SERVICES,
+  ]
 })
 .Class(new _testCase());

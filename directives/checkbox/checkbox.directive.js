@@ -1,31 +1,18 @@
-﻿var ngxCheckboxService = require('./services/checkbox.service.js');
-var ngxCheckboxGroupDirective = require('./checkbox-group.directive.js');
-var ngxBaseDirective = require('baseDirective');
-var ngxRenderService = require('renderService');
-var ngxBootstrap = require('utils');
+﻿var ngxCheckboxGroupDirective = require('./checkbox-group.directive.js');
 
 function _ngxCheckboxDirective() {
-  var _base;
-  var _ATTRIBUTES = {
-    STATE: 'state'
-  };
-
-  this.extends = ngxBaseDirective;
-
   this.constructor = [
     ng.core.ElementRef,
-    ngxRenderService,
-    ngxCheckboxService,
     [new ng.core.Optional(), ngxCheckboxGroupDirective],
 
-    function ngxCheckboxDirective(elementRef, ngxRenderService, ngxCheckboxService, ngxCheckboxGroup) {
-      if (elementRef) {
-        ngxBaseDirective.apply(this, arguments);
+    function ngxCheckboxDirective(elementRef, ngxCheckboxGroup) {
+      this.elementRef = elementRef;
 
-        this.ngxCheckboxService = ngxCheckboxService;
+      if (elementRef) {
         this.ngxCheckboxGroup = ngxCheckboxGroup;
 
-        this.modelChange = new ng.core.EventEmitter();
+        this.changingModelEmitter = new ng.core.EventEmitter(false);
+        this.changedModelEmitter = new ng.core.EventEmitter();
       }
     }
   ];
@@ -39,8 +26,17 @@ function _ngxCheckboxDirective() {
     }
   };
 
-  this.check = function () {
-    if (this.ngxCheckboxService.isDisabledStateClass(this.getPrefixClass(), this.state)) { return; }
+  this.check = function (event) {
+    var _hasCanceled = false;
+    this.changingModelEmitter.emit({
+      cancel: function () {
+        _hasCanceled = true;
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      }
+    });
+
+    if(_hasCanceled){ return; }
 
     if (this.ngxCheckboxGroup) {
       this.ngxCheckboxGroup.addOrRemoveValue(this.checkedValue);
@@ -48,8 +44,6 @@ function _ngxCheckboxDirective() {
     else {
       this.addOrRemoveValue();
     }
-
-    this.updateState();
   };
 
   this.addOrRemoveValue = function () {
@@ -70,38 +64,23 @@ function _ngxCheckboxDirective() {
       }
     }
 
-    this.modelChange.emit(this.model);
+    this.changedModelEmitter.emit(this.model);
   };
-
-  this.updateState = function () {
-    var _isActive = this.ngxCheckboxService.isActiveStateClass(this.getPrefixClass(), this.state);
-    var _changeRecord = {
-      state: { previousValue: this.state || '' }
-    };
-    if (_isActive) {
-      this.state = this.state.replace(this.ngxCheckboxService.getStates().ACTIVE, '').trim();
-    }
-    else {
-      this.state = (this.ngxCheckboxService.getStates().ACTIVE + ' ' + _changeRecord.state.previousValue).trim();
-    }
-    _changeRecord.state.currentValue = this.state;
-
-    this.ngOnChanges(_changeRecord);
-  };
-
-  function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxBaseDirective); }
-    return _base;
-  }
 }
 
 module.exports = ng.core.Directive({
   selector: '[ngx-checkbox]',
-  providers: [ngxRenderService],
-  properties: ['state', 'model', 'checkedValue: checked-value', 'unCheckedValue: unchecked-value', 'prefixClass:prefix-class'],
-  events: ['modelChange'],
+  properties: [
+    'model:ngx-checkbox-model', 
+    'checkedValue: ngx-checkbox-checked-value', 
+    'unCheckedValue: ngx-checkbox-unchecked-value'
+  ],
+  events: [
+    'changingModelEmitter:ngx-checkbox-onChangingModel',
+    'changedModelEmitter:ngx-checkbox-onChangedModel'
+  ],
   host: {
-    '(click)': 'check()'
+    '(click)': 'check($event)'
   }
 })
 .Class(new _ngxCheckboxDirective());

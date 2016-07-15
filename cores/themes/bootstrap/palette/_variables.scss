@@ -1,0 +1,50 @@
+﻿$ngx-color-gray: (
+  dark: #9f9f9f,
+  default: #bfbfbf,
+  light: #dfdfdf
+) !default;
+
+$ngx-color-white: (
+  default: white,
+) !default;
+
+$ngx-color-black: (
+  default: #373a3c,
+) !default;
+
+$ngx-color-red: (
+  dark: #c12d28,
+  default: #da5350,
+  light: #e48785
+) !default;
+
+$ngx-color-green: (
+  dark: #419441,
+  default: #5cb85c,
+  light: #89cb89
+) !default;
+
+$ngx-color-blue: (
+  dark: #014e94,
+  default: #0270d2,
+  light: #178ffd
+) !default;
+
+$ngx-color-sky: (
+  dark: #29afd6,
+  default: #60c2df,
+  light: #95d7ea
+) !default;
+
+$ngx-color-orange: (
+  dark: #ec8f13,
+  default: #f0ad4e,
+  light: #f5c889
+) !default;
+
+$ngx-color-primary: $ngx-color-blue !default;
+$ngx-color-secondary: $ngx-color-white !default;
+$ngx-color-info: $ngx-color-sky !default;
+$ngx-color-success: $ngx-color-green !default;
+$ngx-color-warning: $ngx-color-orange !default;
+$ngx-color-danger: $ngx-color-red !default;

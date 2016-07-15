@@ -95,7 +95,11 @@ function _ngxBaseDirective() {
     if(!propertyName || !propertyValue){ return ''; } 
 
     var _parts = [],
-        _prefixClass = this.getPrefixClass();
+        _prefixClass = this.getPrefixClass(),
+        _propertyName = propertyName
+                        .replace(/([A-Z])/g, function (x, y) { return '-' + y; })
+                        .replace(/^-/, '')
+                        .toLowerCase();
 
     if(propertyValue.trim().indexOf(' ') > -1){
       var _cssClasses = [];
@@ -105,7 +109,7 @@ function _ngxBaseDirective() {
         
         if(_prefixClass){ _parts.push(_prefixClass); }
         
-        _parts.push(propertyName);
+        _parts.push(_propertyName);
         _parts.push(value);
 
         _cssClasses.push(_parts.join('-'));
@@ -115,7 +119,7 @@ function _ngxBaseDirective() {
     }
     else {
       if(_prefixClass){ _parts.push(_prefixClass); }
-      _parts.push(propertyName);
+      _parts.push(_propertyName);
       _parts.push(propertyValue);
 
       return _parts.join('-');

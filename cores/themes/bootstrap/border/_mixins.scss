@@ -1,0 +1,23 @@
+﻿@import "_functions.scss";
+
+@mixin ngx-border-radius($radius: map-get($ngx-border-radius, base), $position: null) {
+  @if $position == top {
+    border-top-right-radius: $radius;
+    border-top-left-radius: $radius;
+  }
+  @else if $position == right {
+    border-bottom-right-radius: $radius;
+    border-top-right-radius: $radius;
+  }
+  @else if $position == bottom {
+    border-bottom-right-radius: $radius;
+    border-bottom-left-radius: $radius;
+  }
+  @else if $position == left {
+    border-bottom-left-radius: $radius;
+    border-top-left-radius: $radius;
+  }
+  @else {
+    border-radius: $radius;
+  }
+}

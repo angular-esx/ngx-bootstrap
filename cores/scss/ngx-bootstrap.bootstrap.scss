@@ -1,0 +1,81 @@
+.fade {
+  -webkit-transition: opacity .15s linear;
+  -o-transition: opacity .15s linear;
+  transition: opacity .15s linear;
+}
+
+.collapse-in {
+    display: block !important;
+}
+
+.collapse-out {
+    position: relative !important;
+    -webkit-transition-timing-function: ease;
+    -o-transition-timing-function: ease;
+    transition-timing-function: ease;
+    -webkit-transition-duration: .35s;
+    -o-transition-duration: .35s;
+    transition-duration: .35s;
+    -webkit-transition-property: height, visibility;
+    -o-transition-property: height, visibility;
+    transition-property: height, visibility;
+}
+
+
+
+//For test
+.ngx-hide-up-xs {
+  display: none !important;
+}
+
+@media (max-width: 543px) {
+  .ngx-hide-down-xs {
+    display: none !important;
+  }
+}
+
+@media (min-width: 544px) {
+  .ngx-hide-up-sm {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .ngx-hide-down-sm {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .ngx-hide-up-md {
+    display: none !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .ngx-hide-down-md {
+    display: none !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .ngx-hide-up-lg {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1199px) {
+  .ngx-hide-down-lg {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .ngx-hide-up-xl {
+    display: none !important;
+  }
+}
+
+.ngx-hide-down-xl {
+  display: none !important;
+}

@@ -1,0 +1,46 @@
+﻿@import "_functions.scss";
+
+//Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
+@mixin ngx-media-breakpoint-up($breakpoint-name, $breakpoints: $ngx-breakpoints) {
+  $min: breakpoint-min($breakpoint-name, $breakpoints);
+
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+//Media of at most the maximum breakpoint width. No query for the largest breakpoint.
+@mixin ngx-media-breakpoint-down($breakpoint-name, $breakpoints: $ngx-breakpoints) {
+  $max: breakpoint-max($breakpoint-name, $breakpoints);
+
+  @if $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+//Media between the breakpoint's minimum and maximum widths.
+//No minimum for the smallest breakpoint, and no maximum for the largest one.
+@mixin ngx-media-breakpoint-only($breakpoint-name, $breakpoints: $ngx-breakpoints) {
+  @include ngx-media-breakpoint-up($breakpoint-name, $breakpoints) {
+    @include ngx-media-breakpoint-down($breakpoint-name, $breakpoints) {
+      @content;
+    }
+  }
+}
+
+//Media that spans multiple breakpoint widths.
+@mixin ngx-media-breakpoint-between($lower, $upper, $breakpoints: $ngx-breakpoints) {
+  @include ngx-media-breakpoint-up($lower, $breakpoints) {
+    @include ngx-media-breakpoint-down($upper, $breakpoints) {
+      @content;
+    }
+  }
+}

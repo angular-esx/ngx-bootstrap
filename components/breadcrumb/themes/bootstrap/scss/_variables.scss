@@ -1,0 +1,37 @@
+﻿@import "../../../../../cores/themes/bootstrap/typography/typography.scss";
+@import "../../../../../cores/themes/bootstrap/palette/palette.scss";
+
+$ngx-breadcrumb-padding: .75rem 1rem !default;
+$ngx-breadcrumb-item-padding: 0 .5rem 0 .5rem !default;
+
+$ngx-breadcrumb-margin: 0 0 1rem 0 !default;
+
+$ngx-breadcrumb-primary: (
+  foreground: ngx-color($ngx-color-white),
+  background: ngx-color($ngx-color-primary)
+) !default;
+
+$ngx-breadcrumb-secondary: (
+  foreground: ngx-color($ngx-color-black),
+  background: ngx-color-light($ngx-color-gray)
+) !default;
+
+$ngx-breadcrumb-info: (
+  foreground: ngx-color($ngx-color-white),
+  background: ngx-color($ngx-color-info)
+) !default;
+
+$ngx-breadcrumb-success: (
+  foreground: ngx-color($ngx-color-white),
+  background: ngx-color($ngx-color-success)
+) !default;
+
+$ngx-breadcrumb-warning: (
+  foreground: ngx-color($ngx-color-white),
+  background: ngx-color($ngx-color-warning)
+) !default;
+
+$ngx-breadcrumb-danger: (
+  foreground: ngx-color($ngx-color-white),
+  background: ngx-color($ngx-color-danger)
+) !default;

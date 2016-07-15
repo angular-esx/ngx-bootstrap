@@ -1,0 +1,50 @@
+﻿@import "../../../../../cores/themes/bootstrap/normalize/normalize.scss";
+
+@import "_mixins.scss";
+
+:host(.ngx-breadcrumb) {
+  display: block;
+  padding: $ngx-breadcrumb-padding;
+  margin: $ngx-breadcrumb-margin;
+  background-color: transparent;
+  
+  @include clearfix();
+
+  a {
+    @extend %ngx-link-normalize;
+  }
+
+  > .ngx-breadcrumb-item {
+    float: left;
+
+    &:not(:last-child)::after {
+      text-decoration: none;
+      padding: $ngx-breadcrumb-item-padding;
+      content: "/";
+    }
+  }
+
+  &.ngx-breadcrumb-color-primary{
+    @include ngx-breadcrumb-variant($ngx-breadcrumb-primary);
+  }
+
+  &.ngx-breadcrumb-color-secondary{
+    @include ngx-breadcrumb-variant($ngx-breadcrumb-secondary);
+  }
+
+  &.ngx-breadcrumb-color-info{
+    @include ngx-breadcrumb-variant($ngx-breadcrumb-info);
+  }
+
+  &.ngx-breadcrumb-color-success{
+    @include ngx-breadcrumb-variant($ngx-breadcrumb-success);
+  }
+
+  &.ngx-breadcrumb-color-warning{
+    @include ngx-breadcrumb-variant($ngx-breadcrumb-warning);
+  }
+
+  &.ngx-breadcrumb-color-danger{
+    @include ngx-breadcrumb-variant($ngx-breadcrumb-danger);
+  }
+}

@@ -1,26 +1,21 @@
 ﻿var tooltipOptionClass = require('./classes/tooltip-option.class.js');
 var ngxTooltipService = require('./services/tooltip.service.js');
 var ngxBaseComponent = require('baseComponent');
-var ngxRenderService = require('renderService');
-var ngxWindowService = require('windowService');
 var ngxBootstrap = require('ngxBootstrap');
 
 function _ngxTooltipComponent() {
   var _base;
-  var _ATTRIBUTES = {
-    POSITION: 'position'
-  };
 
   this.extends = ngxBaseComponent;
 
   this.constructor = [
     ng.core.ElementRef,
-    ngxRenderService,
+    ng.core.Renderer,
     ngxTooltipService,
     tooltipOptionClass,
 
-    function ngxTooltipComponent(elementRef, ngxRenderService, ngxTooltipService, tooltipOption) {
-      ngxBaseComponent.apply(this, [elementRef, ngxRenderService, ngxTooltipService]);
+    function ngxTooltipComponent(elementRef, renderer, ngxTooltipService, tooltipOption) {
+      ngxBaseComponent.apply(this, [elementRef, renderer, ngxTooltipService]);
       
       if (elementRef) {
         this.ngxTooltipService = ngxTooltipService;
@@ -30,34 +25,26 @@ function _ngxTooltipComponent() {
     }
   ];
 
-  this.onAggregatePropertyValueState = function (changeRecord) {
-    var _aggregate = _getBaseInstance(this).onAggregatePropertyValueState.apply(this, arguments);
-
-    if (this.ngxTooltipService.getPositionClass) {
-      _aggregate[_ATTRIBUTES.POSITION] = {
-        prev: this.ngxTooltipService.getPositionClass(this.getPrefixClass(), this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.POSITION)),
-        current: this.ngxTooltipService.getPositionClass(this.getPrefixClass(), this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.POSITION))
-      };
-    }
-
-    return _aggregate;
-  };
-
   this.ngAfterViewInit = function () {
     this.render();
 
     var _offset = this.getOffset();
-    this.ngxRenderService.addStyle('top', (_offset.top !== 0 && !_offset.top ? -1000 : _offset.top) + 'px');
-    this.ngxRenderService.addStyle('left', (_offset.left !== 0 && !_offset.left ? -1000 : _offset.left) + 'px');
+    this.renderer.setElementStyle(this.elementRef.nativeElement, 'top', (_offset.top !== 0 && !_offset.top ? -1000 : _offset.top) + 'px');
+    this.renderer.setElementStyle(this.elementRef.nativeElement, 'left', (_offset.left !== 0 && !_offset.left ? -1000 : _offset.left) + 'px');
 
-    var _changeRecord = {
-      state: { currentValue: this.state },
-      position: { currentValue: this.position }
-    };
+    var _styleProperties = this.getStyleProperties();
+    var _changeRecord = this.buildChangeRecord(_styleProperties.STATE, this.state);
+    this.buildChangeRecord(_styleProperties.POSITION, this.position, null, _changeRecord);
 
     this.ngOnChanges(_changeRecord);
 
+    _getBaseInstance(this).ngAfterViewInit.apply(this);
+
     this.show();
+  };
+
+  this.getPrefixClass = function () {
+    return 'ngx-tooltip';
   };
 
   this.render = function () {
@@ -67,42 +54,40 @@ function _ngxTooltipComponent() {
       this.contentElement.createEmbeddedView(this.templateRef, 0);
     }
     else {
-      this.ngxRenderService.for(this.contentElement.element.nativeElement)
-                           .setInnerHTML(this.content)
-                           .for(this.elementRef.nativeElement);
+      this.contentElement.element.nativeElement.innerHTML = this.content;
     }
   };
 
   this.show = function () {
     var _self = this;
     setTimeout(function () {
-      _self.ngxTooltipService.fadeIn(_self.elementRef.nativeElement);
+      _self.ngxTooltipService.fadeIn(_self.elementRef);
     }, _self.delay);
   };
 
   this.hide = function () {
-    this.ngxTooltipService.fadeOut(this.elementRef.nativeElement);
+    this.ngxTooltipService.fadeOut(this.elementRef);
   };
 
   this.getOffset = function () {
     var _positions = this.position.split(' ');
-    if (_positions.length === 1) { _positions[1] = this.ngxTooltipService.getPositions().CENTER; }
+    if (_positions.length === 1) { _positions[1] = 'center'; }
    
-    var _hostElementOffset = this.ngxRenderService.for(this.hostElement.nativeElement).getOffset(),
-        _elementOffset = this.ngxRenderService.for(this.elementRef.nativeElement).getOffset();
+    var _hostElementOffset = _getOffset(this.hostElement.nativeElement),
+        _elementOffset = _getOffset(this.elementRef.nativeElement);
     
     switch (_positions[0]) {
-      case this.ngxTooltipService.getPositions().RIGHT:
+      case 'right':
         return {
           top: _shiftHeight(this, _hostElementOffset, _elementOffset, _positions[1]),
           left: _shiftWidth(this, _hostElementOffset, _elementOffset, _positions[0])
         };
-      case this.ngxTooltipService.getPositions().LEFT:
+      case 'left':
         return {
           top: _shiftHeight(this, _hostElementOffset, _elementOffset, _positions[1]),
           left: _hostElementOffset.left - _elementOffset.width
         };
-      case this.ngxTooltipService.getPositions().BOTTOM:
+      case 'bottom':
         return {
           top: _shiftHeight(this, _hostElementOffset, _elementOffset, _positions[0]),
           left: _shiftWidth(this, _hostElementOffset, _elementOffset, _positions[1])
@@ -115,28 +100,35 @@ function _ngxTooltipComponent() {
     }
   };
 
+  function _getOffset(nativeElement){
+    var _boundingClientRect = nativeElement.getBoundingClientRect();
+
+    return {
+      width: _boundingClientRect.width || nativeElement.offsetWidth,
+      height: _boundingClientRect.height || nativeElement.offsetHeight,
+      top: _boundingClientRect.top + (window.pageYOffset || document.documentElement.scrollTop),
+      left: _boundingClientRect.left + (window.pageXOffset || document.documentElement.scrollLeft)
+    };
+  }
+
   function _shiftWidth(context, hostElementgetOffset, elementOffset, position) {
-    var _positions = context.ngxTooltipService.getPositions();
-    
     switch (position) {
-      case _positions.LEFT:
+      case 'left':
         return hostElementgetOffset.left;
-      case _positions.RIGHT:
+      case 'right':
         return hostElementgetOffset.left + hostElementgetOffset.width;
-      case _positions.CENTER:
+      case 'center':
         return hostElementgetOffset.left + hostElementgetOffset.width / 2 - elementOffset.width / 2;
     }
   }
 
   function _shiftHeight(context, hostElementgetOffset, elementOffset, position) {
-    var _positions = context.ngxTooltipService.getPositions();
-
     switch (position) {
-      case _positions.TOP:
+      case 'top':
         return hostElementgetOffset.top;
-      case _positions.BOTTOM:
+      case 'bottom':
         return hostElementgetOffset.top + hostElementgetOffset.height;
-      case _positions.CENTER:
+      case 'center':
         return hostElementgetOffset.top + hostElementgetOffset.height / 2 - elementOffset.height / 2;
     }
   }
@@ -151,7 +143,6 @@ module.exports = ng.core.Component({
   selector: 'ngx-tooltip',
   template: require('./themes/' + __THEME__ + '/templates/tooltip.html'),
   styles: [require('./themes/' + __THEME__ + '/scss/tooltip.scss')],
-  providers: [ngxRenderService],
   queries: {
     contentElement: new ng.core.ViewChild('content', { read: ng.core.ViewContainerRef })
   },

@@ -1,6 +1,6 @@
 ﻿@import "_variables.scss";
 
-:host(.#{$ngx-tooltip-prefix-class}) {
+:host(.ngx-tooltip) {
   display: block;
   position: absolute;
   opacity: 0;
@@ -9,7 +9,7 @@
   
   @include ngx-reset-text();
 
-  > .#{$ngx-tooltip-prefix-class}-arrow {
+  > .ngx-tooltip-arrow {
     position: absolute;
     width: 0;
     height: 0;
@@ -17,7 +17,7 @@
     border-style: solid;
   }
 
-  > .#{$ngx-tooltip-prefix-class}-content {
+  > .ngx-tooltip-content {
     text-align: center;
     padding: $ngx-tooltip-padding;
     max-width: $ngx-tooltip-max-width;
@@ -27,11 +27,11 @@
     @include ngx-border-radius($ngx-tooltip-border-radius);
   }
 
-  &.#{$ngx-tooltip-prefix-class}-position-top {
+  &.ngx-tooltip-position-top {
     padding: $ngx-tooltip-arrow-width 0;
     margin-top: -($ngx-tooltip-arrow-width * 2);
 
-    > .#{$ngx-tooltip-prefix-class}-arrow {
+    > .ngx-tooltip-arrow {
       bottom: 0;
       left: 50%;
       margin-left: -$ngx-tooltip-arrow-width;
@@ -40,10 +40,10 @@
     }
   }
 
-  &.#{$ngx-tooltip-prefix-class}-position-right {
+  &.ngx-tooltip-position-right {
     padding: 0 $ngx-tooltip-arrow-width;
 
-    > .#{$ngx-tooltip-prefix-class}-arrow {
+    > .ngx-tooltip-arrow {
       top: 50%;
       left: 0;
       margin-top: -$ngx-tooltip-arrow-width;
@@ -52,10 +52,10 @@
     }
   }
 
-  &.#{$ngx-tooltip-prefix-class}-position-bottom {
+  &.ngx-tooltip-position-bottom {
     padding: $ngx-tooltip-arrow-width 0;
 
-    > .#{$ngx-tooltip-prefix-class}-arrow {
+    > .ngx-tooltip-arrow {
       top: 0;
       left: 50%;
       margin-left: -$ngx-tooltip-arrow-width;
@@ -64,11 +64,11 @@
     }
   }
 
-  &.#{$ngx-tooltip-prefix-class}-position-left {
+  &.ngx-tooltip-position-left {
     padding: 0 $ngx-tooltip-arrow-width;
     margin-left: -($ngx-tooltip-arrow-width * 2);
 
-    > .#{$ngx-tooltip-prefix-class}-arrow {
+    > .ngx-tooltip-arrow {
       top: 50%;
       right: 0;
       margin-top: -$ngx-tooltip-arrow-width;

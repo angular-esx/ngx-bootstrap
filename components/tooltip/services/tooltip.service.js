@@ -1,6 +1,4 @@
 ﻿var ngxAnimationService = require('animationService');
-var ngxStateService = require('stateService');
-var ngxPositionService = require('positionService');
 var ngxBootstrap = require('ngxBootstrap');
 
 function _ngxTooltipService() {
@@ -14,13 +12,9 @@ function _ngxTooltipService() {
 
   this.constructor = [
     ngxAnimationService,
-    ngxStateService,
-    ngxPositionService,
 
-    function ngxTooltipService(ngxAnimationService, ngxStateService, ngxPositionService) {
+    function ngxTooltipService(ngxAnimationService) {
       ngxBootstrap.shallowCopy(this, ngxAnimationService);
-      ngxBootstrap.shallowCopy(this, ngxStateService);
-      ngxBootstrap.shallowCopy(this, ngxPositionService);
 
       this.ngxTooltip$ = new Rx.Observable(function (observer) {
         _observer = observer;
@@ -37,25 +31,25 @@ function _ngxTooltipService() {
     _observer.next(event);
   };
 
-  this.getEnable$ = function (tooltipElement, isEnabled) {
-    return Rx.Observable.from([{ target: tooltipElement, isEnabled: isEnabled, type: _ACTIONS.ENABLE_TOOLTIP }]);
+  this.getEnable$ = function (tooltipId, isEnabled) {
+    return Rx.Observable.from([{ id: tooltipId, isEnabled: isEnabled, type: _ACTIONS.ENABLE_TOOLTIP }]);
   };
-  this.enable = function (tooltipElement, isEnabled) {
-    _observer.next({ target: tooltipElement, isEnabled: isEnabled, type: _ACTIONS.ENABLE_TOOLTIP });
-  };
-
-  this.getShow$ = function (tooltipElement, delay) {
-    return Rx.Observable.from([{ target: tooltipElement, type: _ACTIONS.SHOW_TOOLTIP, delay: delay }]);
-  };
-  this.show = function (tooltipElement, delay) {
-    _observer.next({ target: tooltipElement, type: _ACTIONS.SHOW_TOOLTIP, delay: delay });
+  this.enable = function (tooltipId, isEnabled) {
+    _observer.next({ id: tooltipId, isEnabled: isEnabled, type: _ACTIONS.ENABLE_TOOLTIP });
   };
 
-  this.getHide$ = function (tooltipElement) {
-    return Rx.Observable.from([{ target: tooltipElement, type: _ACTIONS.HIDE_TOOLTIP }]);
+  this.getShow$ = function (tooltipId, delay) {
+    return Rx.Observable.from([{ id: tooltipId, type: _ACTIONS.SHOW_TOOLTIP, delay: delay }]);
   };
-  this.hide = function (tooltipElement) {
-    _observer.next({ target: tooltipElement, type: _ACTIONS.HIDE_TOOLTIP });
+  this.show = function (tooltipId, delay) {
+    _observer.next({ id: tooltipId, type: _ACTIONS.SHOW_TOOLTIP, delay: delay });
+  };
+
+  this.getHide$ = function (tooltipId) {
+    return Rx.Observable.from([{ id: tooltipId, type: _ACTIONS.HIDE_TOOLTIP }]);
+  };
+  this.hide = function (tooltipId) {
+    _observer.next({ id: tooltipId, type: _ACTIONS.HIDE_TOOLTIP });
   };
 
   this.cacheTemplateRef = function (id, template) {

@@ -1,9 +1,6 @@
 ﻿function _testCase() {
-  this.constructor = [ngxBootstrap.tooltip.SERVICE, function (ngxTooltipService) {
+  this.constructor = [ngxBootstrap.tooltip.TOOLTIP_SERVICE, function (ngxTooltipService) {
     this.ngxTooltipService = ngxTooltipService;
-
-    this.STATES = ngxTooltipService.getStates();
-    this.POSITIONS = ngxTooltipService.getPositions();
 
     this.delay = 1 * 1000;
   }];
@@ -11,7 +8,7 @@
   this.alert = function () {
     alert('You have just clicked me!!!');
     
-    this.ngxTooltipService.hide(this.tooltipWithTemplateElement.nativeElement);
+    this.ngxTooltipService.hide('myTooltipWithTemplate');
   };
 
   this.toggleTooltip = function () {
@@ -22,8 +19,8 @@
       
       Rx.Observable.zip
       (
-        this.ngxTooltipService.getHide$(_self.tooltipElement.nativeElement),
-        this.ngxTooltipService.getEnable$(_self.tooltipElement.nativeElement, false),
+        this.ngxTooltipService.getHide$('myTooltip'),
+        this.ngxTooltipService.getEnable$('myTooltip', false),
         function (hideEvent, enableEvent) {
           return [hideEvent, enableEvent];
         }
@@ -37,8 +34,8 @@
 
       Rx.Observable.zip
       (
-        this.ngxTooltipService.getEnable$(_self.tooltipElement.nativeElement, true),
-        this.ngxTooltipService.getShow$(_self.tooltipElement.nativeElement),
+        this.ngxTooltipService.getEnable$('myTooltip', true),
+        this.ngxTooltipService.getShow$('myTooltip'),
         function (enableEvent, showEvent) {
           return [enableEvent, showEvent];
         }
@@ -57,12 +54,8 @@ var isolatedComponents = ng.core.Component({
     ngxBootstrap.tooltip.DIRECTIVES
   ],
   providers: [
-    ngxBootstrap.tooltip.SERVICE,
-    ngxBootstrap.coreService
-  ],
-  queries: {
-    tooltipElement: new ng.core.ViewChild('myTooltip', { read: ng.core.ElementRef }),
-    tooltipWithTemplateElement: new ng.core.ViewChild('myTooltipWithTemplate', { read: ng.core.ElementRef })
-  }
+    ngxBootstrap.coreService.ANIMATION_SERVICE,
+    ngxBootstrap.tooltip.SERVICES,
+  ]
 })
 .Class(new _testCase());

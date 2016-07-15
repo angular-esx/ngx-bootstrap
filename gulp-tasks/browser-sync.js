@@ -1,8 +1,8 @@
+var browserSync = require('browser-sync')
+
 module.exports = function (params) {
   return function () {
-    var _browserSync = params.plugins.browserSync;
-
-    _browserSync({
+    browserSync({
       server: {
           baseDir: "./"
       },

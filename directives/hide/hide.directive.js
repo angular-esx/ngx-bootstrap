@@ -1,5 +1,5 @@
 var ngxBaseDirective = require('baseDirective');
-var ngxBootstrap = require('ngxBootstrap');
+var ngxBootstrap = require('utils');
 
 var ngxBaseHideDirective = ng.core.Class(new _ngxBaseHideDirective());
 

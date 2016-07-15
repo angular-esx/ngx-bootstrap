@@ -46,20 +46,19 @@ module.exports = function (params) {
         testScripts.push(dependenceScript, ngxComponent);
 
       } else if (_directiveName) {
-        // testCaseScript = gulp.src(_fileService.getDirectiveTestCase(_directiveName, _testCase), _notReadOption);
-        // bootTestScript = gulp.src(_fileService.getDirectiveTestBoot(_directiveName, _testCase), _notReadOption);
-
         testCaseScripts = _fileService.getDirectiveTestCase(_directiveName, _testCase);
         testCaseScript = gulp.src(testCaseScripts.testCaseScript, _notReadOption);
         bootTestScript = gulp.src(testCaseScripts.bootScript, _notReadOption);
-        
+
+        var ngxDirective = gulp.src('./dist/js/ngx-' + _directiveName + '.js', _notReadOption);
+
         try {
           dependenceScript = getDependencies(require('.' + testCaseScripts.dependenceScript));
         } catch (e) {
           dependenceScript = gulp.src('', _notReadOption);
         }
 
-        testScripts.push(dependenceScript);
+        testScripts.push(dependenceScript, ngxDirective);
       }
     }
 

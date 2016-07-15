@@ -1,7 +1,8 @@
+var ngxBootstrap = require('ngxBootstrap');
 var ngxCheckboxDirective = require('./checkbox.directive.js');
 var ngxCheckboxGroupDirective = require('./checkbox-group.directive.js');
 
-module.exports = {
+ngxBootstrap.checkbox = {
   CHECKBOX_DIRECTIVE: ngxCheckboxDirective,
   CHECKBOX_GROUP_DIRECTIVE: ngxCheckboxGroupDirective,
   DIRECTIVES: [ 
@@ -9,3 +10,5 @@ module.exports = {
     ngxCheckboxGroupDirective 
   ]
 };
+
+module.exports = ngxBootstrap;

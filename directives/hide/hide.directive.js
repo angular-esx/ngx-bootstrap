@@ -1,45 +1,30 @@
-var ngxHideService = require('./services/hide.service.js');
 var ngxBaseDirective = require('baseDirective');
-var ngxRenderService = require('renderService');
-var ngxBootstrap = require('utils');
+var ngxBootstrap = require('ngxBootstrap');
 
 var ngxBaseHideDirective = ng.core.Class(new _ngxBaseHideDirective());
 
 function _ngxBaseHideDirective() {
-  var _base;
-  var _ATTRIBUTES = {
-    BREAKPOINT: 'breakpoint'
-  };
+  var _base, _STYLE_PROPERTIES;
 
   this.extends = ngxBaseDirective;
 
   this.constructor = [
     ng.core.ElementRef,
-    ngxRenderService,
-    ngxHideService,
+    ng.core.Renderer,
 
-    function ngxBaseHideDirective(elementRef, ngxRenderService, ngxHideService) {
+    function ngxBaseHideDirective(elementRef, renderer) {
       ngxBaseDirective.apply(this, arguments);
-
-      if (elementRef) {
-        this.ngxHideService = ngxHideService;
-      }
     }
   ];
 
-  this.onAggregatePropertyValueState = function (changeRecord) {
-    var _aggregate = {};
+  this.getStyleProperties = function () {
+    if(!_STYLE_PROPERTIES){
+      _STYLE_PROPERTIES = { BREAKPOINT: 'breakpoint' };
 
-    if (!this.ngxHideService) { return _aggregate; }
-
-    if (this.ngxHideService.getBreakpointClass) {
-      _aggregate[_ATTRIBUTES.BREAKPOINT] = {
-        prev: this.ngxHideService.getBreakpointClass(this.getPrefixClass(), this.getPrevPropertyValue(changeRecord, _ATTRIBUTES.BREAKPOINT)),
-        current: this.ngxHideService.getBreakpointClass(this.getPrefixClass(), this.getCurrentPropertyValue(changeRecord, _ATTRIBUTES.BREAKPOINT))
-      };
+      ngxBootstrap.shallowCopy(_STYLE_PROPERTIES, _getBaseInstance(this).getStyleProperties.apply(this));
     }
 
-    return _aggregate;
+    return _STYLE_PROPERTIES;
   };
 
   function _getBaseInstance(context) {
@@ -55,15 +40,10 @@ function _ngxHideDownDirective() {
 
   this.constructor = [
     ng.core.ElementRef,
-    ngxRenderService,
-    ngxHideService,
+    ng.core.Renderer,
 
-    function ngxHideDownDirective(elementRef, ngxRenderService, ngxHideService) {
+    function ngxHideDownDirective(elementRef, renderer) {
       ngxBaseHideDirective.apply(this, arguments);
-
-      if (elementRef) {
-        this.ngxHideService = ngxHideService;
-      }
     }
   ];
 
@@ -84,15 +64,10 @@ function _ngxHideUpDirective() {
 
   this.constructor = [
     ng.core.ElementRef,
-    ngxRenderService,
-    ngxHideService,
+    ng.core.Renderer,
 
-    function ngxHideUpDirective(elementRef, ngxRenderService, ngxHideService) {
+    function ngxHideUpDirective(elementRef, renderer) {
       ngxBaseHideDirective.apply(this, arguments);
-
-      if (elementRef) {
-        this.ngxHideService = ngxHideService;
-      }
     }
   ];
 
@@ -109,15 +84,13 @@ function _ngxHideUpDirective() {
 module.exports = [
   ng.core.Directive({
     selector: '[ngx-hide-up]',
-    providers: [ngxRenderService],
-    properties: ['breakpoint:ngx-hide-up']
+    properties: ['breakpoint:ngx-hide-up', 'initCssClass:class']
   })
   .Class(new _ngxHideUpDirective()),
 
   ng.core.Directive({
     selector: '[ngx-hide-down]',
-    providers: [ngxRenderService],
-    properties: ['breakpoint:ngx-hide-down']
+    properties: ['breakpoint:ngx-hide-down', 'initCssClass:class']
   })
   .Class(new _ngxHideDownDirective())
 ];

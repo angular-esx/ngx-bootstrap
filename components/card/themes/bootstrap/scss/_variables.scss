@@ -1,0 +1,36 @@
+﻿@import "../../../../../cores/themes/bootstrap/palette/palette.scss";
+@import "../../../../../cores/themes/bootstrap/border/border.scss";
+
+$ngx-card-padding: 1.25rem !default;
+
+$ngx-card-margin: 0 0 .75rem 0 !default;
+
+$ngx-card-background-color: ngx-color($ngx-color-white) !default;
+
+$ngx-card-boder: 1px solid ngx-color-light($ngx-color-gray) !default;
+
+$ngx-card-boder-radius: ngx-border-radius(base) !default;
+
+
+$ngx-card-title-margin: 0 0 .75rem 0 !default;
+
+
+$ngx-card-subtitle-margin: calc(.75rem / -2) 0 .75rem  0 !default;
+
+$ngx-card-subtitle-foreground-color: ngx-color-light($ngx-color-gray) !default;
+
+
+
+$ngx-card-image-margin: .75rem -1.31rem !default;
+
+$ngx-card-image-first-child-margin-top: -1.28rem !default;
+
+$ngx-card-image-last-child-margin-bottom: -1.28rem !default;
+
+$ngx-card-image-width: calc(100% + 2.62rem) !default;
+
+
+
+$ngx-card-actions-margin: 2rem 0 0 0 !default;
+
+$ngx-card-actions-item-margin: 0 0 0 .5rem !default;

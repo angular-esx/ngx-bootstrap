@@ -1,0 +1,61 @@
+﻿@import "_mixins.scss";
+
+:host(.ngx-link) {
+  font-weight: $ngx-link-font-weight;
+  text-align: center;
+  text-decoration: none;
+  background-color: transparent;
+  border-color: transparent;
+
+  @include ngx-link-size($ngx-link-font-size);
+
+  @include ngx-state(ngx-link, 'active'){
+    outline: 0;
+  }
+
+  @include ngx-state(ngx-link, 'disabled'){
+    cursor: not-allowed;
+  }
+
+  &.ngx-link-color-primary {
+    @include ngx-link-variant($ngx-link-primary, $ngx-link-primary-active, $ngx-link-primary-disabled);
+  }
+
+  &.ngx-link-color-secondary {
+    @include ngx-link-variant($ngx-link-secondary, $ngx-link-secondary-active, $ngx-link-secondary-disabled);
+  }
+
+  &.ngx-link-color-info {
+    @include ngx-link-variant($ngx-link-info, $ngx-link-info-active, $ngx-link-info-disabled);
+  }
+
+  &.ngx-link-color-success {
+    @include ngx-link-variant($ngx-link-success, $ngx-link-success-active, $ngx-link-success-disabled);
+  }
+
+  &.ngx-link-color-warning {
+    @include ngx-link-variant($ngx-link-warning, $ngx-link-warning-active, $ngx-link-warning-disabled);
+  }
+
+  &.ngx-link-color-danger {
+    @include ngx-link-variant($ngx-link-danger, $ngx-link-danger-active, $ngx-link-danger-disabled);
+  }
+
+  &.ngx-link-size-small {
+    @include ngx-link-size($ngx-link-font-size-sm);
+  }
+
+  &.ngx-link-size-large {
+    @include ngx-link-size($ngx-link-font-size-lg);
+  }
+
+  &.ngx-link-size-block {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+
+    + .ngx-link-size-block{
+       margin-top: .5rem;
+    }
+  }
+}

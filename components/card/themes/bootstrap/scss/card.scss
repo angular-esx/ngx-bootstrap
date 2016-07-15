@@ -1,0 +1,126 @@
+﻿@import "../../../../../cores/themes/bootstrap/normalize/normalize.scss";
+
+@import "_variables.scss";
+
+:host(.ngx-card) {
+  display: block;
+  position: relative;
+  padding: $ngx-card-padding;
+  margin: $ngx-card-margin;
+  background-color: $ngx-card-background-color;
+  border: $ngx-card-boder;
+
+  @include ngx-border-radius($ngx-card-boder-radius);
+
+  h1, h2, h3, h4, h5, h6 { @extend %ngx-h-normalize; }
+  p { @extend %ngx-p-normalize; }
+  hr { @extend %ngx-hr-normalize; }
+  a { @extend %ngx-link-normalize; }
+  img { @extend %ngx-img-normalize; }
+
+
+  ngx-card-title {
+    display: block;
+    margin: $ngx-card-title-margin;
+  }
+
+  ngx-card-subtitle {
+    display: block;
+    margin: $ngx-card-subtitle-margin;
+    color: $ngx-card-subtitle-foreground-color;
+  }
+
+  > .ngx-card-header {
+    display: flex;
+    flex-direction: row;
+
+    > ngx-card-image {
+      padding-right: 10px;
+
+      &[align-self="start"] {
+        align-self: flex-start;
+      }
+
+      &[align-self="center"] {
+        align-self: center;
+      }
+
+      &[align-self="end"] {
+        align-self: flex-end;
+      }
+    }
+
+    > .ngx-card-header-content {
+      flex: 1;
+    }
+
+    > ngx-card-actions {
+      padding-left: 10px;
+
+      &[align-self="start"] {
+        align-self: flex-start;
+      }
+
+      &[align-self="center"] {
+        align-self: center;
+      }
+
+      &[align-self="end"] {
+        align-self: flex-end;
+      }
+    }
+  }
+
+  > ngx-card-image {
+    display: block;
+    width: $ngx-card-image-width;
+    margin: $ngx-card-image-margin;
+
+    > img {
+      width: 100%;
+    }
+
+    &:first-child {
+      margin-top: $ngx-card-image-first-child-margin-top;
+      > img {
+        @include ngx-border-radius($ngx-card-boder-radius, top);
+      }
+    }
+
+    &:last-child {
+       margin-bottom: $ngx-card-image-last-child-margin-bottom;
+      > img {
+        @include ngx-border-radius($ngx-card-boder-radius, bottom);
+      }
+    }
+  }
+
+  > ngx-card-content {
+    display: block;
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  > ngx-card-actions {
+    display: flex;
+    margin: $ngx-card-actions-margin;
+
+    > *:not(:first-child) {
+      margin: $ngx-card-actions-item-margin;
+    }
+
+    &[justify-content="start"] {
+      justify-content: flex-start;
+    }
+
+    &[justify-content="center"] {
+      justify-content: space-around;
+    }
+
+    &[justify-content="end"] {
+      justify-content: flex-end;
+    }
+  }
+}

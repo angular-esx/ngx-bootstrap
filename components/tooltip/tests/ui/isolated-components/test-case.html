@@ -1,0 +1,92 @@
+﻿<h3>ngxTooltip</h3>
+
+<center>
+  <div class="tooltip-container"
+       ngx-tooltip="this is content of tooltip"
+       ngx-tooltip-position="top">Tooltip at top</div>
+</center>
+
+<br />
+
+<center>
+  <div class="tooltip-container" 
+       ngx-tooltip="this is content of tooltip"
+       ngx-tooltip-position="left">Tooltip at left</div>
+</center>
+
+<br />
+
+<center>
+  <div class="tooltip-container"
+       ngx-tooltip="this is content of tooltip"
+       ngx-tooltip-position="right">Tooltip at right</div>
+</center>
+
+<br/>
+
+<center>
+  <div class="tooltip-container"
+       ngx-tooltip="this is content of tooltip"
+       ngx-tooltip-position="bottom">Tooltip at bottom</div>
+</center>
+
+<br />
+
+<hr />
+
+<h3>ngxTooltip with delay</h3>
+
+<br />
+
+<center>
+  <div class="tooltip-container"
+       ngx-tooltip="this is content of tooltip"
+       ngx-tooltip-position="top"
+       [ngx-tooltip-delay]="delay">Tooltip with delay</div>
+</center>
+
+<br/>
+
+<hr />
+
+<h3>ngxTooltip with template</h3>
+
+<br/>
+
+<center>
+  <div id="myTooltipWithTemplate" class="tooltip-container"
+       ngx-tooltip="this is content of tooltip"
+       ngx-tooltip-position="top"
+       ngx-tooltip-template="myTemplate"
+       ngx-tooltip-auto-hide="false">Tooltip with template</div>
+</center>
+
+<template id="myTemplate" ngxTooltipTemplate>
+  <div (click)="alert()">Click me!!!</div>
+</template>
+
+<br />
+
+<hr />
+
+<h3>ngxTooltip with service</h3>
+
+<br />
+
+<center>
+  <div id="myTooltip" class="tooltip-container"
+       (click)="toggleTooltip()"
+       ngx-tooltip="this is content of tooltip"
+       ngx-tooltip-state="disabled"
+       ngx-tooltip-position="top">Tooltip with service</div>
+</center>
+
+<style>
+  .tooltip-container {
+    background-color: red; 
+    color: white; 
+    width: 200px; 
+    padding: 5px; 
+    margin: 5px;
+  }
+</style>

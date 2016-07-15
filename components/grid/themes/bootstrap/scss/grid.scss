@@ -1,0 +1,44 @@
+﻿@import "_mixins.scss";
+
+:host(.ngx-grid) {
+  @include ngx-container();
+
+  &:not(.ngx-grid-type-fluid) {
+    @include ngx-container-max-widths();
+  }
+
+  .ngx-grid-row {
+    @include ngx-row();
+  }
+
+  @include ngx-grid-columns();
+
+  @each $breakpoint in map-keys($ngx-breakpoints) {
+    @include ngx-media-breakpoint-up($breakpoint) {
+      .ngx-grid-col-#{$breakpoint}-align-self-auto { align-self: auto; }
+      .ngx-grid-col-#{$breakpoint}-align-self-flex-start { align-self: flex-start; }
+      .ngx-grid-col-#{$breakpoint}-align-self-flex-end { align-self: flex-end; }
+      .ngx-grid-col-#{$breakpoint}-align-self-center { align-self: center; }
+      .ngx-grid-col-#{$breakpoint}-align-self-baseline { align-self: baseline; }
+      .ngx-grid-col-#{$breakpoint}-align-self-stretch { align-self: stretch; }
+
+      .ngx-grid-row-#{$breakpoint}-justify-content-flex-start { justify-content: flex-start; }
+      .ngx-grid-row-#{$breakpoint}-justify-content-flex-end { justify-content: flex-end; }
+      .ngx-grid-row-#{$breakpoint}-justify-content-center { justify-content: center; }
+      .ngx-grid-row-#{$breakpoint}-justify-content-space-between { justify-content: space-between; }
+      .ngx-grid-row-#{$breakpoint}-justify-content-space-around { justify-content: space-around; }
+
+      .ngx-grid-row-#{$breakpoint}-align-content-flex-start { align-content: flex-start; }
+      .ngx-grid-row-#{$breakpoint}-align-content-flex-end { align-content: flex-end; }
+      .ngx-grid-row-#{$breakpoint}-align-content-center { align-content: center; }
+      .ngx-grid-row-#{$breakpoint}-align-content-space-between { align-content: space-between; }
+      .ngx-grid-row-#{$breakpoint}-align-content-space-around { align-content: space-around; }
+
+      .ngx-grid-row-#{$breakpoint}-align-items-flex-start { align-items: flex-start; }
+      .ngx-grid-row-#{$breakpoint}-align-items-flex-end { align-items: flex-end; }
+      .ngx-grid-row-#{$breakpoint}-align-items-center { align-items: center; }
+      .ngx-grid-row-#{$breakpoint}-align-items-baseline { align-items: baseline; }
+      .ngx-grid-row-#{$breakpoint}-align-items-stretch { align-items: stretch; }
+    }
+  }
+}

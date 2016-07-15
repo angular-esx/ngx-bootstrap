@@ -1,0 +1,49 @@
+﻿@import "../../../../../cores/themes/bootstrap/state/state.scss";
+
+@import "_variables.scss";
+
+@mixin ngx-button-size($font-size, $line-height, $padding, $border-radius){
+  font-size: $font-size;
+  line-height: $line-height;
+  padding: $padding;
+
+  @include ngx-border-radius($border-radius);
+}
+
+@mixin ngx-button-variant($default, $active, $disabled){
+  color: map-get($default, foreground);
+  background-color: map-get($default, background);
+  border-color: map-get($default, border);
+
+  @include ngx-state(ngx-button, 'focus hover active'){
+    color: map-get($active, foreground);
+    background-image: none;
+    background-color: map-get($active, background);
+    border-color: map-get($active, border);
+  }
+
+  @include ngx-state(ngx-button, 'disabled'){
+    color: map-get($disabled, foreground);
+    background-color: map-get($disabled, background);
+    border-color: map-get($disabled, border);
+  }
+}
+
+@mixin ngx-button-outline-variant($default, $active, $disabled){
+  color: map-get($default, foreground);
+  background-image: none;
+  background-color: transparent;
+  border-color: map-get($default, border);
+
+  @include ngx-state(ngx-button, 'focus hover active'){
+    color: map-get($active, foreground);
+    background-color: map-get($active, background);
+    border-color: map-get($active, border);
+  }
+
+  @include ngx-state(ngx-button, 'disabled'){
+    color: map-get($disabled, foreground);
+    background-color: map-get($disabled, background);
+    border-color: map-get($disabled, border);
+  }
+}

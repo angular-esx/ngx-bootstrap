@@ -1,0 +1,28 @@
+﻿@import "../../../../../cores/themes/bootstrap/typography/typography.scss";
+@import "../../../../../cores/themes/bootstrap/border/border.scss";
+@import "../../../../../cores/themes/bootstrap/palette/palette.scss";
+
+$ngx-popover-font-size: ngx-font-size(sm) !default;
+
+$ngx-popover-max-width: 200px !default;
+
+$ngx-popover-index: 1000 !default;
+
+$ngx-popover-border-radius: ngx-border-radius(lg) !default;
+
+$ngx-popover-background-color: ngx-color($ngx-color-white) !default;
+
+$ngx-popover-border-color: ngx-color-light($ngx-color-gray) !default;
+
+
+$ngx-popover-title-font-size: ngx-font-size(base) !default;
+
+$ngx-popover-title-padding: 8px 14px !default;
+
+$ngx-popover-title-background-color: ngx-color-light($ngx-color-gray) !default;
+
+
+$ngx-popover-content-padding: 9px 14px !default;
+
+
+$ngx-popover-arrow-width: 10px !default;

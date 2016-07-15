@@ -1,0 +1,82 @@
+﻿@import "../../../../../cores/themes/bootstrap/breakpoint/breakpoint.scss";
+
+@import "_variables.scss";
+
+@mixin ngx-container($gutter: $ngx-grid-gutter-width) {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left:  ($gutter / 2);
+  padding-right: ($gutter / 2);
+  box-sizing: border-box;
+}
+
+@mixin ngx-container-max-widths($max-widths: $ngx-grid-max-widths) {
+  @each $breakpoint, $container-max-width in $max-widths {
+    @include ngx-media-breakpoint-up($breakpoint) {
+      max-width: $container-max-width;
+    }
+  }
+}
+
+@mixin ngx-row($gutter: $ngx-grid-gutter-width) {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left:  ($gutter / -2);
+  margin-right: ($gutter / -2);
+  box-sizing: border-box;
+}
+
+@mixin ngx-col($gutter: $ngx-grid-gutter-width) {
+  position: relative;
+  min-height: 1px;
+  padding-left:  ($gutter / 2);
+  padding-right: ($gutter / 2);
+  box-sizing: border-box;
+}
+
+@mixin ngx-col-span($size, $columns: $ngx-grid-columns) {
+  flex: 0 0 percentage($size / $columns);
+}
+
+@mixin ngx-col-offset($size, $columns: $ngx-grid-columns) {
+  margin-left: percentage(($size - 1) / $columns);
+}
+
+@mixin ngx-col-order($size) {
+  order: $size;
+}
+
+@mixin ngx-col-modifier($type, $size, $columns) {
+  @if $type == order {
+    @include ngx-col-order($size);
+  } @else if $type == offset {
+    @include ngx-col-offset($size, $columns);
+  }
+}
+
+@mixin ngx-grid-columns($columns: $ngx-grid-columns, $gutter: $ngx-grid-gutter-width, $breakpoints: $ngx-breakpoints) {
+  @each $breakpoint in map-keys($breakpoints) {
+    @for $i from 1 through $columns {
+      .ngx-grid-col-#{$breakpoint}-size-#{$i} {
+        @include ngx-col($gutter);
+      }
+    }
+
+    @include ngx-media-breakpoint-up($breakpoint) {
+      @for $i from 1 through $columns {
+        .ngx-grid-col-#{$breakpoint}-size-#{$i} {
+          @include ngx-col-span($i, $columns);
+        }
+      }
+
+      @each $modifier in (order, offset) {
+        @for $i from 1 through $columns {
+          .ngx-grid-col-#{$breakpoint}-#{$modifier}-#{$i} {
+            @include ngx-col-modifier($modifier, $i, $columns)
+          }
+        }
+      }
+    }
+  }
+}

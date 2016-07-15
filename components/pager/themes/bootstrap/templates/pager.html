@@ -1,0 +1,9 @@
+﻿<a *ngIf="showPrevious" 
+    class="ngx-pager-item ngx-pager-left-item"
+    href="pageBuilder.prevPage.link" 
+    (click)="prev($event)">Prev</a>
+
+<a *ngIf="showNext" 
+    class="ngx-pager-item ngx-pager-right-item"
+    href="pageBuilder.nextPage.link" 
+    (click)="next($event)">Next</a>

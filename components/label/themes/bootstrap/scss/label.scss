@@ -1,0 +1,49 @@
+﻿@import "../../../../../cores/themes/bootstrap/normalize/normalize.scss";
+
+@import "_mixins.scss";
+
+:host(.ngx-label) {
+  display: inline-block;
+  font-size: $ngx-label-font-size;
+  font-weight: $ngx-label-font-weight;
+  line-height: $ngx-label-line-height;
+  padding: $ngx-label-padding;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  @include ngx-border-radius($ngx-label-border-radius);
+
+  a {
+    @extend %ngx-link-normalize;
+
+    color: ngx-color($ngx-color-white);
+  }
+
+  &:empty {
+    display: none;
+  }
+
+  &.ngx-label-type-pill {
+    padding: $ngx-label-pill-padding;
+    @include ngx-border-radius($ngx-label-pill-border-radius);
+  }
+
+  &.ngx-label-color-primary {
+    @include ngx-label-variant($ngx-label-primary);
+  }
+  &.ngx-label-color-secondary {
+    @include ngx-label-variant($ngx-label-secondary);
+  }
+  &.ngx-label-color-info {
+    @include ngx-label-variant($ngx-label-info);
+  }
+  &.ngx-label-color-success {
+    @include ngx-label-variant($ngx-label-success);
+  }
+  &.ngx-label-color-warning {
+    @include ngx-label-variant($ngx-label-warning);
+  }
+  &.ngx-label-color-danger {
+    @include ngx-label-variant($ngx-label-danger);
+  }
+}

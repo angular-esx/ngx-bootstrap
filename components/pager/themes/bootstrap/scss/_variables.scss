@@ -1,0 +1,14 @@
+﻿@import "../../../../../cores/themes/bootstrap/palette/palette.scss";
+
+$ngx-pager-margin: 1rem 0 1rem 0 !default;
+
+$ngx-pager-item-border-radius: 1rem;
+
+$ngx-pager-item: (
+  foreground: ngx-color($ngx-color-primary),
+  background: ngx-color($ngx-color-white),
+  border: ngx-color-light($ngx-color-gray)
+);
+$ngx-pager-item-active: (
+  background: ngx-color($ngx-color-gray, $opacity: .2)
+);

@@ -1,0 +1,107 @@
+﻿@import "../../../../../cores/themes/bootstrap/normalize/normalize.scss";
+
+@import "_mixins.scss";
+
+:host(.ngx-list) {
+  padding-left: 0;
+  margin-bottom: 0;
+
+  > .ngx-list-item, {
+    @extend %ngx-link-normalize;
+
+    display: flex;
+    text-align: inherit;
+    position: relative;
+    width: 100%;
+    padding: $ngx-list-item-padding;
+    border: $ngx-list-item-border;
+    box-sizing: border-box;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      @extend %ngx-h-normalize;
+      margin-bottom: 5px;
+    }
+
+    p {
+      @extend %ngx-p-normalize;
+
+      text-align: inherit;
+      line-height: $ngx-list-item-line-height;
+      margin-bottom: 0;
+    }
+
+    > ngx-list-item-image {
+      padding-right: 10px;
+
+      &[align-self="start"] {
+        align-self: flex-start;
+      }
+      &[align-self="center"] {
+        align-self: center;
+      }
+      &[align-self="end"] {
+        align-self: flex-end;
+      }
+    }
+
+    > ngx-list-item-content {
+      flex: 1;
+    }
+
+    > ngx-list-item-actions {
+      padding-left: 10px;
+
+      &[align-self="start"] {
+        align-self: flex-start;
+      }
+      &[align-self="center"] {
+        align-self: center;
+      }
+      &[align-self="end"] {
+        align-self: flex-end;
+      }
+    }
+
+    &.ngx-list-item-color-primary {
+      &, a, button {
+        @include ngx-list-item-variant($ngx-list-item-primary, $ngx-list-item-primary-active, $ngx-list-item-primary-disabled);
+      }
+    }
+
+    &.ngx-list-item-color-secondary {
+      &, a, button {
+        @include ngx-list-item-variant($ngx-list-item-secondary, $ngx-list-item-secondary-active, $ngx-list-item-secondary-disabled);
+      }
+    }
+
+    &.ngx-list-item-color-info {
+      &, a, button {
+        @include ngx-list-item-variant($ngx-list-item-info, $ngx-list-item-info-active, $ngx-list-item-info-disabled);
+      }
+    }
+
+    &.ngx-list-item-color-success {
+      &, a, button {
+        @include ngx-list-item-variant($ngx-list-item-success, $ngx-list-item-success-active, $ngx-list-item-success-disabled);
+      }
+    }
+
+    &.ngx-list-item-color-warning {
+      &, a, button {
+        @include ngx-list-item-variant($ngx-list-item-warning, $ngx-list-item-warning-active, $ngx-list-item-warning-disabled);
+      }
+    }
+
+    &.ngx-list-item-color-danger {
+      &, a, button {
+        @include ngx-list-item-variant($ngx-list-item-danger, $ngx-list-item-danger-active, $ngx-list-item-danger-disabled);
+      }
+    }
+  }
+
+}

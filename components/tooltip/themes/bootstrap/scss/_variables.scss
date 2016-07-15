@@ -1,0 +1,20 @@
+﻿@import "../../../../../cores/themes/bootstrap/typography/typography.scss";
+@import "../../../../../cores/themes/bootstrap/border/border.scss";
+@import "../../../../../cores/themes/bootstrap/palette/palette.scss";
+
+$ngx-tooltip-font-size: ngx-font-size(sm) !default;
+
+$ngx-tooltip-padding: 3px 8px !default;
+
+$ngx-tooltip-max-width: 200px !default;
+
+$ngx-tooltip-index: 1000 !default;
+
+$ngx-tooltip-border-radius: ngx-border-radius(base) !default;
+
+$ngx-tooltip-foreground-color: ngx-color($ngx-color-white) !default;
+
+$ngx-tooltip-background-color: ngx-color($ngx-color-black) !default;
+
+
+$ngx-tooltip-arrow-width: 5px !default;

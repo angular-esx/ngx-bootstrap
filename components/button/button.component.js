@@ -1,73 +1,63 @@
-﻿(function (ngxBootstrap) {
-  ngxBootstrap.ngxClass.ngxButtonClass = ngxButton;
+﻿var ngxBaseComponent = require('baseComponent');
 
-  ngxBootstrap.ngxComponents.ngxButtonComponent = ng.core.Component({
-    selector: 'ngx-button',
-    template: _getNgxButtonTemplate(),
-    providers: [ngxBootstrap.ngxCores.ngxRendererService]
-  })
-  .Class(new ngxButton());
+function _ngxButtonComponent() {
+  var _base;
+  
+  this.extends = ngxBaseComponent;
 
-  function ngxButton() {
-    var _ATTRIBUTES = {
-      COLOR: 'color',
-      TYPE: 'type',
-      SIZE: 'size',
-      STATE: 'state'
-    };
+  this.constructor = [
+    ng.core.ElementRef,
+    ng.core.Renderer,
 
-    this.constructor = [
-      ng.core.ElementRef,
-      ngxBootstrap.ngxCores.ngxRendererService,
-      ngxBootstrap.ngxComponents.ngxButtonService,
-
-      function (elementRef, ngxRendererService, ngxButtonService) {
-        this.cssClass = 'btn';
-
-        this.elementRef = elementRef;
-        this.ngxRendererService = ngxRendererService.for(elementRef.nativeElement);
-        this.ngxButtonService = ngxButtonService;
-      }
-    ];
-
-    this.ngAfterContentInit = function () {
-      this.color = this.ngxRendererService.getElementAttribute(_ATTRIBUTES.COLOR);
-      this.type = this.ngxRendererService.getElementAttribute(_ATTRIBUTES.TYPE);
-      this.size = this.ngxRendererService.getElementAttribute(_ATTRIBUTES.SIZE);
-      this.state = this.ngxRendererService.getElementAttribute(_ATTRIBUTES.STATE);
-
-      this.isDisabled = this.ngxButtonService.isDisabledState(this.state);
-    };
-
-    this.ngAfterViewInit = function () {
-      var _className = this.cssClass + ' ' + this.ngxButtonService.combineColorWithType(this.color, this.type);
-      if (this.size) {
-        _className += ' ' + this.ngxButtonService.getSizeClass(this.size);
-      }
-      if (this.state) {
-        _className += ' ' + this.ngxButtonService.getStateClass(this.state);
-      }
-
-      var _self = this;
-      ngxBootstrap.forEach(_ATTRIBUTES, function (attribute) {
-        _self.ngxRendererService.removeElementAttribute(attribute);
-      });
-      this.ngxRendererService.removeElementAttribute('class');
+    function ngxButtonComponent(elementRef, renderer) {
+      ngxBaseComponent.apply(this, arguments);
       
-      this.ngxRendererService.for(this.elementRef.nativeElement.firstChild);
-      this.ngxRendererService.addToElementAttribute('class', _className, true);
+      if (elementRef) {
+        this.clickEmitter = new ng.core.EventEmitter();
+      }
+    }
+  ];
 
-      this.ngxRendererService.for(this.elementRef.nativeElement);
-    };
+  this.ngOnChanges = function(changeRecord){
+    this.isDisabled = this.propertyHasValue(this.getStyleProperties().STATE, 'disabled');
 
+    _getBaseInstance(this).ngOnChanges.apply(this, arguments);
+  };
+
+  this.initDefaultValues = function(){
+    if(!this.state && !this.isDisabled){ this.isDisabled = false; }
+
+    return null;
+  };
+
+  this.getPrefixClass = function () {
+    return 'ngx-button';
+  };
+
+  this.click = function (event) {
+    if (this.isDisabled) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    }
+    else {
+      this.clickEmitter.emit(event);
+    }
+  };
+  
+  function _getBaseInstance(context){ 
+    if(!_base){ _base = context.getBaseInstance(ngxBaseComponent); }
+    return _base;
   }
+}
 
-  function _getNgxButtonTemplate() {
-    return [
-      '<button type="button" [disabled]="isDisabled">',
-        '<ng-content></ng-content>',
-      '</button>'
-    ].join('');
+module.exports = ng.core.Component({
+  selector: 'ngx-button, a[ngx-button]',
+  template: require('./themes/' + __THEME__ + '/templates/button.html'),
+  styles: [require('./themes/' + __THEME__  + '/scss/button.scss')],
+  properties: ['color', 'size', 'state', 'initCssClass:class'],
+  events: ['clickEmitter:onClick'],
+  host: {
+    '(click)': 'click($event)'
   }
-
-})(window.ngxBootstrap);
+})
+.Class(new _ngxButtonComponent());

@@ -1,0 +1,14 @@
+﻿@import "../../../../../cores/themes/bootstrap/breakpoint/breakpoint.scss";
+
+@each $breakpoint in map-keys($ngx-breakpoints) {
+  .ngx-hide-up-#{$breakpoint} {
+    @include ngx-media-breakpoint-up($breakpoint) {
+      display: none !important;
+    }
+  }
+  .ngx-hide-down-#{$breakpoint} {
+    @include ngx-media-breakpoint-down($breakpoint) {
+      display: none !important;
+    }
+  }
+}

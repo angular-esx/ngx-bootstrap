@@ -1,0 +1,32 @@
+﻿@import "../../../../../cores/themes/bootstrap/typography/typography.scss";
+
+@import "_mixins.scss";
+
+:host(.ngx-group) {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+
+  > .ngx-group {
+    float: left;
+
+    + .ngx-group {
+      margin-left: -1px;
+    }
+  }
+
+  &.ngx-group-type-vertical {
+    > .ngx-group {
+      @include ngx-group-vertical-children();
+
+      @include clearfix();
+
+      + .ngx-group {
+        margin-left: -1px;
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+@import "_button-group.scss";

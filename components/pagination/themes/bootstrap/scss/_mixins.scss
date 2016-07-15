@@ -1,0 +1,18 @@
+﻿@import "_variables.scss";
+
+@mixin ngx-pagination-size($font-size, $line-height, $padding, $border-radius) {
+  > .ngx-page-item {
+    > a {
+      font-size: $font-size;
+      line-height: $line-height;
+      padding: $padding;
+    }
+
+    &:first-child > a {
+      @include ngx-border-radius($border-radius, left);
+    }
+    &:last-child > a {
+      @include ngx-border-radius($border-radius, right);
+    }
+  }
+}

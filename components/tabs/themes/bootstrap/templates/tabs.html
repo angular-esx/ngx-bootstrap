@@ -1,0 +1,14 @@
+﻿<div class="ngx-tabs-heads">
+  <div *ngFor="let tab of tabs; let i=index; trackBy:trackByTabs"
+       [class.ngx-tabs-head-state-active]="tab.isActive"
+       [class.ngx-tabs-head-state-disabled]="tab.isDisabled"
+       (click)="select(tab, i)"
+       class="ngx-tabs-head">
+    <span *ngIf="tab.headTemplateRef" [ngxTransclude]="tab.headTemplateRef"></span>
+    <span *ngIf="!tab.headTemplateRef">{{tab.head}}</span>
+  </div>
+</div>
+
+<div class="ngx-tabs-contents">
+  <ng-content></ng-content>
+</div>

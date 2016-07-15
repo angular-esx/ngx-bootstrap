@@ -1,0 +1,29 @@
+﻿@import "../../../../../cores/themes/bootstrap/palette/palette.scss";
+
+$ngx-alert-padding: 1rem !default;
+$ngx-alert-type-dismissible-padding: 1rem 2rem 1rem 1rem !default;
+
+$ngx-alert-margin: 0 0 1rem 0 !default;
+
+$ngx-alert-border: 1px solid transparent !default;
+$ngx-alert-border-radius: ngx-border-radius(base) !default;
+
+$ngx-alert-info: (
+  foreground: ngx-color($ngx-color-info),
+  background: ngx-color-light($ngx-color-info, $opacity: .4)
+) !default;
+
+$ngx-alert-success: (
+  foreground: ngx-color($ngx-color-success),
+  background: ngx-color-light($ngx-color-success, $opacity: .4)
+) !default;
+
+$ngx-alert-warning: (
+  foreground: ngx-color($ngx-color-warning),
+  background: ngx-color-light($ngx-color-warning, $opacity: .4)
+) !default;
+
+$ngx-alert-danger: (
+  foreground: ngx-color($ngx-color-danger),
+  background: ngx-color-light($ngx-color-danger, $opacity: .4)
+) !default;

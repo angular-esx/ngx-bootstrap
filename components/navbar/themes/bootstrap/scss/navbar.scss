@@ -1,0 +1,85 @@
+﻿@import "_mixins.scss";
+
+:host(.ngx-navbar) {
+  display: block;
+  position: relative;
+  padding: $ngx-navbar-padding;
+
+  @include clearfix();
+
+  &.ngx-navbar-position-top,
+  &.ngx-navbar-position-bottom {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: $ngx-navbar-index;
+  }
+
+  &.ngx-navbar-position-top {
+    top: 0;
+  }
+
+  &.ngx-navbar-position-bottom {
+    bottom: 0;
+  }
+
+  > .ngx-navbar-divider {
+    color: transparent;
+    float: left;
+    width: 1px;
+    padding: $ngx-navbar-divider-padding;
+    margin: $ngx-navbar-divider-margin;
+    overflow: hidden;
+
+    &::before {
+      content: "\00a0";
+    }
+  }
+
+  > .ngx-navbar-brand {
+    float: left;
+    padding: $ngx-navbar-brand-padding;
+    margin: $ngx-navbar-brand-margin;
+    font-size: $ngx-navbar-brand-font-size;
+    text-decoration: none;
+
+    > img {
+      display: block;
+    }
+  }
+
+  > .ngx-navbar-item {
+    display: block;
+    float: left;
+    padding: $ngx-navbar-item-padding;
+    text-decoration: none;
+
+    + .ngx-navbar-item{
+      margin-left: 1rem;
+    }
+  }
+
+  &.ngx-navbar-color-primary {
+    @include ngx-navbar-variant($ngx-navbar-color-primary, $ngx-navbar-color-primary-active);
+  }
+
+  &.ngx-navbar-color-secondary {
+    @include ngx-navbar-variant($ngx-navbar-color-secondary, $ngx-navbar-color-secondary-active);
+  }
+
+  &.ngx-navbar-color-info {
+    @include ngx-navbar-variant($ngx-navbar-color-info, $ngx-navbar-color-info-active);
+  }
+
+  &.ngx-navbar-color-success {
+    @include ngx-navbar-variant($ngx-navbar-color-success, $ngx-navbar-color-success-active);
+  }
+
+  &.ngx-navbar-color-warning {
+    @include ngx-navbar-variant($ngx-navbar-color-warning, $ngx-navbar-color-warning-active);
+  }
+
+  &.ngx-navbar-color-danger {
+    @include ngx-navbar-variant($ngx-navbar-color-danger, $ngx-navbar-color-danger-active);
+  }
+}

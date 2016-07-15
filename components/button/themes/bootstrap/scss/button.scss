@@ -1,0 +1,92 @@
+﻿@import "../../../../../cores/themes/bootstrap/state/state.scss";
+
+@import "_mixins.scss";
+
+:host(.ngx-button) {
+  display: inline-block;
+  font-weight: $ngx-button-font-weight;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: $ngx-button-border;
+  
+  @include ngx-button-size($ngx-button-font-size, $ngx-button-line-height, $ngx-button-padding, $ngx-button-border-radius);
+
+  @include ngx-state(ngx-button, 'active'){
+    background-image: none;
+    outline: 0;
+  }
+
+  @include ngx-state(ngx-button, 'disabled'){
+    cursor: not-allowed;
+  }
+
+  &.ngx-button-color-primary {
+    @include ngx-button-variant($ngx-button-primary, $ngx-button-primary-active, $ngx-button-primary-disabled);
+
+    &.ngx-button-color-outline {
+      @include ngx-button-outline-variant($ngx-button-outline-primary, $ngx-button-outline-primary-active, $ngx-button-outline-primary-disabled);
+    }
+  }
+
+  &.ngx-button-color-secondary {
+    @include ngx-button-variant($ngx-button-secondary, $ngx-button-secondary-active, $ngx-button-secondary-disabled);
+
+    &.ngx-button-color-outline {
+      @include ngx-button-outline-variant($ngx-button-outline-secondary, $ngx-button-outline-secondary-active, $ngx-button-outline-secondary-disabled);
+    }
+  }
+
+  &.ngx-button-color-info {
+    @include ngx-button-variant($ngx-button-info, $ngx-button-info-active, $ngx-button-info-disabled);
+
+    &.ngx-button-color-outline {
+      @include ngx-button-outline-variant($ngx-button-outline-info, $ngx-button-outline-info-active, $ngx-button-outline-info-disabled);
+    }
+  }
+
+  &.ngx-button-color-success {
+    @include ngx-button-variant($ngx-button-success, $ngx-button-success-active, $ngx-button-success-disabled);
+
+    &.ngx-button-color-outline {
+      @include ngx-button-outline-variant($ngx-button-outline-success, $ngx-button-outline-success-active, $ngx-button-outline-success-disabled);
+    }
+  }
+
+  &.ngx-button-color-warning {
+    @include ngx-button-variant($ngx-button-warning, $ngx-button-warning-active, $ngx-button-warning-disabled);
+
+    &.ngx-button-color-outline {
+      @include ngx-button-outline-variant($ngx-button-outline-warning, $ngx-button-outline-warning-active, $ngx-button-outline-warning-disabled);
+    }
+  }
+
+  &.ngx-button-color-danger {
+    @include ngx-button-variant($ngx-button-danger, $ngx-button-danger-active, $ngx-button-danger-disabled);
+
+    &.ngx-button-color-outline {
+      @include ngx-button-outline-variant($ngx-button-outline-danger, $ngx-button-outline-danger-active, $ngx-button-outline-danger-disabled);
+    }
+  }
+
+  &.ngx-button-size-small {
+    @include ngx-button-size($ngx-button-font-size-sm, $ngx-button-line-height-sm, $ngx-button-padding-sm, $ngx-button-border-radius-sm);
+  }
+
+  &.ngx-button-size-large {
+    @include ngx-button-size($ngx-button-font-size-lg, $ngx-button-line-height-lg, $ngx-button-padding-lg, $ngx-button-border-radius-lg);
+  }
+
+  &.ngx-button-size-block {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+
+    + .ngx-button-size-block{
+       margin-top: .5rem;
+    }
+  }
+}

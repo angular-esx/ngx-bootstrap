@@ -3,8 +3,8 @@
 <center>
   <ngx-pager total-pages="10"
             current-page="2"
-            (onSetLinkPage)="onSetLinkPage($event)"
-            (onChangePage)="onChangePage($event)">
+            (onSetPage)="setPage($event)"
+            (onChangePage)="changePage($event)">
   </ngx-pager>
 </center>
 
@@ -17,7 +17,7 @@
   <ngx-pager type="aligned"
              total-pages="10"
              current-page="2"
-             (onSetLinkPage)="onSetLinkPage($event)"
-             (onChangePage)="onChangePage($event)">
+             (onSetPage)="setPage($event)"
+             (onChangePage)="changePage($event)">
   </ngx-pager>
 </center>

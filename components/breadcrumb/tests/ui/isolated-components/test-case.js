@@ -1,20 +1,16 @@
-﻿(function (testCases, ngxBootstrap, fileService) {
-  testCases.isolatedComponents = ng.core.Component({
-    selector: 'ngx-test-case',
-    templateUrl: fileService.getTestCaseTemplate('breadcrumb'),
-    directives: [
-      ngxBootstrap.ngxCores.ngxLinkComponent,
-      ngxBootstrap.ngxCores.ngxItemComponent,
-      ngxBootstrap.ngxComponents.ngxBreadcrumbComponent
-    ]
-  })
-  .Class(new testCase());
+function _testCase() {
+  this.constructor = function () {
+    this.categoryPage = 'http://my-website.com/category';
+    this.productPage = 'http://my-website.com/product';
+  };
+}
 
-  function testCase() {
-    this.constructor = function () {
-      this.categoryPage = 'http://my-website.com/category';
-      this.productPage = 'http://my-website.com/product';
-    };
-  }
-
-})(window.testCases || (window.testCases = {}), window.ngxBootstrap, ngxBootstrap.configs.fileService);
+var isolatedComponents = ng.core.Component({
+  selector: 'ngx-test-case',
+  templateUrl: 'components/breadcrumb/tests/ui/isolated-components/test-case.html',
+  directives: [
+    ngxBootstrap.link.DIRECTIVES,
+    ngxBootstrap.breadcrumb.DIRECTIVES
+  ]
+})
+.Class(new _testCase());

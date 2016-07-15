@@ -1,0 +1,129 @@
+﻿@import "_variables.scss";
+
+:host(.ngx-popover) {
+  display: block;
+  position: absolute;
+  opacity: 0;
+  z-index: $ngx-popover-index;
+  max-width: $ngx-popover-max-width;
+  padding: 1px;
+  font-size: $ngx-popover-font-size;
+
+  @include ngx-reset-text();
+  
+  background-color: $ngx-popover-background-color;
+  background-clip: padding-box;
+  border: 1px solid $ngx-popover-border-color;
+
+  @include ngx-border-radius($ngx-popover-border-radius);
+
+  .ngx-popover-title {
+    font-size: $ngx-popover-title-font-size;
+    padding: $ngx-popover-title-padding;
+    margin: 0;
+    background-color: $ngx-popover-title-background-color;
+    border-bottom: 1 solid $ngx-popover-title-background-color;
+
+    $border-radius: ($ngx-popover-border-radius - 1) ($ngx-popover-border-radius - 1) 0 0;
+    @include ngx-border-radius($border-radius);
+  }
+
+  .ngx-popover-content {
+    padding: $ngx-popover-content-padding;
+  }
+
+  > .ngx-popover-arrow {
+    border-width: ($ngx-popover-arrow-width - 1);
+
+    &::after {
+      content: "";
+      border-width: $ngx-popover-arrow-width;
+    }
+
+    &,
+    &::after {
+      display: block;
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-color: transparent;
+      border-style: solid;
+    }
+  }
+
+  &.ngx-popover-position-top {
+    margin-top: -$ngx-popover-arrow-width;
+
+    .ngx-popover-arrow {
+      bottom: -$ngx-popover-arrow-width;
+      left: 50%;
+      margin-left: -$ngx-popover-arrow-width;
+      border-top-color: $ngx-popover-border-color;
+      border-bottom-width: 0;
+      &::after {
+        bottom: 1px;
+        margin-left: -$ngx-popover-arrow-width;
+        content: "";
+        border-top-color: $ngx-popover-background-color;
+        border-bottom-width: 0;
+      }
+    }
+  }
+
+  &.ngx-popover-position-right {
+    margin-left: $ngx-popover-arrow-width;
+
+    .ngx-popover-arrow {
+      top: 50%;
+      left: -$ngx-popover-arrow-width;
+      margin-top: -$ngx-popover-arrow-width;
+      border-right-color: $ngx-popover-border-color;
+      border-left-width: 0;
+      &::after {
+        bottom: -$ngx-popover-arrow-width;
+        left: 1px;
+        content: "";
+        border-right-color: $ngx-popover-background-color;
+        border-left-width: 0;
+      }
+    }
+  }
+
+  &.ngx-popover-position-bottom {
+    margin-top: $ngx-popover-arrow-width;
+
+    .ngx-popover-arrow {
+      top: -$ngx-popover-arrow-width;
+      left: 50%;
+      margin-left: -$ngx-popover-arrow-width;
+      border-top-width: 0;
+      border-bottom-color: $ngx-popover-border-color;
+      &::after {
+        top: 1px;
+        margin-left: -$ngx-popover-arrow-width;
+        content: "";
+        border-top-width: 0;
+        border-bottom-color: $ngx-popover-background-color;
+      }
+    }
+  }
+
+  &.ngx-popover-position-left {
+    margin-left: -($ngx-popover-arrow-width - 1);
+
+    .ngx-popover-arrow {
+      top: 50%;
+      right: -$ngx-popover-arrow-width;
+      margin-top: -$ngx-popover-arrow-width;
+      border-right-width: 0;
+      border-left-color: $ngx-popover-border-color;
+      &::after {
+        right: 1px;
+        bottom: -$ngx-popover-arrow-width;
+        content: "";
+        border-right-width: 0;
+        border-left-color: $ngx-popover-background-color;
+      }
+    }
+  }
+}

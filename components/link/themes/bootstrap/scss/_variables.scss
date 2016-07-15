@@ -1,0 +1,73 @@
+﻿@import "../../../../../cores/themes/bootstrap/typography/typography.scss";
+@import "../../../../../cores/themes/bootstrap/palette/palette.scss";
+
+$ngx-link-font-size: ngx-font-size(base) !default;
+$ngx-link-font-size-sm: ngx-font-size(sm) !default;
+$ngx-link-font-size-lg: ngx-font-size(lg) !default;
+
+$ngx-link-font-weight: normal !default;
+
+$ngx-link-primary: (
+  foreground: ngx-color($ngx-color-primary)
+) !default;
+$ngx-link-primary-active: (
+  foreground: ngx-color-dark($ngx-color-primary)
+) !default;
+$ngx-link-primary-disabled: (
+  foreground: ngx-color($ngx-color-primary, $opacity: .65)
+) !default;
+
+
+$ngx-link-secondary: (
+  foreground: ngx-color($ngx-color-gray)
+) !default;
+$ngx-link-secondary-active: (
+  foreground: ngx-color-dark($ngx-color-gray)
+) !default;
+$ngx-link-secondary-disabled: (
+  foreground: ngx-color($ngx-color-gray, $opacity: .65)
+) !default;
+
+
+$ngx-link-info: (
+  foreground: ngx-color($ngx-color-info)
+) !default;
+$ngx-link-info-active: (
+  foreground: ngx-color-dark($ngx-color-info)
+) !default;
+$ngx-link-info-disabled: (
+  foreground: ngx-color($ngx-color-info, $opacity: .65)
+) !default;
+
+
+$ngx-link-success: (
+  foreground: ngx-color($ngx-color-success)
+) !default;
+$ngx-link-success-active: (
+  foreground: ngx-color-dark($ngx-color-success)
+) !default;
+$ngx-link-success-disabled: (
+  foreground: ngx-color($ngx-color-success, $opacity: .65)
+) !default;
+
+
+$ngx-link-warning: (
+  foreground: ngx-color($ngx-color-warning)
+) !default;
+$ngx-link-warning-active: (
+  foreground: ngx-color-dark($ngx-color-warning)
+) !default;
+$ngx-link-warning-disabled: (
+  foreground: ngx-color($ngx-color-warning, $opacity: .65)
+) !default;
+
+
+$ngx-link-danger: (
+  foreground: ngx-color($ngx-color-danger)
+) !default;
+$ngx-link-danger-active: (
+  foreground: ngx-color-dark($ngx-color-danger)
+) !default;
+$ngx-link-danger-disabled: (
+  foreground: ngx-color($ngx-color-danger, $opacity: .65)
+) !default;

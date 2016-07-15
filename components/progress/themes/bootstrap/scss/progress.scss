@@ -1,0 +1,59 @@
+﻿@import "_mixins.scss";
+
+@-webkit-keyframes ngx-progress-bar-stripes {
+  from  { background-position: 1rem 0; }
+  to    { background-position: 0 0; }
+}
+
+:host(.ngx-progress) {
+  display: block;
+  height: $ngx-progress-height;
+  margin: $ngx-progress-margin;
+  overflow: hidden;
+  background-color: $ngx-progress-background-color;
+  @include ngx-border-radius($ngx-progress-border-radius);
+
+  > .ngx-progress-bar {
+    text-align: center;
+    font-size: $ngx-progress-bar-font-size;
+    line-height: $ngx-progress-bar-line-height;
+    float: left;
+    width: 0%;
+    height: 100%;
+    color: $ngx-progress-bar-foreground-color;
+    transition: $ngx-progress-bar-transition;
+  }
+
+  &.ngx-progress-color-striped {
+    > .ngx-progress-bar {
+      background-size: $ngx-progress-bar-striped-background-size;
+      @include ngx-gradient-striped();
+    }
+
+    &.ngx-progress-color-animated-striped {
+      > .ngx-progress-bar {
+        animation: ngx-progress-bar-stripes 2s linear infinite;
+      }
+    }
+  }
+
+  &.ngx-progress-color-primary {
+    @include ngx-progress-variant(ngx-progress, $ngx-progress-bar-primary-background-color);
+  }
+
+  &.ngx-progress-color-info {
+    @include ngx-progress-variant(ngx-progress, $ngx-progress-bar-info-background-color);
+  }
+
+  &.ngx-progress-color-success {
+    @include ngx-progress-variant(ngx-progress, $ngx-progress-bar-success-background-color);
+  }
+
+  &.ngx-progress-color-warning {
+    @include ngx-progress-variant(ngx-progress, $ngx-progress-bar-warning-background-color);
+  }
+
+  &.ngx-progress-color-danger {
+    @include ngx-progress-variant(ngx-progress, $ngx-progress-bar-danger-background-color);
+  }
+}

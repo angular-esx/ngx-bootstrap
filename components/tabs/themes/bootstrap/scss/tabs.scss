@@ -1,0 +1,88 @@
+﻿@import "../../../../../cores/themes/bootstrap/state/state.scss";
+
+@import "_variables.scss";
+
+:host(.ngx-tabs) > .ngx-tabs-heads {
+  display: block;
+  padding: $ngx-tabs-heads-padding;
+  margin:$ngx-tabs-heads-margin;
+  border-bottom: $ngx-tabs-heads-border-bottom;
+
+  @include clearfix();
+
+  > .ngx-tabs-head {
+    display: block;
+    float: left;
+    color: map-get($ngx-tabs-head, foreground);
+    background-color: transparent;
+    text-decoration: none;
+    padding: $ngx-tabs-head-padding;
+    margin: $ngx-tabs-head-margin;    
+    border: $ngx-tabs-head-border;
+    cursor: pointer;
+    
+    @include ngx-border-radius($ngx-tabs-head-border-radius, top);
+
+    + .ngx-tabs-head {
+      margin-left: .2rem;
+    }
+
+    @include ngx-state(ngx-tabs-head, 'focus hover'){
+      border-color: map-get($ngx-tabs-head-hover, border);
+    }
+
+    @include ngx-state(ngx-tabs-head, 'active'){
+      color: map-get($ngx-tabs-head-active, foreground);
+      background-color: map-get($ngx-tabs-head-active, background);
+      border-color: map-get($ngx-tabs-head-active, border);
+    }
+
+    @include ngx-state(ngx-tabs-head, 'disabled'){
+      color: map-get($ngx-tabs-head-disabled, foreground);
+      border-color: transparent;
+      cursor: not-allowed;
+    }
+  }
+}
+
+
+:host(.ngx-tabs).ngx-tabs-type-pill > .ngx-tabs-heads {
+  border-bottom: initial;
+
+  > .ngx-tabs-head { 
+    color: map-get($ngx-tabs-pill-head, foreground);
+    background-color: map-get($ngx-tabs-pill-head, background);
+    border: initial;
+    
+    @include ngx-border-radius($ngx-tabs-head-border-radius);
+
+    @include ngx-state(ngx-tabs-head, 'active'){
+      $foreground-color-active: map-get($ngx-tabs-pill-head-active, foreground);
+
+      color: $foreground-color-active;
+      background-color: map-get($ngx-tabs-pill-head-active, background);
+
+      a {
+        color: $foreground-color-active;
+      }
+    }
+
+    @include ngx-state(ngx-tabs-head, 'disabled'){
+      color: map-get($ngx-tabs-pill-head-disabled, foreground);
+    }
+  }
+}
+
+
+:host(.ngx-tabs) > .ngx-tabs-contents {
+  display: block;
+
+  > .ngx-tab {
+    display: none;
+    opacity: 0;
+
+    @include ngx-state(ngx-tab, 'active'){
+      display: block;
+    }
+  }
+}

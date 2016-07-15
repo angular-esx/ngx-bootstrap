@@ -1,0 +1,37 @@
+﻿%ngx-h-normalize {
+  font-weight: 500;
+  line-height: 1.1rem;
+  margin-top: 0;
+  margin-bottom: .5rem;
+  color: inherit;
+}
+
+%ngx-p-normalize {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+%ngx-hr-normalize {
+  height: 0;
+  border-width: 0;
+  border-top-width: 1px;
+  border-style: solid;
+  box-sizing: content-box;
+}
+
+%ngx-link-normalize {
+  text-decoration: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:focus,
+  &:hover,
+  &:active {
+    outline: 0;
+  }
+}
+
+%ngx-img-normalize {
+  border: 0;
+  vertical-align: middle;
+}

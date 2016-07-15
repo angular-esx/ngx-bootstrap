@@ -1,0 +1,110 @@
+﻿@import "../../../../../cores/themes/bootstrap/typography/typography.scss";
+@import "../../../../../cores/themes/bootstrap/palette/palette.scss";
+
+$ngx-list-item-padding: .75rem 1.25rem !default;
+
+$ngx-list-item-line-height: ngx-line-height(base) !default;
+
+$ngx-list-item-border: 1px solid;
+
+
+$ngx-list-item-primary: (
+  foreground: ngx-color($ngx-color-white),
+  background: ngx-color-light($ngx-color-primary),
+  border: ngx-color-light($ngx-color-primary)
+) !default;
+$ngx-list-item-primary-active: (
+  foreground: ngx-color($ngx-color-white),
+  background: ngx-color($ngx-color-primary),
+  border: ngx-color($ngx-color-primary)
+) !default;
+$ngx-list-item-primary-disabled: (
+  foreground: ngx-color($ngx-color-white, $opacity: .65),
+  background: ngx-color($ngx-color-primary, $opacity: .65),
+  border: ngx-color($ngx-color-primary, $opacity: .65)
+) !default;
+
+
+$ngx-list-item-secondary: (
+  foreground: ngx-color($ngx-color-black),
+  background: ngx-color($ngx-color-white),
+  border: ngx-color-dark($ngx-color-gray)
+) !default;
+$ngx-list-item-secondary-active: (
+  foreground: ngx-color($ngx-color-black),
+  background: ngx-color-light($ngx-color-gray),
+  border: ngx-color-dark($ngx-color-gray)
+) !default;
+$ngx-list-item-secondary-disabled: (
+  foreground: ngx-color($ngx-color-black, $opacity: .65),
+  background: ngx-color-light($ngx-color-gray, $opacity: .65),
+  border: ngx-color-dark($ngx-color-gray, $opacity: .65)
+) !default;
+
+
+$ngx-list-item-info: (
+  foreground: ngx-color($ngx-color-white),
+  background: ngx-color-light($ngx-color-info),
+  border: ngx-color-light($ngx-color-info)
+) !default;
+$ngx-list-item-info-active: (
+  foreground: ngx-color($ngx-color-white),
+  background: ngx-color($ngx-color-info),
+  border: ngx-color($ngx-color-info)
+) !default;
+$ngx-list-item-info-disabled: (
+  foreground: ngx-color($ngx-color-white, $opacity: .65),
+  background: ngx-color($ngx-color-info, $opacity: .65),
+  border: ngx-color($ngx-color-info, $opacity: .65)
+) !default;
+
+
+$ngx-list-item-success: (
+  foreground: ngx-color($ngx-color-white),
+  background: ngx-color-light($ngx-color-success),
+  border: ngx-color-light($ngx-color-success)
+) !default;
+$ngx-list-item-success-active: (
+  foreground: ngx-color($ngx-color-white),
+  background: ngx-color($ngx-color-success),
+  border: ngx-color($ngx-color-success)
+) !default;
+$ngx-list-item-success-disabled: (
+  foreground: ngx-color($ngx-color-white, $opacity: .65),
+  background: ngx-color($ngx-color-success, $opacity: .65),
+  border: ngx-color($ngx-color-success, $opacity: .65)
+) !default;
+
+
+$ngx-list-item-warning: (
+  foreground: ngx-color($ngx-color-white),
+  background: ngx-color-light($ngx-color-warning),
+  border: ngx-color-light($ngx-color-warning)
+) !default;
+$ngx-list-item-warning-active: (
+  foreground: ngx-color($ngx-color-white),
+  background: ngx-color($ngx-color-warning),
+  border: ngx-color($ngx-color-warning)
+) !default;
+$ngx-list-item-warning-disabled: (
+  foreground: ngx-color($ngx-color-white, $opacity: .65),
+  background: ngx-color($ngx-color-warning, $opacity: .65),
+  border: ngx-color($ngx-color-warning, $opacity: .65)
+) !default;
+
+
+$ngx-list-item-danger: (
+  foreground: ngx-color($ngx-color-white),
+  background: ngx-color-light($ngx-color-danger),
+  border: ngx-color-light($ngx-color-danger)
+) !default;
+$ngx-list-item-danger-active: (
+  foreground: ngx-color($ngx-color-white),
+  background: ngx-color($ngx-color-danger),
+  border: ngx-color($ngx-color-danger)
+) !default;
+$ngx-list-item-danger-disabled: (
+  foreground: ngx-color($ngx-color-white, $opacity: .65),
+  background: ngx-color($ngx-color-danger, $opacity: .65),
+  border: ngx-color($ngx-color-danger, $opacity: .65)
+) !default;

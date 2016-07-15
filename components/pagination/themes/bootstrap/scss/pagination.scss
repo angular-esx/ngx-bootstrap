@@ -1,0 +1,58 @@
+﻿@import "../../../../../cores/themes/bootstrap/normalize/normalize.scss";
+@import "../../../../../cores/themes/bootstrap/state/state.scss";
+
+@import "_mixins.scss";
+
+:host(.ngx-pagination) {
+  display: inline-block;
+  padding-left: 0;
+  margin: $ngx-pagination-margin;
+  
+  @include ngx-border-radius($ngx-pagination-border-radius);
+
+  > .ngx-page-item {
+     @extend %ngx-link-normalize;
+
+    line-height: $ngx-page-item-line-height;
+    position: relative;
+    float: left;
+    padding: $ngx-page-item-padding;
+    margin-left: -1px;
+    color: map-get($ngx-page-item, foreground);
+    background-color: map-get($ngx-page-item, background);
+    border: 1px solid map-get($ngx-page-item, border);
+
+    @include ngx-state(ngx-page-item, 'focus hover'){
+      color: map-get($ngx-page-item-hover, foreground);
+      background-color: map-get($ngx-page-item-hover, background);
+      border-color: map-get($ngx-page-item-hover, border);
+    }
+
+    &:first-child {
+      margin-left: 0;
+      @include ngx-border-radius($ngx-page-item-border-radius, left);
+    }
+
+    &:last-child {
+      @include ngx-border-radius($ngx-page-item-border-radius, right);
+    }
+
+    &.ngx-page-item-state-active {
+      @include ngx-state(null, 'self focus hover'){
+        color: map-get($ngx-page-item-active, foreground);
+        background-color: map-get($ngx-page-item-active, background);
+        border-color: map-get($ngx-page-item-active, border);
+        z-index: 2;
+        cursor: default;
+      }
+    }
+  }
+
+  &.ngx-pagination-size-small {
+    @include ngx-pagination-size($ngx-page-item-font-size-sm, $ngx-page-item-line-height-sm, $ngx-page-item-padding-sm, $ngx-page-item-border-radius-sm);
+  }
+
+  &.ngx-pagination-size-large {
+    @include ngx-pagination-size($ngx-page-item-font-size-lg, $ngx-page-item-line-height-lg, $ngx-page-item-padding-lg, $ngx-page-item-border-radius-lg);
+  }
+}

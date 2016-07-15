@@ -1,0 +1,67 @@
+﻿<h1>ngxTabs</h1>
+
+<ngx-tabs (onChangedTab)="changedTab($event)">
+  <ngx-tab id="tab01">
+    <template ngx-tab-head>
+      <ngx-item>Tab 01</ngx-item>
+    </template>
+    This is content of tab 01
+  </ngx-tab>
+  
+  <ngx-tab head="Tab 02" state="disabled">
+    <template ngx-tab-content>This is content of tab 02</template>
+  </ngx-tab>
+
+  <ngx-tab *ngFor="let tab of tabs" [id]="tab.id">
+    <template ngx-tab-head>
+      <a ngx-link>{{tab.head}}</a>
+    </template>
+    <template ngx-tab-content>
+      {{tab.content}}
+      <br />
+      <a href="#" (click)="removeTab(tab)">Remove</a>
+    </template>
+  </ngx-tab>
+
+</ngx-tabs>
+
+<br />
+
+<a href="#" (click)="selectTab('tab01')">Select tab 01</a>
+
+<br/>
+
+<hr/>
+
+<h1>ngxTabs with pill type</h1>
+
+<ngx-tabs type="pill" (onChangedTab)="changedTab($event)">
+  <ngx-tab id="tab02">
+    <template ngx-tab-head>
+      <div>Tab 01</div>
+    </template>
+    This is content of tab 01
+  </ngx-tab>
+
+  <ngx-tab head="Tab 02" state="disabled">
+    <template ngx-tab-content>
+      This is content of tab 02
+    </template>
+  </ngx-tab>
+
+  <ngx-tab *ngFor="let tab of pillTabs" [id]="tab.id">
+    <template ngx-tab-head>
+      <a ngx-link>{{tab.head}}</a>
+    </template>
+    <template ngx-tab-content>
+      {{tab.content}}
+      <br />
+      <a href="#" (click)="removePillTab(tab)">Remove</a>
+    </template>
+  </ngx-tab>
+
+</ngx-tabs>
+
+<br />
+
+<a href="#" (click)="selectTab('tab02')">Select tab 01</a>

@@ -1,0 +1,10 @@
+﻿<a *ngIf="showPrevious" class="ngx-page-item" href="#" (click)="prev($event)">&laquo;</a>
+
+<a *ngFor="let page of pageBuilder.pages" 
+          class="ngx-page-item"
+          href="{{page.link}}" 
+          [class.ngx-page-item-state-active]="page.number === currentPage"
+          (click)="changePage($event, page)">{{page.number}}
+</a>
+
+<a *ngIf="showNext" class="ngx-page-item" href="#" (click)="next($event)">&raquo;</a>

@@ -1,0 +1,79 @@
+﻿@import "_variables.scss";
+
+:host(.ngx-tooltip) {
+  display: block;
+  position: absolute;
+  opacity: 0;
+  z-index: $ngx-tooltip-index;
+  font-size: $ngx-tooltip-font-size;
+  
+  @include ngx-reset-text();
+
+  > .ngx-tooltip-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+  }
+
+  > .ngx-tooltip-content {
+    text-align: center;
+    padding: $ngx-tooltip-padding;
+    max-width: $ngx-tooltip-max-width;
+    color: $ngx-tooltip-foreground-color;
+    background-color: $ngx-tooltip-background-color;
+
+    @include ngx-border-radius($ngx-tooltip-border-radius);
+  }
+
+  &.ngx-tooltip-position-top {
+    padding: $ngx-tooltip-arrow-width 0;
+    margin-top: -($ngx-tooltip-arrow-width * 2);
+
+    > .ngx-tooltip-arrow {
+      bottom: 0;
+      left: 50%;
+      margin-left: -$ngx-tooltip-arrow-width;
+      border-width: $ngx-tooltip-arrow-width $ngx-tooltip-arrow-width 0;
+      border-top-color: $ngx-tooltip-background-color;
+    }
+  }
+
+  &.ngx-tooltip-position-right {
+    padding: 0 $ngx-tooltip-arrow-width;
+
+    > .ngx-tooltip-arrow {
+      top: 50%;
+      left: 0;
+      margin-top: -$ngx-tooltip-arrow-width;
+      border-width: $ngx-tooltip-arrow-width $ngx-tooltip-arrow-width $ngx-tooltip-arrow-width 0;
+      border-right-color: $ngx-tooltip-background-color;
+    }
+  }
+
+  &.ngx-tooltip-position-bottom {
+    padding: $ngx-tooltip-arrow-width 0;
+
+    > .ngx-tooltip-arrow {
+      top: 0;
+      left: 50%;
+      margin-left: -$ngx-tooltip-arrow-width;
+      border-width: 0 $ngx-tooltip-arrow-width $ngx-tooltip-arrow-width;
+      border-bottom-color: $ngx-tooltip-background-color;
+    }
+  }
+
+  &.ngx-tooltip-position-left {
+    padding: 0 $ngx-tooltip-arrow-width;
+    margin-left: -($ngx-tooltip-arrow-width * 2);
+
+    > .ngx-tooltip-arrow {
+      top: 50%;
+      right: 0;
+      margin-top: -$ngx-tooltip-arrow-width;
+      border-width: $ngx-tooltip-arrow-width 0 $ngx-tooltip-arrow-width $ngx-tooltip-arrow-width;
+      border-left-color: $ngx-tooltip-background-color;
+    }
+  }
+}

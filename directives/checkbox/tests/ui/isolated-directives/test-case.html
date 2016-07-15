@@ -1,0 +1,74 @@
+﻿<h3>ngxCheckbox</h3>
+<center>
+  <ngx-button ngx-checkbox 
+              color="primary"
+              [(ngx-checkbox-model)]="ngxCheckboxTracker.value"
+              ngx-checkbox-checked-value="checked"
+              ngx-checkbox-unchecked-value="unchecked">
+    Track ngxCheckbox
+  </ngx-button>
+</center>
+
+<div>ngxCheckbox's state: {{ngxCheckboxTracker.value}}</div>
+
+<hr/>
+
+<h3>ngxCheckbox With ngxCheckBoxGroup</h3>
+<center>
+  <ngx-group ngx-checkbox-group [(ngx-checkbox-group-model)]="ngxCheckboxGroupTracker">
+    <ngx-button ngx-checkbox
+                color="primary"
+                ngx-checkbox-checked-value="item 01">
+      Item 01
+    </ngx-button>
+
+    <ngx-button ngx-checkbox
+                color="primary"
+                ngx-checkbox-checked-value="item 02">
+      Item 02
+    </ngx-button>
+
+    <ngx-button ngx-checkbox
+                color="primary"
+                ngx-checkbox-checked-value="item 03">
+      Item 03
+    </ngx-button>
+  </ngx-group>
+</center>
+
+<div>
+  selected item:
+  <ul>
+    <li *ngFor="let item of ngxCheckboxGroupTracker">{{item}}</li>
+  </ul>
+</div>
+
+<h3>ngxCheckbox With vertical ngxCheckBoxGroup</h3>
+<center>
+  <ngx-group ngx-checkbox-group type="vertical" [(ngx-checkbox-group-model)]="ngxVerticalCheckboxGroupTracker">
+    <ngx-button ngx-checkbox
+                color="primary"
+                ngx-checkbox-checked-value="item 01">
+      Item 01
+    </ngx-button>
+
+    <ngx-button ngx-checkbox
+                color="primary"
+                ngx-checkbox-checked-value="item 02">
+      Item 02
+    </ngx-button>
+
+    <ngx-button ngx-checkbox
+                color="primary"
+                ngx-checkbox-checked-value="item 03">
+      Item 03
+    </ngx-button>
+  </ngx-group>
+</center>
+
+<div>
+  selected item:
+  <ul>
+    <li *ngFor="let item of ngxVerticalCheckboxGroupTracker">{{item}}</li>
+  </ul>
+</div>

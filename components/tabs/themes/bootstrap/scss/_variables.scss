@@ -1,0 +1,45 @@
+﻿@import "../../../../../cores/themes/bootstrap/typography/typography.scss";
+@import "../../../../../cores/themes/bootstrap/palette/palette.scss";
+@import "../../../../../cores/themes/bootstrap/border/border.scss";
+
+$ngx-tabs-heads-padding: 0 !default;
+
+$ngx-tabs-heads-margin: 0 0 1rem 0 !default;
+
+$ngx-tabs-heads-border-bottom: 1px solid ngx-color($ngx-color-gray) !default;
+
+
+$ngx-tabs-head-padding: .5em 1em !default;
+
+$ngx-tabs-head-margin:  0 0 -1px 0 !default;
+
+$ngx-tabs-head-border: 1px solid transparent !default;
+
+$ngx-tabs-head-border-radius: ngx-border-radius(base) !default;
+
+$ngx-tabs-head: (
+  foreground: ngx-color($ngx-color-black)
+) !default;
+$ngx-tabs-head-hover: (
+  border: ngx-color($ngx-color-gray, $opacity: .5) ngx-color($ngx-color-gray, $opacity: .5) ngx-color($ngx-color-gray, $opacity: .5)
+) !default;
+$ngx-tabs-head-active: (
+  foreground: ngx-color($ngx-color-black),
+  background: ngx-color($ngx-color-white),
+  border: ngx-color($ngx-color-gray) ngx-color($ngx-color-gray) transparent
+) !default;
+$ngx-tabs-head-disabled: (
+  foreground: ngx-color-light($ngx-color-gray)
+) !default;
+
+
+$ngx-tabs-pill-head: (
+  foreground: ngx-color($ngx-color-black)
+) !default;
+$ngx-tabs-pill-head-active: (
+  foreground: ngx-color($ngx-color-white),
+  background: ngx-color($ngx-color-primary)
+) !default;
+$ngx-tabs-pill-head-disabled: (
+  foreground: ngx-color-light($ngx-color-gray)
+) !default;

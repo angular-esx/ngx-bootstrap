@@ -1,0 +1,35 @@
+﻿@import "../../../../../cores/themes/bootstrap/typography/typography.scss";
+@import "../../../../../cores/themes/bootstrap/palette/palette.scss";
+@import "../../../../../cores/themes/bootstrap/border/border.scss";
+
+$ngx-progress-height: 1rem !default;
+
+$ngx-progress-margin: 0 0 1rem 0 !default;
+
+$ngx-progress-border-radius: ngx-border-radius(base) !default;
+
+$ngx-progress-background-color: ngx-color-light($ngx-color-gray, $opacity: .65) !default;
+
+
+$ngx-progress-bar-font-size: ngx-font-size(sm) !default;
+
+$ngx-progress-bar-line-height: 1.1rem !default;
+
+$ngx-progress-bar-transition: width .6s ease !default;
+
+$ngx-progress-bar-foreground-color: ngx-color($ngx-color-white) !default;
+
+$ngx-progress-bar-striped-background-size: 1rem 1rem !default;
+
+$ngx-progress-bar-primary-background-color: ngx-color($ngx-color-primary) !default;
+
+$ngx-progress-bar-info-background-color: ngx-color($ngx-color-info) !default;
+
+$ngx-progress-bar-success-background-color: ngx-color($ngx-color-success) !default;
+
+$ngx-progress-bar-warning-background-color: ngx-color($ngx-color-warning) !default;
+
+$ngx-progress-bar-danger-background-color: ngx-color($ngx-color-danger) !default;
+
+
+

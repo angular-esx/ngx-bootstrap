@@ -1,0 +1,9 @@
+﻿@import "_variables.scss";
+
+:host(.ngx-icon) {
+  display: inline-block;
+  background-repeat: no-repeat;
+  fill: currentColor;
+  width: $ngx-icon-width;
+  height: $ngx-icon-height;
+}

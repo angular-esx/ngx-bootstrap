@@ -1,0 +1,28 @@
+﻿<h3>ngxHide</h3>
+
+<div class="container">
+  <div class="item" ngx-hide-down="xs">Hidden-XS-Down</div>
+  <div class="item" ngx-hide-down="sm">Hidden-SM-Down</div>
+  <div class="item">Always Visiable</div>
+  <div class="item" ngx-hide-up="lg">Hidden-LG-Up</div>
+  <div class="item" ngx-hide-up="xl">Hidden-XL-Up</div>
+</div>
+
+
+<style>
+  .container {
+    display: flex;
+    padding: 0;
+    margin: 0;
+  }
+
+  .item {
+    padding: 1rem .5rem;
+    background-color: rgba(86,61,124,.15);
+    border: 1px solid rgba(86,61,124,.2);
+  }
+
+  .item + .item {
+    margin-left: .5rem;
+  }
+</style>

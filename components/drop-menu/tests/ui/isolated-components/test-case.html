@@ -1,0 +1,70 @@
+﻿<h3>ngxDropMenu and ngxToggleDropdown with single button</h3>
+
+<center>
+  <ngx-group>
+    <ngx-button class="ngx-toggle-dropdown" color="danger" (onClick)="toggleDropdown('dropdown01')">Action</ngx-button>
+
+    <ngx-drop-menu id="dropdown01">
+      <h6>Dropdown Header</h6>
+      <div ngx-drop-menu-item>Acion 01</div>
+      <a ngx-link ngx-drop-menu-item href="{{href}}">Acion 02</a>
+      <hr />
+      <div ngx-drop-menu-item ngx-drop-menu-item-state="disabled">Acion 03</div>
+    </ngx-drop-menu>
+  </ngx-group>
+</center>
+
+<hr />
+
+<h3>ngxDropMenu and ngxToggleDropup with single button</h3>
+<center>
+  <ngx-group>
+    <ngx-button class="ngx-toggle-dropup" color="danger" (onClick)="toggleDropup('dropup01')">Action</ngx-button>
+
+    <ngx-drop-menu id="dropup01" position="left">
+      <h6>Dropup Header</h6>
+      <a ngx-drop-menu-item>Acion 01</a>
+      <a ngx-link ngx-drop-menu-item href="{{href}}">Acion 02</a>
+      <hr />
+      <div ngx-drop-menu-item ngx-drop-menu-item-state="disabled">Acion 03</div>
+    </ngx-drop-menu>
+  </ngx-group>
+</center>
+
+<hr/>
+
+<h3>ngxDropMenu and ngxToggleDropdown with splited buttons</h3>
+
+<center>
+  <ngx-group>
+    <ngx-button color="danger" (onClick)="alert('splitdropdown01')">Action</ngx-button>
+    <ngx-button ngx-toggle-dropdown="splitdropdown01" color="danger"></ngx-button>
+
+    <ngx-drop-menu id="splitdropdown01"> 
+      <h6>Dropdown Header</h6>
+      <div ngx-drop-menu-item>Acion 01</div>
+      <a ngx-link ngx-drop-menu-item href="{{href}}">Acion 02</a>
+      <hr />
+      <div ngx-drop-menu-item ngx-drop-menu-item-state="disabled">Acion 03</div>
+    </ngx-drop-menu>
+  </ngx-group>
+</center>
+
+<hr />
+
+<h3>ngxDropMenu and ngxToggleDropup with splited buttons</h3>
+
+<center>
+  <ngx-group>
+    <ngx-button color="danger" (onClick)="alert('splitdropup01')">Action</ngx-button>
+    <ngx-button ngx-toggle-dropup="splitdropup01" color="danger"></ngx-button>
+
+    <ngx-drop-menu id="splitdropup01" position="right">
+      <h6>Dropup Header</h6>
+      <div ngx-drop-menu-item>Acion 01</div>
+      <a ngx-link ngx-drop-menu-item href="{{href}}">Acion 02</a>
+      <hr />
+      <div ngx-drop-menu-item ngx-drop-menu-item-state="disabled">Acion 03</div>
+    </ngx-drop-menu>
+  </ngx-group>
+</center>

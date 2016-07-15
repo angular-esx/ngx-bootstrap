@@ -1,0 +1,79 @@
+﻿<h3>ngxGrid with multi tiers</h3>
+
+<blockquote>
+  - Extra Large Screen: 6 items per row <br/>
+  - Large Screen: 4 items per row <br />
+  - Medium Screen: 3 items per row <br />
+  - Small Screen: 2 items per row <br />
+  - Extra Small Screen: 1 items per row <br />
+</blockquote>
+
+<ngx-grid type="fluid">
+  <ngx-grid-row>
+    <ngx-grid-col *ngFor="let item of items" [size]="item.size">{{item.name}}</ngx-grid-col>
+  </ngx-grid-row>
+</ngx-grid>
+
+<br /><hr /><br />
+
+<h3>ngxGrid with nested column</h3>
+
+<ngx-grid type="fluid">
+  <ngx-grid-row>
+    <ngx-grid-col size="xs-6">Item 1</ngx-grid-col>
+    <ngx-grid-col size="xs-6">
+      <ngx-grid-row>
+        <ngx-grid-col size="xs-6">Item 2-1</ngx-grid-col>
+        <ngx-grid-col size="xs-6">Item 2-2</ngx-grid-col>
+      </ngx-grid-row>
+    </ngx-grid-col>
+  </ngx-grid-row>
+</ngx-grid>
+
+<br /><hr /><br />
+
+<h3>ngxGrid with offsets</h3>
+
+<br /><hr /><br />
+
+<blockquote>
+  - Extra Large Screen: Item'll be at col 12th <br />
+  - Large Screen: Item'll be at col 9th <br />
+  - Medium Screen: Item'll be at col 6th <br />
+  - Small Screen: Item'll be at col 3th <br />
+  - Extra Small Screen: Item'll be at col 1th <br />
+</blockquote>
+
+<ngx-grid>
+  <ngx-grid-row>
+    <ngx-grid-col size="xs-1" offset="xs-1 sm-3 md-6 lg-9 xl-12">Item</ngx-grid-col>
+  </ngx-grid-row>
+</ngx-grid>
+
+<br /><hr /><br />
+
+<h3>ngxGrid with orders</h3>
+
+<blockquote>
+  - Lesser Than Medium Screen: Order'll be 1,2,3,4 <br />
+  - Greater or Equal Than Medium Screen: Order'll be 4,3,2,1 <br />
+</blockquote>
+
+<ngx-grid>
+  <ngx-grid-row>
+    <ngx-grid-col size="xs-1" order="xs-1 md-4">Item 1</ngx-grid-col>
+    <ngx-grid-col size="xs-1" order="xs-2 md-3">Item 2</ngx-grid-col>
+    <ngx-grid-col size="xs-1" order="xs-3 md-2">Item 3</ngx-grid-col>
+    <ngx-grid-col size="xs-1" order="xs-4 md-1">Item 4</ngx-grid-col>
+  </ngx-grid-row>
+</ngx-grid>
+
+
+<style>
+  ngx-grid-col {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: rgba(86,61,124,.15);
+    border: 1px solid rgba(86,61,124,.2);
+  }
+</style>

@@ -1,0 +1,7 @@
+﻿@import "_variables.scss";
+
+@mixin ngx-progress-variant($ngx-progress-prefix-class, $background-color){
+  > .ngx-progress-bar {
+    background-color: $background-color;
+  }
+}

@@ -1,0 +1,91 @@
+﻿@import "../../../../../cores/themes/bootstrap/state/state.scss";
+@import "../../../../../cores/themes/bootstrap/border/border.scss";
+@import "../../../../../cores/themes/bootstrap/normalize/normalize.scss";
+
+@import "_mixins.scss";
+
+:host(.ngx-alert) {
+  display: block;
+  margin: $ngx-alert-margin;
+  padding: $ngx-alert-padding;
+  border: $ngx-alert-border;
+  @include ngx-border-radius($ngx-alert-border-radius);
+
+  a {
+    @extend %ngx-link-normalize;
+    text-decoration: underline;
+  }
+
+  hr {
+    @extend %ngx-hr-normalize;
+  }
+
+  > p,
+  > ul {
+    margin-bottom: 0;
+  }
+  
+  > p + p {
+    margin-top: 5px;
+  }
+
+  &.ngx-alert-state-hidden{
+    display: none !important;
+  }
+
+  &.ngx-alert-type-float {
+    width: 100%;
+    margin: 0;
+    position: fixed;
+    left: 0;
+    border-radius: 0;
+    box-sizing: border-box;
+  }
+
+  &.ngx-alert-position-top {
+    top: 0;
+  }
+
+  &.ngx-alert-position-bottom {
+    bottom: 0;
+  }
+
+  &.ngx-alert-type-dismissible {
+    padding: $ngx-alert-type-dismissible-padding;
+  }
+
+  > .ngx-alert-dismiss {
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1;
+      color: ngx-color-dark($ngx-color-gray);
+      background: transparent;
+      padding: 0;
+      border: 0;
+      opacity: .2;
+      position: relative;
+      float: right;
+      top: -2px;
+      right: -21px;
+      text-decoration: none;
+      cursor: pointer;
+      -webkit-appearance: none;
+
+      @include ngx-state(ngx-alert-dismiss, 'focus hover'){
+        opacity: .5;
+      }
+    }
+
+  &.ngx-alert-color-info {
+    @include ngx-alert-variant($ngx-alert-info);
+  }
+  &.ngx-alert-color-success {
+    @include ngx-alert-variant($ngx-alert-success);
+  }
+  &.ngx-alert-color-warning {
+    @include ngx-alert-variant($ngx-alert-warning);
+  }
+  &.ngx-alert-color-danger {
+    @include ngx-alert-variant($ngx-alert-danger);
+  }
+}

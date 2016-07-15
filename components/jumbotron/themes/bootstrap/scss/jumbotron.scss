@@ -1,0 +1,21 @@
+﻿@import "../../../../../cores/themes/bootstrap/breakpoint/breakpoint.scss";
+@import "../../../../../cores/themes/bootstrap/normalize/normalize.scss";
+
+@import "_variables.scss";
+
+:host(.ngx-jumbotron) {
+  display: block;
+  padding: $ngx-jumbotron-padding;
+  margin: $ngx-jumbotron-margin;
+  background-color: $ngx-jumbotron-background-color;
+
+  @include ngx-media-breakpoint-up(sm) {
+    padding: $ngx-jumbotron-padding-sm;
+  }
+
+  hr {
+    @extend %ngx-hr-normalize;
+
+    border-top-color: $ngx-jumbotron-hr-border-top-color;
+  }
+}

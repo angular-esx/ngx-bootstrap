@@ -1,36 +1,23 @@
-﻿(function (testCases, cores, components, fileService) {
-  testCases.isolatedComponents = ng.core.Component({
-    selector: 'ngx-test-case',
-    templateUrl: fileService.getTestCaseTemplate('pager'),
-    directives: [
-      cores.ngxLinkComponent,
-      components.ngxPagerComponent
-    ],
-    providers: [
-      cores.ngxTypeService,
-      cores.ngxStateService,
-      cores.ngxLinkService,
-      components.ngxPagerService
-    ]
-  })
-  .Class(new testCase());
+﻿function _testCase() {
+  this.constructor = function () {};
 
-  function testCase() {
-    this.constructor = [components.ngxPagerService, function (ngxPagerService) {
+  this.setPage = function (event) {
+    event.setPrevLink('https://mywebsite.com/page/' + event.currentPage - 1);
+    event.setNextLink('https://mywebsite.com/page/' + event.currentPage + 1);
+  };
 
-      this.TYPES = ngxPagerService.getTypes();
-    }];
+  this.changePage = function (event) {
+    event.cancel();
 
-    this.onSetLinkPage = function (event) {
-      event.setPrevLink('https://mywebsite.com/page/' + event.currentPage - 1);
-      event.setNextLink('https://mywebsite.com/page/' + event.currentPage + 1);
-    };
+    alert('Changed to page: ' + event.page.number);
+  };
 
-    this.onChangePage = function (event) {
-      event.preventDefault();
-
-      alert('Changed to page: ' + event.page.number);
-    };
-
-  }
-})(window.testCases || (window.testCases = {}), window.ngxBootstrap.ngxCores, window.ngxBootstrap.ngxComponents, ngxBootstrap.configs.fileService);
+}
+var isolatedComponents = ng.core.Component({
+  selector: 'ngx-test-case',
+  templateUrl: 'components/pager/tests/ui/isolated-components/test-case.html',
+  directives: [
+    ngxBootstrap.pager.DIRECTIVES
+  ]
+})
+.Class(new _testCase());

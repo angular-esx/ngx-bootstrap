@@ -1,0 +1,125 @@
+﻿@import "../../../../../cores/themes/bootstrap/border/border.scss";
+@import "../../../../button/themes/bootstrap/scss/_mixins.scss";
+
+@import "_mixins.scss";
+
+:host(.ngx-group) {
+  > .ngx-button {
+    position: relative;
+    float: left;
+  }
+
+  > .ngx-button + .ngx-button,
+  > .ngx-button + .ngx-group,
+  > .ngx-group + .ngx-button {
+    margin-left: -1px;
+  }
+
+  > .ngx-button:not(:first-child):not(:last-child):not(.ngx-toggle-dropdown):not(.ngx-toggle-dropup) {
+    @include ngx-border-radius(0);
+  }
+
+  > .ngx-button:first-child {
+    margin-left: 0;
+
+    &:not(:last-child):not(.ngx-toggle-dropdown):not(.ngx-toggle-dropup) {
+      @include ngx-border-radius(0, right);
+    }
+  }
+
+  > .ngx-button:last-child:not(:first-child),
+  > .ngx-toggle-dropdown:not(:first-child),
+  > .ngx-toggle-dropup:not(:first-child) {
+    @include ngx-border-radius(0, left);
+  }
+
+  > .ngx-button + .ngx-toggle-dropdown,
+  > .ngx-button + .ngx-toggle-dropup {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+
+  > .ngx-group:not(:first-child):not(:last-child) > .ngx-button {
+    @include ngx-border-radius(0);
+  }
+
+  > .ngx-group:first-child:not(:last-child) {
+    > .ngx-button:last-child,
+    > .ngx-toggle-dropdown,
+    > .ngx-toggle-dropup {
+      @include ngx-border-radius(0, right);
+    }
+  }
+  
+  > .ngx-group:last-child:not(:first-child) > .ngx-button:first-child {
+    @include ngx-border-radius(0, left);
+  }
+
+  &.ngx-group-size-small > .ngx-button {
+    @include ngx-button-size($ngx-button-font-size-sm, $ngx-button-line-height-sm, $ngx-button-padding-sm, $ngx-button-border-radius-sm);
+  }
+
+  &.ngx-group-size-large > .ngx-button {
+    @include ngx-button-size($ngx-button-font-size-lg, $ngx-button-line-height-lg, $ngx-button-padding-lg, $ngx-button-border-radius-lg);
+  }
+
+  > .ngx-button-size-large + .ngx-toggle-dropdown,
+  > .ngx-button-size-large + .ngx-toggle-dropup,
+  &.ngx-group-size-large > .ngx-button + .ngx-toggle-dropdown,
+  &.ngx-group-size-large > .ngx-button + .ngx-toggle-dropup {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+}
+
+:host().ngx-group-type-vertical {
+  > .ngx-button,
+  > .ngx-group > .ngx-button {
+    @include ngx-group-vertical-children()
+  }
+
+  > .ngx-button {
+    &:not(:first-child):not(:last-child) {
+      @include ngx-border-radius(0);
+    }
+    &:first-child:not(:last-child) {
+      @include ngx-border-radius($ngx-button-border-radius, right);
+      @include ngx-border-radius(0, bottom);
+    }
+    &:last-child:not(:first-child) {
+      @include ngx-border-radius($ngx-button-border-radius, left);
+      @include ngx-border-radius(0, top);
+    }
+  }
+
+  > .ngx-button + .ngx-button,
+  > .ngx-button + .ngx-group,
+  > .ngx-group + .ngx-button {
+    margin-top: -1px;
+    margin-left: 0;
+  }
+
+  > .ngx-group {
+    @include clearfix();
+
+    > .ngx-button {
+      float: none;
+    }
+  }
+
+  > .ngx-group:not(:first-child):not(:last-child) > .ngx-button {
+    @include ngx-border-radius(0);
+  }
+
+  > .ngx-group:first-child:not(:last-child) {
+    > .ngx-button:last-child,
+    > .ngx-toggle-dropdown,
+    > .ngx-toggle-dropup {
+      @include ngx-border-radius(0, bottom);
+    }
+  }
+
+  > .ngx-group:last-child:not(:first-child) > .ngx-button:first-child {
+   @include ngx-border-radius(0, top);
+  }
+}

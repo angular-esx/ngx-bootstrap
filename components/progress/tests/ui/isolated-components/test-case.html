@@ -1,19 +1,17 @@
 ﻿<h3>ngxProgress</h3>
 
-<ngx-progress value="55">Default</ngx-progress>
-<ngx-progress color="{{COLORS.PRIMARY}}" value="60" max="100">Primary</ngx-progress>
-<ngx-progress color="{{COLORS.INFO}}" value="65" max="100">Info</ngx-progress>
-<ngx-progress color="success" value="70" max="100">Success</ngx-progress>
-<ngx-progress color="warning" value="75" max="100">Warning</ngx-progress>
-<ngx-progress color="danger" value="100" max="100">Danger</ngx-progress>
+<ngx-progress color="primary" value="60" max="100"></ngx-progress>
+<ngx-progress color="info" value="65" max="100"></ngx-progress>
+<ngx-progress color="success" value="70" max="100"></ngx-progress>
+<ngx-progress color="warning" value="75" max="100">{{progresses.warning.value}}/{{progresses.warning.max}}</ngx-progress>
+<ngx-progress color="danger" value="100" max="100">{{progresses.danger.value}}%</ngx-progress>
 
 <hr/>
 
-<h3>ngxProgress with striped type</h3>
+<h3>ngxProgress with striped</h3>
 
-<ngx-progress type="{{TYPES.STRIPED}}" value="55" max="100">Default</ngx-progress>
-<ngx-progress color="{{COLORS.PRIMARY}}" type="{{TYPES.STRIPED}}" value="60" max="100">Primary</ngx-progress>
-<ngx-progress color="{{COLORS.INFO}}" type="{{TYPES.STRIPED}}" value="65" max="100">Info</ngx-progress>
-<ngx-progress color="success" type="striped" value="70" max="100">Success</ngx-progress>
-<ngx-progress color="warning" type="striped" value="75" max="100">Warning</ngx-progress>
-<ngx-progress color="danger" type="striped" value="100" max="100">Danger</ngx-progress>
+<ngx-progress color="primary striped animated_striped" value="60" max="100"></ngx-progress>
+<ngx-progress color="info striped" value="65" max="100"></ngx-progress>
+<ngx-progress color="success striped animated-striped" value="70" max="100"></ngx-progress>
+<ngx-progress color="warning striped" value="75" max="100">{{progresses.warning.value}}/{{progresses.warning.max}}</ngx-progress>
+<ngx-progress color="danger striped" value="100" max="100">{{progresses.danger.value}}%</ngx-progress>

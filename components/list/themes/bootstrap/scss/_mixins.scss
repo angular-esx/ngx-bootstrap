@@ -1,0 +1,22 @@
+﻿@import "../../../../../cores/themes/bootstrap/state/state.scss";
+
+@import "_variables.scss";
+
+@mixin ngx-list-item-variant($default, $active, $disabled){
+  color: map-get($default, foreground);
+  background-color: map-get($default, background);
+  border-color: map-get($default, border);
+
+  @include ngx-state(ngx-list-item, 'focus hover active'){
+    color: map-get($active, foreground);
+    background-color: map-get($active, background);
+    border-color: map-get($active, border);
+  }
+
+  @include ngx-state(ngx-list-item, 'disabled'){
+    color: map-get($disabled, foreground);
+    background-color: map-get($disabled, background);
+    border-color: map-get($disabled, border);
+    cursor: not-allowed;
+  }
+}

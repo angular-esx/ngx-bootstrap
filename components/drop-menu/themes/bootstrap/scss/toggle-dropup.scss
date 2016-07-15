@@ -1,0 +1,15 @@
+﻿@import "_variables.scss";
+
+.ngx-toggle-dropup {
+  &::after{
+    display: inline-block !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: $ngx-toggle-dropup-margin !important;
+    vertical-align: middle !important;
+    content: "" !important;
+    border-right: $ngx-toggle-dropup-border transparent !important;
+    border-left: $ngx-toggle-dropup-border transparent !important;
+    border-bottom: $ngx-toggle-dropup-border !important;
+  }
+}

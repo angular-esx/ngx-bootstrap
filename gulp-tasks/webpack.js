@@ -19,6 +19,7 @@ module.exports = function (params) {
       context: __dirname,
       entry: {
         core: ['cores/index.js'],
+        /** components **/
         alert: 'components/alert/index.js',
         breadcrumb: 'components/breadcrumb/index.js',
         button: 'components/button/index.js',
@@ -39,6 +40,11 @@ module.exports = function (params) {
         progress: 'components/progress/index.js',
         tabs: 'components/tabs/index.js',
         tooltip: 'components/tooltip/index.js',
+        /** directives **/
+        checkbox: 'directives/checkbox/index.js',
+        hide: 'directives/hide/index.js',
+        radio: 'directives/radio/index.js',
+        'toggle-item': 'directives/toggle-item/index.js'
       },
       output: {
         path: __dirname,

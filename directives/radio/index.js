@@ -1,4 +1,6 @@
-module.exports = {
+var ngxBootstrap = require('ngxBootstrap');
+
+ngxBootstrap.radio = {
   DIRECTIVES: [
     require('./radio.directive.js'),
     require('./radio-group.directive.js')
@@ -10,3 +12,5 @@ module.exports = {
     require('./services/radio-group.service.js')
   ]
 };
+
+module.exports = ngxBootstrap;

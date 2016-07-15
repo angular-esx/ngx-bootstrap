@@ -26,7 +26,8 @@ module.exports = function (params) {
       _ngxBootstrapCss = gulp.src(_fileService.FILES.NGX_BOOTSTRAP_CSS, _notReadOption);
 
     var ngxCore = gulp.src('./dist/js/ngx-core.js', _notReadOption);
-    var ngxComponent = gulp.src('./dist/js/ngx-' + _componentName + '.js', _notReadOption);
+    
+    testScripts.push(ngxCore);
 
     if (_componentName || _directiveName) {
       if (_componentName) {
@@ -40,13 +41,29 @@ module.exports = function (params) {
           dependenceScript = gulp.src('', _notReadOption);
         }
 
+        var ngxComponent = gulp.src('./dist/js/ngx-' + _componentName + '.js', _notReadOption);
+
+        testScripts.push(dependenceScript, ngxComponent);
+
       } else if (_directiveName) {
-        testCaseScript = gulp.src(_fileService.getDirectiveTestCase(_directiveName, _testCase), _notReadOption);
-        bootTestScript = gulp.src(_fileService.getDirectiveTestBoot(_directiveName, _testCase), _notReadOption);
+        // testCaseScript = gulp.src(_fileService.getDirectiveTestCase(_directiveName, _testCase), _notReadOption);
+        // bootTestScript = gulp.src(_fileService.getDirectiveTestBoot(_directiveName, _testCase), _notReadOption);
+
+        testCaseScripts = _fileService.getDirectiveTestCase(_directiveName, _testCase);
+        testCaseScript = gulp.src(testCaseScripts.testCaseScript, _notReadOption);
+        bootTestScript = gulp.src(testCaseScripts.bootScript, _notReadOption);
+        
+        try {
+          dependenceScript = getDependencies(require('.' + testCaseScripts.dependenceScript));
+        } catch (e) {
+          dependenceScript = gulp.src('', _notReadOption);
+        }
+
+        testScripts.push(dependenceScript);
       }
     }
 
-    testScripts.push(ngxCore, dependenceScript, ngxComponent, testCaseScript, bootTestScript)
+    testScripts.push(testCaseScript, bootTestScript);
 
     return gulp.src(_fileService.FILES.INDEX_TEMPLATE_HTML)
       .pipe(inject(_streamSeries(testScripts), { relative: true, name: 'component' }))

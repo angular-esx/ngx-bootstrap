@@ -48,16 +48,16 @@
       };
     };
 
-    this.getDirectiveTestBoot = function (directiveName, testCase) {
-      if (!testCase) { testCase = 'isolated-directives'; }
-
-      return this.PATHS.DIRECTIVES + directiveName + '/tests/ui/' + testCase + '/boot.js';
-    };
-
     this.getDirectiveTestCase = function (directiveName, testCase) {
       if (!testCase) { testCase = 'isolated-directives'; }
 
-      return this.PATHS.DIRECTIVES + directiveName + '/tests/ui/' + testCase + '/test-case.js';
+      var pathComponent = this.PATHS.DIRECTIVES + directiveName + '/tests/ui/' + testCase;
+
+      return {
+        bootScript: pathComponent + '/boot.js',
+        testCaseScript: pathComponent + '/test-case.js',
+        dependenceScript: pathComponent + '/load-dependence.js'
+      };
     };
 
   })();

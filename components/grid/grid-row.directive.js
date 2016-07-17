@@ -1,17 +1,14 @@
-﻿var ngxBaseDirective = require('baseDirective');
-var ngx = require('ngx');
-
-function _ngxGridRowDirective() {
+﻿function _ngxGridRowDirective() {
   var _base, _STYLE_PROPERTIES;
 
-  this.extends = ngxBaseDirective;
+  this.extends = ngx.core.baseDirective;
 
   this.constructor = [
     ng.core.ElementRef,
     ng.core.Renderer,
 
     function ngxGridRowDirective(elementRef, renderer) {
-      ngxBaseDirective.apply(this, arguments);
+      ngx.core.baseDirective.apply(this, arguments);
     }
   ];
 
@@ -71,7 +68,7 @@ function _ngxGridRowDirective() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxBaseDirective); }
+    if (!_base) { _base = context.getBaseInstance(ngx.core.baseDirective); }
     return _base;
   }
 }

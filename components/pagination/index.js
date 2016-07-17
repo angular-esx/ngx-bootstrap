@@ -1,9 +1,9 @@
-﻿var ngxBootstrap = require('ngxBootstrap');
+﻿var ngx = require('ngx');
 var ngxPaginationComponent = require('./pagination.component.js');
 
-ngxBootstrap.pagination = {
-  PAGINATION_COMPONENT: ngxPaginationComponent,
+ngx.pagination = {
+  paginationComponent: ngxPaginationComponent,
   DIRECTIVES: [ ngxPaginationComponent ]
 };
 
-module.exports = ngxBootstrap;
+module.exports = ngx;

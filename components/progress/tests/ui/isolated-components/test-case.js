@@ -11,7 +11,7 @@ var isolatedComponents = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/progress/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxBootstrap.progress.DIRECTIVES
+    ngx.progress.DIRECTIVES
   ]
 })
 .Class(new _testCase());

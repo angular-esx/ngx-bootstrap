@@ -1,4 +1,4 @@
-﻿var ngxBootstrap = require('ngxBootstrap');
+﻿var ngx = require('ngx');
 
 function _tooltipOptionClass() {
   var _PROPERTIES = ['hostElement', 'templateRef', 'content', 'state', 'position', 'delay', 'autoHide'];
@@ -12,7 +12,7 @@ function _tooltipOptionClass() {
   ];
 
   this.assign = function (target, options) {
-    ngxBootstrap.shallowCopy(target, (options || this), false, function (prop) {
+    ngx.shallowCopy(target, (options || this), false, function (prop) {
       return _PROPERTIES.indexOf(prop) > -1;
     });
   };

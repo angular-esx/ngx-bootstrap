@@ -12,7 +12,7 @@
   ];
 
   this.hasValue = function (value) {
-    return ngxBootstrap.isArray(this.model) ? this.model.indexOf(value) !== -1 : this.model === value;
+    return ngx.isArray(this.model) ? this.model.indexOf(value) !== -1 : this.model === value;
   };
 
   this.addOrRemoveValue = function (value) {

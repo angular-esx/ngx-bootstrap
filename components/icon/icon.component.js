@@ -1,6 +1,6 @@
 ﻿var ngxIconService = require('./services/icon.service.js');
 var ngxBaseComponent = require('baseComponent');
-var ngxBootstrap = require('ngxBootstrap');
+var ngx = require('ngx');
 
 function _ngxIconComponent() {
   var _base, _STYLE_PROPERTIES;
@@ -111,7 +111,7 @@ function _ngxIconComponent() {
         FONT_ICON: 'fontIcon'
       };
 
-      ngxBootstrap.shallowCopy(_STYLE_PROPERTIES, _getBaseInstance(this).getStyleProperties.apply(this));
+      ngx.shallowCopy(_STYLE_PROPERTIES, _getBaseInstance(this).getStyleProperties.apply(this));
     }
 
     return _STYLE_PROPERTIES;

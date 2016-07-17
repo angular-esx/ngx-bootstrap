@@ -1,4 +1,4 @@
-﻿var ngxBootstrap = require('ngxBootstrap');
+﻿var ngx = require('ngx');
 
 function _popoverOptionClass() {
   var _PROPERTIES = ['hostElement', 'templateRef', 'title', 'content', 'state', 'position', 'delay'];
@@ -12,7 +12,7 @@ function _popoverOptionClass() {
   ];
 
   this.assign = function (target, options) {
-    ngxBootstrap.shallowCopy(target, (options || this), false, function (prop) {
+    ngx.shallowCopy(target, (options || this), false, function (prop) {
       return _PROPERTIES.indexOf(prop) > -1;
     });
   };

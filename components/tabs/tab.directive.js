@@ -2,7 +2,7 @@
 var ngxTabHeadDirective = require('./tab-head.directive.js');
 var ngxTabContentDirective = require('./tab-content.directive.js');
 var ngxBaseDirective = require('baseDirective');
-var ngxBootstrap = require('ngxBootstrap');
+var ngx = require('ngx');
 
 function _ngxTabDirective() {
   var _base;
@@ -66,7 +66,7 @@ function _ngxTabDirective() {
   };
 
   this.ngAfterContentInit = function () {
-    if (!this.id) { this.id = ngxBootstrap.newGUID(); }
+    if (!this.id) { this.id = ngx.newGUID(); }
     if (this.ngxTabHeadDirective) { this.headTemplateRef = this.ngxTabHeadDirective.templateRef; }
     if (this.ngxTabContentDirective) { this.contentTemplateRef = this.ngxTabContentDirective.templateRef; }
 

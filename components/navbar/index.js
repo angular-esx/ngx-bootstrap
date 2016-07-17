@@ -1,14 +1,14 @@
-﻿var ngxBootstrap = require('ngxBootstrap');
+﻿var ngx = require('ngx');
 var ngxNavbarComponent = require('./navbar.component.js');
 var ngxNavbarItemDirective =  require('./navbar-item.directive.js');
 var ngxNavbarBrandDirective = require('./navbar-brand.directive.js');
 var ngxNavbarDividerDirective = require('./navbar-divider.directive.js');
 
-ngxBootstrap.navbar = {
-  NAVBAR_COMPONENT: ngxNavbarComponent,
-  NAVBAR_ITEM_DIRECTIVE: ngxNavbarItemDirective,
-  NAVBAR_BRAND_DIRECTIVE: ngxNavbarBrandDirective,
-  NAVBAR_DIVIDER_DIRECTIVE: ngxNavbarDividerDirective,
+ngx.navbar = {
+  navbarComponent: ngxNavbarComponent,
+  navbarItemDirective: ngxNavbarItemDirective,
+  navbarBrandDirective: ngxNavbarBrandDirective,
+  navbarDividerDirective: ngxNavbarDividerDirective,
   DIRECTIVES: [
     ngxNavbarComponent,
     ngxNavbarItemDirective,
@@ -17,4 +17,4 @@ ngxBootstrap.navbar = {
   ]
 };
 
-module.exports = ngxBootstrap;
+module.exports = ngx;

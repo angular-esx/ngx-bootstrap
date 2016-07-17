@@ -1,6 +1,6 @@
 ﻿var ngxAlertService = require('./services/alert.service.js');
 var ngxBaseComponent = require('baseComponent');
-var ngxBootstrap = require('ngxBootstrap');
+var ngx = require('ngx');
 
 function _ngxAlertComponent() {
   var _base;
@@ -97,10 +97,10 @@ function _ngxAlertComponent() {
     this.subscription = this.ngxAlertService.ngxAlert$.subscribe(function (event) {
       if (!event) { return; }
 
-      var _events = ngxBootstrap.isArray(event) ? event : [event];
+      var _events = ngx.isArray(event) ? event : [event];
       var _actions = _self.ngxAlertService.getActions();
       
-      ngxBootstrap.forEach(_events, function (_event) {
+      ngx.forEach(_events, function (_event) {
         if (!_event.id || _event.id === _self.id) {
           if (_event.type === _actions.SHOW_ALERT) {
             _self.show();

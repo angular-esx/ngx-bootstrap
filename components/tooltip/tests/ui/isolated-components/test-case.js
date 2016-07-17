@@ -1,5 +1,5 @@
 ﻿function _testCase() {
-  this.constructor = [ngxBootstrap.tooltip.TOOLTIP_SERVICE, function (ngxTooltipService) {
+  this.constructor = [ngx.tooltip.tooltipService, function (ngxTooltipService) {
     this.ngxTooltipService = ngxTooltipService;
 
     this.delay = 1 * 1000;
@@ -51,11 +51,11 @@ var isolatedComponents = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/tooltip/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxBootstrap.tooltip.DIRECTIVES
+    ngx.tooltip.DIRECTIVES
   ],
   providers: [
-    ngxBootstrap.core.animationService,
-    ngxBootstrap.tooltip.SERVICES,
+    ngx.core.animationService,
+    ngx.tooltip.PROVIDERS,
   ]
 })
 .Class(new _testCase());

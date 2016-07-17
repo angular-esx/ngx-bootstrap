@@ -1,12 +1,12 @@
-﻿var ngxBootstrap = require('ngxBootstrap');
+﻿var ngx = require('ngx');
 var ngxGridComponent = require('./grid.component.js');
 var ngxGridRowDirective = require('./grid-row.directive.js');
 var ngxGridColumnDirective = require('./grid-column.directive.js');
 
-ngxBootstrap.grid = {
-  GRID_COMPONENT: ngxGridComponent,
-  GRID_ROW_DIRECTIVE: ngxGridRowDirective,
-  GRID_COLUMN_DIRECTIVE: ngxGridColumnDirective,
+ngx.grid = {
+  gridComponent: ngxGridComponent,
+  gridRowDirective: ngxGridRowDirective,
+  gridColumnDirective: ngxGridColumnDirective,
   DIRECTIVES: [
     ngxGridComponent,
     ngxGridRowDirective,
@@ -14,4 +14,4 @@ ngxBootstrap.grid = {
   ]
 };
 
-module.exports = ngxBootstrap;
+module.exports = ngx;

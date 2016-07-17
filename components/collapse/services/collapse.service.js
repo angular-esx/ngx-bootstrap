@@ -1,5 +1,5 @@
 ﻿var ngxAnimationService = require('animationService');
-var ngxBootstrap = require('ngxBootstrap');
+var ngx = require('ngx');
 
 function _ngxCollapseService() {
   var _observer;
@@ -13,7 +13,7 @@ function _ngxCollapseService() {
     ngxAnimationService,
 
     function ngxCollapseService(ngxAnimationService) {
-      ngxBootstrap.shallowCopy(this, ngxAnimationService);
+      ngx.shallowCopy(this, ngxAnimationService);
 
       this.ngxCollapse$ = new Rx.Observable(function (observer) {
         _observer = observer;
@@ -23,7 +23,7 @@ function _ngxCollapseService() {
   ];
 
   this.getActions = function () {
-    return ngxBootstrap.shallowCopy({}, _ACTIONS);
+    return ngx.shallowCopy({}, _ACTIONS);
   };
 
   this.next = function (event) {

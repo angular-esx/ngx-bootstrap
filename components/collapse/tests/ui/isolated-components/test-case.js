@@ -6,12 +6,12 @@ var isolatedComponents = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/collapse/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxBootstrap.button.DIRECTIVES,
-    ngxBootstrap.collapse.DIRECTIVES
+    ngx.button.DIRECTIVES,
+    ngx.collapse.DIRECTIVES
   ],
   providers: [
-    ngxBootstrap.core.animationService,
-    ngxBootstrap.collapse.SERVICES
+    ngx.core.animationService,
+    ngx.collapse.PROVIDERS
   ]
 })
 .Class(new _testCase());

@@ -1,9 +1,9 @@
-﻿var ngxBootstrap = require('ngxBootstrap');
+﻿var ngx = require('ngx');
 var ngxGroupComponent = require('./group.component.js');
 
-ngxBootstrap.group = {
-  GROUP_COMPONENT: ngxGroupComponent,
+ngx.group = {
+  groupComponent: ngxGroupComponent,
   DIRECTIVES: [ ngxGroupComponent ]
 };
 
-module.exports = ngxBootstrap;
+module.exports = ngx;

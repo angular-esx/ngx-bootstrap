@@ -1,9 +1,9 @@
-﻿var ngxBootstrap = require('ngxBootstrap');
+﻿var ngx = require('ngx');
 var ngxHideDirective = require('./hide.directive.js');
 
-ngxBootstrap.hide = {
-  HIDE_DIRECTIVE: ngxHideDirective,
+ngx.hide = {
+  hideDirective: ngxHideDirective,
   DIRECTIVES: [ ngxHideDirective ]
 };
 
-module.exports = ngxBootstrap;
+module.exports = ngx;

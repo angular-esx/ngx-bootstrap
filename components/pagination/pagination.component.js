@@ -1,5 +1,5 @@
 ﻿var ngxBaseComponent = require('baseComponent');
-var ngxBootstrap = require('ngxBootstrap');
+var ngx = require('ngx');
 
 function _ngxPaginationComponent() {
   var _base;
@@ -101,7 +101,7 @@ function _ngxPaginationComponent() {
       });
 
       var _tempPages = [];
-      ngxBootstrap.forEach(_sortedPages, function (page) {
+      ngx.forEach(_sortedPages, function (page) {
         if (page.number === startPage + pageSize) { return true; }
 
         if (page.number >= startPage) {

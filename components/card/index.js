@@ -1,14 +1,14 @@
-﻿var ngxBootstrap = require('ngxBootstrap');
+﻿var ngx = require('ngx');
 var ngxCardComponent = require('./card.component.js');
 var ngxCardHeaderComponent = require('./card-header.component.js');
 
-ngxBootstrap.card = {
-  CARD_COMPONENT: ngxCardComponent,
-  CARD_HEADER_COMPONENT: ngxCardHeaderComponent,
+ngx.card = {
+  cardComponent: ngxCardComponent,
+  cardHeaderComponent: ngxCardHeaderComponent,
   DIRECTIVES: [
     ngxCardComponent,
     ngxCardHeaderComponent
   ]
 };
 
-module.exports = ngxBootstrap;
+module.exports = ngx;

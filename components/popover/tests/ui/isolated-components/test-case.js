@@ -1,5 +1,5 @@
 ﻿function _testCase() {
-  this.constructor = [ngxBootstrap.popover.POPOVER_SERVICE, function (ngxPopoverService) {
+  this.constructor = [ngx.popover.popoverService, function (ngxPopoverService) {
     this.ngxPopoverService = ngxPopoverService;
 
     this.delay = 1 * 1000;
@@ -51,11 +51,11 @@ var isolatedComponents = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/popover/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxBootstrap.popover.DIRECTIVES
+    ngx.popover.DIRECTIVES
   ],
   providers: [
-    ngxBootstrap.core.animationService,
-    ngxBootstrap.popover.SERVICES,
+    ngx.core.animationService,
+    ngx.popover.PROVIDERS,
   ]
 })
 .Class(new _testCase());

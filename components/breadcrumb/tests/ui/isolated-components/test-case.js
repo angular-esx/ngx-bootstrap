@@ -9,8 +9,8 @@ var isolatedComponents = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/breadcrumb/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxBootstrap.link.DIRECTIVES,
-    ngxBootstrap.breadcrumb.DIRECTIVES
+    ngx.link.DIRECTIVES,
+    ngx.breadcrumb.DIRECTIVES
   ]
 })
 .Class(new _testCase());

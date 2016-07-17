@@ -2,7 +2,7 @@
 var ngxTabsService = require('./services/tabs.service.js');
 var ngxTranscludeDirective = require('cores/directives/transclude/transclude.directive.js');
 var ngxBaseComponent = require('baseComponent');
-var ngxBootstrap = require('ngxBootstrap');
+var ngx = require('ngx');
 
 function _ngxTabsComponent() {
   var _base;
@@ -52,13 +52,13 @@ function _ngxTabsComponent() {
     this.subscription = this.ngxTabsService.ngxTabs$.subscribe(function (event) {
       if (!event) { return; }
 
-      var _events = ngxBootstrap.isArray(event) ? event : [event];
+      var _events = ngx.isArray(event) ? event : [event];
       var _actions = _self.ngxTabsService.getActions();
       var _tabs = _self.tabs.toArray();
 
-      ngxBootstrap.forEach(_events, function (_event) {
+      ngx.forEach(_events, function (_event) {
         if (_event.id) {
-          ngxBootstrap.forEach(_tabs, function (tab, index) {
+          ngx.forEach(_tabs, function (tab, index) {
             if (tab.id === _event.id) {
               if (_event.type === _actions.ENABLE_TAB) {
                 _self.enable(tab, _event.isEnabled);
@@ -78,7 +78,7 @@ function _ngxTabsComponent() {
       var _tabs = tabs.toArray();
       
       if (_tabs.indexOf(_self.currentActiveTab.item) > -1) {
-        ngxBootstrap.forEach(_tabs, function (tab, index) {
+        ngx.forEach(_tabs, function (tab, index) {
           if (tab === _self.currentActiveTab.item) {
             _self.currentActiveTab.index = index;
             return true;

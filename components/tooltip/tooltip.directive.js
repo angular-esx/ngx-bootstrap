@@ -2,7 +2,7 @@
 var ngxTooltipComponent = require('./tooltip.component.js');
 var ngxTooltipService = require('./services/tooltip.service.js');
 var ngxBaseDirective = require('baseDirective');
-var ngxBootstrap = require('ngxBootstrap');
+var ngx = require('ngx');
 
 function _ngxTooltipDirective() {
   var _base;
@@ -68,10 +68,10 @@ function _ngxTooltipDirective() {
     this.subscription = this.ngxTooltipService.ngxTooltip$.subscribe(function (event) {
       if (!event) { return; }
 
-      var _events = ngxBootstrap.isArray(event) ? event : [event];
+      var _events = ngx.isArray(event) ? event : [event];
       var _actions = _self.ngxTooltipService.getActions();
       
-      ngxBootstrap.forEach(_events, function (_event) {
+      ngx.forEach(_events, function (_event) {
         if (!_event.id || _event.id === _self.id) {
           if (_event.type === _actions.ENABLE_TOOLTIP) {
             _self.enable(_event.isEnabled);

@@ -1,5 +1,5 @@
 ﻿var ngxBaseDirective = require('baseDirective');
-var ngxBootstrap = require('ngxBootstrap');
+var ngx = require('ngx');
 
 function _ngxGridRowDirective() {
   var _base, _STYLE_PROPERTIES;
@@ -27,7 +27,7 @@ function _ngxGridRowDirective() {
         ALIGN_ITENS: 'alignItems'
       };
 
-      ngxBootstrap.shallowCopy(_STYLE_PROPERTIES, _getBaseInstance(this).getStyleProperties.apply(this));
+      ngx.shallowCopy(_STYLE_PROPERTIES, _getBaseInstance(this).getStyleProperties.apply(this));
     }
 
     return _STYLE_PROPERTIES;
@@ -52,7 +52,7 @@ function _ngxGridRowDirective() {
                           .replace(/^-/, '')
                           .toLowerCase();
 
-      ngxBootstrap.forEach(_values, function (value) {
+      ngx.forEach(_values, function (value) {
         _parts = value.split('-');
 
         if (_parts.length === 2) {

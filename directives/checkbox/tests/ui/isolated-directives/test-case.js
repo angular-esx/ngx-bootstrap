@@ -10,9 +10,9 @@ var isolatedDirectives = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'directives/checkbox/tests/ui/isolated-directives/test-case.html',
   directives: [
-    ngxBootstrap.group.DIRECTIVES,
-    ngxBootstrap.button.DIRECTIVES,
-    ngxBootstrap.checkbox.DIRECTIVES,
+    ngx.group.DIRECTIVES,
+    ngx.button.DIRECTIVES,
+    ngx.checkbox.DIRECTIVES,
   ]
 })
 .Class(new _testCase());

@@ -1,5 +1,5 @@
 ﻿function _testCase() {
-  this.constructor = [ngxBootstrap.tabs.TABS_SERVICE, function (ngxTabsService) {
+  this.constructor = [ngx.tabs.tabsService, function (ngxTabsService) {
     this.ngxTabsService = ngxTabsService;
 
     this.tabs = [
@@ -14,11 +14,11 @@
   }];
 
   this.removeTab = function (tab) {
-    ngxBootstrap.splice(this.tabs, tab);
+    ngx.splice(this.tabs, tab);
   };
 
   this.removePillTab = function (tab) {
-    ngxBootstrap.splice(this.pillTabs, tab);
+    ngx.splice(this.pillTabs, tab);
   };
 
   this.selectTab = function (id) {
@@ -34,12 +34,12 @@ var isolatedComponents = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/tabs/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxBootstrap.link.DIRECTIVES,
-    ngxBootstrap.tabs.DIRECTIVES
+    ngx.link.DIRECTIVES,
+    ngx.tabs.DIRECTIVES
   ],
   providers: [
-    ngxBootstrap.core.animationService,
-    ngxBootstrap.tabs.SERVICES
+    ngx.core.animationService,
+    ngx.tabs.PROVIDERS
   ]
 })
 .Class(new _testCase());

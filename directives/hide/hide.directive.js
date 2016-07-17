@@ -20,7 +20,7 @@ function _ngxBaseHideDirective() {
     if(!_STYLE_PROPERTIES){
       _STYLE_PROPERTIES = { BREAKPOINT: 'breakpoint' };
 
-      ngxBootstrap.shallowCopy(_STYLE_PROPERTIES, _getBaseInstance(this).getStyleProperties.apply(this));
+      ngx.shallowCopy(_STYLE_PROPERTIES, _getBaseInstance(this).getStyleProperties.apply(this));
     }
 
     return _STYLE_PROPERTIES;

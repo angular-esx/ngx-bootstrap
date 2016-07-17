@@ -13,7 +13,7 @@ var isolatedComponents = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/grid/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxBootstrap.grid.DIRECTIVES
+    ngx.grid.DIRECTIVES
   ]
 })
 .Class(new _testCase());

@@ -1,4 +1,4 @@
-﻿var ngxBootstrap = require('ngxBootstrap');
+﻿var ngx = require('ngx');
 
 function _ngxDropMenuService() {
   var _observer;
@@ -15,7 +15,7 @@ function _ngxDropMenuService() {
   };
 
   this.getActions = function () {
-    return ngxBootstrap.shallowCopy({}, _ACTIONS);
+    return ngx.shallowCopy({}, _ACTIONS);
   };
 
   this.next = function (event) {

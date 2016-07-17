@@ -2,7 +2,7 @@
 var ngxPopoverComponent = require('./popover.component.js');
 var ngxPopoverService = require('./services/popover.service.js');
 var ngxTooltipDirective = require('components/tooltip/tooltip.directive.js');
-var ngxBootstrap = require('ngxBootstrap');
+var ngx = require('ngx');
 
 function _ngxPopoverDirective() {
   var _base;
@@ -34,10 +34,10 @@ function _ngxPopoverDirective() {
     this.subscription = this.ngxPopoverService.ngxPopover$.subscribe(function (event) {
       if (!event) { return; }
 
-      var _events = ngxBootstrap.isArray(event) ? event : [event];
+      var _events = ngx.isArray(event) ? event : [event];
       var _actions = _self.ngxPopoverService.getActions();
 
-      ngxBootstrap.forEach(_events, function (_event) {
+      ngx.forEach(_events, function (_event) {
         if (!_event.id || _event.id === _self.id) {
           if (_event.type === _actions.ENABLE_POPOVER) {
             _self.enable(_event.isEnabled);

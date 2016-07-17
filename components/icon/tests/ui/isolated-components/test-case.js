@@ -1,5 +1,5 @@
 ﻿function _testCase() {
-  this.constructor = [ngxBootstrap.icon.ICON_SERVICE, function (ngxIconService) {
+  this.constructor = [ngx.icon.iconService, function (ngxIconService) {
     ngxIconService.setDefaultFontSet('material-icons');
 
     ngxIconService.setSvgIcon('components/icon/tests/ui/isolated-components/svgs/favorite.svg', 'favorite');
@@ -21,10 +21,10 @@ var isolatedComponents = ng.core.Component({
   ],
   encapsulation: ng.core.ViewEncapsulation.None,
   directives: [
-    ngxBootstrap.icon.DIRECTIVES
+    ngx.icon.DIRECTIVES
   ],
   providers: [
-    ngxBootstrap.icon.SERVICES,
+    ngx.icon.PROVIDERS,
     ng.http.HTTP_PROVIDERS
   ]
 })

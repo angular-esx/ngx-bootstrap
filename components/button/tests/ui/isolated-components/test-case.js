@@ -10,7 +10,7 @@ var isolatedComponents = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/button/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxBootstrap.button.DIRECTIVES
+    ngx.button.DIRECTIVES
   ]
 })
 .Class(new _testCase());

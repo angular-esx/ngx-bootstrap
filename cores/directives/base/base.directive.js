@@ -1,4 +1,4 @@
-﻿var ngxBootstrap = require('utils');
+﻿var ngx = require('utils');
 
 function _ngxBaseDirective() {
   var _STYLE_PROPERTIES = {
@@ -67,7 +67,7 @@ function _ngxBaseDirective() {
 
     if(_prefixClass){ _cssClasses.push(_prefixClass); }
 
-    ngxBootstrap.forEach(_styleProperties, function(prop){
+    ngx.forEach(_styleProperties, function(prop){
       if(changeRecord.hasOwnProperty(prop)){
         _cssClass = _self.buildCssClassForProperty(prop, changeRecord[prop].currentValue);
       }
@@ -96,7 +96,7 @@ function _ngxBaseDirective() {
     if(propertyValue.trim().indexOf(' ') > -1){
       var _cssClasses = [];
 
-      ngxBootstrap.forEach(propertyValue.split(' '), function(value) {
+      ngx.forEach(propertyValue.split(' '), function(value) {
         _parts.length = 0;  
         
         if(_prefixClass){ _parts.push(_prefixClass); }

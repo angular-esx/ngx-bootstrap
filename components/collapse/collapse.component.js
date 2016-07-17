@@ -1,6 +1,6 @@
 ﻿var ngxCollapseService = require('./services/collapse.service.js');
 var ngxBaseComponent = require('baseComponent');
-var ngxBootstrap = require('ngxBootstrap');
+var ngx = require('ngx');
 
 function _ngxCollapseComponent() {
   var _base;
@@ -64,10 +64,10 @@ function _ngxCollapseComponent() {
     this.subscription = this.ngxCollapseService.ngxCollapse$.subscribe(function (event) {
       if (!event) { return; }
 
-      var _events = ngxBootstrap.isArray(event) ? event : [event];
+      var _events = ngx.isArray(event) ? event : [event];
       var _actions = _self.ngxCollapseService.getActions();
 
-      ngxBootstrap.forEach(_events, function (_event) {
+      ngx.forEach(_events, function (_event) {
         if (!_event.id || _self.id === _event.id) {
           if (_event.type === _actions.TOGGLE_COLLAPSE) {
             _self.toggle();

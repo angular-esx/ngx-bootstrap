@@ -1,5 +1,5 @@
 ﻿var ngxBaseDirective = require('baseDirective');
-var ngxBootstrap = require('utils');
+var ngx = require('utils');
 
 function _ngxBaseComponent() {
   var _base;

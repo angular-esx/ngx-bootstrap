@@ -49,7 +49,7 @@ module.exports = function (params) {
         path: __dirname,
         libraryTarget: 'umd',
         umdNamedDefine: true,
-        library: 'ngxBootstrap',
+        library: 'ngx',
         filename: 'ngx-[name].js',
       },
       plugins: [
@@ -84,7 +84,7 @@ module.exports = function (params) {
           cores: 'cores',
           components: 'components',
           directive: 'directives',
-          ngxBootstrap: 'cores/index.js',
+          ngx: 'cores/index.js',
           utils: 'cores/utils.js',
 
           /** core components **/

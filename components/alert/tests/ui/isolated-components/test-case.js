@@ -1,5 +1,5 @@
 function _testCase() {
-  this.constructor = [ngxBootstrap.alert.ALERT_SERVICE, function (ngxAlertService) {
+  this.constructor = [ngx.alert.alertService, function (ngxAlertService) {
     this.ngxAlertService = ngxAlertService;
 
     this.href = 'https://translate.google.com.vn';
@@ -34,12 +34,12 @@ var isolatedComponents = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/alert/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxBootstrap.link.DIRECTIVES,
-    ngxBootstrap.alert.DIRECTIVES
+    ngx.link.DIRECTIVES,
+    ngx.alert.DIRECTIVES
   ],
   providers: [
-    ngxBootstrap.core.animationService,
-    ngxBootstrap.alert.SERVICES
+    ngx.core.animationService,
+    ngx.alert.PROVIDERS
   ]
 })
 .Class(new _testCase());

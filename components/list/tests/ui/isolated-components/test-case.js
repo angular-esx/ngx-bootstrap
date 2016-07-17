@@ -11,7 +11,7 @@ var isolatedComponents = ng.core.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/list/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxBootstrap.list.DIRECTIVES
+    ngx.list.DIRECTIVES
   ]
 })
 .Class(new _testCase());

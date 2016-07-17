@@ -1,10 +1,10 @@
-var ngxBootstrap = require('utils');
+var ngx = require('utils');
 
-ngxBootstrap.core = {
+ngx.core = {
   baseComponent: require('baseComponent'),
   baseDirective: require('baseDirective'),
   transcludeDirective: require('transcludeDirective'),
   animationService: require('animationService')
 };
 
-module.exports = ngxBootstrap;
+module.exports = ngx;

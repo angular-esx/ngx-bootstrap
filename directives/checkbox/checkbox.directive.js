@@ -22,7 +22,7 @@ function _ngxCheckboxDirective() {
       return this.ngxCheckboxGroup.hasValue(this.checkedValue);
     }
     else {
-      return ngxBootstrap.isArray(this.model) ? this.model.indexOf(this.checkedValue) !== -1 : this.model === this.checkedValue;
+      return ngx.isArray(this.model) ? this.model.indexOf(this.checkedValue) !== -1 : this.model === this.checkedValue;
     }
   };
 
@@ -48,7 +48,7 @@ function _ngxCheckboxDirective() {
 
   this.addOrRemoveValue = function () {
     if (this.isChecked()) {
-      if (ngxBootstrap.isArray(this.model)) {
+      if (ngx.isArray(this.model)) {
         this.model.splice(this.model.indexOf(this.checkedValue), 1);
       }
       else {
@@ -56,7 +56,7 @@ function _ngxCheckboxDirective() {
       }
     }
     else {
-      if (ngxBootstrap.isArray(this.model)) {
+      if (ngx.isArray(this.model)) {
         this.model.push(this.checkedValue);
       }
       else {

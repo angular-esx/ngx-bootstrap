@@ -1,7 +1,4 @@
-﻿var ngxAnimationService = require('animationService');
-var ngx = require('ngx');
-
-function _ngxCollapseService() {
+﻿function _ngxCollapseService() {
   var _observer;
   var _ACTIONS = {
     TOGGLE_COLLAPSE: 'TOGGLE_COLLAPSE',
@@ -10,7 +7,7 @@ function _ngxCollapseService() {
   };
 
   this.constructor = [
-    ngxAnimationService,
+    ngx.core.animationService,
 
     function ngxCollapseService(ngxAnimationService) {
       ngx.shallowCopy(this, ngxAnimationService);

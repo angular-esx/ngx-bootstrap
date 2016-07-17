@@ -1,11 +1,9 @@
 ﻿var ngxCollapseService = require('./services/collapse.service.js');
-var ngxBaseComponent = require('baseComponent');
-var ngx = require('ngx');
 
 function _ngxCollapseComponent() {
   var _base;
 
-  this.extends = ngxBaseComponent;
+  this.extends = ngx.core.baseComponent;
 
   this.constructor = [
     ng.core.ElementRef,
@@ -13,7 +11,7 @@ function _ngxCollapseComponent() {
     ngxCollapseService,
 
     function ngxCollapseComponent(elementRef, renderer, ngxCollapseService) {
-      ngxBaseComponent.apply(this, arguments);
+      ngx.core.baseComponent.apply(this, arguments);
 
       if (elementRef) {
         this.ngxCollapseService = ngxCollapseService;
@@ -122,7 +120,7 @@ function _ngxCollapseComponent() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxBaseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngx.core.baseComponent); }
     return _base;
   }
 }

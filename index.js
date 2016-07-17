@@ -1,1 +1,1 @@
-module.exports = "Comming soon!";
+module.exports = "Coming soon!";

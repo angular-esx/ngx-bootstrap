@@ -1,11 +1,10 @@
 ﻿var tooltipOptionClass = require('./classes/tooltip-option.class.js');
 var ngxTooltipService = require('./services/tooltip.service.js');
-var ngxBaseComponent = require('baseComponent');
 
 function _ngxTooltipComponent() {
   var _base;
 
-  this.extends = ngxBaseComponent;
+  this.extends = ngx.core.BaseComponent;
 
   this.constructor = [
     ng.core.ElementRef,
@@ -14,7 +13,7 @@ function _ngxTooltipComponent() {
     tooltipOptionClass,
 
     function ngxTooltipComponent(elementRef, renderer, ngxTooltipService, tooltipOption) {
-      ngxBaseComponent.apply(this, [elementRef, renderer, ngxTooltipService]);
+      ngx.core.BaseComponent.apply(this, [elementRef, renderer, ngxTooltipService]);
       
       if (elementRef) {
         this.ngxTooltipService = ngxTooltipService;
@@ -133,7 +132,7 @@ function _ngxTooltipComponent() {
   }
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxBaseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngx.core.BaseComponent); }
     return _base;
   }
 }

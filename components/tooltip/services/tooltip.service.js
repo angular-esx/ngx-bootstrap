@@ -1,7 +1,4 @@
-﻿var ngxAnimationService = require('animationService');
-var ngx = require('ngx');
-
-function _ngxTooltipService() {
+﻿function _ngxTooltipService() {
   var _templates = {},
       _observer;
   var _ACTIONS = {
@@ -11,7 +8,7 @@ function _ngxTooltipService() {
   };
 
   this.constructor = [
-    ngxAnimationService,
+    ngx.core.animationService,
 
     function ngxTooltipService(ngxAnimationService) {
       ngx.shallowCopy(this, ngxAnimationService);

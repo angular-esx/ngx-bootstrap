@@ -1,13 +1,11 @@
 ﻿var ngxTooltipOptionClass = require('./classes/tooltip-option.class.js');
 var ngxTooltipComponent = require('./tooltip.component.js');
 var ngxTooltipService = require('./services/tooltip.service.js');
-var ngxBaseDirective = require('baseDirective');
-var ngx = require('ngx');
 
 function _ngxTooltipDirective() {
   var _base;
 
-  this.extends = ngxBaseDirective;
+  this.extends = ngx.core.baseDirective;
 
   this.constructor = [
     ng.core.ElementRef,
@@ -17,7 +15,7 @@ function _ngxTooltipDirective() {
     ngxTooltipService,
 
     function ngxTooltipDirective(elementRef, renderer, viewContainerRef, componentLoader, ngxTooltipService) {
-      ngxBaseDirective.apply(this, [elementRef, renderer]);
+      ngx.core.baseDirective.apply(this, [elementRef, renderer]);
       
       if (elementRef) {
         this.ngxTooltipService = ngxTooltipService;
@@ -166,7 +164,7 @@ function _ngxTooltipDirective() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxBaseDirective); }
+    if (!_base) { _base = context.getBaseInstance(ngx.core.baseDirective); }
     return _base;
   }
 }

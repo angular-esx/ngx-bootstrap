@@ -1,6 +1,4 @@
-﻿var ngx = require('ngx');
-
-function _tooltipOptionClass() {
+﻿function _tooltipOptionClass() {
   var _PROPERTIES = ['hostElement', 'templateRef', 'content', 'state', 'position', 'delay', 'autoHide'];
 
   this.constructor = [

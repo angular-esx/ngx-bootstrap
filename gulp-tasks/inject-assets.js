@@ -23,6 +23,7 @@ module.exports = function (params) {
 
       _angularPolyfillJs = gulp.src(_libs.ANGULAR_02_POLYFILLS_JS, _notReadOption),
       _angularJs = gulp.src(_libs.ANGULAR_02_JS, _notReadOption),
+      _ngxNormalizeCss = gulp.src(_fileService.FILES.NGX_NORMALIZE_CSS, _notReadOption),
       _ngxBootstrapCss = gulp.src(_fileService.FILES.NGX_BOOTSTRAP_CSS, _notReadOption);
 
     var ngxCore = gulp.src('./dist/js/ngx-core.js', _notReadOption);
@@ -69,7 +70,7 @@ module.exports = function (params) {
       .pipe(inject(_streamSeries
         (
         _es6ShimJs, _rxJs, _angularPolyfillJs, _angularJs,
-        _ngxBootstrapCss
+        _ngxNormalizeCss, _ngxBootstrapCss
         ),
         { relative: true, name: 'core' }
       ))

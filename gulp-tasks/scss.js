@@ -3,6 +3,7 @@ var sass = require('gulp-sass');
 var rename = require('gulp-rename');
 var reload = require('browser-sync').reload;
 var fs = require('fs');
+var merge = require('merge-stream');
 
 var args = require('yargs').argv;
 var componentName = args.component;
@@ -10,9 +11,8 @@ var themeName = args.theme || 'bootstrap';
 
 module.exports = function (params) {
   return function () {
+    var contents = addSCSS('./cores/scss/ngx-bootstrap.' + themeName + '.scss');
 
-    var CORE_SASS = './cores/scss/ngx-bootstrap.' + themeName + '.scss';
-    var contents = addSCSS(CORE_SASS);
     if (componentName) {
       contents += getPathDirectiveSCSS(componentName);
 
@@ -32,19 +32,26 @@ module.exports = function (params) {
 
     fs.writeFileSync('./scss/ngx-bootstrap.scss', contents, { encoding: 'utf8' });
 
-    return gulp.src('./scss/ngx-bootstrap.scss')
-
-      .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
-      .pipe(gulp.dest('./dist/css/'))
-      .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
-      .pipe(rename('ngx-bootstrap.min.css'))
-      .pipe(gulp.dest('./dist/css/'));
+    return merge(
+      gulp.src('./cores/themes/' + themeName + '/normalize/normalize.scss')
+        .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
+        .pipe(rename('ngx-normalize.css'))
+        .pipe(gulp.dest('./dist/css/'))
+        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+        .pipe(rename('ngx-normalize.min.css'))
+        .pipe(gulp.dest('./dist/css/')),
+      gulp.src('./scss/ngx-bootstrap.scss')
+        .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
+        .pipe(gulp.dest('./dist/css/'))
+        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+        .pipe(rename('ngx-bootstrap.min.css'))
+        .pipe(gulp.dest('./dist/css/')));
 
   };
 };
 
-function addSCSS(scssName) {
-  return "@import " + '"' + scssName + '";' + "\n";
+function addSCSS(scssFile) {
+  return "@import " + '"' + scssFile + '";' + "\n";
 }
 
 function getPathDirectiveSCSS(componentName) {

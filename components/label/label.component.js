@@ -1,16 +1,14 @@
-var ngxBaseComponent = require('baseComponent');
-
 function _ngxLabelComponent() {
   var _base;
 
-  this.extends = ngxBaseComponent;
+  this.extends = ngx.core.baseComponent;
 
   this.constructor = [
     ng.core.ElementRef,
     ng.core.Renderer,
 
     function ngxLabelComponent(elementRef, renderer) {
-      ngxBaseComponent.apply(this, arguments);
+      ngx.core.baseComponent.apply(this, arguments);
     }
   ];
 
@@ -31,7 +29,7 @@ function _ngxLabelComponent() {
   };
 
   function _getBaseInstance(context){ 
-    if(!_base){ _base = context.getBaseInstance(ngxBaseComponent); }
+    if(!_base){ _base = context.getBaseInstance(ngx.core.baseComponent); }
     return _base;
   }
 }

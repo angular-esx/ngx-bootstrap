@@ -1,11 +1,9 @@
 ﻿var ngxDropMenuService = require('./services/drop-menu.service.js');
-var ngxBaseComponent = require('baseComponent');
-var ngx = require('ngx');
 
 function _ngxDropMenuComponent() {
   var _base;
 
-  this.extends = ngxBaseComponent;
+  this.extends = ngx.core.baseComponent;
 
   this.constructor = [
     ng.core.ElementRef,
@@ -13,7 +11,7 @@ function _ngxDropMenuComponent() {
     ngxDropMenuService,
 
     function ngxDropMenuComponent(elementRef, renderer, ngxDropMenuService) {
-      ngxBaseComponent.apply(this, arguments);
+      ngx.core.baseComponent.apply(this, arguments);
 
       if (elementRef) {
         this.ngxDropMenuService = ngxDropMenuService;
@@ -84,7 +82,7 @@ function _ngxDropMenuComponent() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxBaseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngx.core.baseComponent); }
     return _base;
   }
 }

@@ -1,6 +1,4 @@
-﻿var ngx = require('ngx');
-
-function _ngxDropMenuService() {
+﻿function _ngxDropMenuService() {
   var _observer;
   var _ACTIONS = {
     TOGGLE_DROPDOWN: 'TOGGLE_DROPDOWN',

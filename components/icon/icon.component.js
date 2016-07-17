@@ -1,6 +1,4 @@
 ﻿var ngxIconService = require('./services/icon.service.js');
-var ngxBaseComponent = require('baseComponent');
-var ngx = require('ngx');
 
 function _ngxIconComponent() {
   var _base, _STYLE_PROPERTIES;
@@ -9,7 +7,7 @@ function _ngxIconComponent() {
     SVG_ICON: 'svgIcon'
   };
 
-  this.extends = ngxBaseComponent;
+  this.extends = ngx.core.baseComponent;
 
   this.constructor = [
     ng.core.ElementRef,
@@ -17,7 +15,7 @@ function _ngxIconComponent() {
     ngxIconService,
 
     function ngxIconComponent(elementRef, renderer, ngxIconService) {
-      ngxBaseComponent.apply(this, arguments);
+      ngx.core.baseComponent.apply(this, arguments);
 
       if (elementRef) {
         this.ngxIconService = ngxIconService;
@@ -139,7 +137,7 @@ function _ngxIconComponent() {
   }
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxBaseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngx.core.baseComponent); }
     return _base;
   }
 }

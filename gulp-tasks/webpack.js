@@ -89,23 +89,13 @@ module.exports = function (params) {
 
           /** core components **/
           baseComponent: 'cores/components/base/base.component.js',
-          coreComponent: 'cores/components/index.js',
 
           /** core directives **/
           baseDirective: 'cores/directives/base/base.directive.js',
           transcludeDirective: 'cores/directives/transclude/transclude.directive.js',
 
           /** core services **/
-          coreService: 'cores/services/index.js',
           animationService: 'cores/services/animation.service.js',
-          breakpointService: 'cores/services/breakpoint.service.js',
-          colorService: 'cores/services/color.service.js',
-          positionService: 'cores/services/position.service.js',
-          renderService: 'cores/services/render.service.js',
-          sizeService: 'cores/services/size.service.js',
-          stateService: 'cores/services/state.service.js',
-          typeService: 'cores/services/type.service.js',
-          windowService: 'cores/services/window.service.js',
         },
         extensions: ['', '.js']
       },

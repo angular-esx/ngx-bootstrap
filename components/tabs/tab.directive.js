@@ -1,8 +1,6 @@
 ﻿var ngxTabsService = require('./services/tabs.service.js');
 var ngxTabHeadDirective = require('./tab-head.directive.js');
 var ngxTabContentDirective = require('./tab-content.directive.js');
-var ngxBaseDirective = require('baseDirective');
-var ngx = require('ngx');
 
 function _ngxTabDirective() {
   var _base;
@@ -10,7 +8,7 @@ function _ngxTabDirective() {
     HEAD: 'head'
   };
 
-  this.extends = ngxBaseDirective;
+  this.extends = ngx.core.baseDirective;
 
   this.constructor = [
     ng.core.ElementRef,
@@ -18,7 +16,7 @@ function _ngxTabDirective() {
     ngxTabsService,
 
     function ngxTabDirective(elementRef, renderer, ngxTabsService) {
-      ngxBaseDirective.apply(this, arguments);
+      ngx.core.baseDirective.apply(this, arguments);
 
       if (elementRef) {
         this.ngxTabsService = ngxTabsService;
@@ -114,7 +112,7 @@ function _ngxTabDirective() {
   }
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxBaseDirective); }
+    if (!_base) { _base = context.getBaseInstance(ngx.core.baseDirective); }
     return _base;
   }
 }

@@ -1,7 +1,4 @@
-﻿var ngxAnimationService = require('animationService');
-var ngx = require('ngx');
-
-function _ngxTabsService() {
+﻿function _ngxTabsService() {
   var _observer;
   var _ACTIONS = {
     ENABLE_TAB: 'ENABLE_TAB',
@@ -9,7 +6,7 @@ function _ngxTabsService() {
   };
 
   this.constructor = [
-    ngxAnimationService,
+    ngx.core.animationService,
 
     function ngxTabsService(ngxAnimationService) {
       ngx.shallowCopy(this, ngxAnimationService);

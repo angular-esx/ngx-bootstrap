@@ -1,4 +1,27 @@
-﻿%ngx-h-normalize {
+﻿@import "../typography/typography.scss";
+@import "../palette/palette.scss";
+
+$ngx-body-background-color: ngx-color-light($ngx-color-white) !default;
+$ngx-body-foreground-color: ngx-color-dark($ngx-color-gray) !default;
+
+$ngx-text-muted: ngx-color-light($ngx-color-gray) !default;
+
+$ngx-link-color: ngx-color($ngx-color-primary) !default;
+$ngx-link-decoration: none !default;
+$ngx-link-hover-color: ngx-color-dark($ngx-color-primary) !default;
+$ngx-link-hover-decoration: underline !default;
+
+$ngx-table-background-color: transparent !default;
+$ngx-table-cell-padding: .75rem !default;
+
+
+$ngx-abbr-border-color: ngx-color-light($ngx-color-gray) !default;
+
+$ngx-dt-font-weight: bold !default;
+
+//In order to avoid test-ui get errors, keep this code temporatily
+//Will removed them after merging all components to develop branch
+%ngx-h-normalize {
   font-weight: 500;
   line-height: 1.1rem;
   margin-top: 0;
@@ -35,3 +58,4 @@
   border: 0;
   vertical-align: middle;
 }
+//-----------------------------------------------------------------------

@@ -1,16 +1,14 @@
-﻿var ngxBaseComponent = require('baseComponent');
-
-function _ngxButtonComponent() {
+﻿function _ngxButtonComponent() {
   var _base;
   
-  this.extends = ngxBaseComponent;
+  this.extends = ngx.core.baseComponent;
 
   this.constructor = [
     ng.core.ElementRef,
     ng.core.Renderer,
 
     function ngxButtonComponent(elementRef, renderer) {
-      ngxBaseComponent.apply(this, arguments);
+      ngx.core.baseComponent.apply(this, arguments);
       
       if (elementRef) {
         this.clickEmitter = new ng.core.EventEmitter();
@@ -45,7 +43,7 @@ function _ngxButtonComponent() {
   };
   
   function _getBaseInstance(context){ 
-    if(!_base){ _base = context.getBaseInstance(ngxBaseComponent); }
+    if(!_base){ _base = context.getBaseInstance(ngx.core.baseComponent); }
     return _base;
   }
 }

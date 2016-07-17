@@ -54,7 +54,7 @@ var isolatedComponents = ng.core.Component({
     ngxBootstrap.popover.DIRECTIVES
   ],
   providers: [
-    ngxBootstrap.coreService.ANIMATION_SERVICE,
+    ngxBootstrap.core.animationService,
     ngxBootstrap.popover.SERVICES,
   ]
 })

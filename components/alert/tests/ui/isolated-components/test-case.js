@@ -38,7 +38,7 @@ var isolatedComponents = ng.core.Component({
     ngxBootstrap.alert.DIRECTIVES
   ],
   providers: [
-    ngxBootstrap.coreService.ANIMATION_SERVICE,
+    ngxBootstrap.core.animationService,
     ngxBootstrap.alert.SERVICES
   ]
 })

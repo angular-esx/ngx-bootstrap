@@ -10,7 +10,7 @@ var isolatedComponents = ng.core.Component({
     ngxBootstrap.collapse.DIRECTIVES
   ],
   providers: [
-    ngxBootstrap.coreService.ANIMATION_SERVICE,
+    ngxBootstrap.core.animationService,
     ngxBootstrap.collapse.SERVICES
   ]
 })

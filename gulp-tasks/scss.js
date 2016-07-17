@@ -14,7 +14,7 @@ module.exports = function (params) {
     var contents = addSCSS('./cores/themes/' + themeName + '/ngx-bootstrap.scss');
 
     if (componentName) {
-      contents += getPathDirectiveSCSS(componentName);
+      contents += getDirectiveSCSSPath(componentName);
 
     } else {
       fs.readdirSync('./components')
@@ -26,15 +26,20 @@ module.exports = function (params) {
           }
         })
         .forEach(function (component) {
-          contents += getPathDirectiveSCSS(component);
+          contents += getDirectiveSCSSPath(component);
         });
     }
 
     try {
       fs.mkdirSync('./temp');
-      fs.writeFileSync('./temp/ngx-bootstrap.scss', contents, { encoding: 'utf8' });
     } catch (e) {
       if (e.code != 'EEXIST') throw e;
+    }
+
+    try {
+      fs.writeFileSync('./temp/ngx-bootstrap.scss', contents, { encoding: 'utf8' });
+    } catch (e) {
+      throw e;
     }
 
     return merge(
@@ -59,7 +64,7 @@ function addSCSS(scssFile) {
   return "@import " + '"' + scssFile + '";' + "\n";
 }
 
-function getPathDirectiveSCSS(componentName) {
+function getDirectiveSCSSPath(componentName) {
   var contents = '';
   var data = fs.readdirSync('./components/' + componentName)
     .filter(function (directive) {

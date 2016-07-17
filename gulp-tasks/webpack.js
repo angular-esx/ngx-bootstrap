@@ -43,8 +43,7 @@ module.exports = function (params) {
         /** directives **/
         checkbox: 'directives/checkbox/index.js',
         hide: 'directives/hide/index.js',
-        radio: 'directives/radio/index.js',
-        'toggle-item': 'directives/toggle-item/index.js'
+        radio: 'directives/radio/index.js'
       },
       output: {
         path: __dirname,

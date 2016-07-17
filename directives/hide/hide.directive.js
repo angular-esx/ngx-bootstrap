@@ -1,18 +1,16 @@
-var ngxBaseDirective = require('baseDirective');
-
 var ngxBaseHideDirective = ng.core.Class(new _ngxBaseHideDirective());
 
 function _ngxBaseHideDirective() {
   var _base, _STYLE_PROPERTIES;
 
-  this.extends = ngxBaseDirective;
+  this.extends = ngx.core.baseDirective;
 
   this.constructor = [
     ng.core.ElementRef,
     ng.core.Renderer,
 
     function ngxBaseHideDirective(elementRef, renderer) {
-      ngxBaseDirective.apply(this, arguments);
+      ngx.core.baseDirective.apply(this, arguments);
     }
   ];
 
@@ -37,7 +35,7 @@ function _ngxBaseHideDirective() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxBaseDirective); }
+    if (!_base) { _base = context.getBaseInstance(ngx.core.baseDirective); }
     return _base;
   };
 }

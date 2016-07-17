@@ -11,7 +11,7 @@ var themeName = args.theme || 'bootstrap';
 
 module.exports = function (params) {
   return function () {
-    var contents = addSCSS('./cores/scss/ngx-bootstrap.' + themeName + '.scss');
+    var contents = addSCSS('./cores/themes/' + themeName + '/ngx-bootstrap.scss');
 
     if (componentName) {
       contents += getPathDirectiveSCSS(componentName);
@@ -30,7 +30,12 @@ module.exports = function (params) {
         });
     }
 
-    fs.writeFileSync('./scss/ngx-bootstrap.scss', contents, { encoding: 'utf8' });
+    try {
+      fs.mkdirSync('./temp');
+      fs.writeFileSync('./temp/ngx-bootstrap.scss', contents, { encoding: 'utf8' });
+    } catch (e) {
+      if (e.code != 'EEXIST') throw e;
+    }
 
     return merge(
       gulp.src('./cores/themes/' + themeName + '/normalize/normalize.scss')

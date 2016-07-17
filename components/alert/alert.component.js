@@ -1,11 +1,9 @@
 ﻿var ngxAlertService = require('./services/alert.service.js');
-var ngxBaseComponent = require('baseComponent');
-var ngx = require('ngx');
 
 function _ngxAlertComponent() {
   var _base;
 
-  this.extends = ngxBaseComponent;
+  this.extends = ngx.core.baseComponent;
 
   this.constructor = [
     ng.core.ElementRef,
@@ -13,7 +11,7 @@ function _ngxAlertComponent() {
     ngxAlertService,
 
     function ngxAlertComponent(elementRef, renderer, ngxAlertService) {
-      ngxBaseComponent.apply(this, arguments);
+      ngx.core.baseComponent.apply(this, arguments);
       
       if (elementRef) {
         this.ngxAlertService = ngxAlertService;
@@ -146,7 +144,7 @@ function _ngxAlertComponent() {
   };
 
   function _getBaseInstance(context){ 
-    if(!_base){ _base = context.getBaseInstance(ngxBaseComponent); }
+    if(!_base){ _base = context.getBaseInstance(ngx.core.baseComponent); }
     return _base;
   }
 }

@@ -1,7 +1,4 @@
-﻿var ngxAnimationService = require('animationService');
-var ngx = require('ngx');
-
-function _ngxAlertService() {
+﻿function _ngxAlertService() {
   var _observer;
   var _ACTIONS = {
     SHOW_ALERT: 'SHOW_ALERT',
@@ -9,7 +6,7 @@ function _ngxAlertService() {
   };
 
   this.constructor = [
-    ngxAnimationService,
+    ngx.core.animationService,
 
     function ngxAlertService(ngxAnimationService) {
       ngx.shallowCopy(this, ngxAnimationService);

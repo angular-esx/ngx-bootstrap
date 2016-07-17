@@ -50,7 +50,7 @@ module.exports = function (params) {
         .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
         .pipe(rename('ngx-normalize.min.css'))
         .pipe(gulp.dest('./dist/css/')),
-      gulp.src('./scss/ngx-bootstrap.scss')
+      gulp.src('./temp/ngx-bootstrap.scss')
         .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
         .pipe(gulp.dest('./dist/css/'))
         .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))

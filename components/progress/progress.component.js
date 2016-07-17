@@ -1,20 +1,18 @@
-﻿var ngxBaseComponent = require('baseComponent');
-
-function _ngxProgressComponent() {
+﻿function _ngxProgressComponent() {
   var _base;
   var _PROPERTIES = {
     VALUE: 'value',
     MAX: 'max'
   };
 
-  this.extends = ngxBaseComponent;
+  this.extends = ngx.core.baseComponent;
 
   this.constructor = [
     ng.core.ElementRef,
     ng.core.Renderer,
 
     function ngxProgressComponent(elementRef, renderer) {
-      ngxBaseComponent.apply(this, arguments);
+      ngx.core.baseComponent.apply(this, arguments);
       
       if (elementRef) {
         this.currentProgress = 0;
@@ -52,7 +50,7 @@ function _ngxProgressComponent() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxBaseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngx.core.baseComponent); }
     return _base;
   }
 }

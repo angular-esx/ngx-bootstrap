@@ -1,6 +1,4 @@
-﻿var ngx = require('ngx');
-
-function _popoverOptionClass() {
+﻿function _popoverOptionClass() {
   var _PROPERTIES = ['hostElement', 'templateRef', 'title', 'content', 'state', 'position', 'delay'];
 
   this.constructor = [

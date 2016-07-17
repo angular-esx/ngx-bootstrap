@@ -1,7 +1,4 @@
-﻿var ngxAnimationService = require('animationService');
-var ngx = require('ngx');
-
-function _ngxPopoverService() {
+﻿function _ngxPopoverService() {
   var _templates = {},
       _observer;
   var _ACTIONS = {
@@ -10,7 +7,7 @@ function _ngxPopoverService() {
   };
 
   this.constructor = [
-    ngxAnimationService,
+    ngx.core.animationService,
 
     function ngxPopoverService(ngxAnimationService) {
       ngx.shallowCopy(this, ngxAnimationService);

@@ -1,11 +1,10 @@
 ﻿var popoverOptionClass = require('./classes/popover-option.class.js');
 var ngxPopoverService = require('./services/popover.service.js');
-var ngxTooltipComponent = require('components/tooltip/tooltip.component.js');
 
 function _ngxPopoverComponent() {
   var _base;
 
-  this.extends = ngxTooltipComponent;
+  this.extends = ngx.tooltip.tooltipComponent;
 
   this.constructor = [
     ng.core.ElementRef,
@@ -14,7 +13,7 @@ function _ngxPopoverComponent() {
     popoverOptionClass,
 
     function ngxPopoverComponent(elementRef, renderer, ngxPopoverService, popoverOption) {
-      ngxTooltipComponent.apply(this, arguments);
+      ngx.tooltip.tooltipComponent.apply(this, arguments);
 
       if (elementRef) {
         this.ngxPopoverService = ngxPopoverService;
@@ -41,7 +40,7 @@ function _ngxPopoverComponent() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxTooltipComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngx.tooltip.tooltipComponent); }
     return _base;
   }
 }

@@ -1,17 +1,14 @@
-﻿var ngxBaseComponent = require('baseComponent');
-var ngx = require('ngx');
-
-function _ngxPaginationComponent() {
+﻿function _ngxPaginationComponent() {
   var _base;
 
-  this.extends = ngxBaseComponent;
+  this.extends = ngx.core.baseComponent;
 
   this.constructor = [
     ng.core.ElementRef,
     ng.core.Renderer,
 
     function ngxPaginationComponent(elementRef, renderer) {
-      ngxBaseComponent.apply(this, arguments);
+      ngx.core.baseComponent.apply(this, arguments);
       
       if (elementRef) {
         this.setPageEmitter = new ng.core.EventEmitter();
@@ -120,7 +117,7 @@ function _ngxPaginationComponent() {
   }
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxBaseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngx.core.baseComponent); }
     return _base;
   }
 }

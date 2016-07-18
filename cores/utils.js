@@ -31,8 +31,11 @@ ngx.isArray = function (target) {
 ngx.isFunction = function (target) {
   return target && typeof (target) === 'function';
 };
+ngx.isNull = function(target){
+  return target === undefined || target === null; 
+};
 ngx.isEmpty = function(target) {
-  return target === null || target === undefined || target === "";
+  return ngx.isNull(target) || target === '';
 };
 
 ngx.distinct = function (target) {

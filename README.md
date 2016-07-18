@@ -19,8 +19,6 @@ Minh's checking and merging approved PRs for you, then he's deleting your branch
 - After your components pass all Minh's test cases, it's being merged to Master branch.
 
 
-
-
 -----Development-----
 
 This is Integration branch: develop

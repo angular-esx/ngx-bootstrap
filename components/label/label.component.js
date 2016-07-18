@@ -16,7 +16,7 @@ function _ngxLabelComponent() {
     var _styleProperties = this.getStyleProperties(),
         _changeRecord;
 
-    if(!this.color){ 
+    if(ngx.isEmpty(this.color)){ 
       this.color = 'secondary';
       _changeRecord = this.buildChangeRecord(_styleProperties.COLOR, this.color);
      }

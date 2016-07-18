@@ -1,6 +1,8 @@
 ﻿@import "_variables.scss";
 
-@mixin ngx-label-variant($default){
-  color: map-get($default, foreground);
-  background-color: map-get($default, background);
+@mixin ngx-label-variant($component){
+  $component-default: map-get($component, default);
+
+  color: map-get($component-default, foreground-color);
+  background-color: map-get($component-default, background-color);
 }

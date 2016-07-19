@@ -133,19 +133,19 @@ function _ngxBaseDirective() {
   };
 
   this.propertyHasValue = function(propertyName, value){
-    if(!ngx.isEmpty(propertyName) || !ngx.isEmpty(value) || !ngx.isEmpty(this[propertyName])){ return false; }
+    if(ngx.isEmpty(propertyName) || ngx.isEmpty(value) || ngx.isEmpty(this[propertyName])){ return false; }
 
     return this[propertyName].indexOf(value) > -1;
   };
 
   this.addValueToProperty = function(propertyName, value){
-    if(!ngx.isEmpty(propertyName) || !ngx.isEmpty(value)) { return; }
+    if(ngx.isEmpty(propertyName) || ngx.isEmpty(value)) { return; }
 
     this[propertyName] = ((ngx.isNull(this[propertyName]) ? '' : this[propertyName]) + ' ' + value).trim();
   };
 
   this.removeValueFromProperty = function(propertyName, value){
-    if(!ngx.isEmpty(propertyName) || !ngx.isEmpty(value) || !ngx.isEmpty(this[propertyName])) { return; }
+    if(ngx.isEmpty(propertyName) || ngx.isEmpty(value) || ngx.isEmpty(this[propertyName])) { return; }
 
     this[propertyName] = this[propertyName].replace(new RegExp(value, 'g'), '').trim();
   };

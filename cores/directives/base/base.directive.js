@@ -1,4 +1,4 @@
-﻿var ngxBootstrap = require('utils');
+﻿var ngx = require('utils');
 
 function _ngxBaseDirective() {
   var _STYLE_PROPERTIES = {
@@ -36,21 +36,13 @@ function _ngxBaseDirective() {
     if(_changeRecord){ 
       this.ngOnChanges(_changeRecord); 
     }
-    else if(this.cssClass === undefined && this.getPrefixClass()){
+    else if(ngx.isEmpty(this.cssClass) && this.getPrefixClass()){
       var _cssClasses = [this.getPrefixClass()];
       if(this.initCssClass){ _cssClasses.push(this.initCssClass); }
 
       _setCssClass(this, _cssClasses.join(' '));
      }
   };
-
-  this.ngDoCheck = function(){};
-
-  this.ngAfterContentInit = function(){};
-
-  this.ngAfterContentChecked = function(){};
-
-  this.ngOnDestroy = function(){};
 
 
   this.needRebuildCssClass = function(changeRecord){
@@ -75,7 +67,7 @@ function _ngxBaseDirective() {
 
     if(_prefixClass){ _cssClasses.push(_prefixClass); }
 
-    ngxBootstrap.forEach(_styleProperties, function(prop){
+    ngx.forEach(_styleProperties, function(prop){
       if(changeRecord.hasOwnProperty(prop)){
         _cssClass = _self.buildCssClassForProperty(prop, changeRecord[prop].currentValue);
       }
@@ -92,7 +84,7 @@ function _ngxBaseDirective() {
   };
 
   this.buildCssClassForProperty = function(propertyName, propertyValue){
-    if(!propertyName || !propertyValue){ return ''; } 
+    if(ngx.isEmpty(propertyName) || ngx.isNull(propertyValue)){ return ''; } 
 
     var _parts = [],
         _prefixClass = this.getPrefixClass(),
@@ -104,7 +96,7 @@ function _ngxBaseDirective() {
     if(propertyValue.trim().indexOf(' ') > -1){
       var _cssClasses = [];
 
-      ngxBootstrap.forEach(propertyValue.split(' '), function(value) {
+      ngx.forEach(propertyValue.split(' '), function(value) {
         _parts.length = 0;  
         
         if(_prefixClass){ _parts.push(_prefixClass); }
@@ -141,19 +133,19 @@ function _ngxBaseDirective() {
   };
 
   this.propertyHasValue = function(propertyName, value){
-    if(!propertyName || !value || !this[propertyName]){ return false; }
+    if(!ngx.isEmpty(propertyName) || !ngx.isEmpty(value) || !ngx.isEmpty(this[propertyName])){ return false; }
 
     return this[propertyName].indexOf(value) > -1;
   };
 
   this.addValueToProperty = function(propertyName, value){
-    if(!propertyName || !value) { return; }
+    if(!ngx.isEmpty(propertyName) || !ngx.isEmpty(value)) { return; }
 
-    this[propertyName] = ((this[propertyName] || '') + ' ' + value).trim();
+    this[propertyName] = ((ngx.isNull(this[propertyName]) ? '' : this[propertyName]) + ' ' + value).trim();
   };
 
   this.removeValueFromProperty = function(propertyName, value){
-    if(!propertyName || !value || !this[propertyName]) { return; }
+    if(!ngx.isEmpty(propertyName) || !ngx.isEmpty(value) || !ngx.isEmpty(this[propertyName])) { return; }
 
     this[propertyName] = this[propertyName].replace(new RegExp(value, 'g'), '').trim();
   };

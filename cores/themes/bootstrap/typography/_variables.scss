@@ -3,6 +3,7 @@
 $ngx-font-sizes: (
   lg: 1.25rem,
   base: 1rem,
+  root: 16px,
   sm: .875rem,
   xs: .75rem
 ) !default;
@@ -17,7 +18,6 @@ $ngx-h-font-sizes: (
 ) !default;
 
 $ngx-line-heights: (
-  lg: 1.75rem,
-  base: 1.5rem,
-  sm: 1.25rem
+  base: 1.5,
+  sm: 1.1
 ) !default;

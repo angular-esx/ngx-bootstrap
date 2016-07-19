@@ -1,5 +1,5 @@
 ﻿var ngxBaseDirective = require('baseDirective');
-var ngxBootstrap = require('utils');
+var ngx = require('utils');
 
 function _ngxBaseComponent() {
   var _base;
@@ -14,10 +14,6 @@ function _ngxBaseComponent() {
       ngxBaseDirective.apply(this, arguments);
     }
   ];
-
-  this.ngAfterViewInit = function(){};
-
-  this.ngAfterViewChecked = function(){};
   
   function _getBaseInstance(context) {
     if (!_base) { _base = context.getBaseInstance(ngxBaseDirective); }

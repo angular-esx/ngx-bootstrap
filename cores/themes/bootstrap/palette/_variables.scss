@@ -1,0 +1,58 @@
+﻿$ngx-opacity-disabled: .65 !default; 
+
+$ngx-color-gray: (
+  dark: hsl(204, 4%, 23%),
+  default: hsl(206, 4%, 35%),
+  light: hsl(206, 7%, 54%),
+  light-1: hsl(200, 9%, 93%)
+) !default;
+
+$ngx-color-white: (
+  dark: hsl(0, 0%, 90%),
+  default: hsl(0,0%,96%),
+  light: hsl(0,0%,100%)
+) !default;
+
+$ngx-color-black: (
+  dark-1: hsl(0,0%,0%),
+  dark: hsl(0, 0%, 20%),
+  default: hsl(0, 0%, 33%),
+  light: hsl(0,0%,60%),
+  light-1: hsl(0,0%,80%)
+) !default;
+
+$ngx-color-red: (
+  dark: hsl(1, 44%, 46%),
+  default: hsl(2, 64%, 58%),
+  light: hsl(0, 43%, 81%),
+  light-1: hsl(0, 43%, 91%)
+) !default;
+
+$ngx-color-green: (
+  dark-1: hsl(121, 33%, 35%),
+  dark: hsl(120, 39%, 44%),
+  default: hsl(120, 39%, 54%),
+  light: hsl(103, 44%, 79%),
+  light-1: hsl(103, 44%, 89%)
+) !default;
+
+$ngx-color-blue: (
+  dark: hsl(208, 98%, 33%),
+  default: hsl(208, 98%, 43%)
+) !default;
+
+$ngx-color-sky: (
+  dark-1: hsl(200, 49%, 38%),
+  dark: hsl(194, 66%, 51%),
+  default: hsl(194, 66%, 61%),
+  light: hsl(200, 65%, 81%),
+  light-1: hsl(200, 65%, 91%)
+) !default;
+
+$ngx-color-orange: (
+  dark-1: hsl(38, 40%, 39%),
+  dark: hsl(35, 84%, 52%),
+  default: hsl(35, 84%, 62%),
+  light: hsl(50, 81%, 84%),
+  light-1: hsl(50, 81%, 94%)
+) !default;

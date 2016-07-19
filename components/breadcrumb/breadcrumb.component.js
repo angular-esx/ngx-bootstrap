@@ -1,14 +1,33 @@
-(function (ngxBootstrap, fileService) {
-  ngxBootstrap.ngxClass.ngxBreadcrumbClass = breadcrumb;
+var ngxBaseComponent = require('baseComponent');
 
-  ngxBootstrap.ngxComponents.ngxBreadcrumbComponent = ng.core.Component({
-    selector: 'ngx-breadcrumb',
-    template: '<ng-content></ng-content>'
-  })
-  .Class(new breadcrumb());
+function _breadcrumbComponent() {
+  var _base;
+  
+  this.extends = ngxBaseComponent;
+  
+  this.constructor = [
+    ng.core.ElementRef,
+    ng.core.Renderer,
 
-  function breadcrumb() {
-    this.constructor = function () { };
+    function breadcrumbComponent(elementRef, renderer) {
+      ngxBaseComponent.apply(this, arguments);
+    }
+  ];
+  
+  this.getPrefixClass = function () {
+    return 'ngx-breadcrumb';
+  };
+
+  function _getBaseInstance(context){ 
+    if(!_base){ _base = context.getBaseInstance(ngxBaseComponent); }
+    return _base;
   }
+}
 
-})(window.ngxBootstrap, ngxBootstrap.configs.fileService);
+module.exports = ng.core.Component({
+  selector: 'ngx-breadcrumb',
+  template: require('./themes/' + __THEME__ + '/templates/breadcrumb.html'),
+  styles: [require('./themes/' + __THEME__  + '/scss/breadcrumb.scss')],
+  properties: ['color', 'initCssClass:class']
+})
+.Class(new _breadcrumbComponent());

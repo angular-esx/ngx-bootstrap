@@ -1,0 +1,13 @@
+﻿@import "_variables.scss";
+
+@mixin ngx-breadcrumb-variant($default) {
+  $foreground: map-get($default, foreground);
+  $background: map-get($default, background);
+
+  background-color: $background;
+
+  > .ngx-breadcrumb-item,
+  > .ngx-breadcrumb-item a {
+    color: $foreground !important;
+  }
+}

@@ -1,4 +1,4 @@
-﻿@import "../../../../../cores/themes/bootstrap/normalize/normalize.scss";
+﻿@import "../../../../../cores/themes/bootstrap/state/state.scss";
 
 @import "_mixins.scss";
 
@@ -8,20 +8,25 @@
   margin: $ngx-breadcrumb-margin;
   background-color: transparent;
   
-  @include clearfix();
-
-  a {
-    @extend %ngx-link-normalize;
-  }
   @include ngx-clearfix();
 
   > .ngx-breadcrumb-item {
     float: left;
 
-    &:not(:last-child)::after {
-      text-decoration: none;
-      padding: $ngx-breadcrumb-item-padding;
-      content: "/";
+    &:not(:last-child) {
+      &::after {
+        display: inline-block;
+        text-decoration: underline;
+        padding: $ngx-breadcrumb-item-padding;
+        content: "/";
+      }
+      //Fix a bug for IE
+      //http://stackoverflow.com/questions/8820286/how-to-remove-only-underline-from-abefore/21902566#21902566
+      @include ngx-state(ngx-breadcrumb-item, 'self focus hover') {
+        &::after {
+          text-decoration: none;
+        }
+      }
     }
   }
 

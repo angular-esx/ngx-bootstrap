@@ -17,8 +17,9 @@ module.exports = function (params) {
       _notReadOption = { read: false },
       testScripts = [],
       bootTestScript, testCaseScripts, dependenceScript;
-
-    var _es6ShimJs = gulp.src(_libs.ES6_SHIM_JS, _notReadOption),
+    
+    var _es6ShamJs = gulp.src(_libs.ES6_SHAM_JS, _notReadOption),
+      _es6ShimJs = gulp.src(_libs.ES6_SHIM_JS, _notReadOption),
       _rxJs = gulp.src(_libs.RX_JS, _notReadOption),
 
       _angularPolyfillJs = gulp.src(_libs.ANGULAR_02_POLYFILLS_JS, _notReadOption),
@@ -66,10 +67,11 @@ module.exports = function (params) {
     testScripts.push(testCaseScript, bootTestScript);
 
     return gulp.src(_fileService.FILES.INDEX_TEMPLATE_HTML)
+      .pipe(inject(_streamSeries(_es6ShamJs, _es6ShimJs), { relative: true, name: 'es11' }))    
       .pipe(inject(_streamSeries(testScripts), { relative: true, name: 'component' }))
       .pipe(inject(_streamSeries
         (
-        _es6ShimJs, _rxJs, _angularPolyfillJs, _angularJs,
+        _rxJs, _angularPolyfillJs, _angularJs,
         _ngxNormalizeCss, _ngxCss
         ),
         { relative: true, name: 'core' }

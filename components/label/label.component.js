@@ -1,39 +1,45 @@
-﻿(function (ngxBootstrap) {
-  ngxBootstrap.ngxClass.ngxLabelClass = ngxLabel;
+var ngxBaseComponent = require('baseComponent');
 
-  ngxBootstrap.ngxComponents.ngxLabelComponent = ng.core.Directive({
-    selector: 'ngx-label',
-    providers: [ngxBootstrap.ngxCores.ngxRendererService]
-  })
-  .Class(new ngxLabel());
+function _ngxLabelComponent() {
+  var _base;
 
-  function ngxLabel() {
-    var _ATTRIBUTES = {
-      COLOR: 'color',
-      TYPE: 'type'
-    };
+  this.extends = ngxBaseComponent;
 
-    this.constructor = [
-      ng.core.ElementRef,
-      ngxBootstrap.ngxCores.ngxRendererService,
-      ngxBootstrap.ngxComponents.ngxLabelService,
+  this.constructor = [
+    ng.core.ElementRef,
+    ng.core.Renderer,
 
-      function (elementRef, ngxRendererService, ngxLabelService) {
-        this.cssClass = 'label';
+    function ngxLabelComponent(elementRef, renderer) {
+      ngxBaseComponent.apply(this, arguments);
+    }
+  ];
 
-        this.elementRef = elementRef;
-        this.ngxRendererService = ngxRendererService.for(elementRef.nativeElement);
-        this.ngxLabelService = ngxLabelService;
-      }
-    ];
+  this.initDefaultValues = function(){
+    var _styleProperties = this.getStyleProperties(),
+        _changeRecord;
 
-    this.ngAfterViewInit = function () {
-      this.color = this.ngxRendererService.getElementAttribute(_ATTRIBUTES.COLOR);
-      this.type = this.ngxRendererService.getElementAttribute(_ATTRIBUTES.TYPE);
+    if(!this.color){ 
+      this.color = 'secondary';
+      _changeRecord = this.buildChangeRecord(_styleProperties.COLOR, this.color);
+     }
 
-      var _className = this.cssClass + ' ' + this.ngxLabelService.combineColorWithType(this.color, this.type);
-      this.ngxRendererService.addToElementAttribute('class', _className, true);
-    };
+     return _changeRecord;
+  };
+
+  this.getPrefixClass = function(){
+    return 'ngx-label';
+  };
+
+  function _getBaseInstance(context){ 
+    if(!_base){ _base = context.getBaseInstance(ngxBaseComponent); }
+    return _base;
   }
+}
 
-})(window.ngxBootstrap);
+module.exports = ng.core.Component({
+  selector: 'ngx-label',
+  template: require('./themes/' + __THEME__ + '/templates/label.html'),
+  styles: [require('./themes/' + __THEME__  + '/scss/label.scss')],
+  properties: ['color', 'type', 'initCssClass:class']
+})
+.Class(new _ngxLabelComponent());

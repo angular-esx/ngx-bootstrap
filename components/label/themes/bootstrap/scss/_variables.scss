@@ -1,0 +1,43 @@
+﻿@import "../../../../../cores/themes/bootstrap/typography/typography.scss";
+@import "../../../../../cores/themes/bootstrap/palette/palette.scss";
+@import "../../../../../cores/themes/bootstrap/border/border.scss";
+
+$ngx-label-font-size: .75em !default;
+$ngx-label-font-weight: bold !default;
+$ngx-label-line-height: ngx-line-height(base) !default;
+
+$ngx-label-padding: .25em .4em !default;
+$ngx-label-pill-padding: .25em .6em !default;
+
+$ngx-label-border-radius: ngx-border-radius(base) !default;
+$ngx-label-pill-border-radius: 10rem !default;
+
+$ngx-label-primary: (
+  foreground: ngx-color($ngx-color-white),
+  background: ngx-color($ngx-color-primary)
+) !default;
+
+$ngx-label-secondary: (
+  foreground: ngx-color($ngx-color-white),
+  background: ngx-color-dark($ngx-color-gray)
+) !default;
+
+$ngx-label-info: (
+  foreground: ngx-color($ngx-color-white),
+  background: ngx-color($ngx-color-info)
+) !default;
+
+$ngx-label-success: (
+  foreground: ngx-color($ngx-color-white),
+  background: ngx-color($ngx-color-success)
+) !default;
+
+$ngx-label-warning: (
+  foreground: ngx-color($ngx-color-white),
+  background: ngx-color($ngx-color-warning)
+) !default;
+
+$ngx-label-danger: (
+  foreground: ngx-color($ngx-color-white),
+  background: ngx-color($ngx-color-danger)
+) !default;

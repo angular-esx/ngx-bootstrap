@@ -13,6 +13,10 @@
     color: map-get($active, foreground);
   }
 
+  @include ngx-state(ngx-link, 'focus hover'){
+    text-decoration: underline;
+  }
+
   @include ngx-state(ngx-link, 'disabled'){
     color: map-get($disabled, foreground);
   }

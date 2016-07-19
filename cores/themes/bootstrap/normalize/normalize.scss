@@ -198,12 +198,6 @@ a {
     color: $ngx-link-hover-color;
     text-decoration: $ngx-link-hover-decoration;
   }
-
-  &:focus {
-    outline: thin dotted;
-    outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -2px;
-  }
 }
 
 

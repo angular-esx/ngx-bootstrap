@@ -11,6 +11,7 @@
 
       _paths.ANGULAR_02 = _paths.NODE_MODULES + 'angular2/bundles/';
       _paths.BOOTSTRAP_04 = _paths.NODE_MODULES + 'bootstrap/dist/css/';
+      _paths.ES6_SHAM = _paths.NODE_MODULES + 'es6-shim/';
       _paths.ES6_SHIM = _paths.NODE_MODULES + 'es6-shim/';
       _paths.RX = _paths.NODE_MODULES + 'rxjs/bundles/';
 
@@ -30,6 +31,7 @@
 
     this.LIBRARIES = (function (paths) {
       return {
+        ES6_SHAM_JS: paths.ES6_SHAM + 'es6-sham.js',
         ES6_SHIM_JS: paths.ES6_SHIM + 'es6-shim.js',
         RX_JS: paths.RX + 'Rx.umd.js',
         ANGULAR_02_POLYFILLS_JS: paths.ANGULAR_02 + 'angular2-polyfills.js',

@@ -193,6 +193,7 @@ blockquote {
 a {
   color: $ngx-link-color;
   text-decoration: $ngx-link-decoration;
+  cursor: pointer;
 
   @include ngx-state(null, 'focus hover') {
     color: $ngx-link-hover-color;

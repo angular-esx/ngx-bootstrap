@@ -4,3 +4,5 @@ temp
 index.html
 dist/
 .DS_Store
+.vs/
+*.sln

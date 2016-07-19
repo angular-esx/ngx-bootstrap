@@ -13,6 +13,7 @@
   a {
     @extend %ngx-link-normalize;
   }
+  @include ngx-clearfix();
 
   > .ngx-breadcrumb-item {
     float: left;

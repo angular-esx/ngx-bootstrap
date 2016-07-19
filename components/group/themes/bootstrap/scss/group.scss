@@ -19,7 +19,7 @@
     > .ngx-group {
       @include ngx-group-vertical-children();
 
-      @include clearfix();
+      @include ngx-clearfix();
 
       + .ngx-group {
         margin-left: -1px;

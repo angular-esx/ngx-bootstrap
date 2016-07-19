@@ -5,7 +5,7 @@
   position: relative;
   padding: $ngx-navbar-padding;
 
-  @include clearfix();
+ @include ngx-clearfix();
 
   &.ngx-navbar-position-top,
   &.ngx-navbar-position-bottom {

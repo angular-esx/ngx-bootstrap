@@ -8,7 +8,7 @@
   margin:$ngx-tabs-heads-margin;
   border-bottom: $ngx-tabs-heads-border-bottom;
 
-  @include clearfix();
+  @include ngx-clearfix();
 
   > .ngx-tabs-head {
     display: block;

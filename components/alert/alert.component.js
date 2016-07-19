@@ -34,8 +34,8 @@ function _ngxAlertComponent() {
 
     if
     (
-      _previousIsHidden === undefined ||
-      !changeRecord[_styleProperties.STATE] || 
+      ngx.isNull(_previousIsHidden) ||
+      !changeRecord.hasOwnProperty(_styleProperties.STATE) || 
       !this.propertyHasValue(_styleProperties.STATE, 'hidden')
     ){
       _getBaseInstance(this).ngOnChanges.apply(this, [changeRecord]);
@@ -78,9 +78,9 @@ function _ngxAlertComponent() {
 
 
   this.initDefaultValues = function(){
-    if(!this.type && !this.isDismissible){ this.isDismissible = false; }
+    if(ngx.isEmpty(this.type) && ngx.isNull(this.isDismissible)){ this.isDismissible = false; }
 
-    if(!this.state && !this.isHidden){ this.isHidden = false; }
+    if(ngx.isEmpty(this.state) && ngx.isNull(this.isHidden)){ this.isHidden = false; }
 
     return null;
   };
@@ -93,13 +93,13 @@ function _ngxAlertComponent() {
     var _self = this;
 
     this.subscription = this.ngxAlertService.ngxAlert$.subscribe(function (event) {
-      if (!event) { return; }
-
+      if (ngx.isEmpty(event)) { return; }
+      
       var _events = ngx.isArray(event) ? event : [event];
       var _actions = _self.ngxAlertService.getActions();
       
       ngx.forEach(_events, function (_event) {
-        if (!_event.id || _event.id === _self.id) {
+        if (ngx.isEmpty(_event.id) || _event.id === _self.id) {
           if (_event.type === _actions.SHOW_ALERT) {
             _self.show();
           }
@@ -129,7 +129,7 @@ function _ngxAlertComponent() {
 
   this.dismiss = function () {
     if (this.isHidden) { return; }
-
+    
     var _isCanceled = false;
     this.dismissingEmitter.emit({
       id: this.id,

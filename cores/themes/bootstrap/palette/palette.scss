@@ -82,7 +82,7 @@ $ngx-component-secondary: (
   active: (
     foreground-color: ngx-color($ngx-color-secondary),
     background-color: ngx-color-dark($ngx-color-secondary),
-    border-color: ngx-color-dark($ngx-color-black, light)
+    border-color: ngx-color-light($ngx-color-black, light)
   ),
   default: (
     foreground-color: ngx-color-dark($ngx-color-gray),

@@ -1,5 +1,4 @@
 ﻿@import "../../../../../cores/themes/bootstrap/breakpoint/breakpoint.scss";
-@import "../../../../../cores/themes/bootstrap/normalize/normalize.scss";
 
 @import "_variables.scss";
 
@@ -14,8 +13,6 @@
   }
 
   hr {
-    @extend %ngx-hr-normalize;
-
     border-top-color: $ngx-jumbotron-hr-border-top-color;
   }
 }

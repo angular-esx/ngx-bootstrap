@@ -6,11 +6,11 @@
   font-size: $font-size;
 }
 
-@mixin ngx-link-variant($default, $active, $disabled){
-  color: map-get($default, foreground);
+@mixin ngx-link-variant($component){
+  color: map-get(map-get($component, default), foreground-color);
 
   @include ngx-state(ngx-link, 'focus hover active'){
-    color: map-get($active, foreground);
+    color: map-get(map-get($component, active), foreground-color);
   }
 
   @include ngx-state(ngx-link, 'focus hover'){
@@ -18,6 +18,6 @@
   }
 
   @include ngx-state(ngx-link, 'disabled'){
-    color: map-get($disabled, foreground);
+    color: map-get(map-get($component, disabled), foreground-color);
   }
 }

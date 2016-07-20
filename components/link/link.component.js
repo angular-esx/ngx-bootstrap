@@ -26,12 +26,12 @@
     var _styleProperties = this.getStyleProperties(),
         _changeRecord;
 
-    if(!this.color){ 
+    if(ngx.isEmpty(this.color)){ 
       this.color = 'primary';
       _changeRecord = this.buildChangeRecord(_styleProperties.COLOR, this.color);
      }
 
-    if(!this.state && !this.isDisabled){ this.isDisabled = false; }
+    if(ngx.isEmpty(this.state) && ngx.isNull(this.isDisabled)){ this.isDisabled = false; }
 
     return _changeRecord;
   };

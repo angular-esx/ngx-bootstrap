@@ -56,11 +56,11 @@
   }
 
   &.ngx-group-size-small > .ngx-button {
-    @include ngx-button-size($ngx-button-font-size-sm, $ngx-button-line-height-sm, $ngx-button-padding-sm, $ngx-button-border-radius-sm);
+    @include ngx-button-size($ngx-button-font-size-sm, $ngx-button-padding-sm, $ngx-button-border-radius-sm);
   }
 
   &.ngx-group-size-large > .ngx-button {
-    @include ngx-button-size($ngx-button-font-size-lg, $ngx-button-line-height-lg, $ngx-button-padding-lg, $ngx-button-border-radius-lg);
+    @include ngx-button-size($ngx-button-font-size-lg, $ngx-button-padding-lg, $ngx-button-border-radius-lg);
   }
 
   > .ngx-button-size-large + .ngx-toggle-dropdown,

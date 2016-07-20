@@ -1,5 +1,4 @@
-﻿@import "../../../../../cores/themes/bootstrap/normalize/normalize.scss";
-@import "../../../../../cores/themes/bootstrap/state/state.scss";
+﻿@import "../../../../../cores/themes/bootstrap/state/state.scss";
 
 @import "_variables.scss";
 
@@ -53,8 +52,6 @@
   > h4, 
   > h5, 
   > h6 {
-    @extend %ngx-h-normalize;
-
     display: block;
     padding: $ngx-drop-menu-head-padding;
     font-size: $ngx-drop-menu-head-font-size;
@@ -64,14 +61,16 @@
   }
 
   > hr {
-    @extend %ngx-hr-normalize;
-
     margin: $ngx-drop-menu-divider-margin;
     color: transparent;
-    background-color: $ngx-drop-menu-divider-background-color;
+    border-top-color: $ngx-drop-menu-divider-border-top-color;
   }
 
   > .ngx-drop-menu-item {
+    $component-default: map-get($ngx-drop-menu-item, default);
+    $component-active: map-get($ngx-drop-menu-item, active);
+    $component-disabled: map-get($ngx-drop-menu-item, disabled);
+
     display: block !important;
     text-align: inherit !important;
     text-decoration: none !important;
@@ -80,19 +79,18 @@
     white-space: nowrap !important;
     padding: $ngx-drop-menu-item-padding !important;
     clear: both !important;
-    color: map-get($ngx-drop-menu-item, foreground) !important;
-    background: map-get($ngx-drop-menu-item, background) !important;
+    color: map-get($component-default, foreground-color) !important;
+    background: map-get($component-default, background-color) !important;
     border: 0 !important;
     cursor: pointer !important;
 
     @include ngx-state(ngx-drop-menu-item, 'focus hover active'){
-      color: map-get($ngx-drop-menu-item-active, foreground) !important;
-      background-color: map-get($ngx-drop-menu-item-active, background) !important;
+      background-color: map-get($component-active, background-color) !important;
       outline: 0 !important;
     }
 
     @include ngx-state(ngx-drop-menu-item, 'disabled'){
-      color: map-get($ngx-drop-menu-item-disabled, foreground) !important;
+      color: map-get($component-disabled, foreground-color) !important;
       background-color:transparent !important;
       background-image: none !important;
       cursor: not-allowed !important;

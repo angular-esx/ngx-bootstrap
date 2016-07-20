@@ -39,13 +39,13 @@ function _ngxDropMenuComponent() {
     var _self = this;
 
     this.subscription = this.ngxDropMenuService.ngxDropMenu$.subscribe(function (event) {
-      if (!event) { return; }
+      if (ngx.isEmpty(event)) { return; }
 
       var _events = ngx.isArray(event) ? event : [event];
       var _actions = _self.ngxDropMenuService.getActions();
 
       ngx.forEach(_events, function (_event) {
-        if (!_event.id || _event.id === _self.id) {
+        if (ngx.isEmpty(_event.id) || _event.id === _self.id) {
           if (_event.type === _actions.TOGGLE_DROPDOWN) {
             _self.toggleDropdown();
           }

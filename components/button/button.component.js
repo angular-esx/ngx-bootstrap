@@ -23,7 +23,7 @@
   };
 
   this.initDefaultValues = function(){
-    if(!this.state && !this.isDisabled){ this.isDisabled = false; }
+    if(ngx.isEmpty(this.state) && ngx.isNull(this.isDisabled)){ this.isDisabled = false; }
 
     return null;
   };

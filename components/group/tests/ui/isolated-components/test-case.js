@@ -7,7 +7,11 @@ var isolatedComponents = ng.core.Component({
   templateUrl: 'components/group/tests/ui/isolated-components/test-case.html',
   directives: [
     ngx.button.DIRECTIVES,
+    ngx.dropMenu.DIRECTIVES,
     ngx.group.DIRECTIVES
+  ],
+  providers: [
+    ngx.dropMenu.PROVIDERS
   ]
 })
 .Class(new _testCase());

@@ -72,7 +72,7 @@
   }
 }
 
-:host().ngx-group-type-vertical {
+:host(.ngx-group).ngx-group-type-vertical {
   > .ngx-button,
   > .ngx-group > .ngx-button {
     @include ngx-group-vertical-children()
@@ -82,8 +82,8 @@
     &:not(:first-child):not(:last-child) {
       @include ngx-border-radius(0);
     }
-    &:first-child:not(:last-child) {
-      @include ngx-border-radius($ngx-button-border-radius, right);
+    &:first-child:not(:last-child):not(.ngx-toggle-dropdown):not(.ngx-toggle-dropup) {
+      @include ngx-border-radius($ngx-button-border-radius, top);
       @include ngx-border-radius(0, bottom);
     }
     &:last-child:not(:first-child) {
@@ -115,11 +115,13 @@
     > .ngx-button:last-child,
     > .ngx-toggle-dropdown,
     > .ngx-toggle-dropup {
+      @include ngx-border-radius($ngx-button-border-radius, right);
       @include ngx-border-radius(0, bottom);
     }
   }
 
   > .ngx-group:last-child:not(:first-child) > .ngx-button:first-child {
-   @include ngx-border-radius(0, top);
+    @include ngx-border-radius($ngx-button-border-radius, left);
+    @include ngx-border-radius(0, top);
   }
 }

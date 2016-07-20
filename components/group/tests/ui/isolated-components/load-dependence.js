@@ -1,3 +1,4 @@
 module.exports = [
-    'ngx-button'
+    'ngx-button',
+    'ngx-drop-menu'
 ];

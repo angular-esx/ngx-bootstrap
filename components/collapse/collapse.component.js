@@ -60,13 +60,13 @@ function _ngxCollapseComponent() {
   this.subscribe = function () {
     var _self = this;
     this.subscription = this.ngxCollapseService.ngxCollapse$.subscribe(function (event) {
-      if (!event) { return; }
+      if (ngx.isEmpty(event)) { return; }
 
       var _events = ngx.isArray(event) ? event : [event];
       var _actions = _self.ngxCollapseService.getActions();
 
       ngx.forEach(_events, function (_event) {
-        if (!_event.id || _self.id === _event.id) {
+        if (ngx.isEmpty(_event.id) || _self.id === _event.id) {
           if (_event.type === _actions.TOGGLE_COLLAPSE) {
             _self.toggle();
           }

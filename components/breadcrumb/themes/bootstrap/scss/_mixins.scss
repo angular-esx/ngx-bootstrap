@@ -5,8 +5,7 @@
 
   background-color: map-get($component-default, background-color);
 
-  > .ngx-breadcrumb-item,
-  > .ngx-breadcrumb-item a {
+  > .ngx-breadcrumb-item {
     color: map-get($component-default, foreground-color) !important;
   }
 }

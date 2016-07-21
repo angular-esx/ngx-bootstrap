@@ -6,14 +6,10 @@ $ngx-breadcrumb-item-padding: 0 .5rem 0 .5rem !default;
 
 $ngx-breadcrumb-margin: 0 0 1rem 0 !default;
 
-$ngx-breadcrumb-primary: $ngx-component-primary !default;
 
-$ngx-breadcrumb-secondary: map-merge($ngx-component-secondary, (
-  default:(
-    foreground-color: ngx-color-light($ngx-color-gray),
-    background-color: ngx-color-light($ngx-color-gray, light)
-  )
-)) !default;
+$ngx-breadcrumb-default: $ngx-component-default !default;
+
+$ngx-breadcrumb-primary: $ngx-component-primary !default;
 
 $ngx-breadcrumb-info: $ngx-component-info !default;
 

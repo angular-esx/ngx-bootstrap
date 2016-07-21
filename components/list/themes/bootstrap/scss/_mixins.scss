@@ -4,7 +4,6 @@
 
 @mixin ngx-list-item-variant($component){
   $component-default: map-get($component, default);
-  $component-hover: map-get($component, hover);
   $component-active: map-get($component, active);
   $component-disabled: map-get($component, disabled);
 
@@ -13,16 +12,43 @@
   border-color: map-get($component-default, border-color);
   text-decoration: none;
 
-  @include ngx-state(ngx-list-item, 'focus hover'){
-    color: map-get($component-hover, foreground-color);
-    background-color: map-get($component-hover, background-color);
-    border-color: map-get($component-hover, border-color);
+  hr {
+    border-top-color: map-get($component-default, foreground-color);
   }
 
-   @include ngx-state(ngx-list-item, 'active'){
-    color: map-get($component-active, foreground-color);
-    background-color: map-get($component-active, background-color);
-    border-color: map-get($component-active, border-color);
+  @if map-has-key($component, hover) {
+    $component-hover: map-get($component, hover);
+
+    @include ngx-state(ngx-list-item, 'focus hover'){
+      color: map-get($component-hover, foreground-color);
+      background-color: map-get($component-hover, background-color);
+      border-color: map-get($component-hover, border-color);
+
+      hr {
+        border-top-color: map-get($component-hover, foreground-color);
+      }
+    }
+
+    @include ngx-state(ngx-list-item, 'active'){
+      color: map-get($component-active, foreground-color);
+      background-color: map-get($component-active, background-color);
+      border-color: map-get($component-active, border-color);
+
+      hr {
+        border-top-color: map-get($component-active, foreground-color);
+      }
+    }
+  }
+  @else {
+    @include ngx-state(ngx-list-item, 'focus hover active'){
+      color: map-get($component-active, foreground-color);
+      background-color: map-get($component-active, background-color);
+      border-color: map-get($component-active, border-color);
+
+      hr {
+        border-top-color: map-get($component-active, foreground-color);
+      }
+    }
   }
 
   @include ngx-state(ngx-list-item, 'disabled'){
@@ -30,5 +56,9 @@
     background-color: map-get($component-disabled, background-color);
     border-color: map-get($component-disabled, border-color);
     cursor: not-allowed;
+
+    hr {
+      border-top-color: map-get($component-disabled, foreground-color);
+    }
   }
 }

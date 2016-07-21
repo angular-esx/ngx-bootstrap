@@ -12,14 +12,14 @@ $ngx-label-pill-padding: .25em .6em !default;
 $ngx-label-border-radius: ngx-border-radius(base) !default;
 $ngx-label-pill-border-radius: 10rem !default;
 
-$ngx-label-primary: $ngx-component-primary !default;
-
-$ngx-label-secondary: map-merge($ngx-component-secondary, (
+$ngx-label-default: map-merge($ngx-component-default, (
   default:(
     foreground-color: ngx-color-light($ngx-color-white),
     background-color: ngx-color-light($ngx-color-gray)
   )
 )) !default;
+
+$ngx-label-primary: $ngx-component-primary !default;
 
 $ngx-label-info: $ngx-component-info !default;
 

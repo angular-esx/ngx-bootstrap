@@ -4,28 +4,28 @@
 
 @mixin ngx-navbar-variant($component){
   $component-default: map-get($component, default);
-  $component-active: map-get($component, active);
+  $component-disabled: map-get($component, disabled); 
 
-  background-color: map-get($component-default, navbar-background-color);
+  background-color: map-get($component-default, background-color);
 
   > .ngx-navbar-divider {
-    background-color: map-get($component-default, divider-background-color);
+    background-color: map-get($component-default, foreground-color);
   }
 
   > .ngx-navbar-brand {
     cursor: pointer !important;
 
     @include ngx-state(ngx-navbar-brand, 'self focus hover'){
-      color: map-get($component-default, brand-foreground-color) !important;
+      color: map-get($component-default, foreground-color) !important;
     }
   }
 
   > .ngx-navbar-item {
     cursor: pointer !important;
-    color: map-get($component-default, item-foreground-color) !important;
+    color: map-get($component-disabled, foreground-color) !important;
 
     @include ngx-state(ngx-navbar-item, 'focus hover active'){
-      color: map-get($component-active, item-foreground-color) !important;
+      color: map-get($component-default, foreground-color) !important;
       text-decoration: none !important;
     }
   }

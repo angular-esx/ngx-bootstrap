@@ -28,11 +28,11 @@
     @include ngx-border-radius($ngx-label-pill-border-radius);
   }
 
+   &.ngx-label-color-default {
+    @include ngx-label-variant($ngx-label-default);
+  }
   &.ngx-label-color-primary {
     @include ngx-label-variant($ngx-label-primary);
-  }
-  &.ngx-label-color-secondary {
-    @include ngx-label-variant($ngx-label-secondary);
   }
   &.ngx-label-color-info {
     @include ngx-label-variant($ngx-label-info);

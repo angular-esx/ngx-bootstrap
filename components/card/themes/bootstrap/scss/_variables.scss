@@ -31,62 +31,14 @@ $ngx-card-actions-margin: 2rem 0 0 0 !default;
 $ngx-card-actions-item-margin: 0 0 0 .5rem !default;
 
 
-$ngx-card-primary: (
-  default: (
-    card-background-color: ngx-color($ngx-color-primary),
-    card-foreground-color: ngx-color-light($ngx-color-white),
-    card-border-color: ngx-color($ngx-color-primary),
-    subtitle-foreground-color: ngx-color-light($ngx-color-white, $opacity: $ngx-opacity-disabled),
-    hr-border-top-color: ngx-color-light($ngx-color-white)
-  )
-) !default;
+$ngx-card-primary: $ngx-component-primary !default;
 
-$ngx-card-secondary: (
-  default: (
-    card-background-color: ngx-color-light($ngx-color-white),
-    card-foreground-color: ngx-color-dark($ngx-color-gray),
-    card-border-color: ngx-color-light($ngx-color-gray),
-    subtitle-foreground-color: ngx-color-light($ngx-color-gray),
-    hr-border-top-color: ngx-color-light($ngx-color-gray)
-  )
-) !default;
+$ngx-card-secondary: $ngx-component-secondary !default;
 
-$ngx-card-info: (
-  default: (
-    card-background-color: ngx-color($ngx-color-info),
-    card-foreground-color: ngx-color-light($ngx-color-white),
-    card-border-color: ngx-color($ngx-color-info),
-    subtitle-foreground-color: ngx-color($ngx-color-white),
-    hr-border-top-color: ngx-color-light($ngx-color-white)
-  )
-) !default;
+$ngx-card-info: $ngx-component-info !default;
 
-$ngx-card-success: (
-  default: (
-    card-background-color: ngx-color($ngx-color-success),
-    card-foreground-color: ngx-color-light($ngx-color-white),
-    card-border-color: ngx-color($ngx-color-success),
-    subtitle-foreground-color: ngx-color($ngx-color-white),
-    hr-border-top-color: ngx-color-light($ngx-color-white)
-  )
-) !default;
+$ngx-card-success: $ngx-component-success !default;
 
-$ngx-card-warning: (
-  default: (
-    card-background-color: ngx-color($ngx-color-warning),
-    card-foreground-color: ngx-color-light($ngx-color-white),
-    card-border-color: ngx-color($ngx-color-warning),
-    subtitle-foreground-color: ngx-color($ngx-color-white),
-    hr-border-top-color: ngx-color-light($ngx-color-white)
-  )
-) !default;
+$ngx-card-warning: $ngx-component-warning !default;
 
-$ngx-card-danger: (
-  default: (
-    card-background-color: ngx-color($ngx-color-danger),
-    card-foreground-color: ngx-color-light($ngx-color-white),
-    card-border-color: ngx-color($ngx-color-danger),
-    subtitle-foreground-color: ngx-color($ngx-color-white),
-    hr-border-top-color: ngx-color-light($ngx-color-white)
-  )
-) !default;
+$ngx-card-danger: $ngx-component-danger !default;

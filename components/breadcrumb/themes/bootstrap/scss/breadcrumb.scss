@@ -30,12 +30,12 @@
     }
   }
 
-  &.ngx-breadcrumb-color-primary{
-    @include ngx-breadcrumb-variant($ngx-breadcrumb-primary);
+  &.ngx-breadcrumb-color-default{
+    @include ngx-breadcrumb-variant($ngx-breadcrumb-default);
   }
 
-  &.ngx-breadcrumb-color-secondary{
-    @include ngx-breadcrumb-variant($ngx-breadcrumb-secondary);
+  &.ngx-breadcrumb-color-primary{
+    @include ngx-breadcrumb-variant($ngx-breadcrumb-primary);
   }
 
   &.ngx-breadcrumb-color-info{

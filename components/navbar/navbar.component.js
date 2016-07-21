@@ -17,7 +17,7 @@
         _changeRecord;
 
     if (ngx.isEmpty(this.color)) {
-      this.color = 'secondary';
+      this.color = 'default';
       _changeRecord = this.buildChangeRecord(_styleProperties.COLOR, this.color);
     }
 

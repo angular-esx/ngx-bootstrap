@@ -59,27 +59,27 @@
     }
   }
 
-  &.ngx-navbar-color-primary {
-    @include ngx-navbar-variant($ngx-navbar-color-primary);
+  &.ngx-navbar-color-default {
+    @include ngx-navbar-variant($ngx-navbar-default);
   }
 
-  &.ngx-navbar-color-secondary {
-    @include ngx-navbar-variant($ngx-navbar-color-secondary);
+  &.ngx-navbar-color-primary {
+    @include ngx-navbar-variant($ngx-navbar-primary);
   }
 
   &.ngx-navbar-color-info {
-    @include ngx-navbar-variant($ngx-navbar-color-info);
+    @include ngx-navbar-variant($ngx-navbar-info);
   }
 
   &.ngx-navbar-color-success {
-    @include ngx-navbar-variant($ngx-navbar-color-success);
+    @include ngx-navbar-variant($ngx-navbar-success);
   }
 
   &.ngx-navbar-color-warning {
-    @include ngx-navbar-variant($ngx-navbar-color-warning);
+    @include ngx-navbar-variant($ngx-navbar-warning);
   }
 
   &.ngx-navbar-color-danger {
-    @include ngx-navbar-variant($ngx-navbar-color-danger);
+    @include ngx-navbar-variant($ngx-navbar-danger);
   }
 }

@@ -9,40 +9,16 @@ $ngx-list-item-border: 1px solid;
 
 
 $ngx-list-item-primary: (
-  active: (
-    foreground-color: ngx-color-light($ngx-color-white),
-    background-color: ngx-color($ngx-color-primary),
-    border-color: ngx-color($ngx-color-primary)
-  ),
-  hover: (
-    foreground-color: ngx-color-dark($ngx-color-gray),
-    background-color: ngx-color($ngx-color-white),
-    border-color: ngx-color-light($ngx-color-black, light)
-  ),
-  default: (
-    foreground-color: ngx-color-dark($ngx-color-gray),
-    background-color: ngx-color-light($ngx-color-white),
-    border-color: ngx-color-light($ngx-color-black, light)
-  ),
-  disabled: (
-    foreground-color: ngx-color-dark($ngx-color-gray, default, $ngx-opacity-disabled),
-    background-color: ngx-color-light($ngx-color-secondary),
-    border-color: ngx-color-light($ngx-color-black, light, $ngx-opacity-disabled)
-  )
+  active: map-get($ngx-component-primary, default),
+  hover: map-get($ngx-component-default, default),
+  default: map-get($ngx-component-secondary, default),
+  disabled: map-get($ngx-component-secondary, disabled)
 ) !default;
 
-$ngx-list-item-info: map-merge($ngx-component-contextual-info, (
-  hover: map-get($ngx-component-contextual-info, active)  
-)) !default;
+$ngx-list-item-info: $ngx-component-contextual-info !default;
 
-$ngx-list-item-success: map-merge($ngx-component-contextual-success, (
-  hover: map-get($ngx-component-contextual-success, active)  
-)) !default;
+$ngx-list-item-success: $ngx-component-contextual-success !default;
 
-$ngx-list-item-warning: map-merge($ngx-component-contextual-warning, (
-  hover: map-get($ngx-component-contextual-warning, active)  
-)) !default;
+$ngx-list-item-warning: $ngx-component-contextual-warning !default;
 
-$ngx-list-item-danger: map-merge($ngx-component-contextual-danger, (
-  hover: map-get($ngx-component-contextual-danger, active)  
-)) !default;
+$ngx-list-item-danger: $ngx-component-contextual-danger !default;

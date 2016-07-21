@@ -2,16 +2,17 @@
 
 @mixin ngx-card-variant($component){
   $component-default: map-get($component, default);
+  $component-disabled: map-get($component, disabled);
 
-  color: map-get($component-default, card-foreground-color);
-  background-color: map-get($component-default, card-background-color);
-  border-color: map-get($component-default, card-border-color);
+  color: map-get($component-default, foreground-color);
+  background-color: map-get($component-default, background-color);
+  border-color: map-get($component-default, border-color);
 
   hr {
-    border-top-color: map-get($component-default, hr-border-top-color);
+    border-top-color: map-get($component-default, foreground-color);
   }
 
   ngx-card-subtitle {
-    color: map-get($component-default, subtitle-foreground-color);
+    color: map-get($component-disabled, foreground-color);
   }
 }

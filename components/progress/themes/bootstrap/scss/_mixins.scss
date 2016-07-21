@@ -1,7 +1,10 @@
 ﻿@import "_variables.scss";
 
-@mixin ngx-progress-variant($ngx-progress-prefix-class, $background-color){
+@mixin ngx-progress-variant($component){
+  $component-default: map-get($component, default);
+
   > .ngx-progress-bar {
-    background-color: $background-color;
+    color: map-get($component-default, foreground-color);
+    background-color: map-get($component-default, background-color);
   }
 }

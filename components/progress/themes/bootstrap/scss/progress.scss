@@ -1,6 +1,6 @@
 ﻿@import "_mixins.scss";
 
-@-webkit-keyframes ngx-progress-bar-stripes {
+@keyframes ngx-progress-bar-stripes {
   from  { background-position: 1rem 0; }
   to    { background-position: 0 0; }
 }
@@ -20,7 +20,6 @@
     float: left;
     width: 0%;
     height: 100%;
-    color: $ngx-progress-bar-foreground-color;
     transition: $ngx-progress-bar-transition;
   }
 
@@ -38,22 +37,22 @@
   }
 
   &.ngx-progress-color-primary {
-    @include ngx-progress-variant(ngx-progress, $ngx-progress-bar-primary-background-color);
+    @include ngx-progress-variant($ngx-progress-bar-primary);
   }
 
   &.ngx-progress-color-info {
-    @include ngx-progress-variant(ngx-progress, $ngx-progress-bar-info-background-color);
+    @include ngx-progress-variant($ngx-progress-bar-info);
   }
 
   &.ngx-progress-color-success {
-    @include ngx-progress-variant(ngx-progress, $ngx-progress-bar-success-background-color);
+    @include ngx-progress-variant($ngx-progress-bar-success);
   }
 
   &.ngx-progress-color-warning {
-    @include ngx-progress-variant(ngx-progress, $ngx-progress-bar-warning-background-color);
+    @include ngx-progress-variant($ngx-progress-bar-warning);
   }
 
   &.ngx-progress-color-danger {
-    @include ngx-progress-variant(ngx-progress, $ngx-progress-bar-danger-background-color);
+    @include ngx-progress-variant($ngx-progress-bar-danger);
   }
 }

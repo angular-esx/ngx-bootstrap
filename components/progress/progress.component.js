@@ -32,12 +32,12 @@
   this.initDefaultValues = function(){
     var _changeRecord;
 
-    if(!this.value){ 
+    if(ngx.isEmpty(this.value)){ 
       this.value = 0;
       _changeRecord = this.buildChangeRecord(_PROPERTIES.VALUE, this.value);
      }
 
-    if(!this.max){ 
+    if(ngx.isEmpty(this.max)){ 
       this.max = 100;
       _changeRecord = this.buildChangeRecord(_PROPERTIES.MAX, this.max);
      }

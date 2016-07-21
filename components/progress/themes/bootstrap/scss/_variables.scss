@@ -17,19 +17,20 @@ $ngx-progress-bar-line-height: 1.1rem !default;
 
 $ngx-progress-bar-transition: width .6s ease !default;
 
-$ngx-progress-bar-foreground-color: ngx-color($ngx-color-white) !default;
 
 $ngx-progress-bar-striped-background-size: 1rem 1rem !default;
 
-$ngx-progress-bar-primary-background-color: ngx-color($ngx-color-primary) !default;
 
-$ngx-progress-bar-info-background-color: ngx-color($ngx-color-info) !default;
 
-$ngx-progress-bar-success-background-color: ngx-color($ngx-color-success) !default;
+$ngx-progress-bar-primary: $ngx-component-primary !default;
 
-$ngx-progress-bar-warning-background-color: ngx-color($ngx-color-warning) !default;
+$ngx-progress-bar-info: $ngx-component-info !default;
 
-$ngx-progress-bar-danger-background-color: ngx-color($ngx-color-danger) !default;
+$ngx-progress-bar-success: $ngx-component-success !default;
+
+$ngx-progress-bar-warning: $ngx-component-warning !default;
+
+$ngx-progress-bar-danger: $ngx-component-danger !default;
 
 
 

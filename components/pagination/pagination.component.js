@@ -18,17 +18,17 @@
   ];
 
   this.initDefaultValues = function () {
-    if (!this.totalPages || this.totalPages < 0) { this.totalPages = 0; }
+    if (ngx.isEmpty(this.totalPages) || this.totalPages < 0) { this.totalPages = 0; }
     else { this.totalPages = parseInt(this.totalPages); }
 
-    if (!this.pageSize || this.pageSize < 1) { this.pageSize = 10; }
+    if (ngx.isEmpty(this.pageSize) || this.pageSize < 1) { this.pageSize = 10; }
     else { this.pageSize = parseInt(this.pageSize); }
 
-    if (!this.currentPage || this.currentPage < 1) { this.currentPage = 1; }
+    if (ngx.isEmpty(this.currentPage) || this.currentPage < 1) { this.currentPage = 1; }
     else { this.currentPage = parseInt(this.currentPage); }
 
-    if (this.showPrevious === undefined || this.showPrevious === null) { this.showPrevious = true; }
-    if (this.showNext === undefined || this.showNext === null) { this.showNext = true; }
+    if (ngx.isNull(this.showPrevious)) { this.showPrevious = true; }
+    if (ngx.isNull(this.showNext)) { this.showNext = true; }
 
     this.startPage = _getStartPage(this.pageSize, this.currentPage);
 

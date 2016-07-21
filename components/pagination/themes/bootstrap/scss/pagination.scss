@@ -1,5 +1,4 @@
-﻿@import "../../../../../cores/themes/bootstrap/normalize/normalize.scss";
-@import "../../../../../cores/themes/bootstrap/state/state.scss";
+﻿@import "../../../../../cores/themes/bootstrap/state/state.scss";
 
 @import "_mixins.scss";
 
@@ -11,37 +10,41 @@
   @include ngx-border-radius($ngx-pagination-border-radius);
 
   > .ngx-page-item {
-     @extend %ngx-link-normalize;
+    $component-default: map-get($ngx-page-item, default);
+    $component-hover: map-get($ngx-page-item, hover);
+    $component-active: map-get($ngx-page-item, active);
 
     line-height: $ngx-page-item-line-height;
     position: relative;
     float: left;
     padding: $ngx-page-item-padding;
     margin-left: -1px;
-    color: map-get($ngx-page-item, foreground);
-    background-color: map-get($ngx-page-item, background);
-    border: 1px solid map-get($ngx-page-item, border);
+    color: map-get($component-default, foreground-color);
+    background-color: map-get($component-default, background-color);
+    border: 1px solid map-get($component-default, border-color);
 
     @include ngx-state(ngx-page-item, 'focus hover'){
-      color: map-get($ngx-page-item-hover, foreground);
-      background-color: map-get($ngx-page-item-hover, background);
-      border-color: map-get($ngx-page-item-hover, border);
+      color: map-get($component-hover, foreground-color);
+      background-color: map-get($component-hover, background-color);
+      border-color: map-get($component-hover, border-color);
     }
 
     &:first-child {
       margin-left: 0;
+      text-decoration: none;
       @include ngx-border-radius($ngx-page-item-border-radius, left);
     }
 
     &:last-child {
+      text-decoration: none;
       @include ngx-border-radius($ngx-page-item-border-radius, right);
     }
 
     &.ngx-page-item-state-active {
       @include ngx-state(null, 'self focus hover'){
-        color: map-get($ngx-page-item-active, foreground);
-        background-color: map-get($ngx-page-item-active, background);
-        border-color: map-get($ngx-page-item-active, border);
+        color: map-get($component-active, foreground-color);
+        background-color: map-get($component-active, background-color);
+        border-color: map-get($component-active, border-color);
         z-index: 2;
         cursor: default;
       }

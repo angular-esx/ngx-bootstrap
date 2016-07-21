@@ -15,6 +15,7 @@
     $component-active: map-get($ngx-pager-item, active);
 
     display: inline-block;
+    text-decoration: none;
     padding: 5px 14px;
     color: map-get($component-default, foreground-color);
     background-color: map-get($component-default, background-color);

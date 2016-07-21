@@ -98,9 +98,9 @@ $ngx-component-primary: (
 
 $ngx-component-secondary: (
   active: (
-    foreground-color: ngx-color($ngx-color-secondary),
+    foreground-color: ngx-color-dark($ngx-color-gray),
     background-color: ngx-color-dark($ngx-color-secondary),
-    border-color: ngx-color-light($ngx-color-gray, light)
+    border-color: ngx-color-light($ngx-color-gray)
   ),
   default: (
     foreground-color: ngx-color-dark($ngx-color-gray),

@@ -290,9 +290,9 @@ $ngx-component-contextual-info: (
     border-color: ngx-color($ngx-color-contextual-info)
   ),
   disabled: (
-    foreground-color: ngx-color-dark($ngx-color-info, dark),
-    background-color: ngx-color($ngx-color-contextual-info),
-    border-color: ngx-color($ngx-color-contextual-info)
+    foreground-color: ngx-color-dark($ngx-color-info, dark, $ngx-opacity-disabled),
+    background-color: ngx-color($ngx-color-contextual-info, default, $ngx-opacity-disabled),
+    border-color: ngx-color($ngx-color-contextual-info, default, $ngx-opacity-disabled)
   )
 ) !default;
 
@@ -308,9 +308,9 @@ $ngx-component-contextual-success: (
     border-color: ngx-color($ngx-color-contextual-success)
   ),
   disabled: (
-    foreground-color: ngx-color-dark($ngx-color-success, dark),
+    foreground-color: ngx-color-dark($ngx-color-success, dark, $ngx-opacity-disabled),
     background-color: ngx-color($ngx-color-contextual-success),
-    border-color: ngx-color($ngx-color-contextual-success)
+    border-color: ngx-color($ngx-color-contextual-success, default, $ngx-opacity-disabled)
   )
 ) !default;
 
@@ -326,9 +326,9 @@ $ngx-component-contextual-warning: (
     border-color: ngx-color($ngx-color-contextual-warning)
   ),
   disabled: (
-    foreground-color: ngx-color-dark($ngx-color-warning, dark),
+    foreground-color: ngx-color-dark($ngx-color-warning, dark, $ngx-opacity-disabled),
     background-color: ngx-color($ngx-color-contextual-warning),
-    border-color: ngx-color($ngx-color-contextual-warning)
+    border-color: ngx-color($ngx-color-contextual-warning, default, $ngx-opacity-disabled)
   )
 ) !default;
 
@@ -344,8 +344,8 @@ $ngx-component-contextual-danger: (
     border-color: ngx-color($ngx-color-contextual-danger)
   ),
   disabled: (
-    foreground-color: ngx-color-dark($ngx-color-danger),
+    foreground-color: ngx-color-dark($ngx-color-danger, default, $ngx-opacity-disabled),
     background-color: ngx-color($ngx-color-contextual-danger),
-    border-color: ngx-color($ngx-color-contextual-danger)
+    border-color: ngx-color($ngx-color-contextual-danger, default, $ngx-opacity-disabled)
   )
 ) !default;

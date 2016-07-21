@@ -1,8 +1,5 @@
 ﻿function _ngxNavbarComponent() {
   var _base;
-  var _ATTRIBUTES = {
-    POSITION: 'position'
-  };
 
   this.extends = ngx.core.baseComponent;
 
@@ -14,6 +11,18 @@
       ngx.core.baseComponent.apply(this, arguments);
     }
   ];
+
+  this.initDefaultValues = function () {
+    var _styleProperties = this.getStyleProperties(),
+        _changeRecord;
+
+    if (ngx.isEmpty(this.color)) {
+      this.color = 'secondary';
+      _changeRecord = this.buildChangeRecord(_styleProperties.COLOR, this.color);
+    }
+
+    return _changeRecord;
+  };
 
   this.getPrefixClass = function () {
     return 'ngx-navbar';

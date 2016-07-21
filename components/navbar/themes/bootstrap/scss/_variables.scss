@@ -21,67 +21,78 @@ $ngx-navbar-brand-margin: 0 0 0 1rem !default;
 $ngx-navbar-item-padding: .425rem 0 .425rem 0 !default;
 
 
-$ngx-navbar-color-primary:(
-  background: ngx-color($ngx-color-primary),
-  divider-background: ngx-color($ngx-color-white),
-  brand-foreground: ngx-color($ngx-color-white),
-  item-foreground: ngx-color($ngx-color-white, $opacity: .5)
+$ngx-navbar-color-primary: (
+  active: (
+    item-foreground-color: ngx-color-light($ngx-color-white)
+  ),
+  default: (
+    brand-foreground-color: ngx-color-light($ngx-color-white),
+    divider-background-color: ngx-color-light($ngx-color-white),
+    navbar-background-color: ngx-color($ngx-color-primary),
+    item-foreground-color: ngx-color-light($ngx-color-white, $opacity: $ngx-opacity-disabled)
+  )
 ) !default;
-$ngx-navbar-color-primary-active:(
-  item-foreground: ngx-color($ngx-color-white)
+
+$ngx-navbar-color-secondary: (
+  active: (
+    item-foreground-color: ngx-color-dark($ngx-color-gray)
+  ),
+  default: (
+    brand-foreground-color: ngx-color-dark($ngx-color-gray),
+    divider-background-color: ngx-color-dark($ngx-color-gray),
+    navbar-background-color: ngx-color-light($ngx-color-gray, light),
+    item-foreground-color: ngx-color-dark($ngx-color-gray, $opacity: $ngx-opacity-disabled)
+  )
 ) !default;
 
 
-$ngx-navbar-color-secondary:(
-  background: ngx-color-light($ngx-color-gray),
-  divider-background: ngx-color($ngx-color-black),
-  brand-foreground: ngx-color($ngx-color-black),
-  item-foreground: ngx-color($ngx-color-black, $opacity: .5)
-) !default;
-$ngx-navbar-color-secondary-active:(
-  item-foreground: ngx-color($ngx-color-black)
-) !default;
-
-
-$ngx-navbar-color-info:(
-  background: ngx-color($ngx-color-info),
-  divider-background: ngx-color($ngx-color-white),
-  brand-foreground: ngx-color($ngx-color-white),
-  item-foreground: ngx-color($ngx-color-white, $opacity: .5)
-) !default;
-$ngx-navbar-color-info-active:(
-  item-foreground: ngx-color($ngx-color-white)
+$ngx-navbar-color-info: (
+  active: (
+    item-foreground-color: ngx-color-light($ngx-color-white)
+  ),
+  default: (
+    brand-foreground-color: ngx-color-light($ngx-color-white),
+    divider-background-color: ngx-color-light($ngx-color-white),
+    navbar-background-color: ngx-color($ngx-color-info),
+    item-foreground-color: ngx-color-light($ngx-color-white, $opacity: $ngx-opacity-disabled)
+  )
 ) !default;
 
 
-$ngx-navbar-color-success:(
-  background: ngx-color($ngx-color-success),
-  divider-background: ngx-color($ngx-color-white),
-  brand-foreground: ngx-color($ngx-color-white),
-  item-foreground: ngx-color($ngx-color-white, $opacity: .5)
-) !default;
-$ngx-navbar-color-success-active:(
-  item-foreground: ngx-color($ngx-color-white)
-) !default;
-
-
-$ngx-navbar-color-warning:(
-  background: ngx-color($ngx-color-warning),
-  divider-background: ngx-color($ngx-color-white),
-  brand-foreground: ngx-color($ngx-color-white),
-  item-foreground: ngx-color($ngx-color-white, $opacity: .5)
-) !default;
-$ngx-navbar-color-warning-active:(
-  item-foreground: ngx-color($ngx-color-white)
+$ngx-navbar-color-success: (
+  active: (
+    item-foreground-color: ngx-color-light($ngx-color-white)
+  ),
+  default: (
+    brand-foreground-color: ngx-color-light($ngx-color-white),
+    divider-background-color: ngx-color-light($ngx-color-white),
+    navbar-background-color: ngx-color($ngx-color-success),
+    item-foreground-color: ngx-color-light($ngx-color-white, $opacity: $ngx-opacity-disabled)
+  )
 ) !default;
 
 
-$ngx-navbar-color-danger:(
-  background: ngx-color($ngx-color-danger),
-  divider-background: ngx-color($ngx-color-white),
-  brand-foreground: ngx-color($ngx-color-white),
-  item-foreground: ngx-color($ngx-color-white, $opacity: .5)
+$ngx-navbar-color-warning: (
+  active: (
+    item-foreground-color: ngx-color-light($ngx-color-white)
+  ),
+  default: (
+    brand-foreground-color: ngx-color-light($ngx-color-white),
+    divider-background-color: ngx-color-light($ngx-color-white),
+    navbar-background-color: ngx-color($ngx-color-warning),
+    item-foreground-color: ngx-color-light($ngx-color-white, $opacity: $ngx-opacity-disabled)
+  )
 ) !default;
-$ngx-navbar-color-danger-active:(
-  item-foreground: ngx-color($ngx-color-white)
+
+
+$ngx-navbar-color-danger: (
+  active: (
+    item-foreground-color: ngx-color-light($ngx-color-white)
+  ),
+  default: (
+    brand-foreground-color: ngx-color-light($ngx-color-white),
+    divider-background-color: ngx-color-light($ngx-color-white),
+    navbar-background-color: ngx-color($ngx-color-danger),
+    item-foreground-color: ngx-color-light($ngx-color-white, $opacity: $ngx-opacity-disabled)
+  )
 ) !default;

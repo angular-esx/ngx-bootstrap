@@ -60,26 +60,26 @@
   }
 
   &.ngx-navbar-color-primary {
-    @include ngx-navbar-variant($ngx-navbar-color-primary, $ngx-navbar-color-primary-active);
+    @include ngx-navbar-variant($ngx-navbar-color-primary);
   }
 
   &.ngx-navbar-color-secondary {
-    @include ngx-navbar-variant($ngx-navbar-color-secondary, $ngx-navbar-color-secondary-active);
+    @include ngx-navbar-variant($ngx-navbar-color-secondary);
   }
 
   &.ngx-navbar-color-info {
-    @include ngx-navbar-variant($ngx-navbar-color-info, $ngx-navbar-color-info-active);
+    @include ngx-navbar-variant($ngx-navbar-color-info);
   }
 
   &.ngx-navbar-color-success {
-    @include ngx-navbar-variant($ngx-navbar-color-success, $ngx-navbar-color-success-active);
+    @include ngx-navbar-variant($ngx-navbar-color-success);
   }
 
   &.ngx-navbar-color-warning {
-    @include ngx-navbar-variant($ngx-navbar-color-warning, $ngx-navbar-color-warning-active);
+    @include ngx-navbar-variant($ngx-navbar-color-warning);
   }
 
   &.ngx-navbar-color-danger {
-    @include ngx-navbar-variant($ngx-navbar-color-danger, $ngx-navbar-color-danger-active);
+    @include ngx-navbar-variant($ngx-navbar-color-danger);
   }
 }

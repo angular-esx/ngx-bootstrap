@@ -7,41 +7,74 @@ $ngx-link-font-size-lg: ngx-font-size(lg) !default;
 
 $ngx-link-font-weight: normal !default;
 
-$ngx-link-primary: map-merge($ngx-component-outline-primary, (
+$ngx-link-primary: (
   active:(
     foreground-color: ngx-color-dark($ngx-color-primary)
   ),
-)) !default;
+  default: (
+    foreground-color: ngx-color($ngx-color-primary)
+  ),
+  disabled: (
+    foreground-color: ngx-color($ngx-color-primary, $opacity: $ngx-opacity-disabled)
+  )
+) !default;
 
-$ngx-link-secondary: map-merge($ngx-component-outline-secondary, (
+$ngx-link-secondary: (
   active:(
     foreground-color: ngx-color-dark($ngx-color-gray)
   ),
   default: (
-    foreground-color: ngx-color($ngx-color-gray)
+    foreground-color: ngx-color-light($ngx-color-gray)
+  ),
+  disabled: (
+    foreground-color: ngx-color($ngx-color-gray, light, $ngx-opacity-disabled)
   )
-)) !default;
+) !default;
 
-$ngx-link-info: map-merge($ngx-component-outline-info, (
+$ngx-link-info: (
   active:(
     foreground-color: ngx-color-dark($ngx-color-info)
   ),
-)) !default;
+  default: (
+    foreground-color: ngx-color($ngx-color-info)
+  ),
+  disabled: (
+    foreground-color: ngx-color($ngx-color-info, $opacity: $ngx-opacity-disabled)
+  )
+) !default;
 
-$ngx-link-success: map-merge($ngx-component-outline-success, (
+$ngx-link-success: (
   active:(
     foreground-color: ngx-color-dark($ngx-color-success)
   ),
-)) !default;
+  default: (
+    foreground-color: ngx-color($ngx-color-success)
+  ),
+  disabled: (
+    foreground-color: ngx-color($ngx-color-success, $opacity: $ngx-opacity-disabled)
+  )
+) !default;
 
-$ngx-link-warning: map-merge($ngx-component-outline-warning, (
+$ngx-link-warning: (
   active:(
     foreground-color: ngx-color-dark($ngx-color-warning)
   ),
-)) !default;
+  default: (
+    foreground-color: ngx-color($ngx-color-warning)
+  ),
+  disabled: (
+    foreground-color: ngx-color($ngx-color-warning, $opacity: $ngx-opacity-disabled)
+  )
+) !default;
 
-$ngx-link-danger: map-merge($ngx-component-outline-danger, (
+$ngx-link-danger:(
   active:(
     foreground-color: ngx-color-dark($ngx-color-danger)
   ),
-)) !default;
+  default: (
+    foreground-color: ngx-color($ngx-color-danger)
+  ),
+  disabled: (
+    foreground-color: ngx-color($ngx-color-danger, $opacity: $ngx-opacity-disabled)
+  )
+) !default;

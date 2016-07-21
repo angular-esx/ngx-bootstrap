@@ -1,0 +1,17 @@
+﻿@import "_variables.scss";
+
+@mixin ngx-card-variant($component){
+  $component-default: map-get($component, default);
+
+  color: map-get($component-default, card-foreground-color);
+  background-color: map-get($component-default, card-background-color);
+  border-color: map-get($component-default, card-border-color);
+
+  hr {
+    border-top-color: map-get($component-default, hr-border-top-color);
+  }
+
+  ngx-card-subtitle {
+    color: map-get($component-default, subtitle-foreground-color);
+  }
+}

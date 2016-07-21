@@ -1,23 +1,13 @@
-﻿@import "../../../../../cores/themes/bootstrap/normalize/normalize.scss";
-
-@import "_variables.scss";
+﻿@import "_mixins.scss";
 
 :host(.ngx-card) {
   display: block;
   position: relative;
   padding: $ngx-card-padding;
   margin: $ngx-card-margin;
-  background-color: $ngx-card-background-color;
   border: $ngx-card-boder;
 
   @include ngx-border-radius($ngx-card-boder-radius);
-
-  h1, h2, h3, h4, h5, h6 { @extend %ngx-h-normalize; }
-  p { @extend %ngx-p-normalize; }
-  hr { @extend %ngx-hr-normalize; }
-  a { @extend %ngx-link-normalize; }
-  img { @extend %ngx-img-normalize; }
-
 
   ngx-card-title {
     display: block;
@@ -27,7 +17,6 @@
   ngx-card-subtitle {
     display: block;
     margin: $ngx-card-subtitle-margin;
-    color: $ngx-card-subtitle-foreground-color;
   }
 
   > .ngx-card-header {
@@ -122,5 +111,29 @@
     &[justify-content="end"] {
       justify-content: flex-end;
     }
+  }
+
+  &.ngx-card-color-primary {
+    @include ngx-card-variant($ngx-card-primary);
+  }
+
+  &.ngx-card-color-secondary {
+    @include ngx-card-variant($ngx-card-secondary);
+  }
+
+  &.ngx-card-color-info {
+    @include ngx-card-variant($ngx-card-info);
+  }
+
+  &.ngx-card-color-success {
+    @include ngx-card-variant($ngx-card-success);
+  }
+
+  &.ngx-card-color-warning {
+    @include ngx-card-variant($ngx-card-warning);
+  }
+
+  &.ngx-card-color-danger {
+    @include ngx-card-variant($ngx-card-danger);
   }
 }

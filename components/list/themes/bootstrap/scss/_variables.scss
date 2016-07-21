@@ -9,102 +9,40 @@ $ngx-list-item-border: 1px solid;
 
 
 $ngx-list-item-primary: (
-  foreground: ngx-color($ngx-color-white),
-  background: ngx-color-light($ngx-color-primary),
-  border: ngx-color-light($ngx-color-primary)
-) !default;
-$ngx-list-item-primary-active: (
-  foreground: ngx-color($ngx-color-white),
-  background: ngx-color($ngx-color-primary),
-  border: ngx-color($ngx-color-primary)
-) !default;
-$ngx-list-item-primary-disabled: (
-  foreground: ngx-color($ngx-color-white, $opacity: .65),
-  background: ngx-color($ngx-color-primary, $opacity: .65),
-  border: ngx-color($ngx-color-primary, $opacity: .65)
-) !default;
-
-
-$ngx-list-item-secondary: (
-  foreground: ngx-color($ngx-color-black),
-  background: ngx-color($ngx-color-white),
-  border: ngx-color-dark($ngx-color-gray)
-) !default;
-$ngx-list-item-secondary-active: (
-  foreground: ngx-color($ngx-color-black),
-  background: ngx-color-light($ngx-color-gray),
-  border: ngx-color-dark($ngx-color-gray)
-) !default;
-$ngx-list-item-secondary-disabled: (
-  foreground: ngx-color($ngx-color-black, $opacity: .65),
-  background: ngx-color-light($ngx-color-gray, $opacity: .65),
-  border: ngx-color-dark($ngx-color-gray, $opacity: .65)
+  active: (
+    foreground-color: ngx-color-light($ngx-color-white),
+    background-color: ngx-color($ngx-color-primary),
+    border-color: ngx-color($ngx-color-primary)
+  ),
+  hover: (
+    foreground-color: ngx-color-dark($ngx-color-gray),
+    background-color: ngx-color($ngx-color-white),
+    border-color: ngx-color-light($ngx-color-black, light)
+  ),
+  default: (
+    foreground-color: ngx-color-dark($ngx-color-gray),
+    background-color: ngx-color-light($ngx-color-white),
+    border-color: ngx-color-light($ngx-color-black, light)
+  ),
+  disabled: (
+    foreground-color: ngx-color-dark($ngx-color-gray, default, $ngx-opacity-disabled),
+    background-color: ngx-color-light($ngx-color-secondary),
+    border-color: ngx-color-light($ngx-color-black, light, $ngx-opacity-disabled)
+  )
 ) !default;
 
+$ngx-list-item-info: map-merge($ngx-component-contextual-info, (
+  hover: map-get($ngx-component-contextual-info, active)  
+)) !default;
 
-$ngx-list-item-info: (
-  foreground: ngx-color($ngx-color-white),
-  background: ngx-color-light($ngx-color-info),
-  border: ngx-color-light($ngx-color-info)
-) !default;
-$ngx-list-item-info-active: (
-  foreground: ngx-color($ngx-color-white),
-  background: ngx-color($ngx-color-info),
-  border: ngx-color($ngx-color-info)
-) !default;
-$ngx-list-item-info-disabled: (
-  foreground: ngx-color($ngx-color-white, $opacity: .65),
-  background: ngx-color($ngx-color-info, $opacity: .65),
-  border: ngx-color($ngx-color-info, $opacity: .65)
-) !default;
+$ngx-list-item-success: map-merge($ngx-component-contextual-success, (
+  hover: map-get($ngx-component-contextual-success, active)  
+)) !default;
 
+$ngx-list-item-warning: map-merge($ngx-component-contextual-warning, (
+  hover: map-get($ngx-component-contextual-warning, active)  
+)) !default;
 
-$ngx-list-item-success: (
-  foreground: ngx-color($ngx-color-white),
-  background: ngx-color-light($ngx-color-success),
-  border: ngx-color-light($ngx-color-success)
-) !default;
-$ngx-list-item-success-active: (
-  foreground: ngx-color($ngx-color-white),
-  background: ngx-color($ngx-color-success),
-  border: ngx-color($ngx-color-success)
-) !default;
-$ngx-list-item-success-disabled: (
-  foreground: ngx-color($ngx-color-white, $opacity: .65),
-  background: ngx-color($ngx-color-success, $opacity: .65),
-  border: ngx-color($ngx-color-success, $opacity: .65)
-) !default;
-
-
-$ngx-list-item-warning: (
-  foreground: ngx-color($ngx-color-white),
-  background: ngx-color-light($ngx-color-warning),
-  border: ngx-color-light($ngx-color-warning)
-) !default;
-$ngx-list-item-warning-active: (
-  foreground: ngx-color($ngx-color-white),
-  background: ngx-color($ngx-color-warning),
-  border: ngx-color($ngx-color-warning)
-) !default;
-$ngx-list-item-warning-disabled: (
-  foreground: ngx-color($ngx-color-white, $opacity: .65),
-  background: ngx-color($ngx-color-warning, $opacity: .65),
-  border: ngx-color($ngx-color-warning, $opacity: .65)
-) !default;
-
-
-$ngx-list-item-danger: (
-  foreground: ngx-color($ngx-color-white),
-  background: ngx-color-light($ngx-color-danger),
-  border: ngx-color-light($ngx-color-danger)
-) !default;
-$ngx-list-item-danger-active: (
-  foreground: ngx-color($ngx-color-white),
-  background: ngx-color($ngx-color-danger),
-  border: ngx-color($ngx-color-danger)
-) !default;
-$ngx-list-item-danger-disabled: (
-  foreground: ngx-color($ngx-color-white, $opacity: .65),
-  background: ngx-color($ngx-color-danger, $opacity: .65),
-  border: ngx-color($ngx-color-danger, $opacity: .65)
-) !default;
+$ngx-list-item-danger: map-merge($ngx-component-contextual-danger, (
+  hover: map-get($ngx-component-contextual-danger, active)  
+)) !default;

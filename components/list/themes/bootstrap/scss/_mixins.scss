@@ -2,21 +2,33 @@
 
 @import "_variables.scss";
 
-@mixin ngx-list-item-variant($default, $active, $disabled){
-  color: map-get($default, foreground);
-  background-color: map-get($default, background);
-  border-color: map-get($default, border);
+@mixin ngx-list-item-variant($component){
+  $component-default: map-get($component, default);
+  $component-hover: map-get($component, hover);
+  $component-active: map-get($component, active);
+  $component-disabled: map-get($component, disabled);
 
-  @include ngx-state(ngx-list-item, 'focus hover active'){
-    color: map-get($active, foreground);
-    background-color: map-get($active, background);
-    border-color: map-get($active, border);
+  color: map-get($component-default, foreground-color);
+  background-color: map-get($component-default, background-color);
+  border-color: map-get($component-default, border-color);
+  text-decoration: none;
+
+  @include ngx-state(ngx-list-item, 'focus hover'){
+    color: map-get($component-hover, foreground-color);
+    background-color: map-get($component-hover, background-color);
+    border-color: map-get($component-hover, border-color);
+  }
+
+   @include ngx-state(ngx-list-item, 'active'){
+    color: map-get($component-active, foreground-color);
+    background-color: map-get($component-active, background-color);
+    border-color: map-get($component-active, border-color);
   }
 
   @include ngx-state(ngx-list-item, 'disabled'){
-    color: map-get($disabled, foreground);
-    background-color: map-get($disabled, background);
-    border-color: map-get($disabled, border);
+    color: map-get($component-disabled, foreground-color);
+    background-color: map-get($component-disabled, background-color);
+    border-color: map-get($component-disabled, border-color);
     cursor: not-allowed;
   }
 }

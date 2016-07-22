@@ -27,8 +27,8 @@ function _ngxPopoverComponent() {
 
   this.render = function () {
     if (this.templateRef && !this.templateElement) { throw 'Not found template element of popover'; }
-    else if (!this.templateRef && !this.titleElement) { throw 'Not found title element of popover'; }
-    else if (!this.templateRef && !this.contentElement) { throw 'Not found content element of popover'; }
+    else if (ngx.isNull(this.templateRef) && ngx.isNull(this.titleElement)) { throw 'Not found title element of popover'; }
+    else if (ngx.isNull(this.templateRef) && ngx.isNull(this.contentElement)) { throw 'Not found content element of popover'; }
 
     if (this.templateRef) {
       this.templateElement.createEmbeddedView(this.templateRef, 0);

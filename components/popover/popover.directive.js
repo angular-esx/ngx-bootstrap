@@ -32,7 +32,7 @@ function _ngxPopoverDirective() {
   this.subscribe = function () {
     var _self = this;
     this.subscription = this.ngxPopoverService.ngxPopover$.subscribe(function (event) {
-      if (!event) { return; }
+      if (ngx.isEmpty(event)) { return; }
 
       var _events = ngx.isArray(event) ? event : [event];
       var _actions = _self.ngxPopoverService.getActions();

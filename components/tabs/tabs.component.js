@@ -48,7 +48,7 @@ function _ngxTabsComponent() {
   this.subscribe = function () {
     var _self = this;
     this.subscription = this.ngxTabsService.ngxTabs$.subscribe(function (event) {
-      if (!event) { return; }
+      if (ngx.isEmpty(event)) { return; }
 
       var _events = ngx.isArray(event) ? event : [event];
       var _actions = _self.ngxTabsService.getActions();

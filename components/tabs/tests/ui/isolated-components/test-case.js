@@ -3,13 +3,13 @@
     this.ngxTabsService = ngxTabsService;
 
     this.tabs = [
-      { id: 'tab03', head: 'Tab 03', content: 'this is content of tab 03' },
-      { id: 'tab04', head: 'Tab 04', content: 'this is content of tab 04' }
+      { id: 'tab03', header: 'Tab 03', content: 'this is content of tab 03' },
+      { id: 'tab04', header: 'Tab 04', content: 'this is content of tab 04' }
     ];
 
     this.pillTabs = [
-      { id: 'tab03', head: 'Tab 03', content: 'this is content of tab 03' },
-      { id: 'tab04', head: 'Tab 04', content: 'this is content of tab 04' }
+      { id: 'tab03', header: 'Tab 03', content: 'this is content of tab 03' },
+      { id: 'tab04', header: 'Tab 04', content: 'this is content of tab 04' }
     ];
   }];
 

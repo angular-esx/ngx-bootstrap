@@ -9,6 +9,6 @@
 }
 
 module.exports = ng.core.Directive({
-  selector: 'template[ngx-tab-head]'
+  selector: 'template[ngx-tab-header]'
 })
 .Class(new _ngxTabHeaderDirective());

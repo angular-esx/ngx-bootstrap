@@ -12,8 +12,6 @@ function _ngxRadioDirective() {
 
       if (elementRef) {
         this.ngxRadioGroup = ngxRadioGroup;
-
-        this.changingModelEmitter = new ng.core.EventEmitter(false);
       }
     }
   ];
@@ -23,17 +21,6 @@ function _ngxRadioDirective() {
   };
 
   this.check = function () {
-    var _hasCanceled = false;
-    this.changingModelEmitter.emit({
-      cancel: function () {
-        _hasCanceled = true;
-        event.preventDefault();
-        event.stopImmediatePropagation();
-      }
-    });
-
-    if(_hasCanceled){ return; }
-
     this.ngxRadioGroup.change(this.value);
   };
 }
@@ -41,9 +28,6 @@ function _ngxRadioDirective() {
 module.exports = ng.core.Directive({
   selector: '[ngx-radio]',
   properties: ['value:ngx-radio-value'],
-  events: [
-    'changingModelEmitter:ngx-radio-onChangingModel'
-  ],
   host: {
     '(click)': 'check($event)'
   }

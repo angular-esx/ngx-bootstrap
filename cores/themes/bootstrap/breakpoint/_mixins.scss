@@ -2,7 +2,7 @@
 
 //Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
 @mixin ngx-media-breakpoint-up($breakpoint-name, $breakpoints: $ngx-breakpoints) {
-  $min: breakpoint-min($breakpoint-name, $breakpoints);
+  $min: ngx-breakpoint-min($breakpoint-name, $breakpoints);
 
   @if $min {
     @media (min-width: $min) {
@@ -15,7 +15,7 @@
 
 //Media of at most the maximum breakpoint width. No query for the largest breakpoint.
 @mixin ngx-media-breakpoint-down($breakpoint-name, $breakpoints: $ngx-breakpoints) {
-  $max: breakpoint-max($breakpoint-name, $breakpoints);
+  $max: ngx-breakpoint-max($breakpoint-name, $breakpoints);
 
   @if $max {
     @media (max-width: $max) {

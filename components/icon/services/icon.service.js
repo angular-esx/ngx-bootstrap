@@ -38,7 +38,7 @@
     return this;
   };
   this.getSvgIconByUrl = function (url) {
-    if(_cachedSvgIcons[url]){
+    if(_cachedSvgIcons.hasOwnProperty(url)){
       return Rx.Observable.of(_cachedSvgIcons[url]);
     }
     
@@ -51,7 +51,7 @@
   this.getSvgIconByName = function (iconName, namespace) {
     var _iconKey = _getIconKey(iconName, namespace);
     
-    if(_svgIconConfigs[_iconKey]){
+    if(_svgIconConfigs.hasOwnProperty(_iconKey)){
       return _svgIconConfigs[_iconKey]
       .getSvgElement(this)
       .do(function (svgElement) {
@@ -59,7 +59,7 @@
       });
     }
     
-    if(_svgIconSetConfigs[namespace]){
+    if (_svgIconSetConfigs.hasOwnProperty(namespace)) {
       var _svgIconSets = _svgIconSetConfigs[namespace],
           _svgIconSetsHaveNoElement = [],
           _svgIconSet,
@@ -101,7 +101,7 @@
   this.setSvgIconSet = function (url, namespace) {
     var _namespace = namespace || '';
 
-    if(_svgIconSetConfigs[_namespace]){
+    if(_svgIconSetConfigs.hasOwnProperty(_namespace)){
       _svgIconSetConfigs[_namespace].push(new _svgIconConfig(url));
     }
     else{
@@ -171,7 +171,7 @@
     }
 
     function _fetch(context, url) {
-      if (_fetchingSvgIcons[url]) {
+      if (_fetchingSvgIcons.hasOwnProperty(url)) {
         return _fetchingSvgIcons[url];
       }
 

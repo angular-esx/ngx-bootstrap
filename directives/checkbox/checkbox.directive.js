@@ -11,8 +11,7 @@ function _ngxCheckboxDirective() {
       if (elementRef) {
         this.ngxCheckboxGroup = ngxCheckboxGroup;
 
-        this.changingModelEmitter = new ng.core.EventEmitter(false);
-        this.changedModelEmitter = new ng.core.EventEmitter();
+        this.checkboxModelChange = new ng.core.EventEmitter();
       }
     }
   ];
@@ -27,17 +26,6 @@ function _ngxCheckboxDirective() {
   };
 
   this.check = function (event) {
-    var _hasCanceled = false;
-    this.changingModelEmitter.emit({
-      cancel: function () {
-        _hasCanceled = true;
-        event.preventDefault();
-        event.stopImmediatePropagation();
-      }
-    });
-
-    if(_hasCanceled){ return; }
-
     if (this.ngxCheckboxGroup) {
       this.ngxCheckboxGroup.addOrRemoveValue(this.checkedValue);
     }
@@ -64,20 +52,19 @@ function _ngxCheckboxDirective() {
       }
     }
 
-    this.changedModelEmitter.emit(this.model);
+    this.checkboxModelChange.emit(this.model);
   };
 }
 
 module.exports = ng.core.Directive({
   selector: '[ngx-checkbox]',
   properties: [
-    'model:ngx-checkbox-model', 
+    'model:checkboxModel',
     'checkedValue: ngx-checkbox-checked-value', 
     'unCheckedValue: ngx-checkbox-unchecked-value'
   ],
   events: [
-    'changingModelEmitter:ngx-checkbox-onChangingModel',
-    'changedModelEmitter:ngx-checkbox-onChangedModel'
+    'checkboxModelChange'
   ],
   host: {
     '(click)': 'check($event)'

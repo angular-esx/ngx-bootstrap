@@ -2,7 +2,7 @@
 <center>
   <ngx-button ngx-checkbox 
               color="primary"
-              [(ngx-checkbox-model)]="ngxCheckboxTracker.value"
+              [(checkboxModel)]="ngxCheckboxTracker.value"
               ngx-checkbox-checked-value="checked"
               ngx-checkbox-unchecked-value="unchecked">
     Track ngxCheckbox
@@ -15,7 +15,7 @@
 
 <h3>ngxCheckbox With ngxCheckBoxGroup</h3>
 <center>
-  <ngx-group ngx-checkbox-group [(ngx-checkbox-group-model)]="ngxCheckboxGroupTracker">
+  <ngx-group ngx-checkbox-group [(checkboxModel)]="ngxCheckboxGroupTracker">
     <ngx-button ngx-checkbox
                 color="primary"
                 ngx-checkbox-checked-value="item 01">
@@ -45,7 +45,7 @@
 
 <h3>ngxCheckbox With vertical ngxCheckBoxGroup</h3>
 <center>
-  <ngx-group ngx-checkbox-group type="vertical" [(ngx-checkbox-group-model)]="ngxVerticalCheckboxGroupTracker">
+  <ngx-group ngx-checkbox-group type="vertical" [(checkboxModel)]="ngxVerticalCheckboxGroupTracker">
     <ngx-button ngx-checkbox
                 color="primary"
                 ngx-checkbox-checked-value="item 01">

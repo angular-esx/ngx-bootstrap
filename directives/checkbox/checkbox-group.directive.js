@@ -6,7 +6,7 @@
        this.elementRef = elementRef;
 
       if (elementRef) {
-        this.changedModelEmitter = new ng.core.EventEmitter();
+        this.checkboxModelChange = new ng.core.EventEmitter();
       }
     }
   ];
@@ -23,13 +23,13 @@
       this.model.push(value);
     }
 
-    this.changedModelEmitter.emit(this.model);
+    this.checkboxModelChange.emit(this.model);
   };
 }
 
 module.exports = ng.core.Directive({
   selector: '[ngx-checkbox-group]',
-  properties: ['model:ngx-checkbox-group-model'],
-  events: ['changedModelEmitter:ngx-checkbox-group-onChangedModel']
+  properties: ['model:checkboxModel'],
+  events: ['checkboxModelChange']
 })
 .Class(new _ngxCheckboxGroupDirective());

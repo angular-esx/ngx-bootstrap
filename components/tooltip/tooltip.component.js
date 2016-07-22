@@ -4,7 +4,7 @@ var ngxTooltipService = require('./services/tooltip.service.js');
 function _ngxTooltipComponent() {
   var _base;
 
-  this.extends = ngx.core.BaseComponent;
+  this.extends = ngx.core.baseComponent;
 
   this.constructor = [
     ng.core.ElementRef,
@@ -13,7 +13,7 @@ function _ngxTooltipComponent() {
     tooltipOptionClass,
 
     function ngxTooltipComponent(elementRef, renderer, ngxTooltipService, tooltipOption) {
-      ngx.core.BaseComponent.apply(this, [elementRef, renderer, ngxTooltipService]);
+      ngx.core.baseComponent.apply(this, [elementRef, renderer, ngxTooltipService]);
       
       if (elementRef) {
         this.ngxTooltipService = ngxTooltipService;
@@ -46,7 +46,7 @@ function _ngxTooltipComponent() {
   };
 
   this.render = function () {
-    if (!this.contentElement) { throw 'Not found content element of tooltip'; }
+    if (ngx.isNull(this.contentElement)) { throw 'Not found content element of tooltip'; }
 
     if (this.templateRef) {
       this.contentElement.createEmbeddedView(this.templateRef, 0);
@@ -132,7 +132,7 @@ function _ngxTooltipComponent() {
   }
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngx.core.BaseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngx.core.baseComponent); }
     return _base;
   }
 }

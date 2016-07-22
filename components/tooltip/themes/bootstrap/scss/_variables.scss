@@ -12,9 +12,13 @@ $ngx-tooltip-index: 1000 !default;
 
 $ngx-tooltip-border-radius: ngx-border-radius(base) !default;
 
-$ngx-tooltip-foreground-color: ngx-color($ngx-color-white) !default;
-
-$ngx-tooltip-background-color: ngx-color($ngx-color-black) !default;
-
 
 $ngx-tooltip-arrow-width: 5px !default;
+
+
+$ngx-tooltip: (
+  default: (
+    foreground-color: ngx-color-light($ngx-color-white),
+    background-color: ngx-color-dark($ngx-color-black)
+  )
+) !default;

@@ -54,9 +54,9 @@ function _ngxTooltipDirective() {
     if (this.autoHide === 'true') { this.autoHide = true; }
     else if (this.autoHide === 'false') { this.autoHide = false; }
 
-    if(!this.state && !this.isActive){ this.isActive = false; }
+    if(ngx.isEmpty(this.state) && ngx.isNull(this.isActive)){ this.isActive = false; }
 
-    if(!this.state && !this.isDisabled){ this.isDisabled = false; }
+    if(ngx.isEmpty(this.state) && ngx.isNull(this.isDisabled)){ this.isDisabled = false; }
 
     return null;
   };
@@ -64,13 +64,13 @@ function _ngxTooltipDirective() {
   this.subscribe = function () {
     var _self = this;
     this.subscription = this.ngxTooltipService.ngxTooltip$.subscribe(function (event) {
-      if (!event) { return; }
+      if (ngx.isEmpty(event)) { return; }
 
       var _events = ngx.isArray(event) ? event : [event];
       var _actions = _self.ngxTooltipService.getActions();
       
       ngx.forEach(_events, function (_event) {
-        if (!_event.id || _event.id === _self.id) {
+        if (ngx.isEmpty(_event.id) || _event.id === _self.id) {
           if (_event.type === _actions.ENABLE_TOOLTIP) {
             _self.enable(_event.isEnabled);
           }
@@ -108,8 +108,8 @@ function _ngxTooltipDirective() {
         this.componentRef) { return; }
     
     if (options) {
-      this.delay = (options.delay !== undefined && options.delay !== null) ? options.delay : this.delay;
-      this.autoHide = (options.autoHide !== undefined && options.autoHide !== null) ? options.autoHide : this.autoHide;
+      this.delay = ngx.isNull(options.delay) ? this.delay : options.delay;
+      this.autoHide = ngx.isNull(options.autoHide) ? this.autoHide : options.autoHide;
     }
 
     var _styleProperties = this.getStyleProperties();

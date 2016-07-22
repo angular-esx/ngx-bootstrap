@@ -9,6 +9,8 @@
   
   @include ngx-reset-text();
 
+  $component-default: map-get($ngx-tooltip, default);
+
   > .ngx-tooltip-arrow {
     position: absolute;
     width: 0;
@@ -21,8 +23,8 @@
     text-align: center;
     padding: $ngx-tooltip-padding;
     max-width: $ngx-tooltip-max-width;
-    color: $ngx-tooltip-foreground-color;
-    background-color: $ngx-tooltip-background-color;
+    color: map-get($component-default, foreground-color);
+    background-color: map-get($component-default, background-color);
 
     @include ngx-border-radius($ngx-tooltip-border-radius);
   }
@@ -36,7 +38,7 @@
       left: 50%;
       margin-left: -$ngx-tooltip-arrow-width;
       border-width: $ngx-tooltip-arrow-width $ngx-tooltip-arrow-width 0;
-      border-top-color: $ngx-tooltip-background-color;
+      border-top-color: map-get($component-default, background-color);
     }
   }
 
@@ -48,7 +50,7 @@
       left: 0;
       margin-top: -$ngx-tooltip-arrow-width;
       border-width: $ngx-tooltip-arrow-width $ngx-tooltip-arrow-width $ngx-tooltip-arrow-width 0;
-      border-right-color: $ngx-tooltip-background-color;
+      border-right-color: map-get($component-default, background-color);
     }
   }
 
@@ -60,7 +62,7 @@
       left: 50%;
       margin-left: -$ngx-tooltip-arrow-width;
       border-width: 0 $ngx-tooltip-arrow-width $ngx-tooltip-arrow-width;
-      border-bottom-color: $ngx-tooltip-background-color;
+      border-bottom-color: map-get($component-default, background-color);
     }
   }
 
@@ -73,7 +75,7 @@
       right: 0;
       margin-top: -$ngx-tooltip-arrow-width;
       border-width: $ngx-tooltip-arrow-width 0 $ngx-tooltip-arrow-width $ngx-tooltip-arrow-width;
-      border-left-color: $ngx-tooltip-background-color;
+      border-left-color: map-get($component-default, background-color);
     }
   }
 }

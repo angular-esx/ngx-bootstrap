@@ -40,7 +40,7 @@
       propertyName === _styleProperties.ORDER ||
       propertyName === _styleProperties.ALIGN_SELF
     ){
-      if (!propertyValue) { return ''; }
+      if (ngx.isEmpty(propertyValue)) { return ''; }
 
       var _parts,
           _cssClasses = [],

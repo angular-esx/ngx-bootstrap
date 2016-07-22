@@ -11,6 +11,10 @@
     @include ngx-row();
   }
 
+  .ngx-grid-col {
+    overflow: hidden;
+  }
+
   @include ngx-grid-columns();
 
   @each $breakpoint in map-keys($ngx-breakpoints) {

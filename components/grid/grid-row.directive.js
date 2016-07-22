@@ -38,7 +38,7 @@
       propertyName === _styleProperties.ALIGN_CONTENT ||
       propertyName === _styleProperties.ALIGN_ITENS
     ){
-      if (!propertyValue) { return ''; }
+      if (ngx.isEmpty(propertyValue)) { return ''; }
 
       var _parts,
           _cssClasses = [],

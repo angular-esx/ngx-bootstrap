@@ -26,9 +26,11 @@ function _ngxTooltipComponent() {
   this.ngAfterViewInit = function () {
     this.render();
 
-    var _offset = this.getOffset();
-    this.renderer.setElementStyle(this.elementRef.nativeElement, 'top', (_offset.top !== 0 && !_offset.top ? -1000 : _offset.top) + 'px');
-    this.renderer.setElementStyle(this.elementRef.nativeElement, 'left', (_offset.left !== 0 && !_offset.left ? -1000 : _offset.left) + 'px');
+    var _rect = this.getRect();
+    this.renderer.setElementStyle(this.elementRef.nativeElement, 'top', (_rect.top !== 0 && !_rect.top ? -1000 : _rect.top) + 'px');
+    this.renderer.setElementStyle(this.elementRef.nativeElement, 'left', (_rect.left !== 0 && !_rect.left ? -1000 : _rect.left) + 'px');
+    this.renderer.setElementStyle(this.elementRef.nativeElement, 'width', _rect.width + 'px');
+    this.renderer.setElementStyle(this.elementRef.nativeElement, 'height', _rect.height + 'px');
 
     var _styleProperties = this.getStyleProperties();
     var _changeRecord = this.buildChangeRecord(_styleProperties.STATE, this.state);
@@ -67,38 +69,47 @@ function _ngxTooltipComponent() {
     this.ngxTooltipService.fadeOut(this.elementRef);
   };
 
-  this.getOffset = function () {
+  this.getRect = function () {
     var _positions = this.position.split(' ');
     if (_positions.length === 1) { _positions[1] = 'center'; }
-   
-    var _hostElementOffset = _getOffset(this.hostElement.nativeElement),
-        _elementOffset = _getOffset(this.elementRef.nativeElement);
     
+    var _hostElementRect = _getRect(this.hostElement.nativeElement),
+        _elementRect = _getRect(this.elementRef.nativeElement);
+    
+    var _rect;
     switch (_positions[0]) {
       case 'right':
-        return {
-          top: _shiftHeight(this, _hostElementOffset, _elementOffset, _positions[1]),
-          left: _shiftWidth(this, _hostElementOffset, _elementOffset, _positions[0])
+        _rect = {
+          top: _shiftHeight(this, _hostElementRect, _elementRect, _positions[1]),
+          left: _shiftWidth(this, _hostElementRect, _elementRect, _positions[0])
         };
+        break;
       case 'left':
-        return {
-          top: _shiftHeight(this, _hostElementOffset, _elementOffset, _positions[1]),
-          left: _hostElementOffset.left - _elementOffset.width
+        _rect = {
+          top: _shiftHeight(this, _hostElementRect, _elementRect, _positions[1]),
+          left: _hostElementRect.left - _elementRect.width
         };
+        break;
       case 'bottom':
-        return {
-          top: _shiftHeight(this, _hostElementOffset, _elementOffset, _positions[0]),
-          left: _shiftWidth(this, _hostElementOffset, _elementOffset, _positions[1])
+        _rect = {
+          top: _shiftHeight(this, _hostElementRect, _elementRect, _positions[0]),
+          left: _shiftWidth(this, _hostElementRect, _elementRect, _positions[1])
         };
+        break;
       default:
-        return {
-          top: _hostElementOffset.top - _elementOffset.height,
-          left: _shiftWidth(this, _hostElementOffset, _elementOffset, _positions[1])
+        _rect = {
+          top: _hostElementRect.top - _elementRect.height,
+          left: _shiftWidth(this, _hostElementRect, _elementRect, _positions[1])
         };
     }
+
+    _rect.width = _elementRect.width;
+    _rect.height = _elementRect.height;
+
+    return _rect;
   };
 
-  function _getOffset(nativeElement){
+  function _getRect(nativeElement){
     var _boundingClientRect = nativeElement.getBoundingClientRect();
 
     return {
@@ -109,25 +120,25 @@ function _ngxTooltipComponent() {
     };
   }
 
-  function _shiftWidth(context, hostElementgetOffset, elementOffset, position) {
+  function _shiftWidth(context, hostElementRect, elementRect, position) {
     switch (position) {
       case 'left':
-        return hostElementgetOffset.left;
+        return hostElementRect.left;
       case 'right':
-        return hostElementgetOffset.left + hostElementgetOffset.width;
+        return hostElementRect.left + hostElementRect.width;
       case 'center':
-        return hostElementgetOffset.left + hostElementgetOffset.width / 2 - elementOffset.width / 2;
+        return  hostElementRect.left + hostElementRect.width / 2 - elementRect.width / 2;
     }
   }
 
-  function _shiftHeight(context, hostElementgetOffset, elementOffset, position) {
+  function _shiftHeight(context, hostElementRect, elementRect, position) {
     switch (position) {
       case 'top':
-        return hostElementgetOffset.top;
+        return hostElementRect.top;
       case 'bottom':
-        return hostElementgetOffset.top + hostElementgetOffset.height;
+        return hostElementRect.top + hostElementRect.height;
       case 'center':
-        return hostElementgetOffset.top + hostElementgetOffset.height / 2 - elementOffset.height / 2;
+        return hostElementRect.top + hostElementRect.height / 2 - elementRect.height / 2;
     }
   }
 
@@ -143,9 +154,6 @@ module.exports = ng.core.Component({
   styles: [require('./themes/' + __THEME__ + '/scss/tooltip.scss')],
   queries: {
     contentElement: new ng.core.ViewChild('content', { read: ng.core.ViewContainerRef })
-  },
-  host: {
-    '[style.display]': '"inline-flex"'
   }
 })
 .Class(new _ngxTooltipComponent());

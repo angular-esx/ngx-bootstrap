@@ -30,11 +30,10 @@
   }
 
   &.ngx-tooltip-position-top {
-    padding: $ngx-tooltip-arrow-width 0;
-    margin-top: -($ngx-tooltip-arrow-width * 2);
+    margin-top: -$ngx-tooltip-arrow-width;
 
     > .ngx-tooltip-arrow {
-      bottom: 0;
+      bottom: -$ngx-tooltip-arrow-width;
       left: 50%;
       margin-left: -$ngx-tooltip-arrow-width;
       border-width: $ngx-tooltip-arrow-width $ngx-tooltip-arrow-width 0;
@@ -43,11 +42,11 @@
   }
 
   &.ngx-tooltip-position-right {
-    padding: 0 $ngx-tooltip-arrow-width;
+    margin-left: $ngx-tooltip-arrow-width;
 
     > .ngx-tooltip-arrow {
       top: 50%;
-      left: 0;
+      left: -$ngx-tooltip-arrow-width;
       margin-top: -$ngx-tooltip-arrow-width;
       border-width: $ngx-tooltip-arrow-width $ngx-tooltip-arrow-width $ngx-tooltip-arrow-width 0;
       border-right-color: map-get($component-default, background-color);
@@ -55,10 +54,10 @@
   }
 
   &.ngx-tooltip-position-bottom {
-    padding: $ngx-tooltip-arrow-width 0;
+    margin-top: $ngx-tooltip-arrow-width;
 
     > .ngx-tooltip-arrow {
-      top: 0;
+      top: -$ngx-tooltip-arrow-width;
       left: 50%;
       margin-left: -$ngx-tooltip-arrow-width;
       border-width: 0 $ngx-tooltip-arrow-width $ngx-tooltip-arrow-width;
@@ -67,12 +66,11 @@
   }
 
   &.ngx-tooltip-position-left {
-    padding: 0 $ngx-tooltip-arrow-width;
-    margin-left: -($ngx-tooltip-arrow-width * 2);
+    margin-left: -$ngx-tooltip-arrow-width;
 
     > .ngx-tooltip-arrow {
       top: 50%;
-      right: 0;
+      right: -$ngx-tooltip-arrow-width;
       margin-top: -$ngx-tooltip-arrow-width;
       border-width: $ngx-tooltip-arrow-width 0 $ngx-tooltip-arrow-width $ngx-tooltip-arrow-width;
       border-left-color: map-get($component-default, background-color);

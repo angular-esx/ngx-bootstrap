@@ -53,9 +53,6 @@ module.exports = ng.core.Component({
     templateElement: new ng.core.ViewChild('template', { read: ng.core.ViewContainerRef }),
     titleElement: new ng.core.ViewChild('title', { read: ng.core.ViewContainerRef }),
     contentElement: new ng.core.ViewChild('content', { read: ng.core.ViewContainerRef })
-  },
-  host: {
-    '[style.display]': '"inline-flex"'
   }
 })
 .Class(new _ngxPopoverComponent());

@@ -9,11 +9,21 @@
       _paths.NODE_MODULES = _paths.ROOT + 'node_modules/';
       _paths.GULP_TASKS = _paths.ROOT + 'gulp-tasks/';
 
+      _paths.ZONE = _paths.NODE_MODULES + 'zone.js/dist/';
+      _paths.REFLECT = _paths.NODE_MODULES + 'reflect-metadata/';
+      _paths.RX = _paths.NODE_MODULES + 'rxjs/bundles/';
+      _paths.CORE_ANGULAR = _paths.NODE_MODULES + '@angular/core/bundles/';
+      _paths.COMMON_ANGULAR = _paths.NODE_MODULES + '@angular/common/bundles/';
+      _paths.CORE_ANGULAR = _paths.NODE_MODULES + '@angular/core/bundles/';
+      _paths.COMPILER_ANGULAR = _paths.NODE_MODULES + '@angular/compiler/bundles/';
+      _paths.PLATFORM_BROWSER_ANGULAR = _paths.NODE_MODULES + '@angular/platform-browser/bundles/';
+      _paths.PLATFORM_BROWSER_DYNAMIC_ANGULAR = _paths.NODE_MODULES + '@angular/platform-browser-dynamic/bundles/';
+
+      
       _paths.ANGULAR_02 = _paths.NODE_MODULES + 'angular2/bundles/';
       _paths.BOOTSTRAP_04 = _paths.NODE_MODULES + 'bootstrap/dist/css/';
       _paths.ES6_SHAM = _paths.NODE_MODULES + 'es6-shim/';
       _paths.ES6_SHIM = _paths.NODE_MODULES + 'es6-shim/';
-      _paths.RX = _paths.NODE_MODULES + 'rxjs/bundles/';
 
       return _paths;
     })();
@@ -33,9 +43,15 @@
       return {
         ES6_SHAM_JS: paths.ES6_SHAM + 'es6-sham.js',
         ES6_SHIM_JS: paths.ES6_SHIM + 'es6-shim.js',
+
+        ZONE_JS: paths.ZONE + 'zone.js',
+        REFLECT_JS: paths.REFLECT + 'Reflect.js',
         RX_JS: paths.RX + 'Rx.umd.js',
-        ANGULAR_02_POLYFILLS_JS: paths.ANGULAR_02 + 'angular2-polyfills.js',
-        ANGULAR_02_JS: paths.ANGULAR_02 + 'angular2-all.umd.js'
+        CORE_ANGULAR_JS: paths.CORE_ANGULAR + 'core.umd.js',
+        COMMON_ANGULAR_JS: paths.COMMON_ANGULAR + 'common.umd.js',
+        COMPILER_ANGULAR_JS: paths.COMPILER_ANGULAR + 'compiler.umd.js',
+        PLATFORM_BROWSER_ANGULAR_JS: paths.PLATFORM_BROWSER_ANGULAR + 'platform-browser.umd.js',
+        PLATFORM_BROWSER_DYNAMIC_ANGULAR_JS: paths.PLATFORM_BROWSER_DYNAMIC_ANGULAR + 'platform-browser-dynamic.umd.js',
       };
     })(this.PATHS);
 

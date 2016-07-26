@@ -1,3 +1,3 @@
 document.addEventListener('DOMContentLoaded', function () {
-  ng.platform.browser.bootstrap(isolatedDirectives, []);
+  ng.platformBrowserDynamic.bootstrap(isolatedDirectives);
 });

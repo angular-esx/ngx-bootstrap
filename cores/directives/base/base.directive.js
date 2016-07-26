@@ -92,7 +92,7 @@ function _ngxBaseDirective() {
   };
 
   this.buildCssClassForProperty = function(propertyName, propertyValue){
-    if(ngx.isEmpty(propertyName) || ngx.isNull(propertyValue)){ return ''; } 
+    if (ngx.isEmpty(propertyName) || ngx.isEmpty(propertyValue)) { return ''; }
 
     var _parts = [],
         _prefixClass = this.getPrefixClass(),

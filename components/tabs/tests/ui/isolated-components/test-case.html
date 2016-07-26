@@ -3,13 +3,12 @@
 
 <ngx-tabs (onChangedTab)="changedTab($event)">
   <ngx-tab id="tab01">
-    <template ngx-tab-header>
-      <ngx-item>Tab 01</ngx-item>
-    </template>
-    This is content of tab 01
+    <template ngx-tab-header>Tab 01</template>
+    <template ngx-tab-content>This is content of tab 01</template>
   </ngx-tab>
   
-  <ngx-tab header="Tab 02" state="disabled">
+  <ngx-tab state="disabled">
+    <template ngx-tab-header>Tab 02</template>
     <template ngx-tab-content>This is content of tab 02</template>
   </ngx-tab>
 
@@ -37,16 +36,13 @@
 
 <ngx-tabs type="pill" (onChangedTab)="changedTab($event)">
   <ngx-tab id="tab02">
-    <template ngx-tab-header>
-      <div>Tab 01</div>
-    </template>
-    This is content of tab 01
+    <template ngx-tab-header>Tab 01</template>
+    <template ngx-tab-content>This is content of tab 01</template>
   </ngx-tab>
 
-  <ngx-tab header="Tab 02" state="disabled">
-    <template ngx-tab-content>
-      This is content of tab 02
-    </template>
+  <ngx-tab state="disabled">
+    <template ngx-tab-header>Tab 01</template>
+    <template ngx-tab-content>This is content of tab 01</template>
   </ngx-tab>
 
   <ngx-tab *ngFor="let tab of pillTabs" [id]="tab.id">

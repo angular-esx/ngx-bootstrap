@@ -38,7 +38,6 @@ var isolatedComponents = ng.core.Component({
     ngx.tabs.DIRECTIVES
   ],
   providers: [
-    ngx.core.animationService,
     ngx.tabs.PROVIDERS
   ]
 })

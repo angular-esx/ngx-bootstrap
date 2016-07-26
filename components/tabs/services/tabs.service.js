@@ -5,18 +5,12 @@
     SELECT_TAB: 'SELECT_TAB'
   };
 
-  this.constructor = [
-    ngx.core.animationService,
-
-    function ngxTabsService(ngxAnimationService) {
-      ngx.shallowCopy(this, ngxAnimationService);
-
-      this.ngxTabs$ = new Rx.Observable(function (observer) {
-        _observer = observer;
-      })
-    .share();
-    }
-  ];
+  this.constructor = function ngxTabsService() {
+    this.ngxTabs$ = new Rx.Observable(function (observer) {
+      _observer = observer;
+    })
+  .share();
+  };
 
   this.getActions = function () {
     return ngx.shallowCopy({}, _ACTIONS);

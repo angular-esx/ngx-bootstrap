@@ -1,6 +1,5 @@
 ﻿var ngxTabDirective = require('./tab.directive.js');
 var ngxTabsService = require('./services/tabs.service.js');
-var ngxTranscludeDirective = require('cores/directives/transclude/transclude.directive.js');
 
 function _ngxTabsComponent() {
   var _base;
@@ -128,14 +127,11 @@ function _ngxTabsComponent() {
       this.currentActiveTab = { index: index, item: tab };
     }
     
-    var _self = this;
-    setTimeout(function(){
-      _self.currentActiveTab.item.activate(true);
+    this.currentActiveTab.item.activate(true);
 
-      _self.changedTabEmitter.emit({
-        id: tab.id
-      });
-    }, 0.3 * 1000);
+    this.changedTabEmitter.emit({
+      id: tab.id
+    });
   };
   
   this.trackByTabs = function (index, tab) {
@@ -152,7 +148,7 @@ module.exports = ng.core.Component({
   selector: 'ngx-tabs',
   template: require('./themes/' + __THEME__ + '/templates/tabs.html'),
   styles: [require('./themes/' + __THEME__  + '/scss/tabs.scss')],
-  directives: [ngxTranscludeDirective],
+  directives: [ngx.core.portalHostDirective],
   properties: ['type', 'initCssClass:class'],
   events: ['changingTabEmitter: onChangingTab', 'changedTabEmitter: onChangedTab'],
   queries: {

@@ -92,7 +92,6 @@ module.exports = function (params) {
 
           /** core directives **/
           baseDirective: 'cores/directives/base/base.directive.js',
-          transcludeDirective: 'cores/directives/transclude/transclude.directive.js',
 
           /** core services **/
           animationService: 'cores/services/animation.service.js',

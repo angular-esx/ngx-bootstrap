@@ -88,16 +88,16 @@ function _ngxHideUpDirective() {
   };
 }
 
-module.exports = [
-  ng.core.Directive({
+module.exports = {
+  hideUp: ng.core.Directive({
     selector: '[ngx-hide-up]',
     properties: ['breakpoint:ngx-hide-up', 'initCssClass:class']
   })
   .Class(new _ngxHideUpDirective()),
 
-  ng.core.Directive({
+  hideDown: ng.core.Directive({
     selector: '[ngx-hide-down]',
     properties: ['breakpoint:ngx-hide-down', 'initCssClass:class']
   })
   .Class(new _ngxHideDownDirective())
-];
+};

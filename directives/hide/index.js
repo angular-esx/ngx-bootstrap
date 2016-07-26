@@ -1,9 +1,10 @@
 ﻿var ngx = require('ngx');
-var ngxHideDirective = require('./hide.directive.js');
+var ngxHideDirectives = require('./hide.directive.js');
 
 ngx.hide = {
-  hideDirective: ngxHideDirective,
-  DIRECTIVES: [ ngxHideDirective ]
+  hideUpDirective: ngxHideDirectives.hideUp,
+  hideDownDirective: ngxHideDirectives.hideDown,
+  DIRECTIVES: [ngxHideDirectives.hideUp, ngxHideDirectives.hideDown]
 };
 
 module.exports = ngx;

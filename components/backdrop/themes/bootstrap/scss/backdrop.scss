@@ -1,0 +1,17 @@
+﻿@import "_variables.scss";
+
+:host(.ngx-backdrop).ngx-backdrop-state-active {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+
+  &.ngx-backdrop-color-default {
+    background-color: $ngx-backdrop-background-color-default;
+  }
+  &.ngx-backdrop-color-transparent {
+    background-color: transparent;
+  }
+}

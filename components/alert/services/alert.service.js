@@ -23,21 +23,21 @@
   };
 
   this.next = function (event) {
-    _observer.next(event);
+    if (_observer) { _observer.next(event); }
   };
 
   this.getShow$ = function (alertId) {
     return Rx.Observable.from([{ id: alertId, type: _ACTIONS.SHOW_ALERT }]);
   };
   this.show = function (alertId) {
-    _observer.next({ id: alertId, type: _ACTIONS.SHOW_ALERT });
+    this.next({ id: alertId, type: _ACTIONS.SHOW_ALERT });
   };
 
   this.getDismiss$ = function (alertId) {
     return Rx.Observable.from([{ id: alertId, type: _ACTIONS.DISMISS_ALERT }]);
   };
   this.dismiss = function (alertId) {
-    _observer.next({ id: alertId, type: _ACTIONS.DISMISS_ALERT });
+    this.next({ id: alertId, type: _ACTIONS.DISMISS_ALERT });
   };
 }
 

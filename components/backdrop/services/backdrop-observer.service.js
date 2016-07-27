@@ -24,28 +24,28 @@
   };
 
   this.next = function (event) {
-    _observer.next(event);
+    if (_observer) { _observer.next(event); }
   };
 
   this.getShow$ = function () {
     return Rx.Observable.from([{ type: _ACTIONS.SHOW_BACKDROP }]);
   };
   this.show = function () {
-    _observer.next({ type: _ACTIONS.SHOW_BACKDROP });
+    this.next({ type: _ACTIONS.SHOW_BACKDROP });
   };
 
   this.getHide$ = function () {
     return Rx.Observable.from([{ type: _ACTIONS.HIDE_BACKDROP }]);
   };
   this.hide = function () {
-    _observer.next({ type: _ACTIONS.HIDE_BACKDROP });
+    this.next({ type: _ACTIONS.HIDE_BACKDROP });
   };
 
   this.getClick$ = function (isActive) {
     return Rx.Observable.from([{ isActive: isActive, type: _ACTIONS.CLICK_BACKDROP }]);
   };
   this.click = function (isActive) {
-    _observer.next({ isActive: isActive, type: _ACTIONS.CLICK_BACKDROP });
+    this.next({ isActive: isActive, type: _ACTIONS.CLICK_BACKDROP });
   };
 }
 

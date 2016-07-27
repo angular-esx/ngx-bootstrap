@@ -17,21 +17,21 @@
   };
 
   this.next = function (event) {
-    _observer.next(event);
+    if (_observer) { _observer.next(event); }
   };
 
   this.getEnable$ = function (tabId, isEnabled) {
     return Rx.Observable.from([{ id: tabId, isEnabled: isEnabled, type: _ACTIONS.ENABLE_TAB }]);
   };
   this.enable = function (tabId, isEnabled) {
-    _observer.next({ id: tabId, isEnabled: isEnabled, type: _ACTIONS.ENABLE_TAB });
+    this.next({ id: tabId, isEnabled: isEnabled, type: _ACTIONS.ENABLE_TAB });
   };
 
   this.getSelect$ = function (tabId) {
     return Rx.Observable.from([{ id: tabId, type: _ACTIONS.SELECT_TAB }]);
   };
   this.select = function (tabId) {
-    _observer.next({ id: tabId, type: _ACTIONS.SELECT_TAB });
+    this.next({ id: tabId, type: _ACTIONS.SELECT_TAB });
   };
 }
 

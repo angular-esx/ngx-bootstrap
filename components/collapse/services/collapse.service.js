@@ -24,28 +24,28 @@
   };
 
   this.next = function (event) {
-    _observer.next(event);
+    if (_observer) { _observer.next(event); }
   };
 
   this.getToggle$ = function (collapseId) {
     return Rx.Observable.from([{ id: collapseId, type: _ACTIONS.TOGGLE_COLLAPSE }]);
   };
   this.toggle = function (collapseId) {
-    _observer.next({ id: collapseId, type: _ACTIONS.TOGGLE_COLLAPSE });
+    this.next({ id: collapseId, type: _ACTIONS.TOGGLE_COLLAPSE });
   };
 
   this.getShow$ = function (collapseId, groupId) {
     return Rx.Observable.from([{ id: collapseId, group: groupId, type: _ACTIONS.SHOW_COLLAPSE }]);
   };
   this.show = function (collapseId, groupId) {
-    _observer.next({ id: collapseId, group: groupId, type: _ACTIONS.SHOW_COLLAPSE });
+    this.next({ id: collapseId, group: groupId, type: _ACTIONS.SHOW_COLLAPSE });
   };
 
   this.getHide$ = function (collapseId, groupId) {
     return Rx.Observable.from([{ id: collapseId, group: groupId, type: _ACTIONS.HIDE_COLLAPSE }]);
   };
   this.hide = function (collapseId, groupId) {
-    _observer.next({ id: collapseId, group: groupId, type: _ACTIONS.HIDE_COLLAPSE });
+    this.next({ id: collapseId, group: groupId, type: _ACTIONS.HIDE_COLLAPSE });
   };
 }
 

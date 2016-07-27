@@ -23,21 +23,21 @@
   };
 
   this.next = function (event) {
-    _observer.next(event);
+    if (_observer) { _observer.next(event); }
   };
 
   this.getShow$ = function (modalId) {
     return Rx.Observable.from([{ id: modalId, type: _ACTIONS.SHOW_MODAL }]);
   };
   this.show = function (modalId) {
-    _observer.next({ id: modalId, type: _ACTIONS.SHOW_MODAL });
+    this.next({ id: modalId, type: _ACTIONS.SHOW_MODAL });
   };
 
   this.getHide$ = function (modalId) {
     return Rx.Observable.from([{ id: modalId, type: _ACTIONS.HIDE_MODAL }]);
   };
   this.hide = function (modalId) {
-    _observer.next({ id: modalId, type: _ACTIONS.HIDE_MODAL });
+    this.next({ id: modalId, type: _ACTIONS.HIDE_MODAL });
   };
 }
 

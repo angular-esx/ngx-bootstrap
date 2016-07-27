@@ -89,16 +89,6 @@ function _ngxBackdropComponent() {
     });
   };
 
-  this.setOptions = function (options) {
-    if (!ngx.isNull(options)) {
-      var _styleProperties = this.getStyleProperties();
-
-      this.color = ngx.isEmpty(options[_styleProperties.COLOR]) ? 'default' : options[_styleProperties.COLOR];
-    }
-
-    return this;
-  };
-
   this.show = function () {
     if (this.isActive) { return; }
 

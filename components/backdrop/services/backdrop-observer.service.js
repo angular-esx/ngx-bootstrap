@@ -1,4 +1,4 @@
-﻿function _ngxBackdropObserverService() {
+﻿function _ngxBackdropObserver() {
   var _observer;
   var _ACTIONS = {
     SHOW_BACKDROP: 'SHOW_BACKDROP',
@@ -9,7 +9,7 @@
   this.constructor = [
     ngx.core.animationService,
 
-    function ngxBackdropObserverService(ngxAnimationService) {
+    function ngxBackdropObserver(ngxAnimationService) {
       ngx.shallowCopy(this, ngxAnimationService);
 
       this.ngxBackdrop$ = new Rx.Observable(function (observer) {
@@ -49,4 +49,4 @@
   };
 }
 
-module.exports = ng.core.Class(new _ngxBackdropObserverService());
+module.exports = ng.core.Class(new _ngxBackdropObserver());

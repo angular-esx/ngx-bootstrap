@@ -57,7 +57,8 @@ function _ngxPortalHostDirective() {
       .then(function (componentFactory) {
         var _componentRef = _viewContainerRef.createComponent
         (
-          componentFactory, _viewContainerRef.length,
+          componentFactory,
+          _viewContainerRef.length,
           portal.injector || _viewContainerRef.parentInjector
         );
 

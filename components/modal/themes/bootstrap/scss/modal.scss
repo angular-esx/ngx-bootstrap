@@ -1,0 +1,110 @@
+﻿@import "../../../../../cores/themes/bootstrap/breakpoint/breakpoint.scss";
+@import "../../../../../cores/themes/bootstrap/state/state.scss";
+
+@import "_variables.scss";
+
+:host(.ngx-modal) {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $ngx-modal-index;
+  display: none;
+  overflow: hidden;
+  outline: 0;
+  -webkit-overflow-scrolling: touch;
+
+  &.ngx-modal-state-active {
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  > .ngx-modal-dialog {
+    position: relative;
+    width: auto;
+    margin: $ngx-modal-dialog-margin;
+
+    > .ngx-modal-content {
+      position: relative;
+      background-color: $ngx-modal-content-background-color;
+      background-clip: padding-box;
+      border: $ngx-modal-content-border;
+      border-radius: $ngx-modal-content-border-radius;
+      outline: 0;
+
+      > .ngx-modal-header {
+        display: block;
+        padding: $ngx-modal-header-padding;
+        border-bottom: $ngx-modal-header-border-bottom;
+        
+        @include ngx-clearfix();
+
+        > .ngx-modal-dismiss {
+          font-size: 1.5rem;
+          font-weight: 700;
+          line-height: 1;
+          color: ngx-color-dark($ngx-color-gray);
+          background: transparent;
+          padding: 0;
+          margin-top: -2px;
+          border: 0;
+          opacity: .2;
+          position: relative;
+          float: right;
+          top: -2px;
+          text-decoration: none;
+          cursor: pointer;
+          -webkit-appearance: none;
+
+          @include ngx-state(ngx-alert-dismiss, 'focus hover'){
+            opacity: .5;
+          }
+        }
+
+        > .ngx-modal-title {
+          margin: 0;
+          line-height: $ngx-modal-title-line-height;
+        }
+      }
+    
+      > .ngx-modal-body {
+        position: relative;
+        padding: $ngx-modal-body-padding;
+      }
+      
+      > .ngx-modal-footer {
+        display: block;
+        padding: $ngx-modal-body-padding;
+        text-align: right;
+        border-top: $ngx-modal-footer-border-top;
+        
+        @include ngx-clearfix();
+      }  
+    }
+  }
+}
+
+@include ngx-media-breakpoint-up(sm) {
+  :host(.ngx-modal) {
+    > .ngx-modal-dialog {
+      width: $ngx-modal-width-md;
+      margin: 30px auto;
+    }
+  }
+
+  :host(.ngx-modal).ngx-modal-size-small {
+    > .ngx-modal-dialog {
+      width: $ngx-modal-width-sm;
+    }
+  }
+}
+
+@include ngx-media-breakpoint-up(md) {
+  :host(.ngx-modal).ngx-modal-size-large {
+    > .ngx-modal-dialog {
+      width: $ngx-modal-width-lg;
+    }
+  }
+}

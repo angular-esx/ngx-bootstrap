@@ -41,6 +41,7 @@ module.exports = function (params) {
         tabs: 'components/tabs/index.js',
         tooltip: 'components/tooltip/index.js',
         backdrop: 'components/backdrop/index.js',
+        modal: 'components/modal/index.js',
         /** directives **/
         checkbox: 'directives/checkbox/index.js',
         hide: 'directives/hide/index.js',

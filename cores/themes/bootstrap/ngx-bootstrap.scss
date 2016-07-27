@@ -20,3 +20,7 @@
     -o-transition-property: height, visibility;
     transition-property: height, visibility;
 }
+
+body.ngx-modal-state-active {
+  overflow: hidden;
+}

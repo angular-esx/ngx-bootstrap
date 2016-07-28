@@ -1,9 +1,10 @@
-﻿var ngxRadioGroupDirective = require('./radio-group.directive.js');
+﻿var ngCore = require('@angular/core/index.js');
+var ngxRadioGroupDirective = require('./radio-group.directive.js');
 
 function _ngxRadioDirective() {
   this.constructor = [
-    ng.core.ElementRef,
-    [new ng.core.Optional(), ngxRadioGroupDirective],
+    ngCore.ElementRef,
+    [new ngCore.Optional(), ngxRadioGroupDirective],
 
     function ngxRadioDirective(elementRef, ngxRadioGroup) {
       if (!ngxRadioGroup) { throw 'ngxRadioGroup is required'; }
@@ -25,7 +26,7 @@ function _ngxRadioDirective() {
   };
 }
 
-module.exports = ng.core.Directive({
+module.exports = ngCore.Directive({
   selector: '[ngx-radio]',
   properties: ['value:ngx-radio-value'],
   host: {

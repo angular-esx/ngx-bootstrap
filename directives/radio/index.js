@@ -1,14 +1,11 @@
-var ngx = require('ngx');
 var ngxRadioDirective = require('./radio.directive.js');
 var ngxRadioGroupDirective = require('./radio-group.directive.js');
 
-ngx.radio = {
+module.exports = {
   radioDirective: ngxRadioDirective,
   radioGroupDirective: ngxRadioGroupDirective,
-  DIRECTIVES: [ 
-    ngxRadioDirective, 
-    ngxRadioGroupDirective 
+  RADIO_DIRECTIVES: [
+    ngxRadioDirective,
+    ngxRadioGroupDirective
   ]
 };
-
-module.exports = ngx;

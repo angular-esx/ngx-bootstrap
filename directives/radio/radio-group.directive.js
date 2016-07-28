@@ -1,12 +1,14 @@
-﻿function _ngxRadioGroupDirective() {
+﻿var ngCore = require('@angular/core/index.js');
+
+function _ngxRadioGroupDirective() {
   this.constructor = [
-    ng.core.ElementRef,
+    ngCore.ElementRef,
 
     function ngxRadioGroupDirective(elementRef) {
       this.elementRef = elementRef;
 
       if (elementRef) {
-        this.radioModelChange = new ng.core.EventEmitter();
+        this.radioModelChange = new ngCore.EventEmitter();
       }
     }
   ];
@@ -17,7 +19,7 @@
   };
 }
 
-module.exports = ng.core.Directive({
+module.exports = ngCore.Directive({
   selector: '[ngx-radio-group]',
   properties: ['id: ngx-radio-group', 'model:radioModel'],
   events: ['radioModelChange']

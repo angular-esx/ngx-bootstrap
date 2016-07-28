@@ -1,14 +1,18 @@
-﻿function _ngxGridColumnDirective() {
+﻿var ngCore = require('@angular/core/index.js');
+var ngxCore = require('../../cores/index.js');
+var ngxUtil = ngxCore.utils;
+
+function _ngxGridColumnDirective() {
   var _base, _STYLE_PROPERTIES;
 
-  this.extends = ngx.core.baseDirective;
+  this.extends = ngxCore.baseDirective;
 
   this.constructor = [
-    ng.core.ElementRef,
-    ng.core.Renderer,
+    ngCore.ElementRef,
+    ngCore.Renderer,
 
     function ngxGridColumnDirective(elementRef, renderer) {
-      ngx.core.baseDirective.apply(this, arguments);
+      ngxCore.baseDirective.apply(this, arguments);
     }
   ];
 
@@ -25,7 +29,7 @@
         ALIGN_SELF: 'alignSelf'
       };
 
-      ngx.shallowCopy(_STYLE_PROPERTIES, _getBaseInstance(this).getStyleProperties.apply(this));
+      ngxUtil.shallowCopy(_STYLE_PROPERTIES, _getBaseInstance(this).getStyleProperties.apply(this));
     }
 
     return _STYLE_PROPERTIES;
@@ -40,7 +44,7 @@
       propertyName === _styleProperties.ORDER ||
       propertyName === _styleProperties.ALIGN_SELF
     ){
-      if (ngx.isEmpty(propertyValue)) { return ''; }
+      if (ngxUtil.isEmpty(propertyValue)) { return ''; }
 
       var _parts,
           _cssClasses = [],
@@ -51,7 +55,7 @@
                           .replace(/^-/, '')
                           .toLowerCase();
 
-      ngx.forEach(_values, function (value) {
+      ngxUtil.forEach(_values, function (value) {
         _parts = value.split('-');
 
         if (_parts.length === 2) {
@@ -70,12 +74,12 @@
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngx.core.baseDirective); }
+    if (!_base) { _base = context.getBaseInstance(ngxCore.baseDirective); }
     return _base;
   }
 }
 
-module.exports = ng.core.Directive({
+module.exports = ngCore.Directive({
   selector: 'ngx-grid-col',
   properties: ['size', 'offset', 'order', 'alignSelf:align-self', 'initCssClass:class']
 })

@@ -1,4 +1,7 @@
-﻿function _testCase() {
+﻿var ngCore = require('@angular/core/index.js');
+var ngxGrid = require('../../../../grid/index.js');
+
+function _testCase() {
   this.constructor = function () {
     this.items = [];
 
@@ -9,11 +12,11 @@
   };
 }
 
-var isolatedComponents = ng.core.Component({
+module.exports = ngCore.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/grid/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngx.grid.DIRECTIVES
+    ngxGrid.GRID_DIRECTIVES
   ]
 })
 .Class(new _testCase());

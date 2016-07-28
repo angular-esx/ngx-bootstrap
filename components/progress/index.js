@@ -1,9 +1,6 @@
-var ngx = require('ngx');
 var ngxProgressComponent = require('./progress.component.js'); 
 
-ngx.progress = {
+module.exports = {
   progressComponent: ngxProgressComponent,
-  DIRECTIVES: [ ngxProgressComponent ]
+  PROGRESS_DIRECTIVES: [ngxProgressComponent]
 };
-
-module.exports = ngx;

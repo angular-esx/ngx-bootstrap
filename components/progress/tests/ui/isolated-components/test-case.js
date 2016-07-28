@@ -1,4 +1,7 @@
-﻿function _testCase() {
+﻿var ngCore = require('@angular/core/index.js');
+var ngxProgress = require('../../../../progress/index.js');
+
+function _testCase() {
   this.constructor = function () {
     this.progresses = {
       warning: { value: 75, max: 100 },
@@ -7,11 +10,11 @@
   };
 }
 
-var isolatedComponents = ng.core.Component({
+module.exports = ngCore.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/progress/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngx.progress.DIRECTIVES
+    ngxProgress.PROGRESS_DIRECTIVES
   ]
 })
 .Class(new _testCase());

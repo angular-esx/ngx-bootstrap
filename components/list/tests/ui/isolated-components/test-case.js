@@ -1,4 +1,7 @@
-﻿function _testCase() {
+﻿var ngCore = require('@angular/core/index.js');
+var ngxList = require('../../../../list/index.js');
+
+function _testCase() {
   this.constructor = function () {};
 
   this.click = function (event) {
@@ -7,11 +10,11 @@
   };
 }
 
-var isolatedComponents = ng.core.Component({
+module.exports = ngCore.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/list/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngx.list.DIRECTIVES
+    ngxList.LIST_DIRECTIVES
   ]
 })
 .Class(new _testCase());

@@ -1,10 +1,12 @@
-﻿function _ngxTranscludeDirective() {
+﻿var ngCores = require('@angular/core/index.js');
+
+function _ngxTranscludeDirective() {
   var _ATTRIBUTES = {
     TEMPLATE_REF: 'templateRef'
   };
 
   this.constructor = [
-    ng.core.ViewContainerRef,
+    ngCores.ViewContainerRef,
 
     function ngxTranscludeDirective(viewContainerRef) {
       this.viewContainerRef = viewContainerRef;
@@ -18,7 +20,7 @@
   };
 }
 
-module.exports = ng.core.Directive({
+module.exports = ngCores.Directive({
   selector: '[ngxTransclude]',
   properties: ['templateRef:ngxTransclude']
 })

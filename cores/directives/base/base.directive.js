@@ -1,4 +1,5 @@
-﻿var ngx = require('utils');
+﻿var ngCore = require('@angular/core/index.js');
+var ngxUtil = require('../../utils.js');
 
 function _ngxBaseDirective() {
   var _STYLE_PROPERTIES = {
@@ -10,8 +11,8 @@ function _ngxBaseDirective() {
   };
 
   this.constructor = [
-    ng.core.ElementRef,
-    ng.core.Renderer,
+    ngCore.ElementRef,
+    ngCore.Renderer,
 
     function ngxBaseDirective(elementRef, renderer) {
       if (!elementRef) { throw 'elementRef is required'; }
@@ -36,7 +37,7 @@ function _ngxBaseDirective() {
     if(_changeRecord){ 
       this.ngOnChanges(_changeRecord); 
     }
-    else if(ngx.isEmpty(this.cssClass) && this.getPrefixClass()){
+    else if(ngxUtil.isEmpty(this.cssClass) && this.getPrefixClass()){
       var _cssClasses = [this.getPrefixClass()];
       if(this.initCssClass){ _cssClasses.push(this.initCssClass); }
 
@@ -75,7 +76,7 @@ function _ngxBaseDirective() {
 
     if(_prefixClass){ _cssClasses.push(_prefixClass); }
 
-    ngx.forEach(_styleProperties, function(prop){
+    ngxUtil.forEach(_styleProperties, function(prop){
       if(changeRecord.hasOwnProperty(prop)){
         _cssClass = _self.buildCssClassForProperty(prop, changeRecord[prop].currentValue);
       }
@@ -92,7 +93,7 @@ function _ngxBaseDirective() {
   };
 
   this.buildCssClassForProperty = function(propertyName, propertyValue){
-    if(ngx.isEmpty(propertyName) || ngx.isNull(propertyValue)){ return ''; } 
+    if(ngxUtil.isEmpty(propertyName) || ngxUtil.isNull(propertyValue)){ return ''; } 
 
     var _parts = [],
         _prefixClass = this.getPrefixClass(),
@@ -104,7 +105,7 @@ function _ngxBaseDirective() {
     if(propertyValue.trim().indexOf(' ') > -1){
       var _cssClasses = [];
 
-      ngx.forEach(propertyValue.split(' '), function(value) {
+      ngxUtil.forEach(propertyValue.split(' '), function(value) {
         _parts.length = 0;  
         
         if(_prefixClass){ _parts.push(_prefixClass); }
@@ -141,19 +142,19 @@ function _ngxBaseDirective() {
   };
 
   this.propertyHasValue = function(propertyName, value){
-    if(ngx.isEmpty(propertyName) || ngx.isEmpty(value) || ngx.isEmpty(this[propertyName])){ return false; }
+    if(ngxUtil.isEmpty(propertyName) || ngxUtil.isEmpty(value) || ngxUtil.isEmpty(this[propertyName])){ return false; }
 
     return this[propertyName].indexOf(value) > -1;
   };
 
   this.addValueToProperty = function(propertyName, value){
-    if(ngx.isEmpty(propertyName) || ngx.isEmpty(value)) { return; }
+    if(ngxUtil.isEmpty(propertyName) || ngxUtil.isEmpty(value)) { return; }
 
-    this[propertyName] = ((ngx.isNull(this[propertyName]) ? '' : this[propertyName]) + ' ' + value).trim();
+    this[propertyName] = ((ngxUtil.isNull(this[propertyName]) ? '' : this[propertyName]) + ' ' + value).trim();
   };
 
   this.removeValueFromProperty = function(propertyName, value){
-    if(ngx.isEmpty(propertyName) || ngx.isEmpty(value) || ngx.isEmpty(this[propertyName])) { return; }
+    if(ngxUtil.isEmpty(propertyName) || ngxUtil.isEmpty(value) || ngxUtil.isEmpty(this[propertyName])) { return; }
 
     this[propertyName] = this[propertyName].replace(new RegExp(value, 'g'), '').trim();
   };
@@ -190,4 +191,4 @@ function _ngxBaseDirective() {
   }
 }
 
-module.exports = ng.core.Class(new _ngxBaseDirective());
+module.exports = ngCore.Class(new _ngxBaseDirective());

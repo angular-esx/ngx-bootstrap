@@ -1,6 +1,4 @@
-var ngx = {};
-
-ngx.shallowCopy = function (target, source, overrideTarget, onCopying) {
+function shallowCopy(target, source, overrideTarget, onCopying) {
   for (var prop in source) {
     if (!target[prop] || (target[prop] && overrideTarget)) {
       if (!onCopying || onCopying(prop)) {
@@ -10,35 +8,35 @@ ngx.shallowCopy = function (target, source, overrideTarget, onCopying) {
   }
 
   return target;
-};
+}
 
-ngx.newGUID = function () {
+function newGUID() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (char) {
     var _random = Math.random() * 16 | 0;
     return (char === 'x' ? _random : (_random & 0x3 | 0x8)).toString(16);
   });
-};
+}
 
-ngx.isString = function (target) {
+function isString(target) {
   return target && typeof (target) === 'string';
-};
-ngx.isObject = function (target) {
+}
+function isObject(target) {
   return target && typeof (target) === 'object';
-};
-ngx.isArray = function (target) {
+}
+function isArray(target) {
   return target && Object.prototype.toString.call(target) === '[object Array]';
-};
-ngx.isFunction = function (target) {
+}
+function isFunction(target) {
   return target && typeof (target) === 'function';
-};
-ngx.isNull = function(target){
+}
+function isNull (target) {
   return target === undefined || target === null; 
-};
-ngx.isEmpty = function(target) {
+}
+function isEmpty (target) {
   return ngx.isNull(target) || target === '';
-};
+}
 
-ngx.distinct = function (target) {
+function distinct (target) {
   if (!ngx.isArray(target)) {
     return target;
   }
@@ -51,8 +49,8 @@ ngx.distinct = function (target) {
   });
 
   return _result;
-};
-ngx.forEach = function (target, callback) {
+}
+function forEach (target, callback) {
   if (target && callback) {
     if (ngx.isArray(target)) {
       for (var i = 0, length = target.length; i < length; i++) {
@@ -69,9 +67,9 @@ ngx.forEach = function (target, callback) {
       }
     }
   }
-};
+}
 
-ngx.splice = function(target, item, compareTo){
+function splice (target, item, compareTo){
   if (!ngx.isArray(target)) {
     return target;
   }
@@ -85,6 +83,18 @@ ngx.splice = function(target, item, compareTo){
       return true;
     }
   });
-}; 
+}
 
-module.exports = ngx;
+module.exports = {
+  shallowCopy: shallowCopy,
+  newGUID: newGUID,
+  isString: isString,
+  isObject: isObject,
+  isArray: isArray,
+  isFunction: isFunction,
+  isNull: isNull,
+  isEmpty: isEmpty,
+  distinct: distinct,
+  forEach: forEach,
+  splice: splice
+};

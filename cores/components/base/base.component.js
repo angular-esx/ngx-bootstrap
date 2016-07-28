@@ -1,5 +1,5 @@
-﻿var ngxBaseDirective = require('baseDirective');
-var ngx = require('utils');
+﻿var ngCore = require('@angular/core/index.js');
+var ngxBaseDirective = require('../../directives/base/base.directive.js');
 
 function _ngxBaseComponent() {
   var _base;
@@ -7,8 +7,8 @@ function _ngxBaseComponent() {
   this.extends = ngxBaseDirective;
 
   this.constructor = [
-    ng.core.ElementRef,
-    ng.core.Renderer,
+    ngCore.ElementRef,
+    ngCore.Renderer,
 
     function ngxBaseComponent(elementRef, renderer) {
       ngxBaseDirective.apply(this, arguments);
@@ -25,4 +25,4 @@ function _ngxBaseComponent() {
   }
 }
 
-module.exports = ng.core.Class(new _ngxBaseComponent());
+module.exports = ngCore.Class(new _ngxBaseComponent());

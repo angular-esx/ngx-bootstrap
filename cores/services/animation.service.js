@@ -1,3 +1,5 @@
+var ngCore = require('@angular/core/index.js');
+
 function _ngxAnimationService() {
   this.constructor = [
     
@@ -99,4 +101,4 @@ function _ngxAnimationService() {
   // };
 }
 
-module.exports = ng.core.Class(new _ngxAnimationService());
+module.exports = ngCore.Class(new _ngxAnimationService());

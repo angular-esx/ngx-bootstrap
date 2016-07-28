@@ -1,18 +1,22 @@
-﻿function _ngxCheckboxGroupDirective() {
+﻿var ngCore = require('@angular/core/index.js');
+var ngxCore = require('../../cores/index.js');
+var ngxUtil = ngxCore.utils;
+
+function _ngxCheckboxGroupDirective() {
   this.constructor = [
-    ng.core.ElementRef,
+    ngCore.ElementRef,
 
     function ngxCheckboxGroupDirective(elementRef) {
        this.elementRef = elementRef;
 
       if (elementRef) {
-        this.checkboxModelChange = new ng.core.EventEmitter();
+        this.checkboxModelChange = new ngCore.EventEmitter();
       }
     }
   ];
 
   this.hasValue = function (value) {
-    return ngx.isArray(this.model) ? this.model.indexOf(value) !== -1 : this.model === value;
+    return ngxUtil.isArray(this.model) ? this.model.indexOf(value) !== -1 : this.model === value;
   };
 
   this.addOrRemoveValue = function (value) {
@@ -27,7 +31,7 @@
   };
 }
 
-module.exports = ng.core.Directive({
+module.exports = ngCore.Directive({
   selector: '[ngx-checkbox-group]',
   properties: ['model:checkboxModel'],
   events: ['checkboxModelChange']

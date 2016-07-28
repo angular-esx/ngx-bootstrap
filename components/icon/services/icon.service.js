@@ -1,4 +1,7 @@
-﻿function _ngxIconService() {
+﻿var ngCore = require('@angular/core/index.js');
+var ngHttp = require('@angular/http/index.js');
+
+function _ngxIconService() {
   var _defaultFontSet = '',
       _iconFontAlias = {};
 
@@ -9,7 +12,7 @@
       _fetchingSvgIcons = {};
 
   this.constructor = [
-    ng.http.Http,
+    ngHttp.Http,
 
     function ngxIconService(httpService) {
       this.httpService = httpService;
@@ -191,4 +194,4 @@
   }
 }
 
-module.exports = ng.core.Class(new _ngxIconService());
+module.exports = ngCore.Class(new _ngxIconService());

@@ -1,14 +1,17 @@
+var ngCore = require('@angular/core/index.js');
+var ngxCore = require('../../cores/index.js');
+
 function _breadcrumbComponent() {
   var _base;
   
-  this.extends = ngx.core.baseComponent;
+  this.extends = ngxCore.baseComponent;
   
   this.constructor = [
-    ng.core.ElementRef,
-    ng.core.Renderer,
+    ngCore.ElementRef,
+    ngCore.Renderer,
 
     function breadcrumbComponent(elementRef, renderer) {
-      ngx.core.baseComponent.apply(this, arguments);
+      ngxCore.baseComponent.apply(this, arguments);
     }
   ];
   
@@ -17,12 +20,12 @@ function _breadcrumbComponent() {
   };
 
   function _getBaseInstance(context){ 
-    if(!_base){ _base = context.getBaseInstance(ngx.core.baseComponent); }
+    if(!_base){ _base = context.getBaseInstance(ngxCore.baseComponent); }
     return _base;
   }
 }
 
-module.exports = ng.core.Component({
+module.exports = ngCore.Component({
   selector: 'ngx-breadcrumb',
   template: require('./themes/' + __THEME__ + '/templates/breadcrumb.html'),
   styles: [require('./themes/' + __THEME__  + '/scss/breadcrumb.scss')],

@@ -1,8 +1,10 @@
-﻿function _ngxBreadcrumbItemDirective() {
+﻿var ngCore = require('@angular/core/index.js');
+
+function _ngxBreadcrumbItemDirective() {
   this.constructor = function ngxBreadcrumbItemDirective() { };
 }
 
-module.exports = ng.core.Directive({
+module.exports = ngCore.Directive({
   selector: '[ngx-breadcrumb-item]',
   host: {
     '[class.ngx-breadcrumb-item]': 'true'

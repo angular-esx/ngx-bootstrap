@@ -1,9 +1,6 @@
-﻿var ngx = require('ngx');
-var ngxLinkComponent = require('./link.component.js');
+﻿var ngxLinkComponent = require('./link.component.js');
 
-ngx.link = {
+module.exports = {
   linkComponent: ngxLinkComponent,
-  DIRECTIVES: [ ngxLinkComponent ]
+  LINK_DIRECTIVES: [ngxLinkComponent]
 };
-
-module.exports = ngx;

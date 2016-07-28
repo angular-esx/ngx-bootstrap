@@ -1,17 +1,21 @@
-﻿function _ngxLinkComponent() {
+﻿var ngCore = require('@angular/core/index.js');
+var ngxCore = require('../../cores/index.js');
+var ngxUtil = ngxCore.utils;
+
+function _ngxLinkComponent() {
   var _base;
 
-  this.extends = ngx.core.baseComponent;
+  this.extends = ngxCore.baseComponent;
 
   this.constructor = [
-    ng.core.ElementRef,
-    ng.core.Renderer,
+    ngCore.ElementRef,
+    ngCore.Renderer,
 
     function ngxLinkComponent(elementRef, renderer) {
-      ngx.core.baseComponent.apply(this, arguments);
+      ngxCore.baseComponent.apply(this, arguments);
 
       if (elementRef) {
-        this.clickEmitter = new ng.core.EventEmitter();
+        this.clickEmitter = new ngCore.EventEmitter();
       }
     }
   ];
@@ -26,12 +30,12 @@
     var _styleProperties = this.getStyleProperties(),
         _changeRecord;
 
-    if(ngx.isEmpty(this.color)){ 
+    if(ngxUtil.isEmpty(this.color)){ 
       this.color = 'primary';
       _changeRecord = this.buildChangeRecord(_styleProperties.COLOR, this.color);
      }
 
-    if(ngx.isEmpty(this.state) && ngx.isNull(this.isDisabled)){ this.isDisabled = false; }
+    if(ngxUtil.isEmpty(this.state) && ngxUtil.isNull(this.isDisabled)){ this.isDisabled = false; }
 
     return _changeRecord;
   };
@@ -51,12 +55,12 @@
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngx.core.baseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngxCore.baseComponent); }
     return _base;
   }
 }
 
-module.exports = ng.core.Component({
+module.exports = ngCore.Component({
   selector: 'a[ngx-link]',
   template: require('./themes/' + __THEME__ + '/templates/link.html'),
   styles: [require('./themes/' + __THEME__ + '/scss/link.scss')],

@@ -1,16 +1,20 @@
-var ngxBaseHideDirective = ng.core.Class(new _ngxBaseHideDirective());
+var ngCore = require('@angular/core/index.js');
+var ngxCore = require('../../cores/index.js');
+var ngxUtil = ngxCore.utils;
+
+var ngxBaseHideDirective = ngCore.Class(new _ngxBaseHideDirective());
 
 function _ngxBaseHideDirective() {
   var _base, _STYLE_PROPERTIES;
 
-  this.extends = ngx.core.baseDirective;
+  this.extends = ngxCore.baseDirective;
 
   this.constructor = [
-    ng.core.ElementRef,
-    ng.core.Renderer,
+    ngCore.ElementRef,
+    ngCore.Renderer,
 
     function ngxBaseHideDirective(elementRef, renderer) {
-      ngx.core.baseDirective.apply(this, arguments);
+      ngxCore.baseDirective.apply(this, arguments);
     }
   ];
 
@@ -18,7 +22,7 @@ function _ngxBaseHideDirective() {
     if(!_STYLE_PROPERTIES){
       _STYLE_PROPERTIES = { BREAKPOINT: 'breakpoint' };
 
-      ngx.shallowCopy(_STYLE_PROPERTIES, _getBaseInstance(this).getStyleProperties.apply(this));
+      ngxUtil.shallowCopy(_STYLE_PROPERTIES, _getBaseInstance(this).getStyleProperties.apply(this));
     }
 
     return _STYLE_PROPERTIES;
@@ -35,7 +39,7 @@ function _ngxBaseHideDirective() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngx.core.baseDirective); }
+    if (!_base) { _base = context.getBaseInstance(ngxCore.baseDirective); }
     return _base;
   };
 }
@@ -46,8 +50,8 @@ function _ngxHideDownDirective() {
   this.extends = ngxBaseHideDirective;
 
   this.constructor = [
-    ng.core.ElementRef,
-    ng.core.Renderer,
+    ngCore.ElementRef,
+    ngCore.Renderer,
 
     function ngxHideDownDirective(elementRef, renderer) {
       ngxBaseHideDirective.apply(this, arguments);
@@ -70,8 +74,8 @@ function _ngxHideUpDirective() {
   this.extends = ngxBaseHideDirective;
 
   this.constructor = [
-    ng.core.ElementRef,
-    ng.core.Renderer,
+    ngCore.ElementRef,
+    ngCore.Renderer,
 
     function ngxHideUpDirective(elementRef, renderer) {
       ngxBaseHideDirective.apply(this, arguments);
@@ -88,16 +92,16 @@ function _ngxHideUpDirective() {
   };
 }
 
-module.exports = [
-  ng.core.Directive({
+module.exports = {
+  hideUpDirective: ngCore.Directive({
     selector: '[ngx-hide-up]',
     properties: ['breakpoint:ngx-hide-up', 'initCssClass:class']
   })
   .Class(new _ngxHideUpDirective()),
 
-  ng.core.Directive({
+  hideDownDirective: ngCore.Directive({
     selector: '[ngx-hide-down]',
     properties: ['breakpoint:ngx-hide-down', 'initCssClass:class']
   })
   .Class(new _ngxHideDownDirective())
-];
+};

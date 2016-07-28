@@ -1,3 +1,9 @@
+var ngCore = require('@angular/core/index.js');
+var ngxGroup = require('../../../../group/index.js');
+var ngxButton = require('../../../../button/index.js');
+var ngxLink = require('../../../../link/index.js');
+var ngxDropMenu = require('../../../../drop-menu/index.js');
+
 function _testCase() {
   this.constructor = [ngx.dropMenu.dropMenuService, function (ngxDropMenuService) {
     this.ngxDropMenuService = ngxDropMenuService;
@@ -18,17 +24,17 @@ function _testCase() {
   };
 }
 
-var isolatedComponents = ng.core.Component({
+module.exports = ngCore.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/drop-menu/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngx.group.DIRECTIVES,
-    ngx.button.DIRECTIVES,
-    ngx.link.DIRECTIVES,
-    ngx.dropMenu.DIRECTIVES
+    ngxGroup.GROUP_DIRECTIVES,
+    ngxButton.BUTTON_DIRECTIVES,
+    ngxLink.LINK_DIRECTIVES,
+    ngxDropMenu.DROPMENU_DIRECTIVES
   ],
   providers: [
-   ngx.dropMenu.PROVIDERS
+   ngxDropMenu.DROPMENU_PROVIDERS
   ]
 })
 .Class(new _testCase());

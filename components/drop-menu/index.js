@@ -1,23 +1,20 @@
-﻿var ngx = require('ngx');
-var ngxDropMenuComponent = require('./drop-menu.component.js');
+﻿var ngxDropMenuComponent = require('./drop-menu.component.js');
 var ngxDropMenuItemDirective = require('./drop-menu-item.directive.js');
 var ngxToggleDropdownDirective = require('./toggle-dropdown.directive.js');
 var ngxToggleDropupDirective = require('./toggle-dropup.directive.js');
 var ngxDropMenuService = require('./services/drop-menu.service.js');
 
-ngx.dropMenu = {
+module.exports = {
   dropMenuComponent: ngxDropMenuComponent,
   dropMenuItemDirective: ngxDropMenuItemDirective,
   toggleDropdownDirective: ngxToggleDropdownDirective,
   toggleDropupDirective: ngxToggleDropupDirective,
   dropMenuService: ngxDropMenuService,
-  DIRECTIVES: [
+  DROPMENU_DIRECTIVES: [
     ngxDropMenuComponent,
     ngxDropMenuItemDirective,
     ngxToggleDropdownDirective,
     ngxToggleDropupDirective
   ],
-  PROVIDERS: [ ngxDropMenuService ]
+  DROPMENU_PROVIDERS: [ngxDropMenuService]
 };
-
-module.exports = ngx;

@@ -1,17 +1,20 @@
-﻿var ngxDropMenuService = require('./services/drop-menu.service.js');
+﻿var ngCore = require('@angular/core/index.js');
+var ngxCore = require('../../cores/index.js');
+var ngxUtil = ngxCore.utils;
+var ngxDropMenuService = require('./services/drop-menu.service.js');
 
 function _ngxDropMenuComponent() {
   var _base;
 
-  this.extends = ngx.core.baseComponent;
+  this.extends = ngxCore.baseComponent;
 
   this.constructor = [
-    ng.core.ElementRef,
-    ng.core.Renderer,
+    ngCore.ElementRef,
+    ngCore.Renderer,
     ngxDropMenuService,
 
     function ngxDropMenuComponent(elementRef, renderer, ngxDropMenuService) {
-      ngx.core.baseComponent.apply(this, arguments);
+      ngxCore.baseComponent.apply(this, arguments);
 
       if (elementRef) {
         this.ngxDropMenuService = ngxDropMenuService;
@@ -39,13 +42,13 @@ function _ngxDropMenuComponent() {
     var _self = this;
 
     this.subscription = this.ngxDropMenuService.ngxDropMenu$.subscribe(function (event) {
-      if (ngx.isEmpty(event)) { return; }
+      if (ngxUtil.isEmpty(event)) { return; }
 
-      var _events = ngx.isArray(event) ? event : [event];
+      var _events = ngxUtil.isArray(event) ? event : [event];
       var _actions = _self.ngxDropMenuService.getActions();
 
-      ngx.forEach(_events, function (_event) {
-        if (ngx.isEmpty(_event.id) || _event.id === _self.id) {
+      ngxUtil.forEach(_events, function (_event) {
+        if (ngxUtil.isEmpty(_event.id) || _event.id === _self.id) {
           if (_event.type === _actions.TOGGLE_DROPDOWN) {
             _self.toggleDropdown();
           }
@@ -82,12 +85,12 @@ function _ngxDropMenuComponent() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngx.core.baseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngxCore.baseComponent); }
     return _base;
   }
 }
 
-module.exports = ng.core.Component({
+module.exports = ngCore.Component({
   selector: 'ngx-drop-menu',
   template: require('./themes/' + __THEME__ + '/templates/drop-menu.html'),
   styles: [require('./themes/' + __THEME__  + '/scss/drop-menu.scss')],

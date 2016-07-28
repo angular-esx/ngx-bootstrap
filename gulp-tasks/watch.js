@@ -12,7 +12,8 @@ module.exports = function (params) {
       './ngx-bootstrap.js',
       './ngx-bootstrap.utils.js',
     ], function () {
-      runSequence('lint', 'webpack');
+      //runSequence('lint', 'webpack');
+      runSequence('webpack');
     });
 
     gulp.watch([

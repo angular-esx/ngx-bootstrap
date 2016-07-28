@@ -1,4 +1,7 @@
-﻿function _testCase() {
+﻿var ngCore = require('@angular/core/index.js');
+var ngxPagination = require('../../../../pagination/index.js');
+
+function _testCase() {
   this.constructor = function () {};
 
   this.setPage = function (event) {
@@ -13,11 +16,11 @@
   };
 }
 
-var isolatedComponents = ng.core.Component({
+module.exports = ngCore.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/pagination/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngx.pagination.DIRECTIVES
+    ngxPagination.PAGINATION_DIRECTIVES
   ]
 })
 .Class(new _testCase());

@@ -1,34 +1,38 @@
-﻿function _ngxPaginationComponent() {
+﻿var ngCore = require('@angular/core/index.js');
+var ngxCore = require('../../cores/index.js');
+var ngxUtil = ngxCore.utils;
+
+function _ngxPaginationComponent() {
   var _base;
 
-  this.extends = ngx.core.baseComponent;
+  this.extends = ngxCore.baseComponent;
 
   this.constructor = [
-    ng.core.ElementRef,
-    ng.core.Renderer,
+    ngCore.ElementRef,
+    ngCore.Renderer,
 
     function ngxPaginationComponent(elementRef, renderer) {
-      ngx.core.baseComponent.apply(this, arguments);
+      ngxCore.baseComponent.apply(this, arguments);
       
       if (elementRef) {
-        this.setPageEmitter = new ng.core.EventEmitter();
-        this.changePageEmitter = new ng.core.EventEmitter(false);
+        this.setPageEmitter = new ngCore.EventEmitter();
+        this.changePageEmitter = new ngCore.EventEmitter(false);
       }
     }
   ];
 
   this.initDefaultValues = function () {
-    if (ngx.isEmpty(this.totalPages) || this.totalPages < 0) { this.totalPages = 0; }
+    if (ngxUtil.isEmpty(this.totalPages) || this.totalPages < 0) { this.totalPages = 0; }
     else { this.totalPages = parseInt(this.totalPages); }
 
-    if (ngx.isEmpty(this.pageSize) || this.pageSize < 1) { this.pageSize = 10; }
+    if (ngxUtil.isEmpty(this.pageSize) || this.pageSize < 1) { this.pageSize = 10; }
     else { this.pageSize = parseInt(this.pageSize); }
 
-    if (ngx.isEmpty(this.currentPage) || this.currentPage < 1) { this.currentPage = 1; }
+    if (ngxUtil.isEmpty(this.currentPage) || this.currentPage < 1) { this.currentPage = 1; }
     else { this.currentPage = parseInt(this.currentPage); }
 
-    if (ngx.isNull(this.showPrevious)) { this.showPrevious = true; }
-    if (ngx.isNull(this.showNext)) { this.showNext = true; }
+    if (ngxUtil.isNull(this.showPrevious)) { this.showPrevious = true; }
+    if (ngxUtil.isNull(this.showNext)) { this.showNext = true; }
 
     this.startPage = _getStartPage(this.pageSize, this.currentPage);
 
@@ -98,7 +102,7 @@
       });
 
       var _tempPages = [];
-      ngx.forEach(_sortedPages, function (page) {
+      ngxUtil.forEach(_sortedPages, function (page) {
         if (page.number === startPage + pageSize) { return true; }
 
         if (page.number >= startPage) {
@@ -117,12 +121,12 @@
   }
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngx.core.baseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngxCore.baseComponent); }
     return _base;
   }
 }
 
-module.exports = ng.core.Component({
+module.exports = ngCore.Component({
   selector: 'ngx-pagination',
   template: require('./themes/' + __THEME__ + '/templates/pagination.html'),
   styles: [require('./themes/' + __THEME__  + '/scss/pagination.scss')],

@@ -19,7 +19,8 @@ module.exports = function (params) {
       entry: {
         bootstrap: 'configs/bootstrap.js',
         vendors: 'configs/vendors.js',
-        polyfills: 'configs/polyfills.js'
+        polyfills: 'configs/polyfills.js',
+        test: 'components/label/tests/ui/isolated-components/boot.js'
       },
       output: {
         path: __dirname,
@@ -30,7 +31,7 @@ module.exports = function (params) {
         new webpack.DefinePlugin(webpackVariables),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.CommonsChunkPlugin({
-          name: ['bootstrap', 'vendors', 'polyfills']
+          name: ['test', 'bootstrap', 'vendors', 'polyfills']
         }),
       ],
       module: {

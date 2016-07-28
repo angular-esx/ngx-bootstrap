@@ -30,18 +30,21 @@ module.exports = function (params) {
 
     _ngxFiles.push(_ngxBootstrapJs);
 
-    if (_componentName || _directiveName) {
-      if (_componentName) {
-        _testCaseScripts = _fileService.getComponentTestCase(_componentName, _testCase);
-        _ngxFiles.push(gulp.src(_testCaseScripts.testCaseScript, _notReadOption));
-        _ngxFiles.push(gulp.src(_testCaseScripts.bootScript, _notReadOption));
-      }
-      else if (_directiveName) {
-        _testCaseScripts = _fileService.getDirectiveTestCase(_directiveName, _testCase);
-        _ngxFiles.push(gulp.src(_testCaseScripts.testCaseScript, _notReadOption));
-        _ngxFiles.push(gulp.src(_testCaseScripts.bootScript, _notReadOption));
-      }
-    }
+    //if (_componentName || _directiveName) {
+    //  if (_componentName) {
+    //    _testCaseScripts = _fileService.getComponentTestCase(_componentName, _testCase);
+    //    _ngxFiles.push(gulp.src(_testCaseScripts.testCaseScript, _notReadOption));
+    //    _ngxFiles.push(gulp.src(_testCaseScripts.bootScript, _notReadOption));
+    //  }
+    //  else if (_directiveName) {
+    //    _testCaseScripts = _fileService.getDirectiveTestCase(_directiveName, _testCase);
+    //    _ngxFiles.push(gulp.src(_testCaseScripts.testCaseScript, _notReadOption));
+    //    _ngxFiles.push(gulp.src(_testCaseScripts.bootScript, _notReadOption));
+    //  }
+    //}
+   
+    _ngxFiles.push(gulp.src('./dist/js/ngx-test.js', _notReadOption));
+    _ngxFiles.push(gulp.src('./dist/js/ngx-boot.js', _notReadOption));
 
     _ngxFiles.push(_ngxNormalizeCss);
     _ngxFiles.push(_ngxBootstrapCss);

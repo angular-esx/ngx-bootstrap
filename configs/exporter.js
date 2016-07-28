@@ -2,7 +2,8 @@
   var _exports = {};
 
   this.addExports = function (exports) {
-    return _merge(exports);
+    _merge(exports);
+    return this;
   };
 
   this.merge = function () {
@@ -15,8 +16,6 @@
         _exports[prop] = exports[prop];
       }
     }
-
-    return exporter;
   };
 };
 

@@ -1,4 +1,9 @@
-﻿function _ngxAlertService() {
+﻿var ngCore = require('@angular/core/index.js');
+var rx = require('rxjs/rx.js');
+var ngxCore = require('../../../cores/index.js');
+var ngxUtil = ngxCore.utils;
+
+function _ngxAlertService() {
   var _observer;
   var _ACTIONS = {
     SHOW_ALERT: 'SHOW_ALERT',
@@ -6,12 +11,12 @@
   };
 
   this.constructor = [
-    ngx.core.animationService,
+    ngxCore.animationService,
 
     function ngxAlertService(ngxAnimationService) {
-      ngx.shallowCopy(this, ngxAnimationService);
+      ngxUtil.shallowCopy(this, ngxAnimationService);
 
-      this.ngxAlert$ = new Rx.Observable(function (observer) {
+      this.ngxAlert$ = new rx.Observable(function (observer) {
         _observer = observer;
       })
      .share();
@@ -19,7 +24,7 @@
   ];
 
   this.getActions = function () {
-    return ngx.shallowCopy({}, _ACTIONS);
+    return ngxUtil.shallowCopy({}, _ACTIONS);
   };
 
   this.next = function (event) {
@@ -27,18 +32,18 @@
   };
 
   this.getShow$ = function (alertId) {
-    return Rx.Observable.from([{ id: alertId, type: _ACTIONS.SHOW_ALERT }]);
+    return rx.Observable.from([{ id: alertId, type: _ACTIONS.SHOW_ALERT }]);
   };
   this.show = function (alertId) {
     _observer.next({ id: alertId, type: _ACTIONS.SHOW_ALERT });
   };
 
   this.getDismiss$ = function (alertId) {
-    return Rx.Observable.from([{ id: alertId, type: _ACTIONS.DISMISS_ALERT }]);
+    return rx.Observable.from([{ id: alertId, type: _ACTIONS.DISMISS_ALERT }]);
   };
   this.dismiss = function (alertId) {
     _observer.next({ id: alertId, type: _ACTIONS.DISMISS_ALERT });
   };
 }
 
-module.exports = ng.core.Class(new _ngxAlertService());
+module.exports = ngCore.Class(new _ngxAlertService());

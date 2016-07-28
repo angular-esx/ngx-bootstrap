@@ -1,26 +1,29 @@
-﻿var ngxAlertService = require('./services/alert.service.js');
+﻿var ngCore = require('@angular/core/index.js');
+var ngxCore = require('../../cores/index.js');
+var ngxUtil = ngxCore.utils;
+var ngxAlertService = require('./services/alert.service.js');
 
 function _ngxAlertComponent() {
   var _base;
 
-  this.extends = ngx.core.baseComponent;
+  this.extends = ngxCore.baseComponent;
 
   this.constructor = [
-    ng.core.ElementRef,
-    ng.core.Renderer,
+    ngCore.ElementRef,
+    ngCore.Renderer,
     ngxAlertService,
 
     function ngxAlertComponent(elementRef, renderer, ngxAlertService) {
-      ngx.core.baseComponent.apply(this, arguments);
+      ngxCore.baseComponent.apply(this, arguments);
       
       if (elementRef) {
         this.ngxAlertService = ngxAlertService;
 
-        this.showingEmitter = new ng.core.EventEmitter(false);
-        this.shownEmitter = new ng.core.EventEmitter();
+        this.showingEmitter = new ngCore.EventEmitter(false);
+        this.shownEmitter = new ngCore.EventEmitter();
 
-        this.dismissingEmitter = new ng.core.EventEmitter(false);
-        this.dismissedEmitter = new ng.core.EventEmitter();
+        this.dismissingEmitter = new ngCore.EventEmitter(false);
+        this.dismissedEmitter = new ngCore.EventEmitter();
       }
     }
   ];
@@ -34,7 +37,7 @@ function _ngxAlertComponent() {
 
     if
     (
-      ngx.isNull(_previousIsHidden) ||
+      ngxUtil.isNull(_previousIsHidden) ||
       !changeRecord.hasOwnProperty(_styleProperties.STATE) || 
       !this.propertyHasValue(_styleProperties.STATE, 'hidden')
     ){
@@ -78,9 +81,9 @@ function _ngxAlertComponent() {
 
 
   this.initDefaultValues = function(){
-    if(ngx.isEmpty(this.type) && ngx.isNull(this.isDismissible)){ this.isDismissible = false; }
+    if(ngxUtil.isEmpty(this.type) && ngxUtil.isNull(this.isDismissible)){ this.isDismissible = false; }
 
-    if(ngx.isEmpty(this.state) && ngx.isNull(this.isHidden)){ this.isHidden = false; }
+    if(ngxUtil.isEmpty(this.state) && ngxUtil.isNull(this.isHidden)){ this.isHidden = false; }
 
     return null;
   };
@@ -93,13 +96,13 @@ function _ngxAlertComponent() {
     var _self = this;
 
     this.subscription = this.ngxAlertService.ngxAlert$.subscribe(function (event) {
-      if (ngx.isEmpty(event)) { return; }
+      if (ngxUtil.isEmpty(event)) { return; }
       
-      var _events = ngx.isArray(event) ? event : [event];
+      var _events = ngxUtil.isArray(event) ? event : [event];
       var _actions = _self.ngxAlertService.getActions();
       
-      ngx.forEach(_events, function (_event) {
-        if (ngx.isEmpty(_event.id) || _event.id === _self.id) {
+      ngxUtil.forEach(_events, function (_event) {
+        if (ngxUtil.isEmpty(_event.id) || _event.id === _self.id) {
           if (_event.type === _actions.SHOW_ALERT) {
             _self.show();
           }
@@ -144,12 +147,12 @@ function _ngxAlertComponent() {
   };
 
   function _getBaseInstance(context){ 
-    if(!_base){ _base = context.getBaseInstance(ngx.core.baseComponent); }
+    if(!_base){ _base = context.getBaseInstance(ngxCore.baseComponent); }
     return _base;
   }
 }
 
-module.exports = ng.core.Component({
+module.exports = ngCore.Component({
   selector: 'ngx-alert',
   template: require('./themes/' + __THEME__ + '/templates/alert.html'),
   styles: [require('./themes/' + __THEME__  + '/scss/alert.scss')],

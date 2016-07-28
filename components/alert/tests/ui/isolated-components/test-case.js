@@ -1,5 +1,10 @@
+var ngCore = require('@angular/core/index.js');
+var ngxCore = require('../../../../../cores/index.js');
+var ngxAlert = require('../../../../alert/index.js');
+var ngxLink = require('../../../../link/index.js');
+
 function _testCase() {
-  this.constructor = [ngx.alert.alertService, function (ngxAlertService) {
+  this.constructor = [ngxAlert.alertService, function (ngxAlertService) {
     this.ngxAlertService = ngxAlertService;
 
     this.href = 'https://translate.google.com.vn';
@@ -30,16 +35,16 @@ function _testCase() {
   };
 }
 
-var isolatedComponents = ng.core.Component({
+module.exports = ngCore.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/alert/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngx.link.DIRECTIVES,
-    ngx.alert.DIRECTIVES
+    ngxLink.LINK_DIRECTIVES,
+    ngxAlert.ALERT_DIRECTIVES
   ],
   providers: [
-    ngx.core.animationService,
-    ngx.alert.PROVIDERS
+    ngxCore.animationService,
+    ngxAlert.ALERT_PROVIDERS
   ]
 })
 .Class(new _testCase());

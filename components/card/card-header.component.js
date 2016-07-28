@@ -1,16 +1,17 @@
-﻿var ngxBaseComponent = require('baseComponent');
+﻿var ngCore = require('@angular/core/index.js');
+var ngxCore = require('../../cores/index.js');
 
 function _ngxCardHeaderComponent() {
   var _base;
 
-  this.extends = ngxBaseComponent;
+  this.extends = ngxCore.baseComponent;
 
   this.constructor = [
-    ng.core.ElementRef,
-    ng.core.Renderer,
+    ngCore.ElementRef,
+    ngCore.Renderer,
 
     function ngxCardHeaderComponent(elementRef, renderer) {
-      ngxBaseComponent.apply(this, arguments);
+      ngxCore.baseComponent.apply(this, arguments);
     }
   ];
 
@@ -19,12 +20,12 @@ function _ngxCardHeaderComponent() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxBaseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngxCore.baseComponent); }
     return _base;
   }
 }
 
-module.exports = ng.core.Component({
+module.exports = ngCore.Component({
   selector: 'ngx-card-header',
   template: require('./themes/' + __THEME__ + '/templates/card-header.html'),
   properties: ['initCssClass:class']

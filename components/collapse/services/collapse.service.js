@@ -1,4 +1,9 @@
-﻿function _ngxCollapseService() {
+﻿var ngCore = require('@angular/core/index.js');
+var rx = require('rxjs/rx.js');
+var ngxCore = require('../../../cores/index.js');
+var ngxUtil = ngxCore.utils;
+
+function _ngxCollapseService() {
   var _observer;
   var _ACTIONS = {
     TOGGLE_COLLAPSE: 'TOGGLE_COLLAPSE',
@@ -7,12 +12,12 @@
   };
 
   this.constructor = [
-    ngx.core.animationService,
+    ngxCore.animationService,
 
     function ngxCollapseService(ngxAnimationService) {
-      ngx.shallowCopy(this, ngxAnimationService);
+      ngxUtil.shallowCopy(this, ngxAnimationService);
 
-      this.ngxCollapse$ = new Rx.Observable(function (observer) {
+      this.ngxCollapse$ = new rx.Observable(function (observer) {
         _observer = observer;
       })
      .share();
@@ -20,7 +25,7 @@
   ];
 
   this.getActions = function () {
-    return ngx.shallowCopy({}, _ACTIONS);
+    return ngxUtil.shallowCopy({}, _ACTIONS);
   };
 
   this.next = function (event) {
@@ -28,25 +33,25 @@
   };
 
   this.getToggle$ = function (collapseId) {
-    return Rx.Observable.from([{ id: collapseId, type: _ACTIONS.TOGGLE_COLLAPSE }]);
+    return rx.Observable.from([{ id: collapseId, type: _ACTIONS.TOGGLE_COLLAPSE }]);
   };
   this.toggle = function (collapseId) {
     _observer.next({ id: collapseId, type: _ACTIONS.TOGGLE_COLLAPSE });
   };
 
   this.getShow$ = function (collapseId, groupId) {
-    return Rx.Observable.from([{ id: collapseId, group: groupId, type: _ACTIONS.SHOW_COLLAPSE }]);
+    return rx.Observable.from([{ id: collapseId, group: groupId, type: _ACTIONS.SHOW_COLLAPSE }]);
   };
   this.show = function (collapseId, groupId) {
     _observer.next({ id: collapseId, group: groupId, type: _ACTIONS.SHOW_COLLAPSE });
   };
 
   this.getHide$ = function (collapseId, groupId) {
-    return Rx.Observable.from([{ id: collapseId, group: groupId, type: _ACTIONS.HIDE_COLLAPSE }]);
+    return rx.Observable.from([{ id: collapseId, group: groupId, type: _ACTIONS.HIDE_COLLAPSE }]);
   };
   this.hide = function (collapseId, groupId) {
     _observer.next({ id: collapseId, group: groupId, type: _ACTIONS.HIDE_COLLAPSE });
   };
 }
 
-module.exports = ng.core.Class(new _ngxCollapseService());
+module.exports = ngCore.Class(new _ngxCollapseService());

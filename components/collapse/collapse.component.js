@@ -1,17 +1,20 @@
-﻿var ngxCollapseService = require('./services/collapse.service.js');
+﻿var ngCore = require('@angular/core/index.js');
+var ngxCore = require('../../cores/index.js');
+var ngxUtil = ngxCore.utils;
+var ngxCollapseService = require('./services/collapse.service.js');
 
 function _ngxCollapseComponent() {
   var _base;
 
-  this.extends = ngx.core.baseComponent;
+  this.extends = ngxCore.baseComponent;
 
   this.constructor = [
-    ng.core.ElementRef,
-    ng.core.Renderer,
+    ngCore.ElementRef,
+    ngCore.Renderer,
     ngxCollapseService,
 
     function ngxCollapseComponent(elementRef, renderer, ngxCollapseService) {
-      ngx.core.baseComponent.apply(this, arguments);
+      ngxCore.baseComponent.apply(this, arguments);
 
       if (elementRef) {
         this.ngxCollapseService = ngxCollapseService;
@@ -60,13 +63,13 @@ function _ngxCollapseComponent() {
   this.subscribe = function () {
     var _self = this;
     this.subscription = this.ngxCollapseService.ngxCollapse$.subscribe(function (event) {
-      if (ngx.isEmpty(event)) { return; }
+      if (ngxUtil.isEmpty(event)) { return; }
 
-      var _events = ngx.isArray(event) ? event : [event];
+      var _events = ngxUtil.isArray(event) ? event : [event];
       var _actions = _self.ngxCollapseService.getActions();
 
-      ngx.forEach(_events, function (_event) {
-        if (ngx.isEmpty(_event.id) || _self.id === _event.id) {
+      ngxUtil.forEach(_events, function (_event) {
+        if (ngxUtil.isEmpty(_event.id) || _self.id === _event.id) {
           if (_event.type === _actions.TOGGLE_COLLAPSE) {
             _self.toggle();
           }
@@ -120,12 +123,12 @@ function _ngxCollapseComponent() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngx.core.baseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngxCore.baseComponent); }
     return _base;
   }
 }
 
-module.exports = ng.core.Component({
+module.exports = ngCore.Component({
   selector: 'ngx-collapse',
   template: require('./themes/' + __THEME__ + '/templates/collapse.html'),
   styles: [require('./themes/' + __THEME__  + '/scss/collapse.scss')],

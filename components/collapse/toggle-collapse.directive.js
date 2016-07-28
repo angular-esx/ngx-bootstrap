@@ -1,4 +1,5 @@
-﻿var ngxCollapseService = require('./services/collapse.service.js');
+﻿var ngCore = require('@angular/core/index.js');
+var ngxCollapseService = require('./services/collapse.service.js');
 
 function _ngxToggleCollapseDirective() {
   this.constructor = [
@@ -14,7 +15,7 @@ function _ngxToggleCollapseDirective() {
   };
 }
 
-module.exports = ng.core.Directive({
+module.exports = ngCore.Directive({
   selector: '[ngx-toggle-collapse]',
   properties: ['id: ngx-toggle-collapse'],
   host: {

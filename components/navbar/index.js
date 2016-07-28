@@ -1,20 +1,17 @@
-﻿var ngx = require('ngx');
-var ngxNavbarComponent = require('./navbar.component.js');
+﻿var ngxNavbarComponent = require('./navbar.component.js');
 var ngxNavbarItemDirective =  require('./navbar-item.directive.js');
 var ngxNavbarBrandDirective = require('./navbar-brand.directive.js');
 var ngxNavbarDividerDirective = require('./navbar-divider.directive.js');
 
-ngx.navbar = {
+module.exports = {
   navbarComponent: ngxNavbarComponent,
   navbarItemDirective: ngxNavbarItemDirective,
   navbarBrandDirective: ngxNavbarBrandDirective,
   navbarDividerDirective: ngxNavbarDividerDirective,
-  DIRECTIVES: [
+  NAVBAR_DIRECTIVES: [
     ngxNavbarComponent,
     ngxNavbarItemDirective,
     ngxNavbarBrandDirective,
     ngxNavbarDividerDirective
   ]
 };
-
-module.exports = ngx;

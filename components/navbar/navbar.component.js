@@ -1,14 +1,18 @@
-﻿function _ngxNavbarComponent() {
+﻿var ngCore = require('@angular/core/index.js');
+var ngxCore = require('../../cores/index.js');
+var ngxUtil = ngxCore.utils;
+
+function _ngxNavbarComponent() {
   var _base;
 
-  this.extends = ngx.core.baseComponent;
+  this.extends = ngxCore.baseComponent;
 
   this.constructor = [
-    ng.core.ElementRef,
-    ng.core.Renderer,
+    ngCore.ElementRef,
+    ngCore.Renderer,
 
     function ngxNavbarComponent(elementRef, renderer) {
-      ngx.core.baseComponent.apply(this, arguments);
+      ngxCore.baseComponent.apply(this, arguments);
     }
   ];
 
@@ -16,7 +20,7 @@
     var _styleProperties = this.getStyleProperties(),
         _changeRecord;
 
-    if (ngx.isEmpty(this.color)) {
+    if (ngxUtil.isEmpty(this.color)) {
       this.color = 'default';
       _changeRecord = this.buildChangeRecord(_styleProperties.COLOR, this.color);
     }
@@ -29,12 +33,12 @@
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngx.core.baseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngxCore.baseComponent); }
     return _base;
   }
 }
 
-module.exports = ng.core.Component({
+module.exports = ngCore.Component({
   selector: 'ngx-navbar',
   template: require('./themes/' + __THEME__ + '/templates/navbar.html'),
   styles: [require('./themes/' + __THEME__  + '/scss/navbar.scss')],

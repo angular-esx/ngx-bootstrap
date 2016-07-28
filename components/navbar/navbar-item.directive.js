@@ -1,4 +1,6 @@
-﻿function _ngxNavbarItemDirective() {
+﻿var ngCore = require('@angular/core/index.js');
+
+function _ngxNavbarItemDirective() {
   this.constructor = function ngxNavbarItemDirective() {};
 
   this.ngOnChanges = function (changeRecord) {
@@ -6,7 +8,7 @@
   };
 }
 
-module.exports = ng.core.Directive({
+module.exports = ngCore.Directive({
   selector: '[ngx-navbar-item]',
   properties: ['state:ngx-navbar-item-state'],
   host: {

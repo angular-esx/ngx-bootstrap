@@ -1,17 +1,21 @@
-﻿function _ngxButtonComponent() {
+﻿var ngCore = require('@angular/core/index.js');
+var ngxCore = require('../../cores/index.js');
+var ngxUtil = ngxCore.utils;
+
+function _ngxButtonComponent() {
   var _base;
   
-  this.extends = ngx.core.baseComponent;
+  this.extends = ngxCore.baseComponent;
 
   this.constructor = [
-    ng.core.ElementRef,
-    ng.core.Renderer,
+    ngCore.ElementRef,
+    ngCore.Renderer,
 
     function ngxButtonComponent(elementRef, renderer) {
-      ngx.core.baseComponent.apply(this, arguments);
+      ngxCore.baseComponent.apply(this, arguments);
       
       if (elementRef) {
-        this.clickEmitter = new ng.core.EventEmitter();
+        this.clickEmitter = new ngCore.EventEmitter();
       }
     }
   ];
@@ -23,7 +27,7 @@
   };
 
   this.initDefaultValues = function(){
-    if(ngx.isEmpty(this.state) && ngx.isNull(this.isDisabled)){ this.isDisabled = false; }
+    if(ngxUtil.isEmpty(this.state) && ngxUtil.isNull(this.isDisabled)){ this.isDisabled = false; }
 
     return null;
   };
@@ -43,12 +47,12 @@
   };
   
   function _getBaseInstance(context){ 
-    if(!_base){ _base = context.getBaseInstance(ngx.core.baseComponent); }
+    if(!_base){ _base = context.getBaseInstance(ngxCore.baseComponent); }
     return _base;
   }
 }
 
-module.exports = ng.core.Component({
+module.exports = ngCore.Component({
   selector: 'ngx-button, a[ngx-button]',
   template: require('./themes/' + __THEME__ + '/templates/button.html'),
   styles: [require('./themes/' + __THEME__  + '/scss/button.scss')],

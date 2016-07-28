@@ -1,14 +1,17 @@
+var ngCore = require('@angular/core/index.js');
+var ngxLabel = require('../../../../label/index.js');
+
 function _testCase() {
   this.constructor = function () {
     this.type = 'pill';
   };
 }
 
-var isolatedComponents = ng.core.Component({
+module.exports = ngCore.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/label/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngx.label.DIRECTIVES
+    ngxLabel.LABEL_DIRECTIVES
   ]
 })
 .Class(new _testCase());

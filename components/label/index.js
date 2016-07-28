@@ -1,9 +1,6 @@
-var ngx = require('ngx');
 var ngxLabelComponent = require('./label.component.js');
 
-ngx.label = {
+module.exports = {
   labelComponent: ngxLabelComponent,
-  DIRECTIVES: [ ngxLabelComponent ]
+  LABEL_DIRECTIVES: [ngxLabelComponent]
 };
-
- module.exports = ngx;

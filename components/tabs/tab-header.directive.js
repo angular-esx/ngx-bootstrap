@@ -1,6 +1,8 @@
-﻿function _ngxTabHeaderDirective() {
+﻿var ngCore = require('@angular/core/index.js');
+
+function _ngxTabHeaderDirective() {
   this.constructor = [
-    ng.core.TemplateRef,
+    ngCore.TemplateRef,
 
     function ngxTabHeaderDirective(templateRef) {
       this.templateRef = templateRef;
@@ -8,7 +10,7 @@
   ];
 }
 
-module.exports = ng.core.Directive({
+module.exports = ngCore.Directive({
   selector: 'template[ngx-tab-header]'
 })
 .Class(new _ngxTabHeaderDirective());

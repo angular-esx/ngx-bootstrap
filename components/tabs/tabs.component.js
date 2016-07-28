@@ -1,25 +1,28 @@
-﻿var ngxTabDirective = require('./tab.directive.js');
+﻿var ngCore = require('@angular/core/index.js');
+var ngxCore = require('../../cores/index.js');
+var ngxUtil = ngxCore.utils;
+var ngxTabDirective = require('./tab.directive.js');
 var ngxTabsService = require('./services/tabs.service.js');
 var ngxTranscludeDirective = require('cores/directives/transclude/transclude.directive.js');
 
 function _ngxTabsComponent() {
   var _base;
 
-  this.extends = ngx.core.baseComponent;
+  this.extends = ngxCore.baseComponent;
 
   this.constructor = [
-    ng.core.ElementRef,
-    ng.core.Renderer,
+    ngCore.ElementRef,
+    ngCore.Renderer,
     ngxTabsService,
 
     function ngxTabsComponent(elementRef, renderer, ngxTabsService) {
-      ngx.core.baseComponent.apply(this, arguments);
+      ngxCore.baseComponent.apply(this, arguments);
 
       if (elementRef) {
         this.ngxTabsService = ngxTabsService;
 
-        this.changingTabEmitter = new ng.core.EventEmitter(false);
-        this.changedTabEmitter = new ng.core.EventEmitter();
+        this.changingTabEmitter = new ngCore.EventEmitter(false);
+        this.changedTabEmitter = new ngCore.EventEmitter();
       }
     }
   ];
@@ -48,15 +51,15 @@ function _ngxTabsComponent() {
   this.subscribe = function () {
     var _self = this;
     this.subscription = this.ngxTabsService.ngxTabs$.subscribe(function (event) {
-      if (ngx.isEmpty(event)) { return; }
+      if (ngxUtil.isEmpty(event)) { return; }
 
-      var _events = ngx.isArray(event) ? event : [event];
+      var _events = ngxUtil.isArray(event) ? event : [event];
       var _actions = _self.ngxTabsService.getActions();
       var _tabs = _self.tabs.toArray();
 
-      ngx.forEach(_events, function (_event) {
+      ngxUtil.forEach(_events, function (_event) {
         if (_event.id) {
-          ngx.forEach(_tabs, function (tab, index) {
+          ngxUtil.forEach(_tabs, function (tab, index) {
             if (tab.id === _event.id) {
               if (_event.type === _actions.ENABLE_TAB) {
                 _self.enable(tab, _event.isEnabled);
@@ -76,7 +79,7 @@ function _ngxTabsComponent() {
       var _tabs = tabs.toArray();
       
       if (_tabs.indexOf(_self.currentActiveTab.item) > -1) {
-        ngx.forEach(_tabs, function (tab, index) {
+        ngxUtil.forEach(_tabs, function (tab, index) {
           if (tab === _self.currentActiveTab.item) {
             _self.currentActiveTab.index = index;
             return true;
@@ -143,12 +146,12 @@ function _ngxTabsComponent() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngx.core.baseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngxCore.baseComponent); }
     return _base;
   }
 }
 
-module.exports = ng.core.Component({
+module.exports = ngCore.Component({
   selector: 'ngx-tabs',
   template: require('./themes/' + __THEME__ + '/templates/tabs.html'),
   styles: [require('./themes/' + __THEME__  + '/scss/tabs.scss')],
@@ -156,7 +159,7 @@ module.exports = ng.core.Component({
   properties: ['type', 'initCssClass:class'],
   events: ['changingTabEmitter: onChangingTab', 'changedTabEmitter: onChangedTab'],
   queries: {
-    tabs: new ng.core.ContentChildren(ngxTabDirective)
+    tabs: new ngCore.ContentChildren(ngxTabDirective)
   }
 })
 .Class(new _ngxTabsComponent());

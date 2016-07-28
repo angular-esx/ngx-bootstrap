@@ -1,4 +1,7 @@
-﻿var ngxTabsService = require('./services/tabs.service.js');
+﻿var ngCore = require('@angular/core/index.js');
+var ngxCore = require('../../cores/index.js');
+var ngxUtil = ngxCore.utils;
+var ngxTabsService = require('./services/tabs.service.js');
 var ngxTabHeaderDirective = require('./tab-header.directive.js');
 var ngxTabContentDirective = require('./tab-content.directive.js');
 
@@ -8,15 +11,15 @@ function _ngxTabDirective() {
     HEADER: 'header'
   };
 
-  this.extends = ngx.core.baseDirective;
+  this.extends = ngxCore.baseDirective;
 
   this.constructor = [
-    ng.core.ElementRef,
-    ng.core.Renderer,
+    ngCore.ElementRef,
+    ngCore.Renderer,
     ngxTabsService,
 
     function ngxTabDirective(elementRef, renderer, ngxTabsService) {
-      ngx.core.baseDirective.apply(this, arguments);
+      ngxCore.baseDirective.apply(this, arguments);
 
       if (elementRef) {
         this.ngxTabsService = ngxTabsService;
@@ -39,8 +42,8 @@ function _ngxTabDirective() {
     this.isActive = this.propertyHasValue(_styleProperties.STATE, 'active');
     this.isDisabled = this.propertyHasValue(_styleProperties.STATE, 'disabled');
     
-    if (ngx.isNull(_previousIsActive) && this.isActive && this.contentTemplateRef) {
-      if (ngx.isNull(this.contentElement)) { throw 'Not found content element of tab'; }
+    if (ngxUtil.isNull(_previousIsActive) && this.isActive && this.contentTemplateRef) {
+      if (ngxUtil.isNull(this.contentElement)) { throw 'Not found content element of tab'; }
 
       setTimeout(function () {
         _self.contentElement.createEmbeddedView(_self.contentTemplateRef, 0);
@@ -64,9 +67,9 @@ function _ngxTabDirective() {
   };
 
   this.ngAfterContentInit = function () {
-    if (ngx.isEmpty(this.id)) { this.id = ngx.newGUID(); }
-    if (!ngx.isNull(this.ngxTabHeaderDirective)) { this.headerTemplateRef = this.ngxTabHeaderDirective.templateRef; }
-    if (!ngx.isNull(this.ngxTabContentDirective)) { this.contentTemplateRef = this.ngxTabContentDirective.templateRef; }
+    if (ngxUtil.isEmpty(this.id)) { this.id = ngxUtil.newGUID(); }
+    if (!ngxUtil.isNull(this.ngxTabHeaderDirective)) { this.headerTemplateRef = this.ngxTabHeaderDirective.templateRef; }
+    if (!ngxUtil.isNull(this.ngxTabContentDirective)) { this.contentTemplateRef = this.ngxTabContentDirective.templateRef; }
 
     _validateProperties(this);
 
@@ -108,22 +111,22 @@ function _ngxTabDirective() {
   };
 
   function _validateProperties(context) {
-    if (ngx.isNull(context.headerTemplateRef) && ngx.isEmpty(context.header)) { throw 'Header is required for tab'; }
+    if (ngxUtil.isNull(context.headerTemplateRef) && ngxUtil.isEmpty(context.header)) { throw 'Header is required for tab'; }
   }
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngx.core.baseDirective); }
+    if (!_base) { _base = context.getBaseInstance(ngxCore.baseDirective); }
     return _base;
   }
 }
 
-module.exports = ng.core.Directive({
+module.exports = ngCore.Directive({
   selector: 'ngx-tab',
   properties: ['id', 'header', 'state', 'initCssClass:class'],
   queries: {
-    ngxTabHeaderDirective: new ng.core.ContentChild(ngxTabHeaderDirective),
-    ngxTabContentDirective: new ng.core.ContentChild(ngxTabContentDirective),
-    contentElement: new ng.core.ContentChild(ngxTabContentDirective, { read: ng.core.ViewContainerRef })
+    ngxTabHeaderDirective: new ngCore.ContentChild(ngxTabHeaderDirective),
+    ngxTabContentDirective: new ngCore.ContentChild(ngxTabContentDirective),
+    contentElement: new ngCore.ContentChild(ngxTabContentDirective, { read: ngCore.ViewContainerRef })
   }
 })
 .Class(new _ngxTabDirective());

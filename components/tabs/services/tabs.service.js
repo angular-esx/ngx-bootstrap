@@ -1,4 +1,9 @@
-﻿function _ngxTabsService() {
+﻿var ngCore = require('@angular/core/index.js');
+var rx = require('rxjs/rx.js');
+var ngxCore = require('../../../cores/index.js');
+var ngxUtil = ngxCore.utils;
+
+function _ngxTabsService() {
   var _observer;
   var _ACTIONS = {
     ENABLE_TAB: 'ENABLE_TAB',
@@ -6,12 +11,12 @@
   };
 
   this.constructor = [
-    ngx.core.animationService,
+    ngxCore.animationService,
 
     function ngxTabsService(ngxAnimationService) {
-      ngx.shallowCopy(this, ngxAnimationService);
+      ngxUtil.shallowCopy(this, ngxAnimationService);
 
-      this.ngxTabs$ = new Rx.Observable(function (observer) {
+      this.ngxTabs$ = new rx.Observable(function (observer) {
         _observer = observer;
       })
     .share();
@@ -19,7 +24,7 @@
   ];
 
   this.getActions = function () {
-    return ngx.shallowCopy({}, _ACTIONS);
+    return ngxUtil.shallowCopy({}, _ACTIONS);
   };
 
   this.next = function (event) {
@@ -27,18 +32,18 @@
   };
 
   this.getEnable$ = function (tabId, isEnabled) {
-    return Rx.Observable.from([{ id: tabId, isEnabled: isEnabled, type: _ACTIONS.ENABLE_TAB }]);
+    return rx.Observable.from([{ id: tabId, isEnabled: isEnabled, type: _ACTIONS.ENABLE_TAB }]);
   };
   this.enable = function (tabId, isEnabled) {
     _observer.next({ id: tabId, isEnabled: isEnabled, type: _ACTIONS.ENABLE_TAB });
   };
 
   this.getSelect$ = function (tabId) {
-    return Rx.Observable.from([{ id: tabId, type: _ACTIONS.SELECT_TAB }]);
+    return rx.Observable.from([{ id: tabId, type: _ACTIONS.SELECT_TAB }]);
   };
   this.select = function (tabId) {
     _observer.next({ id: tabId, type: _ACTIONS.SELECT_TAB });
   };
 }
 
-module.exports = ng.core.Class(new _ngxTabsService());
+module.exports = ngCore.Class(new _ngxTabsService());

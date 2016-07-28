@@ -1,19 +1,22 @@
-﻿var tooltipOptionClass = require('./classes/tooltip-option.class.js');
+﻿var ngCore = require('@angular/core/index.js');
+var ngxCore = require('../../cores/index.js');
+var ngxUtil = ngxCore.utils;
+var tooltipOptionClass = require('./classes/tooltip-option.class.js');
 var ngxTooltipService = require('./services/tooltip.service.js');
 
 function _ngxTooltipComponent() {
   var _base;
 
-  this.extends = ngx.core.baseComponent;
+  this.extends = ngxCore.baseComponent;
 
   this.constructor = [
-    ng.core.ElementRef,
-    ng.core.Renderer,
+    ngCore.ElementRef,
+    ngCore.Renderer,
     ngxTooltipService,
     tooltipOptionClass,
 
     function ngxTooltipComponent(elementRef, renderer, ngxTooltipService, tooltipOption) {
-      ngx.core.baseComponent.apply(this, [elementRef, renderer, ngxTooltipService]);
+      ngxCore.baseComponent.apply(this, [elementRef, renderer, ngxTooltipService]);
       
       if (elementRef) {
         this.ngxTooltipService = ngxTooltipService;
@@ -48,7 +51,7 @@ function _ngxTooltipComponent() {
   };
 
   this.render = function () {
-    if (ngx.isNull(this.contentElement)) { throw 'Not found content element of tooltip'; }
+    if (ngxUtil.isNull(this.contentElement)) { throw 'Not found content element of tooltip'; }
 
     if (this.templateRef) {
       this.contentElement.createEmbeddedView(this.templateRef, 0);
@@ -143,17 +146,17 @@ function _ngxTooltipComponent() {
   }
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngx.core.baseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngxCore.baseComponent); }
     return _base;
   }
 }
 
-module.exports = ng.core.Component({
+module.exports = ngCore.Component({
   selector: 'ngx-tooltip',
   template: require('./themes/' + __THEME__ + '/templates/tooltip.html'),
   styles: [require('./themes/' + __THEME__ + '/scss/tooltip.scss')],
   queries: {
-    contentElement: new ng.core.ViewChild('content', { read: ng.core.ViewContainerRef })
+    contentElement: new ngCore.ViewChild('content', { read: ngCore.ViewContainerRef })
   }
 })
 .Class(new _ngxTooltipComponent());

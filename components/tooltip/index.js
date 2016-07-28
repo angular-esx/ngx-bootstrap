@@ -1,20 +1,17 @@
-﻿var ngx = require('ngx');
-var ngxTooltipComponent = require('./tooltip.component.js');
+﻿var ngxTooltipComponent = require('./tooltip.component.js');
 var ngxTooltipDirective = require('./tooltip.directive.js');
 var ngxTooltipTemplateDirective = require('./tooltip-template.directive.js');
 var ngxTooltipService = require('./services/tooltip.service.js');
 
-ngx.tooltip = {
+module.exports = {
   tooltipComponent: ngxTooltipComponent,
   tooltipDirective: ngxTooltipDirective,
   tooltipTemplateDirective: ngxTooltipTemplateDirective,
   tooltipService: ngxTooltipService,
-  DIRECTIVES: [
+  TOOLTIP_DIRECTIVES: [
     ngxTooltipComponent,
     ngxTooltipDirective,
     ngxTooltipTemplateDirective
   ],
-  PROVIDERS: [ ngxTooltipService ] 
+  TOOLTIP_PROVIDERS: [ngxTooltipService]
 };
-
-module.exports = ngx;

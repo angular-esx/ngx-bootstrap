@@ -1,8 +1,9 @@
-﻿var ngxTooltipService = require('./services/tooltip.service.js');
+﻿var ngCore = require('@angular/core/index.js');
+var ngxTooltipService = require('./services/tooltip.service.js');
 
 function _ngxTooltipTemplateDirective() {
   this.constructor = [
-    ng.core.TemplateRef,
+    ngCore.TemplateRef,
     ngxTooltipService,
 
     function ngxTooltipTemplateDirective(templateRef, ngxTooltipService) {
@@ -20,7 +21,7 @@ function _ngxTooltipTemplateDirective() {
   };
 }
 
-module.exports = ng.core.Directive({
+module.exports = ngCore.Directive({
   selector: '[ngxTooltipTemplate]',
   properties: ['id']
 })

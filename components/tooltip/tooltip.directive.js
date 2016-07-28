@@ -1,21 +1,24 @@
-﻿var ngxTooltipOptionClass = require('./classes/tooltip-option.class.js');
+﻿var ngCore = require('@angular/core/index.js');
+var ngxCore = require('../../cores/index.js');
+var ngxUtil = ngxCore.utils;
+var ngxTooltipOptionClass = require('./classes/tooltip-option.class.js');
 var ngxTooltipComponent = require('./tooltip.component.js');
 var ngxTooltipService = require('./services/tooltip.service.js');
 
 function _ngxTooltipDirective() {
   var _base;
 
-  this.extends = ngx.core.baseDirective;
+  this.extends = ngxCore.baseDirective;
 
   this.constructor = [
-    ng.core.ElementRef,
-    ng.core.Renderer,
-    ng.core.ViewContainerRef,
-    ng.core.DynamicComponentLoader,
+    ngCore.ElementRef,
+    ngCore.Renderer,
+    ngCore.ViewContainerRef,
+    ngCore.DynamicComponentLoader,
     ngxTooltipService,
 
     function ngxTooltipDirective(elementRef, renderer, viewContainerRef, componentLoader, ngxTooltipService) {
-      ngx.core.baseDirective.apply(this, [elementRef, renderer]);
+      ngxCore.baseDirective.apply(this, [elementRef, renderer]);
       
       if (elementRef) {
         this.ngxTooltipService = ngxTooltipService;
@@ -54,9 +57,9 @@ function _ngxTooltipDirective() {
     if (this.autoHide === 'true') { this.autoHide = true; }
     else if (this.autoHide === 'false') { this.autoHide = false; }
 
-    if(ngx.isEmpty(this.state) && ngx.isNull(this.isActive)){ this.isActive = false; }
+    if(ngxUtil.isEmpty(this.state) && ngxUtil.isNull(this.isActive)){ this.isActive = false; }
 
-    if(ngx.isEmpty(this.state) && ngx.isNull(this.isDisabled)){ this.isDisabled = false; }
+    if(ngxUtil.isEmpty(this.state) && ngxUtil.isNull(this.isDisabled)){ this.isDisabled = false; }
 
     return null;
   };
@@ -64,13 +67,13 @@ function _ngxTooltipDirective() {
   this.subscribe = function () {
     var _self = this;
     this.subscription = this.ngxTooltipService.ngxTooltip$.subscribe(function (event) {
-      if (ngx.isEmpty(event)) { return; }
+      if (ngxUtil.isEmpty(event)) { return; }
 
-      var _events = ngx.isArray(event) ? event : [event];
+      var _events = ngxUtil.isArray(event) ? event : [event];
       var _actions = _self.ngxTooltipService.getActions();
       
-      ngx.forEach(_events, function (_event) {
-        if (ngx.isEmpty(_event.id) || _event.id === _self.id) {
+      ngxUtil.forEach(_events, function (_event) {
+        if (ngxUtil.isEmpty(_event.id) || _event.id === _self.id) {
           if (_event.type === _actions.ENABLE_TOOLTIP) {
             _self.enable(_event.isEnabled);
           }
@@ -108,8 +111,8 @@ function _ngxTooltipDirective() {
         this.componentRef) { return; }
     
     if (options) {
-      this.delay = ngx.isNull(options.delay) ? this.delay : options.delay;
-      this.autoHide = ngx.isNull(options.autoHide) ? this.autoHide : options.autoHide;
+      this.delay = ngxUtil.isNull(options.delay) ? this.delay : options.delay;
+      this.autoHide = ngxUtil.isNull(options.autoHide) ? this.autoHide : options.autoHide;
     }
 
     var _styleProperties = this.getStyleProperties();
@@ -154,9 +157,9 @@ function _ngxTooltipDirective() {
       autoHide: this.autoHide
     });
 
-    var _binding = ng.core.ReflectiveInjector.resolve([
-      new ng.core.Provider(ngxTooltipService, { useValue: this.ngxTooltipService }),
-      new ng.core.Provider(ngxTooltipOptionClass, { useValue: _options })
+    var _binding = ngCore.ReflectiveInjector.resolve([
+      new ngCore.Provider(ngxTooltipService, { useValue: this.ngxTooltipService }),
+      new ngCore.Provider(ngxTooltipOptionClass, { useValue: _options })
     ]);
 
     return this.componentLoader.loadNextToLocation(ngxTooltipComponent, this.viewContainerRef, _binding)
@@ -164,12 +167,12 @@ function _ngxTooltipDirective() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngx.core.baseDirective); }
+    if (!_base) { _base = context.getBaseInstance(ngxCore.baseDirective); }
     return _base;
   }
 }
 
-module.exports = ng.core.Directive({
+module.exports = ngCore.Directive({
   selector: '[ngx-tooltip]',
   properties: [
     'id',

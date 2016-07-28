@@ -1,8 +1,10 @@
-﻿function _tooltipOptionClass() {
+﻿var ngCore = require('@angular/core/index.js');
+
+function _tooltipOptionClass() {
   var _PROPERTIES = ['hostElement', 'templateRef', 'content', 'state', 'position', 'delay', 'autoHide'];
 
   this.constructor = [
-    [new ng.core.Optional(), null],
+    [new ngCore.Optional(), null],
 
     function tooltipOptionClass(options) {
       if (options) { this.assign(this, options); }
@@ -16,4 +18,4 @@
   };
 }
 
-module.exports = ng.core.Class(new _tooltipOptionClass());
+module.exports = ngCore.Class(new _tooltipOptionClass());

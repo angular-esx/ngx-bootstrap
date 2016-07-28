@@ -1,5 +1,10 @@
-﻿function _testCase() {
-  this.constructor = [ngx.tooltip.tooltipService, function (ngxTooltipService) {
+﻿var ngCore = require('@angular/core/index.js');
+var ngxCore = require('../../../../../cores/index.js');
+var rx = require('rxjs/rx.js');
+var ngxTooltip = require('../../../../tooltip/index.js');
+
+function _testCase() {
+  this.constructor = [ngxTooltip.tooltipService, function (ngxTooltipService) {
     this.ngxTooltipService = ngxTooltipService;
 
     this.delay = 1 * 1000;
@@ -17,7 +22,7 @@
     if (this.toggled) {
       this.toggled = false;
       
-      Rx.Observable.zip
+      rx.Observable.zip
       (
         this.ngxTooltipService.getHide$('myTooltip'),
         this.ngxTooltipService.getEnable$('myTooltip', false),
@@ -32,7 +37,7 @@
     else {
       this.toggled = true;
 
-      Rx.Observable.zip
+      rx.Observable.zip
       (
         this.ngxTooltipService.getEnable$('myTooltip', true),
         this.ngxTooltipService.getShow$('myTooltip'),
@@ -47,15 +52,15 @@
   };
 }
 
-var isolatedComponents = ng.core.Component({
+module.exports = ngCore.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/tooltip/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngx.tooltip.DIRECTIVES
+    ngxTooltip.TOOLTIP_DIRECTIVES
   ],
   providers: [
-    ngx.core.animationService,
-    ngx.tooltip.PROVIDERS,
+    ngxCore.animationService,
+    ngxTooltip.TOOLTIP_PROVIDERS,
   ]
 })
 .Class(new _testCase());

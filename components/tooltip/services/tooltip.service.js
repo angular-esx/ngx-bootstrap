@@ -1,4 +1,9 @@
-﻿function _ngxTooltipService() {
+﻿var ngCore = require('@angular/core/index.js');
+var rx = require('rxjs/rx.js');
+var ngxCore = require('../../../cores/index.js');
+var ngxUtil = ngxCore.utils;
+
+function _ngxTooltipService() {
   var _templates = {},
       _observer;
   var _ACTIONS = {
@@ -8,12 +13,12 @@
   };
 
   this.constructor = [
-    ngx.core.animationService,
+    ngxCore.animationService,
 
     function ngxTooltipService(ngxAnimationService) {
-      ngx.shallowCopy(this, ngxAnimationService);
+      ngxUtil.shallowCopy(this, ngxAnimationService);
 
-      this.ngxTooltip$ = new Rx.Observable(function (observer) {
+      this.ngxTooltip$ = new rx.Observable(function (observer) {
         _observer = observer;
       })
      .share();
@@ -21,7 +26,7 @@
   ];
 
   this.getActions = function () {
-    return ngx.shallowCopy({}, _ACTIONS);
+    return ngxUtil.shallowCopy({}, _ACTIONS);
   };
 
   this.next = function (event) {
@@ -29,21 +34,21 @@
   };
 
   this.getEnable$ = function (tooltipId, isEnabled) {
-    return Rx.Observable.from([{ id: tooltipId, isEnabled: isEnabled, type: _ACTIONS.ENABLE_TOOLTIP }]);
+    return rx.Observable.from([{ id: tooltipId, isEnabled: isEnabled, type: _ACTIONS.ENABLE_TOOLTIP }]);
   };
   this.enable = function (tooltipId, isEnabled) {
     _observer.next({ id: tooltipId, isEnabled: isEnabled, type: _ACTIONS.ENABLE_TOOLTIP });
   };
 
   this.getShow$ = function (tooltipId, delay) {
-    return Rx.Observable.from([{ id: tooltipId, type: _ACTIONS.SHOW_TOOLTIP, delay: delay }]);
+    return rx.Observable.from([{ id: tooltipId, type: _ACTIONS.SHOW_TOOLTIP, delay: delay }]);
   };
   this.show = function (tooltipId, delay) {
     _observer.next({ id: tooltipId, type: _ACTIONS.SHOW_TOOLTIP, delay: delay });
   };
 
   this.getHide$ = function (tooltipId) {
-    return Rx.Observable.from([{ id: tooltipId, type: _ACTIONS.HIDE_TOOLTIP }]);
+    return rx.Observable.from([{ id: tooltipId, type: _ACTIONS.HIDE_TOOLTIP }]);
   };
   this.hide = function (tooltipId) {
     _observer.next({ id: tooltipId, type: _ACTIONS.HIDE_TOOLTIP });
@@ -58,4 +63,4 @@
   };
 }
 
-module.exports = ng.core.Class(new _ngxTooltipService());
+module.exports = ngCore.Class(new _ngxTooltipService());

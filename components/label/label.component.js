@@ -1,5 +1,6 @@
 var ngCore = require('@angular/core/index.js');
 var ngxCore = require('../../cores/index.js');
+var ngxUtil = ngxCore.utils;
 
 function _ngxLabelComponent() {
   var _base;
@@ -19,7 +20,7 @@ function _ngxLabelComponent() {
     var _styleProperties = this.getStyleProperties(),
         _changeRecord;
 
-    if(ngx.isEmpty(this.color)){ 
+    if (ngxUtil.isEmpty(this.color)) {
       this.color = 'default';
       _changeRecord = this.buildChangeRecord(_styleProperties.COLOR, this.color);
      }

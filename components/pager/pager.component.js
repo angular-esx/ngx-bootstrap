@@ -1,31 +1,35 @@
-﻿function _ngxPagerComponent() {
+﻿var ngCore = require('@angular/core/index.js');
+var ngxCore = require('../../cores/index.js');
+var ngxUtil = ngxCore.utils;
+
+function _ngxPagerComponent() {
   var _base;
 
-  this.extends = ngx.core.baseComponent;
+  this.extends = ngxCore.baseComponent;
 
   this.constructor = [
-    ng.core.ElementRef,
-    ng.core.Renderer,
+    ngCore.ElementRef,
+    ngCore.Renderer,
 
     function ngxPagerComponent(elementRef, renderer) {
-      ngx.core.baseComponent.apply(this, arguments);
+      ngxCore.baseComponent.apply(this, arguments);
 
       if (elementRef) {
-        this.setPageEmitter = new ng.core.EventEmitter();
-        this.changePageEmitter = new ng.core.EventEmitter(false);
+        this.setPageEmitter = new ngCore.EventEmitter();
+        this.changePageEmitter = new ngCore.EventEmitter(false);
       }
     }
   ];
 
   this.initDefaultValues = function () {
-    if (ngx.isEmpty(this.totalPages) || this.totalPages < 0) { this.totalPages = 0; }
+    if (ngxUtil.isEmpty(this.totalPages) || this.totalPages < 0) { this.totalPages = 0; }
     else { this.totalPages = parseInt(this.totalPages); }
 
-    if (ngx.isEmpty(this.currentPage) || this.currentPage < 1) { this.currentPage = 1; }
+    if (ngxUtil.isEmpty(this.currentPage) || this.currentPage < 1) { this.currentPage = 1; }
     else { this.currentPage = parseInt(this.currentPage); }
 
-    if (ngx.isNull(this.showPrevious)) { this.showPrevious = true; }
-    if (ngx.isNull(this.showNext)) { this.showNext = true; }
+    if (ngxUtil.isNull(this.showPrevious)) { this.showPrevious = true; }
+    if (ngxUtil.isNull(this.showNext)) { this.showNext = true; }
 
     this.pageBuilder = new _pageBuilder();
     this.pageBuilder.build(this.totalPages, this.currentPage, this.setPageEmitter);
@@ -95,12 +99,12 @@
   }
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngx.core.baseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngxCore.baseComponent); }
     return _base;
   }
 }
 
-module.exports = ng.core.Component({
+module.exports = ngCore.Component({
   selector: 'ngx-pager',
   template: require('./themes/' + __THEME__ + '/templates/pager.html'),
   styles: [require('./themes/' + __THEME__  + '/scss/pager.scss')],

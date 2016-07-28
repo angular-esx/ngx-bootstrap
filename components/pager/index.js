@@ -1,9 +1,6 @@
-﻿var ngx = require('ngx');
-var ngxPagerComponent = require('./pager.component.js');
+﻿var ngxPagerComponent = require('./pager.component.js');
 
-ngx.pager = {
+module.exports = {
   pagerComponent: ngxPagerComponent,
-  DIRECTIVES: [ ngxPagerComponent ]
+  PAGER_DIRECTIVES: [ngxPagerComponent]
 };
-
-module.exports = ngx;

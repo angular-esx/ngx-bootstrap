@@ -1,4 +1,9 @@
-﻿function _ngxPopoverService() {
+﻿var ngCore = require('@angular/core/index.js');
+var rx = require('rxjs/rx.js');
+var ngxCore = require('../../../cores/index.js');
+var ngxUtil = ngxCore.utils;
+
+function _ngxPopoverService() {
   var _templates = {},
       _observer;
   var _ACTIONS = {
@@ -7,12 +12,12 @@
   };
 
   this.constructor = [
-    ngx.core.animationService,
+    ngxCore.animationService,
 
     function ngxPopoverService(ngxAnimationService) {
-      ngx.shallowCopy(this, ngxAnimationService);
+      ngxUtil.shallowCopy(this, ngxAnimationService);
 
-      this.ngxPopover$ = new Rx.Observable(function (observer) {
+      this.ngxPopover$ = new rx.Observable(function (observer) {
         _observer = observer;
       })
      .share();
@@ -20,7 +25,7 @@
   ];
 
   this.getActions = function () {
-    return ngx.shallowCopy({}, _ACTIONS);
+    return ngxUtil.shallowCopy({}, _ACTIONS);
   };
 
   this.next = function (event) {
@@ -28,14 +33,14 @@
   };
 
   this.getEnable$ = function (popoverId, isEnabled) {
-    return Rx.Observable.from([{ id: popoverId, isEnabled: isEnabled, type: _ACTIONS.ENABLE_POPOVER }]);
+    return rx.Observable.from([{ id: popoverId, isEnabled: isEnabled, type: _ACTIONS.ENABLE_POPOVER }]);
   };
   this.enable = function (popoverId, isEnabled) {
     _observer.next({ id: popoverId, isEnabled: isEnabled, type: _ACTIONS.ENABLE_POPOVER });
   };
 
   this.getToggle$ = function (popoverId, delay) {
-    return Rx.Observable.from([{ id: popoverId, type: _ACTIONS.TOGGLE_POPOVER, delay: delay }]);
+    return rx.Observable.from([{ id: popoverId, type: _ACTIONS.TOGGLE_POPOVER, delay: delay }]);
   };
   this.toggle = function (popoverId, delay) {
     _observer.next({ id: popoverId, type: _ACTIONS.TOGGLE_POPOVER, delay: delay });
@@ -50,4 +55,4 @@
   };
 }
 
-module.exports = ng.core.Class(new _ngxPopoverService());
+module.exports = ngCore.Class(new _ngxPopoverService());

@@ -1,23 +1,25 @@
-﻿var ngxPopoverOptionClass = require('./classes/popover-option.class.js');
+﻿var ngCore = require('@angular/core/index.js');
+var ngxCore = require('../../cores/index.js');
+var ngxUtil = ngxCore.utils;
+var ngxPopoverOptionClass = require('./classes/popover-option.class.js');
 var ngxPopoverComponent = require('./popover.component.js');
 var ngxPopoverService = require('./services/popover.service.js');
-var ngxTooltipDirective = require('components/tooltip/tooltip.directive.js');
-var ngx = require('ngx');
+var ngxTooltip = require('../tooltip/index.js');
 
 function _ngxPopoverDirective() {
   var _base;
 
-  this.extends = ngxTooltipDirective;
+  this.extends = ngxTooltip.tooltipDirective;
 
   this.constructor = [
-    ng.core.ElementRef,
-    ng.core.Renderer,
-    ng.core.ViewContainerRef,
-    ng.core.DynamicComponentLoader,
+    ngCore.ElementRef,
+    ngCore.Renderer,
+    ngCore.ViewContainerRef,
+    ngCore.DynamicComponentLoader,
     ngxPopoverService,
 
     function ngxPopoverDirective(elementRef, renderer, viewContainerRef, componentLoader, ngxPopoverService) {
-      ngxTooltipDirective.apply(this, arguments);
+      ngxTooltip.tooltipDirective.apply(this, arguments);
 
       if (elementRef) {
         this.ngxPopoverService = ngxPopoverService;
@@ -32,12 +34,12 @@ function _ngxPopoverDirective() {
   this.subscribe = function () {
     var _self = this;
     this.subscription = this.ngxPopoverService.ngxPopover$.subscribe(function (event) {
-      if (ngx.isEmpty(event)) { return; }
+      if (ngxUtil.isEmpty(event)) { return; }
 
-      var _events = ngx.isArray(event) ? event : [event];
+      var _events = ngxUtil.isArray(event) ? event : [event];
       var _actions = _self.ngxPopoverService.getActions();
 
-      ngx.forEach(_events, function (_event) {
+      ngxUtil.forEach(_events, function (_event) {
         if (!_event.id || _event.id === _self.id) {
           if (_event.type === _actions.ENABLE_POPOVER) {
             _self.enable(_event.isEnabled);
@@ -76,9 +78,9 @@ function _ngxPopoverDirective() {
       delay: this.delay
     });
     
-    var _binding = ng.core.ReflectiveInjector.resolve([
-      new ng.core.Provider(ngxPopoverService, { useValue: this.ngxPopoverService }),
-      new ng.core.Provider(ngxPopoverOptionClass, { useValue: _options })
+    var _binding = ngCore.ReflectiveInjector.resolve([
+      new ngCore.Provider(ngxPopoverService, { useValue: this.ngxPopoverService }),
+      new ngCore.Provider(ngxPopoverOptionClass, { useValue: _options })
     ]);
 
     return this.componentLoader.loadNextToLocation(ngxPopoverComponent, this.viewContainerRef, _binding)
@@ -86,12 +88,12 @@ function _ngxPopoverDirective() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxTooltipDirective); }
+    if (!_base) { _base = context.getBaseInstance(ngxTooltip.tooltipDirective); }
     return _base;
   }
 }
 
-module.exports = ng.core.Directive({
+module.exports = ngCore.Directive({
   selector: '[ngx-popover]',
   properties: [
     'id',

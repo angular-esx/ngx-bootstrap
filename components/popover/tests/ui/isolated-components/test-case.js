@@ -1,5 +1,10 @@
-﻿function _testCase() {
-  this.constructor = [ngx.popover.popoverService, function (ngxPopoverService) {
+﻿var ngCore = require('@angular/core/index.js');
+var rx = require('rxjs/rx.js');
+var ngxCore = require('../../../../../cores/index.js');
+var ngxPopover = require('../../../../popover/index.js');
+
+function _testCase() {
+  this.constructor = [ngxPopover.popoverService, function (ngxPopoverService) {
     this.ngxPopoverService = ngxPopoverService;
 
     this.delay = 1 * 1000;
@@ -17,7 +22,7 @@
     if (this.toggled) {
       this.toggled = false;
       
-      Rx.Observable.zip
+      rx.Observable.zip
       (
         this.ngxPopoverService.getToggle$('myPopover'),
         this.ngxPopoverService.getEnable$('myPopover', false),
@@ -32,7 +37,7 @@
     else {
       this.toggled = true;
 
-      Rx.Observable.zip
+      rx.Observable.zip
       (
         this.ngxPopoverService.getEnable$('myPopover', true),
         this.ngxPopoverService.getToggle$('myPopover'),
@@ -47,15 +52,15 @@
   };
 }
 
-var isolatedComponents = ng.core.Component({
+module.exports = ngCore.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/popover/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngx.popover.DIRECTIVES
+    ngxPopover.POPOVER_DIRECTIVES
   ],
   providers: [
-    ngx.core.animationService,
-    ngx.popover.PROVIDERS,
+    ngxCore.animationService,
+    ngxPopover.POPOVER_PROVIDERS,
   ]
 })
 .Class(new _testCase());

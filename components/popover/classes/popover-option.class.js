@@ -1,8 +1,10 @@
-﻿function _popoverOptionClass() {
+﻿var ngCore = require('@angular/core/index.js');
+
+function _popoverOptionClass() {
   var _PROPERTIES = ['hostElement', 'templateRef', 'title', 'content', 'state', 'position', 'delay'];
 
   this.constructor = [
-    [new ng.core.Optional(), null],
+    [new ngCore.Optional(), null],
 
     function popoverOptionClass(options) {
       if (options) { this.assign(this, options); }
@@ -16,4 +18,4 @@
   };
 }
 
-module.exports = ng.core.Class(new _popoverOptionClass());
+module.exports = ngCore.Class(new _popoverOptionClass());

@@ -1,19 +1,23 @@
-﻿var popoverOptionClass = require('./classes/popover-option.class.js');
+﻿var ngCore = require('@angular/core/index.js');
+var ngxCore = require('../../cores/index.js');
+var ngxUtil = ngxCore.utils;
+var popoverOptionClass = require('./classes/popover-option.class.js');
 var ngxPopoverService = require('./services/popover.service.js');
+var ngxTooltip = require('../tooltip/index.js');
 
 function _ngxPopoverComponent() {
   var _base;
 
-  this.extends = ngx.tooltip.tooltipComponent;
+  this.extends = ngxTooltip.tooltipComponent;
 
   this.constructor = [
-    ng.core.ElementRef,
-    ng.core.Renderer,
+    ngCore.ElementRef,
+    ngCore.Renderer,
     ngxPopoverService,
     popoverOptionClass,
 
     function ngxPopoverComponent(elementRef, renderer, ngxPopoverService, popoverOption) {
-      ngx.tooltip.tooltipComponent.apply(this, arguments);
+      ngxTooltip.tooltipComponent.apply(this, arguments);
 
       if (elementRef) {
         this.ngxPopoverService = ngxPopoverService;
@@ -27,8 +31,8 @@ function _ngxPopoverComponent() {
 
   this.render = function () {
     if (this.templateRef && !this.templateElement) { throw 'Not found template element of popover'; }
-    else if (ngx.isNull(this.templateRef) && ngx.isNull(this.titleElement)) { throw 'Not found title element of popover'; }
-    else if (ngx.isNull(this.templateRef) && ngx.isNull(this.contentElement)) { throw 'Not found content element of popover'; }
+    else if (ngxUtil.isNull(this.templateRef) && ngxUtil.isNull(this.titleElement)) { throw 'Not found title element of popover'; }
+    else if (ngxUtil.isNull(this.templateRef) && ngxUtil.isNull(this.contentElement)) { throw 'Not found content element of popover'; }
 
     if (this.templateRef) {
       this.templateElement.createEmbeddedView(this.templateRef, 0);
@@ -40,19 +44,19 @@ function _ngxPopoverComponent() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngx.tooltip.tooltipComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngxTooltip.tooltipComponent); }
     return _base;
   }
 }
 
-module.exports = ng.core.Component({
+module.exports = ngCore.Component({
   selector: 'ngx-popover',
   template: require('./themes/' + __THEME__ + '/templates/popover.html'),
   styles: [require('./themes/' + __THEME__ + '/scss/popover.scss')],
   queries: {
-    templateElement: new ng.core.ViewChild('template', { read: ng.core.ViewContainerRef }),
-    titleElement: new ng.core.ViewChild('title', { read: ng.core.ViewContainerRef }),
-    contentElement: new ng.core.ViewChild('content', { read: ng.core.ViewContainerRef })
+    templateElement: new ngCore.ViewChild('template', { read: ngCore.ViewContainerRef }),
+    titleElement: new ngCore.ViewChild('title', { read: ngCore.ViewContainerRef }),
+    contentElement: new ngCore.ViewChild('content', { read: ngCore.ViewContainerRef })
   }
 })
 .Class(new _ngxPopoverComponent());

@@ -1,3 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
-  ng.platformBrowserDynamic.bootstrap(isolatedComponents);
-});
+var ngxTestCase = require('./test-case.js');
+var ngPlatformBrowserDynamic = require('@angular/platform-browser-dynamic');
+
+ngPlatformBrowserDynamic.bootstrap(ngxTestCase);

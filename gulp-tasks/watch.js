@@ -9,11 +9,9 @@ module.exports = function (params) {
       './components/**/*.js',
       './directives/**/*.js',
       './cores/**/*.js',
-      './ngx-bootstrap.js',
-      './ngx-bootstrap.utils.js',
     ], function () {
-      //runSequence('lint', 'webpack');
-      runSequence('webpack');
+      runSequence('lint', 'webpack');
+      // runSequence('webpack');
     });
 
     gulp.watch([

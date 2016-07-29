@@ -81,7 +81,7 @@
   gulp.task('inject-assets', getTask(taskService.INJECT_ASSETS));
 
   gulp.task('test-ui', function () {
-    runSequence('clean', 'scss', 'webpack', ['browserSync', 'inject-assets', 'watch']);
+    runSequence('clean', 'scss', 'webpack', ['browserSync', 'inject-assets', 'watch', 'lint']);
   });
 
   gulp.task('default', ['build']);
@@ -90,7 +90,7 @@
 
   gulp.task('serve', function () {
     //runSequence('scss', 'lint', ['browserSync', 'watch']);
-    runSequence('scss', ['browserSync', 'watch']);
+    runSequence('scss', ['browserSync', 'watch', 'lint']);
   });
 
   gulp.task('scss', getTask(taskService.SCSS));

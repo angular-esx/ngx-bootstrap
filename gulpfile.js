@@ -81,7 +81,7 @@
   gulp.task('inject-assets', getTask(taskService.INJECT_ASSETS));
 
   gulp.task('test-ui', function () {
-    runSequence('clean', 'scss', 'webpack', 'browserSync', 'inject-assets', 'watch');
+    runSequence('clean', 'scss', 'webpack', ['browserSync', 'inject-assets', 'watch']);
   });
 
   gulp.task('default', ['build']);

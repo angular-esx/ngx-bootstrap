@@ -14,7 +14,7 @@ module.exports = function (params) {
         __THEME__: JSON.stringify(_themeName)
       };
 
-    return gulp.src('').pipe(webpackStream({
+    return webpackStream({
       context: __dirname,
       entry: {
         bootstrap: 'configs/bootstrap.js',
@@ -57,8 +57,8 @@ module.exports = function (params) {
         root: path.resolve(__dirname, '..'),
         extensions: ['', '.js']
       }
-    }))
-      .pipe(gulp.dest('./dist/js'))
-      .pipe(reload({ stream: true }));
-  };
+    })
+    .pipe(gulp.dest('./dist/js'))
+    .pipe(reload({ stream: true }));
+  }
 };

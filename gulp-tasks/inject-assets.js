@@ -44,7 +44,6 @@ module.exports = function (params) {
     //}
    
     _ngxFiles.push(gulp.src('./dist/js/ngx-test.js', _notReadOption));
-    _ngxFiles.push(gulp.src('./dist/js/ngx-boot.js', _notReadOption));
 
     _ngxFiles.push(_ngxNormalizeCss);
     _ngxFiles.push(_ngxBootstrapCss);

@@ -10,9 +10,18 @@ module.exports = function (params) {
   return function () {
 
     var _themeName = params.args.theme || 'bootstrap',
-      webpackVariables = {
+      _componentName = params.args.component,
+      _directiveName = params.args.directive,
+      _webpackVariables = {
         __THEME__: JSON.stringify(_themeName)
-      };
+      },
+      _testScriptPath;
+
+    if (_componentName) {
+      _testScriptPath = 'components/' + _componentName + '/tests/ui/isolated-components/boot.js';
+    } else {
+      _testScriptPath = 'directives/' + _directiveName + '/tests/ui/isolated-components/boot.js';
+    }
 
     return webpackStream({
       context: __dirname,
@@ -20,7 +29,7 @@ module.exports = function (params) {
         bootstrap: 'configs/bootstrap.js',
         vendors: 'configs/vendors.js',
         polyfills: 'configs/polyfills.js',
-        test: 'components/label/tests/ui/isolated-components/boot.js'
+        test: _testScriptPath
       },
       output: {
         path: __dirname,
@@ -28,7 +37,7 @@ module.exports = function (params) {
       },
       plugins: [
         new webpack.NoErrorsPlugin(),
-        new webpack.DefinePlugin(webpackVariables),
+        new webpack.DefinePlugin(_webpackVariables),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.CommonsChunkPlugin({
           name: ['test', 'bootstrap', 'vendors', 'polyfills']
@@ -58,7 +67,7 @@ module.exports = function (params) {
         extensions: ['', '.js']
       }
     })
-    .pipe(gulp.dest('./dist/js'))
-    .pipe(reload({ stream: true }));
+      .pipe(gulp.dest('./dist/js'))
+      .pipe(reload({ stream: true }));
   }
 };

@@ -37,7 +37,7 @@
     this.getComponentTestCase = function (componentName, testCase) {
       if (!testCase) { testCase = 'isolated-components'; }
 
-      var pathComponent = this.PATHS.COMPONENTS + componentName + '/tests/ui/' + testCase; 
+      var pathComponent = this.PATHS.COMPONENTS + componentName + '/tests/ui/' + testCase;
 
       return {
         bootScript: pathComponent + '/boot.js',
@@ -77,13 +77,13 @@
     pattern: ['gulp-*', 'gulp.*', 'stream-series', 'jsoncombine', 'browser-sync', 'jshint-stylish', 'webpack-stream'],
     replaceString: /\bgulp[\-.]/
   });
-  
+
   gulp.task('inject-assets', getTask(taskService.INJECT_ASSETS));
-  
-  gulp.task('test-ui', function(){
-    runSequence('clean', 'scss', 'webpack', ['browserSync'], 'inject-assets', 'watch');
+
+  gulp.task('test-ui', function () {
+    runSequence('clean', 'scss', 'webpack', 'browserSync', 'inject-assets', 'watch');
   });
-  
+
   gulp.task('default', ['build']);
 
   gulp.task('clean', getTask(taskService.CLEAN));

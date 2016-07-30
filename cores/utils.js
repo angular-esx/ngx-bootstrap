@@ -79,7 +79,7 @@ function _splice (target, item, compareTo){
     _comparedResult = compareTo ? compareTo(item, _item) : item === _item;
 
     if(_comparedResult){
-      target._splice(index, 1);
+      target.splice(index, 1);
       return true;
     }
   });

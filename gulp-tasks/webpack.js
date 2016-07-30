@@ -40,6 +40,8 @@ module.exports = function (params) {
         progress: 'components/progress/index.js',
         tabs: 'components/tabs/index.js',
         tooltip: 'components/tooltip/index.js',
+        backdrop: 'components/backdrop/index.js',
+        modal: 'components/modal/index.js',
         /** directives **/
         checkbox: 'directives/checkbox/index.js',
         hide: 'directives/hide/index.js',
@@ -92,7 +94,6 @@ module.exports = function (params) {
 
           /** core directives **/
           baseDirective: 'cores/directives/base/base.directive.js',
-          transcludeDirective: 'cores/directives/transclude/transclude.directive.js',
 
           /** core services **/
           animationService: 'cores/services/animation.service.js',

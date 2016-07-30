@@ -41,7 +41,7 @@ function _ngxBaseHideDirective() {
   function _getBaseInstance(context) {
     if (!_base) { _base = context.getBaseInstance(ngxCore.baseDirective); }
     return _base;
-  };
+  }
 }
 
 function _ngxHideDownDirective() {
@@ -65,7 +65,7 @@ function _ngxHideDownDirective() {
   function _getBaseInstance(context) {
     if (!_base) { _base = context.getBaseInstance(ngxBaseHideDirective); }
     return _base;
-  };
+  }
 }
 
 function _ngxHideUpDirective() {
@@ -89,7 +89,7 @@ function _ngxHideUpDirective() {
   function _getBaseInstance(context) {
     if (!_base) { _base = context.getBaseInstance(ngxBaseHideDirective); }
     return _base;
-  };
+  }
 }
 
 module.exports = {

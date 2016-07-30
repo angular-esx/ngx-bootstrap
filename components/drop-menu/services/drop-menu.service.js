@@ -22,21 +22,21 @@ function _ngxDropMenuService() {
   };
 
   this.next = function (event) {
-    _observer.next(event);
+    if (_observer) { _observer.next(event); }
   };
 
   this.getToggleDropdown$ = function (dropMenuId) {
     return rx.Observable.from([{ id: dropMenuId, type: _ACTIONS.TOGGLE_DROPDOWN }]);
   };
   this.toggleDropdown = function (dropMenuId) {
-    _observer.next({ id: dropMenuId, type: _ACTIONS.TOGGLE_DROPDOWN });
+    this.next({ id: dropMenuId, type: _ACTIONS.TOGGLE_DROPDOWN });
   };
 
   this.getToggleDropup$ = function (dropMenuId) {
     return rx.Observable.from([{ id: dropMenuId, type: _ACTIONS.TOGGLE_DROPUP }]);
   };
   this.toggleDropup = function (dropMenuId) {
-    _observer.next({ id: dropMenuId, type: _ACTIONS.TOGGLE_DROPUP });
+    this.next({ id: dropMenuId, type: _ACTIONS.TOGGLE_DROPUP });
   };
 }
 

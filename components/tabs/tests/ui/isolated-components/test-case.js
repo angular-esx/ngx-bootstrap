@@ -44,7 +44,6 @@ module.exports = ngCore.Component({
     ngxTabs.TABS_DIRECTIVES
   ],
   providers: [
-    ngxCore.animationService,
     ngxTabs.TABS_PROVIDERS
   ]
 })

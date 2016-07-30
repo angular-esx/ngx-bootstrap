@@ -16,7 +16,7 @@
         _exports[prop] = exports[prop];
       }
     }
-  };
-};
+  }
+}
 
 module.exports = _exporter;

@@ -16,7 +16,7 @@ module.exports = ngCore.Component({
   directives: [
     ngxGroup.GROUP_DIRECTIVES,
     ngxButton.BUTTON_DIRECTIVES,
-    ngxRadio.CHECKBOX_DIRECTIVES
+    ngxRadio.RADIO_DIRECTIVES
   ]
 })
 .Class(new _testCase());

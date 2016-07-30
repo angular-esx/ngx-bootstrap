@@ -20,7 +20,7 @@ module.exports = function (params) {
     if (_componentName) {
       _testScriptPath = 'components/' + _componentName + '/tests/ui/isolated-components/boot.js';
     } else {
-      _testScriptPath = 'directives/' + _directiveName + '/tests/ui/isolated-components/boot.js';
+      _testScriptPath = 'directives/' + _directiveName + '/tests/ui/isolated-directives/boot.js';
     }
 
     return webpackStream({
@@ -69,5 +69,5 @@ module.exports = function (params) {
     })
       .pipe(gulp.dest('./dist/js'))
       .pipe(reload({ stream: true }));
-  }
+  };
 };

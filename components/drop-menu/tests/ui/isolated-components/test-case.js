@@ -5,7 +5,7 @@ var ngxLink = require('../../../../link/index.js');
 var ngxDropMenu = require('../../../../drop-menu/index.js');
 
 function _testCase() {
-  this.constructor = [ngx.dropMenu.dropMenuService, function (ngxDropMenuService) {
+  this.constructor = [ngxDropMenu.dropMenuService, function (ngxDropMenuService) {
     this.ngxDropMenuService = ngxDropMenuService;
 
     this.href = 'https://translate.google.com.vn';

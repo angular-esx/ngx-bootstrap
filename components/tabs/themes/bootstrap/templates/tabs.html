@@ -4,11 +4,14 @@
        [class.ngx-tabs-header-state-disabled]="tab.isDisabled"
        (click)="select(tab, i)"
        class="ngx-tabs-header">
-    <span *ngIf="tab.headerTemplateRef" [ngxTransclude]="tab.headerTemplateRef"></span>
-    <span *ngIf="!tab.headerTemplateRef">{{tab.header}}</span>
+    <template [ngx-portal-host]="tab.headerTemplate"></template>
   </div>
 </div>
 
 <div class="ngx-tabs-contents">
-  <ng-content></ng-content>
+  <div *ngFor="let tab of tabs; let i=index; trackBy:trackByTabs">
+    <template [ngIf]="tab.isActive">
+      <template [ngx-portal-host]="tab.contentTemplate"></template>
+    </template>
+  </div>
 </div>

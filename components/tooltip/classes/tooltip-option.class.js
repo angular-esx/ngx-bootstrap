@@ -1,4 +1,6 @@
 ﻿var ngCore = require('@angular/core/index.js');
+var ngxCore = require('../../../cores/index.js');
+var ngxUtil = ngxCore.utils;
 
 function _tooltipOptionClass() {
   var _PROPERTIES = ['hostElement', 'templateRef', 'content', 'state', 'position', 'delay', 'autoHide'];
@@ -12,7 +14,7 @@ function _tooltipOptionClass() {
   ];
 
   this.assign = function (target, options) {
-    ngx.shallowCopy(target, (options || this), false, function (prop) {
+    ngxUtil.shallowCopy(target, (options || this), false, function (prop) {
       return _PROPERTIES.indexOf(prop) > -1;
     });
   };

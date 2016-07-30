@@ -29,21 +29,21 @@ function _ngxPopoverService() {
   };
 
   this.next = function (event) {
-    _observer.next(event);
+    if (_observer) { _observer.next(event); }
   };
 
   this.getEnable$ = function (popoverId, isEnabled) {
     return rx.Observable.from([{ id: popoverId, isEnabled: isEnabled, type: _ACTIONS.ENABLE_POPOVER }]);
   };
   this.enable = function (popoverId, isEnabled) {
-    _observer.next({ id: popoverId, isEnabled: isEnabled, type: _ACTIONS.ENABLE_POPOVER });
+    this.next({ id: popoverId, isEnabled: isEnabled, type: _ACTIONS.ENABLE_POPOVER });
   };
 
   this.getToggle$ = function (popoverId, delay) {
     return rx.Observable.from([{ id: popoverId, type: _ACTIONS.TOGGLE_POPOVER, delay: delay }]);
   };
   this.toggle = function (popoverId, delay) {
-    _observer.next({ id: popoverId, type: _ACTIONS.TOGGLE_POPOVER, delay: delay });
+    this.next({ id: popoverId, type: _ACTIONS.TOGGLE_POPOVER, delay: delay });
   };
 
   this.cacheTemplateRef = function (id, template) {

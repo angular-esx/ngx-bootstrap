@@ -2,7 +2,8 @@
   // Environments
   "browser": true, // Web Browser (window, document, etc)
   "esnext": true,
-
+  "expr": true,
+  "supernew": true,
   // Custom Globals
   "globals": {} // additional predefined global variables
 }

@@ -89,7 +89,6 @@
   gulp.task('clean', getTask(taskService.CLEAN));
 
   gulp.task('serve', function () {
-    //runSequence('scss', 'lint', ['browserSync', 'watch']);
     runSequence('scss', ['browserSync', 'watch', 'lint']);
   });
 
@@ -104,8 +103,7 @@
   gulp.task('watch', getTask(taskService.WATCH));
 
   gulp.task('build', function () {
-    //runSequence('clean', 'scss', 'lint', 'webpack');
-    runSequence('clean', 'scss', 'webpack');
+    runSequence('clean', 'lint', 'scss', 'webpack');
   });
 
   gulp.task('build-scss', getTask(taskService.BUILD_SCSS));

@@ -1,17 +1,17 @@
-var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../cores/index.js');
+import * as ngCore from '@angular/core';
+import ngxBaseComponent from  '../cores';
 
-function _breadcrumbComponent() {
+function _ngxBreadcrumbComponent() {
   var _base;
   
-  this.extends = ngxCore.baseComponent;
+  this.extends = ngxBaseComponent;
   
   this.constructor = [
     ngCore.ElementRef,
     ngCore.Renderer,
 
-    function breadcrumbComponent(elementRef, renderer) {
-      ngxCore.baseComponent.apply(this, arguments);
+    function ngxBreadcrumbComponent(elementRef, renderer) {
+      ngxBaseComponent.apply(this, arguments);
     }
   ];
   
@@ -20,15 +20,15 @@ function _breadcrumbComponent() {
   };
 
   function _getBaseInstance(context){ 
-    if(!_base){ _base = context.getBaseInstance(ngxCore.baseComponent); }
+    if(!_base){ _base = context.getBaseInstance(ngxBaseComponent); }
     return _base;
   }
 }
 
-module.exports = ngCore.Component({
+export var ngxBreadcrumbComponent = ngCore.Component({
   selector: 'ngx-breadcrumb',
-  template: require('./themes/' + __THEME__ + '/templates/breadcrumb.html'),
-  styles: [require('./themes/' + __THEME__  + '/scss/breadcrumb.scss')],
+  templateUrl: './templates/breadcrumb.html',
+  styleUrls: ['./scss/breadcrumb.scss'],
   properties: ['color', 'initCssClass:class']
 })
-.Class(new _breadcrumbComponent());
+.Class(new _ngxBreadcrumbComponent());

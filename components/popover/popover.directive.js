@@ -1,15 +1,14 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../cores/index.js');
-var ngxUtil = ngxCore.utils;
-var ngxPopoverOptionClass = require('./classes/popover-option.class.js');
-var ngxPopoverComponent = require('./popover.component.js');
-var ngxPopoverService = require('./services/popover.service.js');
-var ngxTooltip = require('../tooltip/index.js');
+﻿import * as ngCore from '@angular/core';
+import ngxUtils from  '../cores';
+import ngxPopoverOption from './models/popover-option.model';
+import ngxPopoverComponent from './popover.component';
+import ngxPopoverService from './services/popover.service';
+import ngxTooltipDirective from '../tooltip';
 
 function _ngxPopoverDirective() {
   var _base;
 
-  this.extends = ngxTooltip.tooltipDirective;
+  this.extends = ngxTooltipDirective;
 
   this.constructor = [
     ngCore.ElementRef,
@@ -19,7 +18,7 @@ function _ngxPopoverDirective() {
     ngxPopoverService,
 
     function ngxPopoverDirective(elementRef, renderer, viewContainerRef, componentLoader, ngxPopoverService) {
-      ngxTooltip.tooltipDirective.apply(this, arguments);
+      ngxTooltipDirective.apply(this, arguments);
 
       if (elementRef) {
         this.ngxPopoverService = ngxPopoverService;
@@ -34,12 +33,12 @@ function _ngxPopoverDirective() {
   this.subscribe = function () {
     var _self = this;
     this.subscription = this.ngxPopoverService.ngxPopover$.subscribe(function (event) {
-      if (ngxUtil.isEmpty(event)) { return; }
+      if (ngxUtils.isEmpty(event)) { return; }
 
-      var _events = ngxUtil.isArray(event) ? event : [event];
+      var _events = ngxUtils.isArray(event) ? event : [event];
       var _actions = _self.ngxPopoverService.getActions();
 
-      ngxUtil.forEach(_events, function (_event) {
+      ngxUtils.forEach(_events, function (_event) {
         if (!_event.id || _event.id === _self.id) {
           if (_event.type === _actions.ENABLE_POPOVER) {
             _self.enable(_event.isEnabled);
@@ -88,12 +87,12 @@ function _ngxPopoverDirective() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxTooltip.tooltipDirective); }
+    if (!_base) { _base = context.getBaseInstance(ngxTooltipDirective); }
     return _base;
   }
 }
 
-module.exports = ngCore.Directive({
+export var ngxPopoverDirective = ngCore.Directive({
   selector: '[ngx-popover]',
   properties: [
     'id',

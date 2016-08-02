@@ -1,9 +1,9 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngHttp = require('@angular/http/index.js');
-var ngxIcon = require('../../../../icon/index.js');
+﻿import * as ngCore from '@angular/core';
+import HTTP_PROVIDERS from '@angular/http';
+import { ngxIconService, NGX_ICON_DIRECTIVES, NGX_ICON_PROVIDERS } from '../../../../icon';
 
-function _testCase() {
-  this.constructor = [ngxIcon.iconService, function (ngxIconService) {
+function _ngxTestCase() {
+  this.constructor = [ngxIconService, function (ngxIconService) {
     ngxIconService.setDefaultFontSet('material-icons');
 
     ngxIconService.setSvgIcon('components/icon/tests/ui/isolated-components/svgs/favorite.svg', 'favorite');
@@ -16,7 +16,7 @@ function _testCase() {
   }];
 }
 
-module.exports = ngCore.Component({
+export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/icon/tests/ui/isolated-components/test-case.html',
   styleUrls: [
@@ -25,11 +25,11 @@ module.exports = ngCore.Component({
   ],
   encapsulation: ngCore.ViewEncapsulation.None,
   directives: [
-    ngxIcon.ICON_DIRECTIVES
+    NGX_ICON_DIRECTIVES
   ],
   providers: [
-    ngxIcon.ICON_PROVIDERS,
-    ngHttp.HTTP_PROVIDERS
+    NGX_ICON_PROVIDERS,
+    HTTP_PROVIDERS
   ]
 })
-.Class(new _testCase());
+.Class(new _ngxTestCase());

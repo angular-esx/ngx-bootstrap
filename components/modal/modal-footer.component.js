@@ -1,12 +1,12 @@
-﻿var ngCore = require('@angular/core/index.js');
+﻿import * as ngCore from '@angular/core';
 
 function _ngxModalFooterComponent() {
   this.constructor = function ngxModalFooterComponent() { };
 }
 
-module.exports = ngCore.Component({
+export var _ngxModalFooterComponent = ngCore.Component({
   selector: 'ngx-modal-footer',
-  template: require('./themes/' + __THEME__ + '/templates/modal-footer.html'),
+  templateUrl: './templates/modal-footer.html',
   host: {
     '[class.ngx-modal-footer]': 'true'
   }

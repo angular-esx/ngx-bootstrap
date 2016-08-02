@@ -1,17 +1,17 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../cores/index.js');
+﻿import * as ngCore from '@angular/core';
+import ngxBaseComponent from  '../cores';
 
 function _ngxListComponent() {
   var _base;
 
-  this.extends = ngxCore.baseComponent;
+  this.extends = ngxBaseComponent;
 
   this.constructor = [
     ngCore.ElementRef,
     ngCore.Renderer,
 
   function ngxListComponent(elementRef, renderer) {
-      ngxCore.baseComponent.apply(this, arguments);
+      ngxBaseComponent.apply(this, arguments);
     }
   ];
 
@@ -20,15 +20,15 @@ function _ngxListComponent() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxCore.baseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngxBaseComponent); }
     return _base;
   }
 }
 
-module.exports = ngCore.Component({
+export var ngxListComponent = ngCore.Component({
   selector: 'ngx-list',
-  template: require('./themes/' + __THEME__ + '/templates/list.html'),
-  styles: [require('./themes/' + __THEME__  + '/scss/list.scss')],
+  templateUrl: './templates/list.html',
+  styleUrls: ['./scss/list.scss'],
   properties: ['initCssClass:class']
 })
 .Class(new _ngxListComponent());

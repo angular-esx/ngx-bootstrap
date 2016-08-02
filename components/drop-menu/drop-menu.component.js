@@ -1,12 +1,11 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../cores/index.js');
-var ngxUtil = ngxCore.utils;
-var ngxDropMenuService = require('./services/drop-menu.service.js');
+﻿import * as ngCore from '@angular/core';
+import { ngxBaseComponent, ngxUtils } from  '../cores';
+import ngxDropMenuService from './services/drop-menu.service';
 
 function _ngxDropMenuComponent() {
   var _base;
 
-  this.extends = ngxCore.baseComponent;
+  this.extends = ngxBaseComponent;
 
   this.constructor = [
     ngCore.ElementRef,
@@ -14,7 +13,7 @@ function _ngxDropMenuComponent() {
     ngxDropMenuService,
 
     function ngxDropMenuComponent(elementRef, renderer, ngxDropMenuService) {
-      ngxCore.baseComponent.apply(this, arguments);
+      ngxBaseComponent.apply(this, arguments);
 
       if (elementRef) {
         this.ngxDropMenuService = ngxDropMenuService;
@@ -42,13 +41,13 @@ function _ngxDropMenuComponent() {
     var _self = this;
 
     this.subscription = this.ngxDropMenuService.ngxDropMenu$.subscribe(function (event) {
-      if (ngxUtil.isEmpty(event)) { return; }
+      if (ngxUtils.isEmpty(event)) { return; }
 
-      var _events = ngxUtil.isArray(event) ? event : [event];
+      var _events = ngxUtils.isArray(event) ? event : [event];
       var _actions = _self.ngxDropMenuService.getActions();
 
-      ngxUtil.forEach(_events, function (_event) {
-        if (ngxUtil.isEmpty(_event.id) || _event.id === _self.id) {
+      ngxUtils.forEach(_events, function (_event) {
+        if (ngxUtils.isEmpty(_event.id) || _event.id === _self.id) {
           if (_event.type === _actions.TOGGLE_DROPDOWN) {
             _self.toggleDropdown();
           }
@@ -85,15 +84,15 @@ function _ngxDropMenuComponent() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxCore.baseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngxBaseComponent); }
     return _base;
   }
 }
 
-module.exports = ngCore.Component({
+export var ngxDropMenuComponent = ngCore.Component({
   selector: 'ngx-drop-menu',
-  template: require('./themes/' + __THEME__ + '/templates/drop-menu.html'),
-  styles: [require('./themes/' + __THEME__  + '/scss/drop-menu.scss')],
+  templateUrl: './templates/drop-menu.html',
+  styleUrls: ['./scss/drop-menu.scss'],
   properties: ['id', 'position', 'initCssClass:class']
 })
 .Class(new _ngxDropMenuComponent());

@@ -1,0 +1,42 @@
+﻿@import "../../../cores/styles/typography/typography.scss";
+@import "../../../cores/styles/palette/palette.scss";
+@import "../../../cores/styles/border/border.scss";
+
+$ngx-pagination-margin: 1rem 0 1rem 0 !default;
+
+$ngx-pagination-border-radius: ngx-border-radius(base) !default;
+
+
+$ngx-page-item-font-size-sm: ngx-font-size(sm) !default; 
+$ngx-page-item-font-size-lg: ngx-font-size(lg) !default;
+
+$ngx-page-item-line-height: ngx-line-height(base) !default;
+$ngx-page-item-line-height-sm: ngx-line-height(sm) !default;
+$ngx-page-item-line-height-lg: ngx-line-height(lg) !default;
+
+$ngx-page-item-padding: .5rem .75rem !default;
+$ngx-page-item-padding-sm: .275rem .75rem !default;
+$ngx-page-item-padding-lg: .75rem 1.5rem !default;
+
+$ngx-page-item-border-radius: ngx-border-radius(base) !default;
+$ngx-page-item-border-radius-sm: ngx-border-radius(sm) !default;
+$ngx-page-item-border-radius-lg: ngx-border-radius(lg) !default;
+
+
+$ngx-page-item: (
+  active: (
+    foreground-color: ngx-color-light($ngx-color-white),
+    background-color: ngx-color($ngx-color-primary),
+    border-color: ngx-color($ngx-color-primary)
+  ),
+  hover: (
+    foreground-color: ngx-color($ngx-color-primary),
+    background-color: ngx-color-light($ngx-color-gray, light),
+    borde-colorr: ngx-color-light($ngx-color-black, light)
+  ),
+  default: (
+    foreground-color: ngx-color($ngx-color-primary),
+    background-color: ngx-color-light($ngx-color-white),
+    border-color: ngx-color-light($ngx-color-black, light)
+  )
+) !default;

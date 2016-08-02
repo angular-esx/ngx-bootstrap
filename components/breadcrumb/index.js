@@ -1,11 +1,7 @@
-﻿var ngxBreadcrumbComponent = require('./breadcrumb.component.js');
-var ngxBreadcrumbItemDirective = require('./breadcrumb-item.directive.js');
+﻿import ngxBreadcrumbComponent from './breadcrumb.component';
+import ngxBreadcrumbItemDirective from './breadcrumb-item.directive';
 
-module.exports = {
-  breadcrumbComponent: ngxBreadcrumbComponent,
-  breadcrumbItemDirective: ngxBreadcrumbItemDirective,
-  BREADCRUMB_DIRECTIVES: [
-    ngxBreadcrumbComponent,
-    ngxBreadcrumbItemDirective
-  ]
-};
+export * from './breadcrumb.component';
+export * from './breadcrumb-item.directive';
+
+export var NGX_BREADCRUMB_DIRECTIVES = [ngxBreadcrumbComponent, ngxBreadcrumbItemDirective];

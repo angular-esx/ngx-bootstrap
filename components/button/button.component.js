@@ -1,18 +1,17 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../cores/index.js');
-var ngxUtil = ngxCore.utils;
+﻿import * as ngCore from '@angular/core';
+import { ngxBaseComponent, ngxUtils } from  '../cores';
 
 function _ngxButtonComponent() {
   var _base;
   
-  this.extends = ngxCore.baseComponent;
+  this.extends = ngxBaseComponent;
 
   this.constructor = [
     ngCore.ElementRef,
     ngCore.Renderer,
 
     function ngxButtonComponent(elementRef, renderer) {
-      ngxCore.baseComponent.apply(this, arguments);
+      ngxBaseComponent.apply(this, arguments);
       
       if (elementRef) {
         this.clickEmitter = new ngCore.EventEmitter();
@@ -27,7 +26,7 @@ function _ngxButtonComponent() {
   };
 
   this.initDefaultValues = function(){
-    if(ngxUtil.isEmpty(this.state) && ngxUtil.isNull(this.isDisabled)){ this.isDisabled = false; }
+    if(ngxUtils.isEmpty(this.state) && ngxUtils.isNull(this.isDisabled)){ this.isDisabled = false; }
 
     return null;
   };
@@ -47,15 +46,15 @@ function _ngxButtonComponent() {
   };
   
   function _getBaseInstance(context){ 
-    if(!_base){ _base = context.getBaseInstance(ngxCore.baseComponent); }
+    if(!_base){ _base = context.getBaseInstance(ngxBaseComponent); }
     return _base;
   }
 }
 
-module.exports = ngCore.Component({
+export var ngxButtonComponent = ngCore.Component({
   selector: 'ngx-button, a[ngx-button]',
-  template: require('./themes/' + __THEME__ + '/templates/button.html'),
-  styles: [require('./themes/' + __THEME__  + '/scss/button.scss')],
+  templateUrl: './templates/button.html',
+  styleUrls: ['./scss/button.scss'],
   properties: ['color', 'size', 'state', 'initCssClass:class'],
   events: ['clickEmitter:onClick'],
   host: {

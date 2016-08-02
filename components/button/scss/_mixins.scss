@@ -1,0 +1,56 @@
+﻿@import "../../../cores/styles/state/state.scss";
+
+@import "_variables.scss";
+
+@mixin ngx-button-size($font-size, $padding, $border-radius){
+  font-size: $font-size;
+  padding: $padding;
+
+  @include ngx-border-radius($border-radius);
+}
+
+@mixin ngx-button-variant($component){
+  $component-default: map-get($component, default);
+  $component-active: map-get($component, active);
+  $component-disabled: map-get($component, disabled);
+
+  color: map-get($component-default, foreground-color);
+  background-color: map-get($component-default, background-color);
+  border-color: map-get($component-default, border-color);
+
+  @include ngx-state(ngx-button, 'focus hover active'){
+    color: map-get($component-active, foreground-color);
+    background-image: none;
+    background-color: map-get($component-active, background-color);
+    border-color: map-get($component-active, border-color);
+  }
+
+  @include ngx-state(ngx-button, 'disabled'){
+    color: map-get($component-disabled, foreground-color);
+    background-color: map-get($component-disabled, background-color);
+    border-color: map-get($component-disabled, border-color);
+  }
+}
+
+@mixin ngx-button-outline-variant($component){
+  $component-default: map-get($component, default);
+  $component-active: map-get($component, active);
+  $component-disabled: map-get($component, disabled);
+
+  color: map-get($component-default, foreground-color);
+  background-image: none;
+  background-color: transparent;
+  border-color: map-get($component-default, border-color);
+
+  @include ngx-state(ngx-button, 'focus hover active'){
+    color: map-get($component-active, foreground-color);
+    background-color: map-get($component-active, background-color);
+    border-color: map-get($component-active, border-color);
+  }
+
+  @include ngx-state(ngx-button, 'disabled'){
+    color: map-get($component-disabled, foreground-color);
+    background-color: map-get($component-disabled, background-color);
+    border-color: map-get($component-disabled, border-color);
+  }
+}

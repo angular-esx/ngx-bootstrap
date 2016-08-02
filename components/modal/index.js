@@ -1,13 +1,13 @@
-﻿var ngxModalComponent = require('./modal.component.js');
-var ngxModalHeaderComponent = require('./modal-header.component.js');
-var ngxModalFooterComponent = require('./modal-footer.component.js');
-var ngxModalService = require('./services/modal.service.js');
+﻿import ngxModalComponent from './modal.component';
+import ngxModalHeaderComponent from './modal-header.component';
+import ngxModalFooterComponent from './modal-footer.component';
+import ngxModalService from './services/modal.service';
 
-module.exports = {
-  modalComponent: ngxModalComponent,
-  modalHeaderComponent: ngxModalHeaderComponent,
-  modalFooterComponent: ngxModalFooterComponent,
-  modalService: ngxModalService,
-  MODAL_DIRECTIVES: [ngxModalComponent, ngxModalHeaderComponent, ngxModalFooterComponent],
-  MODAL_PROVIDERS: [ngxModalService]
-};
+export * from './modal.component';
+export * from './modal-header.component';
+export * from './modal-footer.component';
+export * from './services/modal.service';
+
+export var NGX_MODAL_DIRECTIVES = [ngxModalComponent, ngxModalHeaderComponent, ngxModalFooterComponent];
+
+export var NGX_MODAL_PROVIDERS = [ngxModalService];

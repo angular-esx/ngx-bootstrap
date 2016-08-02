@@ -1,5 +1,5 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxPopoverService = require('./services/popover.service.js');
+﻿import * as ngCore from '@angular/core';
+import ngxPopoverService from './services/popover.service';
 
 function _ngxPopoverTemplateDirective() {
   this.constructor = [
@@ -21,7 +21,7 @@ function _ngxPopoverTemplateDirective() {
   };
 }
 
-module.exports = ngCore.Directive({
+export var ngxPopoverTemplateDirective = ngCore.Directive({
   selector: '[ngxPopoverTemplate]',
   properties: ['id']
 })

@@ -1,18 +1,18 @@
-var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../cores/index.js');
-var ngxUtil = ngxCore.utils;
+import * as ngCore from '@angular/core';
+import { ngxBaseComponent, ngxUtils } from '../../cores';
+
 
 function _ngxLabelComponent() {
   var _base;
 
-  this.extends = ngxCore.baseComponent;
+  this.extends = ngxBaseComponent;
 
   this.constructor = [
     ngCore.ElementRef,
     ngCore.Renderer,
 
     function ngxLabelComponent(elementRef, renderer) {
-      ngxCore.baseComponent.apply(this, arguments);
+      ngxBaseComponent.apply(this, arguments);
     }
   ];
 
@@ -20,7 +20,7 @@ function _ngxLabelComponent() {
     var _styleProperties = this.getStyleProperties(),
         _changeRecord;
 
-    if (ngxUtil.isEmpty(this.color)) {
+    if (ngxUtils.isEmpty(this.color)) {
       this.color = 'default';
       _changeRecord = this.buildChangeRecord(_styleProperties.COLOR, this.color);
      }
@@ -33,15 +33,16 @@ function _ngxLabelComponent() {
   };
 
   function _getBaseInstance(context){ 
-    if(!_base){ _base = context.getBaseInstance(ngxCore.baseComponent); }
+    if(!_base){ _base = context.getBaseInstance(ngxBaseComponent); }
     return _base;
   }
 }
 
-module.exports = ngCore.Component({
+
+export var ngxLabelComponent = ngCore.Component({
   selector: 'ngx-label',
-  template: require('./themes/' + __THEME__ + '/templates/label.html'),
-  styles: [require('./themes/' + __THEME__  + '/scss/label.scss')],
+  templateUrl: './templates/label.html',
+  styleUrls: ['./scss/label.scss'],
   properties: ['color', 'type', 'initCssClass:class']
 })
 .Class(new _ngxLabelComponent());

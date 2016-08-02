@@ -1,0 +1,18 @@
+﻿@import "../../../cores/styles/breakpoint/breakpoint.scss";
+
+@import "_variables.scss";
+
+:host(.ngx-jumbotron) {
+  display: block;
+  padding: $ngx-jumbotron-padding;
+  margin: $ngx-jumbotron-margin;
+  background-color: $ngx-jumbotron-background-color;
+
+  @include ngx-media-breakpoint-up(sm) {
+    padding: $ngx-jumbotron-padding-sm;
+  }
+
+  hr {
+    border-top-color: $ngx-jumbotron-hr-border-top-color;
+  }
+}

@@ -1,0 +1,46 @@
+﻿@import "../../../cores/styles/typography/typography.scss";
+@import "../../../cores/styles/palette/palette.scss";
+@import "../../../cores/styles/border/border.scss";
+
+$ngx-drop-menu-font-size: ngx-font-size(base) !default;
+
+$ngx-drop-menu-padding: .3rem 0 !default;
+
+$ngx-drop-menu-margin: .1rem 0 0 !default;
+
+$ngx-drop-menu-index: 1000 !default;
+
+$ngx-drop-menu-foreground-color: ngx-color-dark($ngx-color-gray) !default;
+
+$ngx-drop-menu-background-color: ngx-color-light($ngx-color-white) !default;
+
+$ngx-drop-menu-border: 1px solid  ngx-color-light($ngx-color-black, light) !default;
+
+$ngx-drop-menu-border-radius: ngx-border-radius(base) !default;
+
+
+$ngx-drop-menu-head-font-size: ngx-font-size(sm) !default;
+
+$ngx-drop-menu-head-line-height: ngx-line-height(base) !default;
+
+$ngx-drop-menu-head-padding: .3rem 1rem !default;
+
+$ngx-drop-menu-head-foreground-color: ngx-color-light($ngx-color-gray) !default;
+
+
+$ngx-drop-menu-divider-margin: .5rem 0 !default;
+$ngx-drop-menu-divider-border-top-color: ngx-color-light($ngx-color-gray) !default;
+
+
+$ngx-drop-menu-item-line-height: ngx-line-height(base) !default;
+
+$ngx-drop-menu-item-padding: .3rem 1rem !default;
+
+$ngx-drop-menu-item: $ngx-component-secondary !default;
+
+
+$ngx-toggle-dropdown-margin: 0 .25rem 0 .25rem !default;
+$ngx-toggle-dropdown-border: .3em solid !default;
+
+$ngx-toggle-dropup-margin: 0 .25rem 0 .25rem !default;
+$ngx-toggle-dropup-border: .3em solid !default;

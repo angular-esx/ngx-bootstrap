@@ -1,8 +1,7 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../../cores/index.js');
-var ngxUtil = ngxCore.utils;
-var ngxBackdropComponent = require('../backdrop.component.js');
-var ngxBackdropObserver = require('./backdrop-observer.service.js');
+﻿import * as ngCore from '@angular/core';
+import ngxUtils from  '../../cores';
+import ngxBackdrop from '../backdrop.component';
+import ngxBackdropObserver from './backdrop.observer';
 
 function _ngxBackdropService() {
   this.constructor = [
@@ -38,7 +37,7 @@ function _ngxBackdropService() {
         ]);
 
     return this.dynamicComponentLoader
-               .loadNextToLocation(ngxBackdropComponent, this.rootViewContainerRef, _injector)
+               .loadNextToLocation(ngxBackdrop, this.rootViewContainerRef, _injector)
                .then(function (backdropRef) { _self.backdropRef = backdropRef; });
   };
 
@@ -75,4 +74,4 @@ function _ngxBackdropService() {
   };
 }
 
-module.exports = ngCore.Class(new _ngxBackdropService());
+export var ngxBackdropService = ngCore.Class(new _ngxBackdropService());

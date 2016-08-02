@@ -1,11 +1,7 @@
-﻿var ngxListComponent = require('./list.component.js');
-var ngxListItemComponent = require('./list-item.component.js');
+﻿import ngxListComponent from './list.component';
+import ngxListItemComponent from './list-item.component';
 
-module.exports = {
-  listComponent: ngxListComponent,
-  listItemComponent: ngxListItemComponent,
-  LIST_DIRECTIVES: [
-    ngxListComponent,
-    ngxListItemComponent
-  ]
-};
+export * from './list.component';
+export * from './list-item.component';
+
+export var NGX_LIST_DIRECTIVES = [ngxListComponent, ngxListItemComponent];

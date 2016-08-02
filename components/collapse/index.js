@@ -1,14 +1,10 @@
-var ngxCollapseComponent = require('./collapse.component.js');
-var ngxToggleCollapseDirective = require('./toggle-collapse.directive.js');
-var ngxCollapseService = require('./services/collapse.service.js');
+import ngxCollapseComponent from './collapse.component';
+import ngxToggleCollapseDirective from './toggle-collapse.directive';
+import ngxCollapseService from './services/collapse.service';
 
-module.exports = {
-  collapseComponent: ngxCollapseComponent,
-  toggleCollapseDirective: ngxToggleCollapseDirective,
-  collapseService: ngxCollapseService,
-  COLLAPSE_DIRECTIVES: [
-    ngxCollapseComponent,
-    ngxToggleCollapseDirective
-  ],
-  COLLAPSE_PROVIDERS: [ngxCollapseService]
-};
+export * from './collapse.component';
+export * from './toggle-collapse.directive';
+export * from './services/collapse.service';
+
+export var NGX_COLLAPSE_DIRECTIVES = [ngxCollapseComponent, ngxToggleCollapseDirective];
+export var NGX_COLLAPSE_PROVIDERS = [ngxCollapseService];

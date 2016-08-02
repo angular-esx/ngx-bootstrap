@@ -1,17 +1,17 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxLink = require('../../../../link/index.js');
-var ngxNavbar = require('../../../../navbar/index.js');
+﻿import * as ngCore from '@angular/core';
+import NGX_LINK_DIRECTIVES from '../../../../link';
+import NGX_NAVBAR_DIRECTIVES from '../../../../navbar';
 
-function _testCase() {
+function _ngxTestCase() {
   this.constructor = function () {};
 }
 
-module.exports = ngCore.Component({
+export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/navbar/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxLink.LINK_DIRECTIVES,
-    ngxNavbar.NAVBAR_DIRECTIVES,
+   NGX_LINK_DIRECTIVES,
+   NGX_NAVBAR_DIRECTIVES
   ]
 })
-.Class(new _testCase());
+.Class(new _ngxTestCase());

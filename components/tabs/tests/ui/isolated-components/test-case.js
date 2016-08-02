@@ -1,10 +1,9 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../../../../cores/index.js');
-var ngxUtil = ngxCore.utils;
-var ngxLink = require('../../../../link/index.js');
-var ngxTabs = require('../../../../tabs/index.js');
+﻿import * as ngCore from '@angular/core';
+import ngxUtils from '../../../../../cores';
+import NGX_LINK_DIRECTIVES from '../../../../link';
+import { NGX_TABS_DIRECTIVES, NGX_TABS_PROVIDERS } from '../../../../tabs';
 
-function _testCase() {
+function _ngxTestCase() {
   this.constructor = [ngxTabs.tabsService, function (ngxTabsService) {
     this.ngxTabsService = ngxTabsService;
 
@@ -20,11 +19,11 @@ function _testCase() {
   }];
 
   this.removeTab = function (tab) {
-    ngxUtil.splice(this.tabs, tab);
+    ngxUtils.splice(this.tabs, tab);
   };
 
   this.removePillTab = function (tab) {
-    ngxUtil.splice(this.pillTabs, tab);
+    ngxUtils.splice(this.pillTabs, tab);
   };
 
   this.selectTab = function (id) {
@@ -36,15 +35,15 @@ function _testCase() {
   };
 }
 
-module.exports = ngCore.Component({
+export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/tabs/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxLink.LINK_DIRECTIVES,
-    ngxTabs.TABS_DIRECTIVES
+    NGX_LINK_DIRECTIVES,
+    NGX_TABS_DIRECTIVES
   ],
   providers: [
-    ngxTabs.TABS_PROVIDERS
+    NGX_TABS_PROVIDERS
   ]
 })
-.Class(new _testCase());
+.Class(new _ngxTestCase());

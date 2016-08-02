@@ -1,6 +1,5 @@
-﻿var ngxButtonComponent = require('./button.component.js');
+﻿import ngxButtonComponent from './button.component';
 
-module.exports = {
-  buttonComponent: ngxButtonComponent,
-  BUTTON_DIRECTIVES: [ngxButtonComponent]
-};
+export * from './button.component';
+
+export var NGX_BUTTON_DIRECTIVES = [ngxButtonComponent];

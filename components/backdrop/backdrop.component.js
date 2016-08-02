@@ -1,12 +1,11 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../cores/index.js');
-var ngxUtil = ngxCore.utils;
-var ngxBackdropObserver = require('./services/backdrop-observer.service.js');
+﻿import * as ngCore from '@angular/core';
+import { ngxBaseComponent, ngxUtils } from  '../cores';
+import ngxBackdropObserver from './services/backdrop.observer';
 
 function _ngxBackdropComponent() {
   var _base;
 
-  this.extends = ngxCore.baseComponent;
+  this.extends = ngxBaseComponent;
 
   this.constructor = [
     ngCore.ElementRef,
@@ -14,7 +13,7 @@ function _ngxBackdropComponent() {
     ngxBackdropObserver,
 
     function ngxBackdropComponent(elementRef, renderer, ngxBackdropObserver) {
-      ngxCore.baseComponent.apply(this, arguments);
+      ngxBaseComponent.apply(this, arguments);
 
       if (elementRef) {
         this.ngxBackdropObserver = ngxBackdropObserver;
@@ -56,12 +55,12 @@ function _ngxBackdropComponent() {
     var _styleProperties = this.getStyleProperties(),
         _changeRecord;
 
-    if (ngxUtil.isEmpty(this.color)) {
+    if (ngxUtils.isEmpty(this.color)) {
       this.color = 'default';
       _changeRecord = this.buildChangeRecord(_styleProperties.COLOR, this.color);
     }
     
-    if (ngxUtil.isEmpty(this.state) && ngxUtil.isNull(this.isActive)) {
+    if (ngxUtils.isEmpty(this.state) && ngxUtils.isNull(this.isActive)) {
       this.isActive = false;
     }
 
@@ -76,12 +75,12 @@ function _ngxBackdropComponent() {
     var _self = this;
 
     this.subscription = this.ngxBackdropObserver.ngxBackdrop$.subscribe(function (event) {
-      if (ngxUtil.isEmpty(event)) { return; }
+      if (ngxUtils.isEmpty(event)) { return; }
 
-      var _events = ngxUtil.isArray(event) ? event : [event];
+      var _events = ngxUtils.isArray(event) ? event : [event];
       var _actions = _self.ngxBackdropObserver.getActions();
       
-      ngxUtil.forEach(_events, function (_event) {
+      ngxUtils.forEach(_events, function (_event) {
         if (_event.type === _actions.SHOW_BACKDROP) {
           _self.show();
         }
@@ -123,15 +122,15 @@ function _ngxBackdropComponent() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxCore.baseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngxBaseComponent); }
     return _base;
   }
 }
 
-module.exports = ngCore.Component({
+export var ngxBackdropComponent = ngCore.Component({
   selector: 'ngx-backdrop',
-  template: require('./themes/' + __THEME__ + '/templates/backdrop.html'),
-  styles: [require('./themes/' + __THEME__ + '/scss/backdrop.scss')],
+  templateUrl: './templates/backdrop.html',
+  styleUrls: ['./scss/backdrop.scss'],
   properties: ['color', 'initCssClass:class'],
   host: {
     '(click)': 'click()'

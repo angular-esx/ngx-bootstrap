@@ -1,7 +1,7 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxGrid = require('../../../../grid/index.js');
+﻿import * as ngCore from '@angular/core';
+import NGX_GRID_DIRECTIVES from '../../../../grid';
 
-function _testCase() {
+function _ngxTestCase() {
   this.constructor = function () {
     this.items = [];
 
@@ -12,11 +12,11 @@ function _testCase() {
   };
 }
 
-module.exports = ngCore.Component({
+export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/grid/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxGrid.GRID_DIRECTIVES
+    NGX_GRID_DIRECTIVES
   ]
 })
-.Class(new _testCase());
+.Class(new _ngxTestCase());

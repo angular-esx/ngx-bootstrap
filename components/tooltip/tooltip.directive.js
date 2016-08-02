@@ -1,14 +1,13 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../cores/index.js');
-var ngxUtil = ngxCore.utils;
-var ngxTooltipOptionClass = require('./classes/tooltip-option.class.js');
-var ngxTooltipComponent = require('./tooltip.component.js');
-var ngxTooltipService = require('./services/tooltip.service.js');
+﻿import * as ngCore from '@angular/core';
+import { ngxBaseDirective, ngxUtils } from  '../cores';
+import ngxTooltipOption from './models/tooltip-option.model.js';
+import ngxTooltipComponent from './tooltip.component.js';
+import ngxTooltipService from './services/tooltip.service';
 
 function _ngxTooltipDirective() {
   var _base;
 
-  this.extends = ngxCore.baseDirective;
+  this.extends = ngxBaseDirective;
 
   this.constructor = [
     ngCore.ElementRef,
@@ -18,7 +17,7 @@ function _ngxTooltipDirective() {
     ngxTooltipService,
 
     function ngxTooltipDirective(elementRef, renderer, viewContainerRef, componentLoader, ngxTooltipService) {
-      ngxCore.baseDirective.apply(this, [elementRef, renderer]);
+      ngxBaseDirective.apply(this, [elementRef, renderer]);
       
       if (elementRef) {
         this.ngxTooltipService = ngxTooltipService;
@@ -57,9 +56,9 @@ function _ngxTooltipDirective() {
     if (this.autoHide === 'true') { this.autoHide = true; }
     else if (this.autoHide === 'false') { this.autoHide = false; }
 
-    if(ngxUtil.isEmpty(this.state) && ngxUtil.isNull(this.isActive)){ this.isActive = false; }
+    if(ngxUtils.isEmpty(this.state) && ngxUtils.isNull(this.isActive)){ this.isActive = false; }
 
-    if(ngxUtil.isEmpty(this.state) && ngxUtil.isNull(this.isDisabled)){ this.isDisabled = false; }
+    if(ngxUtils.isEmpty(this.state) && ngxUtils.isNull(this.isDisabled)){ this.isDisabled = false; }
 
     return null;
   };
@@ -67,13 +66,13 @@ function _ngxTooltipDirective() {
   this.subscribe = function () {
     var _self = this;
     this.subscription = this.ngxTooltipService.ngxTooltip$.subscribe(function (event) {
-      if (ngxUtil.isEmpty(event)) { return; }
+      if (ngxUtils.isEmpty(event)) { return; }
 
-      var _events = ngxUtil.isArray(event) ? event : [event];
+      var _events = ngxUtils.isArray(event) ? event : [event];
       var _actions = _self.ngxTooltipService.getActions();
       
-      ngxUtil.forEach(_events, function (_event) {
-        if (ngxUtil.isEmpty(_event.id) || _event.id === _self.id) {
+      ngxUtils.forEach(_events, function (_event) {
+        if (ngxUtils.isEmpty(_event.id) || _event.id === _self.id) {
           if (_event.type === _actions.ENABLE_TOOLTIP) {
             _self.enable(_event.isEnabled);
           }
@@ -111,8 +110,8 @@ function _ngxTooltipDirective() {
         this.componentRef) { return; }
     
     if (options) {
-      this.delay = ngxUtil.isNull(options.delay) ? this.delay : options.delay;
-      this.autoHide = ngxUtil.isNull(options.autoHide) ? this.autoHide : options.autoHide;
+      this.delay = ngxUtils.isNull(options.delay) ? this.delay : options.delay;
+      this.autoHide = ngxUtils.isNull(options.autoHide) ? this.autoHide : options.autoHide;
     }
 
     var _styleProperties = this.getStyleProperties();
@@ -167,12 +166,12 @@ function _ngxTooltipDirective() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxCore.baseDirective); }
+    if (!_base) { _base = context.getBaseInstance(ngxBaseDirective); }
     return _base;
   }
 }
 
-module.exports = ngCore.Directive({
+export var ngxTooltipDirective = ngCore.Directive({
   selector: '[ngx-tooltip]',
   properties: [
     'id',

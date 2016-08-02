@@ -1,0 +1,56 @@
+﻿@import "../../../cores/styles/state/state.scss";
+
+@import "_mixins.scss";
+
+:host(.ngx-breadcrumb) {
+  display: block;
+  padding: $ngx-breadcrumb-padding;
+  margin: $ngx-breadcrumb-margin;
+  background-color: transparent;
+  
+  @include ngx-clearfix();
+
+  > .ngx-breadcrumb-item {
+    float: left;
+
+    &:not(:last-child) {
+      &::after {
+        display: inline-block;
+        text-decoration: underline;
+        padding: $ngx-breadcrumb-item-padding;
+        content: "/";
+      }
+      //Fix a bug for IE
+      //http://stackoverflow.com/questions/8820286/how-to-remove-only-underline-from-abefore/21902566#21902566
+      @include ngx-state(ngx-breadcrumb-item, 'self focus hover') {
+        &::after {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  &.ngx-breadcrumb-color-default{
+    @include ngx-breadcrumb-variant($ngx-breadcrumb-default);
+  }
+
+  &.ngx-breadcrumb-color-primary{
+    @include ngx-breadcrumb-variant($ngx-breadcrumb-primary);
+  }
+
+  &.ngx-breadcrumb-color-info{
+    @include ngx-breadcrumb-variant($ngx-breadcrumb-info);
+  }
+
+  &.ngx-breadcrumb-color-success{
+    @include ngx-breadcrumb-variant($ngx-breadcrumb-success);
+  }
+
+  &.ngx-breadcrumb-color-warning{
+    @include ngx-breadcrumb-variant($ngx-breadcrumb-warning);
+  }
+
+  &.ngx-breadcrumb-color-danger{
+    @include ngx-breadcrumb-variant($ngx-breadcrumb-danger);
+  }
+}

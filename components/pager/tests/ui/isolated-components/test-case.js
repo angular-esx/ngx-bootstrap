@@ -1,7 +1,7 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxPager = require('../../../../pager/index.js');
+﻿import * as ngCore from '@angular/core';
+import NGX_PAGER_DIRECTIVES from '../../../../pager';
 
-function _testCase() {
+function _ngxTestCase() {
   this.constructor = function () {};
 
   this.setPage = function (event) {
@@ -17,11 +17,11 @@ function _testCase() {
 
 }
 
-module.exports = ngCore.Component({
+export var _ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/pager/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxPager.PAGER_DIRECTIVES
+    NGX_PAGER_DIRECTIVES
   ]
 })
-.Class(new _testCase());
+.Class(new _ngxTestCase());

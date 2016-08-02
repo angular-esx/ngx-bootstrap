@@ -1,10 +1,10 @@
-var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../../../../cores/index.js');
-var ngxAlert = require('../../../../alert/index.js');
-var ngxLink = require('../../../../link/index.js');
+import * as ngCore from '@angular/core';
+import ngxAnimationService from '../../../../../cores';
+import NGX_LINK_DIRECTIVES from '../../../../link';
+import { ngxAlertService, NGX_ALERT_DIRECTIVES, NGX_ALERT_PROVIDERS } from '../../../../alert';
 
-function _testCase() {
-  this.constructor = [ngxAlert.alertService, function (ngxAlertService) {
+function _ngxTestCase() {
+  this.constructor = [ngxAlertService, function (ngxAlertService) {
     this.ngxAlertService = ngxAlertService;
 
     this.href = 'https://translate.google.com.vn';
@@ -35,16 +35,16 @@ function _testCase() {
   };
 }
 
-module.exports = ngCore.Component({
+export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/alert/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxLink.LINK_DIRECTIVES,
-    ngxAlert.ALERT_DIRECTIVES
+    NGX_LINK_DIRECTIVES,
+    NGX_ALERT_DIRECTIVES
   ],
   providers: [
-    ngxCore.animationService,
-    ngxAlert.ALERT_PROVIDERS
+    ngxAnimationService,
+    NGX_ALERT_PROVIDERS
   ]
 })
-.Class(new _testCase());
+.Class(new _ngxTestCase());

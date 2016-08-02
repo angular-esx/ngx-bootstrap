@@ -1,4 +1,4 @@
-﻿var ngCore = require('@angular/core/index.js');
+﻿import * as ngCore from '@angular/core';
 
 function _ngxDropMenuItemDirective() {
   this.constructor = function ngxDropMenuItemDirective() {};
@@ -8,7 +8,7 @@ function _ngxDropMenuItemDirective() {
   };
 }
 
-module.exports = ngCore.Directive({
+export var ngxDropMenuItemDirective = ngCore.Directive({
   selector: '[ngx-drop-menu-item]',
   properties: ['state:ngx-drop-menu-item-state'],
   host: {

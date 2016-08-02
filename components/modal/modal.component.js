@@ -1,22 +1,21 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../cores/index.js');
-var ngxUtil = ngxCore.utils;
-var ngxModalService = require('./services/modal.service.js');
-var ngxBackdrop = require('../../components/backdrop/index.js');
+﻿import * as ngCore from '@angular/core';
+import { ngxBaseComponent, ngxUtils } from  '../cores';
+import ngxModalService from './services/modal.service';
+import ngxBackdropService from '../../components/backdrop';
 
 function _ngxModalComponent() {
   var _base;
 
-  this.extends = ngxCore.baseComponent;
+  this.extends = ngxBaseComponent;
 
   this.constructor = [
     ngCore.ElementRef,
     ngCore.Renderer,
     ngxModalService,
-    ngxBackdrop.backdropService,
+    ngxBackdropService,
 
     function ngxModalComponent(elementRef, renderer, ngxModalService, ngxBackdropService) {
-      ngxCore.baseComponent.apply(this, arguments);
+      ngxBaseComponent.apply(this, arguments);
 
       if (elementRef) {
         this.ngxModalService = ngxModalService;
@@ -26,14 +25,14 @@ function _ngxModalComponent() {
   ];
 
   this.ngOnChanges = function (changeRecord) {
-    if (ngxUtil.isEmpty(this.id)) { throw 'Must provide id to ngxModal'; }
+    if (ngxUtils.isEmpty(this.id)) { throw 'Must provide id to ngxModal'; }
 
     var _self = this;
     _styleProperties = this.getStyleProperties();
 
     this.isActive = this.propertyHasValue(_styleProperties.STATE, 'active');
 
-    if (ngxUtil.isNull(this.state)) {
+    if (ngxUtils.isNull(this.state)) {
       _getBaseInstance(this).ngOnChanges.apply(this, [changeRecord]);
       return;
     }
@@ -54,7 +53,7 @@ function _ngxModalComponent() {
     else {
       this.ngxBackdropService.hide();
 
-      ngxUtil.splice(_classes, this.getPrefixClass(), function (prefixClass, cssClass) {
+      ngxUtils.splice(_classes, this.getPrefixClass(), function (prefixClass, cssClass) {
         return cssClass.indexOf(prefixClass) === 0;
       });
 
@@ -79,7 +78,7 @@ function _ngxModalComponent() {
   };
 
   this.initDefaultValues = function () {
-    if (ngxUtil.isEmpty(this.state) && ngxUtil.isNull(this.isActive)) {
+    if (ngxUtils.isEmpty(this.state) && ngxUtils.isNull(this.isActive)) {
       this.isActive = false;
     }
 
@@ -94,13 +93,13 @@ function _ngxModalComponent() {
     var _self = this;
 
     this.subscription = this.ngxModalService.ngxModal$.subscribe(function (event) {
-      if (ngxUtil.isEmpty(event)) { return; }
+      if (ngxUtils.isEmpty(event)) { return; }
 
-      var _events = ngxUtil.isArray(event) ? event : [event];
+      var _events = ngxUtils.isArray(event) ? event : [event];
       var _actions = _self.ngxModalService.getActions();
 
-      ngxUtil.forEach(_events, function (_event) {
-        if (!ngxUtil.isEmpty(_event.id) && _event.id === _self.id) {
+      ngxUtils.forEach(_events, function (_event) {
+        if (!ngxUtils.isEmpty(_event.id) && _event.id === _self.id) {
           if (_event.type === _actions.SHOW_MODAL) {
             _self.show();
           }
@@ -135,7 +134,7 @@ function _ngxModalComponent() {
   this.click = function (event) {
     if
     (
-        !ngxUtil.isEmpty(this.id) && this.id == event.target.id &&
+        !ngxUtils.isEmpty(this.id) && this.id == event.target.id &&
         this.isActive &&
         !this.propertyHasValue(this.getStyleProperties().TYPE, 'static')
     ) {
@@ -144,15 +143,15 @@ function _ngxModalComponent() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxCore.baseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngxBaseComponent); }
     return _base;
   }
 }
 
-module.exports = ngCore.Component({
+export var ngxModalComponent = ngCore.Component({
   selector: 'ngx-modal',
-  template: require('./themes/' + __THEME__ + '/templates/modal.html'),
-  styles: [require('./themes/' + __THEME__ + '/scss/modal.scss')],
+  template: './templates/modal.html',
+  styles: ['./scss/modal.scss'],
   properties: ['id', 'type', 'size', 'backdropColor:backdrop-color', 'initCssClass:class'],
   host: {
     '(click)': 'click($event)'

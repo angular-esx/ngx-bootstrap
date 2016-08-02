@@ -1,14 +1,13 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../cores/index.js');
-var ngxUtil = ngxCore.utils;
-var ngxTabsService = require('./services/tabs.service.js');
-var ngxTabHeaderDirective = require('./tab-header.directive.js');
-var ngxTabContentDirective = require('./tab-content.directive.js');
+﻿import * as ngCore from '@angular/core';
+import { ngxBaseDirective, ngxUtils } from  '../cores';
+import ngxTabsService from './services/tabs.service';
+import ngxTabHeaderDirective from './tab-header.directive';
+import ngxTabContentDirective from './tab-content.directive';
 
 function _ngxTabDirective() {
   var _base;
 
-  this.extends = ngxCore.baseDirective;
+  this.extends = ngxBaseDirective;
 
   this.constructor = [
     ngCore.ElementRef,
@@ -16,7 +15,7 @@ function _ngxTabDirective() {
     ngxTabsService,
 
     function ngxTabDirective(elementRef, renderer, ngxTabsService) {
-      ngxCore.baseDirective.apply(this, arguments);
+      ngxBaseDirective.apply(this, arguments);
 
       if (elementRef) {
         this.ngxTabsService = ngxTabsService;
@@ -34,12 +33,12 @@ function _ngxTabDirective() {
   };
 
   this.ngAfterContentInit = function () {
-    if (ngxUtil.isEmpty(this.id)) { this.id = ngxUtil.newGUID(); }
+    if (ngxUtils.isEmpty(this.id)) { this.id = ngxUtils.newGUID(); }
 
-    if (ngxUtil.isNull(this.headerTemplate)) {
+    if (ngxUtils.isNull(this.headerTemplate)) {
       throw 'Header is required for tab';
     }
-    if (ngxUtil.isNull(this.contentTemplate)) {
+    if (ngxUtils.isNull(this.contentTemplate)) {
       throw 'Content is required for tab';
     }
 
@@ -81,12 +80,12 @@ function _ngxTabDirective() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxCore.baseDirective); }
+    if (!_base) { _base = context.getBaseInstance(ngxBaseDirective); }
     return _base;
   }
 }
 
-module.exports = ngCore.Directive({
+export var ngxTabDirective = ngCore.Directive({
   selector: 'ngx-tab',
   properties: ['id', 'state', 'initCssClass:class'],
   queries: {

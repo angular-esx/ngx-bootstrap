@@ -1,26 +1,23 @@
-﻿var exporter = require('../configs/exporter.js');
-
-var exports = new exporter()
-.addExports(require('./alert/index.js'))
-.addExports(require('./breadcrumb/index.js'))
-.addExports(require('./button/index.js'))
-.addExports(require('./card/index.js'))
-.addExports(require('./collapse/index.js'))
-.addExports(require('./drop-menu/index.js'))
-.addExports(require('./grid/index.js'))
-.addExports(require('./group/index.js'))
-.addExports(require('./icon/index.js'))
-.addExports(require('./jumbotron/index.js'))
-.addExports(require('./label/index.js'))
-.addExports(require('./link/index.js'))
-.addExports(require('./list/index.js'))
-.addExports(require('./navbar/index.js'))
-.addExports(require('./pager/index.js'))
-.addExports(require('./pagination/index.js'))
-.addExports(require('./popover/index.js'))
-.addExports(require('./progress/index.js'))
-.addExports(require('./tabs/index.js'))
-.addExports(require('./tooltip/index.js'))
-.merge();
-
-module.exports = exports;
+﻿export * from './alert/index.js';
+export * from './breadcrumb/index.js';
+export * from './button/index.js';
+export * from './card/index.js';
+export * from './collapse/index.js';
+export * from './drop-menu/index.js';
+export * from './grid/index.js';
+export * from './group/index.js';
+export * from './icon/index.js';
+export * from './jumbotron/index.js';
+export * from './label/index.js';
+export * from './link/index.js';
+export * from './list/index.js';
+export * from './navbar/index.js';
+export * from './pager/index.js';
+export * from './pagination/index.js';
+export * from './popover/index.js';
+export * from './progress/index.js';
+export * from './tabs/index.js';
+export * from './tooltip/index.js';
+export * from './hide/index.js';
+export * from './checkbox/index.js';
+export * from './radio/index.js';

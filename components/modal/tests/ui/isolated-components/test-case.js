@@ -1,18 +1,18 @@
-var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../../../../cores/index.js');
-var ngxButton = require('../../../../button/index.js');
-var ngxBackdrop = require('../../../../backdrop/index.js');
-var ngxModal = require('../../../../modal/index.js');
+import * as ngCore from '@angular/core';
+import { ngxAnimationService, ngxComponentPortal, ngxPortalHostDirective } from '../../../cores';
+import { ngxBackdropService, NGX_BACKDROP_DIRECTIVES, NGX_BACKDROP_PROVIDERS } from '../../../../backdrop';
+import { ngxModalService, NGX_MODAL_DIRECTIVES, NGX_MODAL_PROVIDERS } from '../../../../modal';
+import NGX_BUTTON_DIRECTIVES from '../../../../button';
 
-function _testCase() {
+function _ngxTestCase() {
   this.constructor = [
     ngCore.ViewContainerRef,
-    ngxModal.modalService,
-    ngxBackdrop.backdropService,
+    ngxModalService,
+    ngxBackdropService,
 
     function (viewContainerRef, ngxModalService, backdropService) {
       this.ngxModalService = ngxModalService;
-      this.childComponent = new ngxCore.componentPortalClass(_buildNgxChildComponent());
+      this.childComponent = new ngxCore.ngxComponentPortal(_buildNgxChildComponent());
 
       backdropService.setRootViewContainerRef(viewContainerRef);
     }
@@ -43,19 +43,19 @@ function _testCase() {
   }
 }
 
-module.exports = ngCore.Component({
+export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/modal/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxCore.portalHostDirective,
-    ngxButton.BUTTON_DIRECTIVES,
-    ngxBackdrop.BACKDROP_DIRECTIVES,
-    ngxModal.MODAL_DIRECTIVES
+    ngxPortalHostDirective,
+    NGX_BUTTON_DIRECTIVES,
+    NGX_BACKDROP_DIRECTIVES,
+    NGX_MODAL_DIRECTIVES
   ],
   providers: [
-    ngxCore.animationService,
-    ngxBackdrop.BACKDROP_PROVIDERS,
-    ngxModal.MODAL_PROVIDERS
+    ngxAnimationService,
+    NGX_BACKDROP_PROVIDERS,
+    NGX_MODAL_PROVIDERS
   ]
 })
-.Class(new _testCase());
+.Class(new _ngxTestCase());

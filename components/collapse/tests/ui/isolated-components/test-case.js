@@ -1,22 +1,22 @@
-var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../../../../cores/index.js');
-var ngxButton = require('../../../../button/index.js');
-var ngxCollapse = require('../../../../collapse/index.js');
+import * as ngCore from '@angular/core';
+import ngxAnimationService from '../../../cores';
+import NGX_BUTTON_DIRECTIVES from '../../../../button';
+import { NGX_COLLAPSE_DIRECTIVES, NGX_COLLAPSE_PROVIDERS } from '../../../../collapse';
 
 function _testCase() {
   this.constructor = function () {};
 }
 
-module.exports = ngCore.Component({
+export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/collapse/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxButton.BUTTON_DIRECTIVES,
-    ngxCollapse.COLLAPSE_DIRECTIVES
+    NGX_BUTTON_DIRECTIVES,
+    NGX_COLLAPSE_DIRECTIVES
   ],
   providers: [
-    ngxCore.animationService,
-    ngxCollapse.COLLAPSE_PROVIDERS
+    ngxAnimationService,
+    NGX_COLLAPSE_PROVIDERS
   ]
 })
 .Class(new _testCase());

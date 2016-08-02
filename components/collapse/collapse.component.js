@@ -1,12 +1,11 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../cores/index.js');
-var ngxUtil = ngxCore.utils;
-var ngxCollapseService = require('./services/collapse.service.js');
+﻿import * as ngCore from '@angular/core';
+import { ngxBaseComponent, ngxUtils } from  '../cores';
+import ngxCollapseService from './services/collapse.service';
 
 function _ngxCollapseComponent() {
   var _base;
 
-  this.extends = ngxCore.baseComponent;
+  this.extends = ngxBaseComponent;
 
   this.constructor = [
     ngCore.ElementRef,
@@ -14,7 +13,7 @@ function _ngxCollapseComponent() {
     ngxCollapseService,
 
     function ngxCollapseComponent(elementRef, renderer, ngxCollapseService) {
-      ngxCore.baseComponent.apply(this, arguments);
+      ngxBaseComponent.apply(this, arguments);
 
       if (elementRef) {
         this.ngxCollapseService = ngxCollapseService;
@@ -63,13 +62,13 @@ function _ngxCollapseComponent() {
   this.subscribe = function () {
     var _self = this;
     this.subscription = this.ngxCollapseService.ngxCollapse$.subscribe(function (event) {
-      if (ngxUtil.isEmpty(event)) { return; }
+      if (ngxUtils.isEmpty(event)) { return; }
 
-      var _events = ngxUtil.isArray(event) ? event : [event];
+      var _events = ngxUtils.isArray(event) ? event : [event];
       var _actions = _self.ngxCollapseService.getActions();
 
-      ngxUtil.forEach(_events, function (_event) {
-        if (ngxUtil.isEmpty(_event.id) || _self.id === _event.id) {
+      ngxUtils.forEach(_events, function (_event) {
+        if (ngxUtils.isEmpty(_event.id) || _self.id === _event.id) {
           if (_event.type === _actions.TOGGLE_COLLAPSE) {
             _self.toggle();
           }
@@ -123,15 +122,15 @@ function _ngxCollapseComponent() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxCore.baseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngxBaseComponent); }
     return _base;
   }
 }
 
-module.exports = ngCore.Component({
+export var ngxCollapseComponent = ngCore.Component({
   selector: 'ngx-collapse',
-  template: require('./themes/' + __THEME__ + '/templates/collapse.html'),
-  styles: [require('./themes/' + __THEME__  + '/scss/collapse.scss')],
+  templateUrl: './templates/collapse.html',
+  styleUrls: ['./scss/collapse.scss'],
   properties: ['id', 'state', 'group', 'initCssClass:class']
 })
 .Class(new _ngxCollapseComponent());

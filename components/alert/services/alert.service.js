@@ -1,7 +1,6 @@
-﻿var ngCore = require('@angular/core/index.js');
-var rx = require('rxjs/rx.js');
-var ngxCore = require('../../../cores/index.js');
-var ngxUtil = ngxCore.utils;
+﻿import * as ngCore from '@angular/core';
+import * as rx from 'rxjs/rx';
+import { ngxAnimationService, ngxUtils } from  '../../cores';
 
 function _ngxAlertService() {
   var _observer;
@@ -11,10 +10,10 @@ function _ngxAlertService() {
   };
 
   this.constructor = [
-    ngxCore.animationService,
+    ngxAnimationService,
 
     function ngxAlertService(ngxAnimationService) {
-      ngxUtil.shallowCopy(this, ngxAnimationService);
+      ngxUtils.shallowCopy(this, ngxAnimationService);
 
       this.ngxAlert$ = new rx.Observable(function (observer) {
         _observer = observer;
@@ -24,7 +23,7 @@ function _ngxAlertService() {
   ];
 
   this.getActions = function () {
-    return ngxUtil.shallowCopy({}, _ACTIONS);
+    return ngxUtils.shallowCopy({}, _ACTIONS);
   };
 
   this.next = function (event) {
@@ -46,4 +45,4 @@ function _ngxAlertService() {
   };
 }
 
-module.exports = ngCore.Class(new _ngxAlertService());
+export var ngxAlertService = ngCore.Class(new _ngxAlertService());

@@ -1,7 +1,6 @@
-﻿var ngCore = require('@angular/core/index.js');
-var rx = require('rxjs/rx.js');
-var ngxCore = require('../../../cores/index.js');
-var ngxUtil = ngxCore.utils;
+﻿import * as ngCore from '@angular/core';
+import * as rx from 'rxjs/rx';
+import { ngxAnimationService, ngxUtils } from  '../../cores';
 
 function _ngxCollapseService() {
   var _observer;
@@ -12,10 +11,10 @@ function _ngxCollapseService() {
   };
 
   this.constructor = [
-    ngxCore.animationService,
+    ngxAnimationService,
 
     function ngxCollapseService(ngxAnimationService) {
-      ngxUtil.shallowCopy(this, ngxAnimationService);
+      ngxUtils.shallowCopy(this, ngxAnimationService);
 
       this.ngxCollapse$ = new rx.Observable(function (observer) {
         _observer = observer;
@@ -25,7 +24,7 @@ function _ngxCollapseService() {
   ];
 
   this.getActions = function () {
-    return ngxUtil.shallowCopy({}, _ACTIONS);
+    return ngxUtils.shallowCopy({}, _ACTIONS);
   };
 
   this.next = function (event) {
@@ -54,4 +53,4 @@ function _ngxCollapseService() {
   };
 }
 
-module.exports = ngCore.Class(new _ngxCollapseService());
+export var ngxCollapseService = ngCore.Class(new _ngxCollapseService());

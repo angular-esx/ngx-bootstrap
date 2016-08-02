@@ -1,5 +1,6 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxBaseDirective = require('../../directives/base/base.directive.js');
+﻿import * as ngCore from '@angular/core';
+import ngxBaseDirective from './base.directive';
+
 
 function _ngxBaseComponent() {
   var _base;
@@ -25,4 +26,5 @@ function _ngxBaseComponent() {
   }
 }
 
-module.exports = ngCore.Class(new _ngxBaseComponent());
+
+export var ngxBaseComponent = ngCore.Class(new _ngxBaseComponent());

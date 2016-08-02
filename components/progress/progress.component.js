@@ -1,6 +1,5 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../cores/index.js');
-var ngxUtil = ngxCore.utils;
+﻿import * as ngCore from '@angular/core';
+import { ngxBaseComponent, ngxUtils } from  '../cores';
 
 function _ngxProgressComponent() {
   var _base;
@@ -9,14 +8,14 @@ function _ngxProgressComponent() {
     MAX: 'max'
   };
 
-  this.extends = ngxCore.baseComponent;
+  this.extends = ngxBaseComponent;
 
   this.constructor = [
     ngCore.ElementRef,
     ngCore.Renderer,
 
     function ngxProgressComponent(elementRef, renderer) {
-      ngxCore.baseComponent.apply(this, arguments);
+      ngxBaseComponent.apply(this, arguments);
       
       if (elementRef) {
         this.currentProgress = 0;
@@ -36,12 +35,12 @@ function _ngxProgressComponent() {
   this.initDefaultValues = function(){
     var _changeRecord;
 
-    if(ngxUtil.isEmpty(this.value)){ 
+    if(ngxUtils.isEmpty(this.value)){ 
       this.value = 0;
       _changeRecord = this.buildChangeRecord(_PROPERTIES.VALUE, this.value);
      }
 
-    if(ngxUtil.isEmpty(this.max)){ 
+    if(ngxUtils.isEmpty(this.max)){ 
       this.max = 100;
       _changeRecord = this.buildChangeRecord(_PROPERTIES.MAX, this.max);
      }
@@ -54,15 +53,15 @@ function _ngxProgressComponent() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxCore.baseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngxBaseComponent); }
     return _base;
   }
 }
 
-module.exports = ngCore.Component({
+export var ngxProgressComponent = ngCore.Component({
   selector: 'ngx-progress',
-  template: require('./themes/' + __THEME__ + '/templates/progress.html'),
-  styles: [require('./themes/' + __THEME__  + '/scss/progress.scss')],
+  templateUrl: './templates/progress.html',
+  styleUrls: ['./scss/progress.scss'],
   properties: ['color', 'value', 'max', 'initCssClass:class'],
   host: {
     '[class.ngx-progress]': 'true'

@@ -1,15 +1,15 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxCard = require('../../../../card/index.js');
+﻿import * as ngCore from '@angular/core';
+import NGX_CARD_DIRECTIVES from '../../../../card';
 
-function _testCase() {
+function _ngxTestCase() {
   this.constructor = function () {};
 }
 
-module.exports = ngCore.Component({
+export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/card/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxCard.CARD_DIRECTIVES
+    NGX_CARD_DIRECTIVES
   ]
 })
-.Class(new _testCase());
+.Class(new _ngxTestCase());

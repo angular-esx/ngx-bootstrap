@@ -1,18 +1,17 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../cores/index.js');
-var ngxUtil = ngxCore.utils;
+﻿import * as ngCore from '@angular/core';
+import { ngxBaseDirective, ngxUtils } from  '../cores';
 
 function _ngxGridRowDirective() {
   var _base, _STYLE_PROPERTIES;
 
-  this.extends = ngxCore.baseDirective;
+  this.extends = ngxBaseDirective;
 
   this.constructor = [
     ngCore.ElementRef,
     ngCore.Renderer,
 
     function ngxGridRowDirective(elementRef, renderer) {
-      ngxCore.baseDirective.apply(this, arguments);
+      ngxBaseDirective.apply(this, arguments);
     }
   ];
 
@@ -28,7 +27,7 @@ function _ngxGridRowDirective() {
         ALIGN_ITENS: 'alignItems'
       };
 
-      ngxUtil.shallowCopy(_STYLE_PROPERTIES, _getBaseInstance(this).getStyleProperties.apply(this));
+      ngxUtils.shallowCopy(_STYLE_PROPERTIES, _getBaseInstance(this).getStyleProperties.apply(this));
     }
 
     return _STYLE_PROPERTIES;
@@ -42,7 +41,7 @@ function _ngxGridRowDirective() {
       propertyName === _styleProperties.ALIGN_CONTENT ||
       propertyName === _styleProperties.ALIGN_ITENS
     ){
-      if (ngxUtil.isEmpty(propertyValue)) { return ''; }
+      if (ngxUtils.isEmpty(propertyValue)) { return ''; }
 
       var _parts,
           _cssClasses = [],
@@ -53,7 +52,7 @@ function _ngxGridRowDirective() {
                           .replace(/^-/, '')
                           .toLowerCase();
 
-      ngxUtil.forEach(_values, function (value) {
+      ngxUtils.forEach(_values, function (value) {
         _parts = value.split('-');
 
         if (_parts.length === 2) {
@@ -72,12 +71,12 @@ function _ngxGridRowDirective() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxCore.baseDirective); }
+    if (!_base) { _base = context.getBaseInstance(ngxBaseDirective); }
     return _base;
   }
 }
 
-module.exports = ngCore.Directive({
+export var ngxGridRowDirective = ngCore.Directive({
   selector: 'ngx-grid-row',
   properties: [
     'justifyContent:justify-content', 

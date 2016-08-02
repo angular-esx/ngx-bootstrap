@@ -1,10 +1,11 @@
-var ngCore = require('@angular/core/index.js');
+import * as ngCore from '@angular/core';
 
-var ngPlatformBrowser = require('angular2/platform/browser.js');
-var ngDOMAdapter = require('angular2/src/platform/dom/dom_adapter.js');
+import * as ngPlatformBrowser from 'angular2/platform/browser';
+import * as ngDOMAdapter from 'angular2/src/platform/dom/dom_adapter';
+import * as ngAmimation from 'angular2/animate';
+
+
 ngDOMAdapter.setRootDomAdapter(new ngPlatformBrowser.BrowserDomAdapter());
-
-var ngAmimation = require('angular2/animate.js');
 
 function _ngxAnimationService() {
   this.constructor = function ngxAnimationService() {
@@ -96,4 +97,5 @@ function _ngxAnimationService() {
    };
 }
 
-module.exports = ngCore.Class(new _ngxAnimationService());
+
+export var ngxAnimationService = ngCore.Class(new _ngxAnimationService());

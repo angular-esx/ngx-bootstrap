@@ -1,17 +1,17 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../cores/index.js');
+﻿import * as ngCore from '@angular/core';
+import ngxBaseComponent from  '../cores';
 
 function _ngxGroupComponent() {
   var _base;
 
-  this.extends = ngxCore.baseComponent;
+  this.extends = ngxBaseComponent;
 
   this.constructor = [
     ngCore.ElementRef,
     ngCore.Renderer,
 
     function ngxGroupComponent(elementRef, renderer) {
-      ngxCore.baseComponent.apply(this, arguments);
+      ngxBaseComponent.apply(this, arguments);
     }
   ];
 
@@ -20,15 +20,15 @@ function _ngxGroupComponent() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxCore.baseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngxBaseComponent); }
     return _base;
   }
 }
 
-module.exports = ngCore.Component({
+export var ngxGroupComponent = ngCore.Component({
   selector: 'ngx-group',
-  template: require('./themes/' + __THEME__ + '/templates/group.html'),
-  styles: [require('./themes/' + __THEME__  + '/scss/group.scss')],
+  templateUrl: './templates/group.html',
+  styleUrls: ['./scss/group.scss'],
   properties: ['type', 'size', 'initCssClass:class']
 })
 .Class(new _ngxGroupComponent());

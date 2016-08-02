@@ -1,5 +1,5 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngHttp = require('@angular/http/index.js');
+﻿import * as ngCore from '@angular/core';
+import Http from '@angular/http';
 
 function _ngxIconService() {
   var _defaultFontSet = '',
@@ -12,7 +12,7 @@ function _ngxIconService() {
       _fetchingSvgIcons = {};
 
   this.constructor = [
-    ngHttp.Http,
+    Http,
 
     function ngxIconService(httpService) {
       this.httpService = httpService;
@@ -194,4 +194,4 @@ function _ngxIconService() {
   }
 }
 
-module.exports = ngCore.Class(new _ngxIconService());
+export var ngxIconService = ngCore.Class(new _ngxIconService());

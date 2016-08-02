@@ -1,11 +1,7 @@
-﻿var ngxCardComponent = require('./card.component.js');
-var ngxCardHeaderComponent = require('./card-header.component.js');
+﻿import ngxCardComponent from './card.component';
+import ngxCardHeaderComponent from './card-header.component';
 
-module.exports = {
-  cardComponent: ngxCardComponent,
-  cardHeaderComponent: ngxCardHeaderComponent,
-  CARD_DIRECTIVES: [
-    ngxCardComponent,
-    ngxCardHeaderComponent
-  ]
-};
+export * from './card.component';
+export * from './card-header.component';
+
+export var NGX_CARD_DIRECTIVES = [ngxCardComponent, ngxCardHeaderComponent];

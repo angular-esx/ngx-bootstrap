@@ -1,6 +1,5 @@
-﻿var ngxGroupComponent = require('./group.component.js');
+﻿import ngxGroupComponent from './group.component';
 
-module.exports = {
-  groupComponent: ngxGroupComponent,
-  GROUP_DIRECTIVES: [ngxGroupComponent]
-};
+export * from './group.component';
+
+export var NGX_GROUP_DIRECTIVES = [ngxGroupComponent];

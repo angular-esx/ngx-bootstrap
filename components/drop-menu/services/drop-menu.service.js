@@ -1,7 +1,6 @@
-﻿var ngCore = require('@angular/core/index.js');
-var rx = require('rxjs/rx.js');
-var ngxCore = require('../../../cores/index.js');
-var ngxUtil = ngxCore.utils;
+﻿import * as ngCore from '@angular/core';
+import * as rx from 'rxjs/rx';
+import ngxUtils from  '../../cores';
 
 function _ngxDropMenuService() {
   var _observer;
@@ -18,7 +17,7 @@ function _ngxDropMenuService() {
   };
 
   this.getActions = function () {
-    return ngxUtil.shallowCopy({}, _ACTIONS);
+    return ngxUtils.shallowCopy({}, _ACTIONS);
   };
 
   this.next = function (event) {
@@ -40,4 +39,4 @@ function _ngxDropMenuService() {
   };
 }
 
-module.exports = ngCore.Class(new _ngxDropMenuService());
+export var ngxDropMenuService = ngCore.Class(new _ngxDropMenuService());

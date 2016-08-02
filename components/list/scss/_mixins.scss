@@ -1,0 +1,64 @@
+﻿@import "../../../cores/styles/state/state.scss";
+
+@import "_variables.scss";
+
+@mixin ngx-list-item-variant($component){
+  $component-default: map-get($component, default);
+  $component-active: map-get($component, active);
+  $component-disabled: map-get($component, disabled);
+
+  color: map-get($component-default, foreground-color);
+  background-color: map-get($component-default, background-color);
+  border-color: map-get($component-default, border-color);
+  text-decoration: none;
+
+  hr {
+    border-top-color: map-get($component-default, foreground-color);
+  }
+
+  @if map-has-key($component, hover) {
+    $component-hover: map-get($component, hover);
+
+    @include ngx-state(ngx-list-item, 'focus hover'){
+      color: map-get($component-hover, foreground-color);
+      background-color: map-get($component-hover, background-color);
+      border-color: map-get($component-hover, border-color);
+
+      hr {
+        border-top-color: map-get($component-hover, foreground-color);
+      }
+    }
+
+    @include ngx-state(ngx-list-item, 'active'){
+      color: map-get($component-active, foreground-color);
+      background-color: map-get($component-active, background-color);
+      border-color: map-get($component-active, border-color);
+
+      hr {
+        border-top-color: map-get($component-active, foreground-color);
+      }
+    }
+  }
+  @else {
+    @include ngx-state(ngx-list-item, 'focus hover active'){
+      color: map-get($component-active, foreground-color);
+      background-color: map-get($component-active, background-color);
+      border-color: map-get($component-active, border-color);
+
+      hr {
+        border-top-color: map-get($component-active, foreground-color);
+      }
+    }
+  }
+
+  @include ngx-state(ngx-list-item, 'disabled'){
+    color: map-get($component-disabled, foreground-color);
+    background-color: map-get($component-disabled, background-color);
+    border-color: map-get($component-disabled, border-color);
+    cursor: not-allowed;
+
+    hr {
+      border-top-color: map-get($component-disabled, foreground-color);
+    }
+  }
+}

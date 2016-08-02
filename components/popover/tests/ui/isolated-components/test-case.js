@@ -1,10 +1,10 @@
-﻿var ngCore = require('@angular/core/index.js');
-var rx = require('rxjs/rx.js');
-var ngxCore = require('../../../../../cores/index.js');
-var ngxPopover = require('../../../../popover/index.js');
+﻿import * as ngCore from '@angular/core';
+import rx from 'rxjs/rx.js';
+import ngxAnimationService from '../../../../../cores';
+import { ngxPopoverService, NGX_POPOVER_DIRECTIVES, NGX_POPOVER_PROVIDERS } from '../../../../popover';
 
-function _testCase() {
-  this.constructor = [ngxPopover.popoverService, function (ngxPopoverService) {
+function _ngxTestCase() {
+  this.constructor = [ngxPopoverService, function (ngxPopoverService) {
     this.ngxPopoverService = ngxPopoverService;
 
     this.delay = 1 * 1000;
@@ -52,15 +52,15 @@ function _testCase() {
   };
 }
 
-module.exports = ngCore.Component({
+export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/popover/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxPopover.POPOVER_DIRECTIVES
+    NGX_POPOVER_DIRECTIVES
   ],
   providers: [
-    ngxCore.animationService,
-    ngxPopover.POPOVER_PROVIDERS,
+    ngxAnimationService,
+    NGX_POPOVER_PROVIDERS,
   ]
 })
-.Class(new _testCase());
+.Class(new _ngxTestCase());

@@ -26,9 +26,9 @@ module.exports = function (params) {
     return webpackStream({
       context: __dirname,
       entry: {
-        bootstrap: 'configs/bootstrap.js',
-        vendors: 'configs/vendors.js',
-        polyfills: 'configs/polyfills.js',
+        bootstrap: 'configs/webpack/entries/bootstrap.js',
+        vendors: 'configs/webpack/entries/vendors.js',
+        polyfills: 'configs/webpack/entries/polyfills.js',
         test: _testScriptPath
       },
       output: {

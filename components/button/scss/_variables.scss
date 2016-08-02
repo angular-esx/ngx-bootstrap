@@ -1,0 +1,46 @@
+﻿@import "../../../cores/styles/typography/typography.scss";
+@import "../../../cores/styles/palette/palette.scss";
+@import "../../../cores/styles/border/border.scss";
+
+$ngx-button-font-size: ngx-font-size(base) !default;
+$ngx-button-font-size-sm: ngx-font-size(sm) !default;
+$ngx-button-font-size-lg: ngx-font-size(lg) !default;
+
+$ngx-button-font-weight: normal !default;
+
+$ngx-button-padding: .375rem 1rem !default;
+$ngx-button-padding-sm: .25rem .75rem !default;
+$ngx-button-padding-lg: .75rem 1.25rem !default;
+
+
+$ngx-button-border: 1px solid transparent !default;
+$ngx-button-border-radius: ngx-border-radius(base) !default;
+$ngx-button-border-radius-sm: ngx-border-radius(sm) !default;
+$ngx-button-border-radius-lg: ngx-border-radius(lg) !default;
+
+
+//ngxButton variants
+$ngx-button-primary: $ngx-component-primary !default;
+
+$ngx-button-secondary: $ngx-component-secondary !default;
+
+$ngx-button-info: $ngx-component-info !default;
+
+$ngx-button-success: $ngx-component-success !default;
+
+$ngx-button-warning: $ngx-component-warning !default;
+
+$ngx-button-danger: $ngx-component-danger !default;
+
+//Outline ngxButton variants
+$ngx-button-outline-primary: $ngx-component-outline-primary !default;
+
+$ngx-button-outline-secondary: $ngx-component-outline-secondary !default;
+
+$ngx-button-outline-info: $ngx-component-outline-info !default;
+
+$ngx-button-outline-success: $ngx-component-outline-success !default;
+
+$ngx-button-outline-warning: $ngx-component-outline-warning !default;
+
+$ngx-button-outline-danger: $ngx-component-outline-danger !default;

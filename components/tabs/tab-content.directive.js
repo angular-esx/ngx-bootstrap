@@ -1,27 +1,27 @@
-var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../cores/index.js');
+import * as ngCore from '@angular/core';
+import ngxTemplatePortalDirective from  '../cores';
 
 function _ngxTabContentDirective() {
   var _base;
 
-  this.extends = ngxCore.templatePortalDirective;
+  this.extends = ngxTemplatePortalDirective;
 
   this.constructor = [
     ngCore.TemplateRef,
     ngCore.ViewContainerRef,
 
     function ngxTabContentDirective(templateRef, viewContainerRef) {
-      ngxCore.templatePortalDirective.apply(this, arguments);
+      ngxTemplatePortalDirective.apply(this, arguments);
     }
   ];
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxCore.templatePortalDirective); }
+    if (!_base) { _base = context.getBaseInstance(ngxTemplatePortalDirective); }
     return _base;
   }
 }
 
-module.exports = ngCore.Directive({
+export var ngxTabContentDirective = ngCore.Directive({
   selector: 'template[ngx-tab-content]'
 })
 .Class(new _ngxTabContentDirective());

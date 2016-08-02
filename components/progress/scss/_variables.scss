@@ -1,0 +1,36 @@
+﻿@import "../../../cores/styles/typography/typography.scss";
+@import "../../../cores/styles/palette/palette.scss";
+@import "../../../cores/styles/border/border.scss";
+
+$ngx-progress-height: 1rem !default;
+
+$ngx-progress-margin: 0 0 1rem 0 !default;
+
+$ngx-progress-border-radius: ngx-border-radius(base) !default;
+
+$ngx-progress-background-color: ngx-color-light($ngx-color-gray, $opacity: .65) !default;
+
+
+$ngx-progress-bar-font-size: ngx-font-size(sm) !default;
+
+$ngx-progress-bar-line-height: 1.1rem !default;
+
+$ngx-progress-bar-transition: width .6s ease !default;
+
+
+$ngx-progress-bar-striped-background-size: 1rem 1rem !default;
+
+
+
+$ngx-progress-bar-primary: $ngx-component-primary !default;
+
+$ngx-progress-bar-info: $ngx-component-info !default;
+
+$ngx-progress-bar-success: $ngx-component-success !default;
+
+$ngx-progress-bar-warning: $ngx-component-warning !default;
+
+$ngx-progress-bar-danger: $ngx-component-danger !default;
+
+
+

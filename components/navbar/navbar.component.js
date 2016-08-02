@@ -1,18 +1,17 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../cores/index.js');
-var ngxUtil = ngxCore.utils;
+﻿import * as ngCore from '@angular/core';
+import { ngxBaseComponent, ngxUtils } from  '../cores';
 
 function _ngxNavbarComponent() {
   var _base;
 
-  this.extends = ngxCore.baseComponent;
+  this.extends = ngxBaseComponent;
 
   this.constructor = [
     ngCore.ElementRef,
     ngCore.Renderer,
 
     function ngxNavbarComponent(elementRef, renderer) {
-      ngxCore.baseComponent.apply(this, arguments);
+      ngxBaseComponent.apply(this, arguments);
     }
   ];
 
@@ -20,7 +19,7 @@ function _ngxNavbarComponent() {
     var _styleProperties = this.getStyleProperties(),
         _changeRecord;
 
-    if (ngxUtil.isEmpty(this.color)) {
+    if (ngxUtils.isEmpty(this.color)) {
       this.color = 'default';
       _changeRecord = this.buildChangeRecord(_styleProperties.COLOR, this.color);
     }
@@ -33,15 +32,15 @@ function _ngxNavbarComponent() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxCore.baseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngxBaseComponent); }
     return _base;
   }
 }
 
-module.exports = ngCore.Component({
+export var _ngxNavbarComponent = ngCore.Component({
   selector: 'ngx-navbar',
-  template: require('./themes/' + __THEME__ + '/templates/navbar.html'),
-  styles: [require('./themes/' + __THEME__  + '/scss/navbar.scss')],
+  templateUrl: './templates/navbar.html',
+  styleUrls: ['./scss/navbar.scss'],
   properties: ['color', 'position', 'initCssClass:class']
 })
 .Class(new _ngxNavbarComponent());

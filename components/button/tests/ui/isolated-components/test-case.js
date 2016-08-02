@@ -1,7 +1,7 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxButton = require('../../../../button/index.js');
+﻿import * as ngCore from '@angular/core';
+import NGX_BUTTON_DIRECTIVES from '../../../../button';
 
-function _testCase() {
+function _ngxTestCase() {
   this.constructor = function () {};
 
   this.click = function (event) {
@@ -9,11 +9,11 @@ function _testCase() {
   };
 }
 
-module.exports = ngCore.Component({
+export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/button/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxButton.BUTTON_DIRECTIVES
+    NGX_BUTTON_DIRECTIVES
   ]
 })
-.Class(new _testCase());
+.Class(new _ngxTestCase());

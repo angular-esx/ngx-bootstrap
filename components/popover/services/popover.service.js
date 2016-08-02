@@ -1,7 +1,6 @@
-﻿var ngCore = require('@angular/core/index.js');
-var rx = require('rxjs/rx.js');
-var ngxCore = require('../../../cores/index.js');
-var ngxUtil = ngxCore.utils;
+﻿import * as ngCore from '@angular/core';
+import * as rx from 'rxjs/rx';
+import { ngxAnimationService, ngxUtils } from  '../../cores';
 
 function _ngxPopoverService() {
   var _templates = {},
@@ -12,10 +11,10 @@ function _ngxPopoverService() {
   };
 
   this.constructor = [
-    ngxCore.animationService,
+   ngxAnimationService,
 
     function ngxPopoverService(ngxAnimationService) {
-      ngxUtil.shallowCopy(this, ngxAnimationService);
+      ngxUtils.shallowCopy(this, ngxAnimationService);
 
       this.ngxPopover$ = new rx.Observable(function (observer) {
         _observer = observer;
@@ -25,7 +24,7 @@ function _ngxPopoverService() {
   ];
 
   this.getActions = function () {
-    return ngxUtil.shallowCopy({}, _ACTIONS);
+    return ngxUtils.shallowCopy({}, _ACTIONS);
   };
 
   this.next = function (event) {
@@ -55,4 +54,4 @@ function _ngxPopoverService() {
   };
 }
 
-module.exports = ngCore.Class(new _ngxPopoverService());
+export var ngxPopoverService = ngCore.Class(new _ngxPopoverService());

@@ -1,0 +1,18 @@
+﻿@import "../../../cores/styles/palette/palette.scss";
+@import "../../../cores/styles/border/border.scss";
+
+$ngx-alert-padding: 1rem !default;
+$ngx-alert-type-dismissible-padding: 1rem 2rem 1rem 1rem !default;
+
+$ngx-alert-margin: 0 0 1rem 0 !default;
+
+$ngx-alert-border: 1px solid transparent !default;
+$ngx-alert-border-radius: ngx-border-radius(base) !default;
+
+$ngx-alert-info: $ngx-component-contextual-info !default;
+
+$ngx-alert-success: $ngx-component-contextual-success !default;
+
+$ngx-alert-warning: $ngx-component-contextual-warning !default;
+
+$ngx-alert-danger: $ngx-component-contextual-danger !default;

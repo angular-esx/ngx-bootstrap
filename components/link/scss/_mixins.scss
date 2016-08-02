@@ -1,0 +1,23 @@
+﻿@import "../../../cores/styles/state/state.scss";
+
+@import "_variables.scss";
+
+@mixin ngx-link-size($font-size){
+  font-size: $font-size;
+}
+
+@mixin ngx-link-variant($component){
+  color: map-get(map-get($component, default), foreground-color);
+
+  @include ngx-state(ngx-link, 'focus hover active'){
+    color: map-get(map-get($component, active), foreground-color);
+  }
+
+  @include ngx-state(ngx-link, 'focus hover'){
+    text-decoration: underline;
+  }
+
+  @include ngx-state(ngx-link, 'disabled'){
+    color: map-get(map-get($component, disabled), foreground-color);
+  }
+}

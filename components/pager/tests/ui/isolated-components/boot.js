@@ -1,4 +1,4 @@
-var ngxTestCase = require('./test-case.js');
-var ngPlatformBrowserDynamic = require('@angular/platform-browser-dynamic');
+import ngxTestCase from './test-case';
+import ngPlatformBrowserDynamic from '@angular/platform-browser-dynamic';
 
 ngPlatformBrowserDynamic.bootstrap(ngxTestCase);

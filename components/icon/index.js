@@ -1,9 +1,8 @@
-﻿var ngxIconComponent = require('./icon.component.js');
-var ngxIconService = require('./services/icon.service.js');
+﻿import ngxIconComponent from './icon.component';
+import ngxIconService from './services/icon.service';
 
-module.exports = {
-  iconComponent: ngxIconComponent,
-  iconService: ngxIconService,
-  ICON_DIRECTIVES: [ngxIconComponent],
-  ICON_PROVIDERS: [ngxIconService]
-};
+export * from './icon.component';
+export * from './services/icon.service';
+
+export var NGX_ICON_DIRECTIVES = [ngxIconComponent];
+export var NGX_ICON_PROVIDERS = [ngxIconService];

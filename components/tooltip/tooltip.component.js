@@ -1,22 +1,21 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../cores/index.js');
-var ngxUtil = ngxCore.utils;
-var tooltipOptionClass = require('./classes/tooltip-option.class.js');
-var ngxTooltipService = require('./services/tooltip.service.js');
+﻿import * as ngCore from '@angular/core';
+import { ngxBaseComponent, ngxUtils } from  '../cores';
+import ngxTooltipOption from './models/tooltip-option.model';
+import ngxTooltipService from './services/tooltip.service';
 
 function _ngxTooltipComponent() {
   var _base;
 
-  this.extends = ngxCore.baseComponent;
+  this.extends = ngxBaseComponent;
 
   this.constructor = [
     ngCore.ElementRef,
     ngCore.Renderer,
     ngxTooltipService,
-    tooltipOptionClass,
+    ngxTooltipOption,
 
     function ngxTooltipComponent(elementRef, renderer, ngxTooltipService, tooltipOption) {
-      ngxCore.baseComponent.apply(this, [elementRef, renderer, ngxTooltipService]);
+      ngxBaseComponent.apply(this, [elementRef, renderer, ngxTooltipService]);
       
       if (elementRef) {
         this.ngxTooltipService = ngxTooltipService;
@@ -51,7 +50,7 @@ function _ngxTooltipComponent() {
   };
 
   this.render = function () {
-    if (ngxUtil.isNull(this.contentElement)) { throw 'Not found content element of tooltip'; }
+    if (ngxUtils.isNull(this.contentElement)) { throw 'Not found content element of tooltip'; }
 
     if (this.templateRef) {
       this.contentElement.createEmbeddedView(this.templateRef, 0);
@@ -146,15 +145,15 @@ function _ngxTooltipComponent() {
   }
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxCore.baseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngxBaseComponent); }
     return _base;
   }
 }
 
-module.exports = ngCore.Component({
+export var ngxTooltipComponent = ngCore.Component({
   selector: 'ngx-tooltip',
-  template: require('./themes/' + __THEME__ + '/templates/tooltip.html'),
-  styles: [require('./themes/' + __THEME__ + '/scss/tooltip.scss')],
+  templateUrl: './templates/tooltip.html',
+  styleUrls: ['./scss/tooltip.scss'],
   queries: {
     contentElement: new ngCore.ViewChild('content', { read: ngCore.ViewContainerRef })
   }

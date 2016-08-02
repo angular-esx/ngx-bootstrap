@@ -1,20 +1,20 @@
-﻿var ngxTabsComponent = require('./tabs.component.js');
-var ngxTabDirective = require('./tab.directive.js');
-var ngxTabHeaderDirective = require('./tab-header.directive.js');
-var ngxTabContentDirective = require('./tab-content.directive.js');
-var ngxTabsService = require('./services/tabs.service.js');
+﻿import ngxTabsComponent from './tabs.component';
+import ngxTabDirective from './tab.directive';
+import ngxTabHeaderDirective from './tab-header.directive';
+import ngxTabContentDirective from './tab-content.directive';
+import ngxTabsService from './services/alert.service';
 
-module.exports = {
-  tabsComponent: ngxTabsComponent,
-  tabDirective: ngxTabDirective,
-  tabHeaderDirective: ngxTabHeaderDirective,
-  tabContentDirective: ngxTabContentDirective,
-  tabsService: ngxTabsService,
-  TABS_DIRECTIVES: [
-    ngxTabsComponent,
-    ngxTabDirective,
-    ngxTabHeaderDirective,
-    ngxTabContentDirective
-  ],
-  TABS_PROVIDERS: [ngxTabsService]
-};
+export * from './tabs.component';
+export * from './tab.directive';
+export * from './tab-header.directive';
+export * from './tab-content.directive';
+export * from './services/alert.service';
+
+export var NGX_TABS_DIRECTIVES =  [
+  ngxTabsComponent,
+  ngxTabDirective,
+  ngxTabHeaderDirective,
+  ngxTabContentDirective
+];
+
+export var NGX_TABS_PROVIDERS = [ngxTabsService];

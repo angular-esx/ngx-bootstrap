@@ -1,10 +1,10 @@
-﻿var ngCore = require('@angular/core/index.js');
+﻿import * as ngCore from '@angular/core';
 
 function _ngxAlertLinkDirective() {
   this.constructor = function ngxAlertLinkDirective() { };
 }
 
-module.exports = ngCore.Directive({
+export var ngxAlertLinkDirective = ngCore.Directive({
   selector: '[ngx-alert-link]',
   host: {
     '[class.ngx-alert-link]': 'true'

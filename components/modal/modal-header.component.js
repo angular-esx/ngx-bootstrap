@@ -1,5 +1,5 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxModalComponent = require('./modal.component.js');
+﻿import * as ngCore from '@angular/core';
+import ngxModalComponent from  './modal.component';
 
 function _ngxModalHeaderComponent() {
   this.constructor = [
@@ -15,9 +15,9 @@ function _ngxModalHeaderComponent() {
   };
 }
 
-module.exports = ngCore.Component({
+export var ngxModalHeaderComponent = ngCore.Component({
   selector: 'ngx-modal-header',
-  template: require('./themes/' + __THEME__ + '/templates/modal-header.html'),
+  templateUrl: './templates/modal-header.html',
   host: {
     '[class.ngx-modal-header]': 'true'
   }

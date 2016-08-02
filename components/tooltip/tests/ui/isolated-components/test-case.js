@@ -1,10 +1,10 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../../../../cores/index.js');
-var rx = require('rxjs/rx.js');
-var ngxTooltip = require('../../../../tooltip/index.js');
+﻿import * as ngCore from '@angular/core';
+import * as rx from 'rxjs/rx';
+import ngxAnimationService from '../../../../../cores';
+import { ngxtooltipService, NGX_TOOLTIP_DIRECTIVES, NGX_TOOLTIP_PROVIDERS } from '../../../../tooltip';
 
-function _testCase() {
-  this.constructor = [ngxTooltip.tooltipService, function (ngxTooltipService) {
+function _ngxTestCase() {
+  this.constructor = [ngxtooltipService, function (ngxTooltipService) {
     this.ngxTooltipService = ngxTooltipService;
 
     this.delay = 1 * 1000;
@@ -52,15 +52,15 @@ function _testCase() {
   };
 }
 
-module.exports = ngCore.Component({
+export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/tooltip/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxTooltip.TOOLTIP_DIRECTIVES
+    NGX_TOOLTIP_DIRECTIVES
   ],
   providers: [
-    ngxCore.animationService,
-    ngxTooltip.TOOLTIP_PROVIDERS,
+    ngxAnimationService,
+    NGX_TOOLTIP_PROVIDERS
   ]
 })
-.Class(new _testCase());
+.Class(new _ngxTestCase());

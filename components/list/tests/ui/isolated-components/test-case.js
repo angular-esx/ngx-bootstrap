@@ -1,7 +1,7 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxList = require('../../../../list/index.js');
+﻿import * as ngCore from '@angular/core';
+import NGX_LLIST_DIRECTIVES from '../../../../list';
 
-function _testCase() {
+function _ngxTestCase() {
   this.constructor = function () {};
 
   this.click = function (event) {
@@ -10,11 +10,11 @@ function _testCase() {
   };
 }
 
-module.exports = ngCore.Component({
+export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/list/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxList.LIST_DIRECTIVES
+    NGX_LLIST_DIRECTIVES
   ]
 })
-.Class(new _testCase());
+.Class(new _ngxTestCase());

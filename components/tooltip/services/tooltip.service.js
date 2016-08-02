@@ -1,7 +1,6 @@
-﻿var ngCore = require('@angular/core/index.js');
-var rx = require('rxjs/rx.js');
-var ngxCore = require('../../../cores/index.js');
-var ngxUtil = ngxCore.utils;
+﻿import * as ngCore from '@angular/core';
+import * as rx from 'rxjs/rx';
+import { ngxAnimationService, ngxUtils } from  '../../cores';
 
 function _ngxTooltipService() {
   var _templates = {},
@@ -13,10 +12,10 @@ function _ngxTooltipService() {
   };
 
   this.constructor = [
-    ngxCore.animationService,
+    ngxAnimationService,
 
     function ngxTooltipService(ngxAnimationService) {
-      ngxUtil.shallowCopy(this, ngxAnimationService);
+      ngxUtils.shallowCopy(this, ngxAnimationService);
 
       this.ngxTooltip$ = new rx.Observable(function (observer) {
         _observer = observer;
@@ -26,7 +25,7 @@ function _ngxTooltipService() {
   ];
 
   this.getActions = function () {
-    return ngxUtil.shallowCopy({}, _ACTIONS);
+    return ngxUtils.shallowCopy({}, _ACTIONS);
   };
 
   this.next = function (event) {
@@ -63,4 +62,4 @@ function _ngxTooltipService() {
   };
 }
 
-module.exports = ngCore.Class(new _ngxTooltipService());
+export var ngxTooltipService = ngCore.Class(new _ngxTooltipService());

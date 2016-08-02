@@ -1,11 +1,10 @@
-﻿var ngxBackdropComponent = require('./backdrop.component.js');
-var ngxBackdropObserver = require('./services/backdrop-observer.service.js');
-var ngxBackdropService = require('./services/backdrop.service.js');
+﻿import ngxBackdropComponent from './backdrop.component';
+import ngxBackdropObserver from './services/backdrop.observer';
+import ngxBackdropService from './services/backdrop.service';
 
-module.exports = {
-  backdropComponent: ngxBackdropComponent,
-  backdropObserver: ngxBackdropObserver,
-  backdropService: ngxBackdropService,
-  BACKDROP_DIRECTIVES: [ngxBackdropComponent],
-  BACKDROP_PROVIDERS: [ngxBackdropObserver, ngxBackdropService]
-};
+export * from './backdrop.component';
+export * from './services/backdrop.observer';
+export * from './services/backdrop.service';
+
+export var NGX_BACKDROP_DIRECTIVES = [ngxBackdropComponent];
+export var NGX_BACKDROP_PROVIDERS = [ngxBackdropObserver, ngxBackdropService];

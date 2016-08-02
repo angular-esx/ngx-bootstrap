@@ -1,18 +1,17 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../cores/index.js');
-var ngxUtil = ngxCore.utils;
+﻿import * as ngCore from '@angular/core';
+import { ngxBaseComponent, ngxUtils } from  '../cores';
 
 function _ngxPagerComponent() {
   var _base;
 
-  this.extends = ngxCore.baseComponent;
+  this.extends = ngxBaseComponent;
 
   this.constructor = [
     ngCore.ElementRef,
     ngCore.Renderer,
 
     function ngxPagerComponent(elementRef, renderer) {
-      ngxCore.baseComponent.apply(this, arguments);
+      ngxBaseComponent.apply(this, arguments);
 
       if (elementRef) {
         this.setPageEmitter = new ngCore.EventEmitter();
@@ -22,14 +21,14 @@ function _ngxPagerComponent() {
   ];
 
   this.initDefaultValues = function () {
-    if (ngxUtil.isEmpty(this.totalPages) || this.totalPages < 0) { this.totalPages = 0; }
+    if (ngxUtils.isEmpty(this.totalPages) || this.totalPages < 0) { this.totalPages = 0; }
     else { this.totalPages = parseInt(this.totalPages); }
 
-    if (ngxUtil.isEmpty(this.currentPage) || this.currentPage < 1) { this.currentPage = 1; }
+    if (ngxUtils.isEmpty(this.currentPage) || this.currentPage < 1) { this.currentPage = 1; }
     else { this.currentPage = parseInt(this.currentPage); }
 
-    if (ngxUtil.isNull(this.showPrevious)) { this.showPrevious = true; }
-    if (ngxUtil.isNull(this.showNext)) { this.showNext = true; }
+    if (ngxUtils.isNull(this.showPrevious)) { this.showPrevious = true; }
+    if (ngxUtils.isNull(this.showNext)) { this.showNext = true; }
 
     this.pageBuilder = new _pageBuilder();
     this.pageBuilder.build(this.totalPages, this.currentPage, this.setPageEmitter);
@@ -99,15 +98,15 @@ function _ngxPagerComponent() {
   }
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxCore.baseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngxBaseComponent); }
     return _base;
   }
 }
 
-module.exports = ngCore.Component({
+export var _ngxPagerComponent = ngCore.Component({
   selector: 'ngx-pager',
-  template: require('./themes/' + __THEME__ + '/templates/pager.html'),
-  styles: [require('./themes/' + __THEME__  + '/scss/pager.scss')],
+  templateUrl: './templates/pager.html',
+  styleUrls: ['./scss/pager.scss'],
   properties: [
     'type',
     'totalPages: total-pages',

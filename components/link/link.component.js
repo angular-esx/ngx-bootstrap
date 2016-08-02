@@ -1,18 +1,17 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../cores/index.js');
-var ngxUtil = ngxCore.utils;
+﻿import * as ngCore from '@angular/core';
+import { ngxBaseComponent, ngxUtils } from  '../cores';
 
 function _ngxLinkComponent() {
   var _base;
 
-  this.extends = ngxCore.baseComponent;
+  this.extends = ngxBaseComponent;
 
   this.constructor = [
     ngCore.ElementRef,
     ngCore.Renderer,
 
     function ngxLinkComponent(elementRef, renderer) {
-      ngxCore.baseComponent.apply(this, arguments);
+      ngxBaseComponent.apply(this, arguments);
 
       if (elementRef) {
         this.clickEmitter = new ngCore.EventEmitter();
@@ -30,12 +29,12 @@ function _ngxLinkComponent() {
     var _styleProperties = this.getStyleProperties(),
         _changeRecord;
 
-    if(ngxUtil.isEmpty(this.color)){ 
+    if(ngxUtils.isEmpty(this.color)){ 
       this.color = 'primary';
       _changeRecord = this.buildChangeRecord(_styleProperties.COLOR, this.color);
      }
 
-    if(ngxUtil.isEmpty(this.state) && ngxUtil.isNull(this.isDisabled)){ this.isDisabled = false; }
+    if(ngxUtils.isEmpty(this.state) && ngxUtils.isNull(this.isDisabled)){ this.isDisabled = false; }
 
     return _changeRecord;
   };
@@ -55,15 +54,15 @@ function _ngxLinkComponent() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxCore.baseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngxBaseComponent); }
     return _base;
   }
 }
 
-module.exports = ngCore.Component({
+export var ngxLinkComponent = ngCore.Component({
   selector: 'a[ngx-link]',
-  template: require('./themes/' + __THEME__ + '/templates/link.html'),
-  styles: [require('./themes/' + __THEME__ + '/scss/link.scss')],
+  templateUrl: './templates/link.html',
+  styleUrls: ['./scss/link.scss'],
   properties: ['color', 'size', 'state', 'initCssClass:class'],
   events: ['clickEmitter:onClick'],
   host: {

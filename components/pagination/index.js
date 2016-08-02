@@ -1,6 +1,5 @@
-﻿var ngxPaginationComponent = require('./pagination.component.js');
+﻿import ngxPaginationComponent from './pagination.component';
 
-module.exports = {
-  paginationComponent: ngxPaginationComponent,
-  PAGINATION_DIRECTIVES: [ngxPaginationComponent]
-};
+export * from './pagination.component';
+
+export var NGX_PAGINATION_DIRECTIVES = [ngxPaginationComponent];

@@ -1,14 +1,13 @@
-﻿var ngxGridComponent = require('./grid.component.js');
-var ngxGridRowDirective = require('./grid-row.directive.js');
-var ngxGridColumnDirective = require('./grid-column.directive.js');
+﻿import ngxGridComponent from './grid.component';
+import ngxGridRowDirective from './grid-row.directive';
+import ngxGridColumnDirective from './grid-column.directive';
 
-module.exports = {
-  gridComponent: ngxGridComponent,
-  gridRowDirective: ngxGridRowDirective,
-  gridColumnDirective: ngxGridColumnDirective,
-  GRID_DIRECTIVES: [
-    ngxGridComponent,
-    ngxGridRowDirective,
-    ngxGridColumnDirective
-  ]
-};
+export * from './grid.component';
+export * from './grid-row.directive';
+export * from './grid-column.directive';
+
+export var NGX_GRID_DIRECTIVES = [
+  ngxGridComponent,
+  ngxGridRowDirective,
+  ngxGridColumnDirective
+];

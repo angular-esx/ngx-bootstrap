@@ -1,6 +1,5 @@
-﻿var ngxLinkComponent = require('./link.component.js');
+﻿import ngxLinkComponent from './link.component';
 
-module.exports = {
-  linkComponent: ngxLinkComponent,
-  LINK_DIRECTIVES: [ngxLinkComponent]
-};
+export * from './link.component';
+
+export var NGX_LINK_DIRECTIVES = [ngxLinkComponent];

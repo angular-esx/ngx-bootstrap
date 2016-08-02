@@ -1,6 +1,4 @@
-var ngxLabelComponent = require('./label.component.js');
+import ngxLabelComponent from './label.component';
 
-module.exports = {
-  labelComponent: ngxLabelComponent,
-  LABEL_DIRECTIVES: [ngxLabelComponent]
-};
+export * from './label.component';
+export var NGX_LABEL_DIRECTIVES = [ngxLabelComponent];

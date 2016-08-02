@@ -1,6 +1,5 @@
-var ngxJumbotronComponent = require('./jumbotron.component.js');
+import ngxJumbotronComponent from './jumbotron.component';
 
-module.exports = {
-  jumbotronComponent: ngxJumbotronComponent,
-  JUMBOTRON_DIRECTIVES: [ngxJumbotronComponent]
-};
+export * from './jumbotron.component';
+
+export var NGX_JUMBOTRON_DIRECTIVES = [ngxJumbotronComponent];

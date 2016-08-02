@@ -1,0 +1,30 @@
+﻿@import "../../../cores/styles/typography/typography.scss";
+@import "../../../cores/styles/palette/palette.scss";
+@import "../../../cores/styles/border/border.scss";
+
+$ngx-label-font-size: .75em !default;
+$ngx-label-font-weight: bold !default;
+$ngx-label-line-height: ngx-line-height(sm) !default;
+
+$ngx-label-padding: .25em .4em !default;
+$ngx-label-pill-padding: .25em .6em !default;
+
+$ngx-label-border-radius: ngx-border-radius(base) !default;
+$ngx-label-pill-border-radius: 10rem !default;
+
+$ngx-label-default: map-merge($ngx-component-default, (
+  default:(
+    foreground-color: ngx-color-light($ngx-color-white),
+    background-color: ngx-color-light($ngx-color-gray)
+  )
+)) !default;
+
+$ngx-label-primary: $ngx-component-primary !default;
+
+$ngx-label-info: $ngx-component-info !default;
+
+$ngx-label-success: $ngx-component-success !default;
+
+$ngx-label-warning: $ngx-component-warning !default;
+
+$ngx-label-danger: $ngx-component-danger !default;

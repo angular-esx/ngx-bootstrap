@@ -1,0 +1,22 @@
+﻿@import "_variables.scss";
+
+@mixin ngx-alert-variant($component){
+  $component_default: map-get($component, default);
+
+  $foreground: map-get($component_default, foreground-color);
+  $background: map-get($component_default, background-color);
+  $border: map-get($component_default, border-color);
+
+  color: $foreground;
+  background-color: $background;
+  border-color: $border;
+
+  hr {
+    border-top-color: $foreground;
+  }
+
+  .ngx-alert-link {
+    font-weight: bold !important;
+    color: $foreground !important;
+  }
+}

@@ -1,5 +1,5 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxDropMenuService = require('./services/drop-menu.service.js');
+﻿import * as ngCore from '@angular/core';
+import ngxDropMenuService from './services/drop-menu.service';
 
 function _ngxToggleDropdownDirective() {
   this.constructor = [ngxDropMenuService, function ngxToggleDropdownDirective(ngxDropMenuService) {
@@ -11,7 +11,7 @@ function _ngxToggleDropdownDirective() {
   };
 }
 
-module.exports = ngCore.Directive({
+export var ngxToggleDropdownDirective = ngCore.Directive({
   selector: '[ngx-toggle-dropdown]',
   properties: ['id:ngx-toggle-dropdown'],
   host: {

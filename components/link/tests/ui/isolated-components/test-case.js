@@ -1,7 +1,7 @@
-var ngCore = require('@angular/core/index.js');
-var ngxLink = require('../../../../link/index.js');
+import * as ngCore from '@angular/core';
+import NGX_LINK_DIRECTIVES from '../../../../link';
 
-function _testCase() {
+function _ngxTestCase() {
   this.constructor = function () {
     this.href = "http://www.google.com";
   };
@@ -11,11 +11,11 @@ function _testCase() {
   };
 }
 
-module.exports = ngCore.Component({
+export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/link/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxLink.LINK_DIRECTIVES
+    NGX_LINK_DIRECTIVES
   ]
 })
-.Class(new _testCase());
+.Class(new _ngxTestCase());

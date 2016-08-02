@@ -1,17 +1,17 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../cores/index.js');
+﻿import * as ngCore from '@angular/core';
+import ngxBaseComponent from  '../cores';
 
 function _ngxGridComponent() {
   var _base;
 
-  this.extends = ngxCore.baseComponent;
+  this.extends = ngxBaseComponent;
 
   this.constructor = [
     ngCore.ElementRef,
     ngCore.Renderer,
 
     function ngxGridComponent(elementRef, renderer) {
-      ngxCore.baseComponent.apply(this, arguments);
+      ngxBaseComponent.apply(this, arguments);
     }
   ];
 
@@ -20,15 +20,15 @@ function _ngxGridComponent() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxCore.baseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngxBaseComponent); }
     return _base;
   }
 }
 
-module.exports = ngCore.Component({
+export var ngxGridComponent = ngCore.Component({
   selector: 'ngx-grid',
-  template: require('./themes/' + __THEME__ + '/templates/grid.html'),
-  styles: [require('./themes/' + __THEME__ + '/scss/grid.scss')],
+  templateUrl: './templates/grid.html',
+  styleUrls: ['./scss/grid.scss'],
   properties: ['type', 'initCssClass:class']
 })
 .Class(new _ngxGridComponent());

@@ -1,18 +1,17 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../cores/index.js');
-var ngxUtil = ngxCore.utils;
+﻿import * as ngCore from '@angular/core';
+import { ngxBaseComponent, ngxUtils } from  '../cores';
 
 function _ngxListItemComponent() {
   var _base;
 
-  this.extends = ngxCore.baseComponent;
+  this.extends = ngxBaseComponent;
 
   this.constructor = [
     ngCore.ElementRef,
     ngCore.Renderer,
 
     function ngxListItemComponent(elementRef, renderer) {
-      ngxCore.baseComponent.apply(this, arguments);
+      ngxBaseComponent.apply(this, arguments);
 
       if (elementRef) {
         this.clickEmitter = new ngCore.EventEmitter();
@@ -30,12 +29,12 @@ function _ngxListItemComponent() {
     var _styleProperties = this.getStyleProperties(),
         _changeRecord;
 
-    if(ngxUtil.isEmpty(this.color)){ 
+    if(ngxUtils.isEmpty(this.color)){ 
       this.color = 'primary';
       _changeRecord = this.buildChangeRecord(_styleProperties.COLOR, this.color);
      }
 
-    if(ngxUtil.isEmpty(this.state) && ngxUtil.isNull(this.isDisabled)){ this.isDisabled = false; }
+    if(ngxUtils.isEmpty(this.state) && ngxUtils.isNull(this.isDisabled)){ this.isDisabled = false; }
 
     return _changeRecord;
   };
@@ -55,14 +54,14 @@ function _ngxListItemComponent() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxCore.baseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngxBaseComponent); }
     return _base;
   }
 }
 
-module.exports = ngCore.Directive({
+export var ngxListItemComponent = ngCore.Component({
   selector: 'ngx-list-item, a[ngx-list-item]',
-  template: require('./themes/' + __THEME__ + '/templates/list-item.html'),
+  templateUtl: './templates/list-item.html',
   properties: ['color', 'state', 'initCssClass:class'],
   events: ['clickEmitter:onClick'],
   host: {

@@ -1,10 +1,10 @@
-﻿var ngCore = require('@angular/core/index.js');
+﻿import * as ngCore from '@angular/core';
 
 function _ngxNavbarBrandDirective() {
   this.constructor = function ngxNavbarBrandDirective() { };
 }
 
-module.exports = ngCore.Directive({
+export var _ngxNavbarBrandDirective = ngCore.Directive({
   selector: '[ngx-navbar-brand]',
   host: {
     '[class.ngx-navbar-brand]': 'true'

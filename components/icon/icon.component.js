@@ -1,7 +1,6 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../cores/index.js');
-var ngxUtil = ngxCore.utils;
-var ngxIconService = require('./services/icon.service.js');
+﻿import * as ngCore from '@angular/core';
+import { ngxBaseComponent, ngxUtils } from  '../cores';
+import ngxIconService from './services/icon.service';
 
 function _ngxIconComponent() {
   var _base, _STYLE_PROPERTIES;
@@ -10,7 +9,7 @@ function _ngxIconComponent() {
     SVG_ICON: 'svgIcon'
   };
 
-  this.extends = ngxCore.baseComponent;
+  this.extends = ngxBaseComponent;
 
   this.constructor = [
     ngCore.ElementRef,
@@ -18,7 +17,7 @@ function _ngxIconComponent() {
     ngxIconService,
 
     function ngxIconComponent(elementRef, renderer, ngxIconService) {
-      ngxCore.baseComponent.apply(this, arguments);
+      ngxBaseComponent.apply(this, arguments);
 
       if (elementRef) {
         this.ngxIconService = ngxIconService;
@@ -112,7 +111,7 @@ function _ngxIconComponent() {
         FONT_ICON: 'fontIcon'
       };
 
-      ngxUtil.shallowCopy(_STYLE_PROPERTIES, _getBaseInstance(this).getStyleProperties.apply(this));
+      ngxUtils.shallowCopy(_STYLE_PROPERTIES, _getBaseInstance(this).getStyleProperties.apply(this));
     }
 
     return _STYLE_PROPERTIES;
@@ -140,15 +139,15 @@ function _ngxIconComponent() {
   }
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxCore.baseComponent); }
+    if (!_base) { _base = context.getBaseInstance(ngxBaseComponent); }
     return _base;
   }
 }
 
-module.exports = ngCore.Component({
+export var ngxIconComponent = ngCore.Component({
   selector: 'ngx-icon',
-  template: require('./themes/' + __THEME__ + '/templates/icon.html'),
-  styles: [require('./themes/' + __THEME__ + '/scss/icon.scss')],
+  templateUrl: './templates/icon.html',
+  styleUrls: ['./scss/icon.scss'],
   properties: [
     'alt',
     'svgSrc:svg-src',

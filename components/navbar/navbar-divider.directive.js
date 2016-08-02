@@ -1,10 +1,10 @@
-﻿var ngCore = require('@angular/core/index.js');
+﻿import * as ngCore from '@angular/core';
 
 function _ngxNavbarDividerDirective() {
   this.constructor = function ngxNavbarDividerDirective() { };
 }
 
-module.exports = ngCore.Directive({
+export var _ngxNavbarDividerDirective = ngCore.Directive({
   selector: 'ngx-navbar-divider',
   host: {
     '[class.ngx-navbar-divider]': 'true'

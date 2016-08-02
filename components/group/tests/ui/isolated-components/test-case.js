@@ -1,22 +1,22 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxButton = require('../../../../button/index.js');
-var ngxDropMenu = require('../../../../drop-menu/index.js');
-var ngxGroup = require('../../../../group/index.js');
+﻿import * as ngCore from '@angular/core';
+import NGX_BUTTON_DIRECTIVES from '../../../../button';
+import NGX_GROUP_DIRECTIVES from '../../../../group';
+import { NGX_DROPMENU_DIRECTIVES, NGX_DROPMENU_PROVIDERS } from '../../../../drop-menu';
 
-function _testCase() {
+function _ngxTestCase() {
   this.constructor = function () {};
 }
 
-module.exports = ngCore.Component({
+export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/group/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxButton.BUTTON_DIRECTIVES,
-    ngxDropMenu.DROPMENU_DIRECTIVES,
-    ngxGroup.GROUP_DIRECTIVES
+    NGX_BUTTON_DIRECTIVES,
+    NGX_DROPMENU_DIRECTIVES,
+    NGX_GROUP_DIRECTIVES
   ],
   providers: [
-    ngxDropMenu.DROPMENU_PROVIDERS
+    NGX_DROPMENU_PROVIDERS
   ]
 })
-.Class(new _testCase());
+.Class(new _ngxTestCase());

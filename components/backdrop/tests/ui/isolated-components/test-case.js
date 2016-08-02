@@ -1,12 +1,12 @@
-﻿var ngCore = require('@angular/core/index.js');
-var ngxCore = require('../../../../../cores/index.js');
-var ngxButton = require('../../../../button/index.js');
-var ngxBackdrop = require('../../../../backdrop/index.js');
+﻿import * as ngCore from '@angular/core';
+import ngxAnimationService from '../../../../../cores';
+import NGX_BUTTON_DIRECTIVES from '../../../../button';
+import { ngxBackdropService, NGX_BACKDROP_DIRECTIVES, NGX_BACKDROP_PROVIDERS } from '../../../../backdrop';
 
-function _testCase() {
+function _ngxTestCase() {
   this.constructor = [
     ngCore.ViewContainerRef,
-    ngxBackdrop.backdropService,
+    ngxBackdropService,
 
     function (viewContainerRef, ngxBackdropService) {
       this.ngxBackdropService = ngxBackdropService;
@@ -33,16 +33,16 @@ function _testCase() {
   };
 }
 
-module.exports = ngCore.Component({
+export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
   templateUrl: 'components/backdrop/tests/ui/isolated-components/test-case.html',
   directives: [
-    ngxButton.BUTTON_DIRECTIVES,
-    ngxBackdrop.BACKDROP_DIRECTIVES
+    NGX_BUTTON_DIRECTIVES,
+    NGX_BACKDROP_DIRECTIVES
   ],
   providers: [
-    ngxCore.animationService,
-    ngxBackdrop.BACKDROP_PROVIDERS
+    ngxAnimationService,
+    NGX_BACKDROP_PROVIDERS
   ]
 })
-.Class(new _testCase());
+.Class(new _ngxTestCase());

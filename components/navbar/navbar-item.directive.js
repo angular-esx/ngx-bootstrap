@@ -1,4 +1,4 @@
-﻿var ngCore = require('@angular/core/index.js');
+﻿import * as ngCore from '@angular/core';
 
 function _ngxNavbarItemDirective() {
   this.constructor = function ngxNavbarItemDirective() {};
@@ -8,7 +8,7 @@ function _ngxNavbarItemDirective() {
   };
 }
 
-module.exports = ngCore.Directive({
+export var _ngxNavbarItemDirective = ngCore.Directive({
   selector: '[ngx-navbar-item]',
   properties: ['state:ngx-navbar-item-state'],
   host: {

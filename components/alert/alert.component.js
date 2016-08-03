@@ -1,6 +1,6 @@
 ﻿import * as ngCore from '@angular/core';
-import { ngxBaseComponent, ngxUtils } from  '../cores';
-import ngxAlertService from './services/alert.service';
+import { ngxBaseComponent, ngxUtils } from  '../../cores';
+import { ngxAlertService } from './services/alert.service';
 
 function _ngxAlertComponent() {
   var _base;

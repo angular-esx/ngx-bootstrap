@@ -1,6 +1,6 @@
 import * as ngCore from '@angular/core';
-import ngxAnimationService from '../../../../../cores';
-import NGX_LINK_DIRECTIVES from '../../../../link';
+import { ngxAnimationService } from '../../../../../cores';
+import { NGX_LINK_DIRECTIVES } from '../../../../link';
 import { ngxAlertService, NGX_ALERT_DIRECTIVES, NGX_ALERT_PROVIDERS } from '../../../../alert';
 
 function _ngxTestCase() {
@@ -37,7 +37,7 @@ function _ngxTestCase() {
 
 export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
-  templateUrl: 'components/alert/tests/ui/isolated-components/test-case.html',
+  templateUrl: './test-case.html',
   directives: [
     NGX_LINK_DIRECTIVES,
     NGX_ALERT_DIRECTIVES

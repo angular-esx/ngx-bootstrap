@@ -1,6 +1,6 @@
-import ngxAlertComponent from './alert.component';
-import ngxAlertLinkDirective from './alert-link.directive';
-import ngxAlertService from './services/alert.service';
+import { ngxAlertComponent } from './alert.component';
+import { ngxAlertLinkDirective } from './alert-link.directive';
+import { ngxAlertService } from './services/alert.service';
 
 export * from './alert.component';
 export * from './alert-link.directive';

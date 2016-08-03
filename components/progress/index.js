@@ -1,4 +1,4 @@
-import ngxProgressComponent from './progress.component';
+import { ngxProgressComponent } from './progress.component';
 
 export * from './progress.component';
 

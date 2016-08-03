@@ -1,5 +1,5 @@
 ﻿import * as ngCore from '@angular/core';
-import NGX_PROGRESS_DIRECTIVES from '../../../../progress';
+import { NGX_PROGRESS_DIRECTIVES } from '../../../../progress';
 
 function _ngxTestCase() {
   this.constructor = function () {
@@ -12,7 +12,7 @@ function _ngxTestCase() {
 
 export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
-  templateUrl: 'components/progress/tests/ui/isolated-components/test-case.html',
+  templateUrl: './test-case.html',
   directives: [
     NGX_PROGRESS_DIRECTIVES
   ]

@@ -1,4 +1,4 @@
-﻿import ngxGroupComponent from './group.component';
+﻿import { ngxGroupComponent } from './group.component';
 
 export * from './group.component';
 

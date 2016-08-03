@@ -1,7 +1,7 @@
 ﻿import * as ngCore from '@angular/core';
-import { ngxBaseComponent, ngxUtils } from  '../cores';
-import ngxTooltipOption from './models/tooltip-option.model';
-import ngxTooltipService from './services/tooltip.service';
+import { ngxBaseComponent, ngxUtils } from  '../../cores';
+import { ngxTooltipOption } from './models/tooltip-option.model';
+import { ngxTooltipService } from './services/tooltip.service';
 
 function _ngxTooltipComponent() {
   var _base;

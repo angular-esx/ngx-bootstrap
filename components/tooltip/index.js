@@ -1,7 +1,7 @@
-﻿import ngxTooltipComponent from './tooltip.component';
-import ngxTooltipDirective from './tooltip.directive';
-import ngxTooltipTemplateDirective from './tooltip-template.directive';
-import ngxTooltipService from './services/tooltip.service';
+﻿import { ngxTooltipComponent } from './tooltip.component';
+import { ngxTooltipDirective } from './tooltip.directive';
+import { ngxTooltipTemplateDirective } from './tooltip-template.directive';
+import { ngxTooltipService } from './services/tooltip.service';
 
 export * from './tooltip.component';
 export * from './tooltip.directive';

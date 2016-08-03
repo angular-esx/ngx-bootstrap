@@ -1,6 +1,6 @@
 ﻿import * as ngCore from '@angular/core';
 import * as rx from 'rxjs/rx';
-import ngxAnimationService from '../../../../../cores';
+import { ngxAnimationService } from '../../../../../cores';
 import { ngxtooltipService, NGX_TOOLTIP_DIRECTIVES, NGX_TOOLTIP_PROVIDERS } from '../../../../tooltip';
 
 function _ngxTestCase() {
@@ -54,7 +54,7 @@ function _ngxTestCase() {
 
 export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
-  templateUrl: 'components/tooltip/tests/ui/isolated-components/test-case.html',
+  templateUrl: './test-case.html',
   directives: [
     NGX_TOOLTIP_DIRECTIVES
   ],

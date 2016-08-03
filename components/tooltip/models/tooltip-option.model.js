@@ -1,5 +1,5 @@
 ﻿import * as ngCore from '@angular/core';
-import ngxUtils from  '../../cores';
+import { ngxUtils } from  '../../../cores';
 
 function _ngxTooltipOption() {
   var _PROPERTIES = ['hostElement', 'templateRef', 'content', 'state', 'position', 'delay', 'autoHide'];

@@ -1,5 +1,5 @@
 ﻿import * as ngCore from '@angular/core';
-import ngxTooltipService from './services/tooltip.service';
+import { ngxTooltipService } from './services/tooltip.service';
 
 function _ngxTooltipTemplateDirective() {
   this.constructor = [

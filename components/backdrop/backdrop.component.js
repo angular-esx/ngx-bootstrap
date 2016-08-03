@@ -22,7 +22,7 @@ function _ngxBackdropComponent() {
   ];
 
   this.ngOnChanges = function (changeRecord) {
-    var _self = this;
+    var _self = this,
         _styleProperties = this.getStyleProperties();
 
     this.isActive = this.propertyHasValue(_styleProperties.STATE, 'active');

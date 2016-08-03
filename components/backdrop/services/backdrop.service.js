@@ -9,8 +9,8 @@ function _ngxBackdropService() {
     ngxBackdropObserver,
 
     function ngxBackdropService(dynamicComponentLoader, ngxBackdropObserver) {
-      if (ngxUtil.isNull(dynamicComponentLoader)) { throw 'dynamicComponentLoader is required'; }
-      if (ngxUtil.isNull(ngxBackdropObserver)) { throw 'ngxBackdropObserver is required'; }
+      if (ngxUtils.isNull(dynamicComponentLoader)) { throw 'dynamicComponentLoader is required'; }
+      if (ngxUtils.isNull(ngxBackdropObserver)) { throw 'ngxBackdropObserver is required'; }
 
       this.dynamicComponentLoader = dynamicComponentLoader;
       this.ngxBackdropObserver = ngxBackdropObserver;
@@ -18,15 +18,15 @@ function _ngxBackdropService() {
   ];
 
   this.ngOnDestroy = function () {
-    if (!ngxUtil.isNull(this.backdropRef)) { this.backdropRef.destroy(); }
+    if (!ngxUtils.isNull(this.backdropRef)) { this.backdropRef.destroy(); }
   };
 
   this.setRootViewContainerRef = function (rootViewContainerRef) {
-    if (ngxUtil.isNull(rootViewContainerRef)) { throw 'rootViewContainerRef is required'; }
+    if (ngxUtils.isNull(rootViewContainerRef)) { throw 'rootViewContainerRef is required'; }
 
     this.rootViewContainerRef = rootViewContainerRef;
 
-    if (!ngxUtil.isNull(this.backdropRef)) {
+    if (!ngxUtils.isNull(this.backdropRef)) {
       this.backdropRef.destroy();
       this.backdropRef = null;
     }
@@ -67,7 +67,7 @@ function _ngxBackdropService() {
     var _self = this;
     
     return this.ngxBackdropObserver.ngxBackdrop$.subscribe(function (event) {
-      if (!ngxUtil.isEmpty(event) && event.type === _self.getActions().CLICK_BACKDROP) {
+      if (!ngxUtils.isEmpty(event) && event.type === _self.getActions().CLICK_BACKDROP) {
         handler(event);
       }
     });

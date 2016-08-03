@@ -1,7 +1,7 @@
-﻿import ngxPopoverComponent from './popover.component';
-import ngxPopoverDirective from './popover.directive';
-import ngxPopoverTemplateDirective from './popover-template.directive';
-import ngxPopoverService from './services/popover.service';
+﻿import { ngxPopoverComponent } from './popover.component';
+import { ngxPopoverDirective } from './popover.directive';
+import { ngxPopoverTemplateDirective } from './popover-template.directive';
+import { ngxPopoverService } from './services/popover.service';
 
 export * from './popover.component';
 export * from './popover.directive';

@@ -1,8 +1,8 @@
 ﻿import * as ngCore from '@angular/core';
-import ngxUtils from  '../cores';
-import ngxPopoverOption from './models/popover-option.model';
-import ngxPopoverService from './services/popover.service';
-import ngxTooltipComponent from'../tooltip';
+import { ngxUtils } from  '../../cores';
+import { ngxPopoverOption } from './models/popover-option.model';
+import { ngxPopoverService } from './services/popover.service';
+import { ngxTooltipComponent } from'../tooltip';
 
 function _ngxPopoverComponent() {
   var _base;
@@ -13,9 +13,9 @@ function _ngxPopoverComponent() {
     ngCore.ElementRef,
     ngCore.Renderer,
     ngxPopoverService,
-    popoverOptionClass,
+    ngxPopoverOption,
 
-    function ngxPopoverComponent(elementRef, renderer, ngxPopoverService, popoverOption) {
+    function ngxPopoverComponent(elementRef, renderer, ngxPopoverService, ngxPopoverOption) {
       ngxTooltipComponent.apply(this, arguments);
 
       if (elementRef) {

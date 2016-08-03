@@ -1,5 +1,5 @@
 ﻿import * as ngCore from '@angular/core';
-import ngxPopoverService from './services/popover.service';
+import { ngxPopoverService } from './services/popover.service';
 
 function _ngxPopoverTemplateDirective() {
   this.constructor = [

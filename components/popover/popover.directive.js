@@ -1,9 +1,9 @@
 ﻿import * as ngCore from '@angular/core';
-import ngxUtils from  '../cores';
-import ngxPopoverOption from './models/popover-option.model';
-import ngxPopoverComponent from './popover.component';
-import ngxPopoverService from './services/popover.service';
-import ngxTooltipDirective from '../tooltip';
+import { ngxUtils } from  '../../cores';
+import { ngxPopoverOption } from './models/popover-option.model';
+import { ngxPopoverComponent } from './popover.component';
+import { ngxPopoverService } from './services/popover.service';
+import { ngxTooltipDirective } from '../tooltip';
 
 function _ngxPopoverDirective() {
   var _base;

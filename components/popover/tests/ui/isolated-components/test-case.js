@@ -1,6 +1,6 @@
 ﻿import * as ngCore from '@angular/core';
 import rx from 'rxjs/rx.js';
-import ngxAnimationService from '../../../../../cores';
+import { ngxAnimationService } from '../../../../../cores';
 import { ngxPopoverService, NGX_POPOVER_DIRECTIVES, NGX_POPOVER_PROVIDERS } from '../../../../popover';
 
 function _ngxTestCase() {
@@ -54,7 +54,7 @@ function _ngxTestCase() {
 
 export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
-  templateUrl: 'components/popover/tests/ui/isolated-components/test-case.html',
+  templateUrl: './test-case.html',
   directives: [
     NGX_POPOVER_DIRECTIVES
   ],

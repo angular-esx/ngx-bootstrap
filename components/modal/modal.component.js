@@ -1,7 +1,7 @@
 ﻿import * as ngCore from '@angular/core';
-import { ngxBaseComponent, ngxUtils } from  '../cores';
-import ngxModalService from './services/modal.service';
-import ngxBackdropService from '../../components/backdrop';
+import { ngxBaseComponent, ngxUtils } from  '../../cores';
+import { ngxModalService } from './services/modal.service';
+import { ngxBackdropService } from '../../components/backdrop';
 
 function _ngxModalComponent() {
   var _base;
@@ -27,7 +27,7 @@ function _ngxModalComponent() {
   this.ngOnChanges = function (changeRecord) {
     if (ngxUtils.isEmpty(this.id)) { throw 'Must provide id to ngxModal'; }
 
-    var _self = this;
+    var _self = this,
     _styleProperties = this.getStyleProperties();
 
     this.isActive = this.propertyHasValue(_styleProperties.STATE, 'active');

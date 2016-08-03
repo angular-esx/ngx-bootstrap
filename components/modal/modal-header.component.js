@@ -1,5 +1,5 @@
 ﻿import * as ngCore from '@angular/core';
-import ngxModalComponent from  './modal.component';
+import { ngxModalComponent } from  './modal.component';
 
 function _ngxModalHeaderComponent() {
   this.constructor = [

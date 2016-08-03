@@ -1,8 +1,8 @@
 import * as ngCore from '@angular/core';
-import { ngxAnimationService, ngxComponentPortal, ngxPortalHostDirective } from '../../../cores';
+import { ngxAnimationService, ngxComponentPortal, ngxPortalHostDirective } from '../../../../../cores';
 import { ngxBackdropService, NGX_BACKDROP_DIRECTIVES, NGX_BACKDROP_PROVIDERS } from '../../../../backdrop';
 import { ngxModalService, NGX_MODAL_DIRECTIVES, NGX_MODAL_PROVIDERS } from '../../../../modal';
-import NGX_BUTTON_DIRECTIVES from '../../../../button';
+import { NGX_BUTTON_DIRECTIVES } from '../../../../button';
 
 function _ngxTestCase() {
   this.constructor = [
@@ -12,7 +12,7 @@ function _ngxTestCase() {
 
     function (viewContainerRef, ngxModalService, backdropService) {
       this.ngxModalService = ngxModalService;
-      this.childComponent = new ngxCore.ngxComponentPortal(_buildNgxChildComponent());
+      this.childComponent = new ngxComponentPortal(_buildNgxChildComponent());
 
       backdropService.setRootViewContainerRef(viewContainerRef);
     }
@@ -45,7 +45,7 @@ function _ngxTestCase() {
 
 export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
-  templateUrl: 'components/modal/tests/ui/isolated-components/test-case.html',
+  templateUrl: './test-case.html',
   directives: [
     ngxPortalHostDirective,
     NGX_BUTTON_DIRECTIVES,

@@ -1,5 +1,5 @@
 import * as ngCore from '@angular/core';
-import ngxBaseComponent from  '../cores';
+import { ngxBaseComponent } from  '../../cores';
 
 function _ngxBreadcrumbComponent() {
   var _base;

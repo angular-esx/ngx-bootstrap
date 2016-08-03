@@ -1,5 +1,5 @@
-﻿import ngxBreadcrumbComponent from './breadcrumb.component';
-import ngxBreadcrumbItemDirective from './breadcrumb-item.directive';
+﻿import { ngxBreadcrumbComponent } from './breadcrumb.component';
+import { ngxBreadcrumbItemDirective } from './breadcrumb-item.directive';
 
 export * from './breadcrumb.component';
 export * from './breadcrumb-item.directive';

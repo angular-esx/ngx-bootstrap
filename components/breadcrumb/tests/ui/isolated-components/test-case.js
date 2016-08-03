@@ -1,6 +1,6 @@
 import * as ngCore from '@angular/core';
-import NGX_LINK_DIRECTIVES from '../../../../link';
-import NGX_BREADCRUMB_DIRECTIVES from '../../../../breadcrumb';
+import { NGX_LINK_DIRECTIVES } from '../../../../link';
+import { NGX_BREADCRUMB_DIRECTIVES } from '../../../../breadcrumb';
 
 function _ngxTestCase() {
   this.constructor = function () {
@@ -11,7 +11,7 @@ function _ngxTestCase() {
 
 export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
-  templateUrl: 'components/breadcrumb/tests/ui/isolated-components/test-case.html',
+  templateUrl: './test-case.html',
   directives: [
     NGX_LINK_DIRECTIVES,
     NGX_BREADCRUMB_DIRECTIVES

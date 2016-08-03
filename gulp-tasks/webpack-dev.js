@@ -1,7 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
-var reload = require('browser-sync').reload;
+var browser = require('browser-sync');
 var Q = require('q');
 
 module.exports = function (params) {
@@ -25,7 +25,6 @@ module.exports = function (params) {
         // vendors: './configs/webpack/vendors.js',
         bootstrap: './configs/webpack/bootstrap.js',
         test: _testScriptPath
-        // main: './main.js'
       },
       output: {
         path: './dist/js',
@@ -81,8 +80,9 @@ module.exports = function (params) {
           modules: false
         }));
       }
+
       // reload browser
-      reload({ stream: true });
+      browser.reload();
 
       deferred.resolve();
     });

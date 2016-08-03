@@ -1,6 +1,6 @@
 import * as ngCore from '@angular/core';
-import ngxAnimationService from '../../../cores';
-import NGX_BUTTON_DIRECTIVES from '../../../../button';
+import { ngxAnimationService } from '../../../../../cores';
+import { NGX_BUTTON_DIRECTIVES } from '../../../../button';
 import { NGX_COLLAPSE_DIRECTIVES, NGX_COLLAPSE_PROVIDERS } from '../../../../collapse';
 
 function _testCase() {
@@ -9,7 +9,7 @@ function _testCase() {
 
 export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
-  templateUrl: 'components/collapse/tests/ui/isolated-components/test-case.html',
+  templateUrl: './test-case.html',
   directives: [
     NGX_BUTTON_DIRECTIVES,
     NGX_COLLAPSE_DIRECTIVES

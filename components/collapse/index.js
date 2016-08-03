@@ -1,6 +1,6 @@
-import ngxCollapseComponent from './collapse.component';
-import ngxToggleCollapseDirective from './toggle-collapse.directive';
-import ngxCollapseService from './services/collapse.service';
+import { ngxCollapseComponent } from './collapse.component';
+import { ngxToggleCollapseDirective } from './toggle-collapse.directive';
+import { ngxCollapseService } from './services/collapse.service';
 
 export * from './collapse.component';
 export * from './toggle-collapse.directive';

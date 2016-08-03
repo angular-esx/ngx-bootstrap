@@ -1,5 +1,5 @@
 ﻿import * as ngCore from '@angular/core';
-import ngxCollapseService from './services/alert.service';
+import { ngxCollapseService } from './services/collapse.service';
 
 function _ngxToggleCollapseDirective() {
   this.constructor = [

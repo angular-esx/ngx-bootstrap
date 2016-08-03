@@ -1,6 +1,6 @@
 ﻿import * as ngCore from '@angular/core';
-import { ngxBaseComponent, ngxUtils } from  '../cores';
-import ngxCollapseService from './services/collapse.service';
+import { ngxBaseComponent, ngxUtils } from  '../../cores';
+import { ngxCollapseService } from './services/collapse.service';
 
 function _ngxCollapseComponent() {
   var _base;

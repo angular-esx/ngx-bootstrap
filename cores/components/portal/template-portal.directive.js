@@ -1,5 +1,5 @@
-﻿import * as ngCore from '@angular/core';
-import ngxTemplatePortal from './models/template-portal.model';
+import * as ngCore from '@angular/core';
+import { ngxTemplatePortal } from './models/template-portal.model';
 
 
 function _ngxTemplatePortalDirective() {

@@ -1,5 +1,5 @@
-﻿import * as ngCore from '@angular/core';
-import ngxBaseDirective from './base.directive';
+import * as ngCore from '@angular/core';
+import { ngxBaseDirective } from './base.directive';
 
 
 function _ngxBaseComponent() {

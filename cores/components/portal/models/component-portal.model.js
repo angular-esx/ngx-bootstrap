@@ -1,14 +1,14 @@
-﻿import * as ngCore from '@angular/core';
-import ngxBasePortal from './base-portal.model';
+import * as ngCore from '@angular/core';
+import { ngxBasePortal } from './base-portal.model';
 
 
 function _ngxComponentPortal() {
   var _base;
 
-  this.extends = ngxBasePortalClass;
+  this.extends = ngxBasePortal;
 
   this.constructor = function ngxComponentPortal(component, viewContainerRef, injector) {
-    ngxBasePortalClass.apply(this, arguments);
+    ngxBasePortal.apply(this, arguments);
 
     this.component = component;
     this.viewContainerRef = viewContainerRef;
@@ -16,7 +16,7 @@ function _ngxComponentPortal() {
   };
 
   function _getBaseInstance(context) {
-    if (!_base) { _base = context.getBaseInstance(ngxBasePortalClass); }
+    if (!_base) { _base = context.getBaseInstance(ngxBasePortal); }
     return _base;
   }
 }

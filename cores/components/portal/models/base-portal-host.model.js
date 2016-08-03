@@ -1,7 +1,7 @@
-﻿import * as ngCore from '@angular/core';
+import * as ngCore from '@angular/core';
 import * as ngxUtils from '../../../utils';
-import ngxComponentPortal from './component-portal.model';
-import ngxTemplatePortal from './template-portal.model';
+import { ngxComponentPortal } from './component-portal.model';
+import { ngxTemplatePortal } from './template-portal.model';
 
 
 function _ngxBasePortalHost() {

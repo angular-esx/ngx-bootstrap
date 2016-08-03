@@ -1,4 +1,4 @@
-﻿import * as ngCore from '@angular/core';
+import * as ngCore from '@angular/core';
 import * as ngxUtils from '../../../utils';
 
 

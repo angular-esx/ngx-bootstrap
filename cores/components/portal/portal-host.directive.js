@@ -1,6 +1,6 @@
-﻿import * as ngCore from '@angular/core';
+import * as ngCore from '@angular/core';
 import * as ngxUtils from '../../utils';
-import ngxBasePortalHost from './models/base-portal-host.model';
+import { ngxBasePortalHost } from './models/base-portal-host.model';
 
 
 function _ngxPortalHostDirective() {

@@ -1,4 +1,4 @@
-﻿export * from './base/base.directive';
+export * from './base/base.directive';
 export * from './base/base.component';
 
 export * from './portal/models/base-portal.model';

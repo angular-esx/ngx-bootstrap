@@ -1,5 +1,5 @@
 import * as ngCore from '@angular/core';
-import NGX_LABEL_DIRECTIVES from '../../../../label';
+import { NGX_LABEL_DIRECTIVES } from '../../../../label';
 
 function _ngxTestCase() {
   this.constructor = function () {
@@ -9,7 +9,7 @@ function _ngxTestCase() {
 
 export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
-  templateUrl: 'components/label/tests/ui/isolated-components/test-case.html',
+  templateUrl: './test-case.html',
   directives: [
     NGX_LABEL_DIRECTIVES
   ]

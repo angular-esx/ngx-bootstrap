@@ -1,7 +1,7 @@
 ﻿import * as ngCore from '@angular/core';
-import NGX_GROUP_DIRECTIVES from '../../../../group';
-import NGX_BUTTON_DIRECTIVES from '../../../../button';
-import NGX_RADIO_DIRECTIVES from '../../../../radio';
+import { NGX_GROUP_DIRECTIVES } from '../../../../group';
+import { NGX_BUTTON_DIRECTIVES } from '../../../../button';
+import { NGX_RADIO_DIRECTIVES } from '../../../../radio';
 
 function _ngxTestCase() {
   this.constructor = function () {
@@ -12,7 +12,7 @@ function _ngxTestCase() {
 
 export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
-  templateUrl: 'directives/radio/tests/ui/isolated-directives/test-case.html',
+  templateUrl: './test-case.html',
   directives: [
     NGX_GROUP_DIRECTIVES,
     NGX_BUTTON_DIRECTIVES,

@@ -1,5 +1,5 @@
-import ngxRadioDirective from './radio.directive';
-import ngxRadioGroupDirective from './radio-group.directive';
+import { ngxRadioDirective } from './radio.directive';
+import { ngxRadioGroupDirective } from './radio-group.directive';
 
 export * from './radio.directive';
 export * from './radio-group.directive';

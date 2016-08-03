@@ -1,5 +1,5 @@
 ﻿import * as ngCore from '@angular/core';
-import ngxRadioGroupDirective from './radio-group.directive';
+import { ngxRadioGroupDirective } from './radio-group.directive';
 
 function _ngxRadioDirective() {
   this.constructor = [

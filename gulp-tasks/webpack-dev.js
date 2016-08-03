@@ -1,73 +1,86 @@
-﻿var path = require('path');
-var gulp = require('gulp');
+var path = require('path');
 var webpack = require('webpack');
-var webpackStream = require('webpack-stream');
-var uglify = require('gulp-uglify');
 var autoprefixer = require('autoprefixer');
 var reload = require('browser-sync').reload;
+var Q = require('q');
 
 module.exports = function (params) {
-  return function () {
 
-    var _themeName = params.args.theme || 'bootstrap',
-      _componentName = params.args.component,
+  return function () {
+    var deferred = Q.defer();
+    var _componentName = params.args.component,
       _directiveName = params.args.directive,
-      _webpackVariables = {
-        __THEME__: JSON.stringify(_themeName)
-      },
       _testScriptPath;
 
     if (_componentName) {
-      _testScriptPath = 'components/' + _componentName + '/tests/ui/isolated-components/boot.js';
+      _testScriptPath = './components/' + _componentName + '/tests/ui/isolated-components/boot.js';
     } else {
-      _testScriptPath = 'directives/' + _directiveName + '/tests/ui/isolated-directives/boot.js';
+      _testScriptPath = './directives' + _directiveName + 'tests/ui/isolated-components/boot.js';
     }
 
-    return webpackStream({
-      context: __dirname,
+    webpack({
+      context: path.resolve(__dirname, '..'),
       entry: {
-        bootstrap: 'configs/webpack/entries/bootstrap.js',
-        vendors: 'configs/webpack/entries/vendors.js',
-        polyfills: 'configs/webpack/entries/polyfills.js',
+        // polyfills: './configs/webpack/polyfills.js',
+        // vendors: './configs/webpack/vendors.js',
+        bootstrap: './configs/webpack/bootstrap.js',
         test: _testScriptPath
+        // main: './main.js'
       },
       output: {
-        path: __dirname,
+        path: './dist/js',
         filename: 'ngx-[name].js'
       },
       plugins: [
-        new webpack.NoErrorsPlugin(),
-        new webpack.DefinePlugin(_webpackVariables),
-        new webpack.optimize.DedupePlugin(),
+        // new webpack.optimize.UglifyJsPlugin({
+        //   compress: {
+        //     warnings: false
+        //   }
+        // }),
+        // new webpack.optimize.DedupePlugin(),
         new webpack.optimize.CommonsChunkPlugin({
-          name: ['test', 'bootstrap', 'vendors', 'polyfills']
+          name: ['vendors']
         }),
       ],
       module: {
         loaders: [
+          { 
+            test: /\.js$/,
+            exclude: /node_modules/,
+            loader: 'angular2-template-loader'
+          },
           { test: /\.html$/, loader: 'html-loader' },
           {
             test: /\.(scss|sass)$/,
-            loader: '../../gulp-tasks/clean-code-loader!postcss-loader!sass-loader'
+            loader: './gulp-tasks/clean-code-loader!postcss-loader!sass-loader'
           }
         ]
-      },
-      'html-minifier-loader': {
-        removeComments: true,
-        collapseWhitespace: true,
-        conservativeCollapse: true,
-        preserveLineBreaks: true,
-        caseSensitive: true
       },
       postcss: function () {
         return [autoprefixer];
       },
-      resolve: {
-        root: path.resolve(__dirname, '..'),
-        extensions: ['', '.js']
+      // Create source maps for the bundle
+      // devtool: 'source-map',
+    }, function (err, stats) {
+      if (err) {
+        console.log(err);
       }
-    })
-      .pipe(gulp.dest('./dist/js'))
-      .pipe(reload({ stream: true }));
+
+      if (stats) {
+        console.log(stats.toString({
+          colors: true,
+          children: false,
+          chunks: false,
+          modules: false
+        }));
+      }
+      // reload browser
+      reload({ stream: true });
+
+      deferred.resolve();
+    });
+
+    return deferred.promise;
+
   };
 };

@@ -67,7 +67,6 @@
     this.INJECT_ASSETS = 'inject-assets';
     this.BUILD = 'build';
     this.WEBPACK = 'webpack-dev';
-    this.BUILD_SCSS = 'build-scss';
   })();
 
   var gulp = require('gulp');
@@ -81,7 +80,7 @@
   gulp.task('inject-assets', getTask(taskService.INJECT_ASSETS));
 
   gulp.task('test-ui', function () {
-    runSequence('clean', 'scss', 'webpack', ['browserSync', 'inject-assets', 'watch', 'lint']);
+    runSequence('clean', 'scss', 'webpack', 'inject-assets', ['browserSync', 'watch', 'lint']);
   });
 
   gulp.task('default', ['build']);
@@ -105,8 +104,6 @@
   gulp.task('build', function () {
     runSequence('clean', 'lint', 'scss', 'webpack');
   });
-
-  gulp.task('build-scss', getTask(taskService.BUILD_SCSS));
 
   function getTask(task) {
     return require(fileService.PATHS.GULP_TASKS + task)({

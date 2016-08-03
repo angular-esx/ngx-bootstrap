@@ -1,5 +1,5 @@
 ﻿import * as ngCore from '@angular/core';
-import NGX_LLIST_DIRECTIVES from '../../../../list';
+import { NGX_LIST_DIRECTIVES } from '../../../../list';
 
 function _ngxTestCase() {
   this.constructor = function () {};
@@ -12,9 +12,9 @@ function _ngxTestCase() {
 
 export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
-  templateUrl: 'components/list/tests/ui/isolated-components/test-case.html',
+  templateUrl: './test-case.html',
   directives: [
-    NGX_LLIST_DIRECTIVES
+    NGX_LIST_DIRECTIVES
   ]
 })
 .Class(new _ngxTestCase());

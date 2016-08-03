@@ -1,5 +1,5 @@
-﻿import ngxListComponent from './list.component';
-import ngxListItemComponent from './list-item.component';
+﻿import { ngxListComponent } from './list.component';
+import { ngxListItemComponent } from './list-item.component';
 
 export * from './list.component';
 export * from './list-item.component';

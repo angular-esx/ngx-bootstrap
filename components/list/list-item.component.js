@@ -1,5 +1,5 @@
 ﻿import * as ngCore from '@angular/core';
-import { ngxBaseComponent, ngxUtils } from  '../cores';
+import { ngxBaseComponent, ngxUtils } from  '../../cores';
 
 function _ngxListItemComponent() {
   var _base;
@@ -61,7 +61,7 @@ function _ngxListItemComponent() {
 
 export var ngxListItemComponent = ngCore.Component({
   selector: 'ngx-list-item, a[ngx-list-item]',
-  templateUtl: './templates/list-item.html',
+  templateUrl: './templates/list-item.html',
   properties: ['color', 'state', 'initCssClass:class'],
   events: ['clickEmitter:onClick'],
   host: {

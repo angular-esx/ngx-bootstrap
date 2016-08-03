@@ -1,7 +1,7 @@
 ﻿import * as ngCore from '@angular/core';
-import NGX_GROUP_DIRECTIVES from '../../../../group';
-import NGX_BUTTON_DIRECTIVES from '../../../../button';
-import NGX_CHECKBOX_DIRECTIVES from '../../../../checkbox';
+import { NGX_GROUP_DIRECTIVES } from '../../../../group';
+import { NGX_BUTTON_DIRECTIVES } from '../../../../button';
+import { NGX_CHECKBOX_DIRECTIVES } from '../../../../checkbox';
 
 function _ngxTestCase() {
   this.constructor = function () {
@@ -13,7 +13,7 @@ function _ngxTestCase() {
 
 export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
-  templateUrl: 'directives/checkbox/tests/ui/isolated-directives/test-case.html',
+  templateUrl: './test-case.html',
   directives: [
     NGX_GROUP_DIRECTIVES,
     NGX_BUTTON_DIRECTIVES,

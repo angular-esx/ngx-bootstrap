@@ -1,5 +1,5 @@
-import ngxCheckboxDirective from  './checkbox.directive';
-import ngxCheckboxGroupDirective from  './checkbox-group.directive';
+import { ngxCheckboxDirective } from  './checkbox.directive';
+import { ngxCheckboxGroupDirective } from  './checkbox-group.directive';
 
 export * from  './checkbox.directive';
 export * from  './checkbox-group.directive';

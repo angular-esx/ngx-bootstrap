@@ -1,6 +1,6 @@
 ﻿import * as ngCore from '@angular/core';
-import ngxUtils from  '../cores';
-import ngxCheckboxGroupDirective from '././checkbox-group.directive';
+import { ngxUtils } from  '../../cores';
+import { ngxCheckboxGroupDirective } from './checkbox-group.directive';
 
 function _ngxCheckboxDirective() {
   this.constructor = [

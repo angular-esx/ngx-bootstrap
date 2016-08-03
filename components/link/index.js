@@ -1,4 +1,4 @@
-﻿import ngxLinkComponent from './link.component';
+﻿import { ngxLinkComponent } from './link.component';
 
 export * from './link.component';
 

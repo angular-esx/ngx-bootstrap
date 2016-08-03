@@ -1,6 +1,6 @@
 ﻿import * as ngCore from '@angular/core';
-import NGX_LINK_DIRECTIVES from '../../../../link';
-import NGX_NAVBAR_DIRECTIVES from '../../../../navbar';
+import { NGX_LINK_DIRECTIVES } from '../../../../link';
+import { NGX_NAVBAR_DIRECTIVES } from '../../../../navbar';
 
 function _ngxTestCase() {
   this.constructor = function () {};
@@ -8,7 +8,7 @@ function _ngxTestCase() {
 
 export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
-  templateUrl: 'components/navbar/tests/ui/isolated-components/test-case.html',
+  templateUrl: './test-case.html',
   directives: [
    NGX_LINK_DIRECTIVES,
    NGX_NAVBAR_DIRECTIVES

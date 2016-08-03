@@ -4,7 +4,7 @@ function _ngxNavbarBrandDirective() {
   this.constructor = function ngxNavbarBrandDirective() { };
 }
 
-export var _ngxNavbarBrandDirective = ngCore.Directive({
+export var ngxNavbarBrandDirective = ngCore.Directive({
   selector: '[ngx-navbar-brand]',
   host: {
     '[class.ngx-navbar-brand]': 'true'

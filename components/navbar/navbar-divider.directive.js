@@ -4,7 +4,7 @@ function _ngxNavbarDividerDirective() {
   this.constructor = function ngxNavbarDividerDirective() { };
 }
 
-export var _ngxNavbarDividerDirective = ngCore.Directive({
+export var ngxNavbarDividerDirective = ngCore.Directive({
   selector: 'ngx-navbar-divider',
   host: {
     '[class.ngx-navbar-divider]': 'true'

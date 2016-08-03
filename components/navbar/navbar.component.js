@@ -1,5 +1,5 @@
 ﻿import * as ngCore from '@angular/core';
-import { ngxBaseComponent, ngxUtils } from  '../cores';
+import { ngxBaseComponent, ngxUtils } from  '../../cores';
 
 function _ngxNavbarComponent() {
   var _base;
@@ -37,7 +37,7 @@ function _ngxNavbarComponent() {
   }
 }
 
-export var _ngxNavbarComponent = ngCore.Component({
+export var ngxNavbarComponent = ngCore.Component({
   selector: 'ngx-navbar',
   templateUrl: './templates/navbar.html',
   styleUrls: ['./scss/navbar.scss'],

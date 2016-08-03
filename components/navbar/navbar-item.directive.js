@@ -8,7 +8,7 @@ function _ngxNavbarItemDirective() {
   };
 }
 
-export var _ngxNavbarItemDirective = ngCore.Directive({
+export var ngxNavbarItemDirective = ngCore.Directive({
   selector: '[ngx-navbar-item]',
   properties: ['state:ngx-navbar-item-state'],
   host: {

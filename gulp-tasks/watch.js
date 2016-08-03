@@ -11,7 +11,6 @@ module.exports = function (params) {
       './cores/**/*.js',
     ], function () {
       runSequence('lint', 'webpack');
-      // runSequence('webpack');
     });
 
     gulp.watch([

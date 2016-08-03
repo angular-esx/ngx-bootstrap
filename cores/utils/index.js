@@ -33,11 +33,11 @@ function isNull (target) {
   return target === undefined || target === null; 
 }
 function isEmpty (target) {
-  return _isNull(target) || target === '';
+  return isNull(target) || target === '';
 }
 
 function distinct (target) {
-  if (!_isArray(target)) {
+  if (!isArray(target)) {
     return target;
   }
 
@@ -52,12 +52,12 @@ function distinct (target) {
 }
 function forEach(target, iterator, context) {
   if (target && iterator) {
-    if (_isArray(target)) {
+    if (isArray(target)) {
       for (var i = 0, length = target.length; i < length; i++) {
         if (iterator.call(context, target[i], i, target)) { break; }
       }
     }
-    else if (_isObject(target)) {
+    else if (isObject(target)) {
       for (var prop in target) {
         if (iterator.call(context, target[prop], prop, target)) { break; }
       }
@@ -66,7 +66,7 @@ function forEach(target, iterator, context) {
 }
 
 function splice (target, item, compareTo){
-  if (!_isArray(target)) {
+  if (!isArray(target)) {
     return target;
   }
   

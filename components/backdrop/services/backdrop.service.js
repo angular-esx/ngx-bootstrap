@@ -1,7 +1,7 @@
 ﻿import * as ngCore from '@angular/core';
-import ngxUtils from  '../../cores';
-import ngxBackdrop from '../backdrop.component';
-import ngxBackdropObserver from './backdrop.observer';
+import { ngxUtils } from  '../../../cores';
+import { ngxBackdropComponent } from '../backdrop.component';
+import { ngxBackdropObserver } from './backdrop.observer';
 
 function _ngxBackdropService() {
   this.constructor = [
@@ -37,7 +37,7 @@ function _ngxBackdropService() {
         ]);
 
     return this.dynamicComponentLoader
-               .loadNextToLocation(ngxBackdrop, this.rootViewContainerRef, _injector)
+               .loadNextToLocation(ngxBackdropComponent, this.rootViewContainerRef, _injector)
                .then(function (backdropRef) { _self.backdropRef = backdropRef; });
   };
 

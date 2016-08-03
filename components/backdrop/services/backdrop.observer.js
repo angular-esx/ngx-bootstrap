@@ -1,6 +1,6 @@
 ﻿import * as ngCore from '@angular/core';
 import * as rx from 'rxjs/rx';
-import { ngxAnimationService, ngxUtils } from  '../../cores';
+import { ngxAnimationService, ngxUtils } from  '../../../cores';
 
 function _ngxBackdropObserver() {
   var _observer;

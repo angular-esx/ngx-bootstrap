@@ -1,6 +1,6 @@
-﻿import ngxBackdropComponent from './backdrop.component';
-import ngxBackdropObserver from './services/backdrop.observer';
-import ngxBackdropService from './services/backdrop.service';
+﻿import { ngxBackdropComponent } from './backdrop.component';
+import { ngxBackdropObserver } from './services/backdrop.observer';
+import { ngxBackdropService } from './services/backdrop.service';
 
 export * from './backdrop.component';
 export * from './services/backdrop.observer';

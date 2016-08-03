@@ -1,6 +1,6 @@
 ﻿import * as ngCore from '@angular/core';
-import { ngxBaseComponent, ngxUtils } from  '../cores';
-import ngxBackdropObserver from './services/backdrop.observer';
+import { ngxBaseComponent, ngxUtils } from  '../../cores';
+import { ngxBackdropObserver } from './services/backdrop.observer';
 
 function _ngxBackdropComponent() {
   var _base;

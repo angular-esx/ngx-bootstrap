@@ -1,6 +1,6 @@
 ﻿import * as ngCore from '@angular/core';
-import ngxAnimationService from '../../../../../cores';
-import NGX_BUTTON_DIRECTIVES from '../../../../button';
+import { ngxAnimationService } from '../../../../../cores';
+import { NGX_BUTTON_DIRECTIVES } from '../../../../button';
 import { ngxBackdropService, NGX_BACKDROP_DIRECTIVES, NGX_BACKDROP_PROVIDERS } from '../../../../backdrop';
 
 function _ngxTestCase() {
@@ -35,7 +35,7 @@ function _ngxTestCase() {
 
 export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
-  templateUrl: 'components/backdrop/tests/ui/isolated-components/test-case.html',
+  templateUrl: './test-case.html',
   directives: [
     NGX_BUTTON_DIRECTIVES,
     NGX_BACKDROP_DIRECTIVES

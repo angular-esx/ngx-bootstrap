@@ -1,5 +1,5 @@
 ﻿import * as ngCore from '@angular/core';
-import { ngxBaseComponent, ngxUtils } from  '../cores';
+import { ngxBaseComponent, ngxUtils } from  '../../cores';
 
 function _ngxPagerComponent() {
   var _base;
@@ -103,7 +103,7 @@ function _ngxPagerComponent() {
   }
 }
 
-export var _ngxPagerComponent = ngCore.Component({
+export var ngxPagerComponent = ngCore.Component({
   selector: 'ngx-pager',
   templateUrl: './templates/pager.html',
   styleUrls: ['./scss/pager.scss'],

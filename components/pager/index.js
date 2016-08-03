@@ -1,4 +1,4 @@
-﻿import ngxPagerComponent from './pager.component';
+﻿import { ngxPagerComponent } from './pager.component';
 
 export * from './pager.component';
 

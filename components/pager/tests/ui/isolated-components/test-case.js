@@ -1,5 +1,5 @@
 ﻿import * as ngCore from '@angular/core';
-import NGX_PAGER_DIRECTIVES from '../../../../pager';
+import { NGX_PAGER_DIRECTIVES } from '../../../../pager';
 
 function _ngxTestCase() {
   this.constructor = function () {};
@@ -17,9 +17,9 @@ function _ngxTestCase() {
 
 }
 
-export var _ngxTestCase = ngCore.Component({
+export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
-  templateUrl: 'components/pager/tests/ui/isolated-components/test-case.html',
+  templateUrl: './test-case.html',
   directives: [
     NGX_PAGER_DIRECTIVES
   ]

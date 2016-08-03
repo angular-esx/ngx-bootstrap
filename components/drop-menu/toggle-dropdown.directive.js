@@ -1,5 +1,5 @@
 ﻿import * as ngCore from '@angular/core';
-import ngxDropMenuService from './services/drop-menu.service';
+import { ngxDropMenuService } from './services/drop-menu.service';
 
 function _ngxToggleDropdownDirective() {
   this.constructor = [ngxDropMenuService, function ngxToggleDropdownDirective(ngxDropMenuService) {

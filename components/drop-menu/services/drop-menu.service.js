@@ -1,6 +1,6 @@
 ﻿import * as ngCore from '@angular/core';
 import * as rx from 'rxjs/rx';
-import ngxUtils from  '../../cores';
+import { ngxUtils } from  '../../../cores';
 
 function _ngxDropMenuService() {
   var _observer;

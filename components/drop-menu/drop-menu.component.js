@@ -1,6 +1,6 @@
 ﻿import * as ngCore from '@angular/core';
-import { ngxBaseComponent, ngxUtils } from  '../cores';
-import ngxDropMenuService from './services/drop-menu.service';
+import { ngxBaseComponent, ngxUtils } from  '../../cores';
+import { ngxDropMenuService } from './services/drop-menu.service';
 
 function _ngxDropMenuComponent() {
   var _base;

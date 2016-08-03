@@ -7,11 +7,10 @@ var merge = require('merge-stream');
 
 var args = require('yargs').argv;
 var componentName = args.component;
-var themeName = args.theme || 'bootstrap';
 
 module.exports = function (params) {
   return function () {
-    var contents = addSCSS('./cores/themes/' + themeName + '/ngx-bootstrap.scss');
+    var contents = addSCSS('./cores/scss/ngx-bootstrap.scss');
 
     if (componentName) {
       contents += getDirectiveSCSSPath(componentName);
@@ -43,7 +42,7 @@ module.exports = function (params) {
     }
 
     return merge(
-      gulp.src('./cores/themes/' + themeName + '/normalize/normalize.scss')
+      gulp.src('./cores/scss/normalize/normalize.scss')
         .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
         .pipe(rename('ngx-normalize.css'))
         .pipe(gulp.dest('./dist/css/'))
@@ -70,7 +69,7 @@ function getDirectiveSCSSPath(componentName) {
     .filter(function (directive) {
       return directive.match(/directive.js$/g);
     }).map(function (directive) {
-      return './components/' + componentName + '/themes/' + themeName + '/scss/' + directive.replace('.directive.js', '') + '.scss';
+      return './components/' + componentName + '/scss/' + directive.replace('.directive.js', '') + '.scss';
     }).filter(function (directive) {
       try {
         var stats = fs.statSync(directive);

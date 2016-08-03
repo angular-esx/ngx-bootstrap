@@ -1,4 +1,4 @@
-﻿export * from './alert/index.js';
+export * from './alert/index.js';
 export * from './breadcrumb/index.js';
 export * from './button/index.js';
 export * from './card/index.js';
@@ -21,3 +21,5 @@ export * from './tooltip/index.js';
 export * from './hide/index.js';
 export * from './checkbox/index.js';
 export * from './radio/index.js';
+export * from './backdrop/index.js';
+export * from './modal/index.js';

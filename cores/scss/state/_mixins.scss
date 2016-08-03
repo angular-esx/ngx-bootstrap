@@ -1,4 +1,4 @@
-﻿@mixin ngx-state($prefix-class, $states){
+@mixin ngx-state($prefix-class, $states){
   $properties: '';
 
   @if str-index($states, self) != null { $properties: $properties + '&,'; }

@@ -1,4 +1,4 @@
-﻿@import "_variables.scss";
+@import "_variables.scss";
 
 @function ngx-font-size($size-name, $font-sizes: $ngx-font-sizes){
   @return map-get($font-sizes, $size-name);

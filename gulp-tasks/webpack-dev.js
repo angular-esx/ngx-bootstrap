@@ -44,7 +44,7 @@ module.exports = function (params) {
       ],
       module: {
         loaders: [
-          { 
+          {
             test: /\.js$/,
             exclude: /node_modules/,
             loader: 'angular2-template-loader'
@@ -56,6 +56,13 @@ module.exports = function (params) {
           }
         ]
       },
+      // 'html-minifier-loader': {
+      //   removeComments: true,
+      //   collapseWhitespace: true,
+      //   conservativeCollapse: true,
+      //   preserveLineBreaks: true,
+      //   caseSensitive: true
+      // },
       postcss: function () {
         return [autoprefixer];
       },

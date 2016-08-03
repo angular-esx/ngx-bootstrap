@@ -1,5 +1,5 @@
 ﻿import * as ngCore from '@angular/core';
-import ngxBaseHideDirective from './base-hide.directive';
+import { ngxBaseHideDirective } from './base-hide.directive';
 
 function _ngxHideUpDirective() {
   var _base;

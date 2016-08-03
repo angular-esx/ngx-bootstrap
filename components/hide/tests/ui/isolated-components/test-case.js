@@ -7,7 +7,7 @@ function _ngxTestCase() {
 
 export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
-  templateUrl: 'directives/hide/tests/ui/isolated-directives/test-case.html',
+  templateUrl: './test-case.html',
   directives: [
     NGX_HIDE_DIRECTIVES
   ]

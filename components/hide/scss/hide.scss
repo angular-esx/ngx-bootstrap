@@ -1,4 +1,4 @@
-﻿@import "../../../cores/styles/breakpoint/breakpoint.scss";
+﻿@import "../../../cores/scss/breakpoint/breakpoint.scss";
 
 @each $breakpoint in map-keys($ngx-breakpoints) {
   .ngx-hide-up-#{$breakpoint} {

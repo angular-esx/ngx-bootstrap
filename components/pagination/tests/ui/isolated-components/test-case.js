@@ -1,5 +1,5 @@
 ﻿import * as ngCore from '@angular/core';
-import NGX_PAGINATION_DIRECTIVES from '../../../../pagination';
+import { NGX_PAGINATION_DIRECTIVES } from '../../../../pagination';
 
 function _ngxTestCase() {
   this.constructor = function () {};
@@ -18,7 +18,7 @@ function _ngxTestCase() {
 
 export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
-  templateUrl: 'components/pagination/tests/ui/isolated-components/test-case.html',
+  templateUrl: './test-case.html',
   directives: [
     NGX_PAGINATION_DIRECTIVES
   ]

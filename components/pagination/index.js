@@ -1,4 +1,4 @@
-﻿import ngxPaginationComponent from './pagination.component';
+﻿import { ngxPaginationComponent } from './pagination.component';
 
 export * from './pagination.component';
 

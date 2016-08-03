@@ -1,4 +1,4 @@
-import ngxJumbotronComponent from './jumbotron.component';
+import { ngxJumbotronComponent } from './jumbotron.component';
 
 export * from './jumbotron.component';
 

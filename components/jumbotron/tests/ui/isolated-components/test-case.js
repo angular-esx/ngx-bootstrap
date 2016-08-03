@@ -1,13 +1,13 @@
 import * as ngCore from '@angular/core';
-import NGX_JUMBOTRON_DIRECTIVES from '../../../../jumbotron';
+import { NGX_JUMBOTRON_DIRECTIVES } from '../../../../jumbotron';
 
 function _ngxTestCase() {
   this.constructor = function() {};
 }
 
-module.exports = ngCore.Component({
+export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
-  templateUrl: 'components/jumbotron/tests/ui/isolated-components/test-case.html',
+  templateUrl: './test-case.html',
   directives: [
     NGX_JUMBOTRON_DIRECTIVES
   ]

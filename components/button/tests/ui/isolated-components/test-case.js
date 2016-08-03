@@ -1,5 +1,5 @@
 ﻿import * as ngCore from '@angular/core';
-import NGX_BUTTON_DIRECTIVES from '../../../../button';
+import { NGX_BUTTON_DIRECTIVES } from '../../../../button';
 
 function _ngxTestCase() {
   this.constructor = function () {};
@@ -11,7 +11,7 @@ function _ngxTestCase() {
 
 export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
-  templateUrl: 'components/button/tests/ui/isolated-components/test-case.html',
+  templateUrl: './test-case.html',
   directives: [
     NGX_BUTTON_DIRECTIVES
   ]

@@ -1,6 +1,6 @@
-﻿@import "../../../cores/styles/typography/typography.scss";
-@import "../../../cores/styles/palette/palette.scss";
-@import "../../../cores/styles/border/border.scss";
+﻿@import "../../../cores/scss/typography/typography.scss";
+@import "../../../cores/scss/palette/palette.scss";
+@import "../../../cores/scss/border/border.scss";
 
 $ngx-button-font-size: ngx-font-size(base) !default;
 $ngx-button-font-size-sm: ngx-font-size(sm) !default;

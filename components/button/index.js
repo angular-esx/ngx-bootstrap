@@ -1,4 +1,4 @@
-﻿import ngxButtonComponent from './button.component';
+﻿import { ngxButtonComponent } from './button.component';
 
 export * from './button.component';
 

@@ -1,5 +1,5 @@
 ﻿import * as ngCore from '@angular/core';
-import { ngxBaseComponent, ngxUtils } from  '../cores';
+import { ngxBaseComponent, ngxUtils } from  '../../cores';
 
 function _ngxButtonComponent() {
   var _base;

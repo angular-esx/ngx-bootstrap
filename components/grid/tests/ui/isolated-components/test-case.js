@@ -1,5 +1,5 @@
 ﻿import * as ngCore from '@angular/core';
-import NGX_GRID_DIRECTIVES from '../../../../grid';
+import { NGX_GRID_DIRECTIVES } from '../../../../grid';
 
 function _ngxTestCase() {
   this.constructor = function () {
@@ -14,7 +14,7 @@ function _ngxTestCase() {
 
 export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
-  templateUrl: 'components/grid/tests/ui/isolated-components/test-case.html',
+  templateUrl: './test-case.html',
   directives: [
     NGX_GRID_DIRECTIVES
   ]

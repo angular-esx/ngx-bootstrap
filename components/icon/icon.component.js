@@ -1,6 +1,6 @@
 ﻿import * as ngCore from '@angular/core';
-import { ngxBaseComponent, ngxUtils } from  '../cores';
-import ngxIconService from './services/icon.service';
+import { ngxBaseComponent, ngxUtils } from  '../../cores';
+import { ngxIconService } from './services/icon.service';
 
 function _ngxIconComponent() {
   var _base, _STYLE_PROPERTIES;

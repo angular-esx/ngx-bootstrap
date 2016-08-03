@@ -18,10 +18,10 @@ function _ngxTestCase() {
 
 export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
-  templateUrl: 'components/icon/tests/ui/isolated-components/test-case.html',
+  templateUrl: './test-case.html',
   styleUrls: [
-    'components/icon/tests/ui/isolated-components/fonts/awesome/font.css',
-    'components/icon/tests/ui/isolated-components/fonts//material/font.css'
+    './fonts/awesome/font.css',
+    './fonts//material/font.css'
   ],
   encapsulation: ngCore.ViewEncapsulation.None,
   directives: [

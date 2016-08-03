@@ -1,5 +1,5 @@
-﻿import ngxIconComponent from './icon.component';
-import ngxIconService from './services/icon.service';
+﻿import { ngxIconComponent } from './icon.component';
+import { ngxIconService } from './services/icon.service';
 
 export * from './icon.component';
 export * from './services/icon.service';

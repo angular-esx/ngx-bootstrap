@@ -1,8 +1,8 @@
 ﻿import * as ngCore from '@angular/core';
-import { ngxBaseDirective, ngxUtils } from  '../cores';
-import ngxTabsService from './services/tabs.service';
-import ngxTabHeaderDirective from './tab-header.directive';
-import ngxTabContentDirective from './tab-content.directive';
+import { ngxBaseDirective, ngxUtils } from  '../../cores';
+import { ngxTabsService } from './services/tabs.service';
+import { ngxTabHeaderDirective } from './tab-header.directive';
+import { ngxTabContentDirective } from './tab-content.directive';
 
 function _ngxTabDirective() {
   var _base;

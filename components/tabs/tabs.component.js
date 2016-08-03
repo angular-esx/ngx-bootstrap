@@ -1,7 +1,7 @@
 ﻿import * as ngCore from '@angular/core';
-import { ngxBaseComponent, ngxPortalHostDirective, ngxUtils } from  '../cores';
-import ngxTabDirective from './tab.directive';
-import ngxTabsService from './services/tabs.service';
+import { ngxBaseComponent, ngxPortalHostDirective, ngxUtils } from  '../../cores';
+import { ngxTabDirective } from './tab.directive';
+import { ngxTabsService } from './services/tabs.service';
 
 function _ngxTabsComponent() {
   var _base;

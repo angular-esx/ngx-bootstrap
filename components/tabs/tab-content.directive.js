@@ -1,5 +1,5 @@
 import * as ngCore from '@angular/core';
-import ngxTemplatePortalDirective from  '../cores';
+import { ngxTemplatePortalDirective } from  '../../cores';
 
 function _ngxTabContentDirective() {
   var _base;

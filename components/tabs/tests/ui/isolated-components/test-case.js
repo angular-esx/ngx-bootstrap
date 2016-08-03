@@ -1,10 +1,10 @@
 ﻿import * as ngCore from '@angular/core';
-import ngxUtils from '../../../../../cores';
-import NGX_LINK_DIRECTIVES from '../../../../link';
-import { NGX_TABS_DIRECTIVES, NGX_TABS_PROVIDERS } from '../../../../tabs';
+import { ngxUtils } from '../../../../../cores';
+import { NGX_LINK_DIRECTIVES } from '../../../../link';
+import { ngxTabsService, NGX_TABS_DIRECTIVES, NGX_TABS_PROVIDERS } from '../../../../tabs';
 
 function _ngxTestCase() {
-  this.constructor = [ngxTabs.tabsService, function (ngxTabsService) {
+  this.constructor = [ngxTabsService, function (ngxTabsService) {
     this.ngxTabsService = ngxTabsService;
 
     this.tabs = [
@@ -37,7 +37,7 @@ function _ngxTestCase() {
 
 export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
-  templateUrl: 'components/tabs/tests/ui/isolated-components/test-case.html',
+  templateUrl: './test-case.html',
   directives: [
     NGX_LINK_DIRECTIVES,
     NGX_TABS_DIRECTIVES

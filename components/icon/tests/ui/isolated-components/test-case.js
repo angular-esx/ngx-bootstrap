@@ -1,5 +1,5 @@
-﻿import * as ngCore from '@angular/core';
-import HTTP_PROVIDERS from '@angular/http';
+import * as ngCore from '@angular/core';
+import { HTTP_PROVIDERS } from '@angular/http';
 import { ngxIconService, NGX_ICON_DIRECTIVES, NGX_ICON_PROVIDERS } from '../../../../icon';
 
 function _ngxTestCase() {
@@ -19,17 +19,13 @@ function _ngxTestCase() {
 export var ngxTestCase = ngCore.Component({
   selector: 'ngx-test-case',
   templateUrl: './test-case.html',
-  styleUrls: [
-    './fonts/awesome/font.css',
-    './fonts//material/font.css'
-  ],
   encapsulation: ngCore.ViewEncapsulation.None,
   directives: [
     NGX_ICON_DIRECTIVES
   ],
   providers: [
-    NGX_ICON_PROVIDERS,
-    HTTP_PROVIDERS
+    HTTP_PROVIDERS,
+    NGX_ICON_PROVIDERS
   ]
 })
 .Class(new _ngxTestCase());

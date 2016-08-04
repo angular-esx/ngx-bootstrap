@@ -1,5 +1,6 @@
-﻿import * as ngCore from '@angular/core';
-import Http from '@angular/http';
+import * as ngCore from '@angular/core';
+import * as rx from 'rxjs/rx';
+import { Http } from '@angular/http';
 
 function _ngxIconService() {
   var _defaultFontSet = '',
@@ -42,7 +43,7 @@ function _ngxIconService() {
   };
   this.getSvgIconByUrl = function (url) {
     if(_cachedSvgIcons.hasOwnProperty(url)){
-      return Rx.Observable.of(_cachedSvgIcons[url]);
+      return rx.Observable.of(_cachedSvgIcons[url]);
     }
     
     return new _svgIconConfig(url)
@@ -73,7 +74,7 @@ function _ngxIconService() {
 
         if(_svgIconSet.hasSvgElement()){
           _svgElement = _svgIconSet.querySvgElement(iconName);
-          if(_svgElement){ return Rx.Observable.of(_svgElement); }
+          if(_svgElement){ return rx.Observable.of(_svgElement); }
         }
         else {
           _svgIconSetsHaveNoElement.push(_svgIconSet);
@@ -85,7 +86,7 @@ function _ngxIconService() {
         _getSvgElement$.push(_svgIconSets[i].getSvgElement(this));
       }
 
-      return Rx.Observable.forkJoin(_getSvgElement$)
+      return rx.Observable.forkJoin(_getSvgElement$)
       .map(function () {
         for (var i = 0; i < _svgIconSetsHaveNoElement.length; i++) {
           _svgIconSet = _svgIconSets[i];
@@ -141,7 +142,7 @@ function _ngxIconService() {
 
     this.getSvgElement = function (context) {
       if(_svgElement){ 
-        return Rx.Observable.of(_svgElement.cloneNode(true)); 
+        return rx.Observable.of(_svgElement.cloneNode(true)); 
       }
 
       return _fetch(context, _url)

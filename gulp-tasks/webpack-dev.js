@@ -22,7 +22,7 @@ module.exports = function (params) {
       context: path.resolve(__dirname, '..'),
       entry: {
         // polyfills: './configs/webpack/polyfills.js',
-        // vendors: './configs/webpack/vendors.js',
+        vendors: './configs/webpack/vendors.js',
         bootstrap: './configs/webpack/bootstrap.js',
         test: _testScriptPath
       },
@@ -38,7 +38,7 @@ module.exports = function (params) {
         // }),
         // new webpack.optimize.DedupePlugin(),
         new webpack.optimize.CommonsChunkPlugin({
-          name: ['vendors']
+          name: ['test', 'bootstrap', 'vendors']
         }),
       ],
       module: {

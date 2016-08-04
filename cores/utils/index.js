@@ -42,7 +42,7 @@ function distinct (target) {
   }
 
   var _result = [];
-  _forEach(target, function (item) {
+  forEach(target, function (item) {
     if (_result.indexOf(item) === -1) {
       _result.push(item);
     }
@@ -71,7 +71,7 @@ function splice (target, item, compareTo){
   }
   
   var _comparedResult;
-  _forEach(target, function (_item, index) {
+  forEach(target, function (_item, index) {
     _comparedResult = compareTo ? compareTo(item, _item) : item === _item;
 
     if(_comparedResult){

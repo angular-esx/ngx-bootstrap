@@ -1,4 +1,4 @@
-﻿import * as ngCore from '@angular/core';
+import * as ngCore from '@angular/core';
 import { ngxBaseComponent, ngxUtils } from  '../../cores';
 import { ngxModalService } from './services/modal.service';
 import { ngxBackdropService } from '../../components/backdrop';
@@ -150,8 +150,8 @@ function _ngxModalComponent() {
 
 export var ngxModalComponent = ngCore.Component({
   selector: 'ngx-modal',
-  template: './templates/modal.html',
-  styles: ['./scss/modal.scss'],
+  templateUrl: './templates/modal.html',
+  styleUrls: ['./scss/modal.scss'],
   properties: ['id', 'type', 'size', 'backdropColor:backdrop-color', 'initCssClass:class'],
   host: {
     '(click)': 'click($event)'

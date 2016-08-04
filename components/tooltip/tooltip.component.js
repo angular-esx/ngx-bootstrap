@@ -1,4 +1,4 @@
-﻿import * as ngCore from '@angular/core';
+import * as ngCore from '@angular/core';
 import { ngxBaseComponent, ngxUtils } from  '../../cores';
 import { ngxTooltipOption } from './models/tooltip-option.model';
 import { ngxTooltipService } from './services/tooltip.service';
@@ -14,13 +14,13 @@ function _ngxTooltipComponent() {
     ngxTooltipService,
     ngxTooltipOption,
 
-    function ngxTooltipComponent(elementRef, renderer, ngxTooltipService, tooltipOption) {
+    function ngxTooltipComponent(elementRef, renderer, ngxTooltipService, ngxTooltipOption) {
       ngxBaseComponent.apply(this, [elementRef, renderer, ngxTooltipService]);
       
       if (elementRef) {
         this.ngxTooltipService = ngxTooltipService;
 
-        tooltipOption.assign(this);
+        ngxTooltipOption.assign(this);
       }
     }
   ];

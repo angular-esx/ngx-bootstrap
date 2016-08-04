@@ -1,10 +1,10 @@
-﻿import * as ngCore from '@angular/core';
+import * as ngCore from '@angular/core';
 import * as rx from 'rxjs/rx';
 import { ngxAnimationService } from '../../../../../cores';
-import { ngxtooltipService, NGX_TOOLTIP_DIRECTIVES, NGX_TOOLTIP_PROVIDERS } from '../../../../tooltip';
+import { ngxTooltipService, NGX_TOOLTIP_DIRECTIVES, NGX_TOOLTIP_PROVIDERS } from '../../../../tooltip';
 
 function _ngxTestCase() {
-  this.constructor = [ngxtooltipService, function (ngxTooltipService) {
+  this.constructor = [ngxTooltipService, function (ngxTooltipService) {
     this.ngxTooltipService = ngxTooltipService;
 
     this.delay = 1 * 1000;

@@ -1,4 +1,4 @@
-﻿import * as ngCore from '@angular/core';
+import * as ngCore from '@angular/core';
 import { ngxBaseDirective, ngxUtils } from  '../../cores';
 import { ngxTooltipOption } from './models/tooltip-option.model.js';
 import { ngxTooltipComponent } from './tooltip.component.js';
@@ -146,7 +146,7 @@ function _ngxTooltipDirective() {
   };
 
   this.loadComponentRef = function () {
-    var _options = new ngxTooltipOptionClass({
+    var _options = new ngxTooltipOption({
       hostElement: this.viewContainerRef.element,
       templateRef: this.ngxTooltipService.getTemplateRef(this.template),
       content: this.content,
@@ -158,7 +158,7 @@ function _ngxTooltipDirective() {
 
     var _binding = ngCore.ReflectiveInjector.resolve([
       new ngCore.Provider(ngxTooltipService, { useValue: this.ngxTooltipService }),
-      new ngCore.Provider(ngxTooltipOptionClass, { useValue: _options })
+      new ngCore.Provider(ngxTooltipOption, { useValue: _options })
     ]);
 
     return this.componentLoader.loadNextToLocation(ngxTooltipComponent, this.viewContainerRef, _binding)

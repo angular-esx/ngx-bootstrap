@@ -1,4 +1,4 @@
-﻿import * as ngCore from '@angular/core';
+import * as ngCore from '@angular/core';
 import { ngxUtils } from  '../../cores';
 import { ngxPopoverOption } from './models/popover-option.model';
 import { ngxPopoverComponent } from './popover.component';
@@ -67,7 +67,7 @@ function _ngxPopoverDirective() {
   };
 
   this.loadComponentRef = function () {
-    var _options = new ngxPopoverOptionClass({
+    var _options = new ngxPopoverOption({
       hostElement: this.viewContainerRef.element,
       templateRef: this.ngxPopoverService.getTemplateRef(this.template),
       title: this.title,
@@ -79,7 +79,7 @@ function _ngxPopoverDirective() {
     
     var _binding = ngCore.ReflectiveInjector.resolve([
       new ngCore.Provider(ngxPopoverService, { useValue: this.ngxPopoverService }),
-      new ngCore.Provider(ngxPopoverOptionClass, { useValue: _options })
+      new ngCore.Provider(ngxPopoverOption, { useValue: _options })
     ]);
 
     return this.componentLoader.loadNextToLocation(ngxPopoverComponent, this.viewContainerRef, _binding)

@@ -1,5 +1,5 @@
-﻿import * as ngCore from '@angular/core';
-import ngxUtils from  '../../../cores';
+import * as ngCore from '@angular/core';
+import { ngxUtils } from '../../../cores';
 
 function _ngxPopoverOption() {
   var _PROPERTIES = ['hostElement', 'templateRef', 'title', 'content', 'state', 'position', 'delay'];

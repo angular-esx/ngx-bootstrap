@@ -1,0 +1,24 @@
+﻿@import "../../../../../cores/themes/bootstrap/normalize/normalize.scss";
+
+@import "_variables.scss";
+
+@mixin ngx-alert-variant($default){
+  $foreground: map-get($default, foreground);
+  $background: map-get($default, background);
+
+  color: $foreground;
+  background-color: $background;
+  border-color: $background;
+
+  hr {
+    @extend %ngx-hr-normalize;
+
+    border-top-color: $foreground;
+  }
+
+  .ngx-alert-link,
+  .ngx-alert-link a {
+    font-weight: bold !important;
+    color: $foreground !important;
+  }
+}

@@ -21,9 +21,9 @@
         INDEX_TEMPLATE_HTML: paths.ROOT + 'index.template.html',
         NGX_NORMALIZE_CSS: paths.ROOT + 'dist/css/ngx-normalize.css',
         NGX_BOOTSTRAP_CSS: paths.ROOT + 'dist/css/ngx-bootstrap.css',
-        NGX_POLYFILLS_JS: paths.ROOT + 'dist/js/ngx-polyfills.js',
         NGX_VENDORS_JS: paths.ROOT + 'dist/js/ngx-vendors.js',
-        NGX_BOOTSTRAP_JS: paths.ROOT + 'dist/js/ngx-bootstrap.js'
+        NGX_BOOTSTRAP_JS: paths.ROOT + 'dist/js/ngx-bootstrap.js',
+        NGX_TEST_JS: paths.ROOT + 'dist/js/ngx-test.js'
       };
     })(this.PATHS);
 
@@ -33,28 +33,6 @@
         ES6_SHIM_JS: paths.ES6_SHIM + 'es6-shim.js',
       };
     })(this.PATHS);
-
-    this.getComponentTestCase = function (componentName, testCase) {
-      if (!testCase) { testCase = 'isolated-components'; }
-
-      var pathComponent = this.PATHS.COMPONENTS + componentName + '/tests/ui/' + testCase;
-
-      return {
-        bootScript: pathComponent + '/boot.js',
-        testCaseScript: pathComponent + '/test-case.js'
-      };
-    };
-
-    this.getDirectiveTestCase = function (directiveName, testCase) {
-      if (!testCase) { testCase = 'isolated-directives'; }
-
-      var pathComponent = this.PATHS.DIRECTIVES + directiveName + '/tests/ui/' + testCase;
-
-      return {
-        bootScript: pathComponent + '/boot.js',
-        testCaseScript: pathComponent + '/test-case.js'
-      };
-    };
 
   })();
 

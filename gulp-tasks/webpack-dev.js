@@ -7,16 +7,11 @@ var Q = require('q');
 module.exports = function (params) {
 
   return function () {
-    var deferred = Q.defer();
-    var _componentName = params.args.component,
-      _directiveName = params.args.directive,
+    var _deferred = Q.defer(),
+      _componentName = params.args.component,
       _testScriptPath;
-
-    if (_componentName) {
-      _testScriptPath = './components/' + _componentName + '/tests/ui/isolated-components/boot.js';
-    } else {
-      _testScriptPath = './directives' + _directiveName + 'tests/ui/isolated-components/boot.js';
-    }
+      
+    _testScriptPath = './components/' + _componentName + '/tests/ui/isolated-components/boot.js';
 
     webpack({
       context: path.resolve(__dirname, '..'),
@@ -69,6 +64,8 @@ module.exports = function (params) {
     }, function (err, stats) {
       if (err) {
         console.log(err);
+
+        _deferred.reject();
       }
 
       if (stats) {
@@ -83,10 +80,10 @@ module.exports = function (params) {
       // reload browser
       browser.reload();
 
-      deferred.resolve();
+      _deferred.resolve();
     });
 
-    return deferred.promise;
+    return _deferred.promise;
 
   };
 };

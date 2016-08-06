@@ -11,22 +11,17 @@ module.exports = function (params) {
   return function () {
     var contents = addSCSS('./cores/scss/ngx-bootstrap.scss');
 
-    if (componentName) {
-      contents += getDirectiveSCSSPath(componentName);
-
-    } else {
-      fs.readdirSync('./components')
-        .filter(function (component) {
-          try {
-            return fs.statSync('./components/' + component).isDirectory();
-          } catch (e) {
-            return false;
-          }
-        })
-        .forEach(function (component) {
-          contents += getDirectiveSCSSPath(component);
-        });
-    }
+    fs.readdirSync('./components')
+      .filter(function (component) {
+        try {
+          return fs.statSync('./components/' + component).isDirectory();
+        } catch (e) {
+          return false;
+        }
+      })
+      .forEach(function (component) {
+        contents += getDirectiveSCSSPath(component);
+      });
 
     try {
       fs.mkdirSync('./temp');

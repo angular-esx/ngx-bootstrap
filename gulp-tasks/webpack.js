@@ -2,7 +2,6 @@ var path = require('path');
 var gulp = require('gulp');
 var webpack = require('webpack');
 var webpackStream = require('webpack-stream');
-var uglify = require('gulp-uglify');
 var autoprefixer = require('autoprefixer');
 var path = require('path');
 var reload = require('browser-sync').reload;

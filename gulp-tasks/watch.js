@@ -10,21 +10,21 @@ module.exports = function (params) {
       './directives/**/*.js',
       './cores/**/*.js',
     ], function () {
-      runSequence('lint', 'webpack');
+      runSequence('lint', 'webpack-dev');
     });
 
     gulp.watch([
       './components/**/*.html',
       './directives/**/*.html',
     ], function () {
-      runSequence('webpack');
+      runSequence('webpack-dev');
     });
 
     gulp.watch([
       './components/**/*.scss',
       './cores/**/*.scss'
     ], function () {
-      runSequence('scss', 'webpack');
+      runSequence('scss', 'webpack-dev');
     });
   };
 };

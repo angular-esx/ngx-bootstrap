@@ -58,6 +58,7 @@
     "run-sequence": "^1.1.5",
     "sass-loader": "^3.2.0",
     "stream-series": "^0.1.1",
+    "unminified-webpack-plugin": "^1.1.0",
     "webpack": "^2.1.0-beta.13",
     "yargs": "^3.32.0"
   }

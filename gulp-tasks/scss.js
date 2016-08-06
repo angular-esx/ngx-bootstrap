@@ -1,7 +1,6 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var rename = require('gulp-rename');
-var reload = require('browser-sync').reload;
 var fs = require('fs');
 var merge = require('merge-stream');
 

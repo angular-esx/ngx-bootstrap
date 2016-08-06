@@ -21,7 +21,6 @@ module.exports = function (params) {
     webpack({
       context: path.resolve(__dirname, '..'),
       entry: {
-        // polyfills: './configs/webpack/polyfills.js',
         vendors: './configs/webpack/vendors.js',
         bootstrap: './configs/webpack/bootstrap.js',
         test: _testScriptPath

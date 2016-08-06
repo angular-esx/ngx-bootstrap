@@ -63,7 +63,7 @@
     this.WATCH = 'watch';
     this.BROWSER_SYNC = 'browser-sync';
     this.SCSS = 'scss';
-    this.LINT = 'lint';
+    this.JSHINT = 'jshint';
     this.INJECT_ASSETS = 'inject-assets';
     this.BUILD = 'build';
     this.WEBPACK = 'webpack-dev';
@@ -80,20 +80,16 @@
   gulp.task('inject-assets', getTask(taskService.INJECT_ASSETS));
 
   gulp.task('test-ui', function () {
-    runSequence('clean', 'scss', 'webpack', 'inject-assets', ['browserSync', 'watch', 'lint']);
+    runSequence('clean', 'scss', 'webpack', 'inject-assets', ['browserSync', 'watch', 'jshint']);
   });
 
   gulp.task('default', ['build']);
 
   gulp.task('clean', getTask(taskService.CLEAN));
 
-  gulp.task('serve', function () {
-    runSequence('scss', ['browserSync', 'watch', 'lint']);
-  });
-
   gulp.task('scss', getTask(taskService.SCSS));
 
-  gulp.task('lint', getTask(taskService.LINT));
+  gulp.task('jshint', getTask(taskService.JSHINT));
 
   gulp.task('webpack', getTask(taskService.WEBPACK));
 
@@ -102,7 +98,7 @@
   gulp.task('watch', getTask(taskService.WATCH));
 
   gulp.task('build', function () {
-    runSequence('clean', 'lint', 'scss', 'webpack');
+    runSequence('clean', 'jshint', 'scss', 'webpack');
   });
 
   function getTask(task) {

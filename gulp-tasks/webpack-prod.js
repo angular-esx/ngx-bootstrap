@@ -67,7 +67,8 @@ module.exports = function (params) {
     var _deferred = Q.defer();
 
     webpackConfig.entry = {
-      'dist/js/vendors': './configs/webpack/vendors.js',
+      'dist/js/vendors': ['@angular/core', '@angular/common', '@angular/compiler', '@angular/http', '@angular/platform-browser', '@angular/platform-browser-dynamic', 'rxjs/rx'],
+
       'cores/bundles/cores': ['./cores/index.js'],
 
       'components/alert/bundles/alert': './components/alert/index.js',

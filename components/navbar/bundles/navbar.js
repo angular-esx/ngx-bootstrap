@@ -142,7 +142,7 @@ module.exports = ":host(.ngx-navbar) { display: block; position: relative; paddi
 /***/ 713:
 /***/ function(module, exports) {
 
-module.exports = "<ng-content select=\"[ngx-navbar-brand]\"></ng-content>\n\n<ng-content></ng-content>";
+module.exports = "<ng-content select=\"[ngx-navbar-brand]\"></ng-content>\r\n\r\n<ng-content></ng-content>";
 
 /***/ },
 

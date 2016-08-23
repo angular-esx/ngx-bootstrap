@@ -111,7 +111,7 @@ module.exports = ":host(.ngx-card) { display: block; position: relative; padding
 /***/ 699:
 /***/ function(module, exports) {
 
-module.exports = "<ng-content select=\"ngx-card-image\"></ng-content>\n\n<div class=\"ngx-card-header-content\">\n  <ng-content select=\"ngx-card-title, ngx-card-subtitle, ngx-card-text\"></ng-content>\n</div>\n\n<ng-content select=\"ngx-card-actions\"></ng-content>";
+module.exports = "<ng-content select=\"ngx-card-image\"></ng-content>\r\n\r\n<div class=\"ngx-card-header-content\">\r\n  <ng-content select=\"ngx-card-title, ngx-card-subtitle, ngx-card-text\"></ng-content>\r\n</div>\r\n\r\n<ng-content select=\"ngx-card-actions\"></ng-content>";
 
 /***/ },
 

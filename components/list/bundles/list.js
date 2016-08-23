@@ -137,7 +137,7 @@ module.exports = ":host(.ngx-list) { padding-left: 0; margin-bottom: 0; } :host(
 /***/ 708:
 /***/ function(module, exports) {
 
-module.exports = "<ng-content select=\"ngx-list-item-image\"></ng-content>\n\n<ng-content select=\"ngx-list-item-content\"></ng-content>\n\n<ng-content select=\"ngx-list-item-actions\"></ng-content>";
+module.exports = "<ng-content select=\"ngx-list-item-image\"></ng-content>\r\n\r\n<ng-content select=\"ngx-list-item-content\"></ng-content>\r\n\r\n<ng-content select=\"ngx-list-item-actions\"></ng-content>";
 
 /***/ },
 

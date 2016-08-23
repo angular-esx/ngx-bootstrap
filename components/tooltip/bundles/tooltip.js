@@ -77,7 +77,7 @@ module.exports = ":host(.ngx-tooltip) { display: block; position: absolute; opac
 /***/ 333:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"ngx-tooltip-arrow\"></div>\n<div class=\"ngx-tooltip-content\">\n  <div #content></div>\n</div>";
+module.exports = "<div class=\"ngx-tooltip-arrow\"></div>\r\n<div class=\"ngx-tooltip-content\">\r\n  <div #content></div>\r\n</div>";
 
 /***/ },
 

@@ -91,7 +91,7 @@ module.exports = "@-webkit-keyframes ngx-progress-bar-stripes { from { backgroun
 /***/ 717:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"ngx-progress-bar\" [style.width.%]=\"currentProgress\">\n  <ng-content></ng-content>\n</div>";
+module.exports = "<div class=\"ngx-progress-bar\" [style.width.%]=\"currentProgress\">\r\n  <ng-content></ng-content>\r\n</div>";
 
 /***/ },
 

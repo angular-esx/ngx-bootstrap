@@ -424,7 +424,7 @@ module.exports = ":host(.ngx-tabs) > .ngx-tabs-headers { display: block; padding
 /***/ 718:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"ngx-tabs-headers\">\n  <div *ngFor=\"let tab of tabs; let i=index; trackBy:trackByTabs\"\n       [class.ngx-tabs-header-state-active]=\"tab.isActive\"\n       [class.ngx-tabs-header-state-disabled]=\"tab.isDisabled\"\n       (click)=\"select(tab, i)\"\n       class=\"ngx-tabs-header\">\n    <template [ngx-portal-host]=\"tab.headerTemplate\"></template>\n  </div>\n</div>\n\n<div class=\"ngx-tabs-contents\">\n  <div *ngFor=\"let tab of tabs; let i=index; trackBy:trackByTabs\">\n    <template [ngIf]=\"tab.isActive\">\n      <template [ngx-portal-host]=\"tab.contentTemplate\"></template>\n    </template>\n  </div>\n</div>";
+module.exports = "<div class=\"ngx-tabs-headers\">\r\n  <div *ngFor=\"let tab of tabs; let i=index; trackBy:trackByTabs\"\r\n       [class.ngx-tabs-header-state-active]=\"tab.isActive\"\r\n       [class.ngx-tabs-header-state-disabled]=\"tab.isDisabled\"\r\n       (click)=\"select(tab, i)\"\r\n       class=\"ngx-tabs-header\">\r\n    <template [ngx-portal-host]=\"tab.headerTemplate\"></template>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"ngx-tabs-contents\">\r\n  <div *ngFor=\"let tab of tabs; let i=index; trackBy:trackByTabs\">\r\n    <template [ngIf]=\"tab.isActive\">\r\n      <template [ngx-portal-host]=\"tab.contentTemplate\"></template>\r\n    </template>\r\n  </div>\r\n</div>";
 
 /***/ },
 

@@ -58,7 +58,7 @@ function _ngxGridColumnDirective() {
       var _parts,
           _cssClasses = [],
           _values = propertyValue.split(' '),
-          _prefixClass = this.getPrefixClass();
+          _prefixClass = this.getPrefixClass(),
           _propertyName = propertyName
                           .replace(/([A-Z])/g, function (x, y) { return '-' + y; })
                           .replace(/^-/, '')

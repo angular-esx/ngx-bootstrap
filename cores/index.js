@@ -1,4 +1,16 @@
-import * as ngxUtils from './utils';
+import {
+  shallowCopy,
+  newGUID,
+  isString,
+  isObject,
+  isArray,
+  isFunction,
+  isNull,
+  isEmpty,
+  distinct,
+  forEach,
+  splice
+} from './utils';
 
 export {
   ngxBaseComponent,
@@ -11,5 +23,19 @@ export {
   ngxPortalHostDirective,
   ngxTemplatePortalDirective
 } from './components';
+
 export { ngxAnimationService } from './services';
-export { ngxUtils };
+
+export var ngxUtils = { 
+  shallowCopy,
+  newGUID,
+  isString,
+  isObject,
+  isArray,
+  isFunction,
+  isNull,
+  isEmpty,
+  distinct,
+  forEach,
+  splice  
+};

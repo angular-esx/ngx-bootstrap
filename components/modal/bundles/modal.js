@@ -566,14 +566,14 @@ module.exports = ":host(.ngx-modal) { position: fixed; top: 0; right: 0; bottom:
 /***/ 711:
 /***/ function(module, exports) {
 
-module.exports = "<button type=\"button\" class=\"ngx-modal-dismiss\" (click)=\"hide()\">\n  <span>&times;</span>\n</button>\n<div class=\"ngx-modal-title\">\n  <ng-content></ng-content>\n</div>";
+module.exports = "<button type=\"button\" class=\"ngx-modal-dismiss\" (click)=\"hide()\">\r\n  <span>&times;</span>\r\n</button>\r\n<div class=\"ngx-modal-title\">\r\n  <ng-content></ng-content>\r\n</div>";
 
 /***/ },
 
 /***/ 712:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"ngx-modal-dialog\">\n  <div class=\"ngx-modal-content\">\n    <ng-content select=\"ngx-modal-header\"></ng-content>\n\n    <div class=\"ngx-modal-body\">\n      <ng-content select=\"ngx-modal-body\"></ng-content>\n    </div>\n\n    <ng-content select=\"ngx-modal-footer\"></ng-content>\n  </div>\n</div>";
+module.exports = "<div class=\"ngx-modal-dialog\">\r\n  <div class=\"ngx-modal-content\">\r\n    <ng-content select=\"ngx-modal-header\"></ng-content>\r\n\r\n    <div class=\"ngx-modal-body\">\r\n      <ng-content select=\"ngx-modal-body\"></ng-content>\r\n    </div>\r\n\r\n    <ng-content select=\"ngx-modal-footer\"></ng-content>\r\n  </div>\r\n</div>";
 
 /***/ },
 

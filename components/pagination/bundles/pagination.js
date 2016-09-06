@@ -164,7 +164,7 @@ module.exports = ":host(.ngx-pagination) { display: inline-block; padding-left: 
 /***/ 715:
 /***/ function(module, exports) {
 
-module.exports = "<a *ngIf=\"showPrevious\" class=\"ngx-page-item\" href=\"#\" (click)=\"prev($event)\">&laquo;</a>\n\n<a *ngFor=\"let page of pageBuilder.pages\" \n          class=\"ngx-page-item\"\n          [href]=\"page.link\" \n          [class.ngx-page-item-state-active]=\"page.number === currentPage\"\n          (click)=\"changePage($event, page)\">\n  {{page.number}}\n</a>\n\n<a *ngIf=\"showNext\" class=\"ngx-page-item\" href=\"#\" (click)=\"next($event)\">&raquo;</a>\n";
+module.exports = "<a *ngIf=\"showPrevious\" class=\"ngx-page-item\" href=\"#\" (click)=\"prev($event)\">&laquo;</a>\r\n\r\n<a *ngFor=\"let page of pageBuilder.pages\" \r\n          class=\"ngx-page-item\"\r\n          [href]=\"page.link\" \r\n          [class.ngx-page-item-state-active]=\"page.number === currentPage\"\r\n          (click)=\"changePage($event, page)\">\r\n  {{page.number}}\r\n</a>\r\n\r\n<a *ngIf=\"showNext\" class=\"ngx-page-item\" href=\"#\" (click)=\"next($event)\">&raquo;</a>\r\n";
 
 /***/ },
 

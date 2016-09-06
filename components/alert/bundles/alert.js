@@ -273,7 +273,7 @@ module.exports = ":host(.ngx-alert) { display: block; margin: 0 0 1rem 0; paddin
 /***/ 696:
 /***/ function(module, exports) {
 
-module.exports = "<button type=\"button\" class=\"ngx-alert-dismiss\" *ngIf=\"isDismissible\" (click)=\"dismiss()\">\n  <span>&times;</span>\n</button>\n<ng-content></ng-content>";
+module.exports = "<button type=\"button\" class=\"ngx-alert-dismiss\" *ngIf=\"isDismissible\" (click)=\"dismiss()\">\r\n  <span>&times;</span>\r\n</button>\r\n<ng-content></ng-content>";
 
 /***/ },
 

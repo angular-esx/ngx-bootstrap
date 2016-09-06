@@ -141,7 +141,7 @@ module.exports = ":host(.ngx-pager) { padding-left: 0; margin: 1rem 0 1rem 0; te
 /***/ 714:
 /***/ function(module, exports) {
 
-module.exports = "<a *ngIf=\"showPrevious\" \n    class=\"ngx-pager-item ngx-pager-left-item\"\n    [href]=\"pageBuilder.prevPage.link\" \n    (click)=\"prev($event)\">Prev</a>\n\n<a *ngIf=\"showNext\" \n    class=\"ngx-pager-item ngx-pager-right-item\"\n    [href]=\"pageBuilder.nextPage.link\" \n    (click)=\"next($event)\">Next</a>";
+module.exports = "<a *ngIf=\"showPrevious\" \r\n    class=\"ngx-pager-item ngx-pager-left-item\"\r\n    [href]=\"pageBuilder.prevPage.link\" \r\n    (click)=\"prev($event)\">Prev</a>\r\n\r\n<a *ngIf=\"showNext\" \r\n    class=\"ngx-pager-item ngx-pager-right-item\"\r\n    [href]=\"pageBuilder.nextPage.link\" \r\n    (click)=\"next($event)\">Next</a>";
 
 /***/ },
 

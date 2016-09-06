@@ -317,7 +317,7 @@ module.exports = ":host(.ngx-tooltip) { display: block; position: absolute; opac
 /***/ 333:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"ngx-tooltip-arrow\"></div>\n<div class=\"ngx-tooltip-content\">\n  <div #content></div>\n</div>";
+module.exports = "<div class=\"ngx-tooltip-arrow\"></div>\r\n<div class=\"ngx-tooltip-content\">\r\n  <div #content></div>\r\n</div>";
 
 /***/ },
 
@@ -616,7 +616,7 @@ module.exports = ":host(.ngx-popover) { display: block; position: absolute; opac
 /***/ 716:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"ngx-popover-arrow\"></div>\n\n<div #template *ngIf=\"templateRef\"></div>\n\n<div *ngIf=\"!templateRef\">\n  <div #title class=\"ngx-popover-title\"></div>\n  <div #content class=\"ngx-popover-content\"></div>\n</div>";
+module.exports = "<div class=\"ngx-popover-arrow\"></div>\r\n\r\n<div #template *ngIf=\"templateRef\"></div>\r\n\r\n<div *ngIf=\"!templateRef\">\r\n  <div #title class=\"ngx-popover-title\"></div>\r\n  <div #content class=\"ngx-popover-content\"></div>\r\n</div>";
 
 /***/ },
 
